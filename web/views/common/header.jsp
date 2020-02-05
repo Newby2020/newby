@@ -7,10 +7,10 @@
     <title>header</title>
     <link rel="stylesheet" href="/semi/resources/css/joinModal.css">
     <link rel="stylesheet" href="/semi/resources/css/LoginModal.css">
-    
+    <link rel="stylesheet" href="/semi/resources/css/header.css">
 </head>
 <body>
-	<div class="newby-header" id="newby-header-var">
+	<div class="newby-header" id="newby-header-var" style="margin-left: auto; margin-right: auto;">
 
 	  <img src="/semi/resources/images/Logo(120x50px).png" alt="로고"  height="50px" id="newby-logo" onclick="newbyMain();">  
 
