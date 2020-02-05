@@ -1,10 +1,10 @@
-<%@ page language="java" contentType="text/html; charset=EUC-KR"
-    pageEncoding="EUC-KR"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="EUC-KR">
-<title>»õ·Î¿î Ãë¹Ì¸¦ Ã£¾Æ¼­ NEWBY</title>
+<meta charset="UTF-8">
+<title>ìƒˆë¡œìš´ ì·¨ë¯¸ë¥¼ ì°¾ì•„ì„œ NEWBY</title>
  	
  	
  	<link rel="stylesheet" href="/semi/resources/css/main-category.css">
@@ -41,15 +41,15 @@
               <div class="main-category-sum">
                 <div class="main-category" id="cate-activity">
                 <img class="card-img-top" src="/semi/resources/images/activities.png" onclick="activityImg();"><br>
-             	      ¾×Æ¼ºñÆ¼
+             	      ì•¡í‹°ë¹„í‹°
                 </div>
                 <div class="main-category" id="cate-art">          
                 <img class="card-img-top" src="/semi/resources/images/art2.png" alt=""><br>
-                	    ¿¹¼ú
+                	    ì˜ˆìˆ 
                 </div>
                 <div class="main-category" id="cate-cooking">
                 <img class="card-img-top" src="/semi/resources/images/cook2.png" alt=""><br>  
-                	    ÄíÅ·
+                	    ì¿ í‚¹
                 </div>
                 <div class="main-category" id="cate-it">
                 <img class="card-img-top" src="/semi/resources/images/it2.png" alt=""><br>
