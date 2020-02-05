@@ -9,17 +9,11 @@
  	
  	<link rel="stylesheet" href="/semi/resources/css/main-category.css">
  	<link rel="stylesheet" href="/semi/resources/css/main-panel.css">
- 	<link rel="stylesheet" href="/semi/resources/css/header.css">
+ 	<!-- <link rel="stylesheet" href="/semi/resources/css/header.css"> -->
  	
  	<link rel="stylesheet" href="/semi/resources/css/footer.css">
  	
-    <link href="https://fonts.googleapis.com/css?family=Nanum+Gothic|Jua|Noto+Sans+KR|Black+Han+Sans|Public+Sans&display=swap');" rel="stylesheet">
-	
-    <style>
-        body{
-            font-family: 'Noto Sans KR', sans-serif;
-             }       
-    </style>
+ 
 
 </head>
 <body>
