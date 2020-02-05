@@ -7,9 +7,9 @@
     <title>header</title>
 </head>
 <body>
-	<div class="newby-header" id="newby-header-var">
+	<div class="newby-header" id="newby-header-var" style="margin-left: auto; margin-right: auto;">
 
-	  <img src="/semi/resources/images/Logo(120x50px).png" alt="로고"  height="50px" id="newby-logo" onclick="newbyMain();">  
+	  <img src=/semi/resources/images/Logo(120x50px).png" alt="로고"  height="50px" id="newby-logo" onclick="newbyMain();">  
 
 
 	  <div id="header-navibar23" align="right">

@@ -13,12 +13,6 @@
     box-sizing: border-box;
     
 }
-body{
-    display: block;
-    margin-left: 15%;
-    margin-right: 15%;
-    /* text-align: center; */
-}
 
 a {
     text-decoration: none;
@@ -33,55 +27,16 @@ select {
     background-color: transparent;
 }
 
-.top{ 
-    position: absolute;
-    margin: 0 !important;
-        width:70%;
-    height: 60px;
-    margin: 0px;
-    color: white;
-}
-
-.top-nav a:link { color: darkgrey; text-decoration: none;}
-.top-nav a:visited { color: darkgrey; text-decoration: none;}
-.top-nav a:hover { color: darkgrey; background-color: white;}
-.top-nav{
-    color: darkgrey;
-}
-
-.top label {
-    margin-top: 17px;
-}
-
-#logo{
-margin-left: 15px;    
-line-height: 68px;
-}
-
-#login{
-    margin-right: 10px;
-}
-
-
-.top-nav{
-    float: right;
-    cursor: pointer;
-}
 
 .head_class_navi {
     box-sizing: border-box;
     align-items: center;
     position: relative;
-    top: 60px;
-    /* background-color:rgba(0, 129, 250, 0.144); */
-    /* margin-left: auto;
-    margin-right: auto; */
-
 }
 .location {
     text-align: center;
     padding-top: 10px;
-    padding-bottom: 30px;
+    padding-bottom: 15px;
 }
 #loca{
     display: inline-block;
@@ -222,7 +177,7 @@ margin-left: auto;
     box-sizing: border-box;
     font-size: 15px;
     font-weight: 400;
-    height: 1120px;
+    min-height: 900px;
     line-height: 18.465px;
     margin-bottom: 0;
     margin-top: 0px;
@@ -237,9 +192,10 @@ margin-left: auto;
     justify-items: center;
     justify-content: center;
     justify-self: center;
+    height: auto;
 }   
 .con_sort{
-    margin-top: 60px;
+    margin-top: 20px;
     text-align: right;
     font-size: small;
 }
