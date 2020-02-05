@@ -48,9 +48,9 @@
             width: 300px;
         }
         .required{
-            font-size: 10px;
             height: 20px;
             padding: 7px;
+            text-align: left;
         }
         #checkId{
             width: 70px;
@@ -61,7 +61,7 @@
             cursor : pointer;
         }
         .announce{
-            font-size: 10px;
+            font-size: 12px;
             padding: 5px;
         }
         .secureButton{
@@ -79,7 +79,6 @@
             background-color: rgb(9, 129, 241);
             color: white;
             cursor : pointer;
-            /* padding-left: 10px; */
         }
         .joinInfo{
             border-right: 0px;

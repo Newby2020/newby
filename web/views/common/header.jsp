@@ -51,7 +51,7 @@
       
           <form id="mainLoginForm">
               <div class="guideSentence">
-                  <label style="line-height: 2em;"><b>&nbsp;로그인</b></label><br>
+                  <label style="line-height: 2em;"><b>&nbsp;&nbsp;&nbsp;로그인</b></label><br>
                   <hr style="width: 310px;"> 
                   <br>
               </div>
