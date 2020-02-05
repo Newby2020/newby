@@ -12,33 +12,33 @@
 <link rel="stylesheet" href="/semi/resources/css/main-headervar.css">
 <link rel="stylesheet" href="/semi/resources/css/main-navibar.css">
 <link rel="stylesheet" href="/semi/resources/css/main-panel.css">
-<link rel="stylesheet" href="/semi/resources/css/h&j-frame.css">
+<link rel="stylesheet" href="/semi/resources/css/mypage_h&j-frame.css">
 <link rel="stylesheet" href="/semi/resources/css/Customer_table.css">
 <link rel="stylesheet"
 	href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
 <link
 	href="https://fonts.googleapis.com/css?family=Nanum+Gothic|Noto+Sans+KR&display=swap"
 	rel="stylesheet">
-<script src="./jquery/jquery-3.4.1.min.js"></script>
+<script src="semi/jquery/jquery-3.4.1.min.js"></script>
 </head>
 <body>
 
 	<div id="Allpanel" align="center">
 
 		<div class="newby-header" id="newby-header-var">
-			<img src="./resources/images/Logo(120x50px).png" alt="로고"
+			<img src="/semi/resources/images/Logo(120x50px).png" alt="로고"
 				width="120px" height="50px" id="newby-logo"
 				style="margin-right: 500px;"> <label id="login"
 				class="top-nav"> <a>로그인 |</a>
 			</label> <label id="signIn" class="top-nav"> <a>회원가입 |</a>
 			</label> <label id="toHost" class="top-nav"> <a href="hostJoin.jsp">호스트신청
 					|</a>
-			</label> <label id="customer" class="top-nav"> <a href="Notice.jsp">고객센터
+			</label> <label id="customer" class="top-nav"> <a href="Customer_Notice.jsp">고객센터
 					|</a>
 			</label> <label id="myPage" class="top-nav"> <a href="Profile.jsp">마이페이지
 					|</a>
 			</label> <label id="AdminPage" class="top-nav"> <a
-				href="./newbyAdmin/admin.jsp">관리자페이지 |</a>
+				href="/semi/newbyAdmin/admin.jsp">관리자페이지 |</a>
 			</label>
 		</div>
 
@@ -49,15 +49,15 @@
 			<!--left sidebar-->
 			<div class="sidenavsk">
 				<div id="sidebar-titleso67" align="center">고객센터</div>
-				<a href="Notice.jsp">공지사항</a>
+				<a href="Customer_Notice.jsp">공지사항</a>
 				<button class="dropdown-btnqo">
 					문의 <i id="ci22">≡</i>
 				</button>
 				<div class="dropdown-soxk">
-					<a href="Inquiry.jsp">문의 목록</a> <a href="CreateInquiry.jsp">문의
+					<a href="Customer_Inquiry.jsp">문의 목록</a> <a href="Customer_CreateInquiry.jsp">문의
 						작성</a>
 				</div>
-				<a href="Report.jsp">신고</a> <a href="Refund.jsp">환불정책</a>
+				<a href="Customer_Report.jsp">신고</a> <a href="Customer_Refund.jsp">이용약관</a>
 			</div>
 
 			<!--contents-->
