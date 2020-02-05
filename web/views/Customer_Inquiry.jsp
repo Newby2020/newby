@@ -63,7 +63,7 @@
 			<!--contents-->
 			<div id="mn16s" align="center">
 
-				<br>
+				<br> 
 				<h2>문의 목록</h2>
 				<!-- 제목란이니깐 해당 제목 작성해서 하면 돼-->
 				<br>
