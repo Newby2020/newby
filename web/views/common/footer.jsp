@@ -7,7 +7,7 @@
 <title>footer</title>
 </head>
 <body>
-		<div id="newby-footer">
+		<div id="newby-footer" style="margin-left: auto; margin-right: auto;">
 			<p id="newby-copyright">Copyright &copy; Your Website 2020</p>
 		</div>
 </body>
