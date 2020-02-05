@@ -1,0 +1,13 @@
+@charset "UTF-8";
+.tab1{border: 1px solid lightgray;
+    font-size: 20px;
+    text-align: center;
+}
+
+.tb2{border: 1px solid lightgray;
+     font-size: 15px;
+     text-align: center;}
+
+.tb3{border: 1px solid lightgray;
+     font-size: 15px;
+     cursor: pointer;}

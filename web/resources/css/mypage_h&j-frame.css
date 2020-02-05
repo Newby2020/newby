@@ -1,0 +1,86 @@
+/* 폰트 */
+html{
+    font-family: 'Noto Sans KR', sans-serif;
+}
+
+/* sidebar 제목 */
+#sidebar-titleso67{
+    color: black; padding: 15px 18px 30px 18px; font-size: 25px;
+}
+
+/*left navigation mouserover 효과 */
+.sidenavsk a:hover, .dropdown-btnqo:hover {
+    color: rgb(9, 129, 241);
+    font-weight: bold;
+}
+
+/* left navigation */
+.sidenavsk {
+    min-height : 900px;
+    height: auto;
+    width: 200px;
+    background-color: white;
+    overflow: hidden;
+    padding-top: 20px;
+}
+
+/* left navigation과  dropdown-btn */
+.sidenavsk a, .dropdown-btnqo {
+    padding: 6px 8px 6px 16px;
+    text-decoration: none;
+    font-size: 13pt;
+    color: black;
+    display: block;
+    border: none;
+    background: none;
+    width: 100%;
+    text-align: left;
+    cursor: pointer;
+    outline: none;
+
+}
+
+/* left navigation 중에 '≡' 클릭후 세부카테고리 효과 */
+.activeCl {
+  /* background-color: green; */
+  color: black;
+}
+
+/* 세부 카테고리 처음 설정값 */
+.dropdown-soxk {
+  display: none;
+  background-color: white;
+  padding-left: 8px;
+}
+
+/* 세부 카테고리 ⊃ a태그 폰트 */
+.dropdown-soxk a{
+    font-size: 10pt;
+}
+
+/* '≡' */
+#ci22 {
+    float: right;
+    padding-right: 8px;
+}
+
+
+/* contents division */
+#mn16s {
+    width: 100%;
+}
+
+/* sidebar와 contents division를 일자로 정렬 */
+.contents-div123{
+    display: flex;
+}
+
+#contentsDivSize29{
+    min-height: 900px; height: auto;
+}
+
+/* 제목 밑에 hr부분 */
+#hrSet53{
+    width: 95%;
+}
+

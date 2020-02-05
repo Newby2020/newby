@@ -1,0 +1,104 @@
+.tline1row{
+    font-weight: bold;
+    width: 200px;
+    font-size: 14pt;
+    padding-top: 3px;
+    margin: 0px;
+    vertical-align: middle;
+}
+.tline2row{
+    width: 600px;
+}
+#input1ske{
+    width: 600px;
+    height: 40px;
+    padding-left: 20px;
+    border-radius: 5px;    
+}
+
+#sl1{
+    width: 120px;
+}
+#sl2{
+    width: 150px;
+}
+.sl{
+    text-align-last: center;
+    height: 33px;
+    border: none;
+    border-bottom: 1px solid lightgray;
+}
+
+#classTime6{
+    text-align: center;
+    width: 80px;
+    border-radius: 5px; 
+}
+
+#commission12{
+    text-align: center;
+    border-radius: 5px; 
+}
+
+#MaxNoAttendee{
+    text-align: center;
+    width: 80px;
+    border-radius: 5px; 
+}
+
+.addSchedule23{
+    height: 35px;
+}
+
+.date632{
+    border: none;
+    border-bottom: 1px solid lightgray;
+    text-align-last: center;
+    font-size: 10pt;
+}
+
+#basicAddr{
+    border: none;
+    border-bottom: 1px solid lightgray;
+    padding-left: 20px;
+    width: 380px;
+}
+
+#detailAddr{
+    margin-top: 10px;
+    border: none;
+    border-bottom: 1px solid lightgray;
+    padding-left: 20px;
+    width: 485px;
+}
+
+.btn24{
+    background: rgb(9, 129, 241);
+    color: white;
+    border: none;
+    height: 35px;
+    width: 90px;
+    border-radius: 15px;
+    padding-bottom: 1.5px;
+    padding-top: 4px;
+}
+
+.textAreaTitle23{
+    margin-bottom: 10px;
+}
+
+.centents263425{
+    border-radius: 5px;
+}
+
+.finalBtn24{
+    background: rgb(9, 129, 241);
+    color: white;
+    border: none;
+    height: 45px;
+    width: 250px;
+    border-radius: 15px;
+    padding-bottom: 1.5px;
+    padding-top: 4px;   
+    font-size: 15pt;
+}
