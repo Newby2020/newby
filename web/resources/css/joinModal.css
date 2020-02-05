@@ -1,0 +1,88 @@
+        /* The Modal (background) */
+        .joinModal {
+            display: none; /* Hidden by default */
+            position: fixed; /* Stay in place */
+            z-index: 1; /* Sit on top */
+            left: 0;
+            top: 0;
+            width: 100%; /* Full width */
+            height: 100%; /* Full height */
+            overflow: auto; /* Enable scroll if needed */
+            background-color: rgb(0,0,0); /* Fallback color */
+            background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+        }
+    
+        /* Modal Content/Box */
+        .joinModalContent {
+            background-color: #fefefe;
+            margin: 9% auto;
+            padding: 20px;
+            border: 1px solid #888;
+            width: 25%;                        
+        }
+        /* The Close Button */
+        .joinClose {
+            color: #aaa;
+            float: right;
+            font-size: 28px;
+            font-weight: bold;
+        }
+        .joinClose:hover,
+        .joinClose:focus {
+            color: black;
+            text-decoration: none;
+            cursor: pointer;
+        }
+        #joinForm{
+            /* margin-left: 20%;
+            margin-right: 20%;
+            margin-top: 10%;
+            margin-bottom: 10%; */
+            margin: 10%;
+        }
+        .guideSentence{
+            font-size: 20px;
+        }
+        #requiredWrap{
+            margin: auto;
+            width: 300px;
+        }
+        .required{
+            font-size: 10px;
+            height: 20px;
+            padding: 7px;
+        }
+        #checkId{
+            width: 70px;
+            height: 20px;
+            border: none;
+            color: gray;
+            background-color: lightgray;
+            cursor : pointer;
+        }
+        .announce{
+            font-size: 10px;
+            padding: 5px;
+        }
+        .secureButton{
+            width: 40px;
+            height: 20px;
+            border: none;
+            color: gray;
+            background-color: lightgray;
+            cursor : pointer;
+        }
+        .buttonJoin{
+            width: 300px;
+            height: 30px;
+            border: none;
+            background-color: rgb(9, 129, 241);
+            color: white;
+            cursor : pointer;
+            /* padding-left: 10px; */
+        }
+        .joinInfo{
+            border-right: 0px;
+            border-top: 0px;
+            border-left: 0px;
+        }

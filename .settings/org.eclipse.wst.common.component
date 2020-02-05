@@ -2,7 +2,7 @@
     <wb-module deploy-name="newby">
         <wb-resource deploy-path="/" source-path="/web" tag="defaultRootSource"/>
         <wb-resource deploy-path="/WEB-INF/classes" source-path="/src"/>
-        <property name="context-root" value="newby"/>
         <property name="java-output-path" value="/newby/build/classes"/>
+        <property name="context-root" value="semi"/>
     </wb-module>
 </project-modules>

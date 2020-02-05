@@ -1,0 +1,85 @@
+/* --------------- reposonive sidebar --------------- */
+.fa-home{
+    margin-left: 10px;
+    font-size: 30px; 
+    color: black;
+    text-decoration: none;
+    display:inline; 
+}
+
+body {
+    margin: 0;
+    font-family: "Noto Sans KR", Helvetica, Arial, sans-serif;
+}
+
+.sidebar {
+    margin: 0;
+    padding: 0;
+    width: 200px;
+    background-color: #f1f1f1;
+    position: fixed;
+    height: 100%;
+    overflow: auto;
+
+}
+
+.sidebar > :first-child{
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+.sidebar a:not(.fa-home) {
+    display: block;
+    color: black;
+    padding: 16px;
+    text-decoration: none;
+}
+
+.sidebar a.active {
+    background-color: #0981F1;
+    color: white;
+}
+
+.sidebar a:hover:not(.active):not(.index, .fa-home) {
+    background-color: #555;
+    color: white;
+}
+
+div.content {
+    margin-left: 200px;
+    padding: 10px 16px;
+    padding-left: 20px;
+    height: 1000px;
+}
+
+@media screen and (max-width: 700px) {
+    .sidebar {
+        width: 100%;
+        height: auto;
+        position: relative;
+    }
+
+    .sidebar a {
+        float: left;
+    }
+
+    div.content {
+        margin-left: 0;
+    }
+}
+
+@media screen and (max-width: 400px) {
+    .sidebar a {
+        text-align: center;
+        float: none;
+    }
+}
+
+.index{
+    font-size: 23px;
+    margin: 3px;
+    font: bolder;
+    display: inline !important; 
+    margin-left: 5px !important; 
+    padding-left: 0px !important;
+}
