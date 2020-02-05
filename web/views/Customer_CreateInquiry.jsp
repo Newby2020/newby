@@ -5,21 +5,21 @@
 <head>
 <meta charset="UTF-8">
 <title>CreateInquiry</title>
-<link rel="stylesheet" href="./resources/css/joinModal.css">
+<link rel="stylesheet" href="/semi/resources/css/joinModal.css">
 <link rel="stylesheet" href="/semi/resources/css/LoginModal.css">
 <link rel="stylesheet" href="/semi/resources/css/main-atag.css">
 <link rel="stylesheet" href="/semi/resources/css/main-footer.css">
 <link rel="stylesheet" href="/semi/resources/css/main-headervar.css">
 <link rel="stylesheet" href="/semi/resources/css/main-navibar.css">
 <link rel="stylesheet" href="/semi/resources/css/main-panel.css">
-<link rel="stylesheet" href="/semi/resources/css/h&j-frame.css">
+<link rel="stylesheet" href="/semi/resources/css/mypage_h&j-frame.css">
 <link rel="stylesheet" href="/semi/resources/css/Customer_btn.css">
 <link rel="stylesheet"
 	href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
 <link
 	href="https://fonts.googleapis.com/css?family=Nanum+Gothic|Noto+Sans+KR&display=swap"
 	rel="stylesheet">
-<script src="./jquery/jquery-3.4.1.min.js"></script>
+<script src="/semi/jquery/jquery-3.4.1.min.js"></script>
 </head>
 <body>
 	<div id="Allpanel" align="center">
@@ -32,15 +32,15 @@
 			<!--left sidebar-->
 			<div class="sidenavsk">
 				<div id="sidebar-titleso67" align="center">고객센터</div>
-				<a href="Notice.jsp">공지사항</a>
+				<a href="Customer_Notice.jsp">공지사항</a>
 				<button class="dropdown-btnqo">
 					문의 <i id="ci22">≡</i>
 				</button>
 				<div class="dropdown-soxk">
-					<a href="Inquiry.jsp">문의 목록</a> <a href="CreateInquiry.jsp">문의
+					<a href="Customer_Inquiry.jsp">문의 목록</a> <a href="Customer_CreateInquiry.jsp">문의
 						작성</a>
 				</div>
-				<a href="Report.jsp">신고</a> <a href="Refund.jsp">환불정책</a>
+				<a href="Customer_Report.jsp">신고</a> <a href="Customer_Refund.jsp">이용약관</a>
 			</div>
 
 			<!--contents-->
