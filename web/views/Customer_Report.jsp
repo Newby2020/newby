@@ -24,22 +24,7 @@
 <body>
 	<div id="Allpanel" align="center">
 
-		<div class="newby-header" id="newby-header-var">
-			<img src="/semi/resources/images/Logo(120x50px).png" alt="로고"
-				width="120px" height="50px" id="newby-logo"
-				style="margin-right: 500px;"> <label id="login"
-				class="top-nav"> <a>로그인 |</a>
-			</label> <label id="signIn" class="top-nav"> <a>회원가입 |</a>
-			</label> <label id="toHost" class="top-nav"> <a href="hostJoin.jsp">호스트신청
-					|</a>
-			</label> <label id="customer" class="top-nav"> <a href="Customer_Notice.jsp">고객센터
-					|</a>
-			</label> <label id="myPage" class="top-nav"> <a href="Profile.jsp">마이페이지
-					|</a>
-			</label> <label id="AdminPage" class="top-nav"> <a
-				href="/semi/newbyAdmin/admin.jsp">관리자페이지 |</a>
-			</label>
-		</div>
+		<%@ include file="./common/header.jsp"%>
 
 		<!-- 작업하는 컨텐츠 -->
 		<div id="newby-body-panel" class="contents-div123" align="left">
@@ -52,8 +37,8 @@
 					문의 <i id="ci22">≡</i>
 				</button>
 				<div class="dropdown-soxk">
-					<a href="Customer_Inquiry.jsp">문의 목록</a> <a href="Customer_CreateInquiry.jsp">문의
-						작성</a>
+					<a href="Customer_Inquiry.jsp">문의 목록</a> <a
+						href="Customer_CreateInquiry.jsp">문의 작성</a>
 				</div>
 				<a href="Customer_Report.jsp">신고</a> <a href="Customer_Refund.jsp">이용약관</a>
 			</div>
@@ -70,45 +55,42 @@
 
 				<div id="contentsDivSize29">
 					<!-- 여기다가 너가 작업한거 넣으면 돼-->
-						<h5>
-							신고할 클래스 <input type="text" id="input1">
-							<button class="btn1" onclick="btn1();">찾기</button>
-						</h5>
+					<h5>
+						신고할 클래스 <input type="text" id="input1">
+						<button class="btn1" onclick="btn1();">찾기</button>
+					</h5>
 
-						<br>
+					<br>
 
-						<h5>
-							신고이유 <select>
-								<option>선택하세요.</option>
-								<option>호스트가 준비를 안했습니다.</option>
-								<option>호스트가 욕을 했습니다.</option>
-								<option>호스트가 먹튀했습니다.</option>
-								<option>호스트가 잠수탔습니다.</option>
-								<option>기타</option>
-							</select>
-						</h5>
+					<h5>
+						신고이유 <select>
+							<option>선택하세요.</option>
+							<option>호스트가 준비를 안했습니다.</option>
+							<option>호스트가 욕을 했습니다.</option>
+							<option>호스트가 먹튀했습니다.</option>
+							<option>호스트가 잠수탔습니다.</option>
+							<option>기타</option>
+						</select>
+					</h5>
 
-						<hr>
+					<hr>
 
-						<h5>
-							신고 내용 <br>
-							<br>
-							<textarea rows="20" cols="80"
-								style="resize: none; font-size: 15pt;"></textarea>
-						</h5>
+					<h5>
+						신고 내용 <br> <br>
+						<textarea rows="20" cols="80"
+							style="resize: none; font-size: 15pt;"></textarea>
+					</h5>
 
-						<div>
-							<input class="join2" type="submit" value="보내기"> <input
-								class="join1" type="reset" value="취소">
-						</div>
+					<div>
+						<input class="join2" type="submit" value="보내기"> <input
+							class="join1" type="reset" value="취소">
+					</div>
 				</div>
 
 			</div>
 
-			<div id="newby-footer">
-				<p id="newby-copyright">Copyright &copy; Your Website 2020</p>
-			</div>
 		</div>
+		<%@ include file="./common/footer.jsp"%>
 	</div>
 
 	<script>

@@ -25,23 +25,7 @@
 
 	<div id="Allpanel" align="center">
 
-		<div class="newby-header" id="newby-header-var">
-			<img src="/semi/resources/images/Logo(120x50px).png" alt="로고"
-				width="120px" height="50px" id="newby-logo"
-				style="margin-right: 500px;"> <label id="login"
-				class="top-nav"> <a>로그인 |</a>
-			</label> <label id="signIn" class="top-nav"> <a>회원가입 |</a>
-			</label> <label id="toHost" class="top-nav"> <a href="hostJoin.jsp">호스트신청
-					|</a>
-			</label> <label id="customer" class="top-nav"> <a href="Customer_Notice.jsp">고객센터
-					|</a>
-			</label> <label id="myPage" class="top-nav"> <a href="Profile.jsp">마이페이지
-					|</a>
-			</label> <label id="AdminPage" class="top-nav"> <a
-				href="/semi/newbyAdmin/admin.jsp">관리자페이지 |</a>
-			</label>
-		</div>
-
+		<%@ include file="./common/header.jsp"%>
 
 		<!-- 작업하는 컨텐츠 -->
 		<div id="newby-body-panel" class="contents-div123" align="left">
@@ -54,8 +38,8 @@
 					문의 <i id="ci22">≡</i>
 				</button>
 				<div class="dropdown-soxk">
-					<a href="Customer_Inquiry.jsp">문의 목록</a> <a href="Customer_CreateInquiry.jsp">문의
-						작성</a>
+					<a href="Customer_Inquiry.jsp">문의 목록</a> <a
+						href="Customer_CreateInquiry.jsp">문의 작성</a>
 				</div>
 				<a href="Customer_Report.jsp">신고</a> <a href="Customer_Refund.jsp">이용약관</a>
 			</div>
@@ -63,7 +47,7 @@
 			<!--contents-->
 			<div id="mn16s" align="center">
 
-				<br> 
+				<br>
 				<h2>문의 목록</h2>
 				<!-- 제목란이니깐 해당 제목 작성해서 하면 돼-->
 				<br>
@@ -224,12 +208,10 @@
 				</div>
 
 			</div>
-			<div id="newby-footer">
-				<p id="newby-copyright">Copyright &copy; Your Website 2020</p>
-			</div>
 		</div>
+		<%@ include file="./common/footer.jsp"%>
 	</div>
-		<script>
+	<script>
         var dropdown = document.getElementsByClassName("dropdown-btnqo");
         var i;
   
