@@ -9,10 +9,12 @@
  	
  	<link rel="stylesheet" href="/semi/resources/css/main-category.css">
  	<link rel="stylesheet" href="/semi/resources/css/main-panel.css">
+ 	<link rel="stylesheet" href="/semi/resources/css/header.css">
  	
- 	<link href="https://fonts.googleapis.com/css?family=Nanum+Gothic+Coding|Noto+Sans+KR&display=swap" rel="stylesheet">
+ 	<link rel="stylesheet" href="/semi/resources/css/footer.css">
+ 	
     <link href="https://fonts.googleapis.com/css?family=Nanum+Gothic|Jua|Noto+Sans+KR|Black+Han+Sans|Public+Sans&display=swap');" rel="stylesheet">
-
+	
     <style>
         body{
             font-family: 'Noto Sans KR', sans-serif;
@@ -21,9 +23,10 @@
 
 </head>
 <body>
+	<div id="Allpanel" align="center">
+			<%@ include file="views/common/header.jsp" %>
 		<div id="newby-body-panel">
-		<%@ include file="/views/common/header.jsp" %>
-
+		   
               <div id="chr-category">
                 <div class="chr-category">
                     <img src="/semi/resources/images/act-category.png" id="chr-category-img" width="100%" height="230px">
@@ -58,5 +61,9 @@
             </div>
 
         </div>
+        
+        <%@ include file = "views/common/footer.jsp" %>
+     </div>
+     
 </body>
 </html>

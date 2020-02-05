@@ -1,0 +1,40 @@
+/* header */
+#newby-header-var{
+    background-color: white;
+    width: 70%;
+    height: 60px;
+}
+
+
+#newby-logo{
+    margin-top: 10px;
+    margin-left: 20px;
+    margin-right: 40px;
+}
+
+#header-navibar23{
+	width:100%;
+}
+
+.top-nav{
+    margin-top: 20px;
+    font-weight: bold;
+}
+
+.newby-header{
+    display: flex;
+}
+
+ 
+.top-nav a:link { color: darkgrey; text-decoration: none;}
+.top-nav a:visited { color: darkgrey; text-decoration: none;}
+.top-nav a:hover { color: darkgrey; background-color: white;}
+.top-nav { color: darkgrey;}
+
+
+.divider1{
+	margin: 5px 4px 0 9px;
+    width: 1px;
+    height: 11px;
+    color : #ebeef3;
+}
