@@ -49,13 +49,13 @@
 }
 .mainLogin{
     position: absolute;
-    width: 300px;
+    width: 280px;
 }
 .mainLoginText{
     border-top: none;
     border-left: none;
     border-right: none;
-    width: 300px;
+    width: 280px;
     padding: 5px;
 }
 .buttonLogin{
