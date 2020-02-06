@@ -13,7 +13,6 @@
     <link rel="stylesheet" href="/semi/resources/css/mypage_EnrollInClass.css">
     <link href="https://fonts.googleapis.com/css?family=Nanum+GothicNoto+Sans+KR&display=swap" rel="stylesheet">
     <script src="/semi/resources/jquery/jquery-3.4.1.min.js"></script>
-    <script src="../MainPage/js/mainPage.js"></script>
     <style>
 
     </style>
@@ -115,11 +114,11 @@
                                     </tr>
                                     <tr><td><br></td></tr><tr><td><br></td></tr>
                                     <tr>
-                                        <td class="tline1row">커버사진</td>
+                                        <td class="tline1row">커버사진<br><small>(2MB 이하)</small></td>
                                         <td>
                                             <img id="blah" src="http://placehold.it/180" alt="your image"/>
                                             <br>
-                                            <input type='file' onchange="readURL(this);" />
+                                            <input type='file' onchange="readURL(this);" multiple>
                                         </td>
                                     </tr>
                                     <tr><td><br></td></tr><tr><td><br></td></tr>
