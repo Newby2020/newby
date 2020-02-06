@@ -1,0 +1,79 @@
+<%@ page language="java" contentType="text/html; charset=EUC-KR"
+    pageEncoding="EUC-KR"%>
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <title>cancelOrder</title>
+    <script src="/semi/resources/js/jquery-3.4.1.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="/semi/resources/css/cancelOrder.css">
+    <link href="https://fonts.googleapis.com/css?family=Nanum+GothicNoto+Sans+KR&display=swap" rel="stylesheet">
+    <style>
+        html {
+            font-family: 'Noto Sans KR', sans-serif;
+        }
+    </style>
+</head>
+<body id="cancelOrderBody">
+    <div id="cancelOrderFormWrap">
+    	<form id="cancelOrderForm">
+		    <div class="guideText">
+		        <label><b>결제 취소</b></label>
+		        <hr>
+		    </div>
+		    <div class="classInfo">
+		        <div class="pictureClass"></div>
+		            <div class="classDetail"><br><br>[카테고리] 선택한 클래스명 
+		            <br><br>클래스 선택 일정 
+		            <br><br>수량 x 1</div>
+		        <div class="priceClass"><br><br><br><br>W 10,000원</div>
+		    </div> 
+		    <hr>
+		    <br>
+		    <div class="reasonOfCancelWrap">
+		        <select class="reasonOfCancelSelect" selected="selected">
+		            <option class="reasonOfCancel" value>결제 취소 사유</option>
+		            <option class="reasonOfCancel" value>선택한 수업이 마음에 들지 않음</option>
+		            <option class="reasonOfCancel" value="etc">기타</option>
+		        </select>
+		        <br><br><br>
+		        <div>
+		            <textarea class="detailedReasonOfCancel" placeholder="상세 내용을 입력해 주세요"></textarea>
+		        </div>
+		    </div>
+		    <br><br><br>
+		    <hr>
+		    <div class="cancelOrderGuide">
+		        <label class="cancelOrderGuideLabel">구입 금액 : W       원 - 고객 부담 비용 : W      원&nbsp;&nbsp;</label><br>
+		        <hr style="width: 180px; float: right; margin-top: 5px; display: block;"><br>
+		        <label class="cancelOrderGuideLabel" style ="line-height: 0.5em;"><b>총 환불 금액 : W       원&nbsp;&nbsp;</b></label>
+		    </div>
+		
+		    <br><br><br><br><br><br><br>
+		
+		
+		    <div class="announceCancelOrder">
+		        <label>결제 취소는 당사의 환불 규정을 숙지, 취소 및 환불 약관에 동의한 것으로 간주합니다.</label>
+		    </div>
+		
+		    <br><br>
+			<div align= "center">
+		    	<button onclick="cancelOrderBtn();" id="cancelOrderBtn" class="cancelOrderBtn">결제 취소</button>
+	    	</div>
+	    </form>
+    </div>
+
+
+    <script>
+        /* select 옵션 객체가 selected됐을 때 특정 div를 호출하는 코드 */
+        jQuery('.reasonOfCancelSelect').change(function () {
+                var state = jQuery('.reasonOfCancelSelect option:selected').val();
+                if (state === 'etc') {
+                    jQuery('.detailedReasonOfCancel').show();
+                } else {
+                    jQuery('.detailedReasonOfCancel').hide();
+                }
+            });
+    </script>
+</body>
+</html>

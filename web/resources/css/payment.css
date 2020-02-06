@@ -1,0 +1,77 @@
+#payBody {
+    width: 946px;
+    height: 810px; 
+    margin-left: auto;
+    margin-right: auto;
+}
+#payFormWrap {
+    width: 100%;
+}
+#payForm{
+    margin-left: 10%;
+    margin-right: 10%;
+    margin-top: 5%;
+    margin-bottom: 5%;
+}
+.guideText{
+    font-size: 20px;
+}
+.pictureClass{
+    width: 200px;
+    height: 150px;
+    border: 1px solid gray; 
+}
+.classInfo{
+    display: inline-flex;
+    align-content: center;
+}
+.classDetail{
+    width: 300px;
+    height: 150px;
+    border: none;
+    font-size: 12px;
+    text-align: center;
+}
+.priceClass{
+    width: 250px;
+    height: 150px;
+    border: none;
+    text-align: right; 
+}
+#priceClassAndMileage{
+    float: right;
+}
+.mileageGuide{
+    font-size: 12px;
+    color: blue;
+}
+.priceGuide{
+    background-color: rgb(9, 129, 241);
+    color: white;
+    height: 60px;
+}
+.priceGuideLabel{
+    float: right;
+}
+.buttonPay{
+    width: 100px;
+    height: 30px;
+    border: 1px solid gray;
+    background: white;
+    border-radius: 3px;
+}
+.announcePay{
+    font-size: 12px;
+    text-align: center;
+}
+.finalButtonPay{
+    width: 300px;
+    height: 40px;
+    border: none;
+    background-color: rgb(9, 129, 241);
+    color: white;
+    cursor : pointer;
+    font-size: 13px;
+    text-align: center;
+    border-radius: 5px;
+}
