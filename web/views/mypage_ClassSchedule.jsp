@@ -26,22 +26,7 @@
             <div id="newby-body-panel" class="contents-div123" align="left">
 
                 <!--left sidebar-->
-                <div class="sidenavsk">
-                  <div id="sidebar-titleso67" align="center">마이페이지</div>
-                  <a href="Profile.html">프로필</a>
-                  <a href="Mileage.html">마일리지</a>
-                  <a href="ClassSchedule.html">수강예정 클래스</a>
-                  <a href="PaymentPage.html">결제 내역</a>
-                  <a href="WritingReview1.html">후기 작성</a>
-                  <button class="dropdown-btnqo">호스트
-                      <i id="ci22">≡</i>
-                  </button>
-                  <div class="dropdown-soxk">
-                    <a href="EnrollInClass.html">클래스 등록</a>
-                    <a href="ClassManager.html">클래스 관리</a>
-                    <a href="AttendeeManager.html">수강생 관리</a>
-                  </div>
-              </div>
+				<%@ include file="./common/mypage_sidebar.jsp" %>
 
                 <!--contents-->
                 <div id="mn16s" align="center">
