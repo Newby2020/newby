@@ -16,7 +16,7 @@ for (i = 0; i < dropdown.length; i++) {
 function cancelClass(){
     var url = "../JH/cancelOrder.html";
 
-    var option = "width= 700, height=800, top=100, left=800, location=no";
+    var option = "width=980, height=800, top=100, left=800, location=no";
 
     window.open(url, "결제 취소하기", option);
 }
