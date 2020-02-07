@@ -31,6 +31,7 @@
                     <h2>클래스 관리</h2>
                     <hr id="hrSet53">
                     <br>
+                    <br>
                     <div id="contentsDivSize29">
                         <div>
                             <table>	<!-- 클래스 날짜와 현재 날짜 비교해서 수정취소버튼 생성 분기시켜야해  -->
@@ -39,7 +40,7 @@
                                       <th>날짜</th>
                                       <th style="width: 300px">클래스명</th>
                                       <th style="width: 100px">상태</th>
-                                      <th>수정/취소</th>
+                                      <th style="width: 150px">수정/취소</th>
                                     </tr>
                                 </thead>
                                 <tbody align="center">

@@ -124,7 +124,7 @@
     padding-top: 4px;   
     font-size: 11pt;
 }
-    </style>
+</style>
 </head>
 
 <body></body>
@@ -144,6 +144,7 @@
                     <br>
                     <h2>클래스 등록</h2>
                     <hr id="hrSet53">
+                    <br>
                     <br>
                     <div id="contentsDivSize29">
                         <form action="">

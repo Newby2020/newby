@@ -33,6 +33,7 @@
                     <h2>수강예정 클래스</h2>
                     <hr id="hrSet53">
                     <br>
+                    <br>
                     <div id="contentsDivSize29">
                         <div>
                             <table>

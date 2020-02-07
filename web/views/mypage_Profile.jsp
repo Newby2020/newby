@@ -5,7 +5,6 @@
 <head>
     <meta charset="UTF-8">
     <title>Profile</title>
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
     <link rel="stylesheet" href="/semi/resources/css/joinModal.css">
     <link rel="stylesheet" href="/semi/resources/css/LoginModal.css">
     <link rel="stylesheet" href="/semi/resources/css/main-panel.css">
@@ -28,13 +27,11 @@
 
                 <!--contents-->
                 <div id="mn16s" align="center">
-                	<br>
                     <br>
                     <h2>프로필</h2>
-                    <br>
                     <hr id="hrSet53">
                     <br>
-                    <br>
+                   	<br>
                     <div>
                         <form>
                             <table align="center">

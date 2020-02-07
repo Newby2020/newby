@@ -32,6 +32,7 @@
                     <h2>수강생 관리</h2>
                     <hr id="hrSet53">
                     <br>
+                    <br>
                     <div id="contentsDivSize29">
                         <div>
                             <table>

@@ -5,7 +5,6 @@
 <head>
     <meta charset="UTF-8">
     <title>PaymentPage</title>
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
     <link rel="stylesheet" href="/semi/resources/css/joinModal.css">
     <link rel="stylesheet" href="/semi/resources/css/LoginModal.css">
     <link rel="stylesheet" href="/semi/resources/css/main-panel.css">
@@ -28,10 +27,8 @@
 
                 <!--contents-->
                 <div id="mn16s" align="center">
-                	<br>
                     <br>
                     <h2>결제 내역</h2>
-                    <br>
                     <hr id="hrSet53">
                     <br>
                     <br>
@@ -106,17 +103,14 @@
                                       <td>솔로 티내기</td>
                                       <td>0원</td>
                                       <td>취소</td>
-                                    </tr>
+                                    </tr >
                                 </tbody>
                             </table>
+                            
+                            
+                            <!-- 페이징 들어갈 부분 -->
                             <div>
-                              <ul class="pagination" style="float: right;">
-                                <li class="page-item"><a class="page-link" href="#" style="color: #0981F1;">Previous</a></li>
-                                <li class="page-item"><a class="page-link" href="#" style="color: #0981F1;">1</a></li>
-                                <li class="page-item"><a class="page-link" href="#" style="color: #0981F1;">2</a></li>
-                                <li class="page-item"><a class="page-link" href="#" style="color: #0981F1;">3</a></li>
-                                <li class="page-item"><a class="page-link" href="#" style="color: #0981F1;">Next</a></li>
-                              </ul>
+                              
                             </div>
                           </div>
                     </div>

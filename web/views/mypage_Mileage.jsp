@@ -5,7 +5,6 @@
 <head>
     <meta charset="UTF-8">
     <title>Mileage</title>
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
     <link rel="stylesheet" href="/semi/resources/css/joinModal.css">
     <link rel="stylesheet" href="/semi/resources/css/LoginModal.css">
     <link rel="stylesheet" href="/semi/resources/css/main-panel.css">
@@ -14,6 +13,21 @@
     <link href="https://fonts.googleapis.com/css?family=Nanum+GothicNoto+Sans+KR&display=swap" rel="stylesheet">
     <script src="../MainPage/js/mainPage.js"></script>
 
+<style>
+th{
+	height:30px;
+	font-size: 11pt;
+}
+
+td{
+	height: 30px;
+	font-size: 9pt;
+}
+#pastmilek1res{
+	font-size: 15pt;
+}
+
+</style>
 </head>
 
 <body></body>
@@ -29,10 +43,8 @@
 
                 <!--contents-->
                 <div id="mn16s" align="center">
-                	<br>
                     <br>
-                    <h2>마일리지</h2>
-                    <br>
+                    <h2>마일리지 내역</h2>
                     <hr id="hrSet53">
                     <br>
                     <br>
@@ -43,16 +55,19 @@
                               <input type="text" id="mileage1kc" value="8,000,000원">
                             </div>
                           </div>
-                          <br><br>
-                          
-                          <div class="container">
+                          <br>
+                          <br>
+                          <br>
+                          <br>
+                          <br>
+                          <div>
                             <h4 id="pastmilek1res">마일리지 내역</h4>
-                            <table class="table table-striped">
+                            <table>
                               <thead align="center">
                                 <tr>
-                                  <th>날짜</th>
-                                  <th>클래스명</th>
-                                  <th>내용</th>
+                                  <th style="width: 100px">날짜</th>
+                                  <th style="width: 300px">클래스명</th>
+                                  <th style="width: 100px">내용</th>
                                 </tr>
                               </thead>
                               <tbody align="center">
@@ -109,14 +124,10 @@
                               </tbody>
                             </table>
                             <br>
+                            
+                            <!-- 페이징 처리 -->
                             <div id="paging1kjd">
-                              <ul class="pagination">
-                                <li class="page-item"><a class="page-link" href="#" style="color: #0981F1;">Previous</a></li>
-                                <li class="page-item"><a class="page-link" href="#" style="color: #0981F1;">1</a></li>
-                                <li class="page-item"><a class="page-link" href="#" style="color: #0981F1;">2</a></li>
-                                <li class="page-item"><a class="page-link" href="#" style="color: #0981F1;">3</a></li>
-                                <li class="page-item"><a class="page-link" href="#" style="color: #0981F1;">Next</a></li>
-                              </ul>
+
                             </div>
                           </div>
                     </div>
@@ -124,7 +135,7 @@
             </div>
             
             <script type="text/javascript" src="/semi/resources/js/mypage_Mileage.js"></script>
-        
+        <br><br><br><br><br>
         <%@ include file="./common/footer.jsp" %>
         
     </div>

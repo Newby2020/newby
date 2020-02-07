@@ -1,11 +1,12 @@
 /*현재 마일리지 제목*/
 #miletitle1sdk{
-    font-size: 15pt; font-weight: bold;
+    font-size: 15pt;
+    font-weight: bold;
 }
 
 /*현재 마일리지 입력란*/
 #mileage1kc{
-    height: 50px;
+    height: 30px;
     width: 300px;
     text-align: center;
     font-size: 15pt;
@@ -17,9 +18,4 @@
 /* 마일리지 내역 */
 #pastmilek1res{
     padding-bottom: 10px;
-}
-
-/* paging */
-#paging1kjd{
-    float:right;
 }
