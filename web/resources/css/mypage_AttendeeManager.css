@@ -2,3 +2,13 @@
     cursor: pointer;
     text-decoration: underline;
 }
+
+th{
+	height:30px;
+	font-size: 11pt;
+}
+
+td{
+	height: 30px;
+	font-size: 9pt;
+}

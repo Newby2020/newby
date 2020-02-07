@@ -5,7 +5,7 @@ html{
 
 /* sidebar 제목 */
 #sidebar-titleso67{
-    color: black; padding: 15px 18px 30px 18px; font-size: 25px;
+    color: black; padding: 15px 18px 30px 18px; font-size: 20px;
 }
 
 /*left navigation mouserover 효과 */
@@ -16,7 +16,7 @@ html{
 
 /* left navigation */
 .sidenavsk {
-    min-height : 900px;
+    min-height : 300px;
     height: auto;
     width: 200px;
     background-color: white;
@@ -28,7 +28,7 @@ html{
 .sidenavsk a, .dropdown-btnqo {
     padding: 6px 8px 6px 16px;
     text-decoration: none;
-    font-size: 13pt;
+    font-size: 10pt;
     color: black;
     display: block;
     border: none;
@@ -76,7 +76,8 @@ html{
 }
 
 #contentsDivSize29{
-    min-height: 900px; height: auto;
+	min-height: 300px;
+    height: auto;
 }
 
 /* 제목 밑에 hr부분 */

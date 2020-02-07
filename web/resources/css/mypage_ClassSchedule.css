@@ -2,16 +2,25 @@
     background: rgb(9, 129, 241);
     color: white;
     border: none;
-    height: 27px;
-    width: 80px;
-    border-radius: 5px;
+    height: 20px;
+    width: 40px;
+    border-radius: 10px;
     padding-bottom: 1.5px;
     padding-top: 1px;
-    height: 50px;
-    width: 200px;
-    font-size: 13pt;
-  }
-  
+    height: 40px;
+    width: 150px;
+    font-size: 11pt;
+}
+
+th{
+	font-size: 11pt;
+	height: 30px;
+}
+
+td{
+	font-size: 9pt;
+	height: 30px;
+}
 
 
 

@@ -5,7 +5,6 @@
 <head>
     <meta charset="UTF-8">
     <title>ClassSchedule</title>
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
     <link rel="stylesheet" href="/semi/resources/css/joinModal.css">
     <link rel="stylesheet" href="/semi/resources/css/LoginModal.css">
     <link rel="stylesheet" href="/semi/resources/css/main-panel.css">
@@ -31,72 +30,29 @@
                 <!--contents-->
                 <div id="mn16s" align="center">
                     <br>
-                    <br>
                     <h2>수강예정 클래스</h2>
-                    <br>
                     <hr id="hrSet53">
                     <br>
-                    <br>
                     <div id="contentsDivSize29">
-                        <div class="container">
-                            <table class="table table-striped">
+                        <div>
+                            <table>
                                 <thead align="center">
                                     <tr>
-                                      <th>날짜</th>
-                                      <th>클래스명</th>
-                                      <th>취소&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</th>
+                                      <th style="width: 100px">날짜</th>
+                                      <th style="width: 300px">클래스명</th>
+                                      <th style="width: 100px">취소</th>
                                     </tr>
                                 </thead>
                                 <tbody align="center">
                                     <tr>
-                                      <td>2020-01-02</td>
+                                      <td class="td111">2020-01-02</td>
                                       <td>길가다 쓰레기줍기</td>
-                                      <td><input type="checkbox">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+                                      <td><input type="checkbox"></td>
                                     </tr>
                                     <tr>
-                                      <td>2019-11-18</td>
+                                      <td class="td111">2019-11-18</td>
                                       <td>플라잉 요가</td>
-                                      <td><input type="checkbox">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
-                                    </tr>
-                                    <tr>
-                                      <td>2019-10-04</td>
-                                      <td>연탄 나르기</td>
-                                      <td><input type="checkbox">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
-                                    </tr>
-                                    <tr>
-                                      <td>2019-09-16</td>
-                                      <td>안녕 나야</td>
-                                      <td><input type="checkbox">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
-                                    </tr>
-                                    <tr>
-                                      <td>2019-09-08</td>
-                                      <td>화성에서 온 나</td>
-                                      <td><input type="checkbox">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
-                                    </tr>
-                                    <tr>
-                                      <td>2019-09-02</td>
-                                      <td>연탄 나르기</td>
-                                      <td><input type="checkbox">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
-                                    </tr>
-                                    <tr>
-                                      <td>2019-10-04</td>
-                                      <td>자바랑 나랑</td>
-                                      <td><input type="checkbox">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
-                                    </tr>
-                                    <tr>
-                                      <td>2019-10-04</td>
-                                      <td>너는 누구니?</td>
-                                      <td><input type="checkbox">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
-                                    </tr>
-                                    <tr>
-                                      <td>2019-10-04</td>
-                                      <td>반가워 다들</td>
-                                      <td><input type="checkbox">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
-                                    </tr>
-                                    <tr>
-                                      <td>2019-10-04</td>
-                                      <td>솔로 티내기</td>
-                                      <td><input type="checkbox">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+                                      <td><input type="checkbox"></td>
                                     </tr>
                                 </tbody>
                             </table>

@@ -2,23 +2,24 @@
     color: rgb(155, 155, 155);
 }
 
-.modify1sd{
+.size142{
   background: rgb(9, 129, 241);
   color: white;
   border: none;
-  height: 27px;
+  height: 20px;
   width: 50px;
-  border-radius: 15px;
+  border-radius: 10px;
   padding-bottom: 1.5px;
   padding-top: 2px;
+  font-size: 9pt;
 }
-.delete1sd{
-  background: rgb(9, 129, 241);
-  color: white;
-  border: none;
-  height: 27px;
-  width: 50px;
-  border-radius: 15px;
-  padding-bottom: 1.5px;
-  padding-top: 2px;
+
+th{
+	height:30px;
+	font-size: 11pt;
+}
+
+tr, td{
+	height: 30px;
+	font-size: 9pt;
 }

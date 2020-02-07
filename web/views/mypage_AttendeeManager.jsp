@@ -5,7 +5,6 @@
 <head>
     <meta charset="UTF-8">
     <title>AttendeeManager</title>
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
     <link rel="stylesheet" href="/semi/resources/css/joinModal.css">
     <link rel="stylesheet" href="/semi/resources/css/LoginModal.css">
     <link rel="stylesheet" href="/semi/resources/css/main-panel.css">
@@ -30,20 +29,17 @@
                 <!--contents-->
                 <div id="mn16s" align="center">
                     <br>
-                    <br>
                     <h2>수강생 관리</h2>
-                    <br>
                     <hr id="hrSet53">
                     <br>
-                    <br>
                     <div id="contentsDivSize29">
-                        <div class="container">
-                            <table id="table1" class="table table-striped">
+                        <div>
+                            <table>
                                 <thead align="center">
                                     <tr>
-                                      <th>날짜</th>
-                                      <th>클래스명</th>
-                                      <th>인원수</th>
+                                      <th style="width: 100px">날짜</th>
+                                      <th style="width: 300px">클래스명</th>
+                                      <th style="width: 100px">인원수</th>
                                     </tr>
                                 </thead>
                                 <tbody id="tbody4252" align="center" >
