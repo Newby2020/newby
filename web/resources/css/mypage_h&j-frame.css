@@ -28,7 +28,6 @@ html{
 .sidenavsk a, .dropdown-btnqo {
     padding: 6px 8px 6px 16px;
     text-decoration: none;
-    font-size: 10pt;
     color: black;
     display: block;
     border: none;
@@ -37,8 +36,9 @@ html{
     text-align: left;
     cursor: pointer;
     outline: none;
-
+	font-size: 11pt
 }
+
 
 /* left navigation 중에 '≡' 클릭후 세부카테고리 효과 */
 .activeCl {
@@ -55,7 +55,7 @@ html{
 
 /* 세부 카테고리 ⊃ a태그 폰트 */
 .dropdown-soxk a{
-    font-size: 10pt;
+    font-size: 9pt;
 }
 
 /* '≡' */
@@ -83,5 +83,6 @@ html{
 /* 제목 밑에 hr부분 */
 #hrSet53{
     width: 95%;
+    border: 1px solid #ebeef3;
 }
 

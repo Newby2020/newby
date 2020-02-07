@@ -1,17 +1,18 @@
 .tline1row{
     font-weight: bold;
-    width: 200px;
-    font-size: 14pt;
+    width: 150px;
+    font-size: 11pt;
     padding-top: 3px;
     margin: 0px;
     vertical-align: middle;
 }
 .tline2row{
     width: 600px;
+    font-size: 9pt
 }
 #input1ske{
-    width: 600px;
-    height: 40px;
+    width: 450px;
+    height: 30px;
     padding-left: 20px;
     border-radius: 5px;    
 }
@@ -27,6 +28,9 @@
     height: 33px;
     border: none;
     border-bottom: 1px solid lightgray;
+}
+.ct{
+	font-size: 9pt;
 }
 
 #classTime6{
@@ -47,40 +51,43 @@
 }
 
 .addSchedule23{
-    height: 35px;
+    height: 20px;
 }
 
 .date632{
     border: none;
     border-bottom: 1px solid lightgray;
     text-align-last: center;
-    font-size: 10pt;
+    font-size: 9pt;
 }
 
 #basicAddr{
     border: none;
     border-bottom: 1px solid lightgray;
-    padding-left: 20px;
-    width: 380px;
+    padding-left: 25px;
+    width: 280px;
+    font-size: 9pt;
+    height: 20px;
 }
 
 #detailAddr{
     margin-top: 10px;
     border: none;
     border-bottom: 1px solid lightgray;
-    padding-left: 20px;
-    width: 485px;
+    padding-left: 25px;
+    width: 385px;
+    font-size: 9pt;
+    height: 20px;
 }
 
 .btn24{
     background: rgb(9, 129, 241);
     color: white;
     border: none;
-    height: 35px;
-    width: 90px;
+    height: 25px;
+    width: 80px;
     border-radius: 15px;
-    padding-bottom: 1.5px;
-    padding-top: 4px;
+    font-size: 9pt;
 }
 
 .textAreaTitle23{
@@ -95,10 +102,9 @@
     background: rgb(9, 129, 241);
     color: white;
     border: none;
-    height: 45px;
-    width: 250px;
-    border-radius: 15px;
-    padding-bottom: 1.5px;
-    padding-top: 4px;   
-    font-size: 15pt;
+    height: 33px;
+    width: 180px;
+    border-radius: 15px; 
+    font-size: 12pt;
+    cursor: pointer;
 }

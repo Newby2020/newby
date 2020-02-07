@@ -37,15 +37,15 @@
                             <table>	<!-- 클래스 날짜와 현재 날짜 비교해서 수정취소버튼 생성 분기시켜야해  -->
                                 <thead>
                                     <tr>
-                                      <th style="width: 100px">날짜</th>
+                                      <th style="width: 150px">날짜</th>
                                       <th style="width: 300px">클래스명</th>
-                                      <th style="width: 100px">상태</th>
+                                      <th style="width: 150px">상태</th>
                                       <th style="width: 150px">수정/취소</th>
                                     </tr>
                                 </thead>
                                 <tbody align="center">
                                 	<tr>
-                                  		<td colspan=4 style="border-bottom : 1px solid darkgray; height: 0.1em"></td>
+                                  		<td colspan=4 style="border-bottom : 1px solid darkgray; height: 0px;"></td>
                                 	</tr>
                                     <tr>
                                       <td>2020-01-02</td>
@@ -53,57 +53,10 @@
                                       <td>예정</td>
                                       <td><input class="modify1sd size142" type="button" value="수정"> <input class="delete1sd size142" type="button" value="취소"></td>
                                     </tr>
-                                    <tr>
-                                      <td>2019-11-18</td>
-                                      <td>플라잉 요가</td>
-                                      <td>예정</td>
-                                      <td><input class="modify1sd size142" type="button" value="수정"> <input class="delete1sd size142" type="button" value="취소"></td>
-                                    </tr>
-                                    <tr>
-                                      <td>2019-10-04</td>
-                                      <td>연탄 나르기</td>
-                                      <td>예정</td>
-                                      <td><input class="modify1sd size142" type="button" value="수정"> <input class="delete1sd size142" type="button" value="취소"></td>
-                                    </tr>
+
                                     <tr class="complete1sd">
                                       <td>2019-09-16</td>
                                       <td>안녕 나야</td>
-                                      <td>완료</td>
-                                      <td> </td>
-                                    </tr>
-                                    <tr class="complete1sd">
-                                      <td>2019-09-08</td>
-                                      <td>화성에서 온 나</td>
-                                      <td>완료</td>
-                                      <td> </td>
-                                    </tr>
-                                    <tr class="complete1sd">
-                                      <td>2019-09-02</td>
-                                      <td>연탄 나르기</td>
-                                      <td>완료</td>
-                                      <td> </td>
-                                    </tr>
-                                    <tr class="complete1sd">
-                                      <td>2019-10-04</td>
-                                      <td>자바랑 나랑</td>
-                                      <td>완료</td>
-                                      <td> </td>
-                                    </tr>
-                                    <tr class="complete1sd">
-                                      <td>2019-10-04</td>
-                                      <td>너는 누구니?</td>
-                                      <td>완료</td>
-                                      <td> </td>
-                                    </tr>
-                                    <tr class="complete1sd">
-                                      <td>2019-10-04</td>
-                                      <td>반가워 다들</td>
-                                      <td>완료</td>
-                                      <td> </td>
-                                    </tr>
-                                    <tr class="complete1sd">
-                                      <td>2019-10-04</td>
-                                      <td>솔로 티내기</td>
                                       <td>완료</td>
                                       <td> </td>
                                     </tr>

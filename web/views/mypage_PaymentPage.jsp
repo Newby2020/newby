@@ -47,18 +47,18 @@ td{
                             <table class="table table-striped">
                                 <thead align="center">
                                     <tr>
-                                      <th>날짜</th>
-                                      <th>클래스명</th>
-                                      <th>금액</th>
-                                      <th>상태</th>
+                                      <th style="width: 150px">날짜</th>
+                                      <th style="width: 300px">클래스명</th>
+                                      <th style="width: 150px">금액</th>
+                                      <th style="width: 150px">상태</th>
                                     </tr>
+	                                <tr>
+	                                  <td colspan=4 style="border-bottom : 1px solid darkgray; height: 0px"></td>
+	                                </tr>
                                 </thead>
                                 <tbody align="center">
                                     <tr>
-                                      <td colspan=4 style="border-bottom : 1px solid darkgray; height: 0.1em"></td>
-                                    </tr>
-                                    <tr>
-                                      <td style="width: 100px">2020-01-02</td>
+                                      <td style="width: 150px">2020-01-02</td>
                                       <td style="width: 300px">길가다 쓰레기줍기</td>
                                       <td style="width: 150px">+58,000원</td>
                                       <td style="width: 150px" >결제</td>

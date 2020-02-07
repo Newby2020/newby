@@ -57,18 +57,19 @@ td{
                           </div>
                           <br>
                           <br>
+                          <br>
                           <div>
                             <table>
                               <thead align="center">
                                 <tr>
-                                  <th style="width: 100px">날짜</th>
+                                  <th style="width: 150px">날짜</th>
                                   <th style="width: 300px">클래스명</th>
-                                  <th style="width: 100px">내용</th>
+                                  <th style="width: 150px">내용</th>
                                 </tr>
                               </thead>
                               <tbody align="center">
                                 <tr>
-                                  <td colspan=3 style="border-bottom : 1px solid darkgray; height: 0.1em"></td>
+                                  <td colspan=3 style="border-bottom : 1px solid darkgray; height: 0px"></td>
                                 </tr>
                                 <tr>
                                   <td>2020-01-02</td>

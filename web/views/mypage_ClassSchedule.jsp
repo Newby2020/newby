@@ -39,15 +39,15 @@
                             <table>
                                 <thead align="center">
                                     <tr>
-                                      <th style="width: 100px">날짜</th>
+                                      <th style="width: 150px">날짜</th>
                                       <th style="width: 300px">클래스명</th>
-                                      <th style="width: 100px">취소</th>
+                                      <th style="width: 150px">취소</th>
                                     </tr>
+	                                <tr>
+	                                  <td colspan=3 style="border-bottom : 1px solid darkgray; height: 0px"></td>
+	                                </tr>
                                 </thead>
                                 <tbody align="center">
-                                <tr>
-                                  <td colspan=3 style="border-bottom: 1px solid darkgray; heigth : 0.1em;"></td>
-                                </tr>
                                     <tr>
                                       <td class="td111">2020-01-02</td>
                                       <td>길가다 쓰레기줍기</td>

@@ -9,122 +9,10 @@
     <link rel="stylesheet" href="/semi/resources/css/LoginModal.css">
     <link rel="stylesheet" href="/semi/resources/css/main-panel.css">
     <link rel="stylesheet" href="/semi/resources/css/mypage_h&j-frame.css">
-    <!-- <link rel="stylesheet" href="/semi/resources/css/mypage_EnrollInClass.css"> --> <!-- 우선순위 높이기 위해 인라인으로 넣었음 -->
+    <link rel="stylesheet" href="/semi/resources/css/mypage_EnrollInClass.css">
     <link href="https://fonts.googleapis.com/css?family=Nanum+GothicNoto+Sans+KR&display=swap" rel="stylesheet">
     <script src="/semi/resources/jquery/jquery-3.4.1.min.js"></script>
-    <style>
-.tline1row{
-    font-weight: bold;
-    width: 150px;
-    font-size: 10pt;
-    padding-top: 3px;
-    margin: 0px;
-    vertical-align: middle;
-}
-.tline2row{
-    width: 600px;
-}
-#input1ske{
-    width: 500px;
-    height: 30px;
-    padding-left: 20px;
-    border-radius: 5px;
-    font-size: 9pt;
-}
 
-#sl1{
-    width: 120px;
-}
-#sl2{
-    width: 150px;
-}
-.sl{
-    text-align-last: center;
-    height: 25px;
-    border: none;
-    border-bottom: 1px solid lightgray;
-    font-size: 9pt;
-}
-
-.ct{
-	font-size: 9pt;
-}
-
-#classTime6{
-    text-align: center;
-    width: 80px;
-    border-radius: 5px;
-}
-
-#commission12{
-    text-align: center;
-    border-radius: 5px;
-    }
-
-#MaxNoAttendee{
-    text-align: center;
-    width: 80px;
-    border-radius: 5px; 
-}
-
-.addSchedule23{
-    height: 35px;
-}
-
-.date632{
-    border: none;
-    border-bottom: 1px solid lightgray;
-    text-align-last: center;
-    font-size: 10pt;
-}
-
-#basicAddr{
-    border: none;
-    border-bottom: 1px solid lightgray;
-    padding-left: 20px;
-    width: 380px;
-}
-
-#detailAddr{
-    margin-top: 10px;
-    border: none;
-    border-bottom: 1px solid lightgray;
-    padding-left: 20px;
-    width: 485px;
-}
-
-.btn24{
-    background: rgb(9, 129, 241);
-    color: white;
-    border: none;
-    height: 25px;
-    width: 80px;
-    border-radius: 15px;
-    padding-bottom: 3px;
-    padding-top: 4px;
-    font-size: 9pt;
-}
-
-.textAreaTitle23{
-    margin-bottom: 10px;
-}
-
-.centents263425{
-    border-radius: 5px;
-}
-
-.finalBtn24{
-    background: rgb(9, 129, 241);
-    color: white;
-    border: none;
-    height: 35px;
-    width: 180px;
-    border-radius: 15px;
-    padding-bottom: 1.5px;
-    padding-top: 4px;   
-    font-size: 11pt;
-}
-</style>
 </head>
 
 <body></body>
@@ -152,7 +40,7 @@
                                 <tbody>
                                     <tr>
                                         <td class="tline1row">클래스명<br><small>(20자 이내)</small></td>
-                                        <td  class="tline2row"><input id="input1ske" type="text" placeholder="제목에서부터 호스트님의 매력을 마음껏 뿜어내 주세요"></td>
+                                        <td  class="tline2row"><input id="input1ske" type="text" style="font-size: 9pt;" placeholder="제목에서부터 호스트님의 매력을 마음껏 뿜어내 주세요"></td>
                                     </tr>
                                     <tr><td><br></td></tr><tr><td><br></td></tr>
                                     <tr>
@@ -258,17 +146,17 @@
                             </table>
                             <br><br><br>
                             <h5 class="tline1row textAreaTitle23">수업 소개</h5>
-                            <textarea name="" id="" class="centents263425" cols="90" rows="7"></textarea>
+                            <textarea name="" id="" class="centents263425" cols="80" rows="7"></textarea>
                             <br><br>
                             <h5 class="tline1row textAreaTitle23">수업 대상</h5>
-                            <textarea name="" id="" class="centents263425" cols="90" rows="7"></textarea>
+                            <textarea name="" id="" class="centents263425" cols="80" rows="7"></textarea>
                             <br><br>
                             <h5 class="tline1row textAreaTitle23">커리큘럼</h5>
-                            <textarea name="" id="" class="centents263425" cols="90" rows="7"></textarea>
+                            <textarea name="" id="" class="centents263425" cols="80" rows="7"></textarea>
                             
-                            <br><br>
+                            <br><br><br>
                             <input type="submit" class="finalBtn24" value="등록">
-                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                            &nbsp;&nbsp;&nbsp;&nbsp;
                             <input type="reset" class="finalBtn24" value="취소">
                             <br><br><br><br><br>
                         </form>

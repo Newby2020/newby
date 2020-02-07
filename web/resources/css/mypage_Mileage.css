@@ -6,11 +6,11 @@
 
 /*현재 마일리지 입력란*/
 #mileage1kc{
-    height: 30px;
+    height: 40px;
     width: 300px;
     text-align: center;
     font-size: 15pt;
-    border-radius: 10px;
+    border-radius: 15px;
     margin-top: 10px;
     border: 2px solid rgb(9, 129, 241);
 }

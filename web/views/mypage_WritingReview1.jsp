@@ -12,7 +12,6 @@
     <link rel="stylesheet" href="/semi/resources/css/mypage_WritingReview1.css">
     <link href="https://fonts.googleapis.com/css?family=Nanum+GothicNoto+Sans+KR&display=swap" rel="stylesheet">
     <script src="/semi/resources/jquery/jquery-3.4.1.min.js"></script>
-
 </head>
 
 <body>
@@ -38,9 +37,12 @@
                             <table>
                                 <thead align="center">
                                     <tr>
-                                      <th>날짜</th>
-                                      <th>클래스명</th>
-                                      <th>후기</th>
+                                      <th style="width: 150px">날짜</th>
+                                      <th style="width: 300px">클래스명</th>
+                                      <th style="width: 150px">후기</th>
+                                    </tr>
+                                    <tr>
+                                    	<td colspan=3 style="border-bottom : 1px solid darkgray; height: 0px"></td>
                                     </tr>
                                 </thead>
                                 <tbody align="center">
