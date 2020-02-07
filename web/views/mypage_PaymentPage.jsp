@@ -12,6 +12,16 @@
     <link href="https://fonts.googleapis.com/css?family=Nanum+GothicNoto+Sans+KR&display=swap" rel="stylesheet">
     <script src="/semi/resources/jquery/jquery-3.4.1.min.js"></script>
     <script src="../MainPage/js/mainPage.js"></script>
+    <style>
+th{
+	height: 30px;
+	font-size: 11pt;
+}
+td{
+	height: 30px;
+	font-size: 9pt;
+}
+    </style>
 </head>
 
 <body>
@@ -45,10 +55,13 @@
                                 </thead>
                                 <tbody align="center">
                                     <tr>
-                                      <td>2020-01-02</td>
-                                      <td>길가다 쓰레기줍기</td>
-                                      <td>+58,000원</td>
-                                      <td>결제</td>
+                                      <td colspan=4 style="border-bottom : 1px solid darkgray; height: 0.1em"></td>
+                                    </tr>
+                                    <tr>
+                                      <td style="width: 100px">2020-01-02</td>
+                                      <td style="width: 300px">길가다 쓰레기줍기</td>
+                                      <td style="width: 150px">+58,000원</td>
+                                      <td style="width: 150px" >결제</td>
                                     </tr>
                                     <tr>
                                       <td>2019-11-18</td>

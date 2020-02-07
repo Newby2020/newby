@@ -5,7 +5,6 @@
 <head>
     <meta charset="UTF-8">
     <title>Review</title>
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
     <link rel="stylesheet" href="/semi/resources/css/joinModal.css">
     <link rel="stylesheet" href="/semi/resources/css/LoginModal.css">
     <link rel="stylesheet" href="/semi/resources/css/main-panel.css">
@@ -29,16 +28,14 @@
 
                 <!--contents-->
                 <div id="mn16s" align="center">
-                	<br>
                     <br>
                     <h2>후기 작성</h2>
-                    <br>
                     <hr id="hrSet53">
                     <br>
                     <br>
                     <div id="contentsDivSize29">
-                        <div class="container">
-                            <table class="table table-striped">
+                        <div>
+                            <table>
                                 <thead align="center">
                                     <tr>
                                       <th>날짜</th>
@@ -99,14 +96,9 @@
                                     </tr>
                                 </tbody>
                             </table>
+                            <!-- 페이징 넣어야할 부분 -->
                             <div>
-                                <ul class="pagination" style="float: right;">
-                                    <li class="page-item"><a class="page-link" href="#" style="color: #0981F1;">Previous</a></li>
-                                    <li class="page-item"><a class="page-link" href="#" style="color: #0981F1;">1</a></li>
-                                    <li class="page-item"><a class="page-link" href="#" style="color: #0981F1;">2</a></li>
-                                    <li class="page-item"><a class="page-link" href="#" style="color: #0981F1;">3</a></li>
-                                    <li class="page-item"><a class="page-link" href="#" style="color: #0981F1;">Next</a></li>
-                                </ul>
+
                             </div>
                           </div>
                     </div>

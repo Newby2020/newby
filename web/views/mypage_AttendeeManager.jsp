@@ -44,6 +44,9 @@
                                     </tr>
                                 </thead>
                                 <tbody id="tbody4252" align="center" >
+                                	<tr>
+                                  	  <td colspan=4 style="border-bottom : 1px solid darkgray; height: 0.1em"></td>
+                                	</tr>
                                     <tr>
                                       <td>2020-01-02</td>
                                       <td>길가다 쓰레기줍기</td>

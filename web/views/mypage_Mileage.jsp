@@ -44,7 +44,7 @@ td{
                 <!--contents-->
                 <div id="mn16s" align="center">
                     <br>
-                    <h2>마일리지 내역</h2>
+                    <h2>마일리지</h2>
                     <hr id="hrSet53">
                     <br>
                     <br>
@@ -57,11 +57,7 @@ td{
                           </div>
                           <br>
                           <br>
-                          <br>
-                          <br>
-                          <br>
                           <div>
-                            <h4 id="pastmilek1res">마일리지 내역</h4>
                             <table>
                               <thead align="center">
                                 <tr>
@@ -71,6 +67,9 @@ td{
                                 </tr>
                               </thead>
                               <tbody align="center">
+                                <tr>
+                                  <td colspan=3 style="border-bottom : 1px solid darkgray; height: 0.1em"></td>
+                                </tr>
                                 <tr>
                                   <td>2020-01-02</td>
                                   <td>길가다 쓰레기줍기</td>

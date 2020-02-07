@@ -37,13 +37,16 @@
                             <table>	<!-- 클래스 날짜와 현재 날짜 비교해서 수정취소버튼 생성 분기시켜야해  -->
                                 <thead>
                                     <tr>
-                                      <th>날짜</th>
+                                      <th style="width: 100px">날짜</th>
                                       <th style="width: 300px">클래스명</th>
                                       <th style="width: 100px">상태</th>
                                       <th style="width: 150px">수정/취소</th>
                                     </tr>
                                 </thead>
                                 <tbody align="center">
+                                	<tr>
+                                  		<td colspan=4 style="border-bottom : 1px solid darkgray; height: 0.1em"></td>
+                                	</tr>
                                     <tr>
                                       <td>2020-01-02</td>
                                       <td>길가다가 쓰레기 줍기</td>
