@@ -8,9 +8,7 @@
  	
  	
  	<link rel="stylesheet" href="/semi/resources/css/main-category.css">
- 	<link rel="stylesheet" href="/semi/resources/css/main-panel.css">
- 	<!-- <link rel="stylesheet" href="/semi/resources/css/header.css"> -->
- 	
+ 	<link rel="stylesheet" href="/semi/resources/css/main-panel.css">	
  	<link rel="stylesheet" href="/semi/resources/css/footer.css">
  	
  
@@ -41,23 +39,22 @@
              	      액티비티
                 </div>
                 <div class="main-category" id="cate-art">          
-                <img class="card-img-top" src="/semi/resources/images/art2.png" alt=""><br>
+                <img class="card-img-top" src="/semi/resources/images/art2.png" onclick="artImg();"><br>
                 	    예술
                 </div>
                 <div class="main-category" id="cate-cooking">
-                <img class="card-img-top" src="/semi/resources/images/cook2.png" alt=""><br>  
+                <img class="card-img-top" src="/semi/resources/images/cook2.png" onclick="cookingImg();"><br>  
                 	    쿠킹
                 </div>
                 <div class="main-category" id="cate-it">
-                <img class="card-img-top" src="/semi/resources/images/it2.png" alt=""><br>
-                   	 IT
+                <img class="card-img-top" src="/semi/resources/images/it2.png" onclick="eduImg();"><br>
+                   	 교육
                 </div>
             </div>
 
         </div>
         
         <%@ include file = "views/common/footer.jsp" %>
-     </div>
-     
+     </div> 
 </body>
 </html>

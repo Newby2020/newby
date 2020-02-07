@@ -72,21 +72,21 @@
 }   
 
 
+
 .top-nav{
 	margin-top: 20px;
     font-weight: bold;
+    cursor: pointer;
 }
 
 .newby-header{
     display: flex;
 }
 
- 
+
 .top-nav a:link { color: darkgrey; text-decoration: none;}
 .top-nav a:visited { color: darkgrey; text-decoration: none;}
 .top-nav a:hover { color: darkgrey; background-color: white;}
-.top-nav { color: darkgrey;}
-
 
 .divider1{
    margin: 5px 4px 0 9px;

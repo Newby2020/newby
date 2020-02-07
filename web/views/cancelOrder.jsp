@@ -1,5 +1,5 @@
-<%@ page language="java" contentType="text/html; charset=EUC-KR"
-    pageEncoding="EUC-KR"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html lang="ko">
 <head>
@@ -18,54 +18,54 @@
     <div id="cancelOrderFormWrap">
     	<form id="cancelOrderForm">
 		    <div class="guideText">
-		        <label><b>°áÁ¦ Ãë¼Ò</b></label>
+		        <label><b>ê²°ì œ ì·¨ì†Œ</b></label>
 		        <hr>
 		    </div>
 		    <div class="classInfo">
 		        <div class="pictureClass"></div>
-		            <div class="classDetail"><br><br>[Ä«Å×°í¸®] ¼±ÅÃÇÑ Å¬·¡½º¸í 
-		            <br><br>Å¬·¡½º ¼±ÅÃ ÀÏÁ¤ 
-		            <br><br>¼ö·® x 1</div>
-		        <div class="priceClass"><br><br><br><br>W 10,000¿ø</div>
+		            <div class="classDetail"><br><br>[ì¹´í…Œê³ ë¦¬] ì„ íƒí•œ í´ëž˜ìŠ¤ëª… 
+		            <br><br>í´ëž˜ìŠ¤ ì„ íƒ ì¼ì • 
+		            <br><br>ìˆ˜ëŸ‰ x 1</div>
+		        <div class="priceClass"><br><br><br><br>W 10,000ì›</div>
 		    </div> 
 		    <hr>
 		    <br>
 		    <div class="reasonOfCancelWrap">
 		        <select class="reasonOfCancelSelect" selected="selected">
-		            <option class="reasonOfCancel" value>°áÁ¦ Ãë¼Ò »çÀ¯</option>
-		            <option class="reasonOfCancel" value>¼±ÅÃÇÑ ¼ö¾÷ÀÌ ¸¶À½¿¡ µéÁö ¾ÊÀ½</option>
-		            <option class="reasonOfCancel" value="etc">±âÅ¸</option>
+		            <option class="reasonOfCancel" value>ê²°ì œ ì·¨ì†Œ ì‚¬ìœ </option>
+		            <option class="reasonOfCancel" value>ì„ íƒí•œ ìˆ˜ì—…ì´ ë§ˆìŒì— ë“¤ì§€ ì•ŠìŒ</option>
+		            <option class="reasonOfCancel" value="etc">ê¸°íƒ€</option>
 		        </select>
 		        <br><br><br>
 		        <div>
-		            <textarea class="detailedReasonOfCancel" placeholder="»ó¼¼ ³»¿ëÀ» ÀÔ·ÂÇØ ÁÖ¼¼¿ä"></textarea>
+		            <textarea class="detailedReasonOfCancel" placeholder="ìƒì„¸ ë‚´ìš©ì„ ìž…ë ¥í•´ ì£¼ì„¸ìš”"></textarea>
 		        </div>
 		    </div>
 		    <br><br><br>
 		    <hr>
 		    <div class="cancelOrderGuide">
-		        <label class="cancelOrderGuideLabel">±¸ÀÔ ±Ý¾× : W       ¿ø - °í°´ ºÎ´ã ºñ¿ë : W      ¿ø&nbsp;&nbsp;</label><br>
+		        <label class="cancelOrderGuideLabel">êµ¬ìž… ê¸ˆì•¡ : W       ì› - ê³ ê° ë¶€ë‹´ ë¹„ìš© : W      ì›&nbsp;&nbsp;</label><br>
 		        <hr style="width: 180px; float: right; margin-top: 5px; display: block;"><br>
-		        <label class="cancelOrderGuideLabel" style ="line-height: 0.5em;"><b>ÃÑ È¯ºÒ ±Ý¾× : W       ¿ø&nbsp;&nbsp;</b></label>
+		        <label class="cancelOrderGuideLabel" style ="line-height: 0.5em;"><b>ì´ í™˜ë¶ˆ ê¸ˆì•¡ : W       ì›&nbsp;&nbsp;</b></label>
 		    </div>
 		
 		    <br><br><br><br><br><br><br>
 		
 		
 		    <div class="announceCancelOrder">
-		        <label>°áÁ¦ Ãë¼Ò´Â ´ç»çÀÇ È¯ºÒ ±ÔÁ¤À» ¼÷Áö, Ãë¼Ò ¹× È¯ºÒ ¾à°ü¿¡ µ¿ÀÇÇÑ °ÍÀ¸·Î °£ÁÖÇÕ´Ï´Ù.</label>
+		        <label>ê²°ì œ ì·¨ì†ŒëŠ” ë‹¹ì‚¬ì˜ í™˜ë¶ˆ ê·œì •ì„ ìˆ™ì§€, ì·¨ì†Œ ë° í™˜ë¶ˆ ì•½ê´€ì— ë™ì˜í•œ ê²ƒìœ¼ë¡œ ê°„ì£¼í•©ë‹ˆë‹¤.</label>
 		    </div>
 		
 		    <br><br>
 			<div align= "center">
-		    	<button onclick="cancelOrderBtn();" id="cancelOrderBtn" class="cancelOrderBtn">°áÁ¦ Ãë¼Ò</button>
+		    	<button onclick="cancelOrderBtn();" id="cancelOrderBtn" class="cancelOrderBtn">ê²°ì œ ì·¨ì†Œ</button>
 	    	</div>
 	    </form>
     </div>
 
 
     <script>
-        /* select ¿É¼Ç °´Ã¼°¡ selectedµÆÀ» ¶§ Æ¯Á¤ div¸¦ È£ÃâÇÏ´Â ÄÚµå */
+        /* select ì˜µì…˜ ê°ì²´ê°€ selectedëì„ ë•Œ íŠ¹ì • divë¥¼ í˜¸ì¶œí•˜ëŠ” ì½”ë“œ */
         jQuery('.reasonOfCancelSelect').change(function () {
                 var state = jQuery('.reasonOfCancelSelect option:selected').val();
                 if (state === 'etc') {

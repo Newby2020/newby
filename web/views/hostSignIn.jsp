@@ -1,9 +1,9 @@
-<%@ page language="java" contentType="text/html; charset=EUC-KR"
-    pageEncoding="EUC-KR"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="EUC-KR">
+<meta charset="UTF-8">
 <title>hostSignIn</title>
     <link rel="stylesheet" href="/semi/resources/css/joinModal.css">
     <link rel="stylesheet" href="/semi/resources/css/LoginModal.css">
@@ -22,9 +22,10 @@
 </head>
 <body>
 	<div>
+		<%@ include file="./common/header.jsp" %>
 	   <form id="joinForm" class="joinForm">
 	       <div class="guideHostSentence">
-	           <label><b>хё╫╨ф╝ ╟║ют</b></label style="margin-bottom: 3px;">
+	           <label><b>М≤╦Л┼╓М┼╦ Й╟─Л·┘</b></label style="margin-bottom: 3px;">
 	           <br>
 	           <hr style="margin-top: 10px;">
 	           <br>
@@ -32,41 +33,42 @@
 	       <div align="center"> 
 	        <div class="hostRequired">
 	            <select class="hostJoinInfo" name="hostClassCategory" id="hostClassCategory" style="height: 30px;">
-	                <option value="д╚ев╟М╦╝">е╛╥║╫╨ д╚ев╟М╦╝</option>
+	                <option value="Л╧╢М┘▄ЙЁ═К╕╛">М│╢К·≤Л┼╓ Л╧╢М┘▄ЙЁ═К╕╛</option>
 	            </select>
 	        </div>
 	        <br>
 	        <div class="hostRequired">
-	            <input type="textarea" class="hostJoinInfoReason" id="hostClassReason" name="hostClassReason" value="" placeholder="   е╛╥║╫╨ ╟Ё╪Ёго╥а╢б юлю╞╦╕ юз╪╪хВ юШ╬Наж╪╪©Д">
+	            <input type="textarea" class="hostJoinInfoReason" id="hostClassReason" name="hostClassReason" value="" placeholder="   М│╢К·≤Л┼╓ Й╟°Л└╓М∙≤К═╓К┼■ Л²╢Л°═К╔╪ Л·░Л└╦М·┬ Л═│Л√╢Лё╪Л└╦Л ■">
 	        </div>
 	        <br><br><br><br>
 	        <div class="hostRequired">
-	            <input type="text" class="hostJoinInfo" id="hostClassPlace" name="hostClassPlace" value="" placeholder="©╧╩С ╪Ж╬ВюЕ╪р ют╥б">
+	            <input type="text" class="hostJoinInfo" id="hostClassPlace" name="hostClassPlace" value="" placeholder="Л≤┬Л┐│ Л┬≤Л≈┘Л·╔Л├▄ Л·┘К═╔">
 	        </div>
 	        <div class="hostRequired">
-	            <input type="text" class="hostJoinInfo" id="hostClassPrice" name="hostClassPrice" value="" placeholder="©╧╩С ╨Я©К ют╥б">
+	            <input type="text" class="hostJoinInfo" id="hostClassPrice" name="hostClassPrice" value="" placeholder="Л≤┬Л┐│ К╧└Л ╘ Л·┘К═╔">
 	        </div>
 	        <div class="hostRequired">
-	            <input type="text" class="hostJoinInfo" id="hostBankName" name="hostBankName" value="" placeholder="ю╨гЮ╦М ют╥б">
+	            <input type="text" class="hostJoinInfo" id="hostBankName" name="hostBankName" value="" placeholder="Л²─М√┴К╙┘ Л·┘К═╔">
 	        </div> 
 	        <div class="hostRequired">
-	            <input type="text" class="hostJoinInfo" id="hostAccountName" name="hostAccountName" value="" placeholder="©╧╠щаж╦М ют╥б">
+	            <input type="text" class="hostJoinInfo" id="hostAccountName" name="hostAccountName" value="" placeholder="Л≤┬Й╦┬Лё╪К╙┘ Л·┘К═╔">
 	        </div>
 	        <div class="hostRequired">
-	            <input type="text" class="hostJoinInfo" id="hostBankNumber" name="hostBankNumber" value=""placeholder="╟Хаб╧Ьхё ют╥б">
+	            <input type="text" class="hostJoinInfo" id="hostBankNumber" name="hostBankNumber" value=""placeholder="ЙЁ└Л╒▄К╡┬М≤╦ Л·┘К═╔">
 	        </div>
 	       </div>
 	       </form>
 	       <br><br>
 	       <div class="announce" align="center">
 	           <input type="checkbox" id="agree" name="agree">
-	           <label>юл©К╬Ю╟Э, ╟Ёюна╓╨╦ цЁ╦╝╧Фд╖, ю╖д║╠Б╧щ ╪╜╨Я╫╨ юл©К╬Ю╟Э©║ ╣©юггу╢о╢ы.</label>
-	       </div>
+	           <label>Л²╢Л ╘Л∙╫Й╢─, Й╟°Л²╦Л═∙КЁ╢ Л╡≤К╕╛К╟╘Л╧╗, Л°└Л╧≤Й╦╟К╟≤ Л└°К╧└Л┼╓ Л²╢Л ╘Л∙╫Й╢─Л≈░ К▐≥Л²≤М∙╘К▀┬К▀╓.</label>
 	       <br><br>
-	   	
 	   		<div align="center"></div>
-	       		<button onclick="buttonJoin();" id="buttonJoin" class="buttonJoin">╟║ютго╠Б</button>
-	        </div>   
-	</div>          
+	       		<button onclick="buttonJoin();" id="buttonJoin" class="buttonJoin">Й╟─Л·┘М∙≤Й╦╟</button>
+	        </div>  
+	       </div>
+	        <%@ include file="./common/footer.jsp" %> 
+	   	
+          
 	</body>
 </html>

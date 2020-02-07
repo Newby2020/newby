@@ -1,10 +1,10 @@
-<%@ page language="java" contentType="text/html; charset=EUC-KR"
-    pageEncoding="EUC-KR"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html lang="ko">
 <head>
     <meta charset="UTF-8">
-    <title>°áÁ¦</title>
+    <title>ê²°ì œ</title>
     <link rel="stylesheet" type="text/css" href="/semi/resources/css/payment.css">
     <link href="https://fonts.googleapis.com/css?family=Nanum+GothicNoto+Sans+KR&display=swap" rel="stylesheet">
     <style>
@@ -17,62 +17,62 @@
     <div id="payFormWrap">
 	    <form id="payForm">
 		    <div class="guideText">
-		        <label><b>°áÁ¦</b></label>
+		        <label><b>ê²°ì œ</b></label>
 		        <hr>
 			</div>
 		    <div class="classInfo">
 		        <div class="pictureClass"></div>
-		            <div class="classDetail"><br><br>[Ä«Å×°í¸®] ¼±ÅÃÇÑ Å¬·¡½º¸í 
-		            <br><br>Å¬·¡½º ¼±ÅÃ ÀÏÁ¤ 
-		            <br><br>¼ö·® x 1</div>
-		        <label class="priceClass"><br><br><br><br>W 10,000¿ø</label>
+		            <div class="classDetail"><br><br>[ì¹´í…Œê³ ë¦¬] ì„ íƒí•œ í´ëž˜ìŠ¤ëª… 
+		            <br><br>í´ëž˜ìŠ¤ ì„ íƒ ì¼ì • 
+		            <br><br>ìˆ˜ëŸ‰ x 1</div>
+		        <label class="priceClass"><br><br><br><br>W 10,000ì›</label>
 		    </div> 
 		    <hr>
 		    <div class="priceClass2">
-			    <label>»óÇ° ±Ý¾×</label>
-			    <label id="priceClassAndMileage">W 10,000¿ø&nbsp;</label>
+			    <label>ìƒí’ˆ ê¸ˆì•¡</label>
+			    <label id="priceClassAndMileage">W 10,000ì›&nbsp;</label>
 			</div>
 		    <hr>
 		    <div class="mileage">
-		        <label>¸¶ÀÏ¸®Áö</label>
-		        <label id="priceClassAndMileage">W 10,000¿ø&nbsp;</label>
+		        <label>ë§ˆì¼ë¦¬ì§€</label>
+		        <label id="priceClassAndMileage">W 10,000ì›&nbsp;</label>
 		    </div>
 		    <hr>
 		    <div class="mileageGuide">
-			    <label>* ¸¶ÀÏ¸®Áö´Â ÃÖ´ë Å¬·¡½º ±Ý¾×ÀÇ 20%±îÁö °áÁ¦ °¡´ÉÇÕ´Ï´Ù.</label><br>
-			    <label>* °áÁ¦ÇÏ½Å ±Ý¾×ÀÇ 1%´Â ¸¶ÀÏ¸®Áö·Î Àû¸³µË´Ï´Ù.</label>
+			    <label>* ë§ˆì¼ë¦¬ì§€ëŠ” ìµœëŒ€ í´ëž˜ìŠ¤ ê¸ˆì•¡ì˜ 20%ê¹Œì§€ ê²°ì œ ê°€ëŠ¥í•©ë‹ˆë‹¤.</label><br>
+			    <label>* ê²°ì œí•˜ì‹  ê¸ˆì•¡ì˜ 1%ëŠ” ë§ˆì¼ë¦¬ì§€ë¡œ ì ë¦½ë©ë‹ˆë‹¤.</label>
 		    </div>
 		    <hr>
 		    <div class="priceGuide">
-		        <label class="priceGuideLabel"><b>ÇÒÀÎ ±Ý¾× : W       ¿ø&nbsp;&nbsp;</b></label><br>
+		        <label class="priceGuideLabel"><b>í• ì¸ ê¸ˆì•¡ : W       ì›&nbsp;&nbsp;</b></label><br>
 		        <hr style="width: 180px; float: right; margin-top: 5px; display: block;"><br>
-			    <label class="priceGuideLabel" style ="line-height: 0.5em;"><b>°áÁ¦ ±Ý¾× : W       ¿ø&nbsp;&nbsp;</b></label>
+			    <label class="priceGuideLabel" style ="line-height: 0.5em;"><b>ê²°ì œ ê¸ˆì•¡ : W       ì›&nbsp;&nbsp;</b></label>
 		    </div>
 		
 		    <br><br><br><br><br>
 		
 		
 		    <div id="guideText">
-			    <label><b>°áÁ¦ ¼ö´Ü</b></label>
+			    <label><b>ê²°ì œ ìˆ˜ë‹¨</b></label>
 		    </div>
 		    <hr>
 		
-		    <button onclick="buttonCard();" id="buttonCard" class="buttonPay">½Å¿ëÄ«µå</button> 
-		    <button onclick="buttonTransfer();" id="buttonTransfer" class="buttonPay">°èÁÂÀÌÃ¼</button> 
-		    <button onclick="buttonAccount();" id="buttonAccount" class="buttonPay">¹«ÅëÀåÀÔ±Ý</button> 
-		    <button onclick="buttonMobile();" id="buttonMobile" class="buttonPay">¸ð¹ÙÀÏ °áÁ¦</button> 
+		    <button onclick="buttonCard();" id="buttonCard" class="buttonPay">ì‹ ìš©ì¹´ë“œ</button> 
+		    <button onclick="buttonTransfer();" id="buttonTransfer" class="buttonPay">ê³„ì¢Œì´ì²´</button> 
+		    <button onclick="buttonAccount();" id="buttonAccount" class="buttonPay">ë¬´í†µìž¥ìž…ê¸ˆ</button> 
+		    <button onclick="buttonMobile();" id="buttonMobile" class="buttonPay">ëª¨ë°”ì¼ ê²°ì œ</button> 
 		      
 		    <br><br><br>
 		
 		    <div class="announcePay">
 		        <input type="checkbox" id="agree" name="agree">
-		        <label>°³ÀÎÁ¤º¸ Á¦ 3ÀÚ Á¦°ø µ¿ÀÇ, °áÁ¦ ´ëÇà ¼­ºñ½º ÀÌ¿ë ¾à°ü µî ¸ðµç ¾à°ü¿¡ µ¿ÀÇÇÕ´Ï´Ù.</label>
+		        <label>ê°œì¸ì •ë³´ ì œ 3ìž ì œê³µ ë™ì˜, ê²°ì œ ëŒ€í–‰ ì„œë¹„ìŠ¤ ì´ìš© ì•½ê´€ ë“± ëª¨ë“  ì•½ê´€ì— ë™ì˜í•©ë‹ˆë‹¤.</label>
 		    </div>
 		
 		    <br><br>
 		
 		    <div align= "center";>
-		    	<button onclick="finalButtonPay();" id="finalButtonPay" class="finalButtonPay">W 10,000¿ø °áÁ¦ÇÏ±â</button>
+		    	<button onclick="finalButtonPay();" id="finalButtonPay" class="finalButtonPay">W 10,000ì› ê²°ì œí•˜ê¸°</button>
 		    </div>	
 	    </form>
     </div>

@@ -8,6 +8,8 @@
     <link rel="stylesheet" href="/semi/resources/css/joinModal.css">
     <link rel="stylesheet" href="/semi/resources/css/LoginModal.css">
     <link rel="stylesheet" href="/semi/resources/css/header.css">
+    
+    <script src="/semi/resources/js/mainPage.js"></script>
 </head>
 <body>
 	<div class="newby-header" id="newby-header-var" style="margin-left: auto; margin-right: auto;">
@@ -25,19 +27,19 @@
 	    </label>
 		<span class="divider1">|</span>
 	    <label id="toHost" class="top-nav">
-	        <a href="Host_SignIn.html">호스트신청</a>
+	        <a href="/semi/views/hostSignIn.jsp">호스트신청</a>
 	    </label>
 		<span class="divider1">|</span>
 	    <label id="customer" class="top-nav">
-	        <a href="Notice.html">고객센터</a>
+	        <a href="/semi/views/Customer_Notice.jsp">고객센터</a>
 	    </label>
 		<span class="divider1">|</span>
 	    <label id="myPage" class="top-nav">
-	        <a href="./MyPage/Profile.html">마이페이지</a>
+	        <a href="/semi/views/mypage_Profile.jsp">마이페이지</a>
 	    </label>
 		<span class="divider1">|</span>
 	    <label id="AdminPage" class="top-nav">
-	        <a href="./newbyAdmin/admin.html">관리자페이지</a>
+	        <a href="/semi/views/admin_index.jsp">관리자페이지</a>
 	    </label>
 	  </div>
 	</div>
