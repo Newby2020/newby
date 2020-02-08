@@ -22,7 +22,38 @@ for (i = 0; i < dropdown.length; i++) {
 	       limitCount.value = limitField.value.length;
 	   }
 	}
+
+// 카테고리 선택시 세부카테고리 다름 적용
+var sl1 = document.getElementById('sl1');
+var sl2 = document.getElementById('sl2');
+var sl3 = document.getElementById('sl3');
+
+function selectCategory1(){
+
+    var sl11 = sl1.options[document.getElementById('sl1').selectedIndex].value;
+	if(sl11 == "동적" || sl11 == "정적" ){
+		sl2.innerHTML = "<option value='' selected>2차</option><option value='액티비티'>액티비티</option><option value='쿠킹'>쿠킹</option><option value='예술'>예술</option><option value='교육'>교육</option>";
+	} else {
+        sl2.innerHTML = "<option value='' selected>2차</option>";
+        sl3.innerHTML ="<option value='' selected>2차</option>";
+    }
 	
+}
+function selectCategory2(){
+
+    var sl22 = sl2.options[document.getElementById('sl2').selectedIndex].value;
+    if(sl22 == "액티비티"){
+        sl3.innerHTML = "<option value='' selected>3차</option><option value='스포츠'>스포츠</option><option value='아웃도어'>아웃도어</option>";
+    } else if(sl22 == "쿠킹"){
+        sl3.innerHTML = "<option value='' selected>3차</option><option value='쿠킹'>쿠킹</option><option value='베이킹'>베이킹</option>";
+    } else if(sl22 == "예술"){
+        sl3.innerHTML = "<option value='' selected>3차</option><option value='미술'>미술</option><option value='음악'>음악</option><option value='사진'>사진</option><option value='공예'>공예</option>";
+    } else if(sl22 == "교육"){
+    	sl3.innerHTML = "<option value='' selected>3차</option><option value='어학'>어학</option><option value='IT'>IT</option><option value='실무'>실무</option>";
+    } else {
+    	sl3.innerHTML ="<option value='' selected>3차</option>";
+    }
+}
 
 	
 // image upload method

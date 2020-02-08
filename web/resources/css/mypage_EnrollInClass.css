@@ -27,15 +27,21 @@
 #sl1{
     width: 100px;
 }
-#sl2{
-    width: 130px;
-}
-.sl{
+
+.sl1{
     text-align-last: center;
     height: 25px;
     border: none;
     border-bottom: 1px solid lightgray;
     font-size: 10pt;
+}
+.sl23{
+    text-align-last: center;
+    height: 25px;
+    border: none;
+    border-bottom: 1px solid lightgray;
+    font-size: 10pt;
+    width: 130px;
 }
 .ct{
 	font-size: 9pt;

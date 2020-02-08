@@ -50,31 +50,22 @@
                                     <tr>
                                         <td class="tline1row">카테고리</td>
                                         <td>
-                                            <select name="" id="sl1" class="sl">
-                                                <option value="" selected>1차</option>
-                                                <option value="동적">동적</option>
-                                                <option value="정적">정적</option>
-                                            </select>
-                                            &nbsp;          
-                                            <select name="" id="sl2" class="sl">
-                                                <option value="" selected>2-1차</option>
-                                                <option value="액티비티">액티비티</option>
-                                                <option value="쿠킹">쿠킹</option>
-                                                <option value="예술">예술</option>
-                                                <option value="교육">교육</option>
-                                            </select>
-                                            &nbsp;          
-                                            <select name="" id="sl2" class="sl">
-                                                <option value="" selected>2-2차</option>
-                                                <option value="액티비티">액티비티</option>
-                                                <option value="쿠킹">쿠킹</option>
-                                                <option value="예술">예술</option>
-                                                <option value="교육">교육</option>
-                                            </select>
+										    <select name="category1" id="sl1" class="sl1" onchange="selectCategory1();">
+										        <option value="1차" selected>1차</option>
+										        <option value="동적">동적</option>
+										        <option value="정적">정적</option>
+										    </select>
+										    &nbsp;          
+										    <select name="category2" id="sl2" class="sl1 sl23" onchange="selectCategory2();">
+										        <option value='' selected>2차</option>
+										    </select>
+										    <select name="category3" id="sl3" class="sl1 sl23">
+										        <option value="" selected>3차</option>
+										    </select>
                                         </td>
                                     </tr>
+
                                     <tr><td><br></td></tr><tr><td><br></td></tr>
-                                    
                                     <tr>
                                         <td class="tline1row">클래스 형태</td>
                                         <td>
@@ -113,8 +104,7 @@
                                             <input type='file' onchange="readURL(this);" multiple>
                                         </td>
                                     </tr>
-                                    <tr><td><br></td></tr><tr><td><br></td></tr>
-                                    
+                                    <tr><td><br></td></tr><tr><td><br></td></tr> 
                                     <tr>
                                         <td class="tline1row">기간</td>
                                         <td id="modiTd" class="addSchedule23">
@@ -151,7 +141,6 @@
 	                            <br><br>
 	                            <h5 class="tline1row tt121">커리큘럼</h5>
 								<%@ include file="common/mypage_EnrollInClassTextarea1.jsp" %>
-								
 	                            <br><br><br>
 	                            <h5 class="tline1row tt121">수업 소개</h5>
 	                            <%@ include file="common/mypage_EnrollInClassTextarea2.jsp" %>
@@ -165,10 +154,7 @@
                     </div>
                 </div> 
             </div>
-            
-            <script type="text/javascript" src="/semi/resources/js/mypage_EnrollInClass.js"></script>
-			
-        
+        <script type="text/javascript" src="/semi/resources/js/mypage_EnrollInClass.js"></script>
         <%@ include file="./common/footer.jsp" %>
         
     </div>
