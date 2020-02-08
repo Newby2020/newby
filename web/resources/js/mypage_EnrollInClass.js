@@ -40,7 +40,7 @@ function readURL(input) {
 // 일정 항목 추가
 function addSchedule(){
     var ss = document.getElementById('sss');
-    ss.innerHTML += "<br><input class='date632' name='classDate' type='date'>&nbsp;&nbsp;&nbsp;<input class='date632' name='ClassStartTime' type='time'>&nbsp;&nbsp;~&nbsp;&nbsp;<input  class='date632' name='ClassFinishTime' type='time'>";
+    ss.innerHTML = "<span style='font-size: 10pt;'>시작날짜 </span>&nbsp;&nbsp;<input class='date632' name='classDate' type='date'>&nbsp;&nbsp;<input class='btn24' type='button' value='기간 설정' onclick='addSchedule();'><br><span style='font-size: 10pt;'>종료날짜</span>&nbsp;&nbsp;&nbsp;<input class='date632' name='classDate' type='date'>&nbsp;&nbsp;";
 }
    
 // 주소 API

@@ -118,15 +118,11 @@
                                     <tr><td><br></td></tr><tr><td><br></td></tr>
                                     
                                     <tr>
-                                        <td class="tline1row">일정</td>
+                                        <td class="tline1row">기간</td>
                                         <td id="sss" class="addSchedule23">
-                                            <input class="date632" name="classDate" type="date">
-                                            &nbsp;
-                                            <input class="date632" name="ClassStartTime" type="time">
-                                            &nbsp;~&nbsp;
-                                            <input  class="date632" name="ClassFinishTime" type="time">&nbsp;&nbsp;
-                                            &nbsp;&nbsp;
-                                            <input class="btn24" type="button" value="일정 추가" onclick="addSchedule();">
+                                        	<span style="font-size: 10pt;">원데이</span>&nbsp;&nbsp;
+                                            <input class="date632" name="classDate" type="date">&nbsp;&nbsp;
+                                            <input class="btn24" type="button" value="기간 설정" onclick="addSchedule();">
                                         </td>
                                     </tr>
 
