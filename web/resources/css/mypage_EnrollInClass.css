@@ -25,16 +25,17 @@
 }
 
 #sl1{
-    width: 120px;
+    width: 100px;
 }
 #sl2{
-    width: 150px;
+    width: 130px;
 }
 .sl{
     text-align-last: center;
-    height: 33px;
+    height: 25px;
     border: none;
     border-bottom: 1px solid lightgray;
+    font-size: 10pt;
 }
 .ct{
 	font-size: 9pt;
@@ -58,7 +59,7 @@
 }
 
 .addSchedule23{
-    height: 20px;
+    height: auto;
 }
 
 .date632{
@@ -69,12 +70,20 @@
     margin-bottom: 20px;
 }
 
+.dataCl{
+	border: none;
+    border-bottom: 1px solid lightgray;
+    text-align-last: center;
+    font-size: 9pt;
+    margin-top: 10px;
+}
+
 #zipCode13{
 	border: none;
     border-bottom: 1px solid lightgray;
     padding-left: 10px;
     width: 100px;
-    font-size: 10pt;
+    font-size: 9pt;
     height: 20px;
 }
 
@@ -84,7 +93,7 @@
     border-bottom: 1px solid lightgray;
     padding-left: 10px;
     width: 350px;
-    font-size: 10pt;
+    font-size: 9pt;
     height: 20px;
 }
 
@@ -94,9 +103,11 @@
     border-bottom: 1px solid lightgray;
     padding-left: 10px;
     width: 250px;
-    font-size: 10pt;
+    font-size: 9pt;
     height: 20px;
 }
+
+
 
 
 .btn24{
@@ -108,16 +119,32 @@
     border-radius: 15px;
     font-size: 9pt;
     cursor: pointer;
+    vertical-align: middle;
 }
 
-.textAreaTitle23{
-    margin-bottom: 10px;
+.tt121{
+	margin-bottom: 10px;
 }
 
-.centents263425{
+#object1{
     border-radius: 5px;
+    font-size: 9pt;
+    width: 500px;
 }
 
+#objectTextCount{
+	border: none;
+	text-align: right;
+	width: 25px;
+	font-weight: bold;
+	font-size: 11pt;
+	vertical-align: middle;
+}
+
+
+#divFi{
+	width: 750px;
+}
 .finalBtn24{
     background: rgb(9, 129, 241);
     color: white;
