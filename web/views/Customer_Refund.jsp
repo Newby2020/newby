@@ -13,8 +13,6 @@
 <link rel="stylesheet" href="/semi/resources/css/main-navibar.css">
 <link rel="stylesheet" href="/semi/resources/css/main-panel.css">
 <link rel="stylesheet" href="/semi/resources/css/mypage_h&j-frame.css">
-<link rel="stylesheet"
-	href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
 <link
 	href="https://fonts.googleapis.com/css?family=Nanum+Gothic|Noto+Sans+KR&display=swap"
 	rel="stylesheet">

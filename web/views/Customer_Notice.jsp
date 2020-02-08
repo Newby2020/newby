@@ -14,8 +14,7 @@
 <link rel="stylesheet" href="/semi/resources/css/main-panel.css">
 <link rel="stylesheet" href="/semi/resources/css/mypage_h&j-frame.css">
 <link rel="stylesheet" href="/semi/resources/css/Customer_table.css">
-<link rel="stylesheet"
-	href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+
 <link
 	href="https://fonts.googleapis.com/css?family=Nanum+Gothic|Noto+Sans+KR&display=swap"
 	rel="stylesheet">
@@ -192,18 +191,12 @@
 
 					<div>
 						<div style="display: inline-block">
-							<ul class="pagination">
-								<li class="page-item"><a class="page-link" href="#"
-									style="color: #0981F1;">Previous</a></li>
-								<li class="page-item"><a class="page-link" href="#"
-									style="color: #0981F1;">1</a></li>
-								<li class="page-item"><a class="page-link" href="#"
-									style="color: #0981F1;">2</a></li>
-								<li class="page-item"><a class="page-link" href="#"
-									style="color: #0981F1;">3</a></li>
-								<li class="page-item"><a class="page-link" href="#"
-									style="color: #0981F1;">Next</a></li>
-							</ul>
+							<button onclick="asd"><<</button>						
+							<button onclick="asd"><</button>						
+							<button onclick="num">1</button>						
+							<button onclick="num2">2</button>					
+							<button onclick="asd">></button>			
+							<button onclick="asd">>></button>
 						</div>
 					</div>
 
@@ -216,20 +209,20 @@
 		<%@ include file="./common/footer.jsp"%>
 	</div>
 	<script>
-        var dropdown = document.getElementsByClassName("dropdown-btnqo");
-        var i;
-  
-        for (i = 0; i < dropdown.length; i++) {
-            dropdown[i].addEventListener("click", function() {
-            this.classList.toggle("activeCl");
-            var dropdownContent = this.nextElementSibling;
-            if (dropdownContent.style.display === "block") {
-            dropdownContent.style.display = "none";
-            } else {
-            dropdownContent.style.display = "block";
-            }
-            });
-        }
-    </script>
+		var dropdown = document.getElementsByClassName("dropdown-btnqo");
+		var i;
+
+		for (i = 0; i < dropdown.length; i++) {
+			dropdown[i].addEventListener("click", function() {
+				this.classList.toggle("activeCl");
+				var dropdownContent = this.nextElementSibling;
+				if (dropdownContent.style.display === "block") {
+					dropdownContent.style.display = "none";
+				} else {
+					dropdownContent.style.display = "block";
+				}
+			});
+		}
+	</script>
 </body>
 </html>
