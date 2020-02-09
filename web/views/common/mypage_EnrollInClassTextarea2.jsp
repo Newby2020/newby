@@ -5,8 +5,7 @@
 <head>
 <meta charset="UTF-8">
 <title>introductionClass</title>
-<script src="/semi/resources/js/ckeditor/ckeditor.js"></script>
-<script src="/semi/resources/js/ckeditor/adapters/jquery.js"></script>
+<script src="//cdn.ckeditor.com/4.13.1/standard/ckeditor.js"></script>
 </head>
 <body>
 	<textarea name="editor2" id="editor2" class="tt121" cols="30" rows="6"></textarea>
