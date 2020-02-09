@@ -64,6 +64,17 @@
     border-radius: 5px; 
 }
 
+
+/* 이미지 업로드 */
+#files {
+    display: none;
+}
+#imgs{
+    margin: 5px;
+}
+
+
+
 .addSchedule23{
     height: auto;
 }

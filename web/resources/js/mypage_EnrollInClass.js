@@ -55,20 +55,45 @@ function selectCategory2(){
     }
 }
 
-	
-// image upload method
-function readURL(input) {
-    if (input.files && input.files[0]) {
-        var reader = new FileReader();
+// 다중 이미지 업로드 후 프리뷰
+function handleFileSelect(event) {
+    //Check File API support
+    if (window.File && window.FileList && window.FileReader) {
 
-        reader.onload = function (e) {
-            var bla = document.getElementById("blah");
+        var files = event.target.files; //FileList object
+        var output = document.getElementById("result");
+        if(files.length<=4){                        // 이미지 업로드 제한 갯수 설정
 
-            bla.setAttribute('src', e.target.result);
-        };
+            for (var i = 0; i < files.length; i++) {
+                var file = files[i];
 
-        reader.readAsDataURL(input.files[0]);
+                //Only pics
+                if (!file.type.match('image')) continue;
+
+                var picReader = new FileReader();
+                picReader.addEventListener("load", function (event) {
+                    var picFile = event.target;
+                    var span = document.createElement("span");
+                    span.innerHTML = "<img id='imgs' name='uploadImgs' class='thumbnail' src='" + picFile.result + "'" + "title='" + file.name + "' width='50px' height='50px'; style='border: 2px solid rgb(9, 129, 241); border-radius: 3px;'/>";
+                    output.insertBefore(span, null);
+                });
+                //Read the image
+                picReader.readAsDataURL(file);
+            }
+        } else {
+            alert("이미지파일 4개 이하로 업로드해주세요.");
+        }
+    } else {
+        console.log("Your browser does not support File API");
     }
+}
+
+document.getElementById('files').addEventListener('change', handleFileSelect, false);
+
+// 프리뷰 나타내기
+function displayPreview(){
+	var pView = document.getElementById('pView');
+	pView.style.display='flex';
 }
 
 

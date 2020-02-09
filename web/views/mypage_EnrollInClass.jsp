@@ -10,6 +10,7 @@
     <link rel="stylesheet" href="/semi/resources/css/main-panel.css">
     <link rel="stylesheet" href="/semi/resources/css/mypage_h&j-frame.css">
     <link rel="stylesheet" href="/semi/resources/css/mypage_EnrollInClass.css">
+    <script src="http://dmaps.daum.net/map_js_init/postcode.v2.js"></script>
     <script src="/semi/resources/jquery/jquery-3.4.1.min.js"></script>
 
 
@@ -99,9 +100,17 @@
                                     <tr>
                                         <td class="tline1row">이미지<br><small>(2MB 이하)</small></td>
                                         <td>
-                                            <img id="blah" src="http://placehold.it/180" alt="your image"/>
-                                            <br>
-                                            <input type='file' onchange="readURL(this);" multiple>
+                                                <div id="imageUpload12" style="display: flex;">
+											        <label for="files" style="cursor: pointer; margin-top: 10px;">
+											            <img src="/semi/resources/images/imgUploadIcon.png" alt="uploadIcon" width="62px" height="62px">    <!-- 이미지업로드아이콘 경로 제대로 설정해야함 -->
+											            <!-- <span style="font-size: 9pt;">이미지 4개 이하</span> -->
+											        </label>
+											        <input type='file' id="files" accept="image/*" onclick="displayPreview();" multiple/>
+													&nbsp;&nbsp;
+											        <div id="pView" style="display: none; margin: 10px;">
+											            <!-- <div style="font-size: 9pt; margin-top: 3px;">첨부파일&nbsp;&nbsp;&nbsp;</div>--><div id="result" style="border-radius: 3px; border: 1px solid #ebeef3; width: 257px; height: 62px; background-color: #F8F8F8; overflow: hidden; "></div>
+											        </div>
+											    </div>
                                         </td>
                                     </tr>
                                     <tr><td><br></td></tr><tr><td><br></td></tr> 
