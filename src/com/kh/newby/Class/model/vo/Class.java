@@ -1,4 +1,4 @@
-package com.kh.semi.newby.model.vo;
+package com.kh.newby.Class.model.vo;
 
 import java.io.Serializable;
 import java.sql.Date;
