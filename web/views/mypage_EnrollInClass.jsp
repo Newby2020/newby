@@ -36,7 +36,7 @@
                     <br>
                     <br>
                     <div id="contentsDivSize29">
-                        <form action="">
+                        <form action="<%= request.getContextPath() %>/cis.do" method="post" enctype="multipart/form-data">
                             <table>
                                 <tbody>
                                     <tr>
@@ -105,7 +105,7 @@
 											            <img src="/semi/resources/images/imgUploadIcon.png" alt="uploadIcon" width="62px" height="62px">    <!-- 이미지업로드아이콘 경로 제대로 설정해야함 -->
 											            <!-- <span style="font-size: 9pt;">이미지 4개 이하</span> -->
 											        </label>
-											        <input type='file' id="files" accept="image/*" onclick="displayPreview();" multiple/>
+											        <input type='file' id="files" name="files" accept="image/*" onclick="displayPreview();" multiple/>
 													&nbsp;&nbsp;
 											        <div id="pView" style="display: none; margin: 10px;">
 											            <!-- <div style="font-size: 9pt; margin-top: 3px;">첨부파일&nbsp;&nbsp;&nbsp;</div>--><div id="result" style="border-radius: 3px; border: 1px solid #ebeef3; width: 257px; height: 62px; background-color: #F8F8F8; overflow: hidden; "></div>
@@ -140,7 +140,7 @@
                                     	<td class="tline1row tt121">수업 대상</td>
                                     	<td>
                                     		<textarea name="object1" id="object1" cols="30" rows="5" onKeyDown="limitText(this.form.object1,this.form.countdown2,200);" 
-            										onKeyUp="limitText(this.form.object1,this.form.countdown2,200);" maxlength="200"></textarea>&nbsp;
+            										onKeyUp="limitText(this.form.object1,this.form.countdown2,200);" maxlength="200"></textarea>
             								<font size="2"><input id="objectTextCount" class="objectTextCount1" readonly type="text" size="2" name="countdown2" value="0">
             								<span style="vertical-align: middle;">/200자</span></font>
                                     	</td>

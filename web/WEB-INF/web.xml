@@ -3,6 +3,5 @@
   <display-name>Newby_semiProject</display-name>
   <welcome-file-list>
     <welcome-file>index.jsp</welcome-file>
-    <!-- <welcome-file>views/admin_index.jsp</welcome-file> --> <!-- 확인용이니 지우지 말아주세 -->
   </welcome-file-list>
 </web-app>
