@@ -1,5 +1,9 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+    pageEncoding="UTF-8" import="com.kh.newby.Member.model.vo.*"%>
+
+<%
+	 Member m = (Member)session.getAttribute("member");
+%>
 <!DOCTYPE html>
 <html lang="ko">
 <head>
@@ -34,6 +38,8 @@
 	        <a href="/semi/views/admin_index.jsp">관리자페이지</a>
 	    </label>
 		<span class="divider1">|</span>
+		
+		<% if (m == null) {%>
 	    <label id="login" class="top-nav">
 	        <a>로그인 </a>
 	    </label>
@@ -41,6 +47,8 @@
 	    <label id="signIn" class="top-nav">
 	        <a>회원가입</a>
 	    </label>
+	    <% }else{} %>
+	    
 	  </div>
 	</div>
 	
@@ -51,7 +59,8 @@
     <div class="LoginModal_Content">
       <span class="loginClose">&times;</span>                                                               
       
-          <form id="mainLoginForm">
+          <form id="mainLoginForm" action="/semi/login.me" >
+          
               <div class="guideSentence">
                   <label style="line-height: 2em;"><b>&nbsp;&nbsp;&nbsp;로그인</b></label><br>
                   <hr style="width: 310px;"> 
@@ -67,7 +76,9 @@
                   </div>
               </div>
               <br><br><br>
-              <center><button onclick="buttonLogin();" id="buttonLogin" class="buttonLogin">로그인</button></center> 
+              <div align="center">
+              	<button onclick="buttonLogin();" id="buttonLogin" class="buttonLogin">로그인</button>
+              </div> 
               <br>
               <div class="findIdAndPassword">
                   <a href="" id="findIdAndPassword">아이디/비밀번호 찾기</a>
@@ -92,9 +103,13 @@
       </div> 
       <div id="requiredWrap">
           <div class="required">
-              <input type="text" class="joinInfo" name="user_login" value="" maxlength=100; placeholder="아이디 입력">
-              <button onclick="checkId" id="checkId">중복 확인</button>
+              <input type="text" class="joinInfo" name="user_login" value="" maxlength=100; placeholder="이메일 주소 입력">
+              <button onclick="checkId" id="checkId" name="">중복 확인</button>
           </div> 
+          <div class="required">
+              <input type="text" class="joinInfo" id="user_Nickname" name="user_Nickname" value="" maxlength=100; placeholder="닉네임 입력">
+              <button onclick="checkNickname" id="checkNickname" name="">중복 확인</button>
+          </div>
           <div class="required">
               <input type="password" class="joinInfo" id="password" name="password" value="" maxlength=100; placeholder="비밀번호 입력">
           </div>
@@ -109,18 +124,15 @@
               <input type="text" class="joinInfo" id="securePhone" name="securePhone" maxlength=4 style="width: 60px;" placeholder="인증코드">
               <button onclick="secureButton();" id="secureButton" class="secureButton">인증</button>
           </div>
-          <div class="required">
-              <input type="text" class="joinInfo" id="user_email" name="user_email" value="" maxlength=100; placeholder="이메일 입력">
-          </div>
       </div>
       <br><br>
-      <div class="announce">
-          <center><input type="checkbox" id="agree" name="agree">
-          <label>이용약관, 개인정보 처리방침, 위치기반 서비스 이용약관에 동의합니다.</label></center>
+      <div class="announce" align="center">
+          <input type="checkbox" id="agree" name="agree">
+          <label>이용약관, 개인정보 처리방침, 위치기반 서비스 이용약관에 동의합니다.</label>
       </div>
-      <div class="announce">
+      <div class="announce" align="center">
           <br><br>
-          <center><label>NewBy는 만 18세 이상 회원만 이용 가능합니다.</label></center>
+          <label>NewBy는 만 18세 이상 회원만 이용 가능합니다.</label>
           <br><br>
       </div>
 
