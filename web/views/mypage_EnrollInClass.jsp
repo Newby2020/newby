@@ -100,26 +100,32 @@
                                     <tr>
                                         <td class="tline1row">이미지<br><small>(2MB 이하)</small></td>
                                         <td>
-                                                <div id="imageUpload12" style="display: flex;">
-											        <label for="files" style="cursor: pointer; margin-top: 10px;">
-											            <img src="/semi/resources/images/imgUploadIcon.png" alt="uploadIcon" width="62px" height="62px">    <!-- 이미지업로드아이콘 경로 제대로 설정해야함 -->
-											            <!-- <span style="font-size: 9pt;">이미지 4개 이하</span> -->
-											        </label>
-											        <input type='file' id="files" name="files" accept="image/*" onclick="displayPreview();" multiple/>
-													&nbsp;&nbsp;
-											        <div id="pView" style="display: none; margin: 10px;">
-											            <!-- <div style="font-size: 9pt; margin-top: 3px;">첨부파일&nbsp;&nbsp;&nbsp;</div>--><div id="result" style="border-radius: 3px; border: 1px solid #ebeef3; width: 257px; height: 62px; background-color: #F8F8F8; overflow: hidden; "></div>
-											        </div>
-											    </div>
+                                            <div id="imageUpload12" style="display: flex;">
+										        <label for="files" style="cursor: pointer; margin-top: 10px;">
+										            <img src="/semi/resources/images/imgUploadIcon.png" alt="uploadIcon" width="62px" height="62px">    <!-- 이미지업로드아이콘 경로 제대로 설정해야함 -->
+										            <!-- <span style="font-size: 9pt;">이미지 4개 이하</span> -->
+										        </label>
+										        <input type='file' id="files" name="files[]" accept="image/*" onclick="displayPreview();" multiple/>
+												&nbsp;&nbsp;
+										        <div id="pView" style="display: none; margin: 10px;">
+										            <!-- <div style="font-size: 9pt; margin-top: 3px;">첨부파일&nbsp;&nbsp;&nbsp;</div>-->
+										            <div id="result" style="border-radius: 3px; border: 1px solid #ebeef3; width: 257px; height: 62px; background-color: #F8F8F8; overflow: hidden; ">
+										            </div>
+										        </div>
+										    </div>
                                         </td>
                                     </tr>
                                     <tr><td><br></td></tr><tr><td><br></td></tr> 
                                     <tr>
-                                        <td class="tline1row">기간</td>
-                                        <td id="modiTd" class="addSchedule23">
-                                        	<span style="font-size: 10pt;">원데이</span>&nbsp;&nbsp;
-                                            <input class="dataCl" name="classDate" type="date">&nbsp;&nbsp;
-                                            <input class="btn24" type="button" value="기간 설정" onclick="increasePeriod();">
+                                        <td class="tline1row">일정</td>
+                                        <td class="addSchedule23">
+                                        	<div id="div11">
+											    <input name='classDate1' type='date' class='dataCl'>&nbsp;
+											    <input name='startTime1' type='time' class='dataCl'>
+											    &nbsp;~&nbsp;
+											    <input name='endTime1' type='time' class='dataCl'>
+											    <input type='button' class='btn24' value='추가' onclick='addSchedule();'>
+											</div>
                                         </td>
                                     </tr>
                                     <tr><td><br></td></tr><tr><td><br></td></tr>

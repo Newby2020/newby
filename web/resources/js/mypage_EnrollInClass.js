@@ -74,7 +74,7 @@ function handleFileSelect(event) {
                 picReader.addEventListener("load", function (event) {
                     var picFile = event.target;
                     var span = document.createElement("span");
-                    span.innerHTML = "<img id='imgs' name='uploadImgs' class='thumbnail' src='" + picFile.result + "'" + "title='" + file.name + "' width='50px' height='50px'; style='border: 2px solid rgb(9, 129, 241); border-radius: 3px;'/>";
+                    span.innerHTML = "<img id='imgs' name='uploadImgs[]' class='thumbnail' src='" + picFile.result + "'" + "title='" + file.name + "' width='50px' height='50px'; style='border: 2px solid rgb(9, 129, 241); border-radius: 3px;'/>";
                     output.insertBefore(span, null);
                 });
                 //Read the image
@@ -96,20 +96,11 @@ function displayPreview(){
 	pView.style.display='flex';
 }
 
-
-// 원데이 날짜 설정
-function onedayClass(){
-	var ss = document.getElementById('modiTd');
-	ss.innerHTML = "<span style='font-size: 10pt;'>원데이</span>&nbsp;&nbsp;<input class='dataCl' name='classDate' type='date'>&nbsp;&nbsp;<input class='btn24' type='button' value='기간 설정' onclick='increasePeriod();'>";
+// 불규칙 날짜 설정
+function addSchedule(){
+    var div = document.getElementById('div11');
+    div.innerHTML += "<br><input name='classDate1' type='date' class='dataCl'>&nbsp;&nbsp;<input name='startTime1' type='time' class='dataCl'>&nbsp;&nbsp;~&nbsp;&nbsp;<input name='endTime1' type='time' class='dataCl'>";
 }
-
-
-// 기간 설정
-function increasePeriod(){
-    var ss = document.getElementById('modiTd');
-    ss.innerHTML = "<span style='font-size: 10pt;'>시작날짜 </span>&nbsp;&nbsp;<input class='dataCl' name='classDate' type='date'>&nbsp;&nbsp;<input class='btn24' type='button' value='되돌아가기' onclick='onedayClass();'><br><span style='font-size: 10pt;'>종료날짜</span>&nbsp;&nbsp;&nbsp;<input class='dataCl' name='classDate' type='date'>&nbsp;&nbsp;";
-}
-
 
 // 주소 API
 function SearchAddr() {

@@ -1,6 +1,9 @@
 package com.kh.newby.Class.controller;
 
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.Enumeration;
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -52,7 +55,7 @@ public class ClassInsertServlet extends HttpServlet {
 				String root = request.getServletContext().getRealPath("/");
 				
 				// 게시판의 첨부파일을 저장할 폴더 이름 지정하기
-				String savePath = root + "resources/imgUploadFiles";
+				String savePath = root + "resources/uploadFiles";
 				
 				// 4. 실제 담아온 파일 기타 정보들을 활용하여
 				//	  MultipartRequest 객체 생성하기
@@ -68,14 +71,15 @@ public class ClassInsertServlet extends HttpServlet {
 															//숫자를 붙이는 규칙
 												);
 				
-				// -- 파일 업로드 실시
-				// 5-1 기본 전송값 처리하기
+				ArrayList<String> filename = new ArrayList<String>();
 				
-				// 5-2. 전송된 파일 처리
-				// 전달받은 파일을 먼저 저장하고, 그 파일의 이름을 가져오는 메소드
-//				String[] fileName = mrequest.getParameterValues("files");
-//				System.out.println(fileName);
-				
+				Enumeration<String> files = mrequest.getFileNames();
+				while(files.hasMoreElements()){
+				String name = files.nextElement();
+				filename.add(mrequest.getFilesystemName(name));
+				System.out.println(filename.toString());
+				}
+
 	}
 
 	/**
