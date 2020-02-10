@@ -7,6 +7,10 @@
     <title>결제</title>
     <link rel="stylesheet" type="text/css" href="/semi/resources/css/payment.css">
     <link href="https://fonts.googleapis.com/css?family=Nanum+GothicNoto+Sans+KR&display=swap" rel="stylesheet">
+    
+    <script type="text/javascript" src="https://code.jquery.com/jquery-1.12.4.min.js" ></script>
+	<script type="text/javascript" src="https://service.iamport.kr/js/iamport.payment-1.1.2.js"></script>
+	
     <style>
         *{
             font-family: 'Noto Sans KR', sans-serif;  

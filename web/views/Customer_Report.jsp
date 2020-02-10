@@ -14,10 +14,7 @@
 <link rel="stylesheet" href="/semi/resources/css/main-panel.css">
 <link rel="stylesheet" href="/semi/resources/css/mypage_h&j-frame.css">
 <link rel="stylesheet" href="/semi/resources/css/Customer_btn.css">
-
-<link
-	href="https://fonts.googleapis.com/css?family=Nanum+Gothic|Noto+Sans+KR&display=swap"
-	rel="stylesheet">
+<link href="https://fonts.googleapis.com/css?family=Nanum+GothicNoto+Sans+KR&display=swap" rel="stylesheet">
 <script src="/semi/jquery/jquery-3.4.1.min.js"></script>
 </head>
 <body>
@@ -45,10 +42,10 @@
 			<!--contents-->
 			<div id="mn16s" align="center">
 
-				<br>
-				<h2>신고</h2>
+				
 				<!-- 제목란이니깐 해당 제목 작성해서 하면 돼-->
 				<br>
+				<h2>신고</h2>
 				<hr id="hrSet53">
 				<br> <br>
 
