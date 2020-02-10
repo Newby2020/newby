@@ -14,7 +14,7 @@
 <link rel="stylesheet" href="/semi/resources/css/main-panel.css">
 <link rel="stylesheet" href="/semi/resources/css/mypage_h&j-frame.css">
 <link
-	href="https://fonts.googleapis.com/css?family=Nanum+Gothic|Noto+Sans+KR&display=swap"
+	href="https://fonts.googleapis.com/css?family=Nanum+GothicNoto+Sans+KR&display=swap"
 	rel="stylesheet">
 <script src="/semi/jquery/jquery-3.4.1.min.js"></script>
 </head>
@@ -42,11 +42,10 @@
 
 			<!--contents-->
 			<div id="mn16s" align="center">
-
-				<br>
-				<h2>이용 약관</h2>
+				
 				<!-- 제목란이니깐 해당 제목 작성해서 하면 돼-->
 				<br>
+				<h2>이용 약관</h2>
 				<hr id="hrSet53">
 				<br> <br>
 
@@ -82,27 +81,28 @@
 		<%@ include file="./common/footer.jsp"%>
 	</div>
 	<script>
-        var dropdown = document.getElementsByClassName("dropdown-btnqo");
-        var i;
-  
-        for (i = 0; i < dropdown.length; i++) {
-            dropdown[i].addEventListener("click", function() {
-            this.classList.toggle("activeCl");
-            var dropdownContent = this.nextElementSibling;
-            if (dropdownContent.style.display === "block") {
-            dropdownContent.style.display = "none";
-            } else {
-            dropdownContent.style.display = "block";
-            }
-            });
-        }
+		var dropdown = document.getElementsByClassName("dropdown-btnqo");
+		var i;
 
-        function btn1(){
-            var width = screen.width;
-            var height = screen.height;
+		for (i = 0; i < dropdown.length; i++) {
+			dropdown[i].addEventListener("click", function() {
+				this.classList.toggle("activeCl");
+				var dropdownContent = this.nextElementSibling;
+				if (dropdownContent.style.display === "block") {
+					dropdownContent.style.display = "none";
+				} else {
+					dropdownContent.style.display = "block";
+				}
+			});
+		}
 
-            child = window.open(herf="Find.jsp","찾아보기","location=no,resizeable=no,width=500, height=300");
-        }
-    </script>
+		function btn1() {
+			var width = screen.width;
+			var height = screen.height;
+
+			child = window.open(herf = "Find.jsp", "찾아보기",
+					"location=no,resizeable=no,width=500, height=300");
+		}
+	</script>
 </body>
 </html>
