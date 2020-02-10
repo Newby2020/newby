@@ -92,9 +92,13 @@
       </div> 
       <div id="requiredWrap">
           <div class="required">
-              <input type="text" class="joinInfo" name="user_login" value="" maxlength=100; placeholder="아이디 입력">
+              <input type="text" class="joinInfo" name="user_login" value="" maxlength=100; placeholder="이메일 주소 입력">
               <button onclick="checkId" id="checkId">중복 확인</button>
           </div> 
+          <div class="required">
+              <input type="text" class="joinInfo" id="user_Nickname" name="user_Nickname" value="" maxlength=100; placeholder="닉네임 입력">
+              <button onclick="checkNickname" id="checkNickname">중복 확인</button>
+          </div>
           <div class="required">
               <input type="password" class="joinInfo" id="password" name="password" value="" maxlength=100; placeholder="비밀번호 입력">
           </div>
@@ -110,7 +114,7 @@
               <button onclick="secureButton();" id="secureButton" class="secureButton">인증</button>
           </div>
           <div class="required">
-              <input type="text" class="joinInfo" id="user_email" name="user_email" value="" maxlength=100; placeholder="이메일 입력">
+              <input type="text" class="joinInfo" id="user_email" name="user_email" value="" maxlength=100; placeholder="닉네임 입력">
           </div>
       </div>
       <br><br>
