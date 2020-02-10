@@ -37,6 +37,12 @@ public class Member implements Serializable{
 	
 	
 
+	public Member(String m_id, String m_pwd) {
+		super();
+		this.m_id=m_id;
+		this.m_pwd=m_pwd;
+	}
+
 	public String getM_no() {
 		return m_no;
 	}
