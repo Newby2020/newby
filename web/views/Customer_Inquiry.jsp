@@ -57,7 +57,7 @@
 					<!-- 여기다가 너가 작업한거 넣으면 돼-->
 					<hr>
 
-					<table>
+					<table class="tbNo">
 						<tr>
 							<th colspan="1" class="tab1">번호</th>
 							<th colspan="6" class="tab1">제목</th>
