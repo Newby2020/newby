@@ -14,18 +14,10 @@
 <body>
 	<div class="newby-header" id="newby-header-var" style="margin-left: auto; margin-right: auto;">
 
-	  <img src="/semi/resources/images/Logo(120x50px).png" alt="로고"  height="50px" id="newby-logo" onclick="newbyMain();">  
+	  <img src="/semi/resources/images/Logo(120x50px).png" alt="로고"  height="50px" id="newby-logo" onclick="newbyMain();" style="cursor: pointer;">  
 
 
 	  <div id="header-navibar23" align="right">
-	    <label id="login" class="top-nav">
-	        <a>로그인 </a>
-	    </label>
-		<span class="divider1">|</span>
-	    <label id="signIn" class="top-nav">
-	        <a>회원가입</a>
-	    </label>
-		<span class="divider1">|</span>
 	    <label id="toHost" class="top-nav">
 	        <a href="/semi/views/hostSignIn.jsp">호스트신청</a>
 	    </label>
@@ -40,6 +32,14 @@
 		<span class="divider1">|</span>
 	    <label id="AdminPage" class="top-nav">
 	        <a href="/semi/views/admin_index.jsp">관리자페이지</a>
+	    </label>
+		<span class="divider1">|</span>
+	    <label id="login" class="top-nav">
+	        <a>로그인 </a>
+	    </label>
+		<span class="divider1">|</span>
+	    <label id="signIn" class="top-nav">
+	        <a>회원가입</a>
 	    </label>
 	  </div>
 	</div>
