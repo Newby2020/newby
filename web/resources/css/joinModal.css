@@ -34,7 +34,7 @@
             cursor: pointer;
         }
         #joinForm{
-            margin: 10%;
+            margin: 5%;
         }
         .guideSentence{
             font-size: 20px;
@@ -53,20 +53,18 @@
             width: 70px;
             height: 20px;
             border: none;
-            color: gray;
-            background-color: lightgray;
+            color: black;
             cursor : pointer;
         }
         .announce{
-            font-size: 11px;
+            font-size: 12px;
             padding: 5px;
         }
         .secureButton{
             width: 40px;
             height: 20px;
             border: none;
-            color: gray;
-            background-color: lightgray;
+            color: black;
             cursor : pointer;
         }
         .buttonJoin{
