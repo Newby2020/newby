@@ -1,15 +1,39 @@
 @charset "UTF-8";
-.tab1{border:1px solid black;
+.tab1{border:1px solid #ebeef3;
+	border-left:none;
+	border-right:none;
     font-size: 20px;
     text-align: center;
+    
 }
 
-.tb2{border:1px solid black;
-     font-size: 15px;
-     text-align: center;}
+.tb2{border:1px solid #ebeef3;
+	border-left:none;
+	border-right:none;
+    font-size: 15px;
+    text-align: center;
+    width:180px;
+    }
 
-.tb3{border:1px solid black;
-     font-size: 15px;
-     cursor: pointer;} 
+.tb3{border:1px solid #ebeef3;
+	border-left:none;
+	border-right:none;
+    font-size: 15px;
+    ursor: pointer;
+    }
+     
+.tb3:hover{text-decoration: underline;} 
+
 .tbNo { border-collapse: collapse; }
+
+.tbDetail { border-collapse: collapse; 
+			}
+			
+.tdSpan {border:1px solid #ebeef3;
+		 margin:auto;}
+
+
+.tdDetail{border:1px solid #ebeef3;
+		  margin:auto;}
+
      

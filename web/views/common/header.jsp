@@ -136,7 +136,7 @@
           <br><br>
       </div>
 
-      <center><button onclick="buttonJoin();" id="buttonJoin" class="buttonJoin">가입하기</button></center> 
+      <button onclick="buttonJoin();" id="buttonJoin" class="buttonJoin">가입하기</button> 
     </form>
     </div>
 </div>
