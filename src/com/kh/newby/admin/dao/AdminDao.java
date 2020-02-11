@@ -5,8 +5,11 @@ import java.io.FileReader;
 import java.io.IOException;
 import java.sql.Connection;
 import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.Properties;
+
+import static com.kh.newby.common.JDBCTemplate.*;
 
 public class AdminDao {
 	
@@ -32,10 +35,20 @@ public class AdminDao {
 		ResultSet rset = null;
 		
 		String sql = prop.getProperty("listCount");
-		
-//		stmt = con.create
-		
-		
+
+		try {
+			stmt = con.createStatement();
+			rset = stmt.executeQuery(sql);
+			
+			if(rset.next()) {
+				listCount = rset.getInt(1);
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(rset);
+			close(stmt);
+		}
 		return listCount;
 	}
 	
