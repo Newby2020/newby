@@ -5,8 +5,8 @@ html{
 .index-body {
 	width: 100% !important;
 	height: 100% !important;
-/* 	min-width: 1920px !important;
-	min-height: 1080px !important; */
+ 	min-width: 1920px !important;
+	min-height: 1080px !important;
 }
 
 #main_search {
@@ -34,7 +34,7 @@ html{
 
 #searchArea{
 	display: inline-block;
-	width: 60%;
+	width: 70%;
 	height: 63px;
 	padding-left: 25px;
 	font-size: 18px;
