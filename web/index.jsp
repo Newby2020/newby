@@ -11,6 +11,7 @@
  	<link rel="stylesheet" href="/semi/resources/css/footer.css">
  	
  	<script src="/semi/resources/js/indexPage-category.js"></script>
+ 	<script src="/semi/resources/js/mainIndex.js"></script>
 
 	<script src="/semi/resources/jquery/jquery-3.4.1.min.js"></script>
 </head>
@@ -37,7 +38,7 @@
 		
 		<br><br><br><br><br><br>
 		<div>	
-			<hr style="width: 70%; margin-bottom: 20px; border: 1.5px solid gainsboro;" align="center">
+			<hr style="width: 70%; margin-bottom: 20px; border: 1.5px solid #ebeef3;" align="center">
 		</div>
 		<br>
 		<div style="width: 50%; float: left;">
@@ -53,9 +54,9 @@
                     	<img src="/semi/resources/images/active1.jpg" id="chr-category-img" onclick="dynamicImg();">
                     </div>
                     <div style="padding: 10px;">
-                    	<p class="mention-categoty">#신나는</p>
-                    	<p class="mention-categoty">#활기찬</p>
-                    	<p class="mention-categoty">#여럿 혹은 많은 사람들과</p>
+                    	<p class="mention-category">#신나는</p>
+                    	<p class="mention-category">#활기찬</p>
+                    	<p class="mention-category">#여럿 혹은 많은 사람들과</p>
                     </div>
                 </div>
                 
@@ -64,37 +65,63 @@
                 		<img src="/semi/resources/images/quiet1.jpg" id="chr-category-img" onclick="staticImg();">
                 	</div>
                 	<div style="padding: 10px;">
-                    	<p class="mention-categoty">#차분한</p>
-                    	<p class="mention-categoty">#조용한</p>
-                    	<p class="mention-categoty">#소수의 사람들 또는 혼자</p>
+                    	<p class="mention-category">#차분한</p>
+                    	<p class="mention-category">#조용한</p>
+                    	<p class="mention-category">#소수의 사람들 또는 혼자</p>
                     </div>
                 </div>
               </div>
 
 			  <br><br>
-			  <hr style="width: 100%; border: 1.5px solid #ebeef3;" align="center">
-			  <br><br>
+			  <div>	
+			  	<hr style="width: 100%; margin-bottom: 20px; border: 1.5px solid #ebeef3;" align="center">
+			  </div>
+			  <br>
+				<div style="width: 25%; float: left;">
+				<label style="text-align: left; font-size: 20px;">#해시태그</label>
+			  </div>	
+			  <br><br><br><br>
 			  
-              <div class="main-category-sum">
-                <div class="main-category" id="cate-activity">
-                <img class="card-img-top" src="/semi/resources/images/activities.png" onclick="activityImg();"><br>
-             	      액티비티
+			  <div id="main-category-sum">
+                <div class="main-category">
+                    <div class="img-category1">
+                    	<img class="card-img-top" src="/semi/resources/images/sports.jpg" onclick="activityImg();">
+                    </div>
+                    <div style="height: 30px;" >
+                    	<p class="mention-category1" style="margin-top: 5px;">액티비티</p>
+                    </div>
                 </div>
-                <div class="main-category" id="cate-art">          
-                <img class="card-img-top" src="/semi/resources/images/art2.png" onclick="artImg();"><br>
-                	    예술
+                
+                <div class="main-category">
+                	<div class="img-category1">
+                		<img class="card-img-top" src="/semi/resources/images/art.jpg" onclick="artImg();">
+                	</div>
+                	<div style="height: 30px;">
+                    	<p class="mention-category1" style="margin-top: 5px;">예술</p>
+                    </div>
                 </div>
-                <div class="main-category" id="cate-cooking">
-                <img class="card-img-top" src="/semi/resources/images/cook2.png" onclick="cookingImg();"><br>  
-                	    쿠킹
+                
+                <div class="main-category">
+                	<div class="img-category1">
+                		<img class="card-img-top" src="/semi/resources/images/cook.jpg" onclick="cookingImg();">
+                	</div>
+                	<div style="height: 30px;">
+                    	<p class="mention-category1" style="margin-top: 5px;">쿠킹</p>
+                    </div>
                 </div>
-                <div class="main-category" id="cate-it">
-                <img class="card-img-top" src="/semi/resources/images/it2.png" onclick="eduImg();"><br>
-                   	 교육
+                
+                <div class="main-category">
+                	<div class="img-category1">
+                		<img class="card-img-top" src="/semi/resources/images/edu.jpg" onclick="eduImg();">
+                	</div>
+                	<div style="height: 30px;">
+                    	<p class="mention-category1" style="margin-top: 5px;">교육</p>
+                    </div>
                 </div>
-            </div>
-
+              </div>
         </div>
+        
+        <br><br><br><br><br><br><br><br><br><br><br><br>
         
         <%@ include file = "views/common/footer.jsp" %>
      </div> 
