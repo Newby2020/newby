@@ -12,33 +12,69 @@
  	
  	<script src="/semi/resources/js/indexPage-category.js"></script>
 
+	<script src="/semi/resources/jquery/jquery-3.4.1.min.js"></script>
 </head>
 <body>
 	<div id="Allpanel" align="center">
+	<div class="index-body">
 			<%@ include file="views/common/header.jsp" %>
-		<br><br>
+		<br><br><br><br><br><br><br><br>
 		<div id="mainPage_searchvar" style="margin-left: auto; margin-right: auto;">
-			<h2>당신이 찾는</h2>
-			<h2>취미는 무엇인가요?</h2>
-			<input type="text" id="main_search" style="width:30%">
+			<label style="font-size: 45px;">당신이 찾는 
+			<span style="font-size: 45px; color: rgb(9, 129, 241);">취미</span>는 무엇인가요?</label>
+			
+			<br><br><br><br>
+			
+			<div id="main_search">
+				<div id="under_main_search">
+					<img src="/semi/resources/images/magnifyingGlass.png" id="magnifyingGlass">
+					<span id="searchDivider">|</span>
+					<input type="text" id="searchArea" onclick="searchBar();" placeholder="  참가하고 싶은 클래스를 검색해 보세요">
+					<button id="searchClass">클래스 찾기</button>
+				</div>
+			</div>
 		</div>
 		
-		<div id="newby-body-panel">
+		<br><br><br><br><br><br>
+		<div>	
+			<hr style="width: 70%; margin-bottom: 20px; border: 1.5px solid gainsboro;" align="center">
+		</div>
+		<br>
+		<div style="width: 50%; float: left;">
+			<label style="text-align: left; font-size: 20px;">#신나는 #차분한</label>
+		</div>	
 		
+		<br><br>
+		
+		<div id="newby-body-panel">
               <div id="chr-category">
                 <div class="chr-category">
-                    <img src="/semi/resources/images/act-category.png" id="chr-category-img" width="100%" height="230px" onclick="dynamicImg();">
+                    <div class="img-category">
+                    	<img src="/semi/resources/images/active1.jpg" id="chr-category-img" onclick="dynamicImg();">
+                    </div>
+                    <div style="padding: 10px;">
+                    	<p class="mention-categoty">#신나는</p>
+                    	<p class="mention-categoty">#활기찬</p>
+                    	<p class="mention-categoty">#여럿 혹은 많은 사람들과</p>
+                    </div>
                 </div>
                 
                 <div class="chr-category">
-                   <img src="/semi/resources/images/quiet.png" id="chr-category-img" width="100%" height="230px" onclick="staticImg();">
+                	<div class="img-category">
+                		<img src="/semi/resources/images/quiet1.jpg" id="chr-category-img" onclick="staticImg();">
+                	</div>
+                	<div style="padding: 10px;">
+                    	<p class="mention-categoty">#차분한</p>
+                    	<p class="mention-categoty">#조용한</p>
+                    	<p class="mention-categoty">#소수의 사람들 또는 혼자</p>
+                    </div>
                 </div>
               </div>
 
-              <br><br><br>
-              <hr>
-              <br><br><br>
-
+			  <br><br>
+			  <hr style="width: 100%; border: 1.5px solid #ebeef3;" align="center">
+			  <br><br>
+			  
               <div class="main-category-sum">
                 <div class="main-category" id="cate-activity">
                 <img class="card-img-top" src="/semi/resources/images/activities.png" onclick="activityImg();"><br>
@@ -62,9 +98,8 @@
         
         <%@ include file = "views/common/footer.jsp" %>
      </div> 
-     
-     <script>
-
-     </script>
+	 </div>     
+	 <script>
+	 </script>
 </body>
 </html>
