@@ -107,7 +107,7 @@
 											    </label>
 											    <input type='file' id="input_imgs" name="input_imgs" accept="image/*" style="display: none;" multiple/>
 											    &nbsp;&nbsp;
-		<!-- 단일할지 다중할지 수정할거임 -->					<div id="pView" style="display: none; margin: 10px;">
+		<!-- 단일할지 다중할지 수정할거임 -->					<div id="pView" style="display: flex; margin: 10px;">
 											        <!-- <div style="font-size: 9pt; margin-top: 3px;">첨부파일&nbsp;&nbsp;&nbsp;</div>-->
 												    <div class="imgs_wrap" style="border-radius: 3px; border: 1px solid #ebeef3; width: 400px; height: 62px; background-color: #F8F8F8; overflow: hidden; ">
 												    </div>

@@ -3,6 +3,8 @@ package com.kh.newby.Member.model.vo;
 import java.io.Serializable;
 import java.sql.Date;
 
+import oracle.net.aso.h;
+
 public class Member implements Serializable{
 
 	/**
@@ -17,13 +19,14 @@ public class Member implements Serializable{
 	private String m_phone;
 	private Date m_enrollDate;
 	private int m_mileage;
+	private String h_no;
 	
 	public Member() {
 		
 	}
 
 	public Member(String m_no, String m_id, String m_nick, String m_pwd, String m_name, String m_phone,
-			Date m_enrollDate, int m_mileage) {
+			Date m_enrollDate, int m_mileage, String h_no) {
 		super();
 		this.m_no = m_no;
 		this.m_id = m_id;
@@ -33,6 +36,7 @@ public class Member implements Serializable{
 		this.m_phone = m_phone;
 		this.m_enrollDate = m_enrollDate;
 		this.m_mileage = m_mileage;
+		this.h_no = h_no;
 	}
 	
 	
@@ -41,6 +45,14 @@ public class Member implements Serializable{
 		super();
 		this.m_id=m_id;
 		this.m_pwd=m_pwd;
+	}
+
+	public String getH_no() {
+		return h_no;
+	}
+
+	public void setH_no(String h_no) {
+		this.h_no = h_no;
 	}
 
 	public String getM_no() {
@@ -105,6 +117,13 @@ public class Member implements Serializable{
 
 	public void setM_mileage(int m_mileage) {
 		this.m_mileage = m_mileage;
+	}
+
+	@Override
+	public String toString() {
+		return "Member [m_no=" + m_no + ", m_id=" + m_id + ", m_nick=" + m_nick + ", m_pwd=" + m_pwd + ", m_name="
+				+ m_name + ", m_phone=" + m_phone + ", m_enrollDate=" + m_enrollDate + ", m_mileage=" + m_mileage
+				+ ", h_no=" + h_no + "]";
 	}
 	
 	

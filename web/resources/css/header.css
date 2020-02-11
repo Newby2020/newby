@@ -50,3 +50,10 @@
     height: 11px;
     color : #ebeef3;
 }
+
+#logoutBtn{
+	
+	background-color: rgb(9, 129, 241);
+	color : white;
+	cursor: pointer;
+}

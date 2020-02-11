@@ -32,8 +32,8 @@ public class LoginServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		String userId = request.getParameter("userId"); // admin
-		String userPwd = request.getParameter("userPwd"); // admin
+		String userId = request.getParameter("mainLoginId"); 
+		String userPwd = request.getParameter("mainLoginPassword"); 
 		
 		System.out.println(userId);
 		System.out.println(userPwd);
@@ -49,7 +49,7 @@ public class LoginServlet extends HttpServlet {
 			
 			HttpSession session = request.getSession();
 			
-			session.setAttribute("member", m);
+			session.setAttribute("Member", m);
 			
 			// forword, sendredirect
 			response.sendRedirect("index.jsp");

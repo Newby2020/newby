@@ -2,7 +2,7 @@
     pageEncoding="UTF-8" import="com.kh.newby.Member.model.vo.*"%>
 
 <%
-	 Member m = (Member)session.getAttribute("member");
+	 Member m = (Member)session.getAttribute("Member");
 %>
 <!DOCTYPE html>
 <html lang="ko">
@@ -14,6 +14,7 @@
     <link rel="stylesheet" href="/semi/resources/css/header.css">
     
     <script src="/semi/resources/js/mainPage.js"></script>
+    <script src="/semi/resources/js/jquery-3.4.1.min.js"></script>
 </head>
 <body>
 	<div class="newby-header" id="newby-header-var" style="margin-left: auto; margin-right: auto;">
@@ -22,32 +23,59 @@
 
 
 	  <div id="header-navibar23" align="right">
-	    <label id="toHost" class="top-nav">
-	        <a href="/semi/views/hostSignIn.jsp">호스트신청</a>
-	    </label>
-		<span class="divider1">|</span>
+	  
+	  
 	    <label id="customer" class="top-nav">
 	        <a href="/semi/views/Customer_Notice.jsp">고객센터</a>
 	    </label>
 		<span class="divider1">|</span>
-	    <label id="myPage" class="top-nav">
-	        <a href="/semi/views/mypage_Profile.jsp">마이페이지</a>
-	    </label>
-		<span class="divider1">|</span>
-	    <label id="AdminPage" class="top-nav">
-	        <a href="/semi/views/admin_index.jsp">관리자페이지</a>
-	    </label>
-		<span class="divider1">|</span>
+
+		<!-- <span class="divider1">|</span> -->
 		
 		<% if (m == null) {%>
 	    <label id="login" class="top-nav">
 	        <a>로그인 </a>
 	    </label>
+	    
 		<span class="divider1">|</span>
+		
 	    <label id="signIn" class="top-nav">
 	        <a>회원가입</a>
 	    </label>
-	    <% }else{} %>
+	    <% }else if(m.getM_id().equals("tomcho39@gmail.com")){ %>
+	    <label id="AdminPage" class="top-nav">
+	        <a href="/semi/views/admin_index.jsp">관리자페이지</a>
+	    </label>
+	    <span id="logoutBtn" onclick='logout()'>로그아웃</span> 
+	    
+	    <% }else if(m.getH_no() == null){ %>
+	    <label id="toHost" class="top-nav">
+	        <a href="/semi/views/hostSignIn.jsp">호스트신청</a>
+	    </label>
+		<span class="divider1">|</span>
+		  <label id="myPage" class="top-nav">
+	        <a href="/semi/views/mypage_Profile.jsp">마이페이지</a>
+	    </label>
+	    
+		<span class="divider1">|</span>
+		
+		<label id="login-userInfo">
+	    	<%= m.getM_name()%>님 환영합니다
+	    </label>
+	    <span id="logoutBtn" onclick='logout()'>로그아웃</span>  
+		
+		<%}else{ %>
+		  <label id="myPage" class="top-nav">
+	        <a href="/semi/views/mypage_Profile.jsp">마이페이지</a>
+	    </label>
+	    
+		<span class="divider1">|</span>
+		
+	    <label id="login-userInfo">
+	    	<%= m.getM_name()%>님 환영합니다
+	    </label>
+	    <span id="logoutBtn" onclick='logout()'>로그아웃</span> 
+	    <%} %>
 	    
 	  </div>
 	</div>
@@ -157,8 +185,19 @@
         span.onclick = function() {
           LoginModal.style.display = "none";
         }
+        
     /* 로그인 스크립트 종료 */
 
+    //로그인 버튼 클릭 시 제출
+     function buttonLogin(){
+    	 $('#mainLoginForm').submit();
+     }
+    
+    //로그아웃 버튼 클릭
+    function logout(){
+    	location.href='/semi/logout.me';
+    }
+    
     /* 회원가입 스크립트 */
       var joinModal = document.getElementById('joinModal');
 

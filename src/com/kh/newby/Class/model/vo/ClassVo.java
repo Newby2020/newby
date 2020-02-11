@@ -26,8 +26,9 @@ public class ClassVo implements Serializable {
 	private String classTarget;
 	private String classCurriculum;	
 	private Date classEnrollDate;
-	private String classStartTime;
-	private String classEndTime;
+	private String classDate;
+	private int classStartTime;
+	private int classEndTime;
 	private String hostName;
 	private String hostIntro;
 	private double averageReview;
@@ -38,7 +39,7 @@ public class ClassVo implements Serializable {
 	// 클래스 등록용 생성자
 	public ClassVo(String className, String firstCategory, String secondCategory, String thirdCategory, String classType,
 			int classTime, int classPrice, int classMaxnum, String classImg, String classLocation, String classIntro,
-			String classTarget, String classCurriculum, String classStartDate, String classEndTime) {
+			String classTarget, String classCurriculum, String classDate, String classStartDate, int classEndTime) {
 		super();
 		this.className = className;
 		this.firstCategory = firstCategory;
@@ -53,6 +54,7 @@ public class ClassVo implements Serializable {
 		this.classIntro = classIntro;
 		this.classTarget = classTarget;
 		this.classCurriculum = classCurriculum;
+		this.classDate = classDate;
 		this.classStartTime = classStartTime;
 		this.classEndTime = classEndTime;
 	}
@@ -60,8 +62,8 @@ public class ClassVo implements Serializable {
 	// 클래스 상세 페이지 생성자(enrolldate 제외하고 모두)
 	public ClassVo(String classNo, String classHostNo, String className, String firstCategory, String secondCategory,
 			String thirdCategory, String classType, int classTime, int classPrice, int classMaxnum, String classImg,
-			String classLocation, String classIntro, String classTarget, String classCurriculum, String classStartTime,
-			String classEndTime, String hostName, String hostIntro, double averageReview) {
+			String classLocation, String classIntro, String classTarget, String classCurriculum, String classDate, int classStartTime,
+			int classEndTime, String hostName, String hostIntro, double averageReview) {
 		super();
 		this.classNo = classNo;
 		this.classHostNo = classHostNo;
@@ -78,6 +80,7 @@ public class ClassVo implements Serializable {
 		this.classIntro = classIntro;
 		this.classTarget = classTarget;
 		this.classCurriculum = classCurriculum;
+		this.classDate = classDate;
 		this.classStartTime = classStartTime;
 		this.classEndTime = classEndTime;
 		this.hostName = hostName;
@@ -214,19 +217,27 @@ public class ClassVo implements Serializable {
 		this.classEnrollDate = classEnrollDate;
 	}
 
-	public String getClassStartTime() {
+	public String getClassDate() {
+		return classDate;
+	}
+
+	public void setClassDate(String classDate) {
+		this.classDate = classDate;
+	}
+
+	public int getClassStartTime() {
 		return classStartTime;
 	}
 
-	public void setClassStartTime(String classStartTime) {
+	public void setClassStartTime(int classStartTime) {
 		this.classStartTime = classStartTime;
 	}
 
-	public String getClassEndTime() {
+	public int getClassEndTime() {
 		return classEndTime;
 	}
 
-	public void setClassEndTime(String classEndTime) {
+	public void setClassEndTime(int classEndTime) {
 		this.classEndTime = classEndTime;
 	}
 
@@ -256,21 +267,13 @@ public class ClassVo implements Serializable {
 
 	@Override
 	public String toString() {
-		return "Class [classNo=" + classNo + ", classHostNo=" + classHostNo + ", className=" + className
+		return "ClassVo [classNo=" + classNo + ", classHostNo=" + classHostNo + ", className=" + className
 				+ ", firstCategory=" + firstCategory + ", secondCategory=" + secondCategory + ", thirdCategory="
 				+ thirdCategory + ", classType=" + classType + ", classTime=" + classTime + ", classPrice=" + classPrice
 				+ ", classMaxnum=" + classMaxnum + ", classImg=" + classImg + ", classLocation=" + classLocation
 				+ ", classIntro=" + classIntro + ", classTarget=" + classTarget + ", classCurriculum=" + classCurriculum
-				+ ", classEnrollDate=" + classEnrollDate + ", classStartTime=" + classStartTime + ", classEndTime="
-				+ classEndTime + ", hostName=" + hostName + ", hostIntro=" + hostIntro + ", averageReview="
-				+ averageReview + "]";
+				+ ", classEnrollDate=" + classEnrollDate + ", classDate=" + classDate + ", classStartTime="
+				+ classStartTime + ", classEndTime=" + classEndTime + ", hostName=" + hostName + ", hostIntro="
+				+ hostIntro + ", averageReview=" + averageReview + "]";
 	}
-	
-	
-	
-	
-
-	
-
-		
 }
