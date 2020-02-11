@@ -1,9 +1,9 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%  //호스트 객체
-	Host h = (Host)request.getAttribute("host");
+	//Host h = (Host)request.getAttribute("host");
 	//클래스 객체
-	Class cl = (Class)request.getAttribute("class");
+	//Class cl = (Class)request.getAttribute("class");
 %>
 <!DOCTYPE html>
 <html>
@@ -46,7 +46,7 @@
             <div class="host_detail" id="host_detail">
                 <div class="host_detail_title"><h1>강사 소개</h1></div>
                     <div class="host_detail_text" id="cl_host_info">
-                        	  <% h.getHostInfo() %>
+                        	  <%-- <%= h.getHostInfo() %> --%>
                     </div>
             </div>
 
@@ -56,7 +56,7 @@
                 <div class="class_detail_title">
                     <h1>수업소개</h1></div>
                     <div class="class_detail_text">
-                        <% cl.getClassIntro() %>
+                   <%--      <%= cl.getClassIntro() %> --%>
                     </div>
                 </div>
                     <div class="class_detail">
@@ -66,7 +66,7 @@
                         <div>
                             <ul class="class_detail_text">
                                 <li style="list-style: none;">
-                                    <p><% cl.getClassTarget() %></p>
+                                    <%-- <p><%= cl.getClassTarget() %></p> --%>
                                 </li>
                             </ul>
                         </div>
@@ -78,7 +78,7 @@
                         <div>
                             <dl class="class_detail_text">
                                 <dd>
-                                   <% cl.getClassCurricurum() %>
+                                <%--    <%= cl.getClassCurricurum() %> --%>
                                 </dd>
                             </dl>
                         </div>
@@ -115,7 +115,7 @@
                         </div>
                         <script>
                         	$.ajax({
-                        		url:"/<% request.getContextPath() %>/classinfo.ci",
+                        		url:"/<%= request.getContextPath() %>/classinfo.ci",
                         		type: "get",
                         		success:function(data){
                         			$.each(data,function(index,value){
@@ -134,29 +134,38 @@
                         			location
                         		}
                         	});
+                        	
+                        	
+                        	
+                        	
+                        	// 사용할 떄 script 태그 밖으로 이동시켜야함
+                            <%--  <div class="paging_num" id="innerPageDiv">
+                            <a class="on" href='<%= request.getContextPath() %>/replyList.rl?currentPage=1'"><<</a> 
+                            <% if(currentPage <= 1){ %>
+                            <a disalbed><</a>
+                            <% }else{ %>
+                            <a href='<%= request.getContextPath() %>/replyList.rl?currentPage=<%=currentPage -1 %>'"><</a>
+                            <% } %>
+                            
+                            <% for(int p = startPage; p<=endPage; p++){
+                            	if(p == currentPage){	
+                           	%>
+                            <a disabled><%= p %></a>
+                            <% }else{ %>
+                            <a href='<%= request.getContextPath() %>/replyList.rl?currentPage=<%= p %>'"><%= p %></a>
+                            <% } %>
+                            
+                            <% if(currentPage >= maxPage){ %>
+                            <a disalbed>></a>
+                            <% }else{ %>
+                            <a href="<%= request.getContextPath() %>/replyList.rl?currentPage + 1">></a>
+                            <% } %>
+                            <% } %> --%>
+                          <%--   <a href="<%= request.getContextPath() %>/replyList.rl?currengPage=<%= maxPage %>">>></a> --%>
+                        	
+                        	
                         </script>
-                        <div class="paging_num" id="innerPageDiv">
-                                <a class="on" href='<%= request.getContextPath() %>/replyList.rl?currentPage=1'"><<</a>
-                                <% if(currentPage <= 1){ %>
-                                <a disalbed><</a>
-                                <% }else{ %>
-                                <a href='<%= request.getContextPath() %>/replyList.rl?currentPage=<%=currentPage -1 %>'"><</a>
-                                <% } %>
-                                
-                                <% for(int p = startPage; p<=endPage; p++){
-                                	if(p == currentPage){	
-                               	%>
-                                <a disabled><%= p %></a>
-                                <% }else{ %>
-                                <a href='<%= request.getContextPath() %>/replyList.rl?currentPage=<%= p %>'"><%= p %></a>
-                                <% } %>
-                                
-                                <% if(currentPage >= maxPage){ %>
-                                <a disalbed>></a>
-                                <% }else{ %>
-                                <a href="<%= request.getContextPath() %>/replyList.rl?currentPage + 1">></a>
-                                <% } %>
-                                <a href="<%= request.getContextPath() %>/replyList.rl?currengPage=<%= maxPage %>">>></a>
+                
                         </div>
                     </div>
                 </div> <!-- /리뷰 -->
