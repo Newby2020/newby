@@ -41,7 +41,7 @@ public class ClassInsertServlet extends HttpServlet {
 				// 1. 전송할 최대 크기 설정하기
 				// 10MB -> (Byte 크기로 변환하기)
 				// (1MB -> 1024 KB / 1KB -> 1024 Byte)
-				int maxSize = 1024 * 1024 * 10;
+				int maxSize = 1024 * 1024 * 110;
 				
 				// 2. multipart/form-data형식으로 전송되었는지 확인!
 				if(!ServletFileUpload.isMultipartContent(request)) {
@@ -71,14 +71,21 @@ public class ClassInsertServlet extends HttpServlet {
 															//숫자를 붙이는 규칙
 												);
 				
-				ArrayList<String> filename = new ArrayList<String>();
+				String[] fileNames = mrequest.getParameterValues("imgsSrc");
+//				System.out.println(fileNames.length);
+//				System.out.println(fileNames);
 				
-				Enumeration<String> files = mrequest.getFileNames();
-				while(files.hasMoreElements()){
-				String name = files.nextElement();
-				filename.add(mrequest.getFilesystemName(name));
-				System.out.println(filename.toString());
+				for(int i=0; i<fileNames.length; i++) {
+					System.out.println(fileNames[i]);
 				}
+//				ArrayList<String> filename = new ArrayList<String>();
+//				
+//				Enumeration<String> files = mrequest.getFileNames();
+//				while(files.hasMoreElements()){
+//				String name = files.nextElement();
+//				filename.add(mrequest.getFilesystemName(name));
+//				}
+//				System.out.println(filename.toString());
 
 	}
 

@@ -43,25 +43,69 @@
     font-size: 10pt;
     width: 130px;
 }
+
+.classType{
+     -webkit-appearance: none;
+     -moz-appearance: none;
+     appearance: none;
+     display: inline-block;
+     position: relative;
+     background-color: #f1f1f1;
+     color: rgb(9, 129, 241);
+     top: 8px;
+     height: 25px;
+     width: 25px;
+     border: 0;
+     border-radius: 50px;
+     cursor: pointer;     
+     margin-right: 7px;
+     outline: none;
+}
+.classType:checked::before{
+     position: absolute;
+     font: 17px/1 'Open Sans', sans-serif;
+     left: 9px;
+     top: 3px;
+     content: '\02143';
+     transform: rotate(40deg);
+     font-weight: bold;
+}
+.classType:hover{
+     background-color: #f7f7f7;
+}
+.classType:checked{
+     background-color: #f1f1f1;
+}
+
 .ct{
-	font-size: 9pt;
+     font: 10pt/1.7 'Open Sans', sans-serif;
+     color: #333;
+     -webkit-font-smoothing: antialiased;
+     -moz-osx-font-smoothing: grayscale;
+     cursor: pointer;
 }
 
-#classTime6{
+#classTime{
     text-align: center;
-    width: 80px;
+    width: 50px;
     border-radius: 5px; 
+    height: 20px;
+    font-size: 11pt;
 }
 
-#commission12{
+#price{
     text-align: center;
-    border-radius: 5px; 
+    border-radius: 5px;
+    height: 20px;
+    font-size: 11pt;
 }
 
-#MaxNoAttendee{
+#MaxNum{
     text-align: center;
-    width: 80px;
-    border-radius: 5px; 
+    width: 70px;
+    border-radius: 5px;
+    height: 20px; 
+    font-size: 11pt;
 }
 
 

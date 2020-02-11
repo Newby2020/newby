@@ -42,8 +42,8 @@
                                     <tr>
                                         <td class="tline1row">클래스명<br><small>(40자 이내)</small></td>
                                         <td  class="tline2row">
-           									<input id="input1ske" name="limitedtextfield" type="text" style="font-size: 9pt;" onKeyDown="limitText(this.form.limitedtextfield,this.form.countdown,40);" 
-           										onKeyUp="limitText(this.form.limitedtextfield,this.form.countdown,40);" maxlength="40" placeholder="제목에서부터 호스트님의 매력을 마음껏 뿜어내 주세요">
+           									<input id="input1ske" name="className" type="text" style="font-size: 9pt;" onKeyDown="limitText(this.form.className,this.form.countdown,40);" 
+           										onKeyUp="limitText(this.form.className,this.form.countdown,40);" maxlength="40" placeholder="제목에서부터 호스트님의 매력을 마음껏 뿜어내 주세요">
            									<font size="2"><input id="input2ske" readonly type="text" size="2" name="countdown" value="0">/40자</font>
                                         </td>
                                     </tr>
@@ -70,48 +70,48 @@
                                     <tr>
                                         <td class="tline1row">클래스 형태</td>
                                         <td>
-                                            <input type="radio" id="class-type1" name="classType">
-                                            <label class="ct" for="class-type1">1:1 수업</label>
-                                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                                            <input type="radio" id="class-type2" name="classType">
-                                            <label class="ct" for="class-type2">그룹 수업</label>
-                                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                                            <input type="radio" id="class-type3" name="classType">
-                                            <label class="ct" for="class-type3">원데이</label>
-                                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                        	<input type="radio" name="classType" value="1:1" id="class-type1" class="classType" checked>
+                                        	<label class="ct" for="class-type1">1:1</label>
+                                        	&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    										<input type="radio" name="classType" value="group" id="class-type2" class="classType">
+    										<label class="ct" for="class-type2">그룹</label>
+    										&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    										<input type="radio" name="classType" value="oneday" id="class-type2" class="classType">
+    										<label class="ct" for="class-type2">원데이</label>
+    										&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                                         </td>
                                     </tr>
                                     <tr><td><br></td></tr><tr><td><br></td></tr>
                                     <tr>
                                         <td class="tline1row">1회당 수업시간</td>
-                                        <td style="font-size: 9pt"><input id="classTime6" type="text">&nbsp;시간</td>
+                                        <td style="font-size: 9pt"><input id="classTime" name="classTime" type="text">&nbsp;시간</td>
                                     </tr>
                                     <tr><td><br></td></tr><tr><td><br></td></tr>
                                     <tr>
                                         <td class="tline1row">시간당 가격</td>
-                                        <td style="font-size: 9pt"><input id="commission12" type="text">&nbsp;원</td>
+                                        <td style="font-size: 9pt"><input id="price" name="price" type="text">&nbsp;원</td>
                                     </tr>                              
                                     <tr><td><br></td></tr><tr><td><br></td></tr>
                                     <tr>
                                         <td class="tline1row">인원수</td>
-                                        <td style="font-size: 9pt"><input id="MaxNoAttendee" type="text">&nbsp;명</td>
+                                        <td style="font-size: 9pt"><input id="MaxNum" name="MaxNum" type="text">&nbsp;명</td>
                                     </tr>
                                     <tr><td><br></td></tr><tr><td><br></td></tr>
                                     <tr>
                                         <td class="tline1row">이미지<br><small>(2MB 이하)</small></td>
                                         <td>
                                             <div id="imageUpload12" style="display: flex;">
-										        <label for="files" style="cursor: pointer; margin-top: 10px;">
-										            <img src="/semi/resources/images/imgUploadIcon.png" alt="uploadIcon" width="62px" height="62px">    <!-- 이미지업로드아이콘 경로 제대로 설정해야함 -->
-										            <!-- <span style="font-size: 9pt;">이미지 4개 이하</span> -->
-										        </label>
-										        <input type='file' id="files" name="files[]" accept="image/*" onclick="displayPreview();" multiple/>
-												&nbsp;&nbsp;
-										        <div id="pView" style="display: none; margin: 10px;">
-										            <!-- <div style="font-size: 9pt; margin-top: 3px;">첨부파일&nbsp;&nbsp;&nbsp;</div>-->
-										            <div id="result" style="border-radius: 3px; border: 1px solid #ebeef3; width: 257px; height: 62px; background-color: #F8F8F8; overflow: hidden; ">
-										            </div>
-										        </div>
+										        <label for="input_imgs" style="cursor: pointer; margin-top: 10px;">
+											        <img src="/semi/resources/images/imgUploadIcon.png" alt="uploadIcon" width="40px" height="40px">    <!-- 이미지업로드아이콘 경로 제대로 설정해야함 -->
+											        <!-- <span style="font-size: 9pt;">이미지 4개 이하</span> -->
+											    </label>
+											    <input type='file' id="input_imgs" name="input_imgs" accept="image/*" style="display: none;" multiple/>
+											    &nbsp;&nbsp;
+		<!-- 단일할지 다중할지 수정할거임 -->					<div id="pView" style="display: none; margin: 10px;">
+											        <!-- <div style="font-size: 9pt; margin-top: 3px;">첨부파일&nbsp;&nbsp;&nbsp;</div>-->
+												    <div class="imgs_wrap" style="border-radius: 3px; border: 1px solid #ebeef3; width: 400px; height: 62px; background-color: #F8F8F8; overflow: hidden; ">
+												    </div>
+											    </div>
 										    </div>
                                         </td>
                                     </tr>
@@ -120,10 +120,10 @@
                                         <td class="tline1row">일정</td>
                                         <td class="addSchedule23">
                                         	<div id="div11">
-											    <input name='classDate1' type='date' class='dataCl'>&nbsp;
-											    <input name='startTime1' type='time' class='dataCl'>
+											    <input name='classDate' type='date' class='dataCl'>&nbsp;
+											    <input name='startTime' type='time' class='dataCl'>
 											    &nbsp;~&nbsp;
-											    <input name='endTime1' type='time' class='dataCl'>
+											    <input name='endTime' type='time' class='dataCl'>
 											    <input type='button' class='btn24' value='추가' onclick='addSchedule();'>
 											</div>
                                         </td>
@@ -145,10 +145,13 @@
                                     <tr>
                                     	<td class="tline1row tt121">수업 대상</td>
                                     	<td>
-                                    		<textarea name="object1" id="object1" cols="30" rows="5" onKeyDown="limitText(this.form.object1,this.form.countdown2,200);" 
-            										onKeyUp="limitText(this.form.object1,this.form.countdown2,200);" maxlength="200"></textarea>
-            								<font size="2"><input id="objectTextCount" class="objectTextCount1" readonly type="text" size="2" name="countdown2" value="0">
-            								<span style="vertical-align: middle;">/200자</span></font>
+                                    		<textarea name="object" id="object1" cols="30" rows="6"
+                                    				onKeyDown="limitText(this.form.object,this.form.countdown2,200);" 
+            										onKeyUp="limitText(this.form.object,this.form.countdown2,200);" maxlength="200"></textarea>
+            								<font size="2">
+	            								<input name="countdown2" id="objectTextCount" class="objectTextCount1" readonly type="text" size="2" value="0">
+	            								<span style="vertical-align: middle;">/200자</span>
+            								</font>
                                     	</td>
                                     </tr>
                             </table>
