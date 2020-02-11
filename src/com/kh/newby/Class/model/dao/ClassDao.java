@@ -43,8 +43,8 @@ public class ClassDao {
 				cv.setClassTarget(rset.getString("CLASS_TARGET"));
 				cv.setClassCurriculum(rset.getString("CLASS_CURRICURUM"));
 				cv.setClassDate(rset.getString("CS_CLASS_DATE"));
-				cv.setClassStartTime(Integer.parseInt(rset.getString("CS_STARTTIME")));
-				cv.setClassEndTime(Integer.parseInt(rset.getString("CS_ENDTIME")));
+				cv.setClassStartTime(rset.getString("CS_STARTTIME"));
+				cv.setClassEndTime(rset.getString("CS_ENDTIME"));
 				cv.setHostName(rset.getString("MEM_NAME"));
 				cv.setHostIntro(rset.getString("HOST_INTRO"));
 				cv.setAverageReview(rset.getDouble("AVERAGE_REVIEW"));

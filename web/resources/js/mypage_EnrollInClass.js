@@ -55,6 +55,13 @@ function selectCategory2(){
     }
 }
 
+// 인원수 readonly 유무체크
+function oneNOneCheck(){
+	$('#MaxNum').prop("readonly", true).css("backgroundColor","#ebeef3");
+}
+function groupCheck(){
+	$('#MaxNum').prop("readonly", false).css("backgroundColor","white");
+}
 
 // 파일 업로드 시 프리뷰
 function readURL(input) {

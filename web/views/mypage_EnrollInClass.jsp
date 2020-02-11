@@ -70,16 +70,18 @@
                                     <tr>
                                         <td class="tline1row">클래스 형태</td>
                                         <td>
-                                        	<input type="radio" name="classType" value="1:1" id="class-type1" class="classType" checked>
+                                        	<input type="radio" name="classType" value="1:1" id="class-type1" class="classType" onclick="oneNOneCheck();">
                                         	<label class="ct" for="class-type1">1:1</label>
                                         	&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-    										<input type="radio" name="classType" value="group" id="class-type2" class="classType">
+    										<input type="radio" name="classType" value="그룹" id="class-type2" class="classType" onclick="groupCheck();">
     										<label class="ct" for="class-type2">그룹</label>
     										&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-    										<input type="radio" name="classType" value="oneday" id="class-type2" class="classType">
-    										<label class="ct" for="class-type2">원데이</label>
-    										&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                                         </td>
+                                    </tr>
+                                    <tr><td><br></td></tr><tr><td><br></td></tr>
+                                    <tr>
+                                        <td class="tline1row">인원수</td>
+                                        <td style="font-size: 9pt"><input id="MaxNum" name="MaxNum" type="text">&nbsp;명</td>
                                     </tr>
                                     <tr><td><br></td></tr><tr><td><br></td></tr>
                                     <tr>
@@ -90,17 +92,11 @@
                                     <tr>
                                         <td class="tline1row">1회당 가격</td>
                                         <td style="font-size: 9pt"><input id="price" name="price" type="text">&nbsp;원</td>
-                                    </tr>                              
-                                    <tr><td><br></td></tr><tr><td><br></td></tr>
-                                    <tr>
-                                        <td class="tline1row">인원수</td>
-                                        <td style="font-size: 9pt"><input id="MaxNum" name="MaxNum" type="text">&nbsp;명</td>
                                     </tr>
                                     <tr><td><br></td></tr>
                                     <tr>
                                         <td class="tline1row">이미지<br><small>(2MB 이하)</small></td>
                                         <td>
-                                            
                                             <div id="refresh1" style="display: flex;">
     											<img id="blah" src="http://placehold.it/180" alt="your image" style="width:120px; height:120px; display: none; border-radius: 5px; border: 3px solid rgb(9, 129, 241);" />
     											&nbsp;&nbsp;
@@ -131,9 +127,9 @@
                                             &nbsp;
                                             <input class="btn24" type="button" onclick="SearchAddr();" value="주소 찾기">
                                             <br>
-                                            <input id="basicAddr" name="basicAddr" type="text" placeholder="기본 주소">
+                                            <input id="basicAddr" name="addr" type="text" placeholder="기본 주소">
                                             <br>
-                                            <input id="detailAddr" name="detailAddr" type="text" placeholder="상세 주소">
+                                            <input id="detailAddr" name="addr" type="text" placeholder="상세 주소">
                                         </td>
                                     </tr>
                                     <tr><td><br></td></tr><tr><td><br></td></tr>
