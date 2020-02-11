@@ -2,24 +2,95 @@ html{
     font-family: 'Noto Sans KR', sans-serif;  
 }
 
+.index-body {
+	width: 100% !important;
+	height: 100% !important;
+	min-width: 1920px !important;
+	min-height: 1080px !important;
+}
+
+#main_search {
+	width: 50%;
+	height: 65px;
+	border: 2px solid lightgray;
+}
+
+#magnifyingGlass {
+	 width: 25px; 
+	 height: 25px;
+	 margin-top: 20px;
+	 margin-left: 20px;
+	 float: left;
+}
+
+#searchDivider{
+	font-size: 25px;
+	height: 50px;
+	margin-top: 13px;
+	margin-left: 15px;
+	float: left;
+	color: lightgray;
+}
+
+#searchArea{
+	display: inline-block;
+	width: 75%;
+	height: 63px;
+	padding-left: 25px;
+	font-size: 18px;
+	border: none;
+	float: left;
+	outline-style: none;
+}
+
+#searchClass{
+	width: 120px;
+	height: 55px;
+	margin-top: 5px;
+	margin-right: 5px;
+	font-size: 15px;
+	background-color: rgb(9, 129, 241);
+	color: white;
+	border: none;
+	float: right;
+}
+
 #chr-category{
   display: inline-flex;
 }
 
 .chr-category{
-    margin: 40px;
+	border: 1px solid lightgray;
+    margin-top: 40px;
+    margin-bottom: 40px;
+    margin-left: 60px;
+    margin-right: 60px;
     cursor: pointer;
+    border-radius: 5px;
+}
+
+#chr-category-img {
+	width: 250px; 
+	height: 180px;
+}
+
+.mention-categoty {
+	display: flex;
+	margin-left: 10px;
+	margin-top: 0px;
+    margin-bottom: 0px;
 }
 
 .main-category-sum{
   display: inline-flex;
+  
 }
 .main-category{
 border: 2px solid white;
 border-radius: 50%;
 padding-top: 8px;
-margin-left: 2px;
-margin-right: 8px;
+margin-left: 30px;
+margin-right: 50px;
 width: 200px;
 height: 150px;
 background-color: snow ; 
@@ -32,8 +103,9 @@ height:170px;
 .card-img-top{
 top:50%;
 left:50%;
-margin-top: 20%;
+margin-top: 15%;
 margin-left: 20%;
+margin-right: 20%;
 width: 60%;
 height: 60%;
 }
