@@ -55,127 +55,58 @@ function selectCategory2(){
     }
 }
 
-// 프리뷰
-var sel_files =[];
-$(document).ready(function(){
-    $('#input_imgs').on("change", handleImgsFilesSelect);
-});
 
-function handleImgsFilesSelect(e){
-	var files = e.target.files;
-	var filesArr = Array.prototype.slice.call(files);
-    if(files.length <= 6){
-//    	console.log(files);
-//    	console.log(filesArr);
-//    	console.log(filesArr.length);
-//    	
-//    	for(var i=0; i<files.length; i++){
-//    		if(!files[i].type.match("image.*")){
-//              alert("확장자는 이미지 확장자만 가능합니다.");
-//              return;
-//          }
-//          sel_files.push(files[i]);
-//          console.log(filesArr[i].name);	
-//          
-//          
-//          var reader = new FileReader();
-//          reader.onload = function(e){
-//          	var img_html = "<img width='50px' height='50px'; style='margin:3px; border: 2px solid rgb(9, 129, 241);border-radius: 3px;' name='inputImgs' src=\"" + e.target.result + "\" /><input type='hidden' name='imgsSrc' value='"+e.target.result+"'>";
-//              $(".imgs_wrap").append(img_html);
-//              
-//         }
-//          reader.readAsDataURL(filesArr[i]);
-//
-//    	}
-    	
-        filesArr.forEach(function(f){
-            if(!f.type.match("image.*")){
-                alert("확장자는 이미지 확장자만 가능합니다.");
-                return;
-            }
-            sel_files.push(f);
-
-            var reader = new FileReader();
-            reader.onload = function(e){
-            	var img_html = "<img width='50px' height='50px'; style='margin:3px; border: 2px solid rgb(9, 129, 241);border-radius: 3px;' name='inputImgs' src=\"" + e.target.result + "\" />"+files.name+"<input type='hidden' name='imgsSrc' value='"+e.target.result+"'>";
-                $(".imgs_wrap").append(img_html);
-                console.log(e.target.result);	
-            }
-            reader.readAsDataURL(f);
-        });
-        
-        for(var i=0; i<files.lenth; i++){
-        	console.log(i+"번째의 "+sel_files[i]);
-        }
-    } else {
-        alert("이미지파일 6개 이하로 업로드해주세요.");
-    }
-    
+// 파일 업로드 시 프리뷰
+function readURL(input) {
+	var pview = document.getElementById('blah');
+	pview.style.display = 'block';
+	var locateImg = document.getElementById('loca-label');
+	if (input.files && input.files[0]) {
+	   var reader = new FileReader();
+	
+	   reader.onload = function (e) {
+	       $('#blah').attr('src', e.target.result);
+	   };
+	
+	   reader.readAsDataURL(input.files[0]);
+	}
+	var img1 = document.getElementById('img1');
+	img1.style.display="none";
+	var img2 = document.getElementById('img2');
+	img2.style.marginTop = '40px';
+	img2.style.marginBottom = '40px';
+	img2.style.display="block";
 }
 
+// 새로고침
+function reload1(){
+	var img1 = document.getElementById('img1');
+	img1.style.display="block";
+	var img2 = document.getElementById('img2');
+	var pview = document.getElementById('blah');
+	img2.style.display="none";
+	pview.style.display="none";
+}
 
-
-
-
-
-
-
-
-
-
-
-
-//// 다중 이미지 업로드 후 프리뷰
-//function handleFileSelect(event) {
-//    //Check File API support
-//    if (window.File && window.FileList && window.FileReader) {
-//
-//        var files = event.target.files; //FileList object
-//        var output = document.getElementById("result");
-//        
-//        output.innerHTML="";				// 이미지 재업로드시 리셋 기능
-//        
-//        if(files.length<=4){                        // 이미지 업로드 제한 갯수 설정
-//
-//            for (var i = 0; i < files.length; i++) {
-//                var file = files[i];
-//
-//                //Only pics
-//                if (!file.type.match('image')) continue;
-//
-//                var picReader = new FileReader();
-//                picReader.addEventListener("load", function (event) {
-//                    var picFile = event.target;
-//                    var span = document.createElement("span");
-//                    span.innerHTML = "<img id='imgs' name='uploadImgs[]' class='thumbnail' src='" + picFile.result + "'" + "title='" + file.name + "' width='50px' height='50px'; style='border: 2px solid rgb(9, 129, 241); border-radius: 3px;'/>";
-//                    console.log();
-//                    output.insertBefore(span, null);
-//                });
-//                //Read the image
-//                picReader.readAsDataURL(file);
-//            }
-//        } else {
-//            alert("이미지파일 4개 이하로 업로드해주세요.");
-//        }
-//    } else {
-//        console.log("Your browser does not support File API");
-//    }
-//}
-//
-//document.getElementById('files').addEventListener('change', handleFileSelect, false);
-//
-//// 프리뷰 나타내기
-//function displayPreview(){
-//	
-//	var pView = document.getElementById('pView');
-//	pView.style.display='flex';
-//}
 
 // 불규칙 날짜 설정
 function addSchedule(){
     var div = document.getElementById('div11');
-    div.innerHTML += "<br><input name='classDate1' type='date' class='dataCl'>&nbsp;&nbsp;<input name='startTime1' type='time' class='dataCl'>&nbsp;&nbsp;~&nbsp;&nbsp;<input name='endTime1' type='time' class='dataCl'>";
+    div.innerHTML += "<br><input name='classDate' type='date' class='dataCl'>&nbsp;&nbsp;&nbsp;<input name='startTime' type='time' class='dataCl'>&nbsp;&nbsp;";
 }
+
+// 일정 항목 추가 및 삭제
+$(function(){
+	$(document).on('click','#ss',function(){
+		$('#div11')
+		.append('<div><input name="classDate" type="date" class="dataCl">&nbsp;&nbsp;&nbsp;<input name="startTime" type="time" class="dataCl">&nbsp;&nbsp;<img id="delImg" class="item1" src="/semi/resources/images/deleteImg2.png" alt="xIcon"></div>');
+	});
+	
+	$(document).on('click','.item1',function(){
+		$(this).parent().remove();
+	});
+});
+
 
 // 주소 API
 function SearchAddr() {

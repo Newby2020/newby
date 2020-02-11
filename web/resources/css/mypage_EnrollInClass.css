@@ -109,16 +109,6 @@
 }
 
 
-/* 이미지 업로드 */
-#files {
-    display: none;
-}
-#imgs{
-    margin: 5px;
-}
-
-
-
 .addSchedule23{
     height: auto;
 }
@@ -137,6 +127,14 @@
     text-align-last: center;
     font-size: 9pt;
     margin-top: 10px;
+}
+
+#delImg{
+    width: 15px;
+    height: 15px;
+    cursor: pointer;
+    position: relative;
+    top: 5px;
 }
 
 #zipCode13{

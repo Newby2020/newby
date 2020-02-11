@@ -100,32 +100,27 @@
                                     <tr>
                                         <td class="tline1row">이미지<br><small>(2MB 이하)</small></td>
                                         <td>
-                                            <div id="imageUpload12" style="display: flex;">
-										        <label for="input_imgs" style="cursor: pointer; margin-top: 10px;">
-											        <img src="/semi/resources/images/imgUploadIcon.png" alt="uploadIcon" width="40px" height="40px">    <!-- 이미지업로드아이콘 경로 제대로 설정해야함 -->
-											        <!-- <span style="font-size: 9pt;">이미지 4개 이하</span> -->
-											    </label>
-											    <input type='file' id="input_imgs" name="input_imgs" accept="image/*" style="display: none;" multiple/>
-											    &nbsp;&nbsp;
-		<!-- 단일할지 다중할지 수정할거임 -->					<div id="pView" style="display: flex; margin: 10px;">
-											        <!-- <div style="font-size: 9pt; margin-top: 3px;">첨부파일&nbsp;&nbsp;&nbsp;</div>-->
-												    <div class="imgs_wrap" style="border-radius: 3px; border: 1px solid #ebeef3; width: 400px; height: 62px; background-color: #F8F8F8; overflow: hidden; ">
-												    </div>
-											    </div>
-										    </div>
+                                            
+                                            <div id="refresh1" style="display: flex;">
+    											<img id="blah" src="http://placehold.it/180" alt="your image" style="width:120px; height:120px; display: none; border-radius: 5px; border: 3px solid rgb(9, 129, 241);" />
+    											&nbsp;&nbsp;
+    											<img id="img2" src="/semi/resources/images/reload.png" alt="reload" width="40px" height="40px" onclick="reload1();" style="display: none; cursor: pointer;">
+    											<label id="loca-label" for="uploadImg" style="cursor: pointer; margin-top: 40px; margin-bottom: 40px;">
+    												<img id="img1" src="/semi/resources/images/imgUploadIcon.png" alt="uploadIcon" width="50px" height="50px">
+    											</label>
+                                                	<input type='file' id="uploadImg" name="uploadImg" onchange="readURL(this);" style="display: none;" />
+                                            </div>
                                         </td>
                                     </tr>
                                     <tr><td><br></td></tr><tr><td><br></td></tr> 
                                     <tr>
                                         <td class="tline1row">일정</td>
                                         <td class="addSchedule23">
-                                        	<div id="div11">
-											    <input name='classDate' type='date' class='dataCl'>&nbsp;
-											    <input name='startTime' type='time' class='dataCl'>
-											    &nbsp;~&nbsp;
-											    <input name='endTime' type='time' class='dataCl'>
-											    <input type='button' class='btn24' value='추가' onclick='addSchedule();'>
-											</div>
+                                       	    <div id="div11">
+										        <input name='classDate' type='date' class='dataCl'>&nbsp;&nbsp;
+										        <input name='startTime' type='time' class='dataCl'>&nbsp;
+										        <input id="ss" type='button' class='btn24' value='추가' style="width: 50px;">
+										    </div>
                                         </td>
                                     </tr>
                                     <tr><td><br></td></tr><tr><td><br></td></tr>
