@@ -32,7 +32,8 @@
             <a class="index" href="admin_index.jsp">관리자페이지</a>
         </div>
         <a href="admin_index.jsp">Dashboard</a>
-        <a class="active" href="admin_user.jsp">사용자</a>
+        <!-- <a class="active" href="admin_user.jsp">사용자</a> -->
+        <a class="active" href="/semi/user.ad">사용자</a>
         <a href="admin_classApply.jsp">클래스</a>
 		<a href="admin_classCancel.jsp">클래스 취소</a>
         <a href="admin_hostReport.jsp">호스트 신고</a>
