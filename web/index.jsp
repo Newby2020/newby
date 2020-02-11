@@ -29,7 +29,7 @@
 				<div id="under_main_search">
 					<img src="/semi/resources/images/magnifyingGlass.png" id="magnifyingGlass">
 					<span id="searchDivider">|</span>
-					<input type="text" id="searchArea" onclick="test1();" placeholder="  참가하고 싶은 클래스를 검색해 보세요">
+					<input type="text" id="searchArea" onclick="searchBar();" placeholder="  참가하고 싶은 클래스를 검색해 보세요">
 					<button id="searchClass">클래스 찾기</button>
 				</div>
 			</div>
@@ -99,14 +99,7 @@
         <%@ include file = "views/common/footer.jsp" %>
      </div> 
 	 </div>     
-     <script>
-	     function test1() {
-	         $("#searchArea").blur(function() {
-	             document.getElementById('main_search').style.border = "2px solid lightgray";
-	         }).focus(function() {
-	             document.getElementById('main_search').style.border = "2px solid rgb(9, 129, 241)";
-	         });
-	     }
-     </script>
+	 <script>
+	 </script>
 </body>
 </html>
