@@ -176,9 +176,10 @@
     height: 25px;
     width: 80px;
     border-radius: 15px;
-    font-size: 9pt;
+    font-size: 10pt;
     cursor: pointer;
     vertical-align: middle;
+    font-weight: bold;
 }
 
 .tt121{
@@ -213,4 +214,5 @@
     border-radius: 15px; 
     font-size: 12pt;
     cursor: pointer;
+    font-weight: bold;
 }
