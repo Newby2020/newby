@@ -65,43 +65,48 @@ function handleImgsFilesSelect(e){
 	var files = e.target.files;
 	var filesArr = Array.prototype.slice.call(files);
     if(files.length <= 6){
-    	console.log(files);
-    	console.log(filesArr);
-    	
-    	for(var i=0; i<files.length; i++){
-    		if(!files[i].type.match("image.*")){
-              alert("확장자는 이미지 확장자만 가능합니다.");
-              return;
-          }
-          sel_files.push(files[i]);
-
-          var reader = new FileReader();
-          reader.onload = function(e){
-          	var img_html = "<img width='50px' height='50px'; style='margin:3px; border: 2px solid rgb(9, 129, 241);border-radius: 3px;' name='inputImgs' src=\"" + e.target.result + "\" /><input type='hidden' name='imgsSrc' value='"+e.target.result+"'>";
-              $(".imgs_wrap").append(img_html);
-          }
-          reader.readAsDataURL(filesArr[i]);
-
-    	}
-    	
-//        filesArr.forEach(function(f){
-//            if(!f.type.match("image.*")){
-//                alert("확장자는 이미지 확장자만 가능합니다.");
-//                return;
-//            }
-//            sel_files.push(f);
+//    	console.log(files);
+//    	console.log(filesArr);
+//    	console.log(filesArr.length);
+//    	
+//    	for(var i=0; i<files.length; i++){
+//    		if(!files[i].type.match("image.*")){
+//              alert("확장자는 이미지 확장자만 가능합니다.");
+//              return;
+//          }
+//          sel_files.push(files[i]);
+//          console.log(filesArr[i].name);	
+//          
+//          
+//          var reader = new FileReader();
+//          reader.onload = function(e){
+//          	var img_html = "<img width='50px' height='50px'; style='margin:3px; border: 2px solid rgb(9, 129, 241);border-radius: 3px;' name='inputImgs' src=\"" + e.target.result + "\" /><input type='hidden' name='imgsSrc' value='"+e.target.result+"'>";
+//              $(".imgs_wrap").append(img_html);
+//              
+//         }
+//          reader.readAsDataURL(filesArr[i]);
 //
-//            var reader = new FileReader();
-//            reader.onload = function(e){
-//            	var img_html = "<img width='50px' height='50px'; style='margin:3px; border: 2px solid rgb(9, 129, 241);border-radius: 3px;' name='inputImgs' src=\"" + e.target.result + "\" />"+files.name+"<input type='hidden' name='imgsSrc' value='"+e.target.result+"'>";
-//                $(".imgs_wrap").append(img_html);
-//            }
-//            reader.readAsDataURL(f);
-//        });
+//    	}
+    	
+        filesArr.forEach(function(f){
+            if(!f.type.match("image.*")){
+                alert("확장자는 이미지 확장자만 가능합니다.");
+                return;
+            }
+            sel_files.push(f);
+
+            var reader = new FileReader();
+            reader.onload = function(e){
+            	var img_html = "<img width='50px' height='50px'; style='margin:3px; border: 2px solid rgb(9, 129, 241);border-radius: 3px;' name='inputImgs' src=\"" + e.target.result + "\" />"+files.name+"<input type='hidden' name='imgsSrc' value='"+e.target.result+"'>";
+                $(".imgs_wrap").append(img_html);
+                console.log(e.target.result);	
+            }
+            reader.readAsDataURL(f);
+        });
         
-//        for(var i=0; i<files.lenth; i++){
-//        	console.log(i+"번째의 "+sel_files[i]);
-//        }
+        for(var i=0; i<files.lenth; i++){
+        	console.log(i+"번째의 "+sel_files[i]);
+        }
     } else {
         alert("이미지파일 6개 이하로 업로드해주세요.");
     }
