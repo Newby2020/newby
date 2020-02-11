@@ -96,7 +96,7 @@
                                         <td class="tline1row">인원수</td>
                                         <td style="font-size: 9pt"><input id="MaxNum" name="MaxNum" type="text">&nbsp;명</td>
                                     </tr>
-                                    <tr><td><br></td></tr><tr><td><br></td></tr>
+                                    <tr><td><br></td></tr>
                                     <tr>
                                         <td class="tline1row">이미지<br><small>(2MB 이하)</small></td>
                                         <td>
@@ -112,7 +112,7 @@
                                             </div>
                                         </td>
                                     </tr>
-                                    <tr><td><br></td></tr><tr><td><br></td></tr> 
+                                    <tr><td><br></td></tr> 
                                     <tr>
                                         <td class="tline1row">일정</td>
                                         <td class="addSchedule23">
