@@ -1,5 +1,15 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
+	pageEncoding="UTF-8"
+	import="com.kh.newby.inquiry.model.vo.*, java.util.*"%>
+<% 
+	ArrayList<Board> list = (ArrayList<Board>)request.getAttribute("list"); 
+	PageInfo pi = (PageInfo)request.getAttribute("pi");
+	int listCount = pi.getListCount();
+	int currentPage = pi.getCurrentPage();
+	int maxPage = pi.getMaxPage();
+	int startPage = pi.getStartPage();
+	int endPage = pi.getEndPage();
+%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -14,7 +24,9 @@
 <link rel="stylesheet" href="/semi/resources/css/main-panel.css">
 <link rel="stylesheet" href="/semi/resources/css/mypage_h&j-frame.css">
 <link rel="stylesheet" href="/semi/resources/css/Customer_table.css">
-<link href="https://fonts.googleapis.com/css?family=Nanum+GothicNoto+Sans+KR&display=swap" rel="stylesheet">
+<link
+	href="https://fonts.googleapis.com/css?family=Nanum+GothicNoto+Sans+KR&display=swap"
+	rel="stylesheet">
 <script src="semi/jquery/jquery-3.4.1.min.js"></script>
 </head>
 <body>
@@ -43,7 +55,7 @@
 			<!--contents-->
 			<div id="mn16s" align="center">
 
-				
+
 				<!-- 제목란이니깐 해당 제목 작성해서 하면 돼-->
 				<br>
 				<h2>문의 목록</h2>
@@ -60,138 +72,44 @@
 							<th colspan="6" class="tab1">제목</th>
 							<th colspan="1" class="tab1">작성자</th>
 							<th colspan="1" class="tab1">작성일</th>
-							<th colspan="1" class="tab1">조회수</th>
 						</tr>
-
+						<%
+						for(Board b : list){
+						%>
 						<tr>
-							<td colspan="1" width="100px" class="tb2">15</td>
-							<td colspan="6" width="300px" class="tb3">문의15</td>
-							<td colspan="1" width="150px" class="tb2">user15</td>
-							<td colspan="1" width="150px" class="tb2">2020-01-14</td>
-							<td colspan="1" width="150px" class="tb2">0</td>
+							<td colspan="1" width="100px" class="tb2"><%= b.getIno() %></td>
+							<td colspan="6" width="300px" class="tb3"><%= b.getItitle() %></td>
+							<td colspan="1" width="150px" class="tb2"><%= b.getIwno() %></td>
+							<td colspan="1" width="150px" class="tb2"><%= b.getIdate() %></td>
 						</tr>
-						<tr>
-							<td colspan="1" width="100px" class="tb2">14</td>
-							<td colspan="6" width="300px" class="tb3">문의14</td>
-							<td colspan="1" width="150px" class="tb2">user14</td>
-							<td colspan="1" width="150px" class="tb2">2020-01-14</td>
-							<td colspan="1" width="150px" class="tb2">0</td>
-						</tr>
-
-						<tr>
-							<td colspan="1" width="100px" class="tb2">13</td>
-							<td colspan="6" width="300px" class="tb3">문의13</td>
-							<td colspan="1" width="150px" class="tb2">user13</td>
-							<td colspan="1" width="150px" class="tb2">2020-01-14</td>
-							<td colspan="1" width="150px" class="tb2">0</td>
-						</tr>
-
-						<tr>
-							<td colspan="1" width="100px" class="tb2">12</td>
-							<td colspan="6" width="300px" class="tb3">문의12</td>
-							<td colspan="1" width="150px" class="tb2">user12</td>
-							<td colspan="1" width="150px" class="tb2">2020-01-14</td>
-							<td colspan="1" width="150px" class="tb2">0</td>
-						</tr>
-
-						<tr>
-							<td colspan="1" width="100px" class="tb2">11</td>
-							<td colspan="6" width="300px" class="tb3">문의11</td>
-							<td colspan="1" width="150px" class="tb2">user11</td>
-							<td colspan="1" width="150px" class="tb2">2020-01-14</td>
-							<td colspan="1" width="150px" class="tb2">0</td>
-						</tr>
-
-						<tr>
-							<td colspan="1" width="100px" class="tb2">10</td>
-							<td colspan="6" width="300px" class="tb3">문의10</td>
-							<td colspan="1" width="150px" class="tb2">user10</td>
-							<td colspan="1" width="150px" class="tb2">2020-01-14</td>
-							<td colspan="1" width="150px" class="tb2">0</td>
-						</tr>
-
-						<tr>
-							<td colspan="1" width="100px" class="tb2">9</td>
-							<td colspan="6" width="300px" class="tb3">문의9</td>
-							<td colspan="1" width="150px" class="tb2">user9</td>
-							<td colspan="1" width="150px" class="tb2">2020-01-14</td>
-							<td colspan="1" width="150px" class="tb2">0</td>
-						</tr>
-
-						<tr>
-							<td colspan="1" width="100px" class="tb2">8</td>
-							<td colspan="6" width="300px" class="tb3">문의8</td>
-							<td colspan="1" width="150px" class="tb2">user8</td>
-							<td colspan="1" width="150px" class="tb2">2020-01-14</td>
-							<td colspan="1" width="150px" class="tb2">0</td>
-						</tr>
-
-						<tr>
-							<td colspan="1" width="100px" class="tb2">7</td>
-							<td colspan="6" width="300px" class="tb3">문의7</td>
-							<td colspan="1" width="150px" class="tb2">user7</td>
-							<td colspan="1" width="150px" class="tb2">2020-01-14</td>
-							<td colspan="1" width="150px" class="tb2">0</td>
-						</tr>
-
-						<tr>
-							<td colspan="1" width="100px" class="tb2">6</td>
-							<td colspan="6" width="300px" class="tb3">문의6</td>
-							<td colspan="1" width="150px" class="tb2">user6</td>
-							<td colspan="1" width="150px" class="tb2">2020-01-14</td>
-							<td colspan="1" width="150px" class="tb2">0</td>
-						</tr>
-
-						<tr>
-							<td colspan="1" width="100px" class="tb2">5</td>
-							<td colspan="6" width="300px" class="tb3">문의5</td>
-							<td colspan="1" width="150px" class="tb2">user5</td>
-							<td colspan="1" width="150px" class="tb2">2020-01-14</td>
-							<td colspan="1" width="150px" class="tb2">0</td>
-						</tr>
-
-						<tr>
-							<td colspan="1" width="100px" class="tb2">4</td>
-							<td colspan="6" width="300px" class="tb3">문의4</td>
-							<td colspan="1" width="150px" class="tb2">user4</td>
-							<td colspan="1" width="150px" class="tb2">2020-01-14</td>
-							<td colspan="1" width="150px" class="tb2">0</td>
-						</tr>
-
-						<tr>
-							<td colspan="1" width="100px" class="tb2">3</td>
-							<td colspan="6" width="300px" class="tb3">문의3</td>
-							<td colspan="1" width="150px" class="tb2">user3</td>
-							<td colspan="1" width="150px" class="tb2">2020-01-14</td>
-							<td colspan="1" width="150px" class="tb2">0</td>
-						</tr>
-
-						<tr>
-							<td colspan="1" width="100px" class="tb2">2</td>
-							<td colspan="6" width="300px" class="tb3">문의2</td>
-							<td colspan="1" width="150px" class="tb2">user2</td>
-							<td colspan="1" width="150px" class="tb2">2020-01-14</td>
-							<td colspan="1" width="150px" class="tb2">0</td>
-						</tr>
-
-						<tr>
-							<td colspan="1" width="100px" class="tb2">1</td>
-							<td colspan="6" width="300px" class="tb3">문의1</td>
-							<td colspan="1" width="150px" class="tb2">user1</td>
-							<td colspan="1" width="150px" class="tb2">2020-01-14</td>
-							<td colspan="1" width="150px" class="tb2">0</td>
-						</tr>
+						<%
+							}
+						%>
 					</table>
 					<br>
 
 					<div>
 						<div style="display: inline-block">
-							<button onclick="asd"><<</button>						
-							<button onclick="asd"><</button>						
-							<button onclick="num">1</button>						
-							<button onclick="num2">2</button>					
-							<button onclick="asd">></button>			
-							<button onclick="asd">>></button>
+							<button onclick="location.href='<%=request.getContextPath()%>/selectList.bo?currentPage=1'"><<</button>
+							<%	if (currentPage <= 1) { %>
+							<button disabled><</button>
+							<% } else { %>
+							<button onclick="location.href='<%=request.getContextPath()%>/selectList.bo?currentPage=<%=currentPage - 1%>'"><</button>
+							<% } %>
+
+							<% for (int p = startPage; p <= endPage; p++) { if (p == currentPage) { %>
+							<button disabled><%=p%></button>
+							<% } else { %>
+							<button onclick="location.href='<%=request.getContextPath()%>/selectList.bo?currentPage=<%=p%>'"><%=p%></button>
+							<% } %>
+							<% } %>
+							<% if (currentPage >= maxPage) { %>
+							<button disabled>></button>
+							<% } else { %>
+							<button onclick="location.href='<%=request.getContextPath()%>/selectList.bo?currentPage=<%=currentPage + 1%>'">></button>
+							<% } %>
+							<button onclick="location.href='<%=request.getContextPath()%>/selectList.bo?currentPage=<%=maxPage%>'">>></button>
+
 						</div>
 					</div>
 
@@ -202,20 +120,30 @@
 		<%@ include file="./common/footer.jsp"%>
 	</div>
 	<script>
-        var dropdown = document.getElementsByClassName("dropdown-btnqo");
-        var i;
-  
-        for (i = 0; i < dropdown.length; i++) {
-            dropdown[i].addEventListener("click", function() {
-            this.classList.toggle("activeCl");
-            var dropdownContent = this.nextElementSibling;
-            if (dropdownContent.style.display === "block") {
-            dropdownContent.style.display = "none";
-            } else {
-            dropdownContent.style.display = "block";
-            }
-            });
-        }
-    </script>
+	$(function(){
+		$("#listArea td").mouseenter(function(){
+			$(this).parent().css({"background":"darkgray", "cursor":"pointer"});
+		}).mouseout(function(){
+			$(this).parent().css({"background":"black"});
+		}).click(function(){
+			var bno = $(this).parent().find("input").val();
+			location.href="<%=request.getContextPath()%>/selectOne.bo?bno=" + bno;
+		});
+	});
+		var dropdown = document.getElementsByClassName("dropdown-btnqo");
+		var i;
+
+		for (i = 0; i < dropdown.length; i++) {
+			dropdown[i].addEventListener("click", function() {
+				this.classList.toggle("activeCl");
+				var dropdownContent = this.nextElementSibling;
+				if (dropdownContent.style.display === "block") {
+					dropdownContent.style.display = "none";
+				} else {
+					dropdownContent.style.display = "block";
+				}
+			});
+		}
+	</script>
 </body>
 </html>

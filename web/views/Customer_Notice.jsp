@@ -1,9 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"
-	import="com.kh.newby.notice.model.vo.*, java.util.*"%>
-<%
-	ArrayList<Notice> list = (ArrayList<Notice>) request.getAttribute("list");
-%>
+	pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -18,9 +14,7 @@
 <link rel="stylesheet" href="/semi/resources/css/main-panel.css">
 <link rel="stylesheet" href="/semi/resources/css/mypage_h&j-frame.css">
 <link rel="stylesheet" href="/semi/resources/css/Customer_table.css">
-<link
-	href="https://fonts.googleapis.com/css?family=Nanum+GothicNoto+Sans+KR&display=swap"
-	rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Nanum+GothicNoto+Sans+KR&display=swap" rel="stylesheet">
 <script src="/semi/jquery/jquery-3.4.1.min.js"></script>
 </head>
 <body>
@@ -49,7 +43,7 @@
 			<!--contents-->
 			<div id="mn16s" align="center">
 
-
+				
 				<!-- 제목란이니깐 해당 제목 작성해서 하면 돼-->
 				<br>
 				<h2>공지사항</h2>
@@ -70,48 +64,137 @@
 							<th colspan="1" class="tab1">조회수</th>
 						</tr>
 
-						<%
-							for (Notice n : list) {
-						%>
 						<tr>
-							<td colspan="1" width="100px" class="tb2"><%=n.getNno()%></td>
-							<td colspan="6" width="300px" class="tb3"><%=n.getNtitle()%></td>
-							<td colspan="1" width="150px" class="tb2"><%=n.getNwriter()%></td>
-							<td colspan="1" width="150px" class="tb2"><%=n.getNdate()%></td>
-							<td colspan="1" width="150px" class="tb2"><%=n.getNcount()%></td>
+							<td colspan="1" width="100px" class="tb2">15</td>
+							<td colspan="6" width="300px" class="tb3">공지15</td>
+							<td colspan="1" width="150px" class="tb2">Manager</td>
+							<td colspan="1" width="150px" class="tb2">2020-01-14</td>
+							<td colspan="1" width="150px" class="tb2">0</td>
 						</tr>
-						<%
-							}
-						%>
+						<tr>
+							<td colspan="1" width="100px" class="tb2">14</td>
+							<td colspan="6" width="300px" class="tb3">공지14</td>
+							<td colspan="1" width="150px" class="tb2">Manager</td>
+							<td colspan="1" width="150px" class="tb2">2020-01-14</td>
+							<td colspan="1" width="150px" class="tb2">0</td>
+						</tr>
+
+						<tr>
+							<td colspan="1" width="100px" class="tb2">13</td>
+							<td colspan="6" width="300px" class="tb3">공지13</td>
+							<td colspan="1" width="150px" class="tb2">Manager</td>
+							<td colspan="1" width="150px" class="tb2">2020-01-14</td>
+							<td colspan="1" width="150px" class="tb2">0</td>
+						</tr>
+
+						<tr>
+							<td colspan="1" width="100px" class="tb2">12</td>
+							<td colspan="6" width="300px" class="tb3">공지12</td>
+							<td colspan="1" width="150px" class="tb2">Manager</td>
+							<td colspan="1" width="150px" class="tb2">2020-01-14</td>
+							<td colspan="1" width="150px" class="tb2">0</td>
+						</tr>
+
+						<tr>
+							<td colspan="1" width="100px" class="tb2">11</td>
+							<td colspan="6" width="300px" class="tb3">공지11</td>
+							<td colspan="1" width="150px" class="tb2">Manager</td>
+							<td colspan="1" width="150px" class="tb2">2020-01-14</td>
+							<td colspan="1" width="150px" class="tb2">0</td>
+						</tr>
+
+						<tr>
+							<td colspan="1" width="100px" class="tb2">10</td>
+							<td colspan="6" width="300px" class="tb3">공지10</td>
+							<td colspan="1" width="150px" class="tb2">Manager</td>
+							<td colspan="1" width="150px" class="tb2">2020-01-14</td>
+							<td colspan="1" width="150px" class="tb2">0</td>
+						</tr>
+
+						<tr>
+							<td colspan="1" width="100px" class="tb2">9</td>
+							<td colspan="6" width="300px" class="tb3">공지9</td>
+							<td colspan="1" width="150px" class="tb2">Manager</td>
+							<td colspan="1" width="150px" class="tb2">2020-01-14</td>
+							<td colspan="1" width="150px" class="tb2">0</td>
+						</tr>
+
+						<tr>
+							<td colspan="1" width="100px" class="tb2">8</td>
+							<td colspan="6" width="300px" class="tb3">공지8</td>
+							<td colspan="1" width="150px" class="tb2">Manager</td>
+							<td colspan="1" width="150px" class="tb2">2020-01-14</td>
+							<td colspan="1" width="150px" class="tb2">0</td>
+						</tr>
+
+						<tr>
+							<td colspan="1" width="100px" class="tb2">7</td>
+							<td colspan="6" width="300px" class="tb3">공지7</td>
+							<td colspan="1" width="150px" class="tb2">Manager</td>
+							<td colspan="1" width="150px" class="tb2">2020-01-14</td>
+							<td colspan="1" width="150px" class="tb2">0</td>
+						</tr>
+
+						<tr>
+							<td colspan="1" width="100px" class="tb2">6</td>
+							<td colspan="6" width="300px" class="tb3">공지6</td>
+							<td colspan="1" width="150px" class="tb2">Manager</td>
+							<td colspan="1" width="150px" class="tb2">2020-01-14</td>
+							<td colspan="1" width="150px" class="tb2">0</td>
+						</tr>
+
+						<tr>
+							<td colspan="1" width="100px" class="tb2">5</td>
+							<td colspan="6" width="300px" class="tb3">공지5</td>
+							<td colspan="1" width="150px" class="tb2">Manager</td>
+							<td colspan="1" width="150px" class="tb2">2020-01-14</td>
+							<td colspan="1" width="150px" class="tb2">0</td>
+						</tr>
+
+						<tr>
+							<td colspan="1" width="100px" class="tb2">4</td>
+							<td colspan="6" width="300px" class="tb3">공지4</td>
+							<td colspan="1" width="150px" class="tb2">Manager</td>
+							<td colspan="1" width="150px" class="tb2">2020-01-14</td>
+							<td colspan="1" width="150px" class="tb2">0</td>
+						</tr>
+
+						<tr>
+							<td colspan="1" width="100px" class="tb2">3</td>
+							<td colspan="6" width="300px" class="tb3">공지3</td>
+							<td colspan="1" width="150px" class="tb2">Manager</td>
+							<td colspan="1" width="150px" class="tb2">2020-01-14</td>
+							<td colspan="1" width="150px" class="tb2">0</td>
+						</tr>
+
+						<tr>
+							<td colspan="1" width="100px" class="tb2">2</td>
+							<td colspan="6" width="300px" class="tb3">공지2</td>
+							<td colspan="1" width="150px" class="tb2">Manager</td>
+							<td colspan="1" width="150px" class="tb2">2020-01-14</td>
+							<td colspan="1" width="150px" class="tb2">0</td>
+						</tr>
+
+						<tr>
+							<td colspan="1" width="100px" class="tb2">1</td>
+							<td colspan="6" width="300px" class="tb3">공지1</td>
+							<td colspan="1" width="150px" class="tb2">Manager</td>
+							<td colspan="1" width="150px" class="tb2">2020-01-14</td>
+							<td colspan="1" width="150px" class="tb2">0</td>
+						</tr>
+
 					</table>
 					<br>
 
 					<div>
 						<div style="display: inline-block">
-							<button onclick="asd"><<</button>
-							<button onclick="asd"><</button>
-							<button onclick="num">1</button>
-							<button onclick="num2">2</button>
-							<button onclick="asd">></button>
+							<button onclick="asd"><<</button>						
+							<button onclick="asd"><</button>						
+							<button onclick="num">1</button>						
+							<button onclick="num2">2</button>					
+							<button onclick="asd">></button>			
 							<button onclick="asd">>></button>
 						</div>
-					</div>
-					<div class="searchArea" align="center">
-						<select id="searchCondition" name="searchCondition">
-							<option value="">---</option>
-							<option value="writer">작성자</option>
-							<option value="title">제목</option>
-							<option value="content">내용</option>
-						</select> <input type="search" id="keyword" placeholder="키워드를 입력하세요!">
-						<button type="button" onclick="search();">검색하기</button>
-						<%-- <%
-							if (m != null && m.getUserId().equals("admin")) {
-						%>
-						<button
-							onclick="location.href='views/notice/noticeInsertForm.jsp'">작성하기</button>
-						<%
-							}
-						%> --%>
 					</div>
 
 				</div>
@@ -125,7 +208,6 @@
 	<script>
 		var dropdown = document.getElementsByClassName("dropdown-btnqo");
 		var i;
-
 		for (i = 0; i < dropdown.length; i++) {
 			dropdown[i].addEventListener("click", function() {
 				this.classList.toggle("activeCl");
