@@ -59,6 +59,7 @@ public class MemberDao {
 				result.setM_phone(rset.getString("PHONE"));
 				result.setM_mileage(rset.getInt("MILEAGE"));
 				result.setM_enrollDate(rset.getDate("ENROLLDATE"));
+				result.setH_no(rset.getString("MEM_HOST_NO"));
 				
 			}
 			

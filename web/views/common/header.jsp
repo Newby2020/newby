@@ -47,13 +47,25 @@
 	    <label id="AdminPage" class="top-nav">
 	        <a href="/semi/views/admin_index.jsp">관리자페이지</a>
 	    </label>
+	    <span id="logoutBtn" onclick='logout()'>로그아웃</span> 
 	    
-	    <% }else{ %>
+	    <% }else if(m.getH_no() == null){ %>
 	    <label id="toHost" class="top-nav">
 	        <a href="/semi/views/hostSignIn.jsp">호스트신청</a>
 	    </label>
 		<span class="divider1">|</span>
+		  <label id="myPage" class="top-nav">
+	        <a href="/semi/views/mypage_Profile.jsp">마이페이지</a>
+	    </label>
+	    
+		<span class="divider1">|</span>
 		
+		<label id="login-userInfo">
+	    	<%= m.getM_name()%>님 환영합니다. 
+	    </label>
+	    <span id="logoutBtn" onclick='logout()'>로그아웃</span>  
+		
+		<%}else{ %>
 		  <label id="myPage" class="top-nav">
 	        <a href="/semi/views/mypage_Profile.jsp">마이페이지</a>
 	    </label>
@@ -63,6 +75,7 @@
 	    <label id="login-userInfo">
 	    	<%= m.getM_name()%>님 환영합니다. 
 	    </label>
+	    <span id="logoutBtn" onclick='logout()'>로그아웃</span> 
 	    <%} %>
 	    
 	  </div>
@@ -174,11 +187,18 @@
           LoginModal.style.display = "none";
         }
         
+    /* 로그인 스크립트 종료 */
+
+    //로그인 버튼 클릭 시 제출
      function buttonLogin(){
     	 $('#mainLoginForm').submit();
      }
-    /* 로그인 스크립트 종료 */
-
+    
+    //로그아웃 버튼 클릭
+    function logout(){
+    	location href='/semi/logout.me';
+    }
+    
     /* 회원가입 스크립트 */
       var joinModal = document.getElementById('joinModal');
 
