@@ -12,9 +12,9 @@
     <link rel="stylesheet" href="/semi/resources/css/joinModal.css">
     <link rel="stylesheet" href="/semi/resources/css/LoginModal.css">
     <link rel="stylesheet" href="/semi/resources/css/header.css">
-    
     <script src="/semi/resources/js/mainPage.js"></script>
     <script src="/semi/resources/js/jquery-3.4.1.min.js"></script>
+    
 </head>
 <body>
 	<div class="newby-header" id="newby-header-var" style="margin-left: auto; margin-right: auto;">
@@ -123,7 +123,7 @@
   <div class="joinModalContent">
   <span class="joinClose">&times;</span>                                                               
   
-  <form id="joinForm" class="joinForm">
+  <form id="joinForm" action='/semi/insert.me' class="joinForm">
       <div class="guideSentence">
           <label style="line-height: 2em;"><b>회원가입</b></label>
           <hr>
@@ -131,7 +131,7 @@
       </div> 
       <div id="requiredWrap">
           <div class="required">
-              <input type="text" class="joinInfo" name="user_login" value="" maxlength=100; placeholder="이메일 주소 입력">
+              <input type="text" class="joinInfo" name="user_Id" value="" maxlength=100; placeholder="이메일 주소 입력">
               <button onclick="checkId" id="checkId" name="">중복 확인</button>
           </div> 
           <div class="required">
@@ -211,6 +211,11 @@
 
       joinSpan.onclick = function() {
           joinModal.style.display = "none";
+      }
+      
+      function buttonJoin(){
+    	  $('#joinForm').submit();
+    	  
       }
     /* 회원가입 스크립트 종료 */
     </script>
