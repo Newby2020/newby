@@ -88,7 +88,7 @@
                                     </tr>
                                     <tr><td><br></td></tr><tr><td><br></td></tr>
                                     <tr>
-                                        <td class="tline1row">시간당 가격</td>
+                                        <td class="tline1row">1회당 가격</td>
                                         <td style="font-size: 9pt"><input id="price" name="price" type="text">&nbsp;원</td>
                                     </tr>                              
                                     <tr><td><br></td></tr><tr><td><br></td></tr>
