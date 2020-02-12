@@ -17,17 +17,13 @@
 <title>Inquiry</title>
 <link rel="stylesheet" href="/semi/resources/css/joinModal.css">
 <link rel="stylesheet" href="/semi/resources/css/LoginModal.css">
-<link rel="stylesheet" href="/semi/resources/css/main-atag.css">
-<link rel="stylesheet" href="/semi/resources/css/main-footer.css">
-<link rel="stylesheet" href="/semi/resources/css/main-headervar.css">
-<link rel="stylesheet" href="/semi/resources/css/main-navibar.css">
 <link rel="stylesheet" href="/semi/resources/css/main-panel.css">
 <link rel="stylesheet" href="/semi/resources/css/mypage_h&j-frame.css">
 <link rel="stylesheet" href="/semi/resources/css/Customer_table.css">
 <link
 	href="https://fonts.googleapis.com/css?family=Nanum+GothicNoto+Sans+KR&display=swap"
 	rel="stylesheet">
-<script src="semi/jquery/jquery-3.4.1.min.js"></script>
+<script src="/semi/resources/js/jquery-3.4.1.min.js"></script>
 </head>
 <body>
 

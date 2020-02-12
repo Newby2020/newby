@@ -35,7 +35,7 @@ public class BoardListServlet extends HttpServlet {
 		ArrayList<Board> list = null;
 		BoardService bs = new BoardService();
 
-		// 페이징 처리
+		// 페이징 처리/
 		// 앞페이지
 		int startPage;
 
