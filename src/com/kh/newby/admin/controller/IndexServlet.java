@@ -68,7 +68,7 @@ public class IndexServlet extends HttpServlet {
 			page = "/views/admin_index.jsp";
 			request.setAttribute("classCount", classCount);
 		} else {
-			page = "/views/common/admin_index.jsp";
+			page = "/views/common/errorPage.jsp";
 			request.setAttribute("msg", "클래스 수 불러오기 실패");
 		}
 		request.getRequestDispatcher(page).forward(request, response);

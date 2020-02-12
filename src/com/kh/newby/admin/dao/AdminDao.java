@@ -177,7 +177,6 @@ public class AdminDao {
 			close(rset);
 			close(stmt);
 		}
-		
-		return 0;
+		return classCount;
 	}
 }
