@@ -1,0 +1,74 @@
+.newby-body-panel2{
+	display: inline-block;
+    width: 35%;
+    min-height: 700px;
+    height: auto;
+    padding-left: 1px;
+}        
+
+#findForm1{
+    margin-left: 25%;
+    margin-right: 0%;
+    margin-top: 15%;
+    margin-bottom: 0%;
+    padding-right: 10%;
+}
+
+#findForm2{
+    margin-left: 0%;
+    margin-right: 35%;
+    margin-top: 0px;
+    margin-bottom: 0%;
+}
+
+#findIdSentence{
+    font-size: 20px;
+    text-align: left;
+}
+
+#findPwdSentence{
+    font-size: 20px;
+    text-align: left;
+}
+
+.infoRequired{
+    font-size: 12px;
+    height: 20px;
+    padding-left: 70px;
+    padding-bottom: 10px;
+    float: left;
+}
+
+.announce{
+    font-size: 12px;
+    padding: 5px;
+}
+
+.buttonFind{
+    width: 300px;
+    height: 30px;
+    border: none;
+    background-color: rgb(9, 129, 241);
+    color: white;
+    cursor : pointer;
+}
+
+#blankFor {
+	padding-bottom: 41px;
+}
+
+.memberFind{
+    border-right: 0px;
+    border-top: 0px;
+    border-left: 0px;
+    width: 200px;
+}
+
+.secureButtonFind{
+    width: 40px;
+    height: 20px;
+    border: none;
+    color: black;
+    cursor : pointer;
+}
+

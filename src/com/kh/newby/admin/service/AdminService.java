@@ -29,5 +29,15 @@ public class AdminService {
 		
 		return list;
 	}
-
+	
+	public int getUserCount() {
+		
+		Connection con = getConnection();
+		int userCount = aDao.getUserCount(con);
+		
+		close(con);
+		
+		return userCount;
+	}
+	
 }
