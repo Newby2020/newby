@@ -67,17 +67,18 @@ public class ClassDao {
 		PreparedStatement pstmt = null;
 		String sql1 = prop.getProperty("insertClass");
 		String sql2 = prop.getProperty("insertClassSchedule");
-//		try {
-//			pstmt = con.prepareStatement(sql);
-//			pstmt.set
+		
+		try {
+			pstmt = con.prepareStatement(sql1);
 			
 			
 			
-//		} catch (SQLException e) {
-//			e.printStackTrace();
-//		} finally {
-//			close(pstmt);
-//		}
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(pstmt);
+		}
 		return result;
 	}
 

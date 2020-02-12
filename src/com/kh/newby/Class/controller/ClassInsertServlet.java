@@ -74,47 +74,76 @@ public class ClassInsertServlet extends HttpServlet {
 				
 				// -- 파일 업로드 실시
 				// 5-1 기본 전송값 처리하기
+				String[] cDate = mrequest.getParameterValues("classDate");
+				String[] sTime = mrequest.getParameterValues("startTime");
+				String[] addr = mrequest.getParameterValues("addr");
+				
+				// 속성값 삽입
 				String cName = mrequest.getParameter("className");
 				String category1 = mrequest.getParameter("category1");
 				String category2 = mrequest.getParameter("category2");
 				String category3 = mrequest.getParameter("category3");
 				String cType = mrequest.getParameter("classType");
-				String MaxNum = mrequest.getParameter("MaxNum");
-				String cTime = mrequest.getParameter("classTime");
-				String price = mrequest.getParameter("price");
-				String[] cDate = mrequest.getParameterValues("classDate");
-				String[] sTime = mrequest.getParameterValues("startTime");
-				String[] addr = mrequest.getParameterValues("addr");
+				int MaxNum = Integer.parseInt(mrequest.getParameter("MaxNum"));
+				int cTime = Integer.parseInt(mrequest.getParameter("classTime"));
+				int price = Integer.parseInt(mrequest.getParameter("price"));
+				String addr1 ="";
 				String obj = mrequest.getParameter("object");
-				String edit1 = mrequest.getParameter("editor1");
-				String edit2 = mrequest.getParameter("editor2");
-				String fileName = mrequest.getFilesystemName("uploadImg");
+				String curri = mrequest.getParameter("editor1");
+				String intro = mrequest.getParameter("editor2");
+				String img = mrequest.getFilesystemName("uploadImg");
+				String cdate ="";
+				String stime ="";
 				
-				//-------------------출력용----------------------
-				System.out.println(cName);
-				System.out.println(category1);
-				System.out.println(category2);
-				System.out.println(category3);
-				System.out.println(cType);
-				System.out.println(MaxNum);
-				System.out.println(cTime);
-				System.out.println(price);
 				for(int i=0; i<cDate.length; i++) {	// 배열은 for문으로 돌려서 처리해야함
-					System.out.println(cDate[i]);					
+					if(i != cDate.length-1){						
+						cdate += cDate[i]+", ";
+					} else {
+						cdate += cDate[i];						
+					}
+				}
+				
+				for(int i=0; i<sTime.length; i++) {
+					if(i != sTime.length-1) {
+						stime += sTime[i]+", ";						
+					} else {
+						stime += sTime[i];
+					}
 				}
 
-				System.out.println(Arrays.toString(cDate));
-				System.out.println(Arrays.toString(sTime));
-				System.out.println(Arrays.toString(addr));
-				System.out.println(obj);
-				System.out.println(edit1);
-				System.out.println(edit2);
-				System.out.println(fileName);
+				for(int i=0; i<addr.length; i++) {
+					if(i != addr.length-1) {						
+						addr1 += addr[i]+", ";
+					} else {
+						addr1 += addr[i];						
+					}
+				}
+				
+				ClassVo c = new ClassVo(cName, category1, category2, category3, cType, cTime,
+										MaxNum, price, img, addr1, obj, curri, intro, cdate, stime);
+				
+				//-------------------출력용----------------------
+//				System.out.println("---------출력용 --------");
+//				System.out.println(cName);
+//				System.out.println(category1);
+//				System.out.println(category2);
+//				System.out.println(category3);
+//				System.out.println(cType);
+//				System.out.println(MaxNum);
+//				System.out.println(cTime);
+//				System.out.println(price);
+//				System.out.println(cdate);
+//				System.out.println(addr1);
+//				System.out.println(stime);
+//				System.out.println(obj);
+//				System.out.println(curri);
+//				System.out.println(intro);
+//				System.out.println(img);
+//				System.out.println("----------------------");
 				//--------------------------------------------
 				
-				ClassVo c = new ClassVo();
 				
-				int result = new ClassService().insertClass(c);
+				int result = new ClassService().insertClass(c);		// DB 연결
 				
 				// 메인화면으로 이동해야함
 //				if(result > 0 ) {
