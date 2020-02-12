@@ -32,7 +32,7 @@
             <a class="index" href="admin_index.jsp">관리자페이지</a>
         </div>
         <a href="admin_index.jsp">Dashboard</a>
-        <a href="/semi/user.ad">사용자</a>
+        <a href="/semi/userList.ad">사용자</a>
         <a class="active" href="admin_classApply.jsp">클래스</a>
 		<a href="admin_classCancel.jsp">클래스 취소</a> 
         <a href="admin_hostReport.jsp">호스트 신고</a>
@@ -51,13 +51,14 @@
                 <tr>
                     <th>등록일</th>
                     <th>호스트명</th>
+                    <th>호스트 아이디</th>
                     <th>클래스명</th>
                     <th>금액(원)</th>
                     <th>타입</th>
-                    <th>카테고리</th>
+                    <th>1차 카테고리</th>
                     <th>위치</th>
                     <th>인원수</th>
-                    <th>스케쥴</th>
+                    <th>스케쥴</th>  <!-- 시작날짜, 종료날짜 -->
                     <th>내용</th>
                     <th>상태</th>
                 </tr>

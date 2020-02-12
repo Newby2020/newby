@@ -103,6 +103,61 @@ public class MemberDao {
 		
 		return result;
 	}
+
+	public int idDupCheck(Connection con, String id) {
+		int result = -1;
+		
+		PreparedStatement pstmt = null;
+		ResultSet rset = null;
+		
+		String sql = prop.getProperty("idDupCheck");
+		
+		try {
+			pstmt = con.prepareStatement(sql);
+			
+			pstmt.setString(1, id);
+			
+			rset=pstmt.executeQuery();
+			
+			if(rset.next()) {
+				result = rset.getInt(1);
+			}
+		}catch(SQLException e) {
+			e.printStackTrace();
+		}finally {
+			close(rset);
+			close(pstmt);
+		}
+		
+		return result;
+	}
+
+	public int nickDupCheck(Connection con, String nick) {
+		int result= -1;
+		
+		PreparedStatement pstmt = null;
+		ResultSet rset = null;
+		
+		String sql = prop.getProperty("nickDupCheck");
+		
+		try {
+			pstmt=con.prepareStatement(sql);
+			pstmt.setString(1, nick);
+			
+			rset=pstmt.executeQuery();
+			
+			if(rset.next()){
+				result=rset.getInt(1);
+			}
+		}catch(SQLException e) {
+			e.printStackTrace();
+		}finally {
+			close(rset);
+			close(pstmt);
+		}
+		
+		return result;
+	}
 	
 	
 	
