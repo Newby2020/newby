@@ -1,5 +1,9 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+    pageEncoding="UTF-8" import="com.kh.newby.Member.model.vo.* "%>
+<% 
+	int userCount = (int)(request.getAttribute("userCount"));
+	int hostCount = (int)(request.getAttribute("hostCount"));
+%>    
 <!DOCTYPE html>
 <html lang="en">
 
@@ -44,7 +48,7 @@
             <div class="column">
                 <div class="card">
                     <p><i class="fa fa-user"></i></p>
-                    <h3>2421</h3>
+                    <h3><%=userCount %></h3>
                     <p>사용자 수</p>
                 </div>
             </div>
@@ -52,7 +56,7 @@
             <div class="column">
                 <div class="card">
                     <p><i class="fa fa-check"></i></p>
-                    <h3>55</h3>
+                    <h3><%=hostCount %></h3>
                     <p>호스트 수</p>
                 </div>
             </div>

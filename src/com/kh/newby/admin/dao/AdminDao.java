@@ -109,7 +109,7 @@ public class AdminDao {
 		Statement stmt = null;
 		ResultSet rset = null;
 		
-		String sql = "SELECT COUNT(MEM_ID) FROM MEMBER";
+		String sql = prop.getProperty("userCount");
 		
 		try {
 			stmt = con.createStatement();
@@ -127,5 +127,57 @@ public class AdminDao {
  		}
 		return userCount;
 	}
-	
+
+	public int getHostCount(Connection con) {
+
+		int hostCount = 0;
+		
+		Statement stmt = null;
+		ResultSet rset = null;
+		
+		String sql = prop.getProperty("hostCount");
+		
+		try {
+			stmt = con.createStatement();
+			rset = stmt.executeQuery(sql);
+			
+			if(rset.next()) {
+				hostCount = rset.getInt(1);
+			}
+
+		} catch(SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(rset);
+			close(stmt);
+		}
+		return hostCount;
+	}
+
+	public int getClassCount(Connection con) {
+
+		int classCount = 0;
+		
+		Statement stmt = null;
+		ResultSet rset = null;
+		
+		String sql = prop.getProperty("classCount");
+		
+		try {
+			stmt = con.createStatement();
+			rset = stmt.executeQuery(sql);
+			
+			if(rset.next()) {
+				classCount = rset.getInt(1);
+			}
+			
+		} catch(SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(rset);
+			close(stmt);
+		}
+		
+		return 0;
+	}
 }

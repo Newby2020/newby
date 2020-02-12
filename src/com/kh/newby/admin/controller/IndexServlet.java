@@ -30,6 +30,7 @@ public class IndexServlet extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
+		// ==== 이용자 수 가져오기 ================================
 		int userCount = 0;
 		AdminService as = new AdminService();
 		
@@ -37,9 +38,39 @@ public class IndexServlet extends HttpServlet {
 		
 		String page = "";
 		
-		page = "/semi/views/admin_index.jsp";
+		if(userCount > 0) {
+			page = "/views/admin_index.jsp";
+			request.setAttribute("userCount", userCount);
+		} else {
+			page = "/views/common/errorPage.jsp";
+			request.setAttribute("msg", "이용자 수 불러오기 실패");
+		}
 		
-		request.setAttribute("userCount", userCount);
+		// ==== 호스트 수 가져오기 ================================
+		int hostCount = 0;
+		
+		hostCount = as.getHostCount();
+		
+		if(hostCount > 0) {
+			page = "/views/admin_index.jsp";
+			request.setAttribute("hostCount", hostCount);
+		} else {
+			page = "/views/common/errorPage.jsp";
+			request.setAttribute("msg", "호스트 수 불러오기 실패");
+		}
+		
+		// ==== 클래스 수 가져오기 ================================
+		int classCount = 0;
+		
+		classCount = as.getClassCount();
+		
+		if(classCount > 0) {
+			page = "/views/admin_index.jsp";
+			request.setAttribute("classCount", classCount);
+		} else {
+			page = "/views/common/admin_index.jsp";
+			request.setAttribute("msg", "클래스 수 불러오기 실패");
+		}
 		request.getRequestDispatcher(page).forward(request, response);
 	}
 
