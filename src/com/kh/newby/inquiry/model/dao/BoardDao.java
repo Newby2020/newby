@@ -99,6 +99,43 @@ public class BoardDao {
 		return list;
 	}
 
+
+	public Board selectOne(Connection con, String bno) {
+		Board b = null;
+		PreparedStatement pstmt = null;
+		ResultSet rset = null;
+		
+		String sql = prop.getProperty("selectOne");
+		
+		try {
+			pstmt = con.prepareStatement(sql);
+			
+			pstmt.setString(1, bno);
+			
+			rset = pstmt.executeQuery();
+			
+			if(rset.next()) {
+				b = new Board();
+				
+				b.setIno(bno);
+				b.setItitle(rset.getString("Q_TITLE"));
+				b.setIwno(rset.getString("Q_WRITER_NO"));
+				b.setIdate(rset.getDate("Q_DATE"));
+				b.setIcontent(rset.getString("Q_CONTENY"));
+				b.setIcomment(rset.getString("Q_COMMENT"));
+				
+			}
+			
+		} catch(SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(rset);
+			close(pstmt);
+		}
+				
+		return b;
+	}
+
 }
 
 

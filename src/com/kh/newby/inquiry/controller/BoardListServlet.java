@@ -84,8 +84,9 @@ public class BoardListServlet extends HttpServlet {
 		if(list != null) {
 			page = "views/Customer_Inquiry.jsp";
 			request.setAttribute("list", list);
-
+			
 			PageInfo pi = new PageInfo(currentPage,listCount,limit,maxPage,startPage,endPage);
+			System.out.println(pi);
 			request.setAttribute("pi", pi);
 		} else{
 			page = "views/common/errorPage.jsp";

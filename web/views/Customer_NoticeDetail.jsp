@@ -10,9 +10,7 @@
 <link rel="stylesheet" href="/semi/resources/css/main-panel.css">
 <link rel="stylesheet" href="/semi/resources/css/mypage_h&j-frame.css">
 <link rel="stylesheet" href="/semi/resources/css/Customer_table.css">
-<link
-	href="https://fonts.googleapis.com/css?family=Nanum+GothicNoto+Sans+KR&display=swap"
-	rel="stylesheet">
+
 <script src="/semi/resources/js/jquery-3.4.1.min.js"></script>
 </head>
 <body>
@@ -31,7 +29,7 @@
 					문의 <i id="ci22">≡</i>
 				</button>
 				<div class="dropdown-soxk">
-					<a href="Customer_Inquiry.jsp">문의 목록</a> <a
+					<a href="/semi/selectList.bo?currentPage=1">문의 목록</a> <a
 						href="Customer_CreateInquiry.jsp">문의 작성</a>
 				</div>
 				<a href="Customer_Report.jsp">신고</a> <a href="Customer_Refund.jsp">이용약관</a>
@@ -43,7 +41,7 @@
 
 				<!-- 제목란이니깐 해당 제목 작성해서 하면 돼-->
 				<br>
-				<h2>문의 작성</h2>
+				<h2>공지 내용</h2>
 				<hr id="hrSet53">
 				<br> <br>
 
@@ -54,7 +52,7 @@
 						<table class="tbDetail">
 							<tr>
 								<td class="tdDetail">제목</td>
-								<td colspan="6"><span class="spN">123</span></td>
+								<td class="tdDetail" colspan="5"><span class="spN2">123</span></td>
 							</tr>
 							<tr>
 								<td class="tdDetail">작성자</td>
@@ -64,12 +62,27 @@
 								<td class="tdDetail">조회수</td>
 								<td class="tdSpan"><span class="spN">123</span></td>
 							</tr>
-						
+							<tr>
+								<td class="tdDetail">내용</td>
+								<td class="tbSpan2" colspan="5"><span class="spN">123</span></td>
+							</tr>
+
+							<tr>
+								<td class="tdContent" colspan="6"></td>
+							</tr>
 						</table>
-						
-						<h5>
-							<textarea rows="20" cols="80" style="resize: none; font-size: 15pt;"></textarea>
-						</h5>
+
+						<table align="center">
+							<tr>
+								<td>댓글 작성</td>
+								<td><textArea rows="3" cols="80" id="replyContent"
+										name="replyContent"></textArea></td>
+								<td><button type="submit" id="addReply">댓글 등록</button></td>
+							</tr>
+						</table>
+
+
+
 
 					</form>
 
