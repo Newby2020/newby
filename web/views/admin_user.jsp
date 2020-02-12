@@ -1,5 +1,9 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+    pageEncoding="UTF-8" import="com.kh.newby.Member.model.vo.*, java.util.*" %>
+    
+<% 
+	ArrayList<Member> list = (ArrayList<Member>)request.getAttribute("list");
+%>    
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -28,7 +32,8 @@
             <a class="index" href="admin_index.jsp">관리자페이지</a>
         </div>
         <a href="admin_index.jsp">Dashboard</a>
-        <a class="active" href="admin_user.jsp">사용자</a>
+        <!-- <a class="active" href="admin_user.jsp">사용자</a> -->
+        <a class="active" href="/semi/user.ad">사용자</a>
         <a href="admin_classApply.jsp">클래스</a>
 		<a href="admin_classCancel.jsp">클래스 취소</a>
         <a href="admin_hostReport.jsp">호스트 신고</a>
@@ -45,103 +50,27 @@
             </div>
             <table>
                 <tr>
-                    <th>ID</th>
+                    <th>사용자 번호</th>
                     <th>이름</th>
+                    <th>아이디</th>
                     <th>전화번호</th>
-                    <th>이메일</th>
-                    <th>주소</th>       
                     <th>가입일</th>       
-                    <th>구분</th>
-                    <th>참여/운영<br>클래스(수) </th>
-                    <th>상태</th>
+                    <th>마일리지</th>
+                    <th>호스트 번호</th>
                 </tr>
+                <% for(Member m : list) {%>
                 <tr>
-                    <td>khteacher</td>
-                    <td>유승제</td>
-                    <td>010-3240-4924</td>
-                    <td>kh001@test.com</td>
-                    <td>서울시 강남구 역삼동</td>
-                    <td>2020-01-04</td>
-                    <td>호스트</td>
-                    <td>5 / 2</td>
-                    <td>정지</td>
+                    <td><%= m.getM_no() %></td>
+                    <td><%= m.getM_name() %></td>
+                    <td><%= m.getM_id() %></td>
+                    <td><%= m.getM_phone() %></td>
+                    <td><%= m.getM_enrollDate() %></td>
+                    <td><%= m.getM_mileage() %></td>
+                    <td><%= m.getH_no() %></td>
                 </tr>
-                <tr>
-                    <td>khteacher</td>
-                    <td>유승제</td>
-                    <td>010-3240-4924</td>
-                    <td>kh001@test.com</td>
-                    <td>서울시 강남구 역삼동</td>
-                    <td>2020-01-04</td>
-                    <td>일반</td>
-                    <td>3</td>
-                    <td>탈퇴</td>
-                </tr>
-                <tr>
-                    <td>khteacher</td>
-                    <td>유승제</td>
-                    <td>010-3240-4924</td>
-                    <td>kh001@test.com</td>
-                    <td>서울시 강남구 역삼동</td>
-                    <td>2020-01-04</td>
-                    <td>일반</td>
-                    <td>12</td>
-                    <td>휴면</td>
-                </tr>
-                <tr>
-                    <td>khteacher</td>
-                    <td>유승제</td>
-                    <td>010-3240-4924</td>
-                    <td>kh001@test.com</td>
-                    <td>서울시 강남구 역삼동</td>
-                    <td>2020-01-04</td>
-                    <td>일반</td>
-                    <td>64</td>
-                    <td>이용중</td>
-                </tr>
+                <% } %>
             </table>
         </div>
     </div>
-
-    <!-- The Modal for 양식 확인 -->
-    <div id="contentsOfAppliedClass" class="modal">
-        <!-- Modal content -->
-        <div class="modal-content">
-            <span id="close" class="close">&times;</span>
-            <p>작성 양식 데이터 가져오기(호스트 마이페이지에서 가져옴)</p>
-        </div>
-    </div>
-    <script>
-        // ------------------ Modal--------------------------------
-        // Get the modal
-        var contents = document.getElementById("contentsOfAppliedClass");
-        
-        // Get the button that opens the modal
-        var btn = document.getElementById("detailVeiwBtn");
-        // var btn = document.getElementsByClassName("detailVeiwBtn");
-        
-        // Get the <span> element that closes the modal
-        var close = document.getElementsByClassName("close")[0];
-        
-        // When the user clicks the button, open the modal 
-        btn.onclick = function() {
-            contents.style.display = "block";
-        }
-        
-        // When the user clicks on <span> (x), close the modal
-        close.onclick = function() {
-            contents.style.display = "none";
-        }
-
-        // TODO 이거 어케하나염
-        // ------------------ confirm() & reject()--------------------------------
-        function confirm() {
-            window.confirm('해당 클래스의 개설을 승인하시겠습니까?');
-        }
-        
-        function reject(){
-            window.confirm('해당 클래스의 개설을 승인하시겠습니까?');
-        }
-    </script>
 </body>
 </html>

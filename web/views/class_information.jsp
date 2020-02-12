@@ -1,9 +1,10 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%  //호스트 객체
-	//Host h = (Host)request.getAttribute("host");
+<%@ page import="com.kh.newby.Class.model.vo.*" %>
+
+<%  
 	//클래스 객체
-	//Class cl = (Class)request.getAttribute("class");
+	ClassVo cv = (ClassVo)request.getAttribute("class");
 %>
 <!DOCTYPE html>
 <html>
@@ -19,7 +20,6 @@
         <div class="main">
             <div class="class_img">
                 <img src="./class_example.jpg" class="class_img" alt="">
-
             </div>
             <div class="class_navi">
                     <a href="#sumary" id="summary_nav" class="navi_bar">요약</a>
@@ -46,7 +46,7 @@
             <div class="host_detail" id="host_detail">
                 <div class="host_detail_title"><h1>강사 소개</h1></div>
                     <div class="host_detail_text" id="cl_host_info">
-                        	  <%-- <%= h.getHostInfo() %> --%>
+                        	  <%= cv.getHostIntro() %>
                     </div>
             </div>
 
@@ -56,7 +56,7 @@
                 <div class="class_detail_title">
                     <h1>수업소개</h1></div>
                     <div class="class_detail_text">
-                   <%--      <%= cl.getClassIntro() %> --%>
+                        <%= cv.getClassIntro() %>
                     </div>
                 </div>
                     <div class="class_detail">
@@ -66,7 +66,7 @@
                         <div>
                             <ul class="class_detail_text">
                                 <li style="list-style: none;">
-                                    <%-- <p><%= cl.getClassTarget() %></p> --%>
+                                    <p><%= cv.getClassTarget() %></p>
                                 </li>
                             </ul>
                         </div>
@@ -78,7 +78,7 @@
                         <div>
                             <dl class="class_detail_text">
                                 <dd>
-                                <%--    <%= cl.getClassCurricurum() %> --%>
+                                   <%= cv.getClassCurriculum() %>
                                 </dd>
                             </dl>
                         </div>
@@ -93,7 +93,7 @@
                             <img src="../resources/images/roundstar.png">
                             <img src="../resources/images/roundstar.png">
                             <img src="../resources/images/roundstar.png">
-                            <img src="../resources/images/roundstar.png"> 5.0 </div>
+                            <img src="../resources/images/roundstar.png"><%= cv.getAverageReview() %></div>
 
                         <div class="review_list" id="bookmarkReview">
                             <ul>
@@ -115,7 +115,7 @@
                         </div>
                         <script>
                         	$.ajax({
-                        		url:"/<%= request.getContextPath() %>/classinfo.ci",
+                        		url:"/<%= request.getContextPath() %>/selectOne.ci",
                         		type: "get",
                         		success:function(data){
                         			$.each(data,function(index,value){
@@ -134,10 +134,7 @@
                         			location
                         		}
                         	});
-                        	
-                        	
-                        	
-                        	
+
                         	// 사용할 떄 script 태그 밖으로 이동시켜야함
                             <%--  <div class="paging_num" id="innerPageDiv">
                             <a class="on" href='<%= request.getContextPath() %>/replyList.rl?currentPage=1'"><<</a> 
@@ -175,18 +172,16 @@
     <div class="side">
         <div class="class_price">
             <div class="">
-                <div class="title" id="side_class_title">
-                    원데이 클래스</div>
+                <div class="title" id="side_class_title"><%= cv.getClassType() %></div>
 
-                    <div id="side_pay_option">01.21(화)<span style="float: center; margin-left: 20%;">19:00~21:00</span>
-                    <div style="float: right; margin-right: 5%;">역삼</div>
+                    <div id="side_pay_option"><%= cv.getClassDate() %><span style="float: center; margin-left: 20%;"><%= cv.getClassStartTime() %>:~<%= cv.getClassEndTime() %></span>
+                    <div style="float: right; margin-right: 5%;"><%= cv.getClassLocation() %></div>
                     </div>
                     <div class="payment">
                         <a id="pay_a" href="" onclick="payPopup();"><span id="pay_btn">수업 신청하기</span></a>
                     </div>
                     <div class="price">
-                        <div id="text_time"><b>￦20,000원 / 시간</b></div>
-                        <div id="text_total">￦40,000 / 총 1회 2시간</div>
+                        <div id="text_time"><b>￦<%= cv.getClassPrice() %>원 / 회당</b></div>
                     </div>
             </div>
         </div>

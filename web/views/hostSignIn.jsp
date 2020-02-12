@@ -34,12 +34,7 @@
                         <br>
                     </div>
                     <div align="center">  
-                    <div class="hostRequired">
-                        <select class="hostJoinInfo" name="hostClassCategory" id="hostClassCategory" style="height: 30px;">
-                            <option value="카테고리">클래스 카테고리</option>
-                        </select>
-                    </div>
-                    <br>
+                 
                     <div class="hostRequired">
                         <input type="textarea" class="hostJoinInfoReason" id="hostClassReason" name="hostClassReason" value="" placeholder="   클래스 개설하려는 이유를 자세히 적어주세요">
                     </div>

@@ -8,6 +8,7 @@ import java.io.IOException;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.Properties;
 
 import com.kh.newby.Member.model.exception.MemberException;
@@ -59,6 +60,7 @@ public class MemberDao {
 				result.setM_phone(rset.getString("PHONE"));
 				result.setM_mileage(rset.getInt("MILEAGE"));
 				result.setM_enrollDate(rset.getDate("ENROLLDATE"));
+				result.setH_no(rset.getString("MEM_HOST_NO"));
 				
 			}
 			
@@ -67,6 +69,35 @@ public class MemberDao {
 		
 		}finally {
 			close(rset);
+			close(pstmt);
+		}
+		
+		return result;
+	}
+
+	public int insertMember(Connection con, Member m) throws MemberException{
+		
+		int result = 0; // 결과 확인을 위한 변수 생성
+		
+		PreparedStatement pstmt = null;
+		
+		try {
+			String sql = prop.getProperty("insertMember");
+			
+			pstmt = con.prepareStatement(sql);
+			
+			pstmt.setString(1, m.getM_id());
+			pstmt.setString(2, m.getM_nick());
+			pstmt.setString(3, m.getM_pwd());
+			pstmt.setString(4, m.getM_name());
+			pstmt.setString(5, m.getM_phone());
+			
+			result = pstmt.executeUpdate();
+			
+			
+		}catch(SQLException e) {
+			throw new MemberException(e.getMessage());
+		}finally {
 			close(pstmt);
 		}
 		

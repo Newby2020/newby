@@ -14,7 +14,7 @@
     width: 500px;
     height: 30px;
     padding-left: 10px;
-    border-radius: 5px;    
+    border-radius: 5px;        
 }
 #input2ske{
 	border: none;
@@ -52,7 +52,7 @@
      position: relative;
      background-color: #f1f1f1;
      color: rgb(9, 129, 241);
-     top: 8px;
+     top: 6px;
      height: 25px;
      width: 25px;
      border: 0;
@@ -109,16 +109,6 @@
 }
 
 
-/* 이미지 업로드 */
-#files {
-    display: none;
-}
-#imgs{
-    margin: 5px;
-}
-
-
-
 .addSchedule23{
     height: auto;
 }
@@ -137,6 +127,14 @@
     text-align-last: center;
     font-size: 9pt;
     margin-top: 10px;
+}
+
+#delImg{
+    width: 15px;
+    height: 15px;
+    cursor: pointer;
+    position: relative;
+    top: 5px;
 }
 
 #zipCode13{
@@ -163,7 +161,7 @@
     border: none;
     border-bottom: 1px solid lightgray;
     padding-left: 10px;
-    width: 250px;
+    width: 300px;
     font-size: 9pt;
     height: 20px;
 }
@@ -178,9 +176,10 @@
     height: 25px;
     width: 80px;
     border-radius: 15px;
-    font-size: 9pt;
+    font-size: 10pt;
     cursor: pointer;
     vertical-align: middle;
+    font-weight: bold;
 }
 
 .tt121{
@@ -215,4 +214,5 @@
     border-radius: 15px; 
     font-size: 12pt;
     cursor: pointer;
+    font-weight: bold;
 }

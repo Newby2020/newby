@@ -30,7 +30,7 @@ html{
 	color: lightgray;
 }
 
-#searchArea{
+#searchArea {
 	display: inline-block;
 	width: 70%;
 	height: 63px;
@@ -41,7 +41,7 @@ html{
 	outline-style: none;
 }
 
-#searchClass{
+#searchClass {
 	width: 120px;
 	height: 55px;
 	margin-top: 5px;
@@ -53,11 +53,11 @@ html{
 	float: right;
 }
 
-#chr-category{
+#chr-category {
   display: inline-flex;
 }
 
-.chr-category{
+.chr-category {
 	border: 1px solid lightgray;
     margin-top: 40px;
     margin-bottom: 40px;
@@ -72,39 +72,31 @@ html{
 	height: 180px;
 }
 
-.mention-categoty {
+.mention-category {
 	display: flex;
 	margin-left: 10px;
 	margin-top: 0px;
     margin-bottom: 0px;
 }
 
-.main-category-sum{
-  display: inline-flex;
+#main-category-sum {
+  	display: inline-flex;
   
 }
-.main-category{
-border: 2px solid white;
-border-radius: 50%;
-padding-top: 8px;
-margin-left: 30px;
-margin-right: 50px;
-width: 200px;
-height: 150px;
-background-color: snow ; 
-cursor: pointer;
-}
+
 .main-category {
-width:170px;
-height:170px;
+	border: 1px solid lightgray;
+	border-radius: 5px;
+	margin-left: 60px;
+	margin-right: 55px;
+	width: 150px;
+	height: 140px;
+	cursor: pointer;
 }
-.card-img-top{
-top:50%;
-left:50%;
-margin-top: 15%;
-margin-left: 20%;
-margin-right: 20%;
-width: 60%;
-height: 60%;
+
+.card-img-top {
+	display: inline-flex;
+	width: 150px;
+	height: 100px;
 }
 
