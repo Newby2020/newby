@@ -80,8 +80,14 @@
                 <% } %>
             </table>
         </div>
+        <%-- 페이지 처리 --%>
+        <div class="pagingArea" align="center">
+        	<button onclick="location.href='<%= request.getContextPath() %>/userList.ad?currentPage=1>'"><<</button>
+        	<%-- <% if(currentPage <= 1){ %> --%>
+        </div>
         
-     		<%-- 페이지 처리 --%>
+        
+     	<%-- 페이지 처리 예시 --%>
 		<div class="pagingArea" align="center">
 			<button onclick="location.href='<%= request.getContextPath() %>/userList.ad?currentPage=1'"><<</button>
 			<%  if(currentPage <= 1){  %>
