@@ -1,6 +1,7 @@
 package com.kh.newby.Member.controller;
 
 import java.io.IOException;
+import java.io.PrintWriter;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -42,6 +43,9 @@ public class LoginServlet extends HttpServlet {
 		
 		MemberService ms = new MemberService();
 		
+		
+		PrintWriter out = response.getWriter();
+		
 		try {// 로그인 성공했을 때
 			m = ms.selectMember(m);
 			
@@ -55,11 +59,12 @@ public class LoginServlet extends HttpServlet {
 			response.sendRedirect("index.jsp");
 		} catch (MemberException e) {// 에러가 났을때
 			
-			request.setAttribute("msg", "회원 로그인 실패!");
+		
+			request.setAttribute("msg", "아이디나 비밀번호를 잘못 입력하셨습니다");
 			request.setAttribute("exception", e);
 			
-			request.getRequestDispatcher("views/common/errorPage.jsp").forward(request, response);
-			//e.printStackTrace();
+//			request.getRequestDispatcher("views/common/errorPage.jsp").forward(request, response);
+			
 		}
 		
 	

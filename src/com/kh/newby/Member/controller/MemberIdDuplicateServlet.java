@@ -1,4 +1,4 @@
-package com.kh.newby.admin.controller;
+package com.kh.newby.Member.controller;
 
 import java.io.IOException;
 
@@ -8,19 +8,19 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.kh.newby.admin.service.AdminService;
+import com.kh.newby.Member.model.service.MemberService;
 
 /**
- * Servlet implementation class Index
+ * Servlet implementation class MemberIdDuplicateServlet
  */
-@WebServlet("/index.ad")
-public class IndexServlet extends HttpServlet {
+@WebServlet("/idDup.me")
+public class MemberIdDuplicateServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public IndexServlet() {
+    public MemberIdDuplicateServlet() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -29,18 +29,13 @@ public class IndexServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		String id = request.getParameter("user_Id");
 		
-		int userCount = 0;
-		AdminService as = new AdminService();
+		MemberService ms = new MemberService();
 		
-		userCount = as.getUserCount();
+		int result = ms.idDupCheck(id);
 		
-		String page = "";
-		
-		page = "/semi/views/admin_index.jsp";
-		
-		request.setAttribute("userCount", userCount);
-		request.getRequestDispatcher(page).forward(request, response);
+		response.getWriter().print((result>0)? "no" : "ok");
 	}
 
 	/**
