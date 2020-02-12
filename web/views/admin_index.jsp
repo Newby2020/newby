@@ -1,5 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8" import="com.kh.newby.Member.model.vo.* "%>
+    pageEncoding="UTF-8" import="com.kh.newby.Member.model.vo.*, com.kh.newby.Class.model.vo.*;"%>
 <% 
 	int userCount = (int)(request.getAttribute("userCount"));
 	int hostCount = (int)(request.getAttribute("hostCount"));
