@@ -32,7 +32,7 @@ public class UserListServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// 1. 게시판 페이징 처리하기
+		// 1. 페이징 처리하기
 		ArrayList<Member> list = null;
 		AdminService as = new AdminService();
 		

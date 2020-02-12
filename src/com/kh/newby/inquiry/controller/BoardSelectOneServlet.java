@@ -1,4 +1,4 @@
-package com.kh.newby.admin.controller;
+package com.kh.newby.inquiry.controller;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -9,46 +9,49 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.kh.newby.Class.model.vo.ClassVo;
-import com.kh.newby.admin.service.AdminService;
+import com.kh.newby.inquiry.model.service.BoardCommentService;
+import com.kh.newby.inquiry.model.service.BoardService;
+import com.kh.newby.inquiry.model.vo.Board;
 
 /**
- * Servlet implementation class ClassApply
+ * Servlet implementation class BoardSelectOneServlet
  */
-@WebServlet("/classList.ad")
-public class ClassListServlet extends HttpServlet {
+@WebServlet("/selectOne.bo")
+public class BoardSelectOneServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public ClassListServlet() {
+    public BoardSelectOneServlet() {
         super();
         // TODO Auto-generated constructor stub
     }
+    
 
 	/**
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// 1. 페이징 처리하기
-		ArrayList<ClassVo> list = null;
-		AdminService as = new AdminService();
+		String bno = request.getParameter("bno");
 		
-		int startPage;
-		int endPage;
-		int maxPage;
-		int currentPage;
-		int limit;
+		// 게시글 보기
+		Board b = new BoardService().selectOne(bno);
 		
-		currentPage = 1;
-		limit = 10;
+		// 댓글 불러오기
+		ArrayList<Board> clist = new BoardCommentService().selectList(bno);
 		
-		if(request.getParameter("currentPage") != null) {
-			currentPage = Integer.parseInt(request.getParameter("currentPage"));
+		String page = "";
+		if(b != null) {
+			page="views/Customer_InquiryDetail.jsp";
+			request.setAttribute("board", b);
+			request.setAttribute("clisk", clist);
+		} else {
+			page="views/common/errorPage.jsp";
+			request.setAttribute("msg", "게시글 불러오기 실패!");
 		}
 		
-		
+		request.getRequestDispatcher(page).forward(request, response);
 	}
 
 	/**

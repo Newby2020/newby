@@ -42,7 +42,7 @@
         </div>
         <a href="admin_index.jsp">Dashboard</a>
         <a class="active" href="/semi/userList.ad">사용자</a>
-        <a href="/semi/class">클래스</a>
+        <a href="/semi/classList.ad">클래스</a>
 		<a href="admin_classCancel.jsp">클래스 취소</a>
         <a href="admin_hostReport.jsp">호스트 신고</a>
         <a href="admin_accountancy.jsp">정산</a>
@@ -79,14 +79,7 @@
                 <% } %>
             </table>
         </div>
-        <%-- 페이지 처리 --%>
-        <div class="pagingArea" align="center">
-        	<button onclick="location.href='<%= request.getContextPath() %>/userList.ad?currentPage=1>'"><<</button>
-        	<%-- <% if(currentPage <= 1){ %> --%>
-        </div>
-        
-        
-     	<%-- 페이지 처리 예시 --%>
+     	<%-- 페이지 처리 --%>
 		<div class="pagingArea" align="center">
 			<button onclick="location.href='<%= request.getContextPath() %>/userList.ad?currentPage=1'"><<</button>
 			<%  if(currentPage <= 1){  %>
