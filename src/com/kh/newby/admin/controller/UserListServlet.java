@@ -11,18 +11,19 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.kh.newby.Member.model.vo.Member;
 import com.kh.newby.admin.service.AdminService;
+import com.kh.newby.notice.model.vo.PageInfo;
 
 /**
  * Servlet implementation class User
  */
-@WebServlet("/user.ad")
-public class UserServlet extends HttpServlet {
+@WebServlet("/userList.ad")
+public class UserListServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public UserServlet() {
+    public UserListServlet() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -50,7 +51,7 @@ public class UserServlet extends HttpServlet {
 		
 		int listCount = as.getListCount();
 		
-		System.out.println("총 페이지 수 : " + listCount);
+		System.out.println("총 사용자 수 : " + listCount);
 		
 		maxPage = (int)((double)listCount / limit + 0.9);
 		startPage = ((int)((double)currentPage / limit + 0.9) -1) * limit + 1;
@@ -72,7 +73,18 @@ public class UserServlet extends HttpServlet {
 		
 		String page = "";
 		
+		if(list != null) {
+			page = "views/admin_user.jsp";
+			request.setAttribute("list", list);
+			
+			PageInfo pi = new PageInfo(currentPage, listCount, limit, maxPage, startPage, endPage);
+			request.setAttribute("pi", pi);
+		}else {
+			page = "views/common/errorPage.jsp";
+			request.setAttribute("msg", "유저 목록 조회 실패!");
+		}
 		
+		request.getRequestDispatcher(page).forward(request, response);
 	}
 
 	/**
