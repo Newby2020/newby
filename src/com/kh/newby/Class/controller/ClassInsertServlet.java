@@ -11,6 +11,8 @@ import javax.servlet.http.HttpServletResponse;
 
 import org.apache.tomcat.util.http.fileupload.servlet.ServletFileUpload;
 
+import com.kh.newby.Class.model.service.ClassService;
+import com.kh.newby.Class.model.vo.ClassVo;
 import com.oreilly.servlet.MultipartRequest;
 import com.oreilly.servlet.multipart.DefaultFileRenamePolicy;
 
@@ -55,7 +57,7 @@ public class ClassInsertServlet extends HttpServlet {
 				
 				// 게시판의 첨부파일을 저장할 폴더 이름 지정하기
 				String savePath = root + "resources/uploadImg";
-				
+				System.out.println(savePath);
 				// 4. 실제 담아온 파일 기타 정보들을 활용하여
 				//	  MultipartRequest 객체 생성하기
 				//	  request --> MultipartRequest
@@ -72,7 +74,6 @@ public class ClassInsertServlet extends HttpServlet {
 				
 				// -- 파일 업로드 실시
 				// 5-1 기본 전송값 처리하기
-
 				String cName = mrequest.getParameter("className");
 				String category1 = mrequest.getParameter("category1");
 				String category2 = mrequest.getParameter("category2");
@@ -87,7 +88,9 @@ public class ClassInsertServlet extends HttpServlet {
 				String obj = mrequest.getParameter("object");
 				String edit1 = mrequest.getParameter("editor1");
 				String edit2 = mrequest.getParameter("editor2");
+				String fileName = mrequest.getFilesystemName("uploadImg");
 				
+				//-------------------출력용----------------------
 				System.out.println(cName);
 				System.out.println(category1);
 				System.out.println(category2);
@@ -96,36 +99,24 @@ public class ClassInsertServlet extends HttpServlet {
 				System.out.println(MaxNum);
 				System.out.println(cTime);
 				System.out.println(price);
-				for(int i=0; i<cDate.length; i++) {
+				for(int i=0; i<cDate.length; i++) {	// 배열은 for문으로 돌려서 처리해야함
 					System.out.println(cDate[i]);					
 				}
-				for(int i=0; i<sTime.length; i++) {
-					System.out.println(sTime[i]);					
-				}
-				for(int i=0; i<addr.length; i++) {
-					System.out.println(addr[i]);					
-				}
+
+				System.out.println(Arrays.toString(cDate));
+				System.out.println(Arrays.toString(sTime));
+				System.out.println(Arrays.toString(addr));
 				System.out.println(obj);
 				System.out.println(edit1);
 				System.out.println(edit2);
+				System.out.println(fileName);
+				//--------------------------------------------
 				
+				ClassVo c = new ClassVo();
 				
+				int result = new ClassService().insertClass(c);
 				
-//				// 5-2. 전송된 파일 처리
-//				// 전달받은 파일을 먼저 저장하고, 그 파일의 이름을 가져오는 메소드
-//				String fileName = mrequest.getFilesystemName("file");
-//				System.out.println(fileName);
-//				// 6. 전송된 파일 VO에 담아 서비스로 보내기
-//				Board b = new Board();
-//				
-//				b.setBtitle(title);
-//				b.setBcontent(content);
-//				b.setBwriter(writer);
-//				b.setBoardfile(fileName);
-//				
-//				// 7. 서비스 결과 처리하기
-//				int result = new BoardService().insertBoard(b);
-//				
+				// 메인화면으로 이동해야함
 //				if(result > 0 ) {
 //					response.sendRedirect("selectList.bo");
 //				} else {

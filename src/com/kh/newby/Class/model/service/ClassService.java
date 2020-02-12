@@ -24,4 +24,12 @@ public class ClassService {
 		return cv;
 	}
 
+	// 클래스 등록
+	public int insertClass(ClassVo c) {
+		Connection con = getConnection();
+		int result = new ClassDao().insertClass(con, c);
+		close(con);
+		return result;
+	}
+
 }

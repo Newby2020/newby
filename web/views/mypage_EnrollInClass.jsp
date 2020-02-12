@@ -53,8 +53,8 @@
                                         <td>
 										    <select name="category1" id="sl1" class="sl1" onchange="selectCategory1();">
 										        <option value="1차" selected>1차</option>
-										        <option value="동적">동적</option>
-										        <option value="정적">정적</option>
+										        <option value="신나는">신나는</option>
+										        <option value="차분한">차분한</option>
 										    </select>
 										    &nbsp;          
 										    <select name="category2" id="sl2" class="sl1 sl23" onchange="selectCategory2();">
