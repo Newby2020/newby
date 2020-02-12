@@ -26,9 +26,17 @@ public class ClassService {
 
 	// 클래스 등록
 	public int insertClass(ClassVo c) {
+		
 		Connection con = getConnection();
+		System.out.println("service");
 		int result = new ClassDao().insertClass(con, c);
+		if(result > 0) {
+			commit(con);
+		} else {
+			rollback(con);
+		}
 		close(con);
+		
 		return result;
 	}
 
