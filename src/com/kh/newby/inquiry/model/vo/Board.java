@@ -18,7 +18,7 @@ public class Board implements Serializable{
 	private String icomment;
 	
 	public Board() {
-		
+	
 	}
 
 	public Board(String ino, String ititle, String iwno, Date idate, String icontent, String icomment) {

@@ -10,14 +10,14 @@ import javax.servlet.http.HttpServletResponse;
 /**
  * Servlet implementation class HostReport
  */
-@WebServlet("/hostReport.ad")
-public class HostReportServlet extends HttpServlet {
+@WebServlet("/claimList.ad")
+public class ClaimListServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public HostReportServlet() {
+    public ClaimListServlet() {
         super();
         // TODO Auto-generated constructor stub
     }

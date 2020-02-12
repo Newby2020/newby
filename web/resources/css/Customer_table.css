@@ -26,14 +26,28 @@
 
 .tbNo { border-collapse: collapse; }
 
-.tbDetail { border-collapse: collapse; 
+
+.tbDetail { border-collapse: collapse;
+			width: auto;
+			
 			}
 			
-.tdSpan {border:1px solid #ebeef3;
-		 margin:auto;}
+.tdSpan {border:1px solid black;
+		 
+		  }
 
 
-.tdDetail{border:1px solid #ebeef3;
-		  margin:auto;}
+.tdDetail{border:1px solid black;
+		  
+		  ;
+		  }
+.tbSpan2{border:1px solid black;
+		
+		}
+
+.tdContent{border:1px solid black;
+			width:800px;
+			height:500px;}
+	
 
      

@@ -40,7 +40,7 @@ public class ClassVo implements Serializable {
 	// 클래스 등록용 생성자
 	public ClassVo(String className, String firstCategory, String secondCategory, String thirdCategory, String classType,
 			int classTime, int classMaxnum, int classPrice, String classImg, String classLocation, String classTarget,
-			String classCurriculum, String classIntro, String classDate, String classStartTime, String classEndTime) {
+			String classCurriculum, String classIntro, String classDate, String classStartTime) {
 		super();
 		this.className = className;
 		this.firstCategory = firstCategory;
@@ -57,7 +57,6 @@ public class ClassVo implements Serializable {
 		this.classCurriculum = classCurriculum;
 		this.classDate = classDate;
 		this.classStartTime = classStartTime;
-		this.classEndTime = classEndTime;
 	}
 	
 	// 클래스 상세 페이지 생성자(enrolldate 제외하고 모두)
