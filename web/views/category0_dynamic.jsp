@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+    pageEncoding="UTF-8" import="java.util.*, com.kh.newby.category.model.vo.*"%>
+<% ArrayList<categoryVo> caList = (ArrayList<categoryVo>)request.getAttribute("caList"); %>
 <!DOCTYPE html>
 <html lang="ko">
 
@@ -7,14 +8,14 @@
     <meta charset="UTF-8">
     <title>새로운 취미를 찾아서 Newby</title>
     <!-- <link rel="stylesheet" href="../resources/css/joinModal.css"> -->
-    <link rel="stylesheet" href="../resources/css/joinModal.css">
-    <link rel="stylesheet" href="../resources/css/LoginModal.css">
-    <link rel="stylesheet" href="../resources/css/main-panel.css">
-    <link rel="stylesheet" href="../resources/css/jquery-ui.css">
-    <link rel="stylesheet" href="../resources/css/category_sh.css">
-    <script src="../resources/js/jquery-1.12.4.js"></script>
-    <script src="../resources/js/jquery-ui.js"></script>
-    <script src="../resources/js/category-sh.js"></script>
+    <link rel="stylesheet" href="/semi/resources/css/joinModal.css">
+    <link rel="stylesheet" href="/semi/resources/css/LoginModal.css">
+    <link rel="stylesheet" href="/semi/resources/css/main-panel.css">
+    <link rel="stylesheet" href="/semi/resources/css/jquery-ui.css">
+    <link rel="stylesheet" href="/semi/resources/css/category_sh.css">
+    <script src="/semi/resources/js/jquery-1.12.4.js"></script>
+    <script src="/semi/resources/js/jquery-ui.js"></script>
+    <script src="/semi/resources/js/category-sh.js"></script>
 
     <link href="https://fonts.googleapis.com/css?family=Nanum+Gothic|Noto+Sans+KR&display=swap" rel="stylesheet">
 
@@ -216,20 +217,23 @@
 
                     <div class="container_a">
                         <!-- 컨텐츠 안에 들어가는 a태그 -->
-                        <a href="" class="content_a" id="con_0" href="#">
+                        <% for(categoryVo cv : caList){ %>
+                        <a href="/semi/selectOne.ci" class="content_a" id="con_0" href="#">
                             <div class="content_a_back" style=" background-image: url('http://www.fun-ski.com/theme/2015/img/sub01_01_img01.jpg')"></div>
+                           <%--  <div class="content_a_back" style=" background-image: url('<%= cv.getClassImg() %>')"></div> --%>
                             <div class="cont_a_profile">
                                 <div class="cont_a_p_title">
-                                    산토끼 토끼야 어디를 가느냐 깡총깡총 뛰면서 어디를 가느냐낭러ㅣㄴ
+                                    <%= cv.getClassName() %>
                                 </div>
                                 <div class="c_etc">
-                                    <div class="cont_a_p_loca"><span>서울시/강남</span></div>
-                                    <div class="cont_a_p_star"><span id="c_star">★</span><span>4.5</span></div>
+                                    <div class="cont_a_p_loca"><span><%= cv.getClassLocation() %></span></div>
+                                    <div class="cont_a_p_star"><span id="c_star">★</span><span><%= cv.getAverageReview()%></span></div>
                                 </div>
-                                <div class="cont_a_p_price"><span id="c_price"></span> 143,000원
+                                <div class="cont_a_p_price"><span id="c_price"></span> <%= cv.getClassPrice() %>원
                                 </div>
                             </div>
                         </a>
+                        <% } %>
                         <a href="" class="content_a" id="con_1" href="#">
                             <div class="content_a_back" style=" background-image: url('http://www.fun-ski.com/theme/2015/img/sub01_01_img01.jpg')"></div>
                             <div class="cont_a_profile">

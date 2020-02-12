@@ -44,8 +44,9 @@
 	    </label>
 	    <% }else if(m.getM_id().equals("tomcho39@gmail.com")){ %>
 	    <label id="AdminPage" class="top-nav">
-	        <a href="/semi/views/admin_index.jsp">관리자페이지</a>
+	        <a href="/semi/index.ad">관리자페이지</a>
 	    </label>
+	    
 	    <span id="logoutBtn" onclick='logout()'>로그아웃</span> 
 	    
 	    <% }else if(m.getH_no() == null){ %>
@@ -109,7 +110,7 @@
               </div> 
               <br>
               <div class="findIdAndPassword">
-                  <a href="" id="findIdAndPassword">아이디/비밀번호 찾기</a>
+                  <a href="/semi/views/findIdnPwd.jsp" id="findIdAndPassword">아이디/비밀번호 찾기</a>
               </div>
           </form>
       </div>

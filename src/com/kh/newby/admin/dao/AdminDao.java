@@ -102,4 +102,30 @@ public class AdminDao {
 		return list;
 	}
 	
+	public int getUserCount(Connection con) {
+		
+		int userCount = 0;
+		
+		Statement stmt = null;
+		ResultSet rset = null;
+		
+		String sql = "SELECT COUNT(MEM_ID) FROM MEMBER";
+		
+		try {
+			stmt = con.createStatement();
+			rset = stmt.executeQuery(sql);
+			
+			if(rset.next()) {
+				userCount = rset.getInt(1);
+			}
+			
+		} catch(SQLException e) {
+			e.printStackTrace();
+ 		} finally {
+ 			close(rset);
+ 			close(stmt);
+ 		}
+		return userCount;
+	}
+	
 }

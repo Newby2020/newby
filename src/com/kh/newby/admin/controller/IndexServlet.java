@@ -1,11 +1,14 @@
 package com.kh.newby.admin.controller;
 
 import java.io.IOException;
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+
+import com.kh.newby.admin.service.AdminService;
 
 /**
  * Servlet implementation class Index
@@ -26,8 +29,18 @@ public class IndexServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		response.getWriter().append("Served at: ").append(request.getContextPath());
+		
+		int userCount = 0;
+		AdminService as = new AdminService();
+		
+		userCount = as.getUserCount();
+		
+		String page = "";
+		
+		page = "/semi/views/admin_index.jsp";
+		
+		request.setAttribute("userCount", userCount);
+		request.getRequestDispatcher(page).forward(request, response);
 	}
 
 	/**
