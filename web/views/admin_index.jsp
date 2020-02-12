@@ -3,6 +3,7 @@
 <% 
 	int userCount = (int)(request.getAttribute("userCount"));
 	int hostCount = (int)(request.getAttribute("hostCount"));
+	int classCount = (int)(request.getAttribute("classCount"));
 %>    
 <!DOCTYPE html>
 <html lang="en">
@@ -64,7 +65,7 @@
             <div class="column">
                 <div class="card">
                     <p><i class="fa fa-smile-o"></i></p>
-                    <h3>42</h3>
+                    <h3><%=classCount %></h3>
                     <p>클래스 수</p>
                 </div>
             </div>
