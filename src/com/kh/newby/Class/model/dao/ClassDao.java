@@ -3,6 +3,7 @@ package com.kh.newby.Class.model.dao;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.Properties;
 
 import com.kh.newby.Class.model.vo.ClassVo;
@@ -57,6 +58,27 @@ public class ClassDao {
 			close(pstmt);
 		}
 		return cv;
+	}
+
+	
+	// 지훈아 완성하자
+	public int insertClass(Connection con, ClassVo c) {		
+		int result = 0;
+		PreparedStatement pstmt = null;
+		String sql1 = prop.getProperty("insertClass");
+		String sql2 = prop.getProperty("insertClassSchedule");
+//		try {
+//			pstmt = con.prepareStatement(sql);
+//			pstmt.set
+			
+			
+			
+//		} catch (SQLException e) {
+//			e.printStackTrace();
+//		} finally {
+//			close(pstmt);
+//		}
+		return result;
 	}
 
 }
