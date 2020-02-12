@@ -25,14 +25,26 @@ public class categoryDao {
 		}
 	}
 
-	public ArrayList<categoryVo> selectCaList(Connection con) {
+	public ArrayList<categoryVo> selectCaList(Connection con, String caType) {
 		ArrayList<categoryVo> caList = null;
 
 		Statement stmt = null;
 		ResultSet rset = null;
-
-		String sql = prop.getProperty("cate1List");
-
+		
+		System.out.println(caType);
+		
+		String sql = null; 
+		
+		switch (caType) {
+		case "ca0": sql = prop.getProperty("cate0List"); break;
+		case "ca1": sql = prop.getProperty("cate1List"); break;
+		case "ca2": sql = prop.getProperty("cate2List"); break;
+		case "ca3": sql = prop.getProperty("cate3List"); break;
+		case "ca4": sql = prop.getProperty("cate4List"); break;
+		case "ca5": sql = prop.getProperty("cate5List"); break;
+		}
+		
+		System.out.println(sql);
 
 		try {
 
@@ -46,6 +58,7 @@ public class categoryDao {
 				cv.setClassNo(rset.getString("CLASS_NO"));
 				cv.setClassName(rset.getString("CLASS_NAME"));
 				cv.setFirstCategory(rset.getString("FIRST_CATEGORY"));
+				cv.setClassLocation(rset.getString("CLASS_LOCATION"));
 				cv.setClassPrice(rset.getInt("CLASS_PRICE"));
 				cv.setClassImg(rset.getString("CLASS_IMG"));
 				cv.setAverageReview(rset.getDouble("AVERAGE_REVIEW"));
@@ -56,7 +69,6 @@ public class categoryDao {
 				System.out.println(cv);
 			}
 
-			caList.add(new categoryVo("c1", "으왕", "동적", 36000, "dd.jpg", "서울/강남", 3.5));
 
 		} catch (SQLException e) {
 			e.printStackTrace();

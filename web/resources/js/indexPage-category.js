@@ -1,23 +1,23 @@
 function dynamicImg(){
-	location.href="/semi/selectList.ca";
+	location.href="/semi/selectList.ca?caType=ca0";
 };
 
 function staticImg(){
-	location.href="/semi/selectList.ca";
+	location.href="/semi/selectList.ca?caType=ca1";
 };
 
 function activityImg(){
-    location.href="/semi/views/category2_activity.jsp";
+    location.href="/semi/selectList.ca?caType=ca2";
 };
 
 function artImg(){
-    location.href="/semi/views/category3_coocking.jsp";
+    location.href="/semi/selectList.ca?caType=ca3";
 };
 
 function cookingImg(){
-    location.href="/semi/views/category4_art.jsp";
+    location.href="/semi/selectList.ca?caType=ca4";
 };
 
 function eduImg(){
-    location.href="/semi/views/category5_study.jsp";
+    location.href="/semi/selectList.ca?caType=ca5";
 };

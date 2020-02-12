@@ -31,22 +31,35 @@ public class categoryListServlet extends HttpServlet {
 	 */
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
     	// 카테고리별 클래스 리스트를 받아 데이터를 전달하는 서블릿
-
+    	String caType = request.getParameter("caType");
+    	
+    	System.out.println(caType);
+    	
+    	
     	ArrayList<categoryVo> caList = new ArrayList<categoryVo>();
 
     	categoryService cs = new categoryService();
 
-    	caList = cs.selectCaList();
+    	caList = cs.selectCaList(caType);
 
     	String page = "";
 
     	if(caList != null) {
-
-    		page = "views/category0_dynamic.jsp";
+    		
+    		switch (caType) {
+    		case "ca0": page = "views/category0_dynamic.jsp"; break;
+    		case "ca1": page = "views/category1_static.jsp"; break;
+    		case "ca2": page = "views/category2_activity.jsp"; break;
+    		case "ca3": page = "views/category3_cooking.jsp"; break;
+    		case "ca4": page = "views/category4_art.jsp"; break;
+    		case "ca5": page = "views/category5_study.jsp"; break;
+    		default: page = "views/common/errorPage.jsp"; break;
+			}
+    		System.out.println(page);
     		System.out.println("서브릿ㄱㄱ");
     		request.setAttribute("caList", caList);
     	}else {
-    		page = "views/errorPage.jsp";
+    		page = "views/common/errorPage.jsp";
     		request.setAttribute("msg", "클래스 상세페이지 불러오기 실패");
     	}
     	request.getRequestDispatcher(page).forward(request, response);
