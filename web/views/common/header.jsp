@@ -42,7 +42,7 @@
 	    <label id="signIn" class="top-nav">
 	        <a>회원가입</a>
 	    </label>
-	    <% }else if(m.getM_id().equals("tomcho39@gmail.com")){ %>
+	    <% }else if(m.getM_id().equals("admin@naver.com")){ %>
 	    <label id="AdminPage" class="top-nav">
 	        <a href="/semi/index.ad">관리자페이지</a>
 	    </label>
@@ -132,7 +132,7 @@
       </div> 
       <div id="requiredWrap">
           <div class="required">
-              <input type="text" class="joinInfo" id="user_Id" name="user_Id" value="" maxlength=100; placeholder="이메일 주소 입력">
+              <input type="email" class="joinInfo" id="user_Id" name="user_Id" value="" maxlength=100; placeholder="이메일 주소 입력">
               <input type="button" id="checkId" onsubmit="return false" value="중복 확인"></input>
           </div> 
           <div class="required">
@@ -192,7 +192,7 @@
     //로그인 버튼 클릭 시 제출
      function buttonLogin(){
     	 $('#mainLoginForm').submit();
-    	 alert('로그인성공');
+    	 
      }
     
     //로그아웃 버튼 클릭
