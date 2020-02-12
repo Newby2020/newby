@@ -8,16 +8,16 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 /**
- * Servlet implementation class ClassCancle
+ * Servlet implementation class HostReport
  */
-@WebServlet("/classCancle.ad")
-public class ClassCancelServlet extends HttpServlet {
+@WebServlet("/claimList.ad")
+public class ClaimListServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public ClassCancelServlet() {
+    public ClaimListServlet() {
         super();
         // TODO Auto-generated constructor stub
     }

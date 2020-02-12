@@ -44,8 +44,9 @@
 	    </label>
 	    <% }else if(m.getM_id().equals("tomcho39@gmail.com")){ %>
 	    <label id="AdminPage" class="top-nav">
-	        <a href="/semi/views/admin_index.jsp">관리자페이지</a>
+	        <a href="/semi/index.ad">관리자페이지</a>
 	    </label>
+	    
 	    <span id="logoutBtn" onclick='logout()'>로그아웃</span> 
 	    
 	    <% }else if(m.getH_no() == null){ %>
@@ -109,7 +110,7 @@
               </div> 
               <br>
               <div class="findIdAndPassword">
-                  <a href="" id="findIdAndPassword">아이디/비밀번호 찾기</a>
+                  <a href="/semi/views/findIdnPwd.jsp" id="findIdAndPassword">아이디/비밀번호 찾기</a>
               </div>
           </form>
       </div>
@@ -131,12 +132,12 @@
       </div> 
       <div id="requiredWrap">
           <div class="required">
-              <input type="text" class="joinInfo" name="user_Id" value="" maxlength=100; placeholder="이메일 주소 입력">
-              <button onclick="checkId" id="checkId" name="">중복 확인</button>
+              <input type="text" class="joinInfo" id="user_Id" name="user_Id" value="" maxlength=100; placeholder="이메일 주소 입력">
+              <input type="button" id="checkId" onsubmit="return false" value="중복 확인"></input>
           </div> 
           <div class="required">
               <input type="text" class="joinInfo" id="user_Nickname" name="user_Nickname" value="" maxlength=100; placeholder="닉네임 입력">
-              <button onclick="checkNickname" id="checkNickname" name="">중복 확인</button>
+              <input type="button" id="checkNick" onsubmit="return false" value="중복 확인"></input>
           </div>
           <div class="required">
               <input type="password" class="joinInfo" id="password" name="password" value="" maxlength=100; placeholder="비밀번호 입력">
@@ -191,11 +192,13 @@
     //로그인 버튼 클릭 시 제출
      function buttonLogin(){
     	 $('#mainLoginForm').submit();
+    	 alert('로그인성공');
      }
     
     //로그아웃 버튼 클릭
     function logout(){
     	location.href='/semi/logout.me';
+    	alert('로그아웃되었습니다');
     }
     
     /* 회원가입 스크립트 */
@@ -213,11 +216,63 @@
           joinModal.style.display = "none";
       }
       
+      
+      
       function buttonJoin(){
     	  $('#joinForm').submit();
     	  
       }
     /* 회원가입 스크립트 종료 */
+    
+    
+    /*아이디 중복 체크*/
+   	 $('#checkId').click(function(){
+  		  $.ajax({
+		       	url:"/semi/idDup.me",
+				type:"post",
+				data:{
+					user_Id:$('#user_Id').val()
+				},
+				success:function(data){
+					console.log(data);
+					
+					if(data == 'ok'){
+						alert("사용 가능한 아이디입니다.");
+					}else{
+						alert("이미 사용중인 아이디입니다.");
+						$('#user_Id').select();
+					}
+				},error:function(){
+					console.log("---Error---");
+				}
+        
+    		});
+		});
+    
+    /*닉네임 중복체크*/
+	 $('#checkNick').click(function(){
+ 		  $.ajax({
+		       	url:"/semi/nickDup.me",
+				type:"post",
+				data:{
+					user_Nickname:$('#user_Nickname').val()
+				},
+				success:function(data){
+					console.log(data);
+					
+					if(data == 'ok'){
+						alert("사용 가능한 닉네임입니다.");
+					}else{
+						alert("이미 사용중인 닉네임입니다.");
+						$('#user_Id').select();
+					}
+				},error:function(){
+					console.log("---Error---");
+				}
+       
+   		});
+		});
+    
     </script>
 </body>
 </html>

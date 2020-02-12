@@ -74,7 +74,7 @@ public class UserListServlet extends HttpServlet {
 		String page = "";
 		
 		if(list != null) {
-			page = "views/admin_user.jsp";
+			page = "views/admin_userList.jsp";
 			request.setAttribute("list", list);
 			
 			PageInfo pi = new PageInfo(currentPage, listCount, limit, maxPage, startPage, endPage);

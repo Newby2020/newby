@@ -55,7 +55,7 @@
 	       			<br><br>
 	       			</div>
                 
-                    <div align="center"></div>
+                    <div align="center">
 	       				<button onclick="buttonJoin();" id="buttonHostJoin" class="buttonJoin">가입하기</button>
 	        		</div> 
                     </form>
