@@ -16,7 +16,7 @@
 <body>
 	<div id="Allpanel" align="center">
 
-		<%@ include file="./common/header.jsp"%>
+		<%@ include file="./common/header.jsp"%> 
 
 		<!-- 작업하는 컨텐츠 -->
 		<div id="newby-body-panel" class="contents-div123" align="left">

@@ -40,6 +40,7 @@ public class BoardDao {
 		String sql = prop.getProperty("listCount");
 		
 		try {
+			
 			stmt = con.createStatement();
 			rset = stmt.executeQuery(sql);
 			

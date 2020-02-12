@@ -39,7 +39,7 @@
 				<div id="sidebar-titleso67" align="center">고객센터</div>
 				<a href="views/Customer_Notice.jsp">공지사항</a>
 				<button class="dropdown-btnqo">
-					문의 <i id="ci22">≡</i>
+					문의 <i id="ci22">≡</i> 
 				</button>
 				<div class="dropdown-soxk">
 					<a href="/semi/selectList.bo?currentPage=1">문의 목록</a> <a

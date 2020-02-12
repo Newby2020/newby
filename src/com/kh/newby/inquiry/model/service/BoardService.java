@@ -25,6 +25,7 @@ public class BoardService {
 		close(con);
 
 		return listCount;
+		
 	}
 
 	public ArrayList<Board> selectList(int currentPage, int limit) {
