@@ -1,9 +1,9 @@
 function dynamicImg(){
-    location.href="/semi/views/category0_dynamic.jsp";
+	location.href="/semi/selectList.ca";
 };
 
 function staticImg(){
-    location.href="/semi/views/category1_static.jsp";
+	location.href="/semi/selectList.ca";
 };
 
 function activityImg(){
