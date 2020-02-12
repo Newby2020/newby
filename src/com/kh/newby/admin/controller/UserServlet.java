@@ -62,8 +62,15 @@ public class UserServlet extends HttpServlet {
 		
 		endPage = startPage + limit - 1;
 		
-//		TODO 아래 더 해야함
+		if(endPage > maxPage) {
+			endPage = maxPage;
+		}
 		
+		list = as.selectList(currentPage, limit);
+		
+		System.out.println(list);
+		
+		String page = "";
 		
 		
 	}
