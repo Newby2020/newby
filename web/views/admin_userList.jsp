@@ -18,7 +18,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>classApply_admin</title>
+    <title>admin_사용자 목록</title>
 
     <!-- Load icon libarary -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
@@ -38,9 +38,9 @@
     <div class="sidebar">
         <div>
             <a class="fa fa-home" href="../../MainPage/NewbyMainPage.jsp"></a>
-            <a class="index" href="admin_index.jsp">관리자페이지</a>
+            <a class="index" href="/semi/index.ad">관리자페이지</a>
         </div>
-        <a href="admin_index.jsp">Dashboard</a>
+        <a href="/semi/index.ad">Dashboard</a>
         <a class="active" href="/semi/userList.ad">사용자</a>
         <a href="/semi/classList.ad">클래스</a>
 		<a href="admin_classCancel.jsp">클래스 취소</a>

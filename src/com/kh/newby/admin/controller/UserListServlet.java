@@ -51,7 +51,7 @@ public class UserListServlet extends HttpServlet {
 		
 		int listCount = as.getListCount();
 		
-		System.out.println("총 사용자 수 : " + listCount);
+//		System.out.println("총 사용자 수 : " + listCount);
 		
 		maxPage = (int)((double)listCount / limit + 0.9);
 		startPage = ((int)((double)currentPage / limit + 0.9) -1) * limit + 1;
@@ -69,7 +69,7 @@ public class UserListServlet extends HttpServlet {
 		
 		list = as.selectList(currentPage, limit);
 		
-		System.out.println(list);
+//		System.out.println(list);
 		
 		String page = "";
 		
