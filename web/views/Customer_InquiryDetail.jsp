@@ -1,10 +1,10 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-<%@ page import="com.kh.newby.inquiry.model.vo.*, java.util.*" %>
+<%@ page import="com.kh.newby.inquiry.model.vo.*, java.util.*"%>
 <%
 	Board b = (Board)request.getAttribute("board");
 
-	ArrayList<Board> clist
+	ArrayList<Board> list
 	= (ArrayList<Board>)request.getAttribute("list");
 	
 %>
@@ -35,15 +35,16 @@
 			<!--left sidebar-->
 			<div class="sidenavsk">
 				<div id="sidebar-titleso67" align="center">고객센터</div>
-				<a href="Customer_Notice.jsp">공지사항</a>
+				<a href="views/Customer_Notice.jsp">공지사항</a>
 				<button class="dropdown-btnqo">
 					문의 <i id="ci22">≡</i>
 				</button>
 				<div class="dropdown-soxk">
-					<a href="Customer_Inquiry.jsp">문의 목록</a> <a
-						href="Customer_CreateInquiry.jsp">문의 작성</a>
+					<a href="/semi/selectList.bo?currentPage=1">문의 목록</a> <a
+						href="views/Customer_CreateInquiry.jsp">문의 작성</a>
 				</div>
-				<a href="Customer_Report.jsp">신고</a> <a href="Customer_Refund.jsp">이용약관</a>
+				<a href="views/Customer_Report.jsp">신고</a> <a
+					href="views/Customer_Refund.jsp">이용약관</a>
 			</div>
 
 			<!--contents-->
@@ -58,11 +59,11 @@
 
 				<div id="contentsDivSize29">
 					<!-- 여기다가 너가 작업한거 넣으면 돼-->
-
+					<% if(b != null){ %>
 					<form>
 						<table class="tbDetail">
 							<tr>
-								<td class="tdDetail" >제목</td>
+								<td class="tdDetail">제목</td>
 								<td class="tdDetail" colspan="5"><span class="spN2"><%= b.getItitle() %></span></td>
 							</tr>
 							<tr>
@@ -74,14 +75,15 @@
 								<td class="tdDetail">내용</td>
 								<td class="tbSpan2" colspan="5"><span class="spN"><%= b.getIcontent() %></span></td>
 							</tr>
-						
+
 							<tr>
-								<td class="tdContent" colspan="6" > </td>
+								<td class="tdContent" colspan="6"></td>
 							</tr>
 						</table>
-	
-							
-						
+
+
+
+
 
 					</form>
 
@@ -92,5 +94,10 @@
 		</div>
 		<%@ include file="./common/footer.jsp"%>
 	</div>
+	<script>
+	
+	
+	
+</script>
 </body>
 </html>

@@ -11,8 +11,8 @@ import java.util.ArrayList;
 import java.util.Properties;
 
 import com.kh.newby.notice.model.vo.Notice;
-
 import static com.kh.newby.common.JDBCTemplate.*;
+
 
 public class NoticeDao {
 	
@@ -29,9 +29,60 @@ public class NoticeDao {
 			e.printStackTrace();
 		}
 	}
+	
+	/**
+	 * 공지사항 조회
+	 * @param con
+	 * @return
+	 */
+	public ArrayList<Notice> noticeSelectList(Connection con, int currentPage, int limit) {
+		ArrayList<Notice> list = null;
+		PreparedStatement pstmt = null;
+		ResultSet rset = null;
+		
+		String sql = prop.getProperty("noticeSelectList");
+		
+		try {
+			pstmt = con.prepareStatement(sql);
+			int startRow = (currentPage - 1) * limit + 1;
+			int endRow = startRow + limit -1;
+			
+			pstmt.setInt(1, endRow);
+			pstmt.setInt(2, startRow);
+			
+			rset = pstmt.executeQuery();
+			
+			list = new ArrayList<Notice>();
+			
+			while(rset.next()) {
+				Notice n = new Notice();
+				
+				n.setNno(rset.getString("NOTICE_NO"));
+				n.setNtitle(rset.getString("NO_TITLE"));
+				n.setNwriter(rset.getString("NO_WRITER"));
+				n.setNdate(rset.getDate("NO_DATE"));
+				n.setNcount(rset.getInt("NO_COUNT"));
+				n.setNcontent(rset.getString("NO_CONTENT"));
+				
+				list.add(n);
+				
+			}
+		} catch(SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(rset);
+			close(pstmt);
+		}
+		
+		return list;
+	}
 
+	/**
+	 * 총 게시글 수
+	 * @param con
+	 * @return
+	 */
 	public int getListCount(Connection con) {
-		// 총 게시글 수
 		int listCount = 0;
 		Statement stmt = null;
 		ResultSet rset = null;
@@ -45,7 +96,8 @@ public class NoticeDao {
 			if(rset.next()) {
 				listCount = rset.getInt(1);
 			}
-		} catch(SQLException e) {
+			
+		} catch(SQLException e){
 			e.printStackTrace();
 		} finally {
 			close(rset);
@@ -55,32 +107,6 @@ public class NoticeDao {
 		return listCount;
 	}
 
-	public ArrayList<Notice> selectList(Connection con, int currentPage, int limit) {
-		ArrayList<Notice> list = null;
-		PreparedStatement pstmt = null;
-		ResultSet rset = null;
-		
-		String sql = prop.getProperty("selectList");
-		
-		/*try {
-			
-		} catch(SQLException e) {
-			e.printStackTrace();
-		} finally {
-			close(rset);
-			close(pstmt);
-		}*/
-		
-		return list;
-	}
+	
 
 }
-
-
-
-
-
-
-
-
-

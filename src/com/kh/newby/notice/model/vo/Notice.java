@@ -4,11 +4,12 @@ import java.io.Serializable;
 import java.sql.Date;
 
 public class Notice implements Serializable{
+
 	
 	/**
 	 * 
 	 */
-	private static final long serialVersionUID = -4297900328480619952L;
+	private static final long serialVersionUID = 252232809857246861L;
 	
 	private String nno;
 	private String ntitle;
@@ -21,6 +22,28 @@ public class Notice implements Serializable{
 		
 	}
 
+	/**
+	 * 공지사항 등록용
+	 * @param ntitle
+	 * @param nwriter
+	 * @param ncontent
+	 */
+	public Notice(String ntitle, String nwriter, String ncontent) {
+		super();
+		this.ntitle = ntitle;
+		this.nwriter = nwriter;
+		this.ncontent = ncontent;
+	}
+
+	/**
+	 * 공지사항 조회용
+	 * @param nno
+	 * @param ntitle
+	 * @param nwriter
+	 * @param ndate
+	 * @param ncount
+	 * @param ncontent
+	 */
 	public Notice(String nno, String ntitle, String nwriter, Date ndate, int ncount, String ncontent) {
 		super();
 		this.nno = nno;
@@ -79,16 +102,11 @@ public class Notice implements Serializable{
 		this.ncontent = ncontent;
 	}
 
-	public static long getSerialversionuid() {
-		return serialVersionUID;
-	}
-
 	@Override
 	public String toString() {
 		return "Notice [nno=" + nno + ", ntitle=" + ntitle + ", nwriter=" + nwriter + ", ndate=" + ndate + ", ncount="
 				+ ncount + ", ncontent=" + ncontent + "]";
 	}
-
 	
 	
 }

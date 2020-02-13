@@ -76,7 +76,7 @@
 							<tr>
 								<td>댓글 작성</td>
 								<td><textArea rows="3" cols="80" id="replyContent"
-										name="replyContent"></textArea></td>
+										name="replyContent" style="resize: none; font-size: 10pt;"></textArea></td>
 								<td><button type="submit" id="addReply">댓글 등록</button></td>
 							</tr>
 						</table>

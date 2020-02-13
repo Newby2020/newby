@@ -28,25 +28,26 @@ public class BoardService {
 		
 	}
 
-	public ArrayList<Board> selectList(int currentPage, int limit) {
+	public ArrayList<Board> boardSelectList(int currentPage, int limit) {
 		Connection con = getConnection();
 
-		ArrayList<Board> list = bDao.selectList(con,currentPage,limit);
+		ArrayList<Board> list = bDao.boardSelectList(con,currentPage,limit);
 
 		close(con);
 
 		return list;
 	}
 
-	public Board selectOne(String bno) {
+	public Board boardSelectOne(String bno) {
 		Connection con = getConnection();
 		
-		Board b = bDao.selectOne(con, bno);
+		Board b = bDao.boardSelectOne(con, bno);
 		
 		close(con);
 		
 		return b;
 	}
+
 
 	
 
