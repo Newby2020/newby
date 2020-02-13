@@ -1,15 +1,13 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8" import="java.util.*, com.kh.newby.category.model.vo.*"%>
 <% ArrayList<categoryVo> caList = (ArrayList<categoryVo>)request.getAttribute("caList"); %>
+
 <!DOCTYPE html>
 <html lang="ko">
 
 <head>
     <meta charset="UTF-8">
     <title>새로운 취미를 찾아서 Newby</title>
-    <!-- <link rel="stylesheet" href="../resources/css/joinModal.css"> -->
-    <link rel="stylesheet" href="/semi/resources/css/joinModal.css">
-    <link rel="stylesheet" href="/semi/resources/css/LoginModal.css">
     <link rel="stylesheet" href="/semi/resources/css/main-panel.css">
     <link rel="stylesheet" href="/semi/resources/css/jquery-ui.css">
     <link rel="stylesheet" href="/semi/resources/css/category_sh.css">
@@ -30,6 +28,7 @@
 
     <div id="Allpanel" align="center">
             <%@ include file="./common/header.jsp" %>
+            <%@ include file="./common/cate.jsp" %>
         <!-- 작업하는 컨텐츠 -->
         <div id="newby-body-panel">
             <!-- Head Category Navi -->
@@ -39,7 +38,7 @@
                     <div class="cate_list">
                         <ul id="shcaul1">
                             <li class="cate_tt_sh" id="title0">
-                                <a href="category0_dynamic.html">
+                                <a href="/semi/selectList.ca?caType=ca0">
                                     <div id="cate0" style="font-weight: 600;">
                                         <div class="tt_circle" id="ttc0"></div>신나는</div>
                                 </a>
@@ -51,7 +50,7 @@
                                 </a>
                             </li>
                             <li class="cate_tt_sh" id="title1">
-                                <a href="category1_static.html">
+                                <a href="/semi/selectList.ca?caType=ca1">
                                     <div id="cate1">
                                         <div class="tt_circle" id="ttc1" style="visibility: hidden;"></div>차분한</div>
                                 </a>
@@ -67,7 +66,7 @@
                             <hr>
                             <br>
                             <li class="cate_tt_sh" id="title2">
-                                <a href="category2_activity.html">
+                                <a href="/semi/selectList.ca?caType=ca2">
                                     <div id="cate2">
                                         <div class="tt_circle" id="ttc2" style="visibility: hidden;"></div>액티비티</div>
                                 </a>
@@ -78,7 +77,7 @@
                                 </a>
                             </li>
                             <li class="cate_tt_sh" id="title3">
-                                <a href="category3_coocking.html">
+                                <a href="/semi/selectList.ca?caType=ca3">
                                     <div id="cate3">
                                         <div class="tt_circle" id="ttc3" style="visibility: hidden;"></div>쿠킹</div>
                                 </a>
@@ -89,7 +88,7 @@
                                 </a>
                             </li>
                             <li class="cate_tt_sh" id="title4">
-                                <a href="category4_art.html">
+                                <a href="/semi/selectList.ca?caType=ca4">
                                     <div id="cate4">
                                         <div class="tt_circle" id="ttc4" style="visibility: hidden;"></div>예술</div>
                                 </a>
@@ -100,7 +99,7 @@
                                 </a>
                             </li>
                             <li class="cate_tt_sh" id="title5">
-                                <a href="category5_study.html">
+                                <a href="/semi/selectList.ca?caType=ca5">
                                     <div id="cate5">
                                         <div class="tt_circle" id="ttc5" style="visibility: hidden;"></div>교육</div>
                                 </a>
@@ -218,9 +217,9 @@
                     <div class="container_a">
                         <!-- 컨텐츠 안에 들어가는 a태그 -->
                         <% for(categoryVo cv : caList){ %>
-                        <a href="/semi/selectOne.ci" class="content_a" id="con_0" href="#">
-                            <div class="content_a_back" style=" background-image: url('http://www.fun-ski.com/theme/2015/img/sub01_01_img01.jpg')"></div>
-                           <%--  <div class="content_a_back" style=" background-image: url('<%= cv.getClassImg() %>')"></div> --%>
+                        <a href="/semi/selectOne.ci?cno=<%=cv.getClassNo()%>" class="content_a" id="con_0" href="#">
+                            <!-- <div class="content_a_back" style=" background-image: url('http://www.fun-ski.com/theme/2015/img/sub01_01_img01.jpg')"></div> -->
+                           <div class="content_a_back" style=" background-image: url('<%= cv.getClassImg() %>')"></div>
                             <div class="cont_a_profile">
                                 <div class="cont_a_p_title">
                                     <%= cv.getClassName() %>
@@ -234,79 +233,6 @@
                             </div>
                         </a>
                         <% } %>
-                        <a href="" class="content_a" id="con_1" href="#">
-                            <div class="content_a_back" style=" background-image: url('http://www.fun-ski.com/theme/2015/img/sub01_01_img01.jpg')"></div>
-                            <div class="cont_a_profile">
-                                <div class="cont_a_p_title">
-                                    산토끼 토끼야 어디를 가느냐 깡총깡총 뛰면서 어디를 가느냐낭러ㅣㄴ
-                                </div>
-                                <div class="c_etc">
-                                    <div class="cont_a_p_loca"><span>서울시/강남</span></div>
-                                    <div class="cont_a_p_star"><span id="c_star">★</span><span>4.5</span></div>
-                                </div>
-                                <div class="cont_a_p_price"><span id="c_price"></span> 143,000원
-                                </div>
-                            </div>
-                        </a>
-                        <a href="" class="content_a" id="con_2" href="#">
-                            <div class="content_a_back" style=" background-image: url('http://www.fun-ski.com/theme/2015/img/sub01_01_img01.jpg')"></div>
-                            <div class="cont_a_profile">
-                                <div class="cont_a_p_title">
-                                    산토끼 토끼야 어디를 가느냐 깡총깡총 뛰면서 어디를 가느냐낭러ㅣㄴ
-                                </div>
-                                <div class="c_etc">
-                                    <div class="cont_a_p_loca"><span>서울시/강남</span></div>
-                                    <div class="cont_a_p_star"><span id="c_star">★</span><span>4.5</span></div>
-                                </div>
-                                <div class="cont_a_p_price"><span id="c_price"></span> 143,000원
-                                </div>
-                            </div>
-                        </a>
-                        <br>
-                        <br>
-                        <a href="" class="content_a" id="con_3" href="#">
-                            <div class="content_a_back" style=" background-image: url('http://www.fun-ski.com/theme/2015/img/sub01_01_img01.jpg')"></div>
-                            <div class="cont_a_profile">
-                                <div class="cont_a_p_title">
-                                    산토끼 토끼야 어디를 가느냐 깡총깡총 뛰면서 어디를 가느냐낭러ㅣㄴ
-                                </div>
-                                <div class="c_etc">
-                                    <div class="cont_a_p_loca"><span>서울시/강남</span></div>
-                                    <div class="cont_a_p_star"><span id="c_star">★</span><span>4.5</span></div>
-                                </div>
-                                <div class="cont_a_p_price"><span id="c_price"></span> 143,000원
-                                </div>
-                            </div>
-                        </a>
-                        <a href="" class="content_a" id="con_4" href="#">
-                            <div class="content_a_back" style=" background-image: url('http://www.fun-ski.com/theme/2015/img/sub01_01_img01.jpg')"></div>
-                            <div class="cont_a_profile">
-                                <div class="cont_a_p_title">
-                                    산토끼 토끼야 어디를 가느냐 깡총깡총 뛰면서 어디를 가느냐낭러ㅣㄴ
-                                </div>
-                                <div class="c_etc">
-                                    <div class="cont_a_p_loca"><span>서울시/강남</span></div>
-                                    <div class="cont_a_p_star"><span id="c_star">★</span><span>4.5</span></div>
-                                </div>
-                                <div class="cont_a_p_price"><span id="c_price"></span> 143,000원
-                                </div>
-                            </div>
-                        </a>
-                        <a href="" class="content_a" id="con_5" href="#">
-                            <div class="content_a_back" style=" background-image: url('http://www.fun-ski.com/theme/2015/img/sub01_01_img01.jpg')"></div>
-                            <div class="cont_a_profile">
-                                <div class="cont_a_p_title">
-                                    산토끼 토끼야 어디를 가느냐 깡총깡총 뛰면서 어디를 가느냐낭러ㅣㄴ
-                                </div>
-                                <div class="c_etc">
-                                    <div class="cont_a_p_loca"><span>서울시/강남</span></div>
-                                    <div class="cont_a_p_star"><span id="c_star">★</span><span>4.5</span></div>
-                                </div>
-                                <div class="cont_a_p_price"><span id="c_price"></span> 143,000원
-                                </div>
-                            </div>
-                        </a>
-
                     </div>
                     <br>
                     <div class="moreBtnSh" id="mbtn_sh"> 동적 액티비티 전체보기 </div>
