@@ -3,6 +3,7 @@ package com.kh.newby.notice.model.dao;
 import java.io.FileReader;
 import java.io.IOException;
 import java.sql.Connection;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
@@ -34,17 +35,22 @@ public class NoticeDao {
 	 * @param con
 	 * @return
 	 */
-	public ArrayList<Notice> selectList(Connection con) {
+	public ArrayList<Notice> noticeSelectList(Connection con, int currentPage, int limit) {
 		ArrayList<Notice> list = null;
-		Statement stmt = null;
+		PreparedStatement pstmt = null;
 		ResultSet rset = null;
 		
-		String sql = prop.getProperty("selectList");
+		String sql = prop.getProperty("noticeSelectList");
 		
 		try {
-			stmt = con.createStatement();
+			pstmt = con.prepareStatement(sql);
+			int startRow = (currentPage - 1) * limit + 1;
+			int endRow = startRow + limit -1;
 			
-			rset = stmt.executeQuery(sql);
+			pstmt.setInt(1, endRow);
+			pstmt.setInt(2, startRow);
+			
+			rset = pstmt.executeQuery();
 			
 			list = new ArrayList<Notice>();
 			
@@ -65,10 +71,42 @@ public class NoticeDao {
 			e.printStackTrace();
 		} finally {
 			close(rset);
-			close(stmt);
+			close(pstmt);
 		}
 		
 		return list;
 	}
+
+	/**
+	 * 총 게시글 수
+	 * @param con
+	 * @return
+	 */
+	public int getListCount(Connection con) {
+		int listCount = 0;
+		Statement stmt = null;
+		ResultSet rset = null;
+		
+		String sql = prop.getProperty("listCount");
+		
+		try {
+			stmt = con.createStatement();
+			rset = stmt.executeQuery(sql);
+			
+			if(rset.next()) {
+				listCount = rset.getInt(1);
+			}
+			
+		} catch(SQLException e){
+			e.printStackTrace();
+		} finally {
+			close(rset);
+			close(stmt);
+		}
+		
+		return listCount;
+	}
+
+	
 
 }

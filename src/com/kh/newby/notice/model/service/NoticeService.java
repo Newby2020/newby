@@ -15,14 +15,29 @@ public class NoticeService {
 	 * 공지사항 조회
 	 * @return
 	 */
-	public ArrayList<Notice> selectList() {
+	public ArrayList<Notice> noticeSelectList(int currentPage, int limit) {
 		Connection con = getConnection();
 		
-		ArrayList<Notice> list = nDao.selectList(con);
+		ArrayList<Notice> list = nDao.noticeSelectList(con,currentPage,limit);
 		
 		close(con);
 		
 		return list;
 	}
+
+	/**
+	 * 총 게시글 수
+	 * @return
+	 */
+	public int getListCount() {
+		Connection con = getConnection();
+		int listCount = nDao.getListCount(con);
+		
+		close(con);
+	
+		return listCount;
+	}
+
+
 
 }

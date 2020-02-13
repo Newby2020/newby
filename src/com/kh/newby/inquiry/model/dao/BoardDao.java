@@ -58,12 +58,12 @@ public class BoardDao {
 		return listCount;
 	}
 
-	public ArrayList<Board> selectList(Connection con, int currentPage, int limit) {
+	public ArrayList<Board> boardSelectList(Connection con, int currentPage, int limit) {
 		ArrayList<Board> list = null;
 		PreparedStatement pstmt = null;
 		ResultSet rset = null;
 		
-		String sql = prop.getProperty("selectList");
+		String sql = prop.getProperty("boardSelectList");
 		
 		try {
 			pstmt = con.prepareStatement(sql);
@@ -101,12 +101,12 @@ public class BoardDao {
 	}
 
 
-	public Board selectOne(Connection con, String bno) {
+	public Board boardSelectOne(Connection con, String bno) {
 		Board b = null;
 		PreparedStatement pstmt = null;
 		ResultSet rset = null;
 		
-		String sql = prop.getProperty("selectOne");
+		String sql = prop.getProperty("boardSelectOne");
 		
 		try {
 			pstmt = con.prepareStatement(sql);
@@ -136,6 +136,9 @@ public class BoardDao {
 				
 		return b;
 	}
+
+	
+
 
 }
 
