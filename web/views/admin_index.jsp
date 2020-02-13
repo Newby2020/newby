@@ -32,9 +32,9 @@
     <div class="sidebar">
         <div>
             <a class="fa fa-home" href="#"></a>
-            <a class="index" href="admin_index.jsp">관리자페이지</a>
+            <a class="index" href="/semi/index.ad">관리자페이지</a>
         </div>
-        <a class="active" href="admin_index.jsp">Dashboard</a>
+        <a class="active" href="/semi/index.ad">Dashboard</a>
         <a href="/semi/userList.ad">사용자</a>
         <a href="admin_classApply.jsp">클래스</a>
 		<a href="admin_classCancel.jsp">클래스 취소</a>

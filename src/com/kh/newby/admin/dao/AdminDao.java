@@ -68,8 +68,8 @@ public class AdminDao {
 			
 			int startRow = (currentPage - 1) * limit + 1;
 			int endRow = startRow + limit - 1;
-			System.out.println(startRow);
-			System.out.println(endRow);
+//			System.out.println(startRow);
+//			System.out.println(endRow);
 			
 			pstmt.setInt(1, endRow);
 			pstmt.setInt(2, startRow);
