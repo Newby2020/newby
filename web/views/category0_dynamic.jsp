@@ -1,6 +1,14 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8" import="java.util.*, com.kh.newby.category.model.vo.*"%>
-<% ArrayList<categoryVo> caList = (ArrayList<categoryVo>)request.getAttribute("caList"); %>
+    pageEncoding="UTF-8" import="java.util.*, com.kh.newby.category.model.vo.*, com.kh.newby.common.*"%>
+<% 
+	ArrayList<categoryVo> caList = (ArrayList<categoryVo>)request.getAttribute("caList"); 
+	PageInfo pi = (PageInfo)request.getAttribute("pi");
+	int listCount = pi.getListCount();
+	int currentPage = pi.getCurrentPage();
+	int maxPage = pi.getMaxPage();
+	int startPage = pi.getStartPage();
+	int endPage = pi.getEndPage();
+%>
 
 <!DOCTYPE html>
 <html lang="ko">
@@ -30,7 +38,7 @@
             <%@ include file="./common/header.jsp" %>
             <%@ include file="./common/cate.jsp" %>
         <!-- 작업하는 컨텐츠 -->
-        <div id="newby-body-panel">
+        <div id="newby-body-panel" style="max-width: 1080px">
             <!-- Head Category Navi -->
             <div class="head_class_navi">
                 <div class="cl_title">
@@ -216,42 +224,65 @@
 
                     <div class="container_a">
                         <!-- 컨텐츠 안에 들어가는 a태그 -->
-                        <% for(categoryVo cv : caList){ %>
-                        <a href="/semi/selectOne.ci?cno=<%=cv.getClassNo()%>" class="content_a" id="con_0" href="#">
-                            <!-- <div class="content_a_back" style=" background-image: url('http://www.fun-ski.com/theme/2015/img/sub01_01_img01.jpg')"></div> -->
-                           <div class="content_a_back" style=" background-image: url('<%= cv.getClassImg() %>')"></div>
+                        <% for(int i=0; i<caList.size(); i++){ %>
+                        <a href="/semi/selectOne.ci?cno=<%=caList.get(i).getClassNo()%>" class="content_a" id="con_<%=i %>" href="#">
+                           <div class="content_a_back" id="bg_<%=i %>" style=" background-image: url('<%= caList.get(i).getClassImg() %>')"></div>
                             <div class="cont_a_profile">
                                 <div class="cont_a_p_title">
-                                    <%= cv.getClassName() %>
+                                    <%= caList.get(i).getClassName() %>
                                 </div>
                                 <div class="c_etc">
-                                    <div class="cont_a_p_loca"><span><%= cv.getClassLocation() %></span></div>
-                                    <div class="cont_a_p_star"><span id="c_star">★</span><span><%= cv.getAverageReview()%></span></div>
+                                    <div class="cont_a_p_loca"><span><%= caList.get(i).getClassLocation() %></span></div>
+                                    <div class="cont_a_p_star"><span id="c_star">★</span><span><%= caList.get(i).getAverageReview()%></span></div>
                                 </div>
-                                <div class="cont_a_p_price"><span id="c_price"></span> <%= cv.getClassPrice() %>원
+                                <div class="cont_a_p_price"><span id="c_price"></span> <%= caList.get(i).getClassPrice() %>원
                                 </div>
                             </div>
                         </a>
-                        <% } %>
+                        <script>
+                        $(function(){
+                            $('#con_<%=i %>').on({
+                                'mouseenter':function(){
+                                    $(bg_<%=i %>).css({'transform':'scale(1.1)','transition':'1s'});
+                                },'mouseleave' : function(){
+                                    $(bg_<%=i %>).css({'transform':'scale(1.0)','transition':'1s'});
+                                }
+                            });
+                            });
+                        </script>
+                        <%} %>
                     </div>
                     <br>
-                    <div class="moreBtnSh" id="mbtn_sh"> 동적 액티비티 전체보기 </div>
+                    <div class="moreBtnSh" id="mbtn_sh"> <%=listCount %>개의 신나는 액티비티 전체보기 </div>
                     <br>
+                    <!--페이징 처리  -->
                     <div class="pagelink_csh" id="pglk_sh">
+                    
                         <div class="page_sh">
-                            <li><<</li>
-                            <li><</li>
-                            <li></li>
-                            <li><strong><span id="c_star">1</span></strong></li>
-                            <li>2</li>
-                            <li>3</li>
-                            <li>4</li>
-                            <li>5</li>
-                            <li>6</li>
-                            <li></li>
-                            <li>></li>
-                            <li>>></li>
+							<button onclick="location.href='<%= request.getContextPath() %>/selectList.ca?caType=ca0?currentPage=1'"><<</button>
+							<%  if(currentPage <= 1){  %>
+							<button disabled><</button>
+							<%  }else{ %>
+							<button onclick="location.href='<%= request.getContextPath() %>/selectList.ca?caType=ca0?currentPage=<%=currentPage - 1 %>'"><</button>
+							<%  } %>
+							
+							<% for(int p = startPage; p <= endPage; p++){
+									if(p == currentPage){	
+							%>
+								<button disabled><%= p %></button>
+							<%      }else{ %>
+								<button onclick="location.href='<%= request.getContextPath() %>/selectList.ca?caType=ca0?currentPage=<%= p %>'"><%= p %></button>
+							<%      } %>
+							<% } %>
+								
+							<%  if(currentPage >= maxPage){  %>
+							<button disabled>></button>
+							<%  }else{ %>
+							<button onclick="location.href='<%= request.getContextPath() %>/selectList.ca?caType=ca0?currentPage=<%=currentPage + 1 %>'">></button>
+							<%  } %>
+							<button onclick="location.href='<%= request.getContextPath() %>/selectList.ca?caType=ca0?currentPage=<%= maxPage %>'">>></button>
                         </div>
+                        
                     </div>
                 </div>
             </div>

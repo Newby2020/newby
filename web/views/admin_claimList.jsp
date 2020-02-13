@@ -38,7 +38,7 @@
         <a href="/semi/userList.ad">사용자</a>
         <a href="admin_classApply.jsp">클래스</a>
 		<a href="admin_classCancel.jsp">클래스 취소</a>
-        <a class="active"  href="admin_hostReport.jsp">호스트 신고</a>
+        <a class="active"  href="admin_hostReport.jsp">신고</a>
         <a href="admin_accountancy.jsp">정산</a>
     </div>
     <div class="content">
@@ -53,58 +53,26 @@
             <table>
                 <tr>
                     <th>신고일</th>
-                    <th>클래스명</th>
-                    <th>호스트명</th>
-                    <th>전화번호</th>
-                    <th>내용</th>
-                    <th>처리</th>
+                    <th>신고 번호</th>
+                    <th>신고 사용자 번호</th>
+                    <th>신고 이유</th>
+                    <th>상태</th>
                     <th>신고처리일</th>
                     <th>정지 기간</th>
+                    <th>정지 시작일</th>
                     <th>정지 만료일</th>
                 </tr>
                 <tr>
-                    <td>2020-03-23</td>
-                    <td>자바와 함께 춤을</td>
-                    <td>유승제</td>
-                    <td>010-1234-5678</td>
-                    <td>
-                        <button id="cotentsBtn">조회</button>
-                    </td>
-                    <td>
-                        <button id="confirmBtn">확인</button>
-                        <button id="suspendBtn">계정정지</button>
-                    </td>
-                    <td>-</td>
-                    <td>-</td>
-                    <td>-</td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
                 </tr>
-                <tr>
-                    <td>2020-03-23</td>
-                    <td>자바와 함께 춤을</td>
-                    <td>유승제</td>
-                    <td>010-1234-5678</td>
-                    <td>
-                        <button id="myBtn">조회</button>
-                    </td>
-                    <td>정지</td>
-                    <td>2020-03-25</td>
-                    <td>30일</td>
-                    <td>2020-04-23</td>
-                </tr>
-                <tr>
-                    <td>2020-03-23</td>
-                    <td>자바와 함께 춤을</td>
-                    <td>유승제</td>
-                    <td>010-1234-5678</td>
-                    <td>
-                        <button id="myBtn">조회</button>
-                    </td>
-                    <td>확인</td>
-                    <td>2020-03-25</td>
-                    <td>-</td>
-                    <td>-</td>
-                </tr>
-            </table>
             </table>
         </div>
     </div>
