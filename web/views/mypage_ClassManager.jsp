@@ -1,5 +1,10 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+    pageEncoding="UTF-8" import="com.kh.newby.Class.model.vo.*, java.util.*"%>
+    
+<%
+	ArrayList<ClassVo> list = (ArrayList<ClassVo>)request.getAttribute("list");
+	System.out.println(list);
+%>
 <!DOCTYPE html>
 <html lang="ko">
 <head>
@@ -34,48 +39,29 @@
                     <br>
                     <div id="contentsDivSize29">
                         <div>
-                            <table>	<!-- 클래스 날짜와 현재 날짜 비교해서 수정취소버튼 생성 분기시켜야해  -->
-                                <thead>
+                            <table align="center">	<!-- 클래스 날짜와 현재 날짜 비교해서 수정취소버튼 생성 분기시켜야해  -->
                                     <tr>
                                       <th style="width: 150px">날짜</th>
-                                      <th style="width: 500px; padding-bottom: 5px;">클래스명</th>
+                                      <th style="width: 500px;">클래스명</th>
                                       <th style="width: 150px">수정/취소</th>
                                     </tr>
-                                </thead>
-                                <tbody align="center">
-                                	<tr>
-                                  		<td colspan=3 style="border-bottom : 1px solid darkgray;"></td>
-                                	</tr>
-                                    <tr>
-                                      <td class="td19">2020-01-02</td>
-                                      <td class="td19">길가다가기줍기길가다가기줍줍길가다가기줍줍기길가기길가다가기줍줍길가다가기줍줍</td>
+
+                                	<%for(ClassVo c : list){%>								<!-- 클래스값 안나옴 -->
+                                    <tr align="center">
+                                      <input class="hv" type="hidden" value="<%= c.getClassNo() %>">
+                                      <td class="td19"><%= c.getClassEnrollDate() %></td>
+                                      <td class="td19"><%= c.getClassName() %></td>
                                       <td class="td19">
-	                                      <input class="modify1sd size142" type="button" value="수정">
-	                                      <input class="delete1sd size142" type="button" value="취소">
+                                      	<button class="modiBtn modify1sd size142">수정</button>
+                                      	<button class="delBtn size142">취소</button>
 	                                  </td>
                                     </tr>
-                                    <tr>
-                                      <td class="td19">2020-01-02</td>
-                                      <td class="td19" >길가다가기줍기길가다가기줍줍길가다가기줍줍기길가기길가다가기줍줍길가다가기줍줍</td>
-                                      <td class="td19">
-	                                      <input class="modify1sd size142" type="button" value="수정">
-	                                      <input class="delete1sd size142" type="button" value="취소">
-	                                  </td>
-                                    </tr>
-                                </tbody>
+                                    <% } %>
                             </table>
-                            
-                            <!-- 페이징해야 하는 부분 -->
-                            <div>
-                            </div>
-                              
-                              
-                              
                           </div>
                     </div>
                 </div> 
             </div>
-            
             <script type="text/javascript" src="/semi/resources/js/mypage_ClassManager.js"></script>
 			
         <%@ include file="./common/footer.jsp" %>
