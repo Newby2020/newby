@@ -133,7 +133,6 @@ td{
                     </div>
                 </div> 
             </div>
-            
             <script type="text/javascript" src="/semi/resources/js/mypage_Mileage.js"></script>
         <br><br><br><br><br>
         <%@ include file="./common/footer.jsp" %>
