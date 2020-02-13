@@ -38,27 +38,29 @@
                                 <thead>
                                     <tr>
                                       <th style="width: 150px">날짜</th>
-                                      <th style="width: 300px">클래스명</th>
-                                      <th style="width: 150px">상태</th>
+                                      <th style="width: 500px; padding-bottom: 5px;">클래스명</th>
                                       <th style="width: 150px">수정/취소</th>
                                     </tr>
                                 </thead>
                                 <tbody align="center">
                                 	<tr>
-                                  		<td colspan=4 style="border-bottom : 1px solid darkgray; height: 0px;"></td>
+                                  		<td colspan=3 style="border-bottom : 1px solid darkgray;"></td>
                                 	</tr>
                                     <tr>
-                                      <td>2020-01-02</td>
-                                      <td>길가다가 쓰레기 줍기</td>
-                                      <td>예정</td>
-                                      <td><input class="modify1sd size142" type="button" value="수정"> <input class="delete1sd size142" type="button" value="취소"></td>
+                                      <td class="td19">2020-01-02</td>
+                                      <td class="td19">길가다가기줍기길가다가기줍줍길가다가기줍줍기길가기길가다가기줍줍길가다가기줍줍</td>
+                                      <td class="td19">
+	                                      <input class="modify1sd size142" type="button" value="수정">
+	                                      <input class="delete1sd size142" type="button" value="취소">
+	                                  </td>
                                     </tr>
-
-                                    <tr class="complete1sd">
-                                      <td>2019-09-16</td>
-                                      <td>안녕 나야</td>
-                                      <td>완료</td>
-                                      <td> </td>
+                                    <tr>
+                                      <td class="td19">2020-01-02</td>
+                                      <td class="td19" >길가다가기줍기길가다가기줍줍길가다가기줍줍기길가기길가다가기줍줍길가다가기줍줍</td>
+                                      <td class="td19">
+	                                      <input class="modify1sd size142" type="button" value="수정">
+	                                      <input class="delete1sd size142" type="button" value="취소">
+	                                  </td>
                                     </tr>
                                 </tbody>
                             </table>

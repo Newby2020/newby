@@ -6,21 +6,24 @@
   background: rgb(9, 129, 241);
   color: white;
   border: none;
-  height: 20px;
   width: 50px;
   border-radius: 10px;
-  padding-bottom: 1.5px;
+  padding-bottom: 2px;
   padding-top: 2px;
   font-size: 9pt;
   cursor: pointer;
+  margin-top: 1px;
 }
 
 th{
-	height:30px;
 	font-size: 11pt;
 }
 
 td{
-	height: 30px;
 	font-size: 9pt;
+}
+
+.td19{
+	padding-top: 8px;
+	line-height: 16px;
 }
