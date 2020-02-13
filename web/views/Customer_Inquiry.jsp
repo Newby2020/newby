@@ -37,7 +37,7 @@
 			<!--left sidebar-->
 			<div class="sidenavsk">
 				<div id="sidebar-titleso67" align="center">고객센터</div>
-				<a href="views/Customer_Notice.jsp">공지사항</a>
+				<a href="/semi/selectList.no">공지사항</a>
 				<button class="dropdown-btnqo">
 					문의 <i id="ci22">≡</i> 
 				</button>
@@ -60,9 +60,9 @@
 
 				<div id="contentsDivSize29">
 					<!-- 여기다가 너가 작업한거 넣으면 돼-->
-					<hr>
+					
 
-					<table class="tbNo">
+					<table class="tbNo" id="listArea">
 						<tr>
 							<th colspan="1" class="tab1">번호</th>
 							<th colspan="6" class="tab1">제목</th>
@@ -118,9 +118,9 @@
 	<script>
 	$(function(){
 		$("#listArea td").mouseenter(function(){
-			$(this).parent().css({"background":"darkgray", "cursor":"pointer"});
+			$(this).parent().css({"cursor":"pointer"});
 		}).mouseout(function(){
-			$(this).parent().css({"background":"black"});
+			$(this).parent();
 		}).click(function(){
 			var bno = $(this).parent().find("input").val();
 			location.href="<%=request.getContextPath()%>/selectOne.bo?bno=" + bno;

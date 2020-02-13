@@ -5,43 +5,24 @@ import java.util.ArrayList;
 
 import com.kh.newby.notice.model.dao.NoticeDao;
 import com.kh.newby.notice.model.vo.Notice;
-
 import static com.kh.newby.common.JDBCTemplate.*;
 
 public class NoticeService {
-	
+
 	private NoticeDao nDao = new NoticeDao();
-
-	/**
-	 * 게시글 수
-	 * @return
-	 */
-	public int getListCount() {
-		Connection con = getConnection();
-		int listCount = nDao.getListCount(con);
-		
-		close(con);
-		
-		return listCount;
-	}
-
 	
 	/**
-	 * 게시글 페이징 처리
-	 * @param currentPage
-	 * @param limit
+	 * 공지사항 조회
 	 * @return
 	 */
-	public ArrayList<Notice> selectList(int currentPage, int limit) {
+	public ArrayList<Notice> selectList() {
 		Connection con = getConnection();
 		
-		ArrayList<Notice> list = nDao.selectList(con,currentPage,limit);
+		ArrayList<Notice> list = nDao.selectList(con);
 		
 		close(con);
 		
 		return list;
 	}
-	
-	
 
 }

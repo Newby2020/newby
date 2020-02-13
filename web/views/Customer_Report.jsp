@@ -24,7 +24,7 @@
 			<!--left sidebar-->
 			<div class="sidenavsk">
 				<div id="sidebar-titleso67" align="center">고객센터</div>
-				<a href="Customer_Notice.jsp">공지사항</a>
+				<a href="/semi/selectList.no">공지사항</a>
 				<button class="dropdown-btnqo">
 					문의 <i id="ci22">≡</i>
 				</button>

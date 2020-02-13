@@ -25,7 +25,7 @@
 			<!--left sidebar-->
 			<div class="sidenavsk">
 				<div id="sidebar-titleso67" align="center">고객센터</div>
-				<a href="Customer_Notice.jsp">공지사항</a>
+				<a href="/semi/selectList.no">공지사항</a>
 				<button class="dropdown-btnqo">
 					문의 <i id="ci22">≡</i>
 				</button>
@@ -51,7 +51,7 @@
 					<form>
 						<h4>이용 약관</h4>
 
-						<hr>
+						
 
 						<p>
 							여러분은 본 약관을 읽고 동의하신 후 회원 가입을 신청하실 수 있으며, <br> 이에 대한 승낙을 통해 회원
