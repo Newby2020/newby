@@ -40,7 +40,7 @@
 		<span class="divider1">|</span>
 		
 	    <label id="signIn" class="top-nav">
-	        <a href="/semi/views/common/signIn.jsp">회원가입</a>
+	        <a href="/semi/views/signIn.jsp">회원가입</a>
 	    </label>
 	    <% }else if(m.getM_id().equals("admin@naver.com")){ %>
 	    <label id="AdminPage" class="top-nav">
