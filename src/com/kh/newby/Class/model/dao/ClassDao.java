@@ -1,16 +1,32 @@
 package com.kh.newby.Class.model.dao;
 
+import java.io.FileReader;
+import java.io.IOException;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.util.Properties;
 
 import com.kh.newby.Class.model.vo.ClassVo;
+import com.kh.newby.review.model.dao.ReviewDao;
+
 import static com.kh.newby.common.JDBCTemplate.*;
 
 public class ClassDao {
 	
 	private Properties prop;
+	
+	public ClassDao() {
+		prop = new Properties();
+		
+		String filePath = ReviewDao.class.getResource("/config/class-query.properties").getPath();
+		
+		try {
+			prop.load(new FileReader(filePath));
+		}catch(IOException e) {
+			e.printStackTrace();
+		}
+	}
 
 	public ClassVo selectOne(Connection conn, String cno) {
 		PreparedStatement pstmt = null;
@@ -56,6 +72,9 @@ public class ClassDao {
 			close(rset);
 			close(pstmt);
 		}
+		
+		System.out.println(cv);
+		
 		return cv;
 	}
 

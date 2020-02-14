@@ -1,10 +1,12 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%@ page import="com.kh.newby.Class.model.vo.*" %>
+<%@ page import="com.kh.newby.Class.model.vo.*, com.kh.newby.review.model.vo.*, java.util.*" %>
 
 <%  
 	//클래스 객체
 	ClassVo cv = (ClassVo)request.getAttribute("class");
+	//댓글 리스트
+	ArrayList<Review> rList = (ArrayList<Review>)request.getAttribute("rList");
 %>
 <!DOCTYPE html>
 <html>
@@ -14,6 +16,7 @@
 <title>클래스 상세 페이지</title>
 </head>
 <body>
+	<!--  header  -->
 	<%@ include file="../views/common/header.jsp" %>
 		<!-- body -->
     <div class="wrap">
@@ -186,5 +189,7 @@
             </div>
         </div>
     </div>
+    <!-- footer -->
+    <%@ include file="../views/common/footer.jsp" %>
 </body>
 </html>

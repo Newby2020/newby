@@ -1,6 +1,7 @@
 package com.kh.newby.Class.controller;
 
 import java.io.IOException;
+import java.util.ArrayList;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -10,6 +11,8 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.kh.newby.Class.model.service.ClassService;
 import com.kh.newby.Class.model.vo.ClassVo;
+import com.kh.newby.review.model.service.ReviewService;
+import com.kh.newby.review.model.vo.Review;
 
 /**
  * Servlet implementation class ClassSelectOneServlet
@@ -30,7 +33,10 @@ public class ClassSelectOneServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		String cno = "C" + request.getParameter("cno");
+		//최종본
+//		String cno = request.getParameter("cno");
+		//test
+		String cno = "C6";
 		
 		ClassService sc = new ClassService();
 		
@@ -41,9 +47,13 @@ public class ClassSelectOneServlet extends HttpServlet {
 		// 클래스 상세정보
 		cv = sc.selectOne(cno);
 		
+		// 댓글 불러오기
+		ArrayList<Review> rList = new ReviewService().selectList(cno);
+		
 		if(cv != null) {
 			page = "views/class_information.jsp";
 			request.setAttribute("class", cv);
+			request.setAttribute("rList", rList);
 		}else {
 			page = "views/errorPage.jsp";
 			request.setAttribute("msg", "클래스 상세페이지 불러오기 실패");
