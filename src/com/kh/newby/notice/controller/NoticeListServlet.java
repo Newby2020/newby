@@ -85,6 +85,7 @@ public class NoticeListServlet extends HttpServlet {
 			
 			PageInfo pi = new PageInfo(currentPage,listCount,limit,maxPage,startPage,endPage);
 			System.out.println(list);
+			
 			request.setAttribute("pi", pi);
 		} else {
 			page = "views/common/errorPage.jsp";

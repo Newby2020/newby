@@ -123,7 +123,7 @@
 			$(this).parent();
 		}).click(function(){
 			var bno = $(this).parent().find("input").val();
-			location.href="<%=request.getContextPath()%>/boardSelectOne.no?bno=" + bno;
+			location.href="<%=request.getContextPath()%>/boardSelectOne.bo?bno=" + bno;
 		});
 	});
 		var dropdown = document.getElementsByClassName("dropdown-btnqo");

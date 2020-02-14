@@ -1,8 +1,10 @@
-<%-- <%@ page language="java" contentType="text/html; charset=UTF-8"
+<%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-<%@ page import="com.kh.newby.inquiry.model.vo.*, java.util.*"%>
+<%@ page
+	import="com.kh.newby.inquiry.model.vo.*, java.util.*, com.kh.newby.notice.model.vo.*"%>
 <%
 	Board b = (Board)request.getAttribute("board");
+	Notice n = (Notice)request.getAttribute("notice");
 
 	ArrayList<Board> list
 	= (ArrayList<Board>)request.getAttribute("list");
@@ -35,12 +37,12 @@
 			<!--left sidebar-->
 			<div class="sidenavsk">
 				<div id="sidebar-titleso67" align="center">고객센터</div>
-				<a href="views/Customer_Notice.jsp">공지사항</a>
+				<a href="/semi/noticeSelectList.no">공지사항</a>
 				<button class="dropdown-btnqo">
 					문의 <i id="ci22">≡</i>
 				</button>
 				<div class="dropdown-soxk">
-					<a href="/semi/selectList.bo?currentPage=1">문의 목록</a> <a
+					<a href="/semi/boardSelectList.bo?currentPage=1">문의 목록</a> <a
 						href="views/Customer_CreateInquiry.jsp">문의 작성</a>
 				</div>
 				<a href="views/Customer_Report.jsp">신고</a> <a
@@ -59,7 +61,7 @@
 
 				<div id="contentsDivSize29">
 					<!-- 여기다가 너가 작업한거 넣으면 돼-->
-					<% if(b != null){ %>
+					
 					<form>
 						<table class="tbDetail">
 							<tr>
@@ -80,6 +82,46 @@
 								<td class="tdContent" colspan="6"></td>
 							</tr>
 						</table>
+						<div align="center">
+							<div class="replyWriteArea">
+								<form action="/semi/boardComment.bo" method="post">
+									<input type="hidden" name="nwriter"
+										value="<%= n.getNwriter() %>" /> <input type="hidden"
+										name="ino" value="<%= b.getIno() %>" /> <input type="hidden"
+										name="refcno" value="0" /> <input type="hidden" name="clevel"
+										value="1" />
+
+									<table align="center">
+										<tr>
+											<td>댓글 작성</td>
+											<td><textArea rows="3" cols="80" id="replyContent"
+													name="replyContent"></textArea></td>
+											<td><button type="submit" id="addReply">댓글 등록</button></td>
+										</tr>
+									</table>
+								</form>
+							</div>
+							<div>
+								<!--  게시글 댓글 -->
+								<% if (list != null){ %>
+								<%  for(Board bo : list) { %>
+
+								<table id="replySelectTable"class="replyList">
+								<tr>
+								<td rowspan="2"> </td>
+								<td><b><%= bo.getIwno() %></b></td>
+								<td><%= bo.getIdate() %></td>
+								</tr>
+								</table>
+								
+								<% } } else { %>
+								<p>댓글을 달아주세요</p>
+								<% } %>
+							</div>
+
+
+
+						</div>
 
 
 
@@ -95,9 +137,7 @@
 		<%@ include file="./common/footer.jsp"%>
 	</div>
 	<script>
-	
-	
-	
-</script>
+		
+	</script>
 </body>
-</html> --%>
+</html>
