@@ -91,10 +91,21 @@ public class IndexServlet extends HttpServlet {
 
 		
 		// ==== 송금해야 할 인원 수 가져오기 ================================	
-		int needToSendMoneyCount = 0;
+		int refundMoneyCount = 0;
 		
-		needToSendMoneyCount = as2.needToSendMoneyCount();
+		refundMoneyCount = as2.getRefundMoneyCount();
 		
+		page = "/views/admin_index.jsp";
+		request.setAttribute("refundMoneyCount", refundMoneyCount);
+		
+		
+		// ==== 문의 글 수 가져오기 ================================
+		int newInquiryCount = 0;
+		
+		newInquiryCount = as2.getNewInquiryCount();
+		
+		page = "views/admin_index.jsp";
+		request.setAttribute("newInquiryCount", newInquiryCount);
 		
 		
 		

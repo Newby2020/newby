@@ -6,6 +6,8 @@
 	int classCount = (int)(request.getAttribute("classCount"));
 	int approvalClassCount = (int)(request.getAttribute("approvalClassCount"));
 	int notifiedHostCount = (int)(request.getAttribute("notifiedHostCount"));
+	int refundMoneyCount = (int)(request.getAttribute("refundMoneyCount"));
+	int newInquiryCount = (int)(request.getAttribute("newInquiryCount"));
 %>    
 <!DOCTYPE html>
 <html lang="en">
@@ -85,13 +87,13 @@
                 <span class="badge"><%=notifiedHostCount %></span>
             </a>
             <a href="admin_accountancy.jsp" class="notification">
-                <span>송금</span>
-                <<span class="badge"></span>
+                <span>환불</span>
+                <span class="badge"><%=refundMoneyCount %></span>
             </a>
             <!-- TODO 문의하기 탭으로 넘기기 -->
             <a href="#" class="notification">
                 <span>문의</span>
-                <span class="badge">1</span>
+                <span class="badge"><%=newInquiryCount %></span>
             </a>
         </div>
 
