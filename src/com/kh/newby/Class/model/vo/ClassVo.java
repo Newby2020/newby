@@ -34,6 +34,9 @@ public class ClassVo implements Serializable {
 	private String hostIntro;
 	private double averageReview;
 	private String hostNo;
+	private String classStatus;
+	private String rejectReason;
+	private String caNo;
 	
 	// 기본 생성자
 	public ClassVo() {}
@@ -64,6 +67,44 @@ public class ClassVo implements Serializable {
 	
 	// 클래스 상세 페이지 생성자(enrolldate 제외하고 모두)
 	
+	// 관리자용 클래스 관리 생성자
+	public ClassVo(String classNo, String className, String firstCategory, String classType, int classMaxnum,
+			int classPrice, String classLocation, Date classEnrollDate, String classStartTime, String classEndTime,
+			String hostName, String hostNo, String classStatus, String rejectReason) {
+		super();
+		this.classNo = classNo;
+		this.className = className;
+		this.firstCategory = firstCategory;
+		this.classType = classType;
+		this.classMaxnum = classMaxnum;
+		this.classPrice = classPrice;
+		this.classLocation = classLocation;
+		this.classEnrollDate = classEnrollDate;
+		this.classStartTime = classStartTime;
+		this.classEndTime = classEndTime;
+		this.hostName = hostName;
+		this.hostNo = hostNo;
+		this.classStatus = classStatus;
+		this.rejectReason = rejectReason;
+	}
+	// 관리자용 클래스 관리 생성자 종료
+	
+	
+
+	
+
+
+	public ClassVo(String classNo, String classHostNo, String className, String classIntro, Date classEnrollDate, String classStatus, String rejectReason, String caNo) {
+		super();
+		this.classNo = classNo;
+		this.classHostNo = classHostNo;
+		this.className = className;
+		this.classIntro = classIntro;
+		this.classEnrollDate = classEnrollDate;
+		this.classStatus = classStatus;
+		this.rejectReason = rejectReason;
+		this.caNo = caNo;
+	}
 
 	public String getClassNo() {
 		return classNo;
@@ -248,6 +289,32 @@ public class ClassVo implements Serializable {
 	public void setHostNo(String hostNo) {
 		this.hostNo = hostNo;
 	}
+	
+	// 관리자용 클래스 생성 
+	public String getClassStatus() {
+		return classStatus;
+	}
+
+	public void setClassStatus(String classStatus) {
+		this.classStatus = classStatus;
+	}
+
+	public String getRejectReason() {
+		return rejectReason;
+	}
+
+	public void setRejectReason(String rejectReason) {
+		this.rejectReason = rejectReason;
+	}
+	
+	public String getCaNo() {
+		return caNo;
+	}
+
+	public void setCaNo(String caNo) {
+		this.caNo = caNo;
+	}
+	// 관리자용 클래스 생성 종료
 
 	@Override
 	public String toString() {
@@ -258,8 +325,8 @@ public class ClassVo implements Serializable {
 				+ classLocation + ", classIntro=" + classIntro + ", classTarget=" + classTarget + ", classCurriculum="
 				+ classCurriculum + ", classEnrollDate=" + classEnrollDate + ", classDate=" + classDate
 				+ ", classStartTime=" + classStartTime + ", classEndTime=" + classEndTime + ", hostName=" + hostName
-				+ ", hostIntro=" + hostIntro + ", averageReview=" + averageReview + ", hostNo=" + hostNo + "]";
+				+ ", hostIntro=" + hostIntro + ", averageReview=" + averageReview + ", hostNo=" + hostNo
+				+ ", classStatus=" + classStatus + ", rejectReason=" + rejectReason + "]";
 	}
-
 
 }

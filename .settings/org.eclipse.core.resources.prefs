@@ -1,4 +1,5 @@
 eclipse.preferences.version=1
+encoding//src/config/admin-query.properties=UTF-8
 encoding//src/config/class-query.properties=UTF-8
 encoding//src/config/inquiry-query.properties=UTF-8
 encoding//src/config/member-query.properties=UTF-8

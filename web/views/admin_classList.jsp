@@ -1,5 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+    pageEncoding="UTF-8" import="java.util.*, com.kh.newby.Class.model.vo.*"%>
+<%
+	ArrayList<ClassVo> list = (ArrayList<ClassVo>)request.getAttribute("list");
+%>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -33,7 +36,7 @@
         </div>
         <a href="/semi/index.ad">Dashboard</a>
         <a href="/semi/userList.ad">사용자</a>
-        <a class="active" href="admin_classApply.jsp">클래스</a>
+        <a class="active" href="/semi/classList.ad">클래스</a>
 		<a href="admin_classCancel.jsp">클래스 취소</a> 
         <a href="admin_hostReport.jsp">호스트 신고</a>
         <a href="admin_accountancy.jsp">정산</a>
@@ -49,28 +52,34 @@
             </div>
             <table>
                 <tr>
-                    <th>등록일</th>
-                    <th>호스트명</th>
-                    <th>호스트 아이디</th>
-                    <th>클래스명</th>
-                    <th>금액(원)</th>
-                    <th>타입</th>
+                    <th>CLASS_NO,</th>
+                    <th>CLASS_HOST_NO, </th>
+                    <th>CLASS_NAME</th>
+                    <th>CLASS_INTRO,</th>
+                    <th>CLASS_ENROLLDATE, </th>
+                    <th>CA_APPROVAL_YN,, </th>
+                    <th>CA_REJECT_REASON,  </th>
+                    <th>CA_CLASS_CHECK_NO </th>
+                    
+                    
+                    <!-- <th>타입</th>
                     <th>1차 카테고리</th>
                     <th>위치</th>
                     <th>인원수</th>
-                    <th>스케쥴</th>  <!-- 시작날짜, 종료날짜 -->
+                    <th>스케쥴</th>  시작날짜, 종료날짜
                     <th>내용</th>
-                    <th>상태</th>
+                    <th>상태</th> -->
                 </tr>
                 <tr>
-                    <td>2020-01-02</td>
-                    <td>유승제</td>
-                    <td>자바와함께 춤을</td>
-                    <td>1,500,000</td>
-                    <td>정적</td>
+                <% for(ClassVo cvo : list) { %>
+                    <td><%=cvo.getClassNo()%></td>
+                    <td><%=cvo.getHostNo()%></td>
+                    <td><%=cvo.getClassName()%></td>
+                    <td><%=cvo.getClassIntro()%></td>
+                    <td><%=cvo.getClassEnrollDate()%></td>
                     <td>IT</td>
                     <td>강남구 역삼동</td>
-                    <td>25</td>
+                    <td><% %></td>
                     <td>2020-01-02 ~ 2020-04-10</td>
                     <td>
                         <button id="detailVeiwBtn" class="detailVeiwBtn">양식보기</button> <br>
@@ -80,6 +89,8 @@
                         <button type="button" id="rejectBtn">반려</button>
                     </td>
                 </tr>
+                <% } %>
+                
                 <tr>
                     <td>2020-01-02</td>
                     <td>유승제</td>

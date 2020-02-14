@@ -4,6 +4,7 @@
 	int userCount = (int)(request.getAttribute("userCount"));
 	int hostCount = (int)(request.getAttribute("hostCount"));
 	int classCount = (int)(request.getAttribute("classCount"));
+	int approvalClassCount = (int)(request.getAttribute("approvalClassCount"));
 %>    
 <!DOCTYPE html>
 <html lang="en">
@@ -74,9 +75,9 @@
 
         <!-- Notification Button -->
         <div class="notif">
-            <a href="admin_classApply.jsp" class="notification">
+            <a href="/semi/classList.ad?acc=<%=approvalClassCount %>" class="notification">
                 <span>개설 신청</span>
-                <span class="badge">12</span>
+                <span class="badge"><%=approvalClassCount %></span>
             </a>
             <a href="admin_hostReport.jsp" class="notification">
                 <span>호스트 신고</span>
