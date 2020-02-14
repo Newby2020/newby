@@ -8,7 +8,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.kh.newby.admin.service.AdminService;
+import com.kh.newby.admin.service.AdminService2;
 
 /**
  * Servlet implementation class Index
@@ -32,9 +32,9 @@ public class IndexServlet extends HttpServlet {
 		
 		// ==== 이용자 수 가져오기 ================================
 		int userCount = 0;
-		AdminService as = new AdminService();
+		AdminService2 as2 = new AdminService2();
 		
-		userCount = as.getUserCount();
+		userCount = as2.getUserCount();
 		
 		String page = "";
 		
@@ -49,7 +49,7 @@ public class IndexServlet extends HttpServlet {
 		// ==== 호스트 수 가져오기 ================================
 		int hostCount = 0;
 		
-		hostCount = as.getHostCount();
+		hostCount = as2.getHostCount();
 		
 		if(hostCount > 0) {
 			page = "/views/admin_index.jsp";
@@ -62,7 +62,7 @@ public class IndexServlet extends HttpServlet {
 		// ==== 클래스 수 가져오기 ================================
 		int classCount = 0;
 		
-		classCount = as.getClassCount();
+		classCount = as2.getClassCount();
 		
 		if(classCount > 0) {
 			page = "/views/admin_index.jsp";
