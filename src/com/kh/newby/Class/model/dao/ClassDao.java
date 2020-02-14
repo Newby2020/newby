@@ -119,10 +119,9 @@ public class ClassDao {
 			
 			for(int i=0; i<cdate.length; i++) {
 				pstmt = con.prepareStatement(sql2);
-				pstmt.setString(1, c.getHostNo());
-				pstmt.setString(2, cdate[i]);
-				pstmt.setString(3, cstime[i]);
-				pstmt.setString(4, cetime[i]);
+				pstmt.setString(1, cdate[i]);
+				pstmt.setString(2, cstime[i]);
+				pstmt.setString(3, cetime[i]);
 				result2 = pstmt.executeUpdate();
 			}
 			System.out.println(result2);

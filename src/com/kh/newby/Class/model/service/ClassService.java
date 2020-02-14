@@ -32,8 +32,10 @@ public class ClassService {
 	public int insertClass(ClassVo c) {
 		
 		Connection con = getConnection();
+		
 		System.out.println("service");
-		int result = new ClassDao().insertClass(con, c);
+		
+		int result = cDao.insertClass(con, c);
 		if(result > 0) {
 			commit(con);
 		} else {
