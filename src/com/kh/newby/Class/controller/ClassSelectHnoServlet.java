@@ -48,7 +48,7 @@ public class ClassSelectHnoServlet extends HttpServlet {
 		String hno = "H2"; //String hno = m.getH_no();						/////////////////////////////////수정해야됨////////////////////////////
 		// 해당 호스트의 등록한 클래스를 출력
 		System.out.println("cS");
-		list = cs.selectHnoClassList(hno);
+//		list = cs.selectHnoClassList(hno);
 		System.out.println("sE");
 		String page = "";
 		

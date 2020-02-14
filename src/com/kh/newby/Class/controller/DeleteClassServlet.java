@@ -31,15 +31,15 @@ public class DeleteClassServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String cno = request.getParameter("cno");
 		ClassService cs = new ClassService();
-		int result = cs.deleteClass(cno);
+//		int result = cs.deleteClass(cno);
 		
-		if(result > 0) {
-			response.sendRedirect("/semi/cshs.do");
-//			request.getRequestDispatcher("/selectList.no").forward(request, response);
-		} else {
-			request.setAttribute("msg", "공지사항 수정 실패 !!");
-			request.getRequestDispatcher("/semi/views/common/errorPage.jsp").forward(request, response);
-		}
+//		if(result > 0) {
+//			response.sendRedirect("/semi/cshs.do");
+////			request.getRequestDispatcher("/selectList.no").forward(request, response);
+//		} else {
+//			request.setAttribute("msg", "공지사항 수정 실패 !!");
+//			request.getRequestDispatcher("/semi/views/common/errorPage.jsp").forward(request, response);
+//		}
 		
 		
 	}
