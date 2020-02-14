@@ -1,16 +1,21 @@
 package com.kh.newby.Class.controller;
 
 import java.io.IOException;
-import java.util.Arrays;
-
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import org.apache.tomcat.util.http.fileupload.servlet.ServletFileUpload;
 
+import com.kh.newby.Class.model.service.ClassService;
+import com.kh.newby.Class.model.vo.ClassVo;
+import com.kh.newby.Member.model.vo.Member;
 import com.oreilly.servlet.MultipartRequest;
 import com.oreilly.servlet.multipart.DefaultFileRenamePolicy;
 
@@ -33,6 +38,7 @@ public class ClassInsertServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		
 		// 파일 처리용 서블릿
 				// MultipartRequest
 				// cos.jar 라이브러리를 WEB-INF/lib에 추가를 해줘야하는데
@@ -40,7 +46,7 @@ public class ClassInsertServlet extends HttpServlet {
 				// 1. 전송할 최대 크기 설정하기
 				// 10MB -> (Byte 크기로 변환하기)
 				// (1MB -> 1024 KB / 1KB -> 1024 Byte)
-				int maxSize = 1024 * 1024 * 2;
+				int maxSize = 1024 * 1024 * 20;
 				
 				// 2. multipart/form-data형식으로 전송되었는지 확인!
 				if(!ServletFileUpload.isMultipartContent(request)) {
@@ -55,7 +61,7 @@ public class ClassInsertServlet extends HttpServlet {
 				
 				// 게시판의 첨부파일을 저장할 폴더 이름 지정하기
 				String savePath = root + "resources/uploadImg";
-				
+//				System.out.println(savePath);
 				// 4. 실제 담아온 파일 기타 정보들을 활용하여
 				//	  MultipartRequest 객체 생성하기
 				//	  request --> MultipartRequest
@@ -72,60 +78,100 @@ public class ClassInsertServlet extends HttpServlet {
 				
 				// -- 파일 업로드 실시
 				// 5-1 기본 전송값 처리하기
-
+				String[] cDate = mrequest.getParameterValues("classDate");
+				String[] sTime = mrequest.getParameterValues("startTime");
+				String[] addr = mrequest.getParameterValues("addr");
+				
+				// 속성값 삽입
 				String cName = mrequest.getParameter("className");
 				String category1 = mrequest.getParameter("category1");
 				String category2 = mrequest.getParameter("category2");
 				String category3 = mrequest.getParameter("category3");
 				String cType = mrequest.getParameter("classType");
-				String MaxNum = mrequest.getParameter("MaxNum");
-				String cTime = mrequest.getParameter("classTime");
-				String price = mrequest.getParameter("price");
-				String[] cDate = mrequest.getParameterValues("classDate");
-				String[] sTime = mrequest.getParameterValues("startTime");
-				String[] addr = mrequest.getParameterValues("addr");
+				int MaxNum = Integer.parseInt(mrequest.getParameter("MaxNum"));
+				int cTime = Integer.parseInt(mrequest.getParameter("classTime"));
+				int price = Integer.parseInt(mrequest.getParameter("price"));
+				String addr1 = "";
 				String obj = mrequest.getParameter("object");
-				String edit1 = mrequest.getParameter("editor1");
-				String edit2 = mrequest.getParameter("editor2");
-				
-				System.out.println(cName);
-				System.out.println(category1);
-				System.out.println(category2);
-				System.out.println(category3);
-				System.out.println(cType);
-				System.out.println(MaxNum);
-				System.out.println(cTime);
-				System.out.println(price);
-				for(int i=0; i<cDate.length; i++) {
-					System.out.println(cDate[i]);					
+				String curri = mrequest.getParameter("editor1");
+				String intro = mrequest.getParameter("editor2");
+				String img = mrequest.getFilesystemName("uploadImg");
+				String cdate = "";
+				String stime = "";
+				String etime = "";
+
+				for(int i=0; i<cDate.length; i++) {	// 배열은 for문으로 돌려서 처리해야함
+					if(i != cDate.length-1){						
+						cdate += cDate[i]+",";
+					} else {
+						cdate += cDate[i];						
+					}
 				}
+				
 				for(int i=0; i<sTime.length; i++) {
-					System.out.println(sTime[i]);					
+					if(i != sTime.length-1) {
+						stime += sTime[i]+",";						
+					} else {
+						stime += sTime[i];
+					}
+					
+					String[] tArr = sTime[i].split(":");
+					int hours = Integer.parseInt(tArr[0]);
+					int mins = Integer.parseInt(tArr[1]);
+					Calendar cal = Calendar.getInstance();
+					cal.set(Calendar.HOUR, hours);
+					cal.set(Calendar.MINUTE, mins);
+					DateFormat df = new SimpleDateFormat("kk:mm");
+					cal.add(Calendar.HOUR, cTime);
+					if(i != sTime.length-1) {
+						etime += df.format(cal.getTime())+",";					
+					} else {
+						etime += df.format(cal.getTime());										
+					}
 				}
+				
 				for(int i=0; i<addr.length; i++) {
-					System.out.println(addr[i]);					
+					if(i != addr.length-1) {						
+						addr1 += addr[i]+",";
+					} else {
+						addr1 += addr[i];						
+					}
 				}
-				System.out.println(obj);
-				System.out.println(edit1);
-				System.out.println(edit2);
 				
+				// 세션에 추가된 멤버객체의 정보 담기
+				HttpSession session = request.getSession(false);
+				Member m = (Member)session.getAttribute("member");
 				
+//				String hNo = m.getH_no();
+				String hNo = "H2";
+				ClassVo c = new ClassVo(cName, category1, category2, category3, cType, cTime,
+						MaxNum, price, img, addr1, obj, curri, intro, cdate, stime, etime, hNo);
 				
-//				// 5-2. 전송된 파일 처리
-//				// 전달받은 파일을 먼저 저장하고, 그 파일의 이름을 가져오는 메소드
-//				String fileName = mrequest.getFilesystemName("file");
-//				System.out.println(fileName);
-//				// 6. 전송된 파일 VO에 담아 서비스로 보내기
-//				Board b = new Board();
-//				
-//				b.setBtitle(title);
-//				b.setBcontent(content);
-//				b.setBwriter(writer);
-//				b.setBoardfile(fileName);
-//				
-//				// 7. 서비스 결과 처리하기
-//				int result = new BoardService().insertBoard(b);
-//				
+				//-------------------출력용----------------------
+//				System.out.println("---------출력용 --------");
+//				System.out.println(cName);
+//				System.out.println(category1);
+//				System.out.println(category2);
+//				System.out.println(category3);
+//				System.out.println(cType);
+//				System.out.println(MaxNum);
+//				System.out.println(cTime);
+//				System.out.println(price);
+//				System.out.println(addr1);
+//				System.out.println(cdate);
+//				System.out.println(stime);
+//				System.out.println(etime);
+//				System.out.println(obj);
+//				System.out.println(curri);
+//				System.out.println(intro);
+//				System.out.println(img);
+//				System.out.println("----------------------");
+				//--------------------------------------------
+				
+				System.out.println("controll");
+				int result = new ClassService().insertClass(c);		// DB 연결
+				System.out.println(result);
+//				메인화면으로 이동해야함
 //				if(result > 0 ) {
 //					response.sendRedirect("selectList.bo");
 //				} else {

@@ -40,6 +40,7 @@ public class BoardDao {
 		String sql = prop.getProperty("listCount");
 		
 		try {
+			
 			stmt = con.createStatement();
 			rset = stmt.executeQuery(sql);
 			
@@ -57,12 +58,12 @@ public class BoardDao {
 		return listCount;
 	}
 
-	public ArrayList<Board> selectList(Connection con, int currentPage, int limit) {
+	public ArrayList<Board> boardSelectList(Connection con, int currentPage, int limit) {
 		ArrayList<Board> list = null;
 		PreparedStatement pstmt = null;
 		ResultSet rset = null;
 		
-		String sql = prop.getProperty("selectList");
+		String sql = prop.getProperty("boardSelectList");
 		
 		try {
 			pstmt = con.prepareStatement(sql);
@@ -98,6 +99,46 @@ public class BoardDao {
 		}
 		return list;
 	}
+
+
+	public Board boardSelectOne(Connection con, String bno) {
+		Board b = null;
+		PreparedStatement pstmt = null;
+		ResultSet rset = null;
+		
+		String sql = prop.getProperty("boardSelectOne");
+		
+		try {
+			pstmt = con.prepareStatement(sql);
+			
+			pstmt.setString(1, bno);
+			
+			rset = pstmt.executeQuery();
+			
+			if(rset.next()) {
+				b = new Board();
+				
+				b.setIno(bno);
+				b.setItitle(rset.getString("Q_TITLE"));
+				b.setIwno(rset.getString("Q_WRITER_NO"));
+				b.setIdate(rset.getDate("Q_DATE"));
+				b.setIcontent(rset.getString("Q_CONTENY"));
+				b.setIcomment(rset.getString("Q_COMMENT"));
+				
+			}
+			
+		} catch(SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(rset);
+			close(pstmt);
+		}
+				
+		return b;
+	}
+
+	
+
 
 }
 

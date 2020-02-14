@@ -68,8 +68,8 @@ public class AdminDao {
 			
 			int startRow = (currentPage - 1) * limit + 1;
 			int endRow = startRow + limit - 1;
-			System.out.println(startRow);
-			System.out.println(endRow);
+//			System.out.println(startRow);
+//			System.out.println(endRow);
 			
 			pstmt.setInt(1, endRow);
 			pstmt.setInt(2, startRow);
@@ -102,4 +102,81 @@ public class AdminDao {
 		return list;
 	}
 	
+	public int getUserCount(Connection con) {
+		
+		int userCount = 0;
+		
+		Statement stmt = null;
+		ResultSet rset = null;
+		
+		String sql = prop.getProperty("userCount");
+		
+		try {
+			stmt = con.createStatement();
+			rset = stmt.executeQuery(sql);
+			
+			if(rset.next()) {
+				userCount = rset.getInt(1);
+			}
+			
+		} catch(SQLException e) {
+			e.printStackTrace();
+ 		} finally {
+ 			close(rset);
+ 			close(stmt);
+ 		}
+		return userCount;
+	}
+
+	public int getHostCount(Connection con) {
+
+		int hostCount = 0;
+		
+		Statement stmt = null;
+		ResultSet rset = null;
+		
+		String sql = prop.getProperty("hostCount");
+		
+		try {
+			stmt = con.createStatement();
+			rset = stmt.executeQuery(sql);
+			
+			if(rset.next()) {
+				hostCount = rset.getInt(1);
+			}
+
+		} catch(SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(rset);
+			close(stmt);
+		}
+		return hostCount;
+	}
+
+	public int getClassCount(Connection con) {
+
+		int classCount = 0;
+		
+		Statement stmt = null;
+		ResultSet rset = null;
+		
+		String sql = prop.getProperty("classCount");
+		
+		try {
+			stmt = con.createStatement();
+			rset = stmt.executeQuery(sql);
+			
+			if(rset.next()) {
+				classCount = rset.getInt(1);
+			}
+			
+		} catch(SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(rset);
+			close(stmt);
+		}
+		return classCount;
+	}
 }

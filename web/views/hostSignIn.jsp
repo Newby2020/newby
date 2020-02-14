@@ -10,11 +10,9 @@
     <link rel="stylesheet" href="/semi/resources/css/main-panel.css">
     <link rel="stylesheet" href="/semi/resources/css/header.css">
     <link rel="stylesheet" href="/semi/resources/css/footer.css">
-    
-    <!-- <link href="https://fonts.googleapis.com/css?family=Nanum+GothicNoto+Sans+KR&display=swap" rel="stylesheet">
-     -->
      
     <link rel="stylesheet" href="/semi/resources/css/hostSignIn.css">
+    <script src="/semi/resources/js/jquery-3.4.1.min.js"></script>
     <style>
         html{
             font-family: 'Noto Sans KR', sans-serif;
@@ -26,7 +24,7 @@
 		<%@ include file="./common/header.jsp" %>
 		<br><br>
             <div id="newby-body-panel">
-                <form id="hostJoinForm" class="hostJoinForm">
+                <form id="hostJoinForm" class="hostJoinForm" action="/semi/insert.ho">
                     <div class="guideHostSentence">
                         <label style="margin-bottom: 3px;"><b>호스트 가입</b></label>
                         <br>
@@ -36,17 +34,17 @@
                     <div align="center">  
                  
                     <div class="hostRequired">
-                        <input type="textarea" class="hostJoinInfoReason" id="hostClassReason" name="hostClassReason" value="" placeholder="   클래스 개설하려는 이유를 자세히 적어주세요">
+                        <input type="textarea" class="hostJoinInfoReason" id="hostClassReason" name="hostIntro" value="" placeholder="   클래스 개설하려는 이유를 자세히 적어주세요">
                     </div>
                     <br><br><br><br>
                     <div class="hostRequired">
-                        <input type="text" class="hostJoinInfo" id="hostBankName" name="hostBankName" value="" placeholder="은행명 입력">
+                        <input type="text" class="hostJoinInfo" id="hostBankName" name="bank" value="" placeholder="은행명 입력">
                     </div> 
                     <div class="hostRequired">
-                        <input type="text" class="hostJoinInfo" id="hostAccountName" name="hostAccountName" value="" placeholder="예금주명 입력">
+                        <input type="text" class="hostJoinInfo" id="hostAccountName" name="accountHolder" value="" placeholder="예금주명 입력">
                     </div>
                     <div class="hostRequired">
-                        <input type="text" class="hostJoinInfo" id="hostBankNumber" name="hostBankNumber" value=""placeholder="계좌번호 입력">
+                        <input type="text" class="hostJoinInfo" id="hostBankNumber" name="accountNum" value=""placeholder="계좌번호 입력">
                     </div>
                     <br><br>
                     <div class="announce" align="center">
@@ -55,12 +53,27 @@
 	       			<br><br>
 	       			</div>
                 
-                    <div align="center"></div>
+                    <div align="center">
 	       				<button onclick="buttonJoin();" id="buttonHostJoin" class="buttonJoin">가입하기</button>
 	        		</div> 
                     </form>
             </div>
             <%@ include file="./common/footer.jsp" %> 
+            
     </div>  
 	</body>
+	
+	<script>
+		function buttonJoin(){
+			$('#hostJoinForm').submit();
+			alert('호스트 가입 완료');
+			location.href="/semi/index.jsp";
+		}
+	
+		
+	
+	
+	
+	
+	</script>
 </html>

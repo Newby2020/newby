@@ -88,3 +88,13 @@ $(function(){
 
    });
    });
+   
+   $(function(){
+	   $('content_a').on({
+		   'mouseenter':function(){
+			   $(this).css({'transform':'scale(1.1)','transition':'.3s'});
+		   },'mouseleave' : function(){
+			   $(this).css({'transform':'scale(1.0)','transition':'.3s'});
+		   }
+	   });
+   });

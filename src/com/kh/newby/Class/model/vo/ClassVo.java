@@ -33,6 +33,7 @@ public class ClassVo implements Serializable {
 	private String hostName;
 	private String hostIntro;
 	private double averageReview;
+	private String hostNo;
 	
 	// 기본 생성자
 	public ClassVo() {}
@@ -40,7 +41,7 @@ public class ClassVo implements Serializable {
 	// 클래스 등록용 생성자
 	public ClassVo(String className, String firstCategory, String secondCategory, String thirdCategory, String classType,
 			int classTime, int classMaxnum, int classPrice, String classImg, String classLocation, String classTarget,
-			String classCurriculum, String classIntro, String classDate, String classStartTime, String classEndTime) {
+			String classCurriculum, String classIntro, String classDate, String classStartTime, String classEndTime, String hostNo) {
 		super();
 		this.className = className;
 		this.firstCategory = firstCategory;
@@ -58,36 +59,11 @@ public class ClassVo implements Serializable {
 		this.classDate = classDate;
 		this.classStartTime = classStartTime;
 		this.classEndTime = classEndTime;
+		this.hostNo = hostNo;
 	}
 	
 	// 클래스 상세 페이지 생성자(enrolldate 제외하고 모두)
-	public ClassVo(String classNo, String classHostNo, String className, String firstCategory, String secondCategory,
-			String thirdCategory, String classType, int classTime, int classPrice, int classMaxnum, String classImg,
-			String classLocation, String classIntro, String classTarget, String classCurriculum, String classDate,
-			String classStartTime, String classEndTime, String hostName, String hostIntro, double averageReview) {
-		super();
-		this.classNo = classNo;
-		this.classHostNo = classHostNo;
-		this.className = className;
-		this.firstCategory = firstCategory;
-		this.secondCategory = secondCategory;
-		this.thirdCategory = thirdCategory;
-		this.classType = classType;
-		this.classTime = classTime;
-		this.classPrice = classPrice;
-		this.classMaxnum = classMaxnum;
-		this.classImg = classImg;
-		this.classLocation = classLocation;
-		this.classIntro = classIntro;
-		this.classTarget = classTarget;
-		this.classCurriculum = classCurriculum;
-		this.classDate = classDate;
-		this.classStartTime = classStartTime;
-		this.classEndTime = classEndTime;
-		this.hostName = hostName;
-		this.hostIntro = hostIntro;
-		this.averageReview = averageReview;
-	}
+	
 
 	public String getClassNo() {
 		return classNo;
@@ -265,6 +241,14 @@ public class ClassVo implements Serializable {
 		this.averageReview = averageReview;
 	}
 
+	public String getHostNo() {
+		return hostNo;
+	}
+
+	public void setHostNo(String hostNo) {
+		this.hostNo = hostNo;
+	}
+
 	@Override
 	public String toString() {
 		return "ClassVo [classNo=" + classNo + ", classHostNo=" + classHostNo + ", className=" + className
@@ -274,7 +258,8 @@ public class ClassVo implements Serializable {
 				+ classLocation + ", classIntro=" + classIntro + ", classTarget=" + classTarget + ", classCurriculum="
 				+ classCurriculum + ", classEnrollDate=" + classEnrollDate + ", classDate=" + classDate
 				+ ", classStartTime=" + classStartTime + ", classEndTime=" + classEndTime + ", hostName=" + hostName
-				+ ", hostIntro=" + hostIntro + ", averageReview=" + averageReview + "]";
+				+ ", hostIntro=" + hostIntro + ", averageReview=" + averageReview + ", hostNo=" + hostNo + "]";
 	}
+
 
 }

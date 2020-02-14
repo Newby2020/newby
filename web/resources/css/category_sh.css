@@ -27,7 +27,6 @@ select {
     background-color: transparent;
 }
 
-
 .head_class_navi {
     box-sizing: border-box;
     align-items: center;
@@ -94,6 +93,7 @@ margin-left: auto;
     padding-right: auto;
     text-align: right;
 }
+
 
 
 .cate_tt_sh1 .active{
@@ -200,6 +200,7 @@ margin-left: auto;
     font-size: small;
 }
 .container_a{
+	text-align: left;
     margin-top: 20px;
     justify-items: center;
     justify-content: center;
@@ -225,6 +226,8 @@ margin-left: auto;
     position: relative !important;
     
 }
+
+
 .content_a_back{
     background-position-x: 50%;
     background-position-y: 50%;
@@ -237,7 +240,6 @@ margin-left: auto;
     position: absolute;
     right: 0;
     text-size-adjust: 100%;
-    z-index: 2;
 }
 .cont_a_profile{
     box-sizing: border-box;
@@ -249,7 +251,6 @@ margin-left: auto;
     flex-shrink: 0;
     padding-top : 156px;
     position: relative;
-    z-index: 3;
 }
 .cont_a_p_title{
     box-sizing: border-box;   

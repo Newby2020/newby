@@ -5,8 +5,10 @@ import java.io.IOException;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Properties;
-
 import com.kh.newby.Class.model.vo.ClassVo;
 import com.kh.newby.review.model.dao.ReviewDao;
 

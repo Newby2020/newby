@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"
-	import="com.kh.newby.inquiry.model.vo.*, java.util.*"%>
+	import="com.kh.newby.inquiry.model.vo.*, java.util.*, com.kh.newby.common.PageInfo"%>
 <% 
 	ArrayList<Board> list = (ArrayList<Board>)request.getAttribute("list"); 
 	PageInfo pi = (PageInfo)request.getAttribute("pi");
@@ -37,15 +37,15 @@
 			<!--left sidebar-->
 			<div class="sidenavsk">
 				<div id="sidebar-titleso67" align="center">고객센터</div>
-				<a href="Customer_Notice.jsp">공지사항</a>
+				<a href="/semi/noticeSelectList.no">공지사항</a>
 				<button class="dropdown-btnqo">
-					문의 <i id="ci22">≡</i>
+					문의 <i id="ci22">≡</i> 
 				</button>
 				<div class="dropdown-soxk">
-					<a href="Customer_Inquiry.jsp">문의 목록</a> <a
-						href="Customer_CreateInquiry.jsp">문의 작성</a>
+					<a href="/semi/boardSelectList.bo?currentPage=1">문의 목록</a> <a
+						href="views/Customer_CreateInquiry.jsp">문의 작성</a>
 				</div>
-				<a href="Customer_Report.jsp">신고</a> <a href="Customer_Refund.jsp">이용약관</a>
+				<a href="views/Customer_Report.jsp">신고</a> <a href="views/Customer_Refund.jsp">이용약관</a>
 			</div>
 
 			<!--contents-->
@@ -60,9 +60,9 @@
 
 				<div id="contentsDivSize29">
 					<!-- 여기다가 너가 작업한거 넣으면 돼-->
-					<hr>
+					
 
-					<table class="tbNo">
+					<table class="tbNo" id="listArea">
 						<tr>
 							<th colspan="1" class="tab1">번호</th>
 							<th colspan="6" class="tab1">제목</th>
@@ -86,25 +86,25 @@
 
 					<div>
 						<div style="display: inline-block">
-							<button onclick="location.href='<%=request.getContextPath()%>/selectList.bo?currentPage=1'"><<</button>
+							<button onclick="location.href='<%=request.getContextPath()%>/boardSelectList.bo?currentPage=1'"><<</button>
 							<%	if (currentPage <= 1) { %>
 							<button disabled><</button>
 							<% } else { %>
-							<button onclick="location.href='<%=request.getContextPath()%>/selectList.bo?currentPage=<%=currentPage - 1%>'"><</button>
+							<button onclick="location.href='<%=request.getContextPath()%>/boardSelectList.bo?currentPage=<%=currentPage - 1%>'"><</button>
 							<% } %>
 
 							<% for (int p = startPage; p <= endPage; p++) { if (p == currentPage) { %>
 							<button disabled><%=p%></button>
 							<% } else { %>
-							<button onclick="location.href='<%=request.getContextPath()%>/selectList.bo?currentPage=<%=p%>'"><%=p%></button>
+							<button onclick="location.href='<%=request.getContextPath()%>/boardSelectList.bo?currentPage=<%=p%>'"><%=p%></button>
 							<% } %>
 							<% } %>
 							<% if (currentPage >= maxPage) { %>
 							<button disabled>></button>
 							<% } else { %>
-							<button onclick="location.href='<%=request.getContextPath()%>/selectList.bo?currentPage=<%=currentPage + 1%>'">></button>
+							<button onclick="location.href='<%=request.getContextPath()%>/boardSelectList.bo?currentPage=<%=currentPage + 1%>'">></button>
 							<% } %>
-							<button onclick="location.href='<%=request.getContextPath()%>/selectList.bo?currentPage=<%=maxPage%>'">>></button>
+							<button onclick="location.href='<%=request.getContextPath()%>/boardSelectList.bo?currentPage=<%=maxPage%>'">>></button>
 
 						</div>
 					</div>
@@ -118,12 +118,12 @@
 	<script>
 	$(function(){
 		$("#listArea td").mouseenter(function(){
-			$(this).parent().css({"background":"darkgray", "cursor":"pointer"});
+			$(this).parent().css({"cursor":"pointer"});
 		}).mouseout(function(){
-			$(this).parent().css({"background":"black"});
+			$(this).parent();
 		}).click(function(){
 			var bno = $(this).parent().find("input").val();
-			location.href="<%=request.getContextPath()%>/selectOne.bo?bno=" + bno;
+			location.href="<%=request.getContextPath()%>/boardSelectOne.no?bno=" + bno;
 		});
 	});
 		var dropdown = document.getElementsByClassName("dropdown-btnqo");

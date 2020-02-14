@@ -31,7 +31,7 @@ var sl3 = document.getElementById('sl3');
 function selectCategory1(){
 
     var sl11 = sl1.options[document.getElementById('sl1').selectedIndex].value;
-	if(sl11 == "동적" || sl11 == "정적" ){
+	if(sl11 == "신나는" || sl11 == "차분한" ){
 		sl2.innerHTML = "<option value='' selected>2차</option><option value='액티비티'>액티비티</option><option value='쿠킹'>쿠킹</option><option value='예술'>예술</option><option value='교육'>교육</option>";
 	} else {
         sl2.innerHTML = "<option value='' selected>2차</option>";
@@ -57,10 +57,12 @@ function selectCategory2(){
 
 // 인원수 readonly 유무체크
 function oneNOneCheck(){
+	$('#MaxNum').val(1);
 	$('#MaxNum').prop("readonly", true).css("backgroundColor","#ebeef3");
+	
 }
 function groupCheck(){
-	$('#MaxNum').prop("readonly", false).css("backgroundColor","white");
+	$('#MaxNum').prop("readonly", false).css("backgroundColor","white").select();
 }
 
 // 파일 업로드 시 프리뷰

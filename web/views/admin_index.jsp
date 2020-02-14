@@ -1,12 +1,17 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+    pageEncoding="UTF-8" import="com.kh.newby.Member.model.vo.*, com.kh.newby.Class.model.vo.*"%>
+<% 
+	int userCount = (int)(request.getAttribute("userCount"));
+	int hostCount = (int)(request.getAttribute("hostCount"));
+	int classCount = (int)(request.getAttribute("classCount"));
+%>    
 <!DOCTYPE html>
 <html lang="en">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>DashBoard_admin</title>
+    <title>admin_index</title>
 
     <!-- Load icon libarary -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
@@ -27,13 +32,13 @@
     <div class="sidebar">
         <div>
             <a class="fa fa-home" href="#"></a>
-            <a class="index" href="admin_index.jsp">관리자페이지</a>
+            <a class="index" href="/semi/index.ad">관리자페이지</a>
         </div>
-        <a class="active" href="admin_index.jsp">Dashboard</a>
-        <a href="/semi/user.ad">사용자</a>
+        <a class="active" href="/semi/index.ad">Dashboard</a>
+        <a href="/semi/userList.ad">사용자</a>
         <a href="admin_classApply.jsp">클래스</a>
 		<a href="admin_classCancel.jsp">클래스 취소</a>
-        <a href="admin_hostReport.jsp">호스트 신고</a>
+        <a href="admin_hostReport.jsp">신고</a>
         <a href="admin_accountancy.jsp">정산</a>
     </div> 
 
@@ -44,7 +49,7 @@
             <div class="column">
                 <div class="card">
                     <p><i class="fa fa-user"></i></p>
-                    <h3>2421</h3>
+                    <h3><%=userCount %></h3>
                     <p>사용자 수</p>
                 </div>
             </div>
@@ -52,7 +57,7 @@
             <div class="column">
                 <div class="card">
                     <p><i class="fa fa-check"></i></p>
-                    <h3>55</h3>
+                    <h3><%=hostCount %></h3>
                     <p>호스트 수</p>
                 </div>
             </div>
@@ -60,7 +65,7 @@
             <div class="column">
                 <div class="card">
                     <p><i class="fa fa-smile-o"></i></p>
-                    <h3>42</h3>
+                    <h3><%=classCount %></h3>
                     <p>클래스 수</p>
                 </div>
             </div>
