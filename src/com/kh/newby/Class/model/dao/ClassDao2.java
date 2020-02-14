@@ -1,6 +1,6 @@
 package com.kh.newby.Class.model.dao;
 
-import static com.kh.newby.common.JDBCTemplate.close;
+import static com.kh.newby.common.JDBCTemplate.*;
 
 import java.io.FileReader;
 import java.io.IOException;
@@ -11,7 +11,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.Properties;
 
-import com.kh.newby.Class.model.vo.ClassVo;
+import com.kh.newby.Class.model.vo.ClassVo2;
 
 public class ClassDao2 {
 
@@ -20,7 +20,7 @@ public class ClassDao2 {
    public ClassDao2() {
       prop = new Properties();
 
-      String filePath = ClassDao.class.getResource("/config/class-query.properties").getPath();
+      String filePath = ClassDao2.class.getResource("/config/class-query2.properties").getPath();
 
       try {
          prop.load(new FileReader(filePath));
@@ -30,7 +30,7 @@ public class ClassDao2 {
    }
    
    // 지훈아 완성하자
-      public int insertClass(Connection con, ClassVo c) {      
+      public int insertClass(Connection con, ClassVo2 c) {      
          int result1 = 0;
          int result2 = 0;
          int result3 = 0;
@@ -86,9 +86,9 @@ public class ClassDao2 {
          return result3;
       }
       
-      public ArrayList<ClassVo> selectHnoClassList(Connection con, String hno) {
-         ArrayList<ClassVo> list = new ArrayList<>();
-         ClassVo c = null;
+      public ArrayList<ClassVo2> selectHnoClassList(Connection con, String hno) {
+         ArrayList<ClassVo2> list = new ArrayList<>();
+         ClassVo2 c = null;
          PreparedStatement pstmt = null;
          ResultSet rset = null;
          String sql = prop.getProperty("selectHnoClassList");
@@ -97,9 +97,9 @@ public class ClassDao2 {
             pstmt = con.prepareStatement(sql);
             pstmt.setString(1, hno);
             rset = pstmt.executeQuery();
-            
+           
             while(rset.next()) {
-               c = new ClassVo();
+               c = new ClassVo2();
                
                c.setClassEnrollDate(rset.getDate("CLASS_ENROLLDATE"));
                c.setClassName(rset.getString("CLASS_NAME"));
