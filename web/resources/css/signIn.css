@@ -1,0 +1,51 @@
+#joinForm{
+	margin-left: 33%;
+	margin-right: 33%;
+	margin-top: 5%;
+	margin-bottom: 0%;
+}
+.guideSentence{
+    font-size: 20px;
+    text-align: left;
+}
+#requiredWrap{
+    margin: auto;
+    width: 300px;
+}
+.required{
+    height: 20px;
+    padding: 7px;
+    text-align: left;
+}
+#checkId,
+#checkNick{
+    width: 70px;
+    height: 20px;
+    border: none;
+    color: black;
+    cursor : pointer;
+}
+.announce{
+    font-size: 12px;
+    padding: 5px;
+}
+.secureButton{
+    width: 40px;
+    height: 20px;
+    border: none;
+    color: black;
+    cursor : pointer;
+}
+.buttonJoin{
+    width: 300px;
+    height: 30px;
+    border: none;
+    background-color: rgb(9, 129, 241);
+    color: white;
+    cursor : pointer;
+}
+.joinInfo{
+    border-right: 0px;
+    border-top: 0px;
+    border-left: 0px;
+}

@@ -9,7 +9,7 @@
 <head>
     <meta charset="UTF-8">
     <title>header</title>
-    <link rel="stylesheet" href="/semi/resources/css/joinModal.css">
+    <link rel="stylesheet" href="/semi/resources/css/signIn.css">
     <link rel="stylesheet" href="/semi/resources/css/LoginModal.css">
     <link rel="stylesheet" href="/semi/resources/css/header.css">
     <script src="/semi/resources/js/mainPage.js"></script>
@@ -40,7 +40,7 @@
 		<span class="divider1">|</span>
 		
 	    <label id="signIn" class="top-nav">
-	        <a>회원가입</a>
+	        <a href="/semi/views/common/signIn.jsp">회원가입</a>
 	    </label>
 	    <% }else if(m.getM_id().equals("admin@naver.com")){ %>
 	    <label id="AdminPage" class="top-nav">
@@ -117,60 +117,6 @@
   </div>
   <!-- 로그인 코드 종료 -->
   
-  
-   <!-- 회원가입 코드 -->
-  <div id="joinModal" class="joinModal">
-
-  <div class="joinModalContent">
-  <span class="joinClose">&times;</span>                                                               
-  
-  <form id="joinForm" action='/semi/insert.me' class="joinForm">
-      <div class="guideSentence">
-          <label style="line-height: 2em;"><b>회원가입</b></label>
-          <hr>
-          <br>
-      </div> 
-      <div id="requiredWrap">
-          <div class="required">
-              <input type="email" class="joinInfo" id="user_Id" name="user_Id" value="" maxlength=100; placeholder="이메일 주소 입력">
-              <input type="button" id="checkId" onsubmit="return false" value="중복 확인"></input>
-          </div> 
-          <div class="required">
-              <input type="text" class="joinInfo" id="user_Nickname" name="user_Nickname" value="" maxlength=100; placeholder="닉네임 입력">
-              <input type="button" id="checkNick" onsubmit="return false" value="중복 확인"></input>
-          </div>
-          <div class="required">
-              <input type="password" class="joinInfo" id="password" name="password" value="" maxlength=100; placeholder="비밀번호 입력">
-          </div>
-          <div class="required">
-              <input type="password" class="joinInfo" id="confirm_password" name="confirm_password" value="" maxlength=100; placeholder="비밀번호 확인">
-          </div>
-          <div class="required">
-              <input type="text" class="joinInfo" id="user_name" name="user_name" value="" maxlength=100; placeholder="이름 입력">
-          </div>
-          <div class="required">
-              <input type="text" class="joinInfo" id="phone" name="phone" value="" maxlength=100; placeholder="휴대폰 번호 입력">
-              <input type="text" class="joinInfo" id="securePhone" name="securePhone" maxlength=4 style="width: 60px;" placeholder="인증코드">
-              <button onclick="secureButton();" id="secureButton" class="secureButton">인증</button>
-          </div>
-      </div>
-      <br><br>
-      <div class="announce" align="center">
-          <input type="checkbox" id="agree" name="agree">
-          <label>이용약관, 개인정보 처리방침, 위치기반 서비스 이용약관에 동의합니다.</label>
-      </div>
-      <div class="announce" align="center">
-          <br><br>
-          <label>NewBy는 만 18세 이상 회원만 이용 가능합니다.</label>
-          <br><br>
-      </div>
-
-      <button onclick="buttonJoin();" id="buttonJoin" class="buttonJoin">가입하기</button> 
-    </form>
-    </div>
-</div>
-  <!-- 회원가입 코드 종료 -->
-  
   <script>
     /* 로그인 스크립트 */
     var Loginmodal = document.getElementById('LoginModal');
@@ -200,30 +146,6 @@
     	location.href='/semi/logout.me';
     	alert('로그아웃되었습니다');
     }
-    
-    /* 회원가입 스크립트 */
-      var joinModal = document.getElementById('joinModal');
-
-      var signIn = document.getElementById("signIn");
-
-      var joinSpan = document.getElementsByClassName("joinClose")[0];                                          
-
-      signIn.onclick = function() {
-          joinModal.style.display = "block";
-      }
-
-      joinSpan.onclick = function() {
-          joinModal.style.display = "none";
-      }
-      
-      
-      
-      function buttonJoin(){
-    	  $('#joinForm').submit();
-    	  
-      }
-    /* 회원가입 스크립트 종료 */
-    
     
     /*아이디 중복 체크*/
    	 $('#checkId').click(function(){
