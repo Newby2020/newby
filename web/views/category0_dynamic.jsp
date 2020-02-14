@@ -226,7 +226,9 @@
                         <!-- 컨텐츠 안에 들어가는 a태그 -->
                         <% for(int i=0; i<caList.size(); i++){ %>
                         <a href="/semi/selectOne.ci?cno=<%=caList.get(i).getClassNo()%>" class="content_a" id="con_<%=i %>" href="#">
+                         <div class="con_a_abs">
                            <div class="content_a_back" id="bg_<%=i %>" style=" background-image: url('<%= caList.get(i).getClassImg() %>')"></div>
+                           </div>
                             <div class="cont_a_profile">
                                 <div class="cont_a_p_title">
                                     <%= caList.get(i).getClassName() %>
