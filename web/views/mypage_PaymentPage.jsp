@@ -9,17 +9,19 @@
     <link rel="stylesheet" href="/semi/resources/css/LoginModal.css">
     <link rel="stylesheet" href="/semi/resources/css/main-panel.css">
     <link rel="stylesheet" href="/semi/resources/css/mypage_h&j-frame.css">
+    <link rel="stylesheet" href="/semi/resources/css/mypage_ClassManager.css">
     <link href="https://fonts.googleapis.com/css?family=Nanum+GothicNoto+Sans+KR&display=swap" rel="stylesheet">
+   
     <script src="/semi/resources/jquery/jquery-3.4.1.min.js"></script>
     <script src="../MainPage/js/mainPage.js"></script>
     <style>
 th{
-	height: 30px;
-	font-size: 11pt;
+   height: 30px;
+   font-size: 11pt;
 }
 td{
-	height: 30px;
-	font-size: 9pt;
+   height: 30px;
+   font-size: 9pt;
 }
     </style>
 </head>
@@ -33,7 +35,7 @@ td{
             <div id="newby-body-panel" class="contents-div123" align="left">
 
                 <!--left sidebar-->
-				<%@ include file="./common/mypage_sidebar.jsp" %>
+            <%@ include file="./common/mypage_sidebar.jsp" %>
 
                 <!--contents-->
                 <div id="mn16s" align="center">
@@ -52,71 +54,16 @@ td{
                                       <th style="width: 150px">금액</th>
                                       <th style="width: 150px">상태</th>
                                     </tr>
-	                                <tr>
-	                                  <td colspan=4 style="border-bottom : 1px solid darkgray; height: 0px"></td>
-	                                </tr>
                                 </thead>
                                 <tbody align="center">
-                                    <tr>
-                                      <td style="width: 150px">2020-01-02</td>
-                                      <td style="width: 300px">길가다 쓰레기줍기</td>
-                                      <td style="width: 150px">+58,000원</td>
-                                      <td style="width: 150px" >결제</td>
-                                    </tr>
-                                    <tr>
-                                      <td>2019-11-18</td>
-                                      <td>플라잉 요가</td>
-                                      <td>0원</td>
-                                      <td>취소</td>
-                                    </tr>
-                                    <tr>
-                                      <td>2019-10-04</td>
-                                      <td>연탄 나르기</td>
-                                      <td>+30,000원</td>
-                                      <td>입금 대기중</td>
-                                    </tr>
-                                    <tr>
-                                      <td>2019-09-16</td>
-                                      <td>안녕 나야</td>
-                                      <td>-50,000원</td>
-                                      <td>환불</td>
-                                    </tr>
-                                    <tr>
-                                      <td>2019-09-08</td>
-                                      <td>화성에서 온 나</td>
-                                      <td>+50,000원</td>
-                                      <td>결제</td>
-                                    </tr>
-                                    <tr>
-                                      <td>2019-09-02</td>
-                                      <td>연탄 나르기</td>
-                                      <td>+50,000원</td>
-                                      <td>입금 대기중</td>
-                                    </tr>
-                                    <tr>
-                                      <td>2019-10-04</td>
-                                      <td>자바랑 나랑</td>
-                                      <td>+50,000원</td>
-                                      <td>결제</td>
-                                    </tr>
-                                    <tr>
-                                      <td>2019-10-04</td>
-                                      <td>너는 누구니?</td>
-                                      <td>-28,000원</td>
-                                      <td>환불</td>
-                                    </tr>
-                                    <tr>
-                                      <td>2019-10-04</td>
-                                      <td>반가워 다들</td>
-                                      <td>+50,000원</td>
-                                      <td>입금 대기중</td>
-                                    </tr>
+                                <%-- <%for Member s : list %> --%>   <!-- dksadkas;ldksa;ldksa;dkas; -->
                                     <tr>
                                       <td>2019-10-04</td>
                                       <td>솔로 티내기</td>
                                       <td>0원</td>
                                       <td>취소</td>
                                     </tr >
+                                    
                                 </tbody>
                             </table>
                             

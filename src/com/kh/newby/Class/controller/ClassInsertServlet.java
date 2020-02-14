@@ -169,8 +169,8 @@ public class ClassInsertServlet extends HttpServlet {
 				//--------------------------------------------
 				
 				System.out.println("controll");
-				int result = new ClassService().insertClass(c);		// DB 연결
-				System.out.println(result);
+//				int result = new ClassService().insertClass(c);		// DB 연결
+//				System.out.println(result);
 //				메인화면으로 이동해야함
 //				if(result > 0 ) {
 //					response.sendRedirect("selectList.bo");

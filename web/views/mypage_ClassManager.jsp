@@ -2,8 +2,8 @@
     pageEncoding="UTF-8" import="com.kh.newby.Class.model.vo.*, java.util.*"%>
     
 <%
-	ArrayList<ClassVo> list = (ArrayList<ClassVo>)request.getAttribute("list");
-	System.out.println(list);
+   ArrayList<ClassVo> list = (ArrayList<ClassVo>)request.getAttribute("list");
+   System.out.println(list);
 %>
 <!DOCTYPE html>
 <html lang="ko">
@@ -39,22 +39,22 @@
                     <br>
                     <div id="contentsDivSize29">
                         <div>
-                            <table align="center">	<!-- 클래스 날짜와 현재 날짜 비교해서 수정취소버튼 생성 분기시켜야해  -->
+                            <table align="center">   <!-- 클래스 날짜와 현재 날짜 비교해서 수정취소버튼 생성 분기시켜야해  -->
                                     <tr>
                                       <th style="width: 150px">날짜</th>
                                       <th style="width: 500px;">클래스명</th>
                                       <th style="width: 150px">수정/취소</th>
                                     </tr>
 
-                                	<%for(ClassVo c : list){%>								<!-- 클래스값 안나옴 -->
+                                   <%for(ClassVo c : list){%>                        <!-- 클래스값 안나옴 -->
                                     <tr align="center">
                                       <input class="hv" type="hidden" value="<%= c.getClassNo() %>">
                                       <td class="td19"><%= c.getClassEnrollDate() %></td>
                                       <td class="td19"><%= c.getClassName() %></td>
                                       <td class="td19">
-                                      	<button class="modiBtn modify1sd size142">수정</button>
-                                      	<button class="delBtn size142">취소</button>
-	                                  </td>
+                                         <button class="modiBtn modify1sd size142">수정</button>
+                                         <button class="delBtn size142">취소</button>
+                                     </td>
                                     </tr>
                                     <% } %>
                             </table>
@@ -63,7 +63,7 @@
                 </div> 
             </div>
             <script type="text/javascript" src="/semi/resources/js/mypage_ClassManager.js"></script>
-			
+         
         <%@ include file="./common/footer.jsp" %>
         
     </div>
