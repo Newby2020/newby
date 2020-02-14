@@ -20,7 +20,7 @@
     </style>
 </head>
 <meta charset="UTF-8">
-<title>SignIn</title>
+<title>회원가입</title>
 </head>
 <body>
   <div id="Allpanel" align="center">
