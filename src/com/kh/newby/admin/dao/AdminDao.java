@@ -33,12 +33,13 @@ public class AdminDao {
 		}
 	}
 
-	public int getListCount(Connection con) {
+//-------------------------- User -----------------------------//
+	public int getUserListCount(Connection con) {
 		int listCount = 0;
 		Statement stmt = null;
 		ResultSet rset = null;
 		
-		String sql = prop.getProperty("listCount");
+		String sql = prop.getProperty("listUserCount");
 
 		try {
 			stmt = con.createStatement();
@@ -56,7 +57,7 @@ public class AdminDao {
 		return listCount;
 	}
 
-	public ArrayList<Member> select(Connection con, int currentPage, int limit) {
+	public ArrayList<Member> selectUserList(Connection con, int currentPage, int limit) {
 		ArrayList<Member> list = null;
 		PreparedStatement pstmt = null;
 		ResultSet rset = null;
@@ -101,4 +102,16 @@ public class AdminDao {
 		
 		return list;
 	}
+
+	public int getClaimListCount(Connection con) {
+		int listCount = 0;
+		Statement stmt = null;
+		ResultSet rset = null;
+		
+		String sql = prop.getProperty("");
+		
+		return 0;
+	}
+	
+//-------------------------- User -----------------------------//
 }

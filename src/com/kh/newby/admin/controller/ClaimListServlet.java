@@ -45,9 +45,10 @@ public class ClaimListServlet extends HttpServlet {
 		limit = 10;
 		
 		if(request.getParameter("currentPage") != null) {
-			
+			currentPage = Integer.parseInt(request.getParameter("currentPage"));
 		}
-				
+		
+		int listCount = as.getClaimListCount();
 		
 	}
 
