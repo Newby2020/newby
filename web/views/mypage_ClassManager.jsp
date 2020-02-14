@@ -2,7 +2,7 @@
     pageEncoding="UTF-8" import="com.kh.newby.Class.model.vo.*, java.util.*"%>
     
 <%
-   ArrayList<ClassVo> list = (ArrayList<ClassVo>)request.getAttribute("list");
+   ArrayList<ClassVo2> list = (ArrayList<ClassVo2>)request.getAttribute("list");
    System.out.println(list);
 %>
 <!DOCTYPE html>
@@ -46,7 +46,7 @@
                                       <th style="width: 150px">수정/취소</th>
                                     </tr>
 
-                                   <%for(ClassVo c : list){%>                        <!-- 클래스값 안나옴 -->
+                                   <%for(ClassVo2 c : list){%>                        <!-- 클래스값 안나옴 -->
                                     <tr align="center">
                                       <input class="hv" type="hidden" value="<%= c.getClassNo() %>">
                                       <td class="td19"><%= c.getClassEnrollDate() %></td>

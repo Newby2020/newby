@@ -6,13 +6,13 @@ import java.sql.Connection;
 import java.util.ArrayList;
 
 import com.kh.newby.Class.model.dao.ClassDao2;
-import com.kh.newby.Class.model.vo.ClassVo;
+import com.kh.newby.Class.model.vo.ClassVo2;
 
 public class ClassService2 {
    private ClassDao2 cDao = new ClassDao2();
    
    // 클래스 등록
-   public int insertClass(ClassVo c) {
+   public int insertClass(ClassVo2 c) {
       
       Connection con = getConnection();
       
@@ -30,11 +30,11 @@ public class ClassService2 {
    }
 
    
-   public ArrayList<ClassVo> selectHnoClassList(String hno) {
+   public ArrayList<ClassVo2> selectHnoClassList(String hno) {
       Connection con = getConnection();
-      
-      ArrayList<ClassVo> list = new ArrayList<>();
-      list = new ClassDao2().selectHnoClassList(con, hno);
+      System.out.println("서비스");
+      ArrayList<ClassVo2> list = new ArrayList<>();
+      list = cDao.selectHnoClassList(con, hno);
       if(!list.isEmpty()) {
          commit(con);
       } else {
@@ -47,8 +47,7 @@ public class ClassService2 {
    public int deleteClass(String cno) {
       int result = 0;
       Connection con = getConnection();
-      ClassDao2 cd = new ClassDao2();
-      result = cd.deleteClass(con,cno);
+      result = cDao.deleteClass(con, cno);
       
       if(result>0) {
          commit(con);

@@ -4,6 +4,10 @@
 	int userCount = (int)(request.getAttribute("userCount"));
 	int hostCount = (int)(request.getAttribute("hostCount"));
 	int classCount = (int)(request.getAttribute("classCount"));
+	int approvalClassCount = (int)(request.getAttribute("approvalClassCount"));
+	int notifiedHostCount = (int)(request.getAttribute("notifiedHostCount"));
+	int refundMoneyCount = (int)(request.getAttribute("refundMoneyCount"));
+	int newInquiryCount = (int)(request.getAttribute("newInquiryCount"));
 %>    
 <!DOCTYPE html>
 <html lang="en">
@@ -39,7 +43,7 @@
         <a href="admin_classApply.jsp">클래스</a>
 		<a href="admin_classCancel.jsp">클래스 취소</a>
         <a href="admin_hostReport.jsp">신고</a>
-        <a href="admin_accountancy.jsp">정산</a>
+        <a href="/semi/claimList.ad">정산</a>
     </div> 
 
     <div class="content">
@@ -76,20 +80,20 @@
         <div class="notif">
             <a href="admin_classApply.jsp" class="notification">
                 <span>개설 신청</span>
-                <span class="badge">12</span>
+                <span class="badge"><%=approvalClassCount %></span>
             </a>
             <a href="admin_hostReport.jsp" class="notification">
                 <span>호스트 신고</span>
-                <span class="badge">1</span>
+                <span class="badge"><%=notifiedHostCount %></span>
             </a>
             <a href="admin_accountancy.jsp" class="notification">
-                <span>송금</span>
-                <!-- <span class="badge"></span> -->
+                <span>환불</span>
+                <span class="badge"><%=refundMoneyCount %></span>
             </a>
             <!-- TODO 문의하기 탭으로 넘기기 -->
             <a href="#" class="notification">
                 <span>문의</span>
-                <span class="badge">1</span>
+                <span class="badge"><%=newInquiryCount %></span>
             </a>
         </div>
 
