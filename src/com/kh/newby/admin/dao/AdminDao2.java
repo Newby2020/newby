@@ -110,4 +110,72 @@ public class AdminDao2 {
 		}
 		return classCount;
 	}
+
+	public int getApprovalClassCount(Connection con) {
+		
+		int approvalClassCount = 0;
+		
+		Statement stmt = null;
+		ResultSet rset = null;
+		
+		String sql = prop.getProperty("approvalClassCount");
+		
+		try {
+			stmt = con.createStatement();
+			rset = stmt.executeQuery(sql);
+			
+			if(rset.next()) {
+				approvalClassCount = rset.getInt(1);
+			}
+		} catch(SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(rset);
+			close(stmt);
+		}
+		return approvalClassCount;
+	}
+
+	
+	/**
+	 * 신고당한 호스트 수
+	 * @param con
+	 * @return
+	 */
+	public int getNotifiedHostCount(Connection con) {
+		
+		int notifiedHostCount = 0;
+		
+		Statement stmt = null;
+		ResultSet rset = null;
+		
+		String sql = prop.getProperty("notifiedHostCount");
+		
+		try {
+			stmt = con.createStatement();
+			rset = stmt.executeQuery(sql);
+			
+			if(rset.next()) {
+				notifiedHostCount = rset.getInt(1);
+			}
+		} catch(SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(rset);
+			close(stmt);
+		}
+		return notifiedHostCount;
+	}
+
+	public int getNeedToSendMoneyCount(Connection con) {
+
+		int needToSendMoneyCount = 0;
+		
+		Statement stmt = null;
+		ResultSet rset = null;
+		
+		String sql = prop.getProperty("needToSendMoneyCount");
+		
+		return needToSendMoneyCount;
+	}
 }
