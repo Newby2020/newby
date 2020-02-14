@@ -24,12 +24,12 @@
 			<!--left sidebar-->
 			<div class="sidenavsk">
 				<div id="sidebar-titleso67" align="center">고객센터</div>
-				<a href="Customer_Notice.jsp">공지사항</a>
+				<a href="/semi/noticeSelectList.no">공지사항</a>
 				<button class="dropdown-btnqo">
 					문의 <i id="ci22">≡</i>
 				</button>
 				<div class="dropdown-soxk">
-					<a href="/semi/selectList.bo?currentPage=1">문의 목록</a> <a
+					<a href="/semi/boardSelectList.bo?currentPage=1">문의 목록</a> <a
 						href="Customer_CreateInquiry.jsp">문의 작성</a>
 				</div>
 				<a href="Customer_Report.jsp">신고</a> <a href="Customer_Refund.jsp">이용약관</a>

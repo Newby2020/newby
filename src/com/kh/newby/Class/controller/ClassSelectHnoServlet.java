@@ -8,23 +8,24 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import com.kh.newby.Class.model.service.ClassService;
 import com.kh.newby.Class.model.vo.ClassVo;
-import com.kh.newby.review.model.service.ReviewService;
-import com.kh.newby.review.model.vo.Review;
+import com.kh.newby.Member.model.vo.Member;
+import com.kh.newby.common.PageInfo;
 
 /**
- * Servlet implementation class ClassSelectOneServlet
+ * Servlet implementation class ClassSelectHnoServlet
  */
-@WebServlet("/selectOne.ci")
-public class ClassSelectOneServlet extends HttpServlet {
+@WebServlet("/cshs.do")
+public class ClassSelectHnoServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public ClassSelectOneServlet() {
+    public ClassSelectHnoServlet() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -33,30 +34,34 @@ public class ClassSelectOneServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		//최종본
-//		String cno = request.getParameter("cno");
-		//test
-		String cno = "C6";
+		// 1. 게시판 페이징 처리하기
+		// 페이징 처리 : 
+		// 	대용량의 데이터를 한 번에 처리하지 않고
+		//	특정 개수만큼 끊어서 표현하는 기술
 		
-		ClassService sc = new ClassService();
+		ArrayList<ClassVo> list = null;
 		
-		ClassVo cv = new ClassVo();
+		ClassService cs = new ClassService();
 		
+		HttpSession session = request.getSession(false);
+		Member m = (Member)session.getAttribute("member");
+		String hno = "H2"; //String hno = m.getH_no();						/////////////////////////////////수정해야됨////////////////////////////
+		// 해당 호스트의 등록한 클래스를 출력
+		System.out.println("cS");
+		list = cs.selectHnoClassList(hno);
+		System.out.println("sE");
 		String page = "";
 		
-		// 클래스 상세정보
-		cv = sc.selectOne(cno);
 		
-		// 댓글 불러오기
-		ArrayList<Review> rList = new ReviewService().selectList(cno);
 		
-		if(cv != null) {
-			page = "views/class_information.jsp";
-			request.setAttribute("class", cv);
-			request.setAttribute("rList", rList);
-		}else {
-			page = "views/errorPage.jsp";
-			request.setAttribute("msg", "클래스 상세페이지 불러오기 실패");
+		
+		if(list != null) {
+			page = "views/mypage_ClassManager.jsp";
+			request.setAttribute("list", list);
+			
+		} else {
+			page = "views/common/errorPage.jsp";
+			request.setAttribute("msg", "등록한 클래스 목록 출력 실패!");
 		}
 		request.getRequestDispatcher(page).forward(request, response);
 	}

@@ -1,7 +1,6 @@
 package com.kh.newby.Class.controller;
 
 import java.io.IOException;
-import java.util.ArrayList;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -10,21 +9,18 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.kh.newby.Class.model.service.ClassService;
-import com.kh.newby.Class.model.vo.ClassVo;
-import com.kh.newby.review.model.service.ReviewService;
-import com.kh.newby.review.model.vo.Review;
 
 /**
- * Servlet implementation class ClassSelectOneServlet
+ * Servlet implementation class DeleteClassServlet
  */
-@WebServlet("/selectOne.ci")
-public class ClassSelectOneServlet extends HttpServlet {
+@WebServlet("/delClass.do")
+public class DeleteClassServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public ClassSelectOneServlet() {
+    public DeleteClassServlet() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -33,32 +29,19 @@ public class ClassSelectOneServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		//최종본
-//		String cno = request.getParameter("cno");
-		//test
-		String cno = "C6";
+		String cno = request.getParameter("cno");
+		ClassService cs = new ClassService();
+		int result = cs.deleteClass(cno);
 		
-		ClassService sc = new ClassService();
-		
-		ClassVo cv = new ClassVo();
-		
-		String page = "";
-		
-		// 클래스 상세정보
-		cv = sc.selectOne(cno);
-		
-		// 댓글 불러오기
-		ArrayList<Review> rList = new ReviewService().selectList(cno);
-		
-		if(cv != null) {
-			page = "views/class_information.jsp";
-			request.setAttribute("class", cv);
-			request.setAttribute("rList", rList);
-		}else {
-			page = "views/errorPage.jsp";
-			request.setAttribute("msg", "클래스 상세페이지 불러오기 실패");
+		if(result > 0) {
+			response.sendRedirect("/semi/cshs.do");
+//			request.getRequestDispatcher("/selectList.no").forward(request, response);
+		} else {
+			request.setAttribute("msg", "공지사항 수정 실패 !!");
+			request.getRequestDispatcher("/semi/views/common/errorPage.jsp").forward(request, response);
 		}
-		request.getRequestDispatcher(page).forward(request, response);
+		
+		
 	}
 
 	/**

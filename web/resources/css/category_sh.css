@@ -27,7 +27,6 @@ select {
     background-color: transparent;
 }
 
-
 .head_class_navi {
     box-sizing: border-box;
     align-items: center;
@@ -94,6 +93,7 @@ margin-left: auto;
     padding-right: auto;
     text-align: right;
 }
+
 
 
 .cate_tt_sh1 .active{
@@ -226,6 +226,8 @@ margin-left: auto;
     position: relative !important;
     
 }
+
+
 .content_a_back{
     background-position-x: 50%;
     background-position-y: 50%;

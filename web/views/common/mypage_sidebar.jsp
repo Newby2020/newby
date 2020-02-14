@@ -19,7 +19,7 @@
     </button>
     <div class="dropdown-soxk">
       <a href="mypage_EnrollInClass.jsp">클래스 등록</a>
-      <a href="mypage_ClassManager.jsp">클래스 관리</a>
+      <a href="/semi/cshs.do">클래스 관리</a>
       <a href="mypage_AttendeeManager.jsp">수강생 관리</a>
     </div>
 </div>

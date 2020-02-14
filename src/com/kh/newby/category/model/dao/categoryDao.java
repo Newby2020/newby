@@ -3,6 +3,7 @@ package com.kh.newby.category.model.dao;
 import java.io.FileReader;
 import java.io.IOException;
 import java.sql.Connection;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
@@ -25,13 +26,13 @@ public class categoryDao {
 		}
 	}
 
-	public ArrayList<categoryVo> selectCaList(Connection con, String caType) {
+	public ArrayList<categoryVo> selectCaList(String caType, Connection con, int currentPage, int limit) {
 		ArrayList<categoryVo> caList = null;
 
-		Statement stmt = null;
+		PreparedStatement pstmt = null;
+		
 		ResultSet rset = null;
 		
-		System.out.println(caType);
 		
 		String sql = null; 
 		
@@ -44,12 +45,22 @@ public class categoryDao {
 		case "ca5": sql = prop.getProperty("cate5List"); break;
 		}
 		
-		System.out.println(sql);
 
 		try {
 
-			stmt = con.createStatement();
-			rset = stmt.executeQuery(sql);
+			pstmt = con.prepareStatement(sql);
+			
+			int startRow = (currentPage-1)*limit + 1; //1
+			int endRow = startRow + limit -1; //10, 20
+			
+			
+			pstmt.setInt(1, endRow);
+			pstmt.setInt(2, startRow);
+			
+			rset = pstmt.executeQuery();
+			
+			
+			
 			caList = new ArrayList<categoryVo>();
 
 			while (rset.next()) {
@@ -65,8 +76,6 @@ public class categoryDao {
 
 				caList.add(cv);
 
-				System.out.println("classdao");
-				System.out.println(cv);
 			}
 
 
@@ -74,12 +83,47 @@ public class categoryDao {
 			e.printStackTrace();
 		} finally {
 			close(rset);
-			close(stmt);
+			close(pstmt);
 		}
 
-		System.out.println("classdao");
-		System.out.println(caList);
 		return caList;
+	}
+
+	public int getListCount(String caType, Connection con) {
+		// 총 게시글 수
+		
+		int listCount =0;
+		Statement stmt = null;
+		ResultSet rset = null;
+		String sql = null;
+		
+		switch (caType) {
+		case "ca0": sql = prop.getProperty("ca0listCount"); break;
+		case "ca1": sql = prop.getProperty("ca1listCount"); break;
+		case "ca2": sql = prop.getProperty("ca2listCount"); break;
+		case "ca3": sql = prop.getProperty("ca3listCount"); break;
+		case "ca4": sql = prop.getProperty("ca4listCount"); break;
+		case "ca5": sql = prop.getProperty("ca5listCount"); break;
+		}
+		
+		
+		try {
+
+			stmt = con.createStatement();
+			rset = stmt.executeQuery(sql);
+
+			if(rset.next()) {
+				listCount = rset.getInt(1);
+			}
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally { 
+			close(con);
+			close(stmt);
+		}
+		
+		return listCount;
 	}
 }
 

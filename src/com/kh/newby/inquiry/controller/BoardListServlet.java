@@ -11,12 +11,12 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.kh.newby.inquiry.model.service.BoardService;
 import com.kh.newby.inquiry.model.vo.Board;
-import com.kh.newby.inquiry.model.vo.PageInfo;
+import com.kh.newby.common.PageInfo;
 
 /**
  * Servlet implementation class BoardListServlet
  */
-@WebServlet("/selectList.bo")
+@WebServlet("/boardSelectList.bo")
 public class BoardListServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
@@ -78,7 +78,7 @@ public class BoardListServlet extends HttpServlet {
 			endPage = maxPage;
 		}
 
-		list = bs.selectList(currentPage,limit);
+		list = bs.boardSelectList(currentPage,limit);
 
 		String page = "";
 
@@ -87,7 +87,7 @@ public class BoardListServlet extends HttpServlet {
 			request.setAttribute("list", list);
 			
 			PageInfo pi = new PageInfo(currentPage,listCount,limit,maxPage,startPage,endPage);
-			System.out.println(pi);
+			System.out.println(list);
 			request.setAttribute("pi", pi);
 		} else{
 			page = "views/common/errorPage.jsp";
