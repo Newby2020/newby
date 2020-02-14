@@ -32,10 +32,12 @@ public class HostDao {
 
 	public int insertHost(Connection con, Host h, String memberId) {
 		int result = 0;
+		int result2 = 0;
 		
 		PreparedStatement pstmt = null;
 		
 		String sql = prop.getProperty("insertHost");
+		String sql2 = prop.getProperty("updateHostNo");
 		
 		try {
 			pstmt=con.prepareStatement(sql);
@@ -47,6 +49,13 @@ public class HostDao {
 			pstmt.setString(5, h.getHostIntro());
 			
 			result=pstmt.executeUpdate();
+			
+			pstmt = con.prepareStatement(sql2);
+			
+			pstmt.setString(1, memberId);
+			
+			result2 = pstmt.executeUpdate();
+			System.out.println(result2);
 			
 		}catch(SQLException e) {
 			e.printStackTrace();
