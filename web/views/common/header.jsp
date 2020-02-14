@@ -147,53 +147,7 @@
     	alert('로그아웃되었습니다');
     }
     
-    /*아이디 중복 체크*/
-   	 $('#checkId').click(function(){
-  		  $.ajax({
-		       	url:"/semi/idDup.me",
-				type:"post",
-				data:{
-					user_Id:$('#user_Id').val()
-				},
-				success:function(data){
-					console.log(data);
-					
-					if(data == 'ok'){
-						alert("사용 가능한 아이디입니다.");
-					}else{
-						alert("이미 사용중인 아이디입니다.");
-						$('#user_Id').select();
-					}
-				},error:function(){
-					console.log("---Error---");
-				}
-        
-    		});
-		});
-    
-    /*닉네임 중복체크*/
-	 $('#checkNick').click(function(){
- 		  $.ajax({
-		       	url:"/semi/nickDup.me",
-				type:"post",
-				data:{
-					user_Nickname:$('#user_Nickname').val()
-				},
-				success:function(data){
-					console.log(data);
-					
-					if(data == 'ok'){
-						alert("사용 가능한 닉네임입니다.");
-					}else{
-						alert("이미 사용중인 닉네임입니다.");
-						$('#user_Id').select();
-					}
-				},error:function(){
-					console.log("---Error---");
-				}
-       
-   		});
-		});
+  
     
     </script>
 </body>

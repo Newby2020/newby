@@ -48,22 +48,7 @@ public class ClassListServlet extends HttpServlet {
 			currentPage = Integer.parseInt(request.getParameter("currentPage"));
 		}
 		
-		//==== 클래스 개설 정보 to 관리자 =======================================================
 		
-		int acc = Integer.parseInt(request.getParameter("acc"));
-		
-		list = as.selectClassList(acc);
-		
-		String page = "";
-		
-		if(list != null) {
-			page = "views/admin_classList.jsp";
-			request.setAttribute("list", list);
-		} else {
-			page = "views/admin_classList.jsp";
-			request.setAttribute("msg", "신규 클래스 개설 리스트 불러오기 실패");
-		}
-		request.getRequestDispatcher(page).forward(request, response);
 	}
 
 	/**

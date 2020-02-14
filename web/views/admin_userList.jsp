@@ -2,8 +2,7 @@
     pageEncoding="UTF-8" 
     import="com.kh.newby.Member.model.vo.*, 
     		java.util.*,
-    		com.kh.newby.notice.model.vo.*" %>
-    
+    		com.kh.newby.common.PageInfo"%>
 <% 
 	ArrayList<Member> list = (ArrayList<Member>)request.getAttribute("list");
 	PageInfo pi = (PageInfo)request.getAttribute("pi");

@@ -1,5 +1,12 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+    pageEncoding="UTF-8"
+    import= "com.kh.newby.claim.model.vo,
+            
+    %>
+    
+<%-- <% 
+ ArrayList<Claim> list = (ArrayList<Claim>)request.getAttribute("list");
+%>  --%>   
 <!DOCTYPE html>
 <html lang="en">
 

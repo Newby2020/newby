@@ -8,7 +8,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.kh.newby.admin.service.AdminService;
+import com.kh.newby.admin.service.AdminService2;
 
 /**
  * Servlet implementation class Index
@@ -32,9 +32,9 @@ public class IndexServlet extends HttpServlet {
 		
 		// ==== 이용자 수 가져오기 ================================
 		int userCount = 0;
-		AdminService as = new AdminService();
+		AdminService2 as2 = new AdminService2();
 		
-		userCount = as.getUserCount();
+		userCount = as2.getUserCount();
 		
 		String page = "";
 		
@@ -49,7 +49,7 @@ public class IndexServlet extends HttpServlet {
 		// ==== 호스트 수 가져오기 ================================
 		int hostCount = 0;
 		
-		hostCount = as.getHostCount();
+		hostCount = as2.getHostCount();
 		
 		if(hostCount > 0) {
 			page = "/views/admin_index.jsp";
@@ -62,7 +62,7 @@ public class IndexServlet extends HttpServlet {
 		// ==== 클래스 수 가져오기 ================================
 		int classCount = 0;
 		
-		classCount = as.getClassCount();
+		classCount = as2.getClassCount();
 		
 		if(classCount > 0) {
 			page = "/views/admin_index.jsp";
@@ -72,14 +72,43 @@ public class IndexServlet extends HttpServlet {
 			request.setAttribute("msg", "클래스 수 불러오기 실패");
 		}
 		
-		// ==== 미승인된 클래스 개설 신청 수 가져오기 ================================
+		// ==== 클래스 개설 신청 수 가져오기 ================================
 		int approvalClassCount = 0;
 		
-		approvalClassCount = as.getApprovalClassCount();
+		approvalClassCount = as2.getApprovalClassCount();
 		
 		page = "/views/admin_index.jsp";
 		request.setAttribute("approvalClassCount", approvalClassCount);
+		
+		
+		// ==== 호스트 신고 수 가져오기 ================================
+		int notifiedHostCount = 0;
+		
+		notifiedHostCount = as2.getNotifiedHostCount();
+		
+		page = "/views/admin_index.jsp";
+		request.setAttribute("notifiedHostCount", notifiedHostCount);
 
+		
+		// ==== 송금해야 할 인원 수 가져오기 ================================	
+		int refundMoneyCount = 0;
+		
+		refundMoneyCount = as2.getRefundMoneyCount();
+		
+		page = "/views/admin_index.jsp";
+		request.setAttribute("refundMoneyCount", refundMoneyCount);
+		
+		
+		// ==== 문의 글 수 가져오기 ================================
+		int newInquiryCount = 0;
+		
+		newInquiryCount = as2.getNewInquiryCount();
+		
+		page = "views/admin_index.jsp";
+		request.setAttribute("newInquiryCount", newInquiryCount);
+		
+		
+		
 		request.getRequestDispatcher(page).forward(request, response);
 	}
 

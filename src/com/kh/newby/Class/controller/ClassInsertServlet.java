@@ -13,8 +13,8 @@ import javax.servlet.http.HttpSession;
 
 import org.apache.tomcat.util.http.fileupload.servlet.ServletFileUpload;
 
-import com.kh.newby.Class.model.service.ClassService;
-import com.kh.newby.Class.model.vo.ClassVo;
+import com.kh.newby.Class.model.service.ClassService2;
+import com.kh.newby.Class.model.vo.ClassVo2;
 import com.kh.newby.Member.model.vo.Member;
 import com.oreilly.servlet.MultipartRequest;
 import com.oreilly.servlet.multipart.DefaultFileRenamePolicy;
@@ -142,9 +142,9 @@ public class ClassInsertServlet extends HttpServlet {
 				HttpSession session = request.getSession(false);
 				Member m = (Member)session.getAttribute("member");
 				
-//				String hNo = m.getH_no();
+//				String hNo = m.getH_no();										/////////// 나중에 이걸로 바꿔줘야해
 				String hNo = "H2";
-				ClassVo c = new ClassVo(cName, category1, category2, category3, cType, cTime,
+				ClassVo2 c = new ClassVo2(cName, category1, category2, category3, cType, cTime,
 						MaxNum, price, img, addr1, obj, curri, intro, cdate, stime, etime, hNo);
 				
 				//-------------------출력용----------------------
@@ -169,8 +169,8 @@ public class ClassInsertServlet extends HttpServlet {
 				//--------------------------------------------
 				
 				System.out.println("controll");
-				int result = new ClassService().insertClass(c);		// DB 연결
-				System.out.println(result);
+				int result = new ClassService2().insertClass(c);		// DB 연결
+//				System.out.println(result);
 //				메인화면으로 이동해야함
 //				if(result > 0 ) {
 //					response.sendRedirect("selectList.bo");
