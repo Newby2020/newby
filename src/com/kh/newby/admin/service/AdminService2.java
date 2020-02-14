@@ -41,5 +41,39 @@ public class AdminService2 {
 		
 		return classCount;
 	}
+
+	public int getApprovalClassCount() {
+
+		Connection con = getConnection();
+		int approvalClassCount = aDao2.getApprovalClassCount(con);
+		
+		close(con);
+		
+		return approvalClassCount;
+	}
+
+	public int getNotifiedHostCount() {
+
+		Connection con = getConnection();
+		int notifiedHostCount = aDao2.getNotifiedHostCount(con);
+		
+		close(con);
+		
+		return notifiedHostCount;
+	}
+
+	/**
+	 * 송금해야 할 인원 수
+	 * @return
+	 */
+	public int needToSendMoneyCount() {
+
+		Connection con = getConnection();
+		int needToSendMoneyCount = aDao2.getNeedToSendMoneyCount(con);
+		
+		close(con);
+		
+		return needToSendMoneyCount;
+	}
 	
 }

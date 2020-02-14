@@ -71,6 +71,33 @@ public class IndexServlet extends HttpServlet {
 			page = "/views/common/errorPage.jsp";
 			request.setAttribute("msg", "클래스 수 불러오기 실패");
 		}
+		
+		// ==== 클래스 개설 신청 수 가져오기 ================================
+		int approvalClassCount = 0;
+		
+		approvalClassCount = as2.getApprovalClassCount();
+		
+		page = "/views/admin_index.jsp";
+		request.setAttribute("approvalClassCount", approvalClassCount);
+		
+		
+		// ==== 호스트 신고 수 가져오기 ================================
+		int notifiedHostCount = 0;
+		
+		notifiedHostCount = as2.getNotifiedHostCount();
+		
+		page = "/views/admin_index.jsp";
+		request.setAttribute("notifiedHostCount", notifiedHostCount);
+
+		
+		// ==== 송금해야 할 인원 수 가져오기 ================================	
+		int needToSendMoneyCount = 0;
+		
+		needToSendMoneyCount = as2.needToSendMoneyCount();
+		
+		
+		
+		
 		request.getRequestDispatcher(page).forward(request, response);
 	}
 

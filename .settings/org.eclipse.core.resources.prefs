@@ -1,10 +1,11 @@
+=\=\=\=\=\=\=
+<<<<<<<=HEAD
+>>>>>>>=refs/remotes/origin/master
 eclipse.preferences.version=1
 encoding//src/config/admin-query.properties=UTF-8
-<<<<<<< HEAD
-=======
 encoding//src/config/category-query.properties=UTF-8
->>>>>>> refs/remotes/origin/master
 encoding//src/config/class-query.properties=UTF-8
+encoding//src/config/class-query2.properties=UTF-8
 encoding//src/config/inquiry-query.properties=UTF-8
 encoding//src/config/member-query.properties=UTF-8
 encoding//src/config/notice-query.properties=UTF-8
