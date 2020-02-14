@@ -4,7 +4,6 @@
 	int userCount = (int)(request.getAttribute("userCount"));
 	int hostCount = (int)(request.getAttribute("hostCount"));
 	int classCount = (int)(request.getAttribute("classCount"));
-	int approvalClassCount = (int)(request.getAttribute("approvalClassCount"));
 %>    
 <!DOCTYPE html>
 <html lang="en">
@@ -12,7 +11,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>DashBoard_admin</title>
+    <title>admin_index</title>
 
     <!-- Load icon libarary -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
@@ -39,7 +38,7 @@
         <a href="/semi/userList.ad">사용자</a>
         <a href="admin_classApply.jsp">클래스</a>
 		<a href="admin_classCancel.jsp">클래스 취소</a>
-        <a href="admin_hostReport.jsp">호스트 신고</a>
+        <a href="admin_hostReport.jsp">신고</a>
         <a href="admin_accountancy.jsp">정산</a>
     </div> 
 
@@ -75,9 +74,9 @@
 
         <!-- Notification Button -->
         <div class="notif">
-            <a href="/semi/classList.ad?acc=<%=approvalClassCount %>" class="notification">
+            <a href="admin_classApply.jsp" class="notification">
                 <span>개설 신청</span>
-                <span class="badge"><%=approvalClassCount %></span>
+                <span class="badge">12</span>
             </a>
             <a href="admin_hostReport.jsp" class="notification">
                 <span>호스트 신고</span>
