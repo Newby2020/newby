@@ -3,10 +3,8 @@ package com.kh.newby.admin.service;
 import java.sql.Connection;
 import java.util.ArrayList;
 
-import com.kh.newby.Class.model.vo.ClassVo;
 import com.kh.newby.Member.model.vo.Member;
 import com.kh.newby.admin.dao.AdminDao;
-import com.kh.newby.category.model.vo.categoryVo;
 
 import static com.kh.newby.common.JDBCTemplate.*;
 
@@ -60,26 +58,6 @@ public class AdminService {
 		close(con);
 		
 		return classCount;
-	}
-
-	public int getApprovalClassCount() {
-		
-		Connection con = getConnection();
-		int approvalClassCount = aDao.getApprovalClassCount(con);
-		
-		close(con);
-		
-		return approvalClassCount;
-	}
-
-	public ArrayList<ClassVo> selectClassList(int acc) {
-		
-		Connection con = getConnection();
-		ArrayList<ClassVo> list = aDao.selectClassList(con, acc);
-		
-		close(con);
-
-		return list;
 	}
 	
 }

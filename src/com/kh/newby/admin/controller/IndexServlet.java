@@ -71,15 +71,6 @@ public class IndexServlet extends HttpServlet {
 			page = "/views/common/errorPage.jsp";
 			request.setAttribute("msg", "클래스 수 불러오기 실패");
 		}
-		
-		// ==== 미승인된 클래스 개설 신청 수 가져오기 ================================
-		int approvalClassCount = 0;
-		
-		approvalClassCount = as.getApprovalClassCount();
-		
-		page = "/views/admin_index.jsp";
-		request.setAttribute("approvalClassCount", approvalClassCount);
-
 		request.getRequestDispatcher(page).forward(request, response);
 	}
 

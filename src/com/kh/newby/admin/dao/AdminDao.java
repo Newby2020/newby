@@ -13,7 +13,6 @@ import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.Properties;
 
-import com.kh.newby.Class.model.vo.ClassVo;
 import com.kh.newby.Member.model.vo.Member;
 
 public class AdminDao {
@@ -179,72 +178,5 @@ public class AdminDao {
 			close(stmt);
 		}
 		return classCount;
-	}
-
-	public int getApprovalClassCount(Connection con) {
-		
-		int approvalClassCount = 0;
-		
-		Statement stmt = null;
-		ResultSet rset = null;
-		
-		String sql = prop.getProperty("approvalClassCount");
-		
-		try {
-			stmt = con.createStatement();
-			rset = stmt.executeQuery(sql);
-			
-			if(rset.next()) {
-				approvalClassCount = rset.getInt(1);
-			}
-					
-		} catch(SQLException e) {
-			e.printStackTrace();
-		} finally {
-			close(rset);
-			close(stmt);
-		}
-		return approvalClassCount;
-	}
-
-	public ArrayList<ClassVo> selectClassList(Connection con, int acc) {
-		ArrayList<ClassVo> list = null;
-		
-		Statement stmt = null;
-		ResultSet rset = null;
-		
-		String sql = null;
-		if(acc > 0) sql = prop.getProperty("YNVauleIsNull");
-		else sql = prop.getProperty("YNVauleIsNOTNull");
-		
-		
-		try {
-			stmt = con.createStatement();
-			rset = stmt.executeQuery(sql);
-	
-			while(rset.next()) {
-				ClassVo cv = new ClassVo();
-				
-				cv.setClassNo(rset.getString("CLASS_NO"));
-				cv.setClassHostNo(rset.getString("CLASS_HOST_NO"));
-				cv.setClassName(rset.getString("CLASS_NAME"));
-				cv.setClassIntro(rset.getString("CLASS_INTRO"));
-				cv.setClassEnrollDate(rset.getDate("CLASS_ENROLLDATE"));
-				cv.setClassStatus(rset.getString("CA_APPROVAL_YN"));
-				cv.setRejectReason(rset.getString("CA_REJECT_REASON"));
-				cv.setCaNo(rset.getString("CA_CLASS_CHECK_NO"));
-				
-				list.add(cv);
-				System.out.println("admindao");
-				System.out.println(list);
-				
-			}
-		} catch(SQLException e) {
-			e.printStackTrace();
-		} finally {
-			close(rset);
-			close(stmt);
-		}
-		return list;
 	}
 }
