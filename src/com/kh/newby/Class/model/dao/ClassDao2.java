@@ -144,12 +144,14 @@ public class ClassDao2 {
 			pstmt = con.prepareStatement(sql);
 			pstmt.setString(1, mno);
 			rset = pstmt.executeQuery();
-			//PAY_DATE, CLASS_NAME, PS_DATE, PS_STARTTIME, PS_ENDTIME
 			while(rset.next()) {
 				c = new ClassVo2();
 				c.setPayNo(rset.getString("PAY_NO"));
-				c.setPayDate(rset.getDate("PAY_DATE"));
 				c.setClassName(rset.getString("CLASS_NAME"));
+				c.setClassDate(rset.getString("PS_DATE"));
+				c.setClassStartTime(rset.getString("PS_STARTTIME"));
+				c.setClassEndTime(rset.getString("PS_ENDTIME"));
+				c.setClassTime(rset.getInt("CLASS_TIME"));
 				list.add(c);
 			}
 			

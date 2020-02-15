@@ -25,6 +25,7 @@ public class ClassVo2 implements Serializable{
 	private String classTarget;
 	private String classCurriculum;
 	private Date classEnrollDate;
+	
 	private String classDate;
 	private String classStartTime;
 	private String classEndTime;
@@ -309,9 +310,15 @@ public class ClassVo2 implements Serializable{
 
 	@Override
 	public String toString() {
-		return "ClassVo2 [className=" + className + ", m_mile=" + m_mile + ", m_pMile=" + m_pMile + ", m_pSaveMile="
-				+ m_pSaveMile + ", payDate=" + payDate + "]";
+		return "ClassVo2 [className=" + className + ", classDate=" + classDate + ", classStartTime=" + classStartTime
+				+ ", classEndTime=" + classEndTime + ", payNo=" + payNo + "]";
 	}
+
+//	@Override
+//	public String toString() {
+//		return "ClassVo2 [className=" + className + ", m_mile=" + m_mile + ", m_pMile=" + m_pMile + ", m_pSaveMile="
+//				+ m_pSaveMile + ", payDate=" + payDate + "]";
+//	}
 
 	
 

@@ -29,5 +29,12 @@ td{
 	font-size: 8pt;
 }
 
+#divider{
+	margin: 5px 4px 0 9px;
+    width: 1px;
+    height: 11px;
+    color : #ebeef3;
+}
+
 
 

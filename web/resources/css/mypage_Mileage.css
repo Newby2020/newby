@@ -21,15 +21,10 @@ table{
 	
 }
 
-
 th{
 	border-bottom : 1px solid darkgray;
-	padding:10px;
-	/* font-size: 11pt; */
 }
 
 td{
 	border-bottom : 1px solid #ebeef3;
-	padding:5px;
-	/* font-size: 9pt; */
 }
