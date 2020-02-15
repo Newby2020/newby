@@ -3,6 +3,7 @@
 >>>>>>>=refs/remotes/origin/master
 eclipse.preferences.version=1
 encoding//src/config/admin-query.properties=UTF-8
+encoding//src/config/admin-query2.properties=UTF-8
 encoding//src/config/category-query.properties=UTF-8
 encoding//src/config/class-query.properties=UTF-8
 encoding//src/config/class-query2.properties=UTF-8

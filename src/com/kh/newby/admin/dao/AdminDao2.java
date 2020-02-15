@@ -22,7 +22,7 @@ public class AdminDao2 {
 	public AdminDao2() {
 		prop = new Properties();
 		
-		String filePath = AdminDao2.class.getResource("/config/admin-query.properties").getPath();
+		String filePath = AdminDao2.class.getResource("/config/admin-query2.properties").getPath();
 		
 		try {
 			prop.load(new FileReader(filePath));
@@ -167,15 +167,42 @@ public class AdminDao2 {
 		return notifiedHostCount;
 	}
 
-	public int getNeedToSendMoneyCount(Connection con) {
+	public int getRefundMoneyCount(Connection con) {
 
-		int needToSendMoneyCount = 0;
+		int refundMoneyCount = 0;
 		
 		Statement stmt = null;
 		ResultSet rset = null;
 		
-		String sql = prop.getProperty("needToSendMoneyCount");
+		String sql = prop.getProperty("refundMoneyCountMoneyCount");
 		
-		return needToSendMoneyCount;
+		return refundMoneyCount;
 	}
+
+	public int getNewInquiryCount(Connection con) {
+
+		int newInquiryCount = 0;
+		
+		Statement stmt = null;
+		ResultSet rset = null;
+		
+		String sql = prop.getProperty("newInquiryCount");
+		
+		try {
+			stmt = con.createStatement();
+			rset = stmt.executeQuery(sql);
+			
+			if(rset.next()) {
+				newInquiryCount = rset.getInt(1);
+			}
+			
+		} catch(SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(rset);
+			close(stmt);
+		}
+		return newInquiryCount;
+	}
+
 }

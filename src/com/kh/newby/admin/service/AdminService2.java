@@ -66,14 +66,25 @@ public class AdminService2 {
 	 * 송금해야 할 인원 수
 	 * @return
 	 */
-	public int needToSendMoneyCount() {
+	public int getRefundMoneyCount() {
 
 		Connection con = getConnection();
-		int needToSendMoneyCount = aDao2.getNeedToSendMoneyCount(con);
+		int refundMoneyCount = aDao2.getRefundMoneyCount(con);
 		
 		close(con);
 		
-		return needToSendMoneyCount;
+		return refundMoneyCount;
+	}
+
+	
+	public int getNewInquiryCount() {
+
+		Connection con = getConnection();
+		int newInquiryCount = aDao2.getNewInquiryCount(con);
+		
+		close(con);
+		
+		return newInquiryCount;
 	}
 	
 }
