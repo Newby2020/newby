@@ -33,19 +33,21 @@ public class BoardSelectOneServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	
 		String bno = request.getParameter("bno");
+		System.out.println(bno);
 		
 		// 게시글 보기
 		Board b = new BoardService().boardSelectOne(bno);
 		
 		// 댓글 불러오기
-		ArrayList<Board> clist = new BoardCommentService().selectList(bno);
+		ArrayList<Board> list = new BoardCommentService().selectList(bno);
 		
 		String page = "";
 		if(b != null) {
 			page="views/Customer_InquiryDetail.jsp";
 			request.setAttribute("board", b);
-			request.setAttribute("clisk", clist);
+			request.setAttribute("list", list);
 		} else {
 			page = "views/common/errorPage.jsp";
 			request.setAttribute("msg", "게시글 목록 조회 실패!");

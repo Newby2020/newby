@@ -73,10 +73,10 @@
 						for(Board b : list){
 						%>
 						<tr>
-							<td colspan="1" width="100px" class="tb2"><%= b.getIno() %></td>
-							<td colspan="6" width="300px" class="tb3"><%= b.getItitle() %></td>
-							<td colspan="1" width="150px" class="tb2"><%= b.getIwno() %></td>
-							<td colspan="1" width="150px" class="tb2"><%= b.getIdate() %></td>
+							<td colspan="1" width="100px" class="tb2" id=<%= b.getIno() %>><%= b.getIno() %></td>
+							<td colspan="6" width="300px" class="tb3" id=<%= b.getIno() %>><%= b.getItitle() %></td>
+							<td colspan="1" width="150px" class="tb2" id=<%= b.getIno() %>><%= b.getIwno() %></td>
+							<td colspan="1" width="150px" class="tb2" id=<%= b.getIno() %>><%= b.getIdate() %></td>
 						</tr>
 						<%
 							}
@@ -121,8 +121,9 @@
 			$(this).parent().css({"cursor":"pointer"});
 		}).mouseout(function(){
 			$(this).parent();
-		}).click(function(){
-			var bno = $(this).parent().find("input").val();
+		}).click(function(e){
+			var bno = e.target.id;
+			console.log(e.target.id);
 			location.href="<%=request.getContextPath()%>/boardSelectOne.bo?bno=" + bno;
 		});
 	});

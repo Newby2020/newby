@@ -75,11 +75,11 @@
 								<td class="tdSpan"><span class="spN"><%= b.getIdate() %></span></td>
 							<tr>
 								<td class="tdDetail">내용</td>
-								<td class="tbSpan2" colspan="5"><span class="spN"><%= b.getIcontent() %></span></td>
+								<td class="tbSpan2" colspan="5"></td>
 							</tr>
 
 							<tr>
-								<td class="tdContent" colspan="6"></td>
+								<td class="tdContent" colspan="6"><span class="spN"><%= b.getIcontent() %></span></td>
 							</tr>
 						</table>
 						<div align="center">
@@ -109,8 +109,7 @@
 								<table id="replySelectTable"class="replyList">
 								<tr>
 								<td rowspan="2"> </td>
-								<td><b><%= bo.getIwno() %></b></td>
-								<td><%= bo.getIdate() %></td>
+								<td><%= bo.getIcomment()%></td>
 								</tr>
 								</table>
 								
@@ -122,10 +121,6 @@
 
 
 						</div>
-
-
-
-
 
 					</form>
 
