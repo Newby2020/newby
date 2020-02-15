@@ -1,6 +1,7 @@
 package com.kh.newby.claim.model.vo;
 
 import java.io.Serializable;
+import java.sql.Date;
 
 public class Claim implements Serializable{
 
@@ -9,33 +10,28 @@ public class Claim implements Serializable{
 	 */
 	private static final long serialVersionUID = -4405732486995767570L;
 	
+	private String cmDate;	
 	private String cmNo;
+	private String cmWriterNo;
 	private String cmTitle;
 	private String cmContent;
-	private String cmDate;
-	private String handledDate;
+	private Date handledDate;
 	private String status;
-	private int suspendPeriod;
-	private String suspendStartDate;
-	private String suspendEndDate;
+	private int suspensionPeriod;
+	private Date suspensionStartDate;
+	private Date suspensionEndDate;
 	
 	public Claim() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
 
-	public Claim(String cmNo, String cmTitle, String cmContent, String cmDate, String handledDate, String status,
-			int suspendPeriod, String suspendStartDate, String suspendEndDate) {
-		super();
-		this.cmNo = cmNo;
-		this.cmTitle = cmTitle;
-		this.cmContent = cmContent;
+	public String getCmDate() {
+		return cmDate;
+	}
+
+	public void setCmDate(String cmDate) {
 		this.cmDate = cmDate;
-		this.handledDate = handledDate;
-		this.status = status;
-		this.suspendPeriod = suspendPeriod;
-		this.suspendStartDate = suspendStartDate;
-		this.suspendEndDate = suspendEndDate;
 	}
 
 	public String getCmNo() {
@@ -44,6 +40,14 @@ public class Claim implements Serializable{
 
 	public void setCmNo(String cmNo) {
 		this.cmNo = cmNo;
+	}
+
+	public String getCmWriterNo() {
+		return cmWriterNo;
+	}
+
+	public void setCmWriterNo(String cmWriterNo) {
+		this.cmWriterNo = cmWriterNo;
 	}
 
 	public String getCmTitle() {
@@ -62,19 +66,11 @@ public class Claim implements Serializable{
 		this.cmContent = cmContent;
 	}
 
-	public String getCmDate() {
-		return cmDate;
-	}
-
-	public void setCmDate(String cmDate) {
-		this.cmDate = cmDate;
-	}
-
-	public String getHandledDate() {
+	public Date getHandledDate() {
 		return handledDate;
 	}
 
-	public void setHandledDate(String handledDate) {
+	public void setHandledDate(Date handledDate) {
 		this.handledDate = handledDate;
 	}
 
@@ -86,34 +82,28 @@ public class Claim implements Serializable{
 		this.status = status;
 	}
 
-	public int getSuspendPeriod() {
-		return suspendPeriod;
+	public int getSuspensionPeriod() {
+		return suspensionPeriod;
 	}
 
-	public void setSuspendPeriod(int suspendPeriod) {
-		this.suspendPeriod = suspendPeriod;
+	public void setSuspensionPeriod(int suspensionPeriod) {
+		this.suspensionPeriod = suspensionPeriod;
 	}
 
-	public String getSuspendStartDate() {
-		return suspendStartDate;
+	public Date getSuspensionStartDate() {
+		return suspensionStartDate;
 	}
 
-	public void setSuspendStartDate(String suspendStartDate) {
-		this.suspendStartDate = suspendStartDate;
+	public void setSuspensionStartDate(Date suspensionStartDate) {
+		this.suspensionStartDate = suspensionStartDate;
 	}
 
-	public String getSuspendEndDate() {
-		return suspendEndDate;
+	public Date getSuspensionEndDate() {
+		return suspensionEndDate;
 	}
 
-	public void setSuspendEndDate(String suspendEndDate) {
-		this.suspendEndDate = suspendEndDate;
+	public void setSuspensionEndDate(Date suspensionEndDate) {
+		this.suspensionEndDate = suspensionEndDate;
 	}
-
-	@Override
-	public String toString() {
-		return "Claim [cmNo=" + cmNo + ", cmTitle=" + cmTitle + ", cmContent=" + cmContent + ", cmDate=" + cmDate
-				+ ", handledDate=" + handledDate + ", status=" + status + ", suspendPeriod=" + suspendPeriod
-				+ ", suspendStartDate=" + suspendStartDate + ", suspendEndDate=" + suspendEndDate + "]";
-	}
+	
 }

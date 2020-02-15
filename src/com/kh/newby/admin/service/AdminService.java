@@ -40,5 +40,14 @@ public class AdminService {
 		close(con);
 		return listCount;
 	}
+
+	public ArrayList<Claim> selectClaimList(int currentPage, int limit) {
+		Connection con = getConnection();
+		
+		ArrayList<Claim> list = aDao.selectClaimList(con, currentPage, limit);
+		
+		close(con);
+		return list;
+	}
 	
 }

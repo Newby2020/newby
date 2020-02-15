@@ -43,7 +43,7 @@
         <a class="active" href="/semi/userList.ad">사용자</a>
         <a href="/semi/classList.ad">클래스</a>
 		<a href="admin_classCancel.jsp">클래스 취소</a>
-        <a href="admin_hostReport.jsp">신고</a>
+        <a href="/semi/claimList.ad">신고</a>
         <a href="/semi/claimList.ad">정산</a>
     </div>
 

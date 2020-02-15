@@ -1,11 +1,13 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"
-    import= "com.kh.newby.claim.model.vo.*, java.util.*"
-            
-    %>
+    import= "com.kh.newby.claim.model.vo.*, 
+    		 java.util.*, 
+    		 com.kh.newby.common.PageInfo"%>
     
 <% 
  ArrayList<Claim> list = (ArrayList<Claim>)request.getAttribute("list");
+ PageInfo pi = (PageInfo)request.getAttribute("pi");
+ 
 %>    
 <!DOCTYPE html>
 <html lang="en">
@@ -19,13 +21,13 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
     <!-- Sidebar & Footer : Basic-->
-    <link rel="stylesheet" href="../resources/css/admin_basic.css">
+    <link rel="stylesheet" href="/semi/resources/css/admin_basic.css">
 
     <!-- Table & SearchBar-->
-    <link rel="stylesheet" href="../resources/css/admin_table&searchBar.css">
+    <link rel="stylesheet" href="/semi/resources/css/admin_table&searchBar.css">
 
     <!-- The Modal & CheckBox-->
-    <link rel="stylesheet" href="../resources/css/admin_modal&checkBox.css">
+    <link rel="stylesheet" href="/semi/resources/css/admin_modal&checkBox.css">
 
     <!-- jQuery -->
     <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
@@ -45,7 +47,7 @@
         <a href="/semi/userList.ad">사용자</a>
         <a href="admin_classApply.jsp">클래스</a>
 		<a href="admin_classCancel.jsp">클래스 취소</a>
-        <a class="active"  href="admin_hostReport.jsp">신고</a>
+        <a class="active"  href="/semi/claimList.ad">신고</a>
         <a href="admin_accountancy.jsp">정산</a>
     </div>
     <div class="content">
@@ -61,7 +63,7 @@
                 <tr>
                     <th>신고일</th>
                     <th>신고 번호</th>
-                    <th>신고 사용자 번호</th>
+                    <th>신고자 번호</th>
                     <th>신고 이유</th>
                     <th>상태</th>
                     <th>신고처리일</th>
@@ -69,18 +71,19 @@
                     <th>정지 시작일</th>
                     <th>정지 만료일</th>
                 </tr>
-                
+                <% for(Claim c : list) {%>
                 <tr>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
+                    <td><%= c.getCmDate() %></td>
+                    <td><%= c.getCmNo() %></td>
+                    <td><%= c.getCmWriterNo() %></td>
+                    <td><%= c.getCmTitle() %></td>
+                    <td><%= c.getStatus() %></td>
+                    <td><%= c.getHandledDate() %></td>
+                    <td><%= c.getSuspensionPeriod() %></td>
+                    <td><%= c.getSuspensionStartDate() %></td>
+                    <td><%= c.getSuspensionEndDate() %></td>
                 </tr>
+                <% } %>
             </table>
         </div>
     </div>
