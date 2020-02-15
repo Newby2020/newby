@@ -60,7 +60,7 @@ td{
                     <br>
                     <div id="contentsDivSize29">
                         <div>
-                            <div align="center" id="miletitle1sdk">현재 마일리지</div>
+                            <div align="center" id="miletitle1sdk" style="font-weight: normal;">적립된 마일리지</div>
                             <div align="center">
                               <input type="text" id="mileage1kc" value="<%= formatter.format(mile)%> 원">
                             </div>

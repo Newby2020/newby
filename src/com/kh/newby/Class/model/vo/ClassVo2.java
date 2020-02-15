@@ -307,12 +307,22 @@ public class ClassVo2 implements Serializable{
 	public void setM_pSaveMile(int m_pSaveMile) {
 		this.m_pSaveMile = m_pSaveMile;
 	}
-
+	
+	// 클래스 등록 및 수정용
 	@Override
 	public String toString() {
-		return "ClassVo2 [className=" + className + ", classDate=" + classDate + ", classStartTime=" + classStartTime
-				+ ", classEndTime=" + classEndTime + ", payNo=" + payNo + "]";
+		return "ClassVo2 [className=" + className + ", firstCategory=" + firstCategory + ", secondCategory="
+				+ secondCategory + ", thirdCategory=" + thirdCategory + ", classType=" + classType + ", classMaxnum="
+				+ classMaxnum + ", classTime=" + classTime + ", classPrice=" + classPrice + ", classImg=" + classImg
+				+ ", classLocation=" + classLocation + ", classIntro=" + classIntro + ", classTarget=" + classTarget
+				+ ", classCurriculum=" + classCurriculum + "]";
 	}
+
+//	@Override
+//	public String toString() {
+//		return "ClassVo2 [className=" + className + ", classDate=" + classDate + ", classStartTime=" + classStartTime
+//				+ ", classEndTime=" + classEndTime + ", payNo=" + payNo + "]";
+//	}
 
 //	@Override
 //	public String toString() {

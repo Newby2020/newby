@@ -106,6 +106,7 @@
     border-radius: 5px;
     height: 20px; 
     font-size: 11pt;
+    background-color: #f1f1f1;
 }
 
 
@@ -151,7 +152,7 @@
     border: none;
     border-bottom: 1px solid lightgray;
     padding-left: 10px;
-    width: 350px;
+    width: 300px;
     font-size: 9pt;
     height: 20px;
 }
@@ -173,13 +174,12 @@
     background: rgb(9, 129, 241);
     color: white;
     border: none;
-    height: 25px;
-    width: 80px;
+    height: 24px;
+    width: 70px;
     border-radius: 15px;
-    font-size: 10pt;
+    font-size: 9pt;
     cursor: pointer;
     vertical-align: middle;
-    font-weight: bold;
 }
 
 .tt121{

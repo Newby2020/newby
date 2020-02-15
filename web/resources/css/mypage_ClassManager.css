@@ -8,13 +8,13 @@
   border: none;
   width: 50px;
   border-radius: 10px;
-  font-size: 9pt;
+  font-size: 8pt;
   height: 20px;
   cursor: pointer;
-  margin-bottom : 2px;
+  padding-bottom: 2px;
 }
 table{
-	width:70%;
+	width:80%;
 	border-collapse: collapse;
 }
 
@@ -22,11 +22,11 @@ table{
 th{
 	border-bottom : 1px solid darkgray;
 	padding:10px;
-	font-size: 11pt;
+	font-size: 9pt;
 }
 
 td{
 	border-bottom : 1px solid #ebeef3;
 	padding:5px;
-	font-size: 9pt;
+	font-size: 8pt;
 }

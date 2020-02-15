@@ -16,7 +16,7 @@
 
 </head>
 
-<body></body>
+<body>
     <div id="Allpanel" align="center">
     
         <%@ include file="./common/header.jsp" %>
@@ -123,11 +123,8 @@
                                     <tr>
                                         <td class="tline1row">장소</td>
                                         <td>
-                                            <input id="zipCode13" type="text" placeholder="우편번호">
-                                            &nbsp;
+                                            <input id="basicAddr" name="addr" type="text" placeholder="기본 주소" required>&nbsp;
                                             <input class="btn24" type="button" onclick="SearchAddr();" value="주소 찾기">
-                                            <br>
-                                            <input id="basicAddr" name="addr" type="text" placeholder="기본 주소" required>
                                             <br>
                                             <input id="detailAddr" name="addr" type="text" placeholder="상세 주소" required>
                                         </td>
@@ -147,7 +144,7 @@
                                     </tr>
                             </table>
                             <div id="divFi">
-	                            <br><br>
+	                            <br><br><br>
 	                            <h5 class="tline1row tt121">커리큘럼</h5>
 								<%@ include file="common/mypage_EnrollInClassTextarea1.jsp" %>
 	                            <br><br><br>
@@ -157,11 +154,11 @@
                             <br>
                             <input type="submit" class="finalBtn24" value="등록">
                             &nbsp;&nbsp;&nbsp;&nbsp;
-                            <input type="reset" class="finalBtn24" value="취소">
+                            <input type="reset" class="finalBtn24" value="취소" onclick="return cancelBtn();">
                             <br><br><br><br><br>
                         </form>
                     </div>
-                </div> 
+                </div>
             </div>
         <script type="text/javascript" src="/semi/resources/js/mypage_EnrollInClass.js"></script>
         <%@ include file="./common/footer.jsp" %>

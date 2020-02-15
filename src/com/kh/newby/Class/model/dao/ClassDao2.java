@@ -11,6 +11,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.Properties;
 
+import com.kh.newby.Class.model.vo.ClassVo;
 import com.kh.newby.Class.model.vo.ClassVo2;
 
 public class ClassDao2 {
@@ -201,6 +202,44 @@ public class ClassDao2 {
 			close(rset);
 			close(pstmt);
 		}
+		return list;
+	}
+
+	public ArrayList<ClassVo2> modifyClassList(Connection con, String cno) {
+		ArrayList<ClassVo2> list = new ArrayList<>();
+		ClassVo2 c = null;
+		PreparedStatement pstmt = null;
+		ResultSet rset = null;
+		String sql = prop.getProperty("modifyClassList");
+		try {
+			pstmt = con.prepareStatement(sql);
+			pstmt.setString(1, cno);
+			rset = pstmt.executeQuery();
+			
+			if(rset.next()) {
+				c = new ClassVo2();
+				
+				c.setClassName(rset.getString("CLASS_NAME"));
+				c.setFirstCategory(rset.getString("FIRST_CATEGORY"));
+				c.setSecondCategory(rset.getString("SECOND_CATEGORY"));
+				c.setThirdCategory(rset.getString("THIRD_CATEGORY"));
+				c.setClassType(rset.getString("CLASS_TYPE"));
+				c.setClassTime(rset.getInt("CLASS_TIME"));
+				c.setClassPrice(rset.getInt("CLASS_PRICE"));
+				c.setClassMaxnum(rset.getInt("CLASS_MAXNUM"));
+				c.setClassImg(rset.getString("CLASS_IMG"));
+				c.setClassLocation(rset.getString("CLASS_LOCATION"));
+				c.setClassIntro(rset.getString("CLASS_INTRO"));
+				c.setClassTarget(rset.getString("CLASS_TARGET"));
+				c.setClassCurriculum(rset.getString("CLASS_CURRICULUM"));
+				list.add(c);
+			}
+		} catch(SQLException e) {
+			
+		} finally {
+			
+		}
+		
 		return list;
 	}
 
