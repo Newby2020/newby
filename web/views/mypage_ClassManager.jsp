@@ -41,19 +41,20 @@
                         <div>
                             <table align="center">   <!-- 클래스 날짜와 현재 날짜 비교해서 수정취소버튼 생성 분기시켜야해  -->
                                     <tr>
-                                      <th style="width: 150px">날짜</th>
-                                      <th style="width: 500px;">클래스명</th>
-                                      <th style="width: 150px">수정/취소</th>
+                                      <th style="width: 100px">날짜</th>
+                                      <th style="width: 300px;">클래스명</th>
+                                      <th style="width: 100px">수정/삭제</th>
                                     </tr>
 
                                    <%for(ClassVo2 c : list){%>                        <!-- 클래스값 안나옴 -->
                                     <tr align="center">
                                       <input class="hv" type="hidden" value="<%= c.getClassNo() %>">
+                                      <input class="hv2" type="hidden" value="<%= c.getClassName() %>">
                                       <td class="td19"><%= c.getClassEnrollDate() %></td>
                                       <td class="td19"><%= c.getClassName() %></td>
                                       <td class="td19">
                                          <button class="modiBtn modify1sd size142">수정</button>
-                                         <button class="delBtn size142">취소</button>
+                                         <button class="delBtn size142">삭제</button>
                                      </td>
                                     </tr>
                                     <% } %>

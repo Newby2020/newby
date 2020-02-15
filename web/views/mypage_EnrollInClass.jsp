@@ -36,7 +36,7 @@
                     <br>
                     <br>
                     <div id="contentsDivSize29">
-                        <form action="<%= request.getContextPath() %>/cis.do" method="post" enctype="multipart/form-data">
+                        <form action="<%= request.getContextPath() %>/cInsert.do" method="post" enctype="multipart/form-data">
                             <table>
                                 <tbody>
                                     <tr>

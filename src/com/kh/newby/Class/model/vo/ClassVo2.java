@@ -4,7 +4,11 @@ import java.io.Serializable;
 import java.sql.Date;
 
 public class ClassVo2 implements Serializable{
-
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -6346570223146793426L;
+	// 클래스 등록용 속성
 	private String classNo;
 	private String classHostNo;
 	private String className;
@@ -19,20 +23,28 @@ public class ClassVo2 implements Serializable{
 	private String classLocation;
 	private String classIntro;
 	private String classTarget;
-	private String classCurriculum;	
+	private String classCurriculum;
 	private Date classEnrollDate;
 	private String classDate;
 	private String classStartTime;
 	private String classEndTime;
+	
+	// 마일리지 페이지
+	private int m_mile;
+	private int m_pMile;
+	private int m_pSaveMile;
+	
+	// 호스트
 	private String hostName;
 	private String hostIntro;
 	private double averageReview;
 	private String hostNo;
-	private String classStatus;
-	private String rejectReason;
-	private String caNo;
-	
-	// 기본 생성자
+
+
+	// 페이먼트
+	private String payNo;
+	private Date payDate;
+
 	public ClassVo2() {}
 
 	// 클래스 등록용 생성자
@@ -59,47 +71,18 @@ public class ClassVo2 implements Serializable{
 		this.hostNo = hostNo;
 	}
 	
-	// 클래스 상세 페이지 생성자(enrolldate 제외하고 모두)
 	
-	// 관리자용 클래스 관리 생성자
-	public ClassVo2(String classNo, String className, String firstCategory, String classType, int classMaxnum,
-			int classPrice, String classLocation, Date classEnrollDate, String classStartTime, String classEndTime,
-			String hostName, String hostNo, String classStatus, String rejectReason) {
+	// 수강예정 클래스용
+	ClassVo2(String className, String payNo, Date payDate) {
 		super();
-		this.classNo = classNo;
 		this.className = className;
-		this.firstCategory = firstCategory;
-		this.classType = classType;
-		this.classMaxnum = classMaxnum;
-		this.classPrice = classPrice;
-		this.classLocation = classLocation;
-		this.classEnrollDate = classEnrollDate;
-		this.classStartTime = classStartTime;
-		this.classEndTime = classEndTime;
-		this.hostName = hostName;
-		this.hostNo = hostNo;
-		this.classStatus = classStatus;
-		this.rejectReason = rejectReason;
+		this.payNo = payNo;
+		this.payDate = payDate;
 	}
-	// 관리자용 클래스 관리 생성자 종료
 	
 	
-
 	
-
-
-	public ClassVo2(String classNo, String classHostNo, String className, String classIntro, Date classEnrollDate, String classStatus, String rejectReason, String caNo) {
-		super();
-		this.classNo = classNo;
-		this.classHostNo = classHostNo;
-		this.className = className;
-		this.classIntro = classIntro;
-		this.classEnrollDate = classEnrollDate;
-		this.classStatus = classStatus;
-		this.rejectReason = rejectReason;
-		this.caNo = caNo;
-	}
-
+	
 	public String getClassNo() {
 		return classNo;
 	}
@@ -283,43 +266,58 @@ public class ClassVo2 implements Serializable{
 	public void setHostNo(String hostNo) {
 		this.hostNo = hostNo;
 	}
+
+	public String getPayNo() {
+		return payNo;
+	}
+
+	public void setPayNo(String payNo) {
+		this.payNo = payNo;
+	}
+
+	public Date getPayDate() {
+		return payDate;
+	}
+
+	public void setPayDate(Date payDate) {
+		this.payDate = payDate;
+	}
 	
-	// 관리자용 클래스 생성 
-	public String getClassStatus() {
-		return classStatus;
+	public int getM_mile() {
+		return m_mile;
 	}
 
-	public void setClassStatus(String classStatus) {
-		this.classStatus = classStatus;
+	public void setM_mile(int m_mile) {
+		this.m_mile = m_mile;
 	}
 
-	public String getRejectReason() {
-		return rejectReason;
+	public int getM_pMile() {
+		return m_pMile;
 	}
 
-	public void setRejectReason(String rejectReason) {
-		this.rejectReason = rejectReason;
-	}
-	
-	public String getCaNo() {
-		return caNo;
+	public void setM_pMile(int m_pMile) {
+		this.m_pMile = m_pMile;
 	}
 
-	public void setCaNo(String caNo) {
-		this.caNo = caNo;
+	public int getM_pSaveMile() {
+		return m_pSaveMile;
 	}
-	// 관리자용 클래스 생성 종료
+
+	public void setM_pSaveMile(int m_pSaveMile) {
+		this.m_pSaveMile = m_pSaveMile;
+	}
 
 	@Override
 	public String toString() {
-		return "ClassVo [classNo=" + classNo + ", classHostNo=" + classHostNo + ", className=" + className
-				+ ", firstCategory=" + firstCategory + ", secondCategory=" + secondCategory + ", thirdCategory="
-				+ thirdCategory + ", classType=" + classType + ", classMaxnum=" + classMaxnum + ", classTime="
-				+ classTime + ", classPrice=" + classPrice + ", classImg=" + classImg + ", classLocation="
-				+ classLocation + ", classIntro=" + classIntro + ", classTarget=" + classTarget + ", classCurriculum="
-				+ classCurriculum + ", classEnrollDate=" + classEnrollDate + ", classDate=" + classDate
-				+ ", classStartTime=" + classStartTime + ", classEndTime=" + classEndTime + ", hostName=" + hostName
-				+ ", hostIntro=" + hostIntro + ", averageReview=" + averageReview + ", hostNo=" + hostNo
-				+ ", classStatus=" + classStatus + ", rejectReason=" + rejectReason + "]";
+		return "ClassVo2 [className=" + className + ", m_mile=" + m_mile + ", m_pMile=" + m_pMile + ", m_pSaveMile="
+				+ m_pSaveMile + ", payDate=" + payDate + "]";
 	}
+
+	
+
+	
+	
+	
+	
+	
 }

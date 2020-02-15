@@ -14,7 +14,7 @@
   margin-bottom : 2px;
 }
 table{
-	width:90%;
+	width:70%;
 	border-collapse: collapse;
 }
 
@@ -29,8 +29,4 @@ td{
 	border-bottom : 1px solid #ebeef3;
 	padding:5px;
 	font-size: 9pt;
-}
-
-.td19{
-	padding-top: 8px;
 }

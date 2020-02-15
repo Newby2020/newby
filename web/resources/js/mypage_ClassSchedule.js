@@ -13,10 +13,13 @@ for (i = 0; i < dropdown.length; i++) {
     });
 }
 
-function cancelClass(){
-    var url = "../JH/cancelOrder.html";
-
-    var option = "width=980, height=800, top=100, left=800, location=no";
-
-    window.open(url, "결제 취소하기", option);
-}
+//취소 처리
+$(".delBtn").click(function(){
+	var pno = $(this).closest("tr").find('.hv').val();
+	var cname = $(this).closest("tr").find('.hv2').val();
+	var delYN= confirm(cname+"를 정말 취소하시겠습니까?");
+	if(delYN){
+		alert();
+			location.href="http://www.naver.com";//////////////////// 정후형꺼 넣으면 됨(pno 넣어서)
+	}
+});

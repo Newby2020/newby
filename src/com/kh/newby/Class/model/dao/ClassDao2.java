@@ -29,7 +29,6 @@ public class ClassDao2 {
       }
    }
    
-   // 지훈아 완성하자
       public int insertClass(Connection con, ClassVo2 c) {      
          int result1 = 0;
          int result2 = 0;
@@ -86,12 +85,12 @@ public class ClassDao2 {
          return result3;
       }
       
-      public ArrayList<ClassVo2> selectHnoClassList(Connection con, String hno) {
+      public ArrayList<ClassVo2> ClassManagerList(Connection con, String hno) {
          ArrayList<ClassVo2> list = new ArrayList<>();
          ClassVo2 c = null;
          PreparedStatement pstmt = null;
          ResultSet rset = null;
-         String sql = prop.getProperty("selectHnoClassList");
+         String sql = prop.getProperty("ClassManager");
          
          try {
             pstmt = con.prepareStatement(sql);
@@ -118,36 +117,89 @@ public class ClassDao2 {
 
 
       public int deleteClass(Connection con, String cno) {
-         int result1 = 0;
-         int result2 = 0;
-         int result3 = 0;
+         int result = 0;
          PreparedStatement pstmt = null;
-         String sql1 = prop.getProperty("deleteClassApproval");
-         String sql2 = prop.getProperty("deleteClassSchedule");
-         String sql3 = prop.getProperty("deleteClass");
+         String sql = prop.getProperty("deleteClass");
          try {
-            pstmt = con.prepareStatement(sql1);
+            pstmt = con.prepareStatement(sql);
             pstmt.setString(1, cno);
-            result1=pstmt.executeUpdate();
-            System.out.println(result1);
-            
-            
-            pstmt = con.prepareStatement(sql2);
-            pstmt.setString(1, cno);
-            result2=pstmt.executeUpdate();
-            System.out.println(result2);
-            
-            pstmt = con.prepareStatement(sql3);
-            pstmt.setString(1, cno);
-            result3=pstmt.executeUpdate();
-            
+            result=pstmt.executeUpdate();
+            System.out.println(result);
          } catch(SQLException e) {
             e.printStackTrace();
          } finally {
             close(pstmt);
          }
          
-         return result3;
+         return result;
       }
+
+	public ArrayList<ClassVo2> ClassScheduleList(Connection con, String mno) {
+		ArrayList<ClassVo2> list = new ArrayList<>();
+		ClassVo2 c = null;
+		PreparedStatement pstmt = null;
+		ResultSet rset = null;
+		String sql = prop.getProperty("ClassSchedule");
+		try {
+			pstmt = con.prepareStatement(sql);
+			pstmt.setString(1, mno);
+			rset = pstmt.executeQuery();
+			//PAY_DATE, CLASS_NAME, PS_DATE, PS_STARTTIME, PS_ENDTIME
+			while(rset.next()) {
+				c = new ClassVo2();
+				c.setPayNo(rset.getString("PAY_NO"));
+				c.setPayDate(rset.getDate("PAY_DATE"));
+				c.setClassName(rset.getString("CLASS_NAME"));
+				list.add(c);
+			}
+			
+		} catch(SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(rset);
+			close(pstmt);
+		}
+		
+		return list;
+	}
+
+	public ArrayList<ClassVo2> MileageList(Connection con, String mno) {
+		ArrayList<ClassVo2> list = new ArrayList<>();
+		ClassVo2 c = null;
+		int mile =0;
+		PreparedStatement pstmt = null;
+		ResultSet rset = null;
+		String sql1 = prop.getProperty("mMileage");
+		String sql2 = prop.getProperty("MileageList");
+		try {
+			
+			pstmt = con.prepareStatement(sql1);
+			pstmt.setString(1, mno);
+			rset = pstmt.executeQuery();
+			
+			if(rset.next()) {
+				mile=rset.getInt("MILEAGE");
+			}
+
+			pstmt = con.prepareStatement(sql2);
+			pstmt.setString(1, mno);
+			rset = pstmt.executeQuery();
+			while(rset.next()) {
+				c = new ClassVo2();
+				c.setM_mile(mile);
+				c.setPayDate(rset.getDate("PAY_DATE"));
+				c.setClassName(rset.getString("CLASS_NAME"));
+				c.setM_pMile(rset.getInt("PAY_MILEAGE"));
+				c.setM_pSaveMile(rset.getInt("PAY_SAVE_MILEAGE"));
+				list.add(c);
+			}
+		} catch(SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(rset);
+			close(pstmt);
+		}
+		return list;
+	}
 
 }

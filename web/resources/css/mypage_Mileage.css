@@ -1,6 +1,6 @@
 /*현재 마일리지 제목*/
 #miletitle1sdk{
-    font-size: 15pt;
+    font-size: 14pt;
     font-weight: bold;
 }
 
@@ -9,13 +9,27 @@
     height: 40px;
     width: 300px; 
     text-align: center;
-    font-size: 15pt;
+    font-size: 13pt;
     border-radius: 15px;
     margin-top: 10px;
     border: 2px solid rgb(9, 129, 241);
 }
 
-/* 마일리지 내역 */
-#pastmilek1res{
-    padding-bottom: 10px;
+table{
+	width:90%;
+	border-collapse: collapse;
+	
+}
+
+
+th{
+	border-bottom : 1px solid darkgray;
+	padding:10px;
+	/* font-size: 11pt; */
+}
+
+td{
+	border-bottom : 1px solid #ebeef3;
+	padding:5px;
+	/* font-size: 9pt; */
 }

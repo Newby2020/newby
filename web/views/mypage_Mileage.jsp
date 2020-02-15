@@ -1,5 +1,15 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+    pageEncoding="UTF-8" import="com.kh.newby.Class.model.vo.*, java.util.*,  java.text.DecimalFormat"%>
+    
+<%
+	DecimalFormat formatter = new DecimalFormat("###,###");
+	ArrayList<ClassVo2> list = (ArrayList<ClassVo2>)request.getAttribute("list");
+	int mile = list.get(0).getM_mile();
+	for(ClassVo2 c : list){
+		System.out.println(c.toString());
+	}
+	
+%>
 <!DOCTYPE html>
 <html lang="ko">
 <head>
@@ -52,7 +62,7 @@ td{
                         <div>
                             <div align="center" id="miletitle1sdk">현재 마일리지</div>
                             <div align="center">
-                              <input type="text" id="mileage1kc" value="8,000,000원">
+                              <input type="text" id="mileage1kc" value="<%= formatter.format(mile)%> 원">
                             </div>
                           </div>
                           <br>
@@ -62,65 +72,27 @@ td{
                             <table>
                               <thead align="center">
                                 <tr>
-                                  <th style="width: 150px">날짜</th>
-                                  <th style="width: 300px">클래스명</th>
-                                  <th style="width: 150px">내용</th>
+                                  <th style="font-size:9pt; width: 100px">날짜</th>
+                                  <th style="font-size:9pt; width: 400px">클래스명</th>
+                                  <th style="font-size:8pt; width: 100px">사용<br>마일리지</th>
+                                  <th style="font-size:8pt; width: 100px">적립<br> 마일리지</th>
+                                  <th style="font-size:8pt; width: 100px">내용</th>
                                 </tr>
                               </thead>
                               <tbody align="center">
+                              <%for(ClassVo2 c : list){ %>
                                 <tr>
-                                  <td colspan=3 style="border-bottom : 1px solid darkgray; height: 0px"></td>
+                                  <td style="font-size:8pt;"><%=c.getPayDate() %></td>
+                                  <td style="font-size:8pt;"><%=c.getClassName() %></td>
+                                  <td style="font-size:8pt;"></td>
+                                  <%-- <td>
+                                  	<%=c.getM_pMile() %>
+                                  </td>
+                                  <td>
+                                  	<%=c.getM_pSaveMile() %>
+                                  </td> --%>
                                 </tr>
-                                <tr>
-                                  <td>2020-01-02</td>
-                                  <td>길가다 쓰레기줍기</td>
-                                  <td>+5,000 적립</td>
-                                </tr>
-                                <tr>
-                                  <td>2019-11-18</td>
-                                  <td>플라잉 요가</td>
-                                  <td>+7,000 적립</td>
-                                </tr>
-                                <tr>
-                                  <td>2019-10-04</td>
-                                  <td>연탄 나르기</td>
-                                  <td>+2,000 적립</td>
-                                </tr>
-                                <tr>
-                                  <td>2019-09-16</td>
-                                  <td>안녕 나야</td>
-                                  <td>+9,000 적립</td>
-                                </tr>
-                                <tr>
-                                  <td>2019-09-08</td>
-                                  <td>화성에서 온 나</td>
-                                  <td>+2,000 적립</td>
-                                </tr>
-                                <tr>
-                                  <td>2019-09-02</td>
-                                  <td>연탄 나르기</td>
-                                  <td>+4,000 적립</td>
-                                </tr>
-                                <tr>
-                                  <td>2019-10-04</td>
-                                  <td>자바랑 나랑</td>
-                                  <td>+2,000 적립</td>
-                                </tr>
-                                <tr>
-                                  <td>2019-10-04</td>
-                                  <td>너는 누구니?</td>
-                                  <td>+8,000 적립</td>
-                                </tr>
-                                <tr>
-                                  <td>2019-10-04</td>
-                                  <td>반가워 다들</td>
-                                  <td>+4,000 적립</td>
-                                </tr>
-                                <tr>
-                                  <td>2019-10-04</td>
-                                  <td>솔로 티내기</td>
-                                  <td>+6,000 적립</td>
-                                </tr>
+                                <% } %>
                               </tbody>
                             </table>
                             <br>
@@ -131,7 +103,7 @@ td{
                             </div>
                           </div>
                     </div>
-                </div> 
+                </div>
             </div>
             <script type="text/javascript" src="/semi/resources/js/mypage_Mileage.js"></script>
         <br><br><br><br><br>

@@ -24,12 +24,13 @@ var cno = $(this).closest("tr").find('.hv').val();
 $(".delBtn").click(function(){
 	var cno = $(this).closest("tr").find('.hv').val();
 	alert(cno);
-	var delYN= confirm("정말 취소하시겠습니까?");
+	var cname= $(this).closest("tr").find('.hv2').val();
+	var delYN= confirm(cname+"를 정말 취소하시겠습니까?");
 	if(delYN){
-		function deleteClass(){											// 이거 맞나??? 잘모르겠음 서블릿으로 안가는거같은데????
-			location.href="/semi/delClass.do?cno="+cno;
-		}
+		location.href="/semi/delClass.do?cno="+cno;
 	} else {
 		alert("여기");
 	}
 });
+
+

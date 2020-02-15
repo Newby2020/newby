@@ -1,26 +1,33 @@
 .cancelBtn1sd{
-    background: rgb(9, 129, 241);
-    color: white;
-    border: none;
-    border-radius: 15px;
-    padding-bottom: 1.5px;
-    padding-top: 1px;
-    height: 30px;
-    width: 150px;
-    font-size: 11pt;
-    cursor: pointer;
+  background: rgb(9, 129, 241);
+  color: white;
+  border: none;
+  width: 50px;
+  border-radius: 10px;
+  font-size: 8pt;
+  height: 20px;
+  cursor: pointer;
+  padding-bottom: 2px;
+  
 }
 
+table{
+	width:90%;
+	border-collapse: collapse;
+}
+
+
 th{
-	font-size: 11pt;
-	height: 30px;
+	border-bottom : 1px solid darkgray;
+	padding:10px;
+	font-size: 9pt;
 }
 
 td{
-	font-size: 9pt;
-	height: 30px;
+	border-bottom : 1px solid #ebeef3;
+	padding:5px;
+	font-size: 8pt;
 }
-
 
 
 
