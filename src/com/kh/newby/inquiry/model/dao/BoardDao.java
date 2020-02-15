@@ -118,13 +118,12 @@ public class BoardDao {
 			if(rset.next()) {
 				b = new Board();
 				
-				b.setIno(bno);
+				b.setIno(rset.getString("Q_NO"));
 				b.setItitle(rset.getString("Q_TITLE"));
-				b.setIwno(rset.getString("Q_WRITER_NO"));
+				b.setIwno(rset.getString("WRITER_NAME"));
 				b.setIdate(rset.getDate("Q_DATE"));
-				b.setIcontent(rset.getString("Q_CONTENY"));
+				b.setIcontent(rset.getString("Q_CONTENT"));
 				b.setIcomment(rset.getString("Q_COMMENT"));
-				
 			}
 			
 		} catch(SQLException e) {

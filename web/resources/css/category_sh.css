@@ -227,6 +227,15 @@ margin-left: auto;
     
 }
 
+.con_a_abs{
+	height: 156px;
+    width: -webkit-fill-available;
+    box-sizing: border-box;
+    position: relative;
+    overflow: hidden;
+    position: absolute;
+}
+
 
 .content_a_back{
     background-position-x: 50%;

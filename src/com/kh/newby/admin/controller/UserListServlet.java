@@ -49,7 +49,7 @@ public class UserListServlet extends HttpServlet {
 			currentPage = Integer.parseInt(request.getParameter("currentPage"));
 		}
 		
-		int listCount = as.getListCount();
+		int listCount = as.getUserListCount();
 		
 //		System.out.println("총 사용자 수 : " + listCount);
 		
@@ -67,7 +67,7 @@ public class UserListServlet extends HttpServlet {
 			endPage = maxPage;
 		}
 		
-		list = as.selectList(currentPage, limit);
+		list = as.selectUserList(currentPage, limit);
 		
 //		System.out.println(list);
 		
