@@ -1,26 +1,23 @@
-package com.kh.newby.Class.controller;
+package com.kh.newby.inquiry.controller;
 
 import java.io.IOException;
-
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.kh.newby.Class.model.service.ClassService2;
-
 /**
- * Servlet implementation class DeleteClassServlet
+ * Servlet implementation class BoardCommentServlet
  */
-@WebServlet("/delClass.do")
-public class DeleteClassServlet extends HttpServlet {
+@WebServlet("/boardComment.bo")
+public class BoardCommentServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public DeleteClassServlet() {
+    public BoardCommentServlet() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -29,19 +26,8 @@ public class DeleteClassServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		String cno = request.getParameter("cno");
-		ClassService2 cs = new ClassService2();
-		int result = cs.deleteClass(cno);
-		
-		if(result > 0) {
-			response.sendRedirect("/semi/cSelHno.do");
-////			request.getRequestDispatcher("/selectList.no").forward(request, response);
-		} else {
-			request.setAttribute("msg", "공지사항 수정 실패 !!");
-			request.getRequestDispatcher("/semi/views/common/errorPage.jsp").forward(request, response);
-		}
-		
-		
+		// TODO Auto-generated method stub
+		response.getWriter().append("Served at: ").append(request.getContextPath());
 	}
 
 	/**

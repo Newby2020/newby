@@ -72,11 +72,11 @@
 						</tr>
 						<% for(Notice n : list){ %>
 						<tr>
-							<td colspan="1" width="100px" class="tb2"><%= n.getNno() %></td>
-							<td colspan="6" width="300px" class="tb3"><%= n.getNtitle() %></td>
-							<td colspan="1" width="150px" class="tb2"><%= n.getNwriter() %></td>
-							<td colspan="1" width="150px" class="tb2"><%= n.getNdate() %></td>
-							<td colspan="1" width="150px" class="tb2"><%= n.getNcount() %></td>
+							<td colspan="1" width="100px" class="tb2" id=<%= n.getNno() %>><%= n.getNno() %></td>
+							<td colspan="6" width="300px" class="tb3" id=<%= n.getNno() %>><%= n.getNtitle() %></td>
+							<td colspan="1" width="150px" class="tb2" id=<%= n.getNno() %>><%= n.getNwriter() %></td>
+							<td colspan="1" width="150px" class="tb2" id=<%= n.getNno() %>><%= n.getNdate() %></td>
+							<td colspan="1" width="150px" class="tb2" id=<%= n.getNno() %>><%= n.getNcount() %></td>
 						</tr>
 						<% } %>
 					</table>
@@ -123,10 +123,9 @@
 			$(this).parent().css({"cursor":"pointer"});
 		}).mouseout(function(){
 			$(this).parent();
-		}).click(function(){
-			//console.log($(this).parent().children().eq(0).text());
-			var nno = $(this).parent().children().eq(0).text();
-			location.href="<%=request.getContextPath()%>/boardSelectOne.no?nno=" + nno;
+		}).click(function(e){
+			var nno = e.target.id;
+			location.href="<%=request.getContextPath()%>/noticeSelectOne.no?nno=" + nno;
 		});
 	});
 		var dropdown = document.getElementsByClassName("dropdown-btnqo");

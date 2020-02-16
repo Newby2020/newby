@@ -1,12 +1,17 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"
-    import= "com.kh.newby.claim.model.vo,
-            
-    %>
+    import= "com.kh.newby.claim.model.vo.*, 
+    		 java.util.*, 
+    		 com.kh.newby.common.PageInfo"%>
     
-<%-- <% 
+<% 
  ArrayList<Claim> list = (ArrayList<Claim>)request.getAttribute("list");
-%>  --%>   
+ PageInfo pi = (PageInfo)request.getAttribute("pi");
+ int currentPage = pi.getCurrentPage();
+ int startPage = pi.getStartPage();
+ int endPage = pi.getEndPage();
+ int maxPage = pi.getMaxPage();
+%>    
 <!DOCTYPE html>
 <html lang="en">
 
@@ -19,13 +24,13 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
     <!-- Sidebar & Footer : Basic-->
-    <link rel="stylesheet" href="../resources/css/admin_basic.css">
+    <link rel="stylesheet" href="/semi/resources/css/admin_basic.css">
 
     <!-- Table & SearchBar-->
-    <link rel="stylesheet" href="../resources/css/admin_table&searchBar.css">
+    <link rel="stylesheet" href="/semi/resources/css/admin_table&searchBar.css">
 
     <!-- The Modal & CheckBox-->
-    <link rel="stylesheet" href="../resources/css/admin_modal&checkBox.css">
+    <link rel="stylesheet" href="/semi/resources/css/admin_modal&checkBox.css">
 
     <!-- jQuery -->
     <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
@@ -45,7 +50,7 @@
         <a href="/semi/userList.ad">사용자</a>
         <a href="admin_classApply.jsp">클래스</a>
 		<a href="admin_classCancel.jsp">클래스 취소</a>
-        <a class="active"  href="admin_hostReport.jsp">신고</a>
+        <a class="active"  href="/semi/claimList.ad">신고</a>
         <a href="admin_accountancy.jsp">정산</a>
     </div>
     <div class="content">
@@ -61,114 +66,84 @@
                 <tr>
                     <th>신고일</th>
                     <th>신고 번호</th>
-                    <th>신고 사용자 번호</th>
+                    <th>신고자 번호</th>
                     <th>신고 이유</th>
-                    <th>상태</th>
+                    <th width="30px">상태</th>
                     <th>신고처리일</th>
                     <th>정지 기간</th>
                     <th>정지 시작일</th>
                     <th>정지 만료일</th>
                 </tr>
+                <% for(Claim c : list) {%>
                 <tr>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
+                    <td><%= c.getCmDate() %></td>
+                    <td><%= c.getCmNo() %></td>
+                    <td><%= c.getCmWriterNo() %></td>
+                    <td><%= c.getCmTitle() %></td>
+                    <td><%= c.getStatus() %></td>
+                    <td>
+                    <% if(c.getHandledDate() != null){ %>
+                    		<%= c.getHandledDate() %>
+                    <% }else { %>
+                    		<%= '-' %>
+                    <% } %>
+                    </td>
+                    <td>
+                    <% if(c.getSuspensionPeriod() != 100000) { %>
+                    		<% if(c.getSuspensionPeriod() == 0) {%>
+                    				<%= '-' %>
+                    		<% } else { %>
+									<%= c.getSuspensionPeriod() %>
+                    		<% } %>
+
+
+                    <% } else { %>
+                    		<%= "무기한" %>
+                    <% } %>
+                    </td>
+                    <td>
+                    <% if(c.getSuspensionStartDate() != null) { %>
+                    		<%= c.getSuspensionStartDate() %>
+                    <% }else {%>
+                    		<%= '-' %>
+                    <% } %>
+                    </td>
+                    <td>
+                    <% if(c.getSuspensionEndDate() != null) {%>
+                    		<%= c.getSuspensionEndDate() %>
+                    <% }else { %>
+                    		<%= '-' %>
+                    <% } %>
+                    </td>
                 </tr>
+                <% } %>
             </table>
         </div>
+         <%-- 페이지 처리 --%>
+      	<div class="pagingArea" align="center">
+      		<button onclick="location.href='<%= request.getContextPath() %>/claimList.ad?currentPage = 1'"><<</button>
+      		<% if(currentPage <= 1){ %>
+      		<button disabled><</button>
+      		<% }else { %>
+      		<button onclick="location.href='<%= request.getContextPath() %>/claimList.ad?currentPage= <%= currentPage-1 %>'"><</button>
+      		<% } %>
+      		
+      		<% for(int p = startPage; p <= endPage; p++) { 
+      				if(p == currentPage) {
+      		%>
+      			<button disabled><%= p %></button>
+    		<%		}else { %>
+    			<button onclick="location.href='<%= request.getContextPath() %>/claimList.ad?currentPage=<%= p %>'"><%= p %></button>
+      		<%		} %>
+      		<%	} %>
+      		
+      		<% 	if(currentPage >= maxPage){%>
+      		<button disabled>></button>
+      		<% }else { %>
+      		<button onclick="location.href='<%= request.getContextPath() %>/claimList.ad?currentPage=<%= currentPage + 1 %>'">></button>
+      		<% } %>
+      		<button onclick="location.href='<%= request.getContextPath() %>/claimList.ad?currentPage=<%= maxPage %>'">>></button>
+      	</div>
     </div>
-
-    <!-- The Modal for 조회-->
-    <div id="contentsOfReport" class="modal">
-        <!-- Modal content -->
-        <div class="modal-content">
-            <span id="close1" class="close">&times;</span>
-            <p>신고 양식에서 데이터 가져오기</p>
-        </div>
-    </div>
-
-    <!-- The Modal for 계정 정지-->
-    <div id="suspend" class="modal">
-
-        <!-- Modal content -->
-        <div class="modal-content">
-            <span id="close2" class="close">&times;</span>
-            <h1 align="center">사용자 계정 정지</h1>
-            <form action="#" method="POST" onsubmit="return confirm();">
-                <div>
-                    <h3>정지 기간</h3>
-
-                    <label class="container">30일
-                        <input type="radio" name="radio" checked="checked">
-                        <span class="checkmark"></span>
-                    </label>
-                    <label class="container">60일
-                        <input type="radio" name="radio">
-                        <span class="checkmark"></span>
-                    </label>
-                    <label class="container">90일
-                        <input type="radio" name="radio">
-                        <span class="checkmark"></span>
-                    </label>
-                    <label class="container">영구정지
-                        <input type="radio" name="radio">
-                        <span class="checkmark"></span>
-                    </label>
-                    <h3>사유</h3>
-                    <textarea name="" id="textarea" cols="100%" rows="20"
-                        style="resize: none; position: relative;"></textarea>
-                    <br><br>
-                    <button class="modalBtn">적용</button> <!-- button의 경우 default type="submit" 이다.-->
-                    <button type="reset" class="modalBtn" onclick="$('#suspend').css('display','none')">취소</button>
-                </div>
-            </form>
-        </div>
-    </div>
-    <script>
-        // ------------------ Modal--------------------------------
-        // Get the modal
-        var contents = document.getElementById("contentsOfReport");
-        var suspend = document.getElementById("suspend");
-
-        // Get the button that opens the modal
-        var btn1 = document.getElementById("cotentsBtn");
-        var btn2 = document.getElementById("suspendBtn");
-
-        // Get the <span> element that closes the modal
-        // var span = document.getElementsByClassName("close")[0];
-        var close1 = document.getElementById('close1');
-        var close2 = document.getElementById('close2');
-
-        // When the user clicks the button, open the modal 
-        btn1.onclick = function () {
-            contents.style.display = "block";
-        }
-        btn2.onclick = function () {
-            suspend.style.display = "block";
-        }
-
-        // When the user clicks on <span> (x), close the modal
-        close1.onclick = function () {
-            contents.style.display = "none";
-        }
-        close2.onclick = function () {
-            suspend.style.display = "none";
-        }
-
-        // --------------- submit 조건문 ---------------
-        function confirm() {
-            if (document.getElementById('textarea').value == "") {
-                alert("정지 사유를 입력해 주세요.");
-                return false;
-            }
-            return true;
-        }
-    </script>
 </body>
 </html>

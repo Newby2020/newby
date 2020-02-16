@@ -136,7 +136,6 @@ function SearchAddr() {
             }
 
             // 우편번호와 주소 정보를 해당 필드에 넣는다.
-            document.getElementById('zipCode13').value = data.zonecode;
             document.getElementById("basicAddr").value = addr;
             // 커서를 상세주소 필드로 이동한다.
             document.getElementById("detailAddr").focus();
@@ -153,4 +152,11 @@ function limitText(limitField, limitCount, limitNum) {
    } else {
        limitCount.value = limitField.value.length;
    }
+}
+
+// 취소 버튼 확인
+function cancelBtn(){
+	if(confirm("정말로 클래스 등록을 취소하시겠습니까?")){
+		location.href="/semi/cSelHno.do";
+	}
 }

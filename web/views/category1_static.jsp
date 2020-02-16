@@ -226,7 +226,9 @@
                         <!-- 컨텐츠 안에 들어가는 a태그 -->
                         <% for(int i=0; i<caList.size(); i++){ %>
                         <a href="/semi/selectOne.ci?cno=<%=caList.get(i).getClassNo()%>" class="content_a" id="con_<%=i %>" href="#">
+                         <div class="con_a_abs">
                            <div class="content_a_back" id="bg_<%=i %>" style=" background-image: url('<%= caList.get(i).getClassImg() %>')"></div>
+                           </div>
                             <div class="cont_a_profile">
                                 <div class="cont_a_p_title">
                                     <%= caList.get(i).getClassName() %>
@@ -253,17 +255,17 @@
                         <%} %>
                     </div>
                     <br>
-                    <div class="moreBtnSh" id="mbtn_sh"> <%=listCount %>개의 차분한 액티비티 전체보기 </div>
+                    <div class="moreBtnSh" id="mbtn_sh"> <%=listCount %>개의 신나는 액티비티 전체보기 </div>
                     <br>
                     <!--페이징 처리  -->
                     <div class="pagelink_csh" id="pglk_sh">
                     
                         <div class="page_sh">
-							<button onclick="location.href='<%= request.getContextPath() %>/selectList.ca?caType=ca1?currentPage=1'"><<</button>
+							<button onclick="location.href='<%= request.getContextPath() %>/selectList.ca?caType=ca0?currentPage=1'"><<</button>
 							<%  if(currentPage <= 1){  %>
 							<button disabled><</button>
 							<%  }else{ %>
-							<button onclick="location.href='<%= request.getContextPath() %>/selectList.ca?caType=ca1?currentPage=<%=currentPage - 1 %>'"><</button>
+							<button onclick="location.href='<%= request.getContextPath() %>/selectList.ca?caType=ca0?currentPage=<%=currentPage - 1 %>'"><</button>
 							<%  } %>
 							
 							<% for(int p = startPage; p <= endPage; p++){
@@ -271,16 +273,16 @@
 							%>
 								<button disabled><%= p %></button>
 							<%      }else{ %>
-								<button onclick="location.href='<%= request.getContextPath() %>/selectList.ca?caType=ca1?currentPage=<%= p %>'"><%= p %></button>
+								<button onclick="location.href='<%= request.getContextPath() %>/selectList.ca?caType=ca0?currentPage=<%= p %>'"><%= p %></button>
 							<%      } %>
 							<% } %>
 								
 							<%  if(currentPage >= maxPage){  %>
 							<button disabled>></button>
 							<%  }else{ %>
-							<button onclick="location.href='<%= request.getContextPath() %>/selectList.ca?caType=ca1?currentPage=<%=currentPage + 1 %>'">></button>
+							<button onclick="location.href='<%= request.getContextPath() %>/selectList.ca?caType=ca0?currentPage=<%=currentPage + 1 %>'">></button>
 							<%  } %>
-							<button onclick="location.href='<%= request.getContextPath() %>/selectList.ca?caType=ca1?currentPage=<%= maxPage %>'">>></button>
+							<button onclick="location.href='<%= request.getContextPath() %>/selectList.ca?caType=ca0?currentPage=<%= maxPage %>'">>></button>
                         </div>
                         
                     </div>

@@ -1,22 +1,28 @@
 .reviewBtn{
-    background: rgb(9, 129, 241);
-    color: white;
-    border: none;
-    height: 23px;
-    width: 55px;
-    border-radius: 15px;
-    padding-bottom: 1.5px;
-    padding-top: 2px;
-    font-size: 9pt;
-    cursor: pointer;
+  background: rgb(9, 129, 241);
+  color: white;
+  border: none;
+  width: 50px;
+  border-radius: 10px;
+  font-size: 8pt;
+  height: 20px;
+  cursor: pointer;
+  padding-bottom: 2px;
   }
-  
-th{	
-	height: 30px;
-	font-size: 11pt;
+table{
+	width:80%;
+	border-collapse: collapse;
+}
+
+
+th{
+	border-bottom : 1px solid darkgray;
+	padding:10px;
+	font-size: 9pt;
 }
 
 td{
-	height: 30px;
-	font-size: 9pt;
+	border-bottom : 1px solid #ebeef3;
+	padding:5px;
+	font-size: 8pt;
 }

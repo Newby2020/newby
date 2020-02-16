@@ -51,6 +51,7 @@ td{
                                     <tr>
                                       <th style="width: 150px">날짜</th>
                                       <th style="width: 300px">클래스명</th>
+                                      <th style="width: 150px">일정</th>
                                       <th style="width: 150px">금액</th>
                                       <th style="width: 150px">상태</th>
                                     </tr>
@@ -60,8 +61,15 @@ td{
                                     <tr>
                                       <td>2019-10-04</td>
                                       <td>솔로 티내기</td>
-                                      <td>0원</td>
-                                      <td>취소</td>
+                                      <td>2020-02-15 18:00</td>
+                                      <td>5,000원</td>
+                                      <td>환불</td>
+                                    </tr ><tr>
+                                      <td>2019-10-04</td>
+                                      <td>솔로 티내기</td>
+                                      <td>2020-02-18 08:00</td>
+                                      <td>5,000원</td>
+                                      <td>환불</td>
                                     </tr >
                                     
                                 </tbody>
