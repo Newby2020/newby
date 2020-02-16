@@ -1,12 +1,14 @@
 package com.kh.newby.admin.service;
 
+import static com.kh.newby.common.JDBCTemplate.close;
+import static com.kh.newby.common.JDBCTemplate.getConnection;
+
 import java.sql.Connection;
 import java.util.ArrayList;
 
+import com.kh.newby.Host.model.vo.Host;
 import com.kh.newby.Member.model.vo.Member;
 import com.kh.newby.admin.dao.AdminDao2;
-
-import static com.kh.newby.common.JDBCTemplate.*;
 
 public class AdminService2 {
 	
@@ -86,5 +88,25 @@ public class AdminService2 {
 		
 		return newInquiryCount;
 	}
+
+	public ArrayList<Member> getTopUserList() {
+
+		Connection con = getConnection();
+		ArrayList<Member> topUserList = aDao2.getTopUserList(con);
+		
+		close(con);
+		
+		return topUserList;
+	}
+
+/*	public ArrayList<Host> getBestHostList() {
+
+		Connection con = getConnection();
+		ArrayList<Host> bestHostList = aDao2.getBestHostList(con);
+		
+		close(con);
+		
+		return bestHostList;
+	}*/
 	
 }
