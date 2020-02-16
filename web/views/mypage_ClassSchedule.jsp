@@ -1,5 +1,12 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+    pageEncoding="UTF-8" import="com.kh.newby.Class.model.vo.*, java.util.*"%>
+    
+<%
+	ArrayList<ClassVo2> list = (ArrayList<ClassVo2>)request.getAttribute("list");
+	for(ClassVo2 c : list){
+	System.out.println(c.toString());		
+	}
+%>
 <!DOCTYPE html>
 <html lang="ko">
 <head>
@@ -39,29 +46,23 @@
                             <table>
                                 <thead align="center">
                                     <tr>
-                                      <th style="width: 150px">날짜</th>
                                       <th style="width: 300px">클래스명</th>
-                                      <th style="width: 150px">취소</th>
+                                      <th style="width: 200px">일정</th>
+                                      <th style="width: 60px">취소</th>
                                     </tr>
-	                                <tr>
-	                                  <td colspan=3 style="border-bottom : 1px solid darkgray; height: 0px"></td>
-	                                </tr>
                                 </thead>
                                 <tbody align="center">
+                                	<%for(ClassVo2 c : list) {%>
                                     <tr>
-                                      <td class="td111">2020-01-02</td>
-                                      <td>길가다 쓰레기줍기</td>
-                                      <td><input type="checkbox"></td>
+                                      <input class="hv" type="hidden" value="<%=c.getPayNo() %>">
+                                      <input class="hv2" type="hidden" value="<%=c.getClassName() %>">
+                                      <td class="td19"><%=c.getClassName() %></td>
+                                      <td class="td19"><%=c.getClassDate() %><span id="divider">|</span><%=c.getClassStartTime() %>~<%=c.getClassEndTime() %>&nbsp;(<%=c.getClassTime() %>시간)</td>
+                                      <td class="td19"><button class="delBtn cancelBtn1sd">취소</button></td>
                                     </tr>
-                                    <tr>
-                                      <td class="td111">2019-11-18</td>
-                                      <td>플라잉 요가</td>
-                                      <td><input type="checkbox"></td>
-                                    </tr>
+                                    <%} %>
                                 </tbody>
                             </table>
-                            <br>
-                          <input class="cancelBtn1sd" type="button" value="취소신청" onclick="cancelClass();">
                           </div>
                     </div>
                 </div> 

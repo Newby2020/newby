@@ -1,26 +1,30 @@
 package com.kh.newby.Class.controller;
 
 import java.io.IOException;
+import java.util.ArrayList;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import com.kh.newby.Class.model.service.ClassService2;
+import com.kh.newby.Class.model.vo.ClassVo2;
+import com.kh.newby.Member.model.vo.Member;
 
 /**
- * Servlet implementation class DeleteClassServlet
+ * Servlet implementation class ClassSchedule
  */
-@WebServlet("/delClass.do")
-public class DeleteClassServlet extends HttpServlet {
+@WebServlet("/cSche.do")
+public class ClassScheduleServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public DeleteClassServlet() {
+    public ClassScheduleServlet() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -29,19 +33,27 @@ public class DeleteClassServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		String cno = request.getParameter("cno");
+		ArrayList<ClassVo2> list = null;
+		
+		HttpSession session = request.getSession(false);
+		Member m = (Member)session.getAttribute("member");
+//		String mno = m.getM_no();
+		String mno = "M7";
+		
 		ClassService2 cs = new ClassService2();
-		int result = cs.deleteClass(cno);
 		
-		if(result > 0) {
-			response.sendRedirect("/semi/cSelHno.do");
-////			request.getRequestDispatcher("/selectList.no").forward(request, response);
+		list = cs.ClassScheduleList(mno);
+		
+		String page = "";
+		
+		if(list != null) {
+			page = "views/mypage_ClassSchedule.jsp";
+			request.setAttribute("list", list);
 		} else {
-			request.setAttribute("msg", "공지사항 수정 실패 !!");
-			request.getRequestDispatcher("/semi/views/common/errorPage.jsp").forward(request, response);
+			page = "views/common/errorPage.jsp";
+			request.setAttribute("msg", "해당 유저가 결제한 클래스 목록 출력 실패!");
 		}
-		
-		
+		request.getRequestDispatcher(page).forward(request, response);
 	}
 
 	/**

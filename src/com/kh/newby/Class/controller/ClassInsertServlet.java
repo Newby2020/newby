@@ -22,7 +22,7 @@ import com.oreilly.servlet.multipart.DefaultFileRenamePolicy;
 /**
  * Servlet implementation class ClassInsertServlet
  */
-@WebServlet("/cis.do")
+@WebServlet("/cInsert.do")
 public class ClassInsertServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
@@ -100,7 +100,7 @@ public class ClassInsertServlet extends HttpServlet {
 				String stime = "";
 				String etime = "";
 
-				for(int i=0; i<cDate.length; i++) {	// 배열은 for문으로 돌려서 처리해야함
+				for(int i=0; i<cDate.length; i++) {	
 					if(i != cDate.length-1){						
 						cdate += cDate[i]+",";
 					} else {
@@ -170,14 +170,17 @@ public class ClassInsertServlet extends HttpServlet {
 				
 				System.out.println("controll");
 				int result = new ClassService2().insertClass(c);		// DB 연결
-//				System.out.println(result);
+				
+				//////////////////////////////////////////////////////////////////////////////
+				System.out.println(result);
 //				메인화면으로 이동해야함
-//				if(result > 0 ) {
-//					response.sendRedirect("selectList.bo");
-//				} else {
-//					request.setAttribute("msg", "게시글 작성 실패!");
-//					request.getRequestDispatcher("views/common/errorPage.jsp").forward(request, response);
-//				}
+				if(result > 0 ) {
+					System.out.println("클래스가 등록되었습니다.");
+					response.sendRedirect("/semi/views/mypage_Profile.jsp");
+				} else {
+					request.setAttribute("msg", "클래스 등록 실패하였습니다.");
+					request.getRequestDispatcher("views/common/errorPage.jsp").forward(request, response);
+				}
 	}
 
 	/**
