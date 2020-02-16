@@ -29,22 +29,15 @@ public class ClassVo2 implements Serializable{
 	private String classDate;
 	private String classStartTime;
 	private String classEndTime;
-	
-	// 마일리지 페이지
-	private int m_mile;
-	private int m_pMile;
-	private int m_pSaveMile;
-	
+
 	// 호스트
 	private String hostName;
 	private String hostIntro;
 	private double averageReview;
 	private String hostNo;
 
-
-	// 페이먼트
+	// 수강예정 클래스
 	private String payNo;
-	private Date payDate;
 
 	public ClassVo2() {}
 
@@ -96,18 +89,7 @@ public class ClassVo2 implements Serializable{
 		this.classEndTime = classEndTime;
 		this.hostNo = hostNo;
 	}
-	
-	
-	// 수강예정 클래스용
-	ClassVo2(String className, String payNo, Date payDate) {
-		super();
-		this.className = className;
-		this.payNo = payNo;
-		this.payDate = payDate;
-	}
-	
-	
-	
+
 	
 	public String getClassNo() {
 		return classNo;
@@ -301,38 +283,7 @@ public class ClassVo2 implements Serializable{
 		this.payNo = payNo;
 	}
 
-	public Date getPayDate() {
-		return payDate;
-	}
 
-	public void setPayDate(Date payDate) {
-		this.payDate = payDate;
-	}
-	
-	public int getM_mile() {
-		return m_mile;
-	}
-
-	public void setM_mile(int m_mile) {
-		this.m_mile = m_mile;
-	}
-
-	public int getM_pMile() {
-		return m_pMile;
-	}
-
-	public void setM_pMile(int m_pMile) {
-		this.m_pMile = m_pMile;
-	}
-
-	public int getM_pSaveMile() {
-		return m_pSaveMile;
-	}
-
-	public void setM_pSaveMile(int m_pSaveMile) {
-		this.m_pSaveMile = m_pSaveMile;
-	}
-	
 	// 클래스 등록 및 수정용
 	@Override
 	public String toString() {

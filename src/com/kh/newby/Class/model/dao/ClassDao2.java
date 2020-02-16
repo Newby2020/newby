@@ -166,44 +166,7 @@ public class ClassDao2 {
 		return list;
 	}
 
-	public ArrayList<ClassVo2> MileageList(Connection con, String mno) {
-		ArrayList<ClassVo2> list = new ArrayList<>();
-		ClassVo2 c = null;
-		int mile =0;
-		PreparedStatement pstmt = null;
-		ResultSet rset = null;
-		String sql1 = prop.getProperty("mMileage");
-		String sql2 = prop.getProperty("mileageList");
-		try {
-			
-			pstmt = con.prepareStatement(sql1);
-			pstmt.setString(1, mno);
-			rset = pstmt.executeQuery();
-			
-			if(rset.next()) {
-				mile=rset.getInt("MILEAGE");
-			}
 
-			pstmt = con.prepareStatement(sql2);
-			pstmt.setString(1, mno);
-			rset = pstmt.executeQuery();
-			while(rset.next()) {
-				c = new ClassVo2();
-				c.setM_mile(mile);
-				c.setPayDate(rset.getDate("PAY_DATE"));
-				c.setClassName(rset.getString("CLASS_NAME"));
-				c.setM_pMile(rset.getInt("PAY_MILEAGE"));
-				c.setM_pSaveMile(rset.getInt("PAY_SAVE_MILEAGE"));
-				list.add(c);
-			}
-		} catch(SQLException e) {
-			e.printStackTrace();
-		} finally {
-			close(rset);
-			close(pstmt);
-		}
-		return list;
-	}
 
 	public ArrayList<ClassVo2> modifyClassList(Connection con, String cno) {
 		ArrayList<ClassVo2> list = new ArrayList<>();

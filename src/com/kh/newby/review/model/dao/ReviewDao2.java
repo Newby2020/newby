@@ -21,7 +21,7 @@ public class ReviewDao2 {
 	   public ReviewDao2() {
 	      prop = new Properties();
 
-	      String filePath = ClassDao2.class.getResource("/config/review-query2.properties").getPath();
+	      String filePath = ReviewDao2.class.getResource("/config/review-query2.properties").getPath();
 
 	      try {
 	         prop.load(new FileReader(filePath));
