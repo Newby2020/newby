@@ -159,15 +159,25 @@ public class AdminDao {
 			while(rset.next()) {
 				Claim c = new Claim();
 				
-				c.setCmDate(rset.getString("CLAIM_DATE"));
+				c.setCmDate(rset.getDate("CLAIM_DATE"));
 				c.setCmNo(rset.getString("CLAIM_NO"));
 				c.setCmWriterNo(rset.getString("CLAIM_WRITER_NO"));
 				c.setCmTitle(rset.getString("CLAIM_TITLE"));
 				c.setStatus(rset.getString("CLAIM_STATUS"));
+				
 				c.setHandledDate(rset.getDate("HANDLED_DATE"));
 				c.setSuspensionPeriod(rset.getInt("SUSPENSION_PERIOD"));
 				c.setSuspensionStartDate(rset.getDate("SUSPENSION_START_DATE"));
 				c.setSuspensionEndDate(rset.getDate("SUSPENSION_END_DATE"));
+				
+//				if(rset.getDate("HANDLED_DATE") instanceof Date) {
+//					c.setHandledDate(rset.getDate("HANDLED_DATE"));
+//				} else {
+//					c.setHandledDateNull(rset.getString("HANDLED_DATE"));
+//				}
+				
+				
+				
 				
 				list.add(c);
 			}
