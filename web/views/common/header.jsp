@@ -88,7 +88,7 @@
     <div class="LoginModal_Content">
       <span class="loginClose">&times;</span>                                                               
       
-          <form id="mainLoginForm" action="/semi/login.me" >
+          <form id="mainLoginForm" action="/semi/login.me" onsubmit="return validate();" >
           
               <div class="guideSentence">
                   <label style="line-height: 2em;"><b>&nbsp;&nbsp;&nbsp;로그인</b></label><br>
@@ -106,7 +106,7 @@
               </div>
               <br><br><br>
               <div align="center">
-              	<button onclick="buttonLogin();" id="buttonLogin" class="buttonLogin">로그인</button>
+              	<input type="submit" id="buttonLogin" class="buttonLogin" value="로그인">
               </div> 
               <br>
               <div class="findIdAndPassword">
@@ -135,11 +135,7 @@
         
     /* 로그인 스크립트 종료 */
 
-    //로그인 버튼 클릭 시 제출
-     function buttonLogin(){
-    	 $('#mainLoginForm').submit();
-    	 
-     }
+ 
     
     //로그아웃 버튼 클릭
     function logout(){
@@ -147,6 +143,9 @@
     	alert('로그아웃되었습니다');
     }
     
+    function validate(){
+    	
+    }
   
     
     </script>

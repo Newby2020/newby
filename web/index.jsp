@@ -13,7 +13,7 @@
  	<script src="/semi/resources/js/indexPage-category.js"></script>
  	<script src="/semi/resources/js/mainIndex.js"></script>
 
-	<script src="/semi/resources/jquery/jquery-3.4.1.min.js"></script>
+	<script src="/semi/resources/js/jquery-3.4.1.min.js"></script>
 </head>
 <body>
 	<div id="Allpanel" align="center">
