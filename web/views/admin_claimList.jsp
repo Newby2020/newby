@@ -7,7 +7,10 @@
 <% 
  ArrayList<Claim> list = (ArrayList<Claim>)request.getAttribute("list");
  PageInfo pi = (PageInfo)request.getAttribute("pi");
- 
+ int currentPage = pi.getCurrentPage();
+ int startPage = pi.getStartPage();
+ int endPage = pi.getEndPage();
+ int maxPage = pi.getMaxPage();
 %>    
 <!DOCTYPE html>
 <html lang="en">
@@ -65,7 +68,7 @@
                     <th>신고 번호</th>
                     <th>신고자 번호</th>
                     <th>신고 이유</th>
-                    <th>상태</th>
+                    <th width="30px">상태</th>
                     <th>신고처리일</th>
                     <th>정지 기간</th>
                     <th>정지 시작일</th>
@@ -78,14 +81,69 @@
                     <td><%= c.getCmWriterNo() %></td>
                     <td><%= c.getCmTitle() %></td>
                     <td><%= c.getStatus() %></td>
-                    <td><%= c.getHandledDate() %></td>
-                    <td><%= c.getSuspensionPeriod() %></td>
-                    <td><%= c.getSuspensionStartDate() %></td>
-                    <td><%= c.getSuspensionEndDate() %></td>
+                    <td>
+                    <% if(c.getHandledDate() != null){ %>
+                    		<%= c.getHandledDate() %>
+                    <% }else { %>
+                    		<%= '-' %>
+                    <% } %>
+                    </td>
+                    <td>
+                    <% if(c.getSuspensionPeriod() != 100000) { %>
+                    		<% if(c.getSuspensionPeriod() == 0) {%>
+                    				<%= '-' %>
+                    		<% } else { %>
+									<%= c.getSuspensionPeriod() %>
+                    		<% } %>
+
+
+                    <% } else { %>
+                    		<%= "무기한" %>
+                    <% } %>
+                    </td>
+                    <td>
+                    <% if(c.getSuspensionStartDate() != null) { %>
+                    		<%= c.getSuspensionStartDate() %>
+                    <% }else {%>
+                    		<%= '-' %>
+                    <% } %>
+                    </td>
+                    <td>
+                    <% if(c.getSuspensionEndDate() != null) {%>
+                    		<%= c.getSuspensionEndDate() %>
+                    <% }else { %>
+                    		<%= '-' %>
+                    <% } %>
+                    </td>
                 </tr>
                 <% } %>
             </table>
         </div>
+         <%-- 페이지 처리 --%>
+      	<div class="pagingArea" align="center">
+      		<button onclick="location.href='<%= request.getContextPath() %>/claimList.ad?currentPage = 1'"><<</button>
+      		<% if(currentPage <= 1){ %>
+      		<button disabled><</button>
+      		<% }else { %>
+      		<button onclick="location.href='<%= request.getContextPath() %>/claimList.ad?currentPage= <%= currentPage-1 %>'"><</button>
+      		<% } %>
+      		
+      		<% for(int p = startPage; p <= endPage; p++) { 
+      				if(p == currentPage) {
+      		%>
+      			<button disabled><%= p %></button>
+    		<%		}else { %>
+    			<button onclick="location.href='<%= request.getContextPath() %>/claimList.ad?currentPage=<%= p %>'"><%= p %></button>
+      		<%		} %>
+      		<%	} %>
+      		
+      		<% 	if(currentPage >= maxPage){%>
+      		<button disabled>></button>
+      		<% }else { %>
+      		<button onclick="location.href='<%= request.getContextPath() %>/claimList.ad?currentPage=<%= currentPage + 1 %>'">></button>
+      		<% } %>
+      		<button onclick="location.href='<%= request.getContextPath() %>/claimList.ad?currentPage=<%= maxPage %>'">>></button>
+      	</div>
     </div>
 </body>
 </html>

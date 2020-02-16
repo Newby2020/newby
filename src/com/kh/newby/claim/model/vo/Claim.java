@@ -10,7 +10,7 @@ public class Claim implements Serializable{
 	 */
 	private static final long serialVersionUID = -4405732486995767570L;
 	
-	private String cmDate;	
+	private Date cmDate;	
 	private String cmNo;
 	private String cmWriterNo;
 	private String cmTitle;
@@ -26,13 +26,14 @@ public class Claim implements Serializable{
 		// TODO Auto-generated constructor stub
 	}
 
-	public String getCmDate() {
+	public Date getCmDate() {
 		return cmDate;
 	}
 
-	public void setCmDate(String cmDate) {
+	public void setCmDate(Date cmDate) {
 		this.cmDate = cmDate;
 	}
+
 
 	public String getCmNo() {
 		return cmNo;

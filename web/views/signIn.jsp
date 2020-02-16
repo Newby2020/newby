@@ -28,7 +28,7 @@ html {
 		<br>
 		<br>
 		<div id="signIn-panel">
-			<form id="joinForm" action='/semi/insert.me' class="joinForm" onsubmit="validate();">
+			<form id="joinForm" action='<!-- /semi/insert.me -->' class="joinForm" onsubmit="return validate();">
 				<div class="guideSentence">
 					<label style="margin-bottom: 3px;"><b>회원가입</b></label> <br>
 					<hr style="margin-top: 10px;">
@@ -53,8 +53,9 @@ html {
 						</div>
 						<div class="required">
 							<input type="password" class="joinInfo" id="confirm_password"
-								name="confirm_password" value="" maxlength=100;
+								name="confirm_password" onkeyup="pwdCheck();" maxlength=100;
 								placeholder="비밀번호 확인">
+								<span id="checkpwd" style="color:red; font-weight:bold; font-size: small;"></span>
 						</div>
 						<div class="required">
 							<input type="text" class="joinInfo" id="user_name"
@@ -84,7 +85,8 @@ html {
 				<br>
 				<br>
 				<div align="center">
-					<button onclick="buttonJoin();" id="buttonJoin" class="buttonJoin">가입하기</button>
+					<!-- <button onclick="buttonJoin();" id="buttonJoin" class="buttonJoin">가입하기</button> -->
+					<input type="submit" id="buttonJoin" class="buttonJoin" value="가입하기">
 				</div>
 			</form>
 		</div>
@@ -109,6 +111,7 @@ html {
 				type : "post",
 				data : {
 					user_Id : $('#user_Id').val()
+					
 				},
 				success : function(data) {
 					console.log(data);
@@ -152,6 +155,108 @@ html {
 
 			});
 		});
+		
+		
+		function pwdCheck(){
+			var pwd1 = $('#password').val();
+			var pwd2 = $('#confirm_password').val();
+			
+			if(pwd1 != pwd2){
+				$('#checkpwd').html("비밀번호 불일치");
+			}else{
+				$('#checkpwd').html("비밀번호 일치");
+			}
+		}
+		
+		
+		function chk(re, ele, msg){
+            if(!re.test(ele.value)){ 
+                alert(msg);
+                ele.select();
+                console.log("체크함수 작동시작");
+                return false;
+            }
+            return true;
+        }
+		
+		
+		
+		function validate(){
+			//아이디-닉네임-비번-이름-휴대폰-약관체크
+			console.log("유효성체크 시작");
+			var id = document.getElementById("user_Id");
+			var nick = document.getElementById("user_Nickname");
+			var pwd = document.getElementById("password");
+			var pwd2 = document.getElementById("confirm_password");
+			var phone = document.getElementById("phone");
+			var name = document.getElementById("user_name");
+			var agree= document.getElementById("agree");
+			
+			
+			//아이디 미입력
+			if ((id.value) == ""){
+                alert("아이디를 입력하지 않았습니다.");
+                id.focus();
+                return false;
+            }
+			
+			//이메일 형식
+			if(!chk(/^[\w]{4,}@[\w]+(\.[\w]+){1,2}$/, id, "아이디(이메일) 형식에 어긋납니다.")){
+           		 return false;
+      	    }
+			
+			// 닉네임 미입력시 알림               
+            if ((nick.value) == ""){
+               alert("닉네임을 입력하지 않았습니다.");
+               nick.focus();
+               return false;
+           } 
+			
+			
+			
+           // 비밀번호 미입력시 알림
+           if ((pwd.value) == "" || (pwd2.value)==""){
+                alert("비밀번호를 입력하지 않았습니다.");
+                pwd.focus();
+                return false;
+            }
+           
+           if(pwd.value != pwd2.value){
+        	   alert("비밀번호가 일치하지 않습니다.");
+        	   pwd.focus();
+        	   return false;
+           }
+           
+           
+           //비밀번호 영어,숫자 포함 6~20자
+           if(!chk(/^.*(?=.{6,20})(?=.*[0-9])(?=.*[a-zA-Z]).*$/),pwd,"비밀번호는 영문,숫자 포함 6~20자리로 입력해주세요"){
+        	   return false;
+           }
+
+        
+           
+			
+			 // 이름 미입력시 알림               
+            if ((name.value) == ""){
+               alert("이름을 입력하지 않았습니다.");
+               name.focus();
+               return false;
+           }   
+			//이름 유효성체크
+			if(!chk(/^[가-힣]{2,}/, name, "이름은 한글로 2글자 이상을 넣으세요~")){
+                 return false;
+             }
+			 
+			//약관 체크
+			if(agree.checked == false){
+				alert("약관에 동의해주세요");
+				return false;
+			}
+			
+			
+			
+		}
+		
 	</script>
 </body>
 </html>

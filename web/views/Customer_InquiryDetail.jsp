@@ -82,7 +82,7 @@
 								<td class="tdContent" colspan="6"><span class="spN"><%= b.getIcontent() %></span></td>
 							</tr>
 						</table>
-						<div align="center">
+						<%-- <div align="center">
 							<div class="replyWriteArea">
 								<form action="/semi/boardComment.bo" method="post">
 									<input type="hidden" name="nwriter"
@@ -120,7 +120,7 @@
 
 
 
-						</div>
+						</div> --%>
 
 					</form>
 

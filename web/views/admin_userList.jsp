@@ -102,10 +102,7 @@
 			<button onclick="location.href='<%= request.getContextPath() %>/userList.ad?currentPage=<%=currentPage + 1 %>'">></button>
 			<%  } %>
 			<button onclick="location.href='<%= request.getContextPath() %>/userList.ad?currentPage=<%= maxPage %>'">>></button>
-			
 		</div>
-		<!--  -->
-		
     </div>
 </body>
 </html>
