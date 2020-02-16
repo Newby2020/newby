@@ -93,7 +93,7 @@
                                         <td class="tline1row">1회당 가격</td>
                                         <td style="font-size: 9pt"><input id="price" name="price" type="text" required>&nbsp;원</td>
                                     </tr>
-                                    <tr><td><br></td></tr>
+                                    <tr><td><br></td></tr><tr><td><br></td></tr> 
                                     <tr>
                                         <td class="tline1row">이미지<br><small>(2MB 이하)</small></td>
                                         <td>
@@ -108,7 +108,7 @@
                                             </div>
                                         </td>
                                     </tr>
-                                    <tr><td><br></td></tr> 
+                                    <tr><td><br></td></tr><tr><td><br></td></tr> 
                                     <tr>
                                         <td class="tline1row">일정</td>
                                         <td class="addSchedule23">

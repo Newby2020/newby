@@ -42,10 +42,10 @@ public class ClassManagerServlet extends HttpServlet {
 		
 		ClassService2 cs = new ClassService2();
 		
-		HttpSession session = request.getSession(false);
-		Member m = (Member)session.getAttribute("member");
+//		HttpSession session = request.getSession(false);
+//		Member m = (Member)session.getAttribute("member");
 		
-		String hno = "H5"; //String hno = m.getH_no();						/////////////////////////////////수정해야됨////////////////////////////
+		String hno = "H1"; //String hno = m.getH_no();						/////////////////////////////////수정해야됨////////////////////////////
 		
 		list = cs.ClassManagerList(hno);
 		String page = "";

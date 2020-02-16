@@ -107,4 +107,18 @@ public class ClassService2 {
 
 		return list;
 	}
+
+	public int updateClass(ClassVo2 c) {
+		Connection con = getConnection();
+		
+		int result = new ClassDao2().updateClass(con, c);
+		
+		if(result > 0) {
+			commit(con);
+		} else {
+			rollback(con);
+		}
+		close(con);
+		return result;
+	}
 }

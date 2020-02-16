@@ -71,6 +71,30 @@ public class ClassVo2 implements Serializable{
 		this.classEndTime = classEndTime;
 		this.hostNo = hostNo;
 	}
+	// 클래스 수정용 생성자
+	public ClassVo2(String classNo, String className, String firstCategory, String secondCategory, String thirdCategory, String classType,
+			int classTime, int classMaxnum, int classPrice, String classImg, String classLocation, String classTarget,
+			String classCurriculum, String classIntro, String classDate, String classStartTime, String classEndTime, String hostNo) {
+		super();
+		this.classNo = classNo;
+		this.className = className;
+		this.firstCategory = firstCategory;
+		this.secondCategory = secondCategory;
+		this.thirdCategory = thirdCategory;
+		this.classType = classType;
+		this.classMaxnum = classMaxnum;
+		this.classTime = classTime;
+		this.classPrice = classPrice;
+		this.classImg = classImg;
+		this.classLocation = classLocation;
+		this.classIntro = classIntro;
+		this.classTarget = classTarget;
+		this.classCurriculum = classCurriculum;
+		this.classDate = classDate;
+		this.classStartTime = classStartTime;
+		this.classEndTime = classEndTime;
+		this.hostNo = hostNo;
+	}
 	
 	
 	// 수강예정 클래스용
@@ -307,16 +331,20 @@ public class ClassVo2 implements Serializable{
 	public void setM_pSaveMile(int m_pSaveMile) {
 		this.m_pSaveMile = m_pSaveMile;
 	}
-	
-	// 클래스 등록 및 수정용
+
 	@Override
 	public String toString() {
 		return "ClassVo2 [className=" + className + ", firstCategory=" + firstCategory + ", secondCategory="
 				+ secondCategory + ", thirdCategory=" + thirdCategory + ", classType=" + classType + ", classMaxnum="
 				+ classMaxnum + ", classTime=" + classTime + ", classPrice=" + classPrice + ", classImg=" + classImg
 				+ ", classLocation=" + classLocation + ", classIntro=" + classIntro + ", classTarget=" + classTarget
-				+ ", classCurriculum=" + classCurriculum + "]";
+				+ ", classCurriculum=" + classCurriculum + ", classDate=" + classDate + ", classStartTime="
+				+ classStartTime + ", classEndTime=" + classEndTime + "]";
 	}
+	
+	// 클래스 등록 및 수정용
+	
+	
 
 //	@Override
 //	public String toString() {
