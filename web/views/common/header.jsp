@@ -26,7 +26,7 @@
 	  
 	  
 	    <label id="customer" class="top-nav">
-	        <a href="/semi/views/Customer_Notice.jsp">고객센터</a>
+	        <a href="/semi/noticeSelectList.no">고객센터</a>
 	    </label>
 		<span class="divider1">|</span>
 

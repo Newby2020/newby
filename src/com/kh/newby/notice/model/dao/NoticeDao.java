@@ -11,6 +11,8 @@ import java.util.ArrayList;
 import java.util.Properties;
 
 import com.kh.newby.notice.model.vo.Notice;
+import com.sun.corba.se.spi.orbutil.fsm.Guard.Result;
+
 import static com.kh.newby.common.JDBCTemplate.*;
 
 
@@ -105,6 +107,41 @@ public class NoticeDao {
 		}
 		
 		return listCount;
+	}
+
+	public Notice noticeSelectOne(Connection con, String nno) {
+		Notice n = null;
+		PreparedStatement pstmt = null;
+		ResultSet rset = null;
+				
+		String sql = prop.getProperty("noticeSelectOne");
+		
+		try {
+			pstmt = con.prepareStatement(sql);
+			
+			pstmt.setString(1, nno);
+			rset = pstmt.executeQuery();
+			
+			if(rset.next()) {
+				n = new Notice();
+				
+				n.setNno(rset.getString("NOTICE_NO"));
+				n.setNtitle(rset.getString("NO_TITLE"));
+				n.setNwriter(rset.getString("NO_WRITER"));
+				n.setNdate(rset.getDate("NO_DATE"));
+				n.setNcount(rset.getInt("NO_COUNT"));
+				n.setNcontent(rset.getString("NO_CONTENT"));
+				
+			}
+			
+		} catch(SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(rset);
+			close(pstmt);
+		}
+		
+		return n;
 	}
 
 	
