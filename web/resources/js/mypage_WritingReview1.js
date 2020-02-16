@@ -13,10 +13,11 @@ for (i = 0; i < dropdown.length; i++) {
     });
 }
 
-function reviewOpen(){
-    var popupX = (document.body.offsetWidth / 2) - (200 / 2);
+$(".reviewBtn").click(function(){
+	var pno = $(this).closest("tr").find('.hv').val();
+	var popupX = (document.body.offsetWidth / 2) - (200 / 2);
 
-    var popupY= (document.body.offsetHeight / 2) - (300 / 2);
+  	var popupY= (document.body.offsetHeight / 2) - (300 / 2);
 
-    window.open("WritingReview2.html", "후기 작성", "status=no, width=280,  height=360, left="+ popupX + ", top="+ popupY);
-}
+	window.open("/semi/views/mypage_WritingReview2.jsp?pno="+pno, "후기 작성", "status=no, width=280,  height=360, left="+ popupX + ", top="+ popupY);
+});

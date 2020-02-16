@@ -95,8 +95,11 @@ public class ClassService2 {
 
 	public ArrayList<ClassVo2> modifyClassList(String cno) {
 		ArrayList<ClassVo2> list = null;
+		
 		Connection con = getConnection();
+		
 		list = new ClassDao2().modifyClassList(con, cno);
+		
 		if(list != null) {
 			commit(con);
 		} else {

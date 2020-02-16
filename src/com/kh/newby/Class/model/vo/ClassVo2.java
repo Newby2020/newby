@@ -25,7 +25,7 @@ public class ClassVo2 implements Serializable{
 	private String classTarget;
 	private String classCurriculum;
 	private Date classEnrollDate;
-	
+
 	private String classDate;
 	private String classStartTime;
 	private String classEndTime;
@@ -72,9 +72,10 @@ public class ClassVo2 implements Serializable{
 		this.hostNo = hostNo;
 	}
 	// 클래스 수정용 생성자
-	public ClassVo2(String classNo, String className, String firstCategory, String secondCategory, String thirdCategory, String classType,
-			int classTime, int classMaxnum, int classPrice, String classImg, String classLocation, String classTarget,
-			String classCurriculum, String classIntro, String classDate, String classStartTime, String classEndTime, String hostNo) {
+	public ClassVo2(String classNo, String className, String firstCategory, String secondCategory, String thirdCategory,
+			String classType, int classTime, int classMaxnum, int classPrice, String classImg, String classLocation,
+			String classTarget, String classCurriculum, String classIntro, String classDate, String classStartTime,
+			String classEndTime, String hostNo) {
 		super();
 		this.classNo = classNo;
 		this.className = className;
@@ -331,7 +332,8 @@ public class ClassVo2 implements Serializable{
 	public void setM_pSaveMile(int m_pSaveMile) {
 		this.m_pSaveMile = m_pSaveMile;
 	}
-
+	
+	// 클래스 등록 및 수정용
 	@Override
 	public String toString() {
 		return "ClassVo2 [className=" + className + ", firstCategory=" + firstCategory + ", secondCategory="
@@ -342,7 +344,6 @@ public class ClassVo2 implements Serializable{
 				+ classStartTime + ", classEndTime=" + classEndTime + "]";
 	}
 	
-	// 클래스 등록 및 수정용
 	
 	
 

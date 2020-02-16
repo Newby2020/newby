@@ -91,7 +91,7 @@ public class ClassDao2 {
          ClassVo2 c = null;
          PreparedStatement pstmt = null;
          ResultSet rset = null;
-         String sql = prop.getProperty("ClassManager");
+         String sql = prop.getProperty("classManager");
          
          try {
             pstmt = con.prepareStatement(sql);
@@ -140,7 +140,7 @@ public class ClassDao2 {
 		ClassVo2 c = null;
 		PreparedStatement pstmt = null;
 		ResultSet rset = null;
-		String sql = prop.getProperty("ClassSchedule");
+		String sql = prop.getProperty("classSchedule");
 		try {
 			pstmt = con.prepareStatement(sql);
 			pstmt.setString(1, mno);
@@ -173,7 +173,7 @@ public class ClassDao2 {
 		PreparedStatement pstmt = null;
 		ResultSet rset = null;
 		String sql1 = prop.getProperty("mMileage");
-		String sql2 = prop.getProperty("MileageList");
+		String sql2 = prop.getProperty("mileageList");
 		try {
 			
 			pstmt = con.prepareStatement(sql1);
@@ -210,7 +210,7 @@ public class ClassDao2 {
 		ClassVo2 c = null;
 		PreparedStatement pstmt = null;
 		ResultSet rset = null;
-		String sql = prop.getProperty("modifyClassList");
+		String sql = prop.getProperty("modifyClass");
 		try {
 			pstmt = con.prepareStatement(sql);
 			pstmt.setString(1, cno);
