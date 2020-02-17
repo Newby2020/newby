@@ -1,12 +1,17 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"
     import="java.util.*,
-   			com.kh.newby.Class.model.vo.*
-   			"%>
+   			com.kh.newby.Class.model.vo.*,
+   			com.kh.newby.common.PageInfo"%>
    			
     
 <%
 	ArrayList<ClassVo> list = (ArrayList<ClassVo>)request.getAttribute("list");
+	PageInfo pi = (PageInfo)request.getAttribute("pi");
+	int currentPage = pi.getCurrentPage();
+	int startPage = pi.getStartPage();
+	int endPage = pi.getEndPage();
+	int maxPage = pi.getMaxPage();
 %>    
 <!DOCTYPE html>
 <html lang="en">
@@ -34,11 +39,11 @@
             <a class="fa fa-home" href="../../MainPage/NewbyMainPage.jsp"></a>
             <a class="index" href="admin_index.jsp">관리자페이지</a>
         </div>
-        <a href="admin_index.jsp">Dashboard</a>
+        <a href="/semi/index.ad">Dashboard</a>
         <a href="/semi/userList.ad">사용자</a>
         <a href="admin_classApplyList.jsp">클래스 등록 신청</a>
         <a class="active" href="/semi/classList.ad">개설 클래스</a>
-        <a href="admin_hostReport.jsp">신고</a>
+        <a href="/semi/claimList.ad">신고</a>
         <a href="admin_accountancy.jsp">정산</a>
 
     </div>
@@ -76,7 +81,30 @@
                 <% } %>
             </table>
         </div>
+     	<%-- 페이지 처리 --%>
+        <div class="pageArea" align="center">
+        	<button onclick="location.href'<%= request.getContextPath() %>/classList.ad?currentPage = 1"><<</button>
+			<% if(currentPage <= 1) {%>
+					<button disabled><</button>
+ 			<% }else { %>
+ 					<button onclick="location.href='<%= request.getContextPath() %>/classList.ad?currentPage= <%= currentPage-1 %>'"><</button>
+ 			<% } %>
+ 			
+ 			<% for(int p = startPage; p<=endPage; p++) { 
+ 					if(p == currentPage){ %>
+ 						<button disabled><%= p %></button>
+			<% 		} else{ %>
+						<button onclick="location.href='<%= request.getContextPath() %>/classList.ad?currentPage=<%= p %>'"<%= p %>></button>
+			<% 		} %>
+ 			<% } %>
+ 			
+ 			<% if(currentPage >= maxPage){ %>
+ 					<button disabled>></button>
+ 			<% } else{ %>
+ 					<button onlick="location.href='<%= request.getContextPath() %>/classList.ad?currentPage=<%=currentPage + 1 %>'">></button>
+ 			<% } %>
+ 			<button onclick="location.href='<%= request.getContextPath() %>/classList.ad?currentPage=<%= maxPage %>'">>></button>
+        </div>
     </div>
 </body>
-
 </html>
