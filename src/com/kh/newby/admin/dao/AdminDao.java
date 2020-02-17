@@ -6,7 +6,6 @@ import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
 import java.sql.Connection;
-import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -14,6 +13,7 @@ import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.Properties;
 
+import com.kh.newby.Class.model.vo.ClassVo;
 import com.kh.newby.Member.model.vo.Member;
 import com.kh.newby.claim.model.vo.Claim;
 
@@ -35,7 +35,7 @@ public class AdminDao {
 		}
 	}
 
-//-------------------------- User -----------------------------//
+//-------------------------- UserList -----------------------------//
 	public int getUserListCount(Connection con) {
 		int listCount = 0;
 		Statement stmt = null;
@@ -106,7 +106,7 @@ public class AdminDao {
 	}
 
 	
-//-------------------------- claim -----------------------------//
+//-------------------------- ClaimList -----------------------------//
 	
 	public int getClaimListCount(Connection con) {
 		int listCount = 0;
@@ -163,21 +163,11 @@ public class AdminDao {
 				c.setCmNo(rset.getString("CLAIM_NO"));
 				c.setCmWriterNo(rset.getString("CLAIM_WRITER_NO"));
 				c.setCmTitle(rset.getString("CLAIM_TITLE"));
-				c.setStatus(rset.getString("CLAIM_STATUS"));
-				
+				c.setStatus(rset.getString("CLAIM_STATUS"));				
 				c.setHandledDate(rset.getDate("HANDLED_DATE"));
 				c.setSuspensionPeriod(rset.getInt("SUSPENSION_PERIOD"));
 				c.setSuspensionStartDate(rset.getDate("SUSPENSION_START_DATE"));
 				c.setSuspensionEndDate(rset.getDate("SUSPENSION_END_DATE"));
-				
-//				if(rset.getDate("HANDLED_DATE") instanceof Date) {
-//					c.setHandledDate(rset.getDate("HANDLED_DATE"));
-//				} else {
-//					c.setHandledDateNull(rset.getString("HANDLED_DATE"));
-//				}
-				
-				
-				
 				
 				list.add(c);
 			}
@@ -190,6 +180,75 @@ public class AdminDao {
 		}
 		
 		
+		return list;
+	}
+
+//-------------------------- ClassList -----------------------------//	
+	public int getClassListCount(Connection con) {
+		int listCount = 0;
+		Statement stmt = null;
+		ResultSet rset = null;
+		
+		String sql = prop.getProperty("classListCount");
+		
+		try {
+			stmt = con.createStatement();
+			rset = stmt.executeQuery(sql);
+			
+			if(rset.next()) {
+				listCount = rset.getInt(1);
+			}
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(rset);
+			close(stmt);
+		}
+		
+		return listCount;
+	}
+
+	public ArrayList<ClassVo> selectClassList(Connection con, int currentPage, int limit) {
+		ArrayList<ClassVo> list = null;
+		
+		PreparedStatement pstmt = null;
+		ResultSet rset = null;
+		
+		String sql = prop.getProperty("selectClassList");
+		
+		try {
+			int startRow = (currentPage - 1) * limit + 1;
+			int endRow = startRow + limit - 1;
+			
+			pstmt = con.prepareStatement(sql);
+			
+			pstmt.setInt(1, endRow);
+			pstmt.setInt(2, startRow);
+			
+			rset = pstmt.executeQuery();
+			
+			list = new ArrayList<ClassVo>();
+			
+			while(rset.next()) {
+				ClassVo c = new ClassVo();
+				
+				c.setClassNo(rset.getString("CLASS_NO"));
+				c.setClassHostNo(rset.getString("CLASS_HOST_NO"));
+				c.setClassType(rset.getString("CLASS_TYPE"));
+				c.setFirstCategory(rset.getString("FIRST_CATEGORY"));
+				c.setSecondCategory(rset.getString("SECOND_CATEGORY"));
+				c.setThirdCategory(rset.getString("THIRD_CATEGORY"));
+				c.setClassTarget(rset.getString("CLASS_TARGET"));
+				
+				list.add(c);
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(rset);
+			close(pstmt);
+		}
 		return list;
 	}
 	

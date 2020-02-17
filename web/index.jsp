@@ -36,7 +36,7 @@
 			</div>
 		</div>
 		
-		<br><br><br><br><br><br>
+		<br><br><br><br><br><br>	
 		<div>	
 			<hr style="width: 70%; margin-bottom: 20px; border: 1.5px solid #ebeef3;" align="center">
 		</div>

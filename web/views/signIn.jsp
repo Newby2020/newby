@@ -13,6 +13,8 @@
 
 <link rel="stylesheet" href="/semi/resources/css/signIn.css">
 <script src="/semi/resources/js/jquery-3.4.1.min.js"></script>
+<script type="text/javascript" src="https://service.iamport.kr/js/iamport.payment-1.1.5.js"></script>
+
 <style>
 html {
 	font-family: 'Noto Sans KR', sans-serif;
@@ -66,8 +68,8 @@ html {
 								value="" maxlength=100; placeholder="휴대폰 번호 입력"> <input
 								type="text" class="joinInfo" id="securePhone" name="securePhone"
 								maxlength=4 style="width: 60px;" placeholder="인증코드">
-							<button onclick="secureButton();" id="secureButton"
-								class="secureButton">인증</button>
+							<span onclick="secureButton();" id="secureButton"
+								class="secureButton" onsubmit="return false" style="background-color: lightgray; font-size: small">인증</span>
 						</div>
 					</div>
 				</div>
@@ -87,6 +89,7 @@ html {
 				<div align="center">
 					<!-- <button onclick="buttonJoin();" id="buttonJoin" class="buttonJoin">가입하기</button> -->
 					<input type="submit" id="buttonJoin" class="buttonJoin" value="가입하기">
+					
 				</div>
 			</form>
 		</div>
@@ -102,7 +105,9 @@ html {
 		<%@ include file="./common/footer.jsp"%>
 
 	</div>
-
+	
+	
+	
 	<script>
 		/*아이디 중복 체크*/
 		$('#checkId').click(function() {
@@ -256,7 +261,67 @@ html {
 			
 			
 		}
+		</script>
 		
-	</script>
+		
+		
+		
+		<script type="text/javascript">
+		//본인인증 api 스크립트
+		
+		function secureButton(){
+		//var IMP = window.IMP; // 생략해도 괜찮습니다.
+		IMP.init("imp77723554"); // "imp00000000" 대신 발급받은 "가맹점 식별코드"를 사용합니다.
+		
+		IMP.certification({ // param
+		    merchant_uid: "NEWBY_"
+		}, function (rsp) { // callback
+			if(rsp.success){
+				alert("성공");
+			}else{
+				alert("실패");
+			}
+		   /*  if (rsp.success) {
+		      //인증 성공 시
+		      console.log(rsp.imp_uid);
+		      console.log(rsp.merchant_uid);
+		      
+		      $.ajax({
+		    	  type : 'POST',
+		    	  url : '/certifications/confirm',
+	                dataType : 'json',
+	                data : {
+	                    imp_uid : rsp.imp_uid
+	                }
+		      }).done(function(){
+		    	  takeResponseAndHandle(rsp)
+		      }); */
+		      
+		  /*   } else {
+		      // 인증 실패 시 로직,
+		      var msg = '인증에 실패하였습니다';
+		      
+		      msg += '에러내용 : ' + rsp.error_msg;
+		      
+		      alert(msg);
+		    } */
+		  });
+		
+		 function takeResponseAndHandle(rsp) {
+		    if ( rsp.success ) {
+		        // 인증성공
+		        console.log(rsp.imp_uid);
+		        console.log(rsp.merchant_uid);
+		    } else {
+		         // 인증취소 또는 인증실패
+		        var msg = '인증에 실패하였습니다.';
+		        msg += '에러내용 : ' + rsp.error_msg;
+
+		        alert(msg);
+		    }
+		 }
+		}
+		</script>
+	
 </body>
 </html>

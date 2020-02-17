@@ -3,6 +3,7 @@
 
 <%
 	 Member m = (Member)session.getAttribute("Member");
+
 %>
 <!DOCTYPE html>
 <html lang="ko">
@@ -144,6 +145,22 @@
     }
     
     function validate(){
+    	var id = document.getElementById('mainLoginId');
+    	var pwd = document.getElemnetById('mainLoginPassword');
+    	
+    	//아이디 미입력시
+    	if((id.value) == ""){
+    		alert("아이디를 입력해주세요");
+    		id.focus();
+    		return false;
+    	}
+    	
+    	//비밀번호 미입력시
+    	if((pwd.value) == ""){
+    		alert("비밀번호를 입력해주세요");
+    		pwd.focus();
+    		return false;
+    	}
     	
     }
   
