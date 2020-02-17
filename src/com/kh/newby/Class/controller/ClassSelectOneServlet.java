@@ -34,28 +34,24 @@ public class ClassSelectOneServlet extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		//최종본
-//		String cno = request.getParameter("cno");
-		//test
-		String cno = "C6";
+		String cno = request.getParameter("cno");
 		
 		ClassService sc = new ClassService();
 		
-		ClassVo cv = new ClassVo();
-		
-		String page = "";
-		
 		// 클래스 상세정보
-		cv = sc.selectOne(cno);
+		ClassVo cv = sc.selectOne(cno);
 		
 		// 댓글 불러오기
 		ArrayList<Review> rList = new ReviewService().selectList(cno);
 		
+		String page = "";
 		if(cv != null) {
 			page = "views/class_information.jsp";
 			request.setAttribute("class", cv);
 			request.setAttribute("rList", rList);
 		}else {
 			page = "views/errorPage.jsp";
+			System.out.println("classSelectOne 서블릿 : 에러" );
 			request.setAttribute("msg", "클래스 상세페이지 불러오기 실패");
 		}
 		request.getRequestDispatcher(page).forward(request, response);
