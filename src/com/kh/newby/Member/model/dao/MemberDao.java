@@ -32,7 +32,7 @@ public class MemberDao {
 		}
 	}
 	
-	public Member selectMember(Connection con, Member m) {
+	public Member selectMember(Connection con, Member m) throws MemberException {
 		
 		Member result = null;// 결과를 담을 객체
 		PreparedStatement pstmt = null;
@@ -65,7 +65,8 @@ public class MemberDao {
 			}
 			
 		}catch(Exception e) {
-			e.printStackTrace();
+//			e.printStackTrace();
+			throw new MemberException(e.getMessage());
 		
 		}finally {
 			close(rset);

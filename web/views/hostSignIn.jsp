@@ -24,7 +24,7 @@
 		<%@ include file="./common/header.jsp" %>
 		<br><br>
             <div id="newby-body-panel">
-                <form id="hostJoinForm" class="hostJoinForm" action="/semi/insert.ho">
+                <form id="hostJoinForm" class="hostJoinForm" action="/semi/insert.ho" onsubmit="return validate();">
                     <div class="guideHostSentence">
                         <label style="margin-bottom: 3px;"><b>호스트 가입</b></label>
                         <br>
@@ -54,10 +54,11 @@
 	       			</div>
                 
                     <div align="center">
-	       				<button onclick="buttonJoin();" id="buttonHostJoin" class="buttonJoin">가입하기</button>
+	       				<input type="submit" id="buttonHostJoin" class="buttonJoin" value="가입하기">
 	        		</div> 
                     </form>
             </div>
+            <br><br><br><br><br><br>
             <%@ include file="./common/footer.jsp" %> 
             
     </div>  
@@ -70,8 +71,69 @@
 			location.href="/semi/index.jsp";
 		}
 	
+		function chk(re, ele, msg){
+            if(!re.test(ele.value)){ 
+                alert(msg);
+                ele.select();
+                console.log("체크함수 작동시작");
+                return false;
+            }
+            return true;
+        }
 		
-	
+		
+		function validate(){
+			
+		var hostReason = document.getElementById("hostClassReason");
+		var bank = document.getElementById("hostBankName");
+		var name = document.getElementById("hostAccountName");
+		var accountNum = document.getElementById("hostBankNumber");
+		var check = document.getElementById("agreeHost");
+		//개설이유, 은행명, 예금주명, 계좌번호, 약관 체크
+		//아이디 미입력
+			if ((hostReason.value) == ""){
+                alert("개설 이유를 입력해주세요");
+                hostReason.focus();
+                return false;
+            }
+		
+			if((bank.value)==""){
+				alert("은행명을 입력해주세요");
+				bank.focus();
+				return false;
+			}
+			
+			//이름 유효성체크
+			if(!chk(/^[가-힣]{2,}/, bank, "은행명을 2글자 이상으로 입력해주세요")){
+                 return false;
+             }
+			
+			if((name.value)==""){
+				alert("예금주 명을 입력해주세요");
+				name.focus();
+				return false;
+			}
+			
+			if(!chk(/^[가-힣]{2,}/, name, "예금주 명을 2글자 이상 입력해주세요")){
+				return false;
+			}
+			
+			if((accountNum.value)==""){
+				alert("계좌번호를 입력해주세요");
+				accountNum.focus();
+				return false;
+			}
+			
+			//약관 체크
+			if(check.checked == false){
+				alert("약관에 동의해주세요");
+				return false;
+			}
+		
+			
+		
+		}
+		
 	
 	
 	

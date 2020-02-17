@@ -42,9 +42,9 @@
 				</button>
 				<div class="dropdown-soxk">
 					<a href="/semi/boardSelectList.bo?currentPage=1">문의 목록</a> <a
-						href="Customer_CreateInquiry.jsp">문의 작성</a>
+						href="views/Customer_CreateInquiry.jsp">문의 작성</a>
 				</div>
-				<a href="Customer_Report.jsp">신고</a> <a href="Customer_Refund.jsp">이용약관</a>
+				<a href="views/Customer_Report.jsp">신고</a> <a href="views/Customer_Refund.jsp">이용약관</a>
 			</div>
 
 			<!--contents-->
@@ -104,7 +104,9 @@
 							<button onclick="location.href='<%=request.getContextPath()%>/noticeSelectList.no?currentPage=<%=currentPage + 1%>'">></button>
 							<% } %>
 							<button onclick="location.href='<%=request.getContextPath()%>/noticeSelectList.no?currentPage=<%=maxPage%>'">>></button>
-
+							<% if(m != null && m.getM_name().equals("관리자")){ %>
+							<button onclick="location.href='/semi/views/Customer_NoticeInsert.jsp'">작성하기</button>
+							<% } %>
 						</div>
 					</div>
 

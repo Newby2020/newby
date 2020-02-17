@@ -33,7 +33,7 @@
         <a href="admin_classApply.jsp">클래스</a>
 		<a href="admin_classCancel.jsp">클래스 취소</a>
         <a href="admin_hostReport.jsp">신고</a>
-        <a class="active" href="admin_accountancy.jsp">정산</a>
+        <a class="active" href="/semi/paymentList.ad">정산</a>
     </div>
     <div class="content">
         <h2>정산</h2>

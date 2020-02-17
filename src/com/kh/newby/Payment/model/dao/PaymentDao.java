@@ -11,6 +11,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.Properties;
 
+import com.kh.newby.Class.model.vo.ClassVo;
 import com.kh.newby.Payment.model.vo.Payment;
 
 public class PaymentDao {
@@ -66,6 +67,4 @@ public class PaymentDao {
 			}
 			return list;
 		}
-	   
-	   
 }

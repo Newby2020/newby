@@ -44,14 +44,14 @@
     <div class="sidebar">
         <div>
             <a class="fa fa-home" href="../../MainPage/NewbyMainPage.jsp"></a>
-            <a class="index" href="admin_index.jsp">관리자페이지</a>
+            <a class="index" href="/semi/index.ad">관리자페이지</a>
         </div>
-        <a href="admin_index.jsp">Dashboard</a>
+        <a href="/semi/index.ad">Dashboard</a>
         <a href="/semi/userList.ad">사용자</a>
-        <a href="admin_classApply.jsp">클래스</a>
-		<a href="admin_classCancel.jsp">클래스 취소</a>
+        <a href="admin_classApply.jsp">클래스 등록 신청</a>
+		<a href="/semi/classList.ad">개설 클래스</a>
         <a class="active"  href="/semi/claimList.ad">신고</a>
-        <a href="admin_accountancy.jsp">정산</a>
+        <a href="/semi/paymentList.ad">정산</a>
     </div>
     <div class="content">
         <h2>신고 리스트</h2>
@@ -68,7 +68,7 @@
                     <th>신고 번호</th>
                     <th>신고자 번호</th>
                     <th>신고 이유</th>
-                    <th width="30px">상태</th>
+                    <th>상태</th>
                     <th>신고처리일</th>
                     <th>정지 기간</th>
                     <th>정지 시작일</th>

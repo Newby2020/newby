@@ -33,6 +33,8 @@ public class LoginServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		
+		response.setContentType("text/html; charset=UTF-8");
 		String userId = request.getParameter("mainLoginId"); 
 		String userPwd = request.getParameter("mainLoginPassword"); 
 		
@@ -59,11 +61,17 @@ public class LoginServlet extends HttpServlet {
 			response.sendRedirect("index.jsp");
 		} catch (MemberException e) {// 에러가 났을때
 			
-		
-			request.setAttribute("msg", "아이디나 비밀번호를 잘못 입력하셨습니다");
-			request.setAttribute("exception", e);
+			out.println(
+					"<html><script>"+
+					"alert("+e.getMessage()+"');"+
+					"</script></html>"
+					);
 			
-//			request.getRequestDispatcher("views/common/errorPage.jsp").forward(request, response);
+//			response.sendRedirect("/semi/index.jsp");
+//			request.setAttribute("msg", "아이디나 비밀번호를 잘못 입력하셨습니다");
+//			request.setAttribute("exception", e);
+			
+			response.sendRedirect("index.jsp");
 			
 		}
 		

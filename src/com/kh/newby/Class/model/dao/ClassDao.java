@@ -5,12 +5,8 @@ import java.io.IOException;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.Properties;
 import com.kh.newby.Class.model.vo.ClassVo;
-import com.kh.newby.review.model.dao.ReviewDao;
 
 import static com.kh.newby.common.JDBCTemplate.*;
 
@@ -21,7 +17,7 @@ public class ClassDao {
 	public ClassDao() {
 		prop = new Properties();
 		
-		String filePath = ReviewDao.class.getResource("/config/class-query.properties").getPath();
+		String filePath = ClassDao.class.getResource("/config/class-query.properties").getPath();
 		
 		try {
 			prop.load(new FileReader(filePath));
@@ -31,12 +27,12 @@ public class ClassDao {
 	}
 
 	public ClassVo selectOne(Connection conn, String cno) {
+		ClassVo cv = null;
 		PreparedStatement pstmt = null;
 		ResultSet rset = null;
-		ClassVo cv = null;
 		
+		String sql = prop.getProperty("classSelectOne");
 		try {
-			String sql = prop.getProperty("classSelectOne");
 			pstmt = conn.prepareStatement(sql);
 			pstmt.setString(1, cno);
 			
@@ -44,8 +40,7 @@ public class ClassDao {
 			
 			if(rset.next()) {
 				cv = new ClassVo();
-				
-				cv.setClassNo(cno);
+				cv.setClassNo(rset.getString("CLASS_NO"));
 				cv.setClassHostNo(rset.getString("CLASS_HOST_NO"));
 				cv.setClassName(rset.getString("CLASS_NAME"));
 				cv.setFirstCategory(rset.getString("FIRST_CATEGORY"));
@@ -59,14 +54,14 @@ public class ClassDao {
 				cv.setClassLocation(rset.getString("CLASS_LOCATION"));
 				cv.setClassIntro(rset.getString("CLASS_INTRO"));
 				cv.setClassTarget(rset.getString("CLASS_TARGET"));
-				cv.setClassCurriculum(rset.getString("CLASS_CURRICURUM"));
+				cv.setClassCurriculum(rset.getString("CLASS_CURRICULUM"));
 				cv.setClassDate(rset.getString("CS_CLASS_DATE"));
 				cv.setClassStartTime(rset.getString("CS_STARTTIME"));
 				cv.setClassEndTime(rset.getString("CS_ENDTIME"));
 				cv.setHostName(rset.getString("MEM_NAME"));
 				cv.setHostIntro(rset.getString("HOST_INTRO"));
 				cv.setAverageReview(rset.getDouble("AVERAGE_REVIEW"));
-				
+			}else {
 			}
 		}catch(Exception e) {
 			e.printStackTrace();
@@ -74,8 +69,6 @@ public class ClassDao {
 			close(rset);
 			close(pstmt);
 		}
-		
-		System.out.println(cv);
 		
 		return cv;
 	}
