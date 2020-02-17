@@ -15,6 +15,7 @@ import java.util.Properties;
 
 import com.kh.newby.Host.model.vo.Host;
 import com.kh.newby.Member.model.vo.Member;
+import com.kh.newby.Member.model.vo.Member2;
 
 public class AdminDao2 {
 	
@@ -206,9 +207,9 @@ public class AdminDao2 {
 		return newInquiryCount;
 	}
 
-	public ArrayList<Member> getTopUserList(Connection con) {
+	public ArrayList<Member2> getTopUserList(Connection con) {
 
-		ArrayList<Member> topUserList = null;
+		ArrayList<Member2> topUserList = null;
 		
 		Statement stmt = null;
 		ResultSet rset = null;
@@ -216,16 +217,20 @@ public class AdminDao2 {
 		String sql = prop.getProperty("topUserList");
 		
 		try {
-			Member m = new Member();
+			Member2 m2 = null;
 			topUserList = new ArrayList<>();
 			
 			stmt = con.createStatement();
 			rset = stmt.executeQuery(sql);
 			
 			while(rset.next()) {
-				m.setM_id(rset.getString("MEM_ID"));
+				m2 = new Member2();
+				m2.setM_no(rset.getString("MEM_NO"));
+				m2.setM_name(rset.getString("MEM_NAME"));
+				m2.setM_id(rset.getString("MEM_ID"));
+				m2.setUserClassCount(rset.getInt("C"));
 				
-				topUserList.add(m);
+				topUserList.add(m2);
 			}
 		
 		} catch(SQLException e) {
@@ -238,7 +243,7 @@ public class AdminDao2 {
 		return topUserList;
 	}
 
-/*	@SuppressWarnings({ "resource", "null" })
+	@SuppressWarnings({ "resource", "null" })
 	public ArrayList<Host> getBestHostList(Connection con) {
 		
 		ArrayList<Host> bestHostList = null;
@@ -248,14 +253,18 @@ public class AdminDao2 {
 		String sql = prop.getProperty("bestHostList");
 		
 		try {
-			Host h = new Host();
+			Host h = null;
 			bestHostList = new ArrayList<>();
 			
 			stmt = con.createStatement();
 			rset = stmt.executeQuery(sql);
 			
 			while(rset.next()) {
+				h= new Host();
+				h.setHostNo(rset.getString("HOST_NO"));
+				h.setAccountHolder(rset.getString("ACCOUNT_HOLDER"));
 				h.setHostMemId(rset.getString("HOST_MEM_ID"));
+				h.setAvgReview(rset.getDouble("AVERAGE_REVIEW"));
 				
 				bestHostList.add(h);
 			}
@@ -266,7 +275,6 @@ public class AdminDao2 {
 			close(rset);
 			close(stmt);
 		}
-		return null;
-	}*/
-
+		return bestHostList;
+	}
 }

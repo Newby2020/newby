@@ -2,12 +2,14 @@
 
 .wrap{
     width: 70%;
-    /* margin: 0% 15% 0% 15%; */
-    background: #fff
+    background: #fff;
+    margin-left: 15%;
+    margin-top:2%;
 }
 .main{
     display: inline-block;
     padding-top: 10px;
+    width: 80%;
 }
 .class_img{
     background: #000;
@@ -22,6 +24,9 @@
     top: 0;
     border-bottom: 1px solid #e1e2e3;
 }
+/* #class_navi_div{
+	padding: 20px 0px 20px 0px;
+} */
 .class_navi .navi_bar{
     text-decoration: none;
     font-size: 2rem;
@@ -31,28 +36,30 @@
     text-align: center;
     left: 20px;
     color: rgb(109, 114, 112);      
-    font-family: 'Noto Sans KR', sans-serif;      
+}
+#cl_host_info{
+	padding:6%;
 }
 .host_detail{
     width: 100%;
     float: left;
     background: #fff;
     display: block;
-    padding: 22px;
+    /* padding: 22px; */
     border-bottom: 1px solid #e1e2e3;
 }
 .host_detail_title{
-    padding: 10px 0px 10px 20px;
+    /* padding: 10px 0px 10px 20px; */
 }
 .class_detail{
     width: 100%;
     float: left;
     background: #fff;
     display: block;
-    padding: 22px;
+    /* padding: 22px; */
     border-bottom: 1px solid #e1e2e3;
 }.class_detail_title{
-    padding: 10px 0px 10px 20px;
+    /* padding: 10px 0px 10px 20px; */
 }
 .class_detail_text{
     padding: 6%;
@@ -68,8 +75,8 @@
     border-radius: 3px;
 }
 #pay_btn{
-        font-size: 30px;
-    }
+    font-size: 30px;
+}
 #pay_a{
     text-decoration: none;
     color: white;
@@ -82,7 +89,7 @@
     font-family: 'Noto Sans KR', sans-serif;
 }
 .side .class_price{
-    padding: 10px 20px;
+    padding: 20px 20px;
     
 }
 .side .price{

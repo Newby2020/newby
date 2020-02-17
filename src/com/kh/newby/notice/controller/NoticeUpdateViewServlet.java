@@ -11,16 +11,16 @@ import com.kh.newby.notice.model.service.NoticeService;
 import com.kh.newby.notice.model.vo.Notice;
 
 /**
- * Servlet implementation class NoticeSelectOneServlet
+ * Servlet implementation class NoticeUpdateViewServlet
  */
-@WebServlet("/noticeSelectOne.no")
-public class NoticeSelectOneServlet extends HttpServlet {
+@WebServlet("/noticeUpdateView.no")
+public class NoticeUpdateViewServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public NoticeSelectOneServlet() {
+    public NoticeUpdateViewServlet() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -30,22 +30,20 @@ public class NoticeSelectOneServlet extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String nno = request.getParameter("nno");
-//		System.out.println(nno);
 		
 		NoticeService ns = new NoticeService();
 		
-		// 게시글 보기
-		Notice n = new NoticeService().noticeSelectOne(nno);
+		Notice n = ns.noticeUpdateView(nno);
 		
 		String page = "";
 		if(n != null) {
-			page="views/Customer_NoticeDetail.jsp";
+			page = "views/Customer_NoticeUpdate.jsp";
 			request.setAttribute("notice", n);
+			
 		} else {
-			page="views/common/errorPage.jsp";
-			request.setAttribute("msg", "게시글 목록 조회 실패!");
+			page = "views/common/errorPage.jsp";
+			request.setAttribute("msg", "수정 실패");
 		}
-		
 		request.getRequestDispatcher(page).forward(request, response);
 	}
 

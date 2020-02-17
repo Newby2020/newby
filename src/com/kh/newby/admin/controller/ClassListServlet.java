@@ -11,6 +11,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.kh.newby.Class.model.vo.ClassVo;
 import com.kh.newby.admin.service.AdminService;
+import com.kh.newby.common.PageInfo;
 
 /**
  * Servlet implementation class ClassApply
@@ -32,7 +33,9 @@ public class ClassListServlet extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// 1. 페이징 처리하기
+		int listCount = 0;
 		ArrayList<ClassVo> list = null;
+		
 		AdminService as = new AdminService();
 		
 		int startPage;
@@ -48,7 +51,37 @@ public class ClassListServlet extends HttpServlet {
 			currentPage = Integer.parseInt(request.getParameter("currentPage"));
 		}
 		
+		listCount = as.getClassListCount();
+//		System.out.println("총 클래스 수  : " + listCount);
 		
+		maxPage = (int)((double)listCount / limit + 0.9);
+		startPage = ((int)((double)currentPage / limit + 0.9) -1) * limit + 1;
+		
+		endPage = startPage + limit -1;
+		
+		if(endPage > maxPage) {
+			endPage = maxPage;
+		}
+		
+		list = as.selectClassList(currentPage, limit);
+		
+//		System.out.println(list);
+		
+		String page = "";
+		
+		if(list != null) {
+			page = "views/admin_classList.jsp";
+			request.setAttribute("list", list);
+			
+			
+			PageInfo pi = new PageInfo(currentPage, listCount, limit, maxPage, startPage, endPage);
+			request.setAttribute("pi", pi);
+		}else {
+			page = "views/common/errorPage";
+			request.setAttribute("msg", "개설된 클래스 목록을 불러오는데 실패하였습니다.");
+		}
+		
+		request.getRequestDispatcher(page).forward(request, response);
 	}
 
 	/**
