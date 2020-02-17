@@ -10,89 +10,97 @@ public class Review2 implements Serializable {
 	 */
 	private static final long serialVersionUID = -8411819078439453431L;
 
-	private String rno;
-	private String cno;
-	private String cname;
-
-
-	private String rwriter;
-	private double rpoint;
-	private String rcontent;
-	private Date rdate;
+	private String rNo;
+	private String cNo;
+	private String cName;
+	private int cTime;
+	private String psDate;
+	private String psStarttime;
+	private String psEndtime;
 	
 	public Review2() {
 	}
 
-	public Review2(String rno, String cno, String rwriter, double rpoint, String rcontent, Date rdate) {
-		this.rno = rno;
-		this.cno = cno;
-		this.rwriter = rwriter;
-		this.rpoint = rpoint;
-		this.rcontent = rcontent;
-		this.rdate = rdate;
+
+	public int getcTime() {
+		return cTime;
 	}
 
-	public String getRno() {
-		return rno;
+
+	public void setcTime(int cTime) {
+		this.cTime = cTime;
 	}
 
-	public void setRno(String rno) {
-		this.rno = rno;
+
+	public String getrNo() {
+		return rNo;
 	}
 
-	public String getCno() {
-		return cno;
+
+	public void setrNo(String rNo) {
+		this.rNo = rNo;
 	}
 
-	public void setCno(String cno) {
-		this.cno = cno;
-	}
-	
-	public String getCname() {
-		return cname;
+
+	public String getcNo() {
+		return cNo;
 	}
 
-	public void setCname(String cname) {
-		this.cname = cname;
-	}
-	
-	public String getRwriter() {
-		return rwriter;
+
+	public void setcNo(String cNo) {
+		this.cNo = cNo;
 	}
 
-	public void setRwriter(String rwriter) {
-		this.rwriter = rwriter;
+
+	public String getcName() {
+		return cName;
 	}
 
-	public double getRpoint() {
-		return rpoint;
+
+	public void setcName(String cName) {
+		this.cName = cName;
 	}
 
-	public void setRpoint(double rpoint) {
-		this.rpoint = rpoint;
+
+	public String getPsDate() {
+		return psDate;
 	}
 
-	public String getRcontent() {
-		return rcontent;
+
+	public void setPsDate(String psDate) {
+		this.psDate = psDate;
 	}
 
-	public void setRcontent(String rcontent) {
-		this.rcontent = rcontent;
+
+	public String getPsStarttime() {
+		return psStarttime;
 	}
 
-	public Date getRdate() {
-		return rdate;
+
+	public void setPsStarttime(String psStarttime) {
+		this.psStarttime = psStarttime;
 	}
 
-	public void setRdate(Date rdate) {
-		this.rdate = rdate;
+
+	public String getPsEndtime() {
+		return psEndtime;
 	}
+
+
+	public void setPsEndtime(String psEndtime) {
+		this.psEndtime = psEndtime;
+	}
+
 
 	@Override
 	public String toString() {
-		return "Review2 [rno=" + rno + ", cno=" + cno + ", cname=" + cname + ", rwriter=" + rwriter + ", rpoint="
-				+ rpoint + ", rcontent=" + rcontent + ", rdate=" + rdate + "]";
+		return "Review2 [rNo=" + rNo + ", cNo=" + cNo + ", cName=" + cName + ", cTime=" + cTime + ", psDate=" + psDate
+				+ ", psStarttime=" + psStarttime + ", psEndtime=" + psEndtime + "]";
 	}
+
+	
+
+	
 
 	
 
