@@ -8,6 +8,7 @@ import java.util.ArrayList;
 
 import com.kh.newby.Host.model.vo.Host;
 import com.kh.newby.Member.model.vo.Member;
+import com.kh.newby.Member.model.vo.Member2;
 import com.kh.newby.admin.dao.AdminDao2;
 
 public class AdminService2 {
@@ -89,17 +90,17 @@ public class AdminService2 {
 		return newInquiryCount;
 	}
 
-	public ArrayList<Member> getTopUserList() {
+	public ArrayList<Member2> getTopUserList() {
 
 		Connection con = getConnection();
-		ArrayList<Member> topUserList = aDao2.getTopUserList(con);
+		ArrayList<Member2> topUserList = aDao2.getTopUserList(con);
 		
 		close(con);
 		
 		return topUserList;
 	}
 
-/*	public ArrayList<Host> getBestHostList() {
+	public ArrayList<Host> getBestHostList() {
 
 		Connection con = getConnection();
 		ArrayList<Host> bestHostList = aDao2.getBestHostList(con);
@@ -107,6 +108,6 @@ public class AdminService2 {
 		close(con);
 		
 		return bestHostList;
-	}*/
+	}
 	
 }

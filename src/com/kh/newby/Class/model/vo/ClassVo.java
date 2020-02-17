@@ -66,6 +66,33 @@ public class ClassVo implements Serializable {
 	}
 	
 	// 클래스 상세 페이지 생성자(enrolldate 제외하고 모두)
+	public ClassVo(String classNo, String classHostNo, String className, String firstCategory, String secondCategory,
+			String thirdCategory, String classType, int classMaxnum, int classTime, int classPrice, String classImg,
+			String classLocation, String classIntro, String classTarget, String classCurriculum, String classDate,
+			String classStartTime, String classEndTime, String hostName, String hostIntro, double averageReview) {
+		super();
+		this.classNo = classNo;
+		this.classHostNo = classHostNo;
+		this.className = className;
+		this.firstCategory = firstCategory;
+		this.secondCategory = secondCategory;
+		this.thirdCategory = thirdCategory;
+		this.classType = classType;
+		this.classMaxnum = classMaxnum;
+		this.classTime = classTime;
+		this.classPrice = classPrice;
+		this.classImg = classImg;
+		this.classLocation = classLocation;
+		this.classIntro = classIntro;
+		this.classTarget = classTarget;
+		this.classCurriculum = classCurriculum;
+		this.classDate = classDate;
+		this.classStartTime = classStartTime;
+		this.classEndTime = classEndTime;
+		this.hostName = hostName;
+		this.hostIntro = hostIntro;
+		this.averageReview = averageReview;
+	}
 	
 	// 관리자용 클래스 관리 생성자
 	public ClassVo(String classNo, String className, String firstCategory, String classType, int classMaxnum,
@@ -88,12 +115,6 @@ public class ClassVo implements Serializable {
 		this.rejectReason = rejectReason;
 	}
 	// 관리자용 클래스 관리 생성자 종료
-	
-	
-
-	
-
-
 	public ClassVo(String classNo, String classHostNo, String className, String classIntro, Date classEnrollDate, String classStatus, String rejectReason, String caNo) {
 		super();
 		this.classNo = classNo;
