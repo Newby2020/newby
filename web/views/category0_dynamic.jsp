@@ -134,6 +134,14 @@
 							<option value="sWest">강서</option>
 						</select>
 					</div>
+					<div class="con_sort">
+						<label for="">정렬 </label> <select name="" id="cl_sort_select"
+							style="color: #818181;">
+							<option value="">별점순</option>
+							<option value="">가격 높은순</option>
+							<option value="">가격 낮은순</option>
+						</select>
+					</div>
 					<div class="cate_btn">
 
 						<!-- <div class="cate" id="caBtn1" onclick="shmenuView1(0)" style="background: rgba(0, 129, 250, 0.137);" >분류</div> -->
@@ -145,7 +153,7 @@
 						<div class="cate_sub">
 							<!-- 카테고리 세부분류 -->
 							<!-- <div class="catesub_list cates" id="sub0" style="display:none">
-                                    <div class="main_sub_caca">
+                                    <div class="main_sub_caca0">
                                         <div class="act_group_sh" style="display: none;">
                                             <li><a>스포츠</a></li>
                                             <li><a>아웃도어</a></li>
@@ -168,7 +176,7 @@
                                     </div>
                                 </div> -->
 							<div class="catesub_list cates" id="sub1">
-								<div class="main_sub_caca">
+								<div class="main_sub_caca1">
 									<li><a>월</a></li>
 									<li><a>화</a></li>
 									<li><a>수</a></li>
@@ -177,9 +185,19 @@
 									<li><a>토</a></li>
 									<li><a>일</a></li>
 								</div>
+								<script type="text/javascript">
+								$(document).ready(function(){
+									var day7 =$(".high_light_4").map(function(i, ele){
+										return ele.innerText;
+									});
+									var arr = day7.get();
+									console.log(arr);
+								});
+								</script>
+								
 							</div>
 							<div class="catesub_list cates" id="sub2" style="display: none">
-								<div class="main_sub_caca">
+								<div class="main_sub_caca2">
 									<li><a>1 : 1</a></li>
 									<li><a>그룹</a></li>
 								</div>
@@ -201,18 +219,10 @@
 							</div>
 						</div>
 					</div>
+
 				</form>
 			</div>
 			<!-- sort select -->
-			<div class="con_sort">
-				<label for="">정렬 </label> <select name="" id="cl_sort_select"
-					style="color: #818181;">
-					<option value="">인기순</option>
-					<option value="">별점순</option>
-					<option value="">가격 높은순</option>
-					<option value="">가격 낮은순</option>
-				</select>
-			</div>
 			<div class="CCCC">
 				<div class="con-wrap">
 
