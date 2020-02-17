@@ -24,7 +24,7 @@
             <div class="class_img">
                 <img src="./class_example.jpg" class="class_img" alt="">
             </div>
-            <div class="class_navi">
+            <div class="class_navi" id="class_nav_div">
                     <a href="#sumary" id="summary_nav" class="navi_bar">요약</a>
                     <a href="#host_detail" id="host_nav" class="navi_bar">강사</a>
                     <a href="#class_detail" id="class_nav" class="navi_bar">수업소개</a>
@@ -80,7 +80,7 @@
                         </div>
                         <div>
                             <dl class="class_detail_text">
-                                <dd>
+                                <dd style="margin-left:auto;">
                                    <%= cv.getClassCurriculum() %>
                                 </dd>
                             </dl>
