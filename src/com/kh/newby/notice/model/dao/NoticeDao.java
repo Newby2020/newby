@@ -120,6 +120,7 @@ public class NoticeDao {
 			pstmt = con.prepareStatement(sql);
 			
 			pstmt.setString(1, nno);
+			
 			rset = pstmt.executeQuery();
 			
 			if(rset.next()) {
@@ -142,6 +143,101 @@ public class NoticeDao {
 		}
 		
 		return n;
+	}
+
+	/**
+	 * 조회 카운트 용
+	 * @param con
+	 * @param nno
+	 * @return
+	 */
+	public int updateReadCount(Connection con, String nno) {
+		int result = 0;
+		PreparedStatement pstmt = null;
+		
+		String sql = prop.getProperty("updateReadCount");
+		
+		try {
+			pstmt = con.prepareStatement(sql);
+			
+			pstmt.setString(1, nno);
+			result = pstmt.executeUpdate();
+			
+		} catch(SQLException e){
+			e.printStackTrace();
+		} finally {
+			close(pstmt);
+		}
+		
+		return result;
+	}
+
+	public int noticeInsert(Connection con, Notice n) {
+		int result = 0;
+		PreparedStatement pstmt = null;
+		
+		String sql = prop.getProperty("noticeInsert");
+		
+		try {
+			pstmt = con.prepareStatement(sql);
+			
+			pstmt.setString(1, n.getNtitle());
+			pstmt.setString(2, n.getNwriter());
+			pstmt.setDate(3, n.getNdate());
+			pstmt.setString(4, n.getNcontent());
+			
+			result = pstmt.executeUpdate();
+		} catch(SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(pstmt);
+		}
+		
+		return result;
+	}
+
+	public int noticeUpdate(Connection con, Notice n) {
+		int result = 0;
+		PreparedStatement pstmt = null;
+		
+		String sql = prop.getProperty("noticeUpdate");
+		
+		try {
+			pstmt = con.prepareStatement(sql);
+			
+			pstmt.setString(1, n.getNtitle());
+			pstmt.setString(2, n.getNcontent());
+			pstmt.setString(3, n.getNno());
+			
+			result = pstmt.executeUpdate();
+		} catch(SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(pstmt);
+		}
+		
+		return result;
+	}
+
+	public int noticeDelete(Connection con, String nno) {
+		int result = 0;
+		PreparedStatement pstmt = null;
+		
+		String sql = prop.getProperty("noticeDelete");
+		
+		try {
+			pstmt = con.prepareCall(sql);
+			
+			pstmt.setString(1, nno);
+			
+			result = pstmt.executeUpdate(); 
+		} catch(SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(pstmt);
+		}
+		
+		return result;
 	}
 
 	

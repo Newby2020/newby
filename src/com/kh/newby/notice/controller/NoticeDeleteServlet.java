@@ -8,19 +8,18 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.kh.newby.notice.model.service.NoticeService;
-import com.kh.newby.notice.model.vo.Notice;
 
 /**
- * Servlet implementation class NoticeSelectOneServlet
+ * Servlet implementation class NoticeDeleteServlet
  */
-@WebServlet("/noticeSelectOne.no")
-public class NoticeSelectOneServlet extends HttpServlet {
+@WebServlet("/noticeDelete.no")
+public class NoticeDeleteServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public NoticeSelectOneServlet() {
+    public NoticeDeleteServlet() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -30,23 +29,19 @@ public class NoticeSelectOneServlet extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String nno = request.getParameter("nno");
-//		System.out.println(nno);
+		
+		System.out.println(nno);
 		
 		NoticeService ns = new NoticeService();
 		
-		// 게시글 보기
-		Notice n = new NoticeService().noticeSelectOne(nno);
+		int result = ns.noticeDelete(nno);
 		
-		String page = "";
-		if(n != null) {
-			page="views/Customer_NoticeDetail.jsp";
-			request.setAttribute("notice", n);
+		if(result > 0) {
+			response.sendRedirect("noticeSelectList.no");
 		} else {
-			page="views/common/errorPage.jsp";
-			request.setAttribute("msg", "게시글 목록 조회 실패!");
+			request.setAttribute("msg", "삭제 실패");
+			request.getRequestDispatcher("views/common/errorPage.jsp").forward(request, response);
 		}
-		
-		request.getRequestDispatcher(page).forward(request, response);
 	}
 
 	/**
