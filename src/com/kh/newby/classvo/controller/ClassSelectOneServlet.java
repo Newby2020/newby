@@ -1,4 +1,4 @@
-package com.kh.newby.review.controller;
+package com.kh.newby.classvo.controller;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -9,21 +9,22 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.kh.newby.classvo.model.service.ClassService2;
-import com.kh.newby.review.model.service.ReviewService2;
-import com.kh.newby.review.model.vo.Review2;
+import com.kh.newby.classvo.model.service.ClassService;
+import com.kh.newby.classvo.model.vo.ClassVo;
+import com.kh.newby.review.model.service.ReviewService;
+import com.kh.newby.review.model.vo.Review;
 
 /**
- * Servlet implementation class ReviewClass
+ * Servlet implementation class ClassSelectOneServlet
  */
-@WebServlet("/review.do")
-public class ReviewClassServlet extends HttpServlet {
+@WebServlet("/selectOne.ci")
+public class ClassSelectOneServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public ReviewClassServlet() {
+    public ClassSelectOneServlet() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -32,28 +33,28 @@ public class ReviewClassServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		ArrayList<Review2> list = null;
+		//최종본
+		String cno = request.getParameter("cno");
+		System.out.println("cno : " + cno);
+		ClassService sc = new ClassService();
 		
-		ReviewService2 rs = new ReviewService2();
+		// 클래스 상세정보
+		ClassVo cv = sc.selectOne(cno);
 		
-//		HttpSession session = request.getSession(false);
-//		Member m = (Member)session.getAttribute("member");
-		
-		String mno = "M7"; //String hno = m.getM_no();						/////////////////////////////////수정해야됨////////////////////////////
-		
-		list = rs.ReviewList(mno);
+		// 댓글 불러오기
+		ArrayList<Review> rList = new ReviewService().selectList(cno);
 		
 		String page = "";
-
-		if(list != null) {
-			page = "views/mypage_WritingReview1.jsp";
-			request.setAttribute("list", list);
-		} else {
-			page = "views/common/errorPage.jsp";
-			request.setAttribute("msg", "해당 유저 리뷰 리스트 출력 실패!");
+		if(cv != null) {
+			page = "views/class_information.jsp";
+			request.setAttribute("class", cv);
+			request.setAttribute("rList", rList);
+		}else {
+			page = "views/errorPage.jsp";
+			System.out.println("classSelectOne 서블릿 : 에러" );
+			request.setAttribute("msg", "클래스 상세페이지 불러오기 실패");
 		}
 		request.getRequestDispatcher(page).forward(request, response);
-		
 	}
 
 	/**

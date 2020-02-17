@@ -13,9 +13,9 @@ import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.Properties;
 
-import com.kh.newby.Class.model.vo.ClassVo;
 import com.kh.newby.Member.model.vo.Member;
 import com.kh.newby.claim.model.vo.Claim;
+import com.kh.newby.classvo.model.vo.ClassVo;
 
 public class AdminDao {
 	
@@ -249,6 +249,71 @@ public class AdminDao {
 			close(rset);
 			close(pstmt);
 		}
+		return list;
+	}
+
+	public int getClassApplyListCount(Connection con) {
+		int listCount = 0;
+		
+		Statement stmt = null;
+		ResultSet rset = null;
+		
+		String sql = prop.getProperty("classApplyListCount");
+		
+		try {
+			stmt = con.createStatement();
+			
+			rset = stmt.executeQuery(sql);
+			
+			if(rset.next()) {
+				listCount = rset.getInt(1);
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(rset);
+			close(stmt);
+		}
+		return listCount;
+	}
+
+	public ArrayList<ClassVo> selectClassApplyList(Connection con, int currentPage, int limit) {
+		ArrayList<ClassVo> list = null;
+		 
+		PreparedStatement pstmt = null;
+		ResultSet rset = null;
+		
+		String sql = prop.getProperty("selectClassApplyList");
+		 
+		try {
+			pstmt = con.prepareStatement(sql);
+			
+			int startRow = (currentPage - 1) * limit + 1;
+			int endRow = startRow + limit -1;				
+			
+			pstmt.setInt(1, endRow);
+			pstmt.setInt(2, startRow);
+			
+			rset = pstmt.executeQuery();
+			
+			list = new ArrayList<ClassVo>();
+			
+			while(rset.next()) {
+				ClassVo c = new ClassVo();
+								
+				c.setClassEnrollDate(rset.getDate("CLASS_ENROLLDATE"));
+				c.setClassNo(rset.getString("CLASS_NO"));
+				c.setClassHostNo(rset.getString("CLASS_HOST_NO"));
+				c.setClassStatus(rset.getString("CLASS_STATUS"));
+				
+				list.add(c);
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(rset);
+			close(pstmt);
+		}		 
 		return list;
 	}
 	

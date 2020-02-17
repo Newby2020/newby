@@ -30,8 +30,8 @@
         </div>
         <a href="admin_index.jsp">Dashboard</a>
         <a href="/semi/userList.ad">사용자</a>
-        <a href="admin_classApply.jsp">클래스</a>
-		<a href="admin_classCancel.jsp">클래스 취소</a>
+        <a href="/semi/classApplyList.ad">클래스 등록 신청</a>
+		<a href="admin_classCancel.jsp">개설 클래스</a>
         <a href="admin_hostReport.jsp">신고</a>
         <a class="active" href="/semi/paymentList.ad">정산</a>
     </div>

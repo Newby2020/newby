@@ -2,12 +2,15 @@ package com.kh.newby.admin.controller;
 
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+
 
 import com.kh.newby.Member.model.vo.Member;
 import com.kh.newby.admin.service.AdminService;
@@ -32,6 +35,10 @@ public class UserListServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		
+		response.setContentType("application/json; charset=UTF-8");
+		
+		
 		// 1. 페이징 처리하기
 		ArrayList<Member> list = null;
 		AdminService as = new AdminService();
@@ -68,10 +75,11 @@ public class UserListServlet extends HttpServlet {
 		}
 		
 		list = as.selectUserList(currentPage, limit);
-		
 //		System.out.println(list);
 		
 		String page = "";
+		
+//		PageInfo pi = new PageInfo(currentPage, listCount, limit, maxPage, startPage, endPage);
 		
 		if(list != null) {
 			page = "views/admin_userList.jsp";
@@ -85,6 +93,11 @@ public class UserListServlet extends HttpServlet {
 		}
 		
 		request.getRequestDispatcher(page).forward(request, response);
+		
+//		Map fulling = new HashMap();
+//		fulling.put("data",list);
+//		fulling.put("page",pi);
+//		new Gson().toJson(fulling, response.getWriter());
 	}
 
 	/**
