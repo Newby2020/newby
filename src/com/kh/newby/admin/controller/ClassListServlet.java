@@ -32,7 +32,9 @@ public class ClassListServlet extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// 1. 페이징 처리하기
+		int listCount = 0;
 		ArrayList<ClassVo> list = null;
+		
 		AdminService as = new AdminService();
 		
 		int startPage;
@@ -47,6 +49,29 @@ public class ClassListServlet extends HttpServlet {
 		if(request.getParameter("currentPage") != null) {
 			currentPage = Integer.parseInt(request.getParameter("currentPage"));
 		}
+		
+		listCount = as.getClassListCount();
+		System.out.println(listCount);
+		
+		list = as.selectClassList(currentPage, limit);
+		
+		System.out.println(list);
+		
+		String page = "";
+		
+		if(list != null) {
+			page = "views/admin_classList.jsp";
+			request.setAttribute("list", list);
+	
+		}else {
+			page = "views/common/errorPage";
+			request.setAttribute("msg", "개설된 클래스 목록을 불러오는데 실패하였습니다.");
+		}
+		
+		request.getRequestDispatcher(page).forward(request, response);
+		
+		
+		
 		
 		
 	}

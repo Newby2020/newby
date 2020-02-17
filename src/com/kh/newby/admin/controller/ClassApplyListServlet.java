@@ -10,14 +10,14 @@ import javax.servlet.http.HttpServletResponse;
 /**
  * Servlet implementation class ClassCancle
  */
-@WebServlet("/cancleList.ad")
-public class CancelListServlet extends HttpServlet {
+@WebServlet("/ClassApplyList.ad")
+public class ClassApplyListServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public CancelListServlet() {
+    public ClassApplyListServlet() {
         super();
         // TODO Auto-generated constructor stub
     }
