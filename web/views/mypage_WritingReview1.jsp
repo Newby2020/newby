@@ -1,5 +1,12 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
+	pageEncoding="UTF-8" import="com.kh.newby.review.model.vo.*, java.util.*"%>
+	
+<%
+	ArrayList<Review2> list = (ArrayList<Review2>)request.getAttribute("list");
+	for(Review2 r : list){
+	System.out.println(r.toString());		
+	}
+%>
 <!DOCTYPE html>
 <html lang="ko">
 <head>
@@ -42,21 +49,16 @@
 								<th style="width: 300px">클래스명</th>
 								<th style="width: 150px">후기</th>
 							</tr>
+							
+							<%for(Review2 r : list){ %>
 							<tr align="center">
-								<td>2020-01-02</td>
-								<td>길가다 쓰레기줍기</td>
-								<td><input type="button" class="reviewBtn" value="작성"
-									onclick="reviewOpen();"></td>
+								<input name="rno" class="hv" type="hidden" value=<%= r.getRno() %>>
+								<td><%= r.getRdate() %></td>
+								<td><%= r.getCname() %></td>
+								<td><input type="button" class="reviewBtn" value="작성"></td>
 							</tr>
-							<tr align="center">
-								<td>2020-01-02</td>
-								<td>길가다 쓰레기줍기</td>
-								<td><input type="button" class="reviewBtn" value="작성"
-									onclick="reviewOpen();"></td>
-							</tr>
+							<%} %>
 						</table>
-						<!-- 페이징 넣어야할 부분 -->
-						<div></div>
 					</div>
 				</div>
 			</div>

@@ -23,13 +23,13 @@ import com.oreilly.servlet.multipart.DefaultFileRenamePolicy;
  * Servlet implementation class ClassInsertServlet
  */
 @WebServlet("/cInsert.do")
-public class ClassInsertServlet extends HttpServlet {
+public class InsertClassServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public ClassInsertServlet() {
+    public InsertClassServlet() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -139,8 +139,8 @@ public class ClassInsertServlet extends HttpServlet {
 				}
 				
 				// 세션에 추가된 멤버객체의 정보 담기
-				HttpSession session = request.getSession(false);
-				Member m = (Member)session.getAttribute("member");
+//				HttpSession session = request.getSession(false);
+//				Member m = (Member)session.getAttribute("member");
 				
 //				String hNo = m.getH_no();										/////////// 나중에 이걸로 바꿔줘야해
 				String hNo = "H2";

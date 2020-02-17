@@ -38,6 +38,16 @@ public class NoticeService {
 		return listCount;
 	}
 
+	public Notice noticeSelectOne(String nno) {
+		Connection con = getConnection();
+		
+		Notice n = nDao.noticeSelectOne(con, nno);
+		
+		close(con);
+		
+		return n;
+	}
+
 
 
 }

@@ -58,7 +58,7 @@ function selectCategory2(){
 // 인원수 readonly 유무체크
 function oneNOneCheck(){
 	$('#MaxNum').val(1);
-	$('#MaxNum').prop("readonly", true).css("backgroundColor","#ebeef3");
+	$('#MaxNum').prop("readonly", true).css("backgroundColor","#f1f1f1");
 	
 }
 function groupCheck(){
@@ -101,14 +101,14 @@ function reload1(){
 // 불규칙 날짜 설정
 function addSchedule(){
     var div = document.getElementById('div11');
-    div.innerHTML += "<br><input name='classDate' type='date' class='dataCl'>&nbsp;&nbsp;&nbsp;<input name='startTime' type='time' class='dataCl'>&nbsp;&nbsp;";
+    div.innerHTML += "<br><input name='cdate' type='date' class='dataCl'>&nbsp;&nbsp;&nbsp;<input name='stime' type='time' class='dataCl'>&nbsp;&nbsp;";
 }
 
 // 일정 항목 추가 및 삭제
 $(function(){
 	$(document).on('click','#ss',function(){
 		$('#div11')
-		.append('<div><input name="classDate" type="date" class="dataCl">&nbsp;&nbsp;&nbsp;<input name="startTime" type="time" class="dataCl">&nbsp;&nbsp;<img id="delImg" class="item1" src="/semi/resources/images/deleteImg.png" alt="xIcon"></div>');
+		.append('<div><input name="cdate" type="date" class="dataCl">&nbsp;&nbsp;<input name="stime" type="time" class="dataCl">&nbsp;&nbsp;<img id="delImg" class="item1" src="/semi/resources/images/deleteImg.png" alt="xIcon"></div>');
 	});
 	
 	$(document).on('click','.item1',function(){
@@ -138,7 +138,7 @@ function SearchAddr() {
             // 우편번호와 주소 정보를 해당 필드에 넣는다.
             document.getElementById("basicAddr").value = addr;
             // 커서를 상세주소 필드로 이동한다.
-            document.getElementById("detailAddr").focus();
+            document.getElementById("detailAddr").select();
         }
     }).open();
 }

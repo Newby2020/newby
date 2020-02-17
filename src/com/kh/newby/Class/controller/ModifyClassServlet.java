@@ -32,12 +32,19 @@ public class ModifyClassServlet extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String cno = request.getParameter("cno");
+		System.out.println(cno);
+		
 		ArrayList<ClassVo2> list = null;
 		String page = "";
+		System.out.println("------------------------------------------------");
 		list = new ClassService2().modifyClassList(cno);
-		System.out.println(list);
+		
+		for(ClassVo2 c : list){
+			System.out.println(c.toString());
+		}
+		
 		if(list != null) {
-			page = "views/mypage_MofifyClass.jsp";
+			page = "views/mypage_ModifyClass.jsp";
 			request.setAttribute("list", list);
 		} else {
 			page = "views/common/errorPage.jsp";

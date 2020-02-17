@@ -13,7 +13,7 @@
     <a href="/semi/mMile.do">마일리지</a>
     <a href="/semi/cSche.do">수강예정 클래스</a>
     <a href="/semi/pay.do">결제 내역</a>
-    <a href="mypage_WritingReview1.jsp">후기 작성</a>	<!-- x -->
+    <a href="/semi/review.do">후기 작성</a>	<!-- x -->
     <button class="dropdown-btnqo">호스트
         <i id="ci22">≡</i>
     </button>

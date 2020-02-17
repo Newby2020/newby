@@ -13,6 +13,7 @@ import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.Properties;
 
+import com.kh.newby.Host.model.vo.Host;
 import com.kh.newby.Member.model.vo.Member;
 
 public class AdminDao2 {
@@ -204,5 +205,68 @@ public class AdminDao2 {
 		}
 		return newInquiryCount;
 	}
+
+	public ArrayList<Member> getTopUserList(Connection con) {
+
+		ArrayList<Member> topUserList = null;
+		
+		Statement stmt = null;
+		ResultSet rset = null;
+		
+		String sql = prop.getProperty("topUserList");
+		
+		try {
+			Member m = new Member();
+			topUserList = new ArrayList<>();
+			
+			stmt = con.createStatement();
+			rset = stmt.executeQuery(sql);
+			
+			while(rset.next()) {
+				m.setM_id(rset.getString("MEM_ID"));
+				
+				topUserList.add(m);
+			}
+		
+		} catch(SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(rset);
+			close(stmt);
+		}
+		
+		return topUserList;
+	}
+
+/*	@SuppressWarnings({ "resource", "null" })
+	public ArrayList<Host> getBestHostList(Connection con) {
+		
+		ArrayList<Host> bestHostList = null;
+		Statement stmt = null;
+		ResultSet rset = null;
+		
+		String sql = prop.getProperty("bestHostList");
+		
+		try {
+			Host h = new Host();
+			bestHostList = new ArrayList<>();
+			
+			stmt = con.createStatement();
+			rset = stmt.executeQuery(sql);
+			
+			while(rset.next()) {
+				h.setHostMemId(rset.getString("HOST_MEM_ID"));
+				
+				bestHostList.add(h);
+			}
+
+		} catch(SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(rset);
+			close(stmt);
+		}
+		return null;
+	}*/
 
 }

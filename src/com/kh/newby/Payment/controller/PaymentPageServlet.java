@@ -1,4 +1,4 @@
-package com.kh.newby.Class.controller;
+package com.kh.newby.Payment.controller;
 
 import java.io.IOException;
 import javax.servlet.ServletException;

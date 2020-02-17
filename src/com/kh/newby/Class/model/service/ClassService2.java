@@ -77,26 +77,15 @@ public class ClassService2 {
 		return list;
 	}
 
-	public ArrayList<ClassVo2> MileageList(String mno) {
-		ArrayList<ClassVo2> list = null;
 
-		Connection con = getConnection();
-
-		list = new ClassDao2().MileageList(con, mno);
-
-		if (list != null) {
-			commit(con);
-		} else {
-			rollback(con);
-		}
-		close(con);
-		return list;
-	}
 
 	public ArrayList<ClassVo2> modifyClassList(String cno) {
 		ArrayList<ClassVo2> list = null;
+		
 		Connection con = getConnection();
+		
 		list = new ClassDao2().modifyClassList(con, cno);
+		
 		if(list != null) {
 			commit(con);
 		} else {
@@ -106,5 +95,19 @@ public class ClassService2 {
 		close(con);
 
 		return list;
+	}
+
+	public int updateClass(ClassVo2 c) {
+		Connection con = getConnection();
+		
+		int result = new ClassDao2().updateClass(con, c);
+		
+		if(result > 0) {
+			commit(con);
+		} else {
+			rollback(con);
+		}
+		close(con);
+		return result;
 	}
 }
