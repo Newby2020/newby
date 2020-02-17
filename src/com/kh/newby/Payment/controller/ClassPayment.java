@@ -32,12 +32,18 @@ public class ClassPayment extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
-		
 		ArrayList<ClassVo> classInfoList = null;
+		String cno = request.getParameter("재우가 던져주는 이름");
 		
 		PaymentService2 ps2 = new PaymentService2();
+		classInfoList = ps2.getClassInfoList(cno);
 		
-		classInfoList = ps2.getClassInfoList();
+		String page = "";
+		
+		page = "/views/payment.jsp";
+
+		
+		request.getRequestDispatcher(page).forward(request, response);
 		
 
 		

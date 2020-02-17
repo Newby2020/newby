@@ -13,10 +13,10 @@ public class PaymentService2 {
 
 	PaymentDao2 pDao = new PaymentDao2();
 	
-	public ArrayList<ClassVo> getClassInfoList() {
+	public ArrayList<ClassVo> getClassInfoList(String cno) {
 		
 		Connection con = getConnection();
-		ArrayList<ClassVo> classInfoList = pDao.getClassInfoList(con);
+		ArrayList<ClassVo> classInfoList = pDao.getClassInfoList(con, cno);
 		
 		close(con);
 		

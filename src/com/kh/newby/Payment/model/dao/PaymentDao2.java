@@ -10,13 +10,12 @@ import java.util.ArrayList;
 import java.util.Properties;
 
 import com.kh.newby.Class.model.vo.ClassVo;
-import com.kh.newby.Payment.model.vo.Payment;
 
 public class PaymentDao2 {
 
 	private Properties prop;
 
-	public ArrayList<ClassVo> getClassInfoList(Connection con) {
+	public ArrayList<ClassVo> getClassInfoList(Connection con, String cno) {
 
 		ArrayList<ClassVo> classInfoList = null;
 		ClassVo c = null;
@@ -26,20 +25,21 @@ public class PaymentDao2 {
 		String sql = prop.getProperty("classInfoList");
 		
 		try {
-			c = new ClassVo();
+			classInfoList = new ArrayList<ClassVo>();
 			pstmt = con.prepareStatement(sql);
+			
+			pstmt.setString(1, cno);
+			
 			rset = pstmt.executeQuery();
 			
-			if(rset.next()) {
+			while(rset.next()) {
+				c = new ClassVo();
 				c.setFirstCategory(rset.getString("FIRST_CATEGORY"));
 				c.setSecondCategory(rset.getString("SECOND_CATEGORY"));
 				c.setThirdCategory(rset.getString("THIRD_CATEGORY"));
 				c.setClassName(rset.getString("CLASS_NAME"));
-				
-				
+				c.setClassPrice(rset.getInt("CLASS_PRICE"));
 			}
-			
-			
 			
 		} catch(SQLException e) {
 			e.printStackTrace();
@@ -47,11 +47,6 @@ public class PaymentDao2 {
 			close(rset);
 			close(pstmt);
 		}
-				
-		
-		return null;
+		return classInfoList;
 	}
-   
-   
-	
 }

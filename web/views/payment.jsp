@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+    pageEncoding="UTF-8" import="java.util.*,
+    							 com.kh.newby.Class.model.vo.*"%>
 <!DOCTYPE html>
 <html lang="ko">
 <head>
@@ -33,7 +34,7 @@
 		    </div> 
 		    <hr>
 		    <div class="priceClass2">
-			    <label>상품 금액</label>
+			    <label>클래스 금액</label>
 			    <label id="priceClassAndMileage">W 10,000원&nbsp;</label>
 			</div>
 		    <hr>
