@@ -1,7 +1,6 @@
-package com.kh.newby.review.controller;
+package com.kh.newby.classvo.controller;
 
 import java.io.IOException;
-import java.util.ArrayList;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -10,20 +9,18 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.kh.newby.classvo.model.service.ClassService2;
-import com.kh.newby.review.model.service.ReviewService2;
-import com.kh.newby.review.model.vo.Review2;
 
 /**
- * Servlet implementation class ReviewClass
+ * Servlet implementation class DeleteClassServlet
  */
-@WebServlet("/review.do")
-public class ReviewClassServlet extends HttpServlet {
+@WebServlet("/delClass.do")
+public class DeleteClassServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public ReviewClassServlet() {
+    public DeleteClassServlet() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -32,27 +29,18 @@ public class ReviewClassServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		ArrayList<Review2> list = null;
+		String cno = request.getParameter("cno");
+		ClassService2 cs = new ClassService2();
+		int result = cs.deleteClass(cno);
 		
-		ReviewService2 rs = new ReviewService2();
-		
-//		HttpSession session = request.getSession(false);
-//		Member m = (Member)session.getAttribute("member");
-		
-		String mno = "M7"; //String hno = m.getM_no();						/////////////////////////////////수정해야됨////////////////////////////
-		
-		list = rs.ReviewList(mno);
-		
-		String page = "";
-
-		if(list != null) {
-			page = "views/mypage_WritingReview1.jsp";
-			request.setAttribute("list", list);
+		if(result > 0) {
+			response.sendRedirect("/semi/cSelHno.do");
+////			request.getRequestDispatcher("/selectList.no").forward(request, response);
 		} else {
-			page = "views/common/errorPage.jsp";
-			request.setAttribute("msg", "해당 유저 리뷰 리스트 출력 실패!");
+			request.setAttribute("msg", "공지사항 수정 실패 !!");
+			request.getRequestDispatcher("/semi/views/common/errorPage.jsp").forward(request, response);
 		}
-		request.getRequestDispatcher(page).forward(request, response);
+		
 		
 	}
 

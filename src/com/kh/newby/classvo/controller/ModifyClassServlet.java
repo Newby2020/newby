@@ -1,4 +1,4 @@
-package com.kh.newby.review.controller;
+package com.kh.newby.classvo.controller;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -10,20 +10,19 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.kh.newby.classvo.model.service.ClassService2;
-import com.kh.newby.review.model.service.ReviewService2;
-import com.kh.newby.review.model.vo.Review2;
+import com.kh.newby.classvo.model.vo.ClassVo2;
 
 /**
- * Servlet implementation class ReviewClass
+ * Servlet implementation class ModifyClassServlet
  */
-@WebServlet("/review.do")
-public class ReviewClassServlet extends HttpServlet {
+@WebServlet("/modiClass.do")
+public class ModifyClassServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public ReviewClassServlet() {
+    public ModifyClassServlet() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -32,28 +31,26 @@ public class ReviewClassServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		ArrayList<Review2> list = null;
+		String cno = request.getParameter("cno");
+		System.out.println(cno);
 		
-		ReviewService2 rs = new ReviewService2();
-		
-//		HttpSession session = request.getSession(false);
-//		Member m = (Member)session.getAttribute("member");
-		
-		String mno = "M7"; //String hno = m.getM_no();						/////////////////////////////////수정해야됨////////////////////////////
-		
-		list = rs.ReviewList(mno);
-		
+		ArrayList<ClassVo2> list = null;
 		String page = "";
-
+		System.out.println("------------------------------------------------");
+		list = new ClassService2().modifyClassList(cno);
+		
+		for(ClassVo2 c : list){
+			System.out.println(c.toString());
+		}
+		
 		if(list != null) {
-			page = "views/mypage_WritingReview1.jsp";
+			page = "views/mypage_ModifyClass.jsp";
 			request.setAttribute("list", list);
 		} else {
 			page = "views/common/errorPage.jsp";
-			request.setAttribute("msg", "해당 유저 리뷰 리스트 출력 실패!");
+			request.setAttribute("msg", "해당 클래스에 대한 수정 정보 불러오기 실패!");
 		}
 		request.getRequestDispatcher(page).forward(request, response);
-		
 	}
 
 	/**
