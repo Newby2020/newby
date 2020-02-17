@@ -1,7 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8" import="java.util.*, 
     							 com.kh.newby.Member.model.vo.*, 
-    							 com.kh.newby.Class.model.vo.*"%>
+    							 com.kh.newby.Class.model.vo.*,
+    							 com.kh.newby.Host.model.vo.*"%>
 <% 
 	int userCount = (int)(request.getAttribute("userCount"));
 	int hostCount = (int)(request.getAttribute("hostCount"));
@@ -10,7 +11,8 @@
 	int notifiedHostCount = (int)(request.getAttribute("notifiedHostCount"));
 	int refundMoneyCount = (int)(request.getAttribute("refundMoneyCount"));
 	int newInquiryCount = (int)(request.getAttribute("newInquiryCount"));
-	ArrayList<Member> topUserList = (ArrayList<Member>)request.getAttribute("topUserList");
+	ArrayList<Member2> topUserList = (ArrayList<Member2>)request.getAttribute("topUserList");
+	ArrayList<Host> bestHostList = (ArrayList<Host>)request.getAttribute("bestHostList");
 %>    
 <!DOCTYPE html>
 <html lang="en">
@@ -43,10 +45,10 @@
         </div>
         <a class="active" href="/semi/index.ad">Dashboard</a>
         <a href="/semi/userList.ad">사용자</a>
-        <a href="admin_classApply.jsp">클래스</a>
-		<a href="admin_classCancel.jsp">클래스 취소</a>
-        <a href="admin_hostReport.jsp">신고</a>
-        <a href="/semi/claimList.ad">정산</a>
+        <a href="/semi/classApplyList.ad">클래스 등록 신청</a>
+		<a href="/semi/classList.ad">개설 클래스</a>
+        <a href="/semi/claimList.ad">신고</a>
+        <a href="/semi/paymentList.ad">정산</a>
     </div> 
 
     <div class="content">
@@ -83,20 +85,28 @@
         <div class="notif">
             <a href="admin_classApply.jsp" class="notification">
                 <span>개설 신청</span>
+                <% if(approvalClassCount != 0) { %>
                 <span class="badge"><%=approvalClassCount %></span>
+                <% } %>
             </a>
             <a href="admin_hostReport.jsp" class="notification">
                 <span>호스트 신고</span>
+                <% if(notifiedHostCount != 0) { %>
                 <span class="badge"><%=notifiedHostCount %></span>
+                <% } %>
             </a>
             <a href="admin_accountancy.jsp" class="notification">
                 <span>환불</span>
+                <% if(refundMoneyCount != 0) { %>
                 <span class="badge"><%=refundMoneyCount %></span>
+                <% } %>
             </a>
             <!-- TODO 문의하기 탭으로 넘기기 -->
             <a href="#" class="notification">
                 <span>문의</span>
+                <% if(newInquiryCount != 0) { %>
                 <span class="badge"><%=newInquiryCount %></span>
+                <% } %>
             </a>
         </div>
 
@@ -146,54 +156,36 @@
                 <h3>Top User</h3>
                 <table>
                     <tr>
-                        <th>No.</th>
+                        <th>회원 No</th>
+                        <th>회원명</th>
                         <th>회원 ID</th>
                         <th>수강횟수</th>
                     </tr>
-                    <%for(Member m : topUserList) {%>
+                    <% for(Member2 m2 : topUserList) {%>
                     <tr>
-                        <td>1</td>
-                        <td><%= m.getM_id() %></td>
-                        <td>204</td>
+                        <td><%=m2.getM_no() %></td>
+                        <td><%=m2.getM_name() %></td>
+                        <td><%=m2.getM_id() %></td>
+                        <td><%=m2.getUserClassCount() %></td>
                     </tr>
                     <% } %>
-                    <tr>
-                        <td>2</td>
-                        <td>akcm1</td>
-                        <td>42</td>
-                    </tr>
-                    <tr>
-                        <td>3</td>
-                        <td>joung1</td>
-                        <td>23</td>
-                    </tr>
                 </table> <br>
                 <h3>Best Host</h3>
                 <table>
                     <tr>
-                        <th>No.</th>
-                        <th>클래스명</th>
+                    	<th>호스트 No.</th>
+                        <th>호스트명</th>
                         <th>호스트 ID</th>
-                        <th>학생 수</th>
+                        <th>평점</th>
                     </tr>
+                    <% for(Host h : bestHostList) { %>
                     <tr>
-                        <td>1</td>
-                        <td>레츠고 자바</td>
-                        <td>kh9921</td>
-                        <td>204</td>
+                        <td><%=h.getHostNo() %></td>
+                        <td><%=h.getAccountHolder() %></td>
+                        <td><%=h.getHostMemId() %></td>
+                        <td><%=h.getAvgReview() %></td>
                     </tr>
-                    <tr>
-                        <td>2</td>
-                        <td>고티카</td>
-                        <td>akdm1sa</td>
-                        <td>49</td>
-                    </tr>
-                    <tr>
-                        <td>3</td>
-                        <td>굴삭기</td>
-                        <td>ekmm1</td>
-                        <td>23</td>
-                    </tr>
+                    <% } %>
                 </table>
             </div>
         </div>

@@ -43,9 +43,12 @@ public class ReviewDao2 {
 			
 			while(rset.next()) {
 				r = new Review2();
-				r.setRno(rset.getString("REV_NO"));
-				r.setRdate(rset.getDate("REV_DATE"));
-				r.setCname(rset.getString("CLASS_NAME"));
+				r.setcNo(rset.getString("CLASS_NO"));
+				r.setcName(rset.getString("CLASS_NAME"));
+				r.setcTime(rset.getInt("CLASS_TIME"));
+				r.setPsDate(rset.getString("PS_DATE"));
+				r.setPsStarttime(rset.getString("PS_STARTTIME"));
+				r.setPsEndtime(rset.getString("PS_ENDTIME"));
 				list.add(r);
 			}
 		} catch(SQLException e) {

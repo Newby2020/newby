@@ -43,9 +43,71 @@ public class NoticeService {
 		
 		Notice n = nDao.noticeSelectOne(con, nno);
 		
+		// 게시글 카운트용
+		if(n != null) {
+			int result = nDao.updateReadCount(con,nno);
+			
+			if(result > 0) commit(con);
+			else rollback(con);
+		}
+		
 		close(con);
 		
 		return n;
+	}
+
+	/**
+	 * 공지사항 등록용
+	 * @param n
+	 * @return
+	 */
+	public int noticeInsert(Notice n) {
+		Connection con = getConnection();
+		
+		int result = nDao.noticeInsert(con,n);
+		
+		if(result >= 1) commit(con);
+		else rollback(con);
+		
+		close(con);
+		
+		return result;
+	}
+
+	public int noticeUpdate(Notice n) {
+		Connection con = getConnection();
+		
+		int result = nDao.noticeUpdate(con,n);
+		
+		if(result > 0) commit(con);
+		else rollback(con);
+		
+		close(con);
+		
+		return result;
+	}
+
+	public Notice noticeUpdateView(String nno) {
+		Connection con = getConnection();
+		
+		Notice n = nDao.noticeSelectOne(con, nno);
+		
+		close(con);
+		
+		return n;
+	}
+
+	public int noticeDelete(String nno) {
+		Connection con = getConnection();
+		
+		int result = nDao.noticeDelete(con,nno);
+		
+		if(result > 0) commit(con);
+		else rollback(con);
+		
+		close(con);
+		
+		return result;
 	}
 
 

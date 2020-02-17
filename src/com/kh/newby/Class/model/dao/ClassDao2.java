@@ -33,11 +33,9 @@ public class ClassDao2 {
       public int insertClass(Connection con, ClassVo2 c) {      
          int result1 = 0;
          int result2 = 0;
-         int result3 = 0;
          PreparedStatement pstmt = null;
          String sql1 = prop.getProperty("insertClass");
          String sql2 = prop.getProperty("insertClassSchedule");
-         String sql3 = prop.getProperty("insertClassApproval");
          try {
         	 
         	
@@ -75,15 +73,12 @@ public class ClassDao2 {
                result2 = pstmt.executeUpdate();
             }
             
-            pstmt = con.prepareStatement(sql3);
-            result3 = pstmt.executeUpdate();
-            
          } catch (SQLException e) {
             e.printStackTrace();
          } finally {
             close(pstmt);
          }
-         return result3;
+         return result2;
       }
       
       public ArrayList<ClassVo2> ClassManagerList(Connection con, String hno) {
@@ -201,9 +196,10 @@ public class ClassDao2 {
 				list.add(c);
 			}
 		} catch(SQLException e) {
-			
+			e.printStackTrace();
 		} finally {
-			
+			close(rset);
+			close(pstmt);
 		}
 		
 		return list;
@@ -248,7 +244,6 @@ public class ClassDao2 {
             	System.out.println("클래스 스케줄 삭제 완료");
             }
             
-            
 //            System.out.println(result1);
             String[] cdate = c.getClassDate().split(",");
 //            System.out.println(Arrays.toString(cdate));
@@ -275,8 +270,7 @@ public class ClassDao2 {
 		} finally {
 			close(pstmt);
 		}
-		
-		
+			
 		return result2;
 	}
 

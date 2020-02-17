@@ -1,31 +1,28 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
-<%@ page
-	import="com.kh.newby.notice.model.vo.*, java.util.*, com.kh.newby.inquiry.model.vo.*"%>
-<%
-	Notice n = (Notice) request.getAttribute("notice");
-
+	pageEncoding="UTF-8" import="com.kh.newby.notice.model.vo.*, java.util.*"
 %>
+<% ArrayList<Notice> list = (ArrayList<Notice>)request.getAttribute("list"); 
+	Notice n = (Notice)request.getAttribute("notice");%>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Notice Detail</title>
+<title>NoticeInsert</title>
 <link rel="stylesheet" href="/semi/resources/css/joinModal.css">
 <link rel="stylesheet" href="/semi/resources/css/LoginModal.css">
 <link rel="stylesheet" href="/semi/resources/css/main-panel.css">
 <link rel="stylesheet" href="/semi/resources/css/mypage_h&j-frame.css">
-<link rel="stylesheet" href="/semi/resources/css/Customer_table.css">
-<link
-	href="https://fonts.googleapis.com/css?family=Nanum+GothicNoto+Sans+KR&display=swap"
-	rel="stylesheet">
+<link rel="stylesheet" href="/semi/resources/css/Customer_btn.css">
+<link href="https://fonts.googleapis.com/css?family=Nanum+GothicNoto+Sans+KR&display=swap" rel="stylesheet">
 <script src="/semi/resources/js/jquery-3.4.1.min.js"></script>
 </head>
 <body>
 	<div id="Allpanel" align="center">
 
-		<%@ include file="./common/header.jsp"%>
-
+		<%@ include file="./common/header.jsp"%> 
+		
+		
+		
 		<!-- 작업하는 컨텐츠 -->
 		<div id="newby-body-panel" class="contents-div123" align="left">
 
@@ -38,66 +35,72 @@
 				</button>
 				<div class="dropdown-soxk">
 					<a href="/semi/boardSelectList.bo?currentPage=1">문의 목록</a> <a
-						href="views/Customer_CreateInquiry.jsp">문의 작성</a>
+						href="Customer_CreateInquiry.jsp">문의 작성</a>
 				</div>
-				<a href="views/Customer_Report.jsp">신고</a> <a href="views/Customer_Refund.jsp">이용약관</a>
+				<a href="Customer_Report.jsp">신고</a> <a href="Customer_Refund.jsp">이용약관</a>
 			</div>
 
 			<!--contents-->
 			<div id="mn16s" align="center">
 
-
+				
 				<!-- 제목란이니깐 해당 제목 작성해서 하면 돼-->
 				<br>
-				<h2>공지 내용</h2>
+				<h2>공지사항 등록</h2>
 				<hr id="hrSet53">
 				<br> <br>
-
+				<% if(m != null && m.getM_nick().equals("관리자")) { %>
 				<div id="contentsDivSize29">
 					<!-- 여기다가 너가 작업한거 넣으면 돼-->
-
-					<form>
+					
+					<form action="<%= request.getContextPath() %>/semi/noticeInsert.no" method="post">>
+					
 						<table class="tbDetail">
 							<tr>
 								<td class="tdDetail">제목</td>
-								<td class="tdDetail" colspan="5"><span class="spN2"><%=n.getNtitle() %></span></td>
+								<td class="tdDetail" colspan="5"><input type="text" size="50" name="title"></td>
 							</tr>
 							<tr>
 								<td class="tdDetail">작성자</td>
-								<td class="tdSpan"><span class="spN"><%= n.getNwriter() %></span></td>
+								<td class="tdSpan">
+									<input type="text" value="<%= n.getNwriter() %>" name="writer" readonly>
+								
 								<td class="tdDetail">작성일</td>
-								<td class="tdSpan"><span class="spN"><%= n.getNdate() %></span></td>
-								<td class="tdDetail">조회수</td>
-								<td class="tdSpan"><span class="spN"><%=n.getNcount() %></span></td>
+								<td class="tdSpan"><input type="date" name="date"></td>
 							</tr>
 							<tr>
 								<td class="tdDetail">내용</td>
 								<td class="tbSpan2" colspan="5"></td>
 							</tr>
-
 							<tr>
-								<td class="tdContent" colspan="6"><span class="spN"><%= n.getNcontent() %></span></td>
+								<td colspan="4">
+									<textarea name="content" cols="60" rows="15" style="resize:none;"></textarea>
+								</td>
 							</tr>
 						</table>
 						<br>
 						<div align="center">
-
-						<% if( m != null && m.getM_name().equals("관리자")) { %>
-							<button onclick="location.href='noticeUpdateView.no?nno=<%=n.getNno()%>'">수정하기</button>
-						<% } %>
+							<button type="reset">취소하기</button>
+							<button type="submit">등록하기</button>
 						</div>
 
-
 					</form>
-
+					
 				</div>
-
+				<% } else {
+					request.setAttribute("msg", "관계자 외에 접근이 불가능한 페이지입니다.");
+					request.getRequestDispatcher("/views/common/errorPage.jsp").forward(request, response);
+				} %>
 			</div>
-
+				
 		</div>
+		
 		<%@ include file="./common/footer.jsp"%>
-
 	</div>
+
+	<script>
+        
+    </script>
 
 </body>
 </html>
