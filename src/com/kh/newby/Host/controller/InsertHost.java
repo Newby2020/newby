@@ -11,6 +11,7 @@ import javax.servlet.http.HttpSession;
 
 import com.kh.newby.Host.model.service.HostService;
 import com.kh.newby.Host.model.vo.Host;
+import com.kh.newby.Member.model.service.MemberService;
 import com.kh.newby.Member.model.vo.Member;
 
 /**
@@ -38,7 +39,7 @@ public class InsertHost extends HttpServlet {
 		String accountHolder=request.getParameter("accountHolder");
 		String accountNum=request.getParameter("accountNum");
 		
-		HttpSession session = request.getSession();
+		HttpSession session = request.getSession(false);
 
 		Member m = (Member)session.getAttribute("Member");
 		
@@ -56,6 +57,8 @@ public class InsertHost extends HttpServlet {
 			
 			hs.insertHost(h,memberId);
 			
+			m = new MemberService().selectMember(m);
+			session.setAttribute("Member", m);
 			response.sendRedirect("index.jsp");
 		}catch(Exception e) {
 			e.printStackTrace();
