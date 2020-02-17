@@ -13,9 +13,7 @@ public class ClassService {
 	private ClassDao cDao = new ClassDao();
 
 	public ClassVo selectOne(String cno) {
-		
 		Connection conn = getConnection();
-		
 		ClassVo cv = new ClassVo();
 		
 		cv = cDao.selectOne(conn, cno);
