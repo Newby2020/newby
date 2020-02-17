@@ -1,4 +1,4 @@
-package com.kh.newby.Class.controller;
+package com.kh.newby.Payment.controller;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -8,23 +8,21 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 
-import com.kh.newby.Class.model.service.ClassService2;
-import com.kh.newby.Class.model.vo.ClassVo2;
-import com.kh.newby.Member.model.vo.Member;
+import com.kh.newby.Payment.model.service.PaymentService;
+import com.kh.newby.Payment.model.vo.Payment;
 
 /**
- * Servlet implementation class ClassSelectHnoServlet
+ * Servlet implementation class MemberMileageServelt
  */
-@WebServlet("/cSelHno.do")
-public class ClassManagerServlet extends HttpServlet {
+@WebServlet("/mMile.do")
+public class MileageServelt extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public ClassManagerServlet() {
+    public MileageServelt() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -33,28 +31,22 @@ public class ClassManagerServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// 1. 게시판 페이징 처리하기
-		// 페이징 처리 : 
-		// 	대용량의 데이터를 한 번에 처리하지 않고
-		//	특정 개수만큼 끊어서 표현하는 기술
-		
-		ArrayList<ClassVo2> list = null;
-		
-		ClassService2 cs = new ClassService2();
+		ArrayList<Payment> list = null;
 		
 //		HttpSession session = request.getSession(false);
 //		Member m = (Member)session.getAttribute("member");
 		
-		String hno = "H1"; //String hno = m.getH_no();						/////////////////////////////////수정해야됨////////////////////////////
-		
-		list = cs.ClassManagerList(hno);
+		String mno = "M3"; //String mno = m.getM_no();						/////////////////////////////////수정해야됨////////////////////////////
+
+		list = new PaymentService().MileageList(mno);
 		String page = "";
+		
 		if(list != null) {
-			page = "views/mypage_ClassManager.jsp";
+			page = "views/mypage_Mileage.jsp";
 			request.setAttribute("list", list);
 		} else {
 			page = "views/common/errorPage.jsp";
-			request.setAttribute("msg", "등록한 클래스 목록 출력 실패!");
+			request.setAttribute("msg", "마일리지 페이지 불러오기 실패!");
 		}
 		request.getRequestDispatcher(page).forward(request, response);
 	}

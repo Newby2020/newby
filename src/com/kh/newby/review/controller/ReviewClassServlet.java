@@ -1,4 +1,4 @@
-package com.kh.newby.Class.controller;
+package com.kh.newby.review.controller;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -8,23 +8,22 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 
 import com.kh.newby.Class.model.service.ClassService2;
-import com.kh.newby.Class.model.vo.ClassVo2;
-import com.kh.newby.Member.model.vo.Member;
+import com.kh.newby.review.model.service.ReviewService2;
+import com.kh.newby.review.model.vo.Review2;
 
 /**
- * Servlet implementation class MemberMileageServelt
+ * Servlet implementation class ReviewClass
  */
-@WebServlet("/mMile.do")
-public class MemberMileageServelt extends HttpServlet {
+@WebServlet("/review.do")
+public class ReviewClassServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public MemberMileageServelt() {
+    public ReviewClassServlet() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -33,26 +32,28 @@ public class MemberMileageServelt extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		ArrayList<ClassVo2> list = null;
+		ArrayList<Review2> list = null;
 		
-		ClassService2 cs = new ClassService2();
+		ReviewService2 rs = new ReviewService2();
 		
 //		HttpSession session = request.getSession(false);
 //		Member m = (Member)session.getAttribute("member");
 		
-		String mno = "M3"; //String mno = m.getM_no();						/////////////////////////////////수정해야됨////////////////////////////
-
-		list = cs.MileageList(mno);
-		String page = "";
+		String mno = "M7"; //String hno = m.getM_no();						/////////////////////////////////수정해야됨////////////////////////////
 		
+		list = rs.ReviewList(mno);
+		
+		String page = "";
+
 		if(list != null) {
-			page = "views/mypage_Mileage.jsp";
+			page = "views/mypage_WritingReview1.jsp";
 			request.setAttribute("list", list);
 		} else {
 			page = "views/common/errorPage.jsp";
-			request.setAttribute("msg", "마일리지 페이지 불러오기 실패!");
+			request.setAttribute("msg", "해당 유저 리뷰 리스트 출력 실패!");
 		}
 		request.getRequestDispatcher(page).forward(request, response);
+		
 	}
 
 	/**

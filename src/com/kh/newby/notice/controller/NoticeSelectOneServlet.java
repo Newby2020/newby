@@ -7,6 +7,9 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.kh.newby.notice.model.service.NoticeService;
+import com.kh.newby.notice.model.vo.Notice;
+
 /**
  * Servlet implementation class NoticeSelectOneServlet
  */
@@ -26,8 +29,22 @@ public class NoticeSelectOneServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		response.getWriter().append("Served at: ").append(request.getContextPath());
+		String nno = request.getParameter("nno");
+		System.out.println(nno);
+		
+		// 게시글 보기
+		Notice n = new NoticeService().noticeSelectOne(nno);
+		
+		String page = "";
+		if(n != null) {
+			page="views/Customer_NoticeDetail.jsp";
+			request.setAttribute("notice", n);
+		} else {
+			page="views/common/errorPage.jsp";
+			request.setAttribute("msg", "게시글 목록 조회 실패!");
+		}
+		
+		request.getRequestDispatcher(page).forward(request, response);
 	}
 
 	/**

@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8" import="com.kh.newby.Member.model.vo.*, com.kh.newby.Class.model.vo.*"%>
+    pageEncoding="UTF-8" import="java.util.*, 
+    							 com.kh.newby.Member.model.vo.*, 
+    							 com.kh.newby.Class.model.vo.*"%>
 <% 
 	int userCount = (int)(request.getAttribute("userCount"));
 	int hostCount = (int)(request.getAttribute("hostCount"));
@@ -8,6 +10,7 @@
 	int notifiedHostCount = (int)(request.getAttribute("notifiedHostCount"));
 	int refundMoneyCount = (int)(request.getAttribute("refundMoneyCount"));
 	int newInquiryCount = (int)(request.getAttribute("newInquiryCount"));
+	ArrayList<Member> topUserList = (ArrayList<Member>)request.getAttribute("topUserList");
 %>    
 <!DOCTYPE html>
 <html lang="en">
@@ -147,11 +150,13 @@
                         <th>회원 ID</th>
                         <th>수강횟수</th>
                     </tr>
+                    <%for(Member m : topUserList) {%>
                     <tr>
                         <td>1</td>
-                        <td>kh9921</td>
+                        <td><%= m.getM_id() %></td>
                         <td>204</td>
                     </tr>
+                    <% } %>
                     <tr>
                         <td>2</td>
                         <td>akcm1</td>

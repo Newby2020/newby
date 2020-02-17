@@ -35,7 +35,7 @@
                     <br>
                     <h2>클래스 관리</h2>
                     <hr id="hrSet53">
-                    <h4 align="center" style="color: gray; font-weight: normal;">현재 관리자에게 승인여부를 받지 않은 클래스는 수정 및 삭제가 가능합니다.</h4>
+                    <h4 align="center" style="color: gray; font-weight: normal;">현재 관리자에게 승인을 받지 않았거나 반려된 클래스는 수정 및 삭제가 가능합니다.</h4>
                     <br>
                     <div id="contentsDivSize29">
                         <div>

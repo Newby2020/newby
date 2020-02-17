@@ -1,11 +1,11 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8" import="com.kh.newby.Class.model.vo.*, java.util.*,  java.text.DecimalFormat"%>
+    pageEncoding="UTF-8" import="com.kh.newby.Payment.model.vo.*, java.util.*,  java.text.DecimalFormat"%>
     
 <%
 	DecimalFormat formatter = new DecimalFormat("###,###");
-	ArrayList<ClassVo2> list = (ArrayList<ClassVo2>)request.getAttribute("list");
-	int mile = list.get(0).getM_mile();
-	for(ClassVo2 c : list){
+	ArrayList<Payment> list = (ArrayList<Payment>)request.getAttribute("list");
+	int mile = list.get(0).getMileage();
+	for(Payment c : list){
 		System.out.println(c.toString());
 	}
 	
@@ -60,7 +60,7 @@ td{
                     <br>
                     <div id="contentsDivSize29">
                         <div>
-                            <div align="center" id="miletitle1sdk" style="font-weight: normal;">적립된 마일리지</div>
+                            <div align="center" id="miletitle1sdk" style="font-weight: normal;">나의 마일리지</div>
                             <div align="center">
                               <input type="text" id="mileage1kc" value="<%= formatter.format(mile)%> 원">
                             </div>
@@ -80,10 +80,10 @@ td{
                                 </tr>
                               </thead>
                               <tbody align="center">
-                              <%for(ClassVo2 c : list){ %>
+                              <%for(Payment c : list){ %>
                                 <tr>
-                                  <td style="font-size:8pt;"><%=c.getPayDate() %></td>
-                                  <td style="font-size:8pt;"><%=c.getClassName() %></td>
+                                  <td style="font-size:8pt;"><%=c.getpDate() %></td>
+                                  <td style="font-size:8pt;"><%=c.getCName() %></td>
                                   <td style="font-size:8pt;"></td>
                                   <%-- <td>
                                   	<%=c.getM_pMile() %>

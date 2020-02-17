@@ -79,9 +79,9 @@
                     <label for="star2" title="text">2 stars</label>
                     <input type="radio" id="star1" name="rate" value="1" />
                     <label for="star1" title="text">1 star</label>
-                  </div>
+                </div>
                   <br><br><br>
-            <textarea name="" id="" cols="30" rows="10"></textarea>
+            <textarea name="contents" id="" cols="30" rows="10"></textarea>
             <div style="margin-top: 3px;">
                 <button class="btn">등록</button>
                 &nbsp;&nbsp;
