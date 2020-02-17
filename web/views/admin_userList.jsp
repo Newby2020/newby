@@ -30,6 +30,9 @@
 
     <!-- The Modal & CheckBox-->
     <link rel="stylesheet" href="/semi/resources/css/admin_modal&checkBox.css">
+    
+    <!-- jQuery -->
+    <script src="/semi/resources/js/jquery-3.4.1.min.js"></script>
 </head>
 
 <body>
@@ -41,7 +44,7 @@
         </div>
         <a href="/semi/index.ad">Dashboard</a>
         <a class="active" href="/semi/userList.ad">사용자</a>
-        <a href="/semi/ClassApplyList.ad">클래스 등록 신청</a>
+        <a href="/semi/classApplyList.ad">클래스 등록 신청</a>
 		<a href="/semi/classList.ad">개설 클래스</a>
         <a href="/semi/claimList.ad">신고</a>
         <a href="/semi/paymentList.ad">정산</a>
@@ -79,13 +82,16 @@
             </table>
         </div>
      	<%-- 페이지 처리 --%>
-		<div class="pagingArea" align="center">
+  		<div class="pagingArea" align="center">
 			<button onclick="location.href='<%= request.getContextPath() %>/userList.ad?currentPage=1'"><<</button>
+			
+			
 			<%  if(currentPage <= 1){  %>
 			<button disabled><</button>
 			<%  }else{ %>
 			<button onclick="location.href='<%= request.getContextPath() %>/userList.ad?currentPage=<%=currentPage - 1 %>'"><</button>
 			<%  } %>
+			
 			
 			<% for(int p = startPage; p <= endPage; p++){
 					if(p == currentPage){	
@@ -101,6 +107,7 @@
 			<%  }else{ %>
 			<button onclick="location.href='<%= request.getContextPath() %>/userList.ad?currentPage=<%=currentPage + 1 %>'">></button>
 			<%  } %>
+	
 			<button onclick="location.href='<%= request.getContextPath() %>/userList.ad?currentPage=<%= maxPage %>'">>></button>
 		</div>
     </div>

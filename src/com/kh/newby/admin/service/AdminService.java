@@ -68,5 +68,26 @@ public class AdminService {
 		close(con);
 		return list;
 	}
+
+	
+//-------------------------- ClassApplyList -----------------------------//	
+	public int getClassApplyListCount() {
+		Connection con = getConnection();
+		
+		int listCount = aDao.getClassApplyListCount(con);
+		
+		close(con);
+				
+		return listCount;
+	}
+
+	public ArrayList<ClassVo> selectClassApplyList(int currentPage, int limit) {
+		Connection con = getConnection();
+		ArrayList<ClassVo> list = aDao.selectClassApplyList(con, currentPage, limit);
+		
+		close(con);
+		
+		return list;
+	}
 	
 }
