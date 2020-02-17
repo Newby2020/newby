@@ -16,7 +16,7 @@ public class Host implements Serializable{
 	private String accountHolder;
 	private String accountNum;
 	private String hostIntro;
-	private int avgReview;
+	private double avgReview;
 	private Date hostEnrolldate;
 	private Date startDate;
 	private Date finishDate;
@@ -26,7 +26,7 @@ public class Host implements Serializable{
 	}
 
 	public Host(String hostNo, String hostMemId, String bank, String accountHolder, String accountNum, String hostIntro,
-			int avgReview, Date hostEnrolldate, Date startDate, Date finishDate) {
+			double avgReview, Date hostEnrolldate, Date startDate, Date finishDate) {
 		super();
 		this.hostNo = hostNo;
 		this.hostMemId = hostMemId;
@@ -98,11 +98,14 @@ public class Host implements Serializable{
 		this.hostIntro = hostIntro;
 	}
 
-	public int getAvgReview() {
+	
+
+	
+	public double getAvgReview() {
 		return avgReview;
 	}
 
-	public void setAvgReview(int avgReview) {
+	public void setAvgReview(double avgReview) {
 		this.avgReview = avgReview;
 	}
 
