@@ -62,16 +62,16 @@ public class LoginServlet extends HttpServlet {
 		} catch (MemberException e) {// 에러가 났을때
 			
 			out.println(
-					"<script>"+
+					"<html><script>"+
 					"alert("+e.getMessage()+"');"+
-					"</script>"
+					"</script></html>"
 					);
 			
 //			response.sendRedirect("/semi/index.jsp");
 //			request.setAttribute("msg", "아이디나 비밀번호를 잘못 입력하셨습니다");
 //			request.setAttribute("exception", e);
 			
-			request.getRequestDispatcher("index.jsp").forward(request, response);
+			response.sendRedirect("index.jsp");
 			
 		}
 		
