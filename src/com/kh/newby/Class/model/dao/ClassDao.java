@@ -33,7 +33,6 @@ public class ClassDao {
 		
 		String sql = prop.getProperty("classSelectOne");
 		try {
-			System.out.println(sql);
 			pstmt = conn.prepareStatement(sql);
 			pstmt.setString(1, cno);
 			

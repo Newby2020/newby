@@ -35,7 +35,7 @@ public class ClassSelectOneServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		//최종본
 		String cno = request.getParameter("cno");
-		
+		System.out.println("cno : " + cno);
 		ClassService sc = new ClassService();
 		
 		// 클래스 상세정보

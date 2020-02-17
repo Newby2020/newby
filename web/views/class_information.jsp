@@ -13,6 +13,7 @@
 <head>
 <meta charset="UTF-8">
 <link rel="stylesheet" href="/semi/resources/css/class_information.css" type="text/css">
+<!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css"> -->
 <title>클래스 상세 페이지</title>
 </head>
 <body>
@@ -22,7 +23,7 @@
     <div class="wrap">
         <div class="main">
             <div class="class_img">
-                <img src="./class_example.jpg" class="class_img" alt="">
+                <img src="../semi/resources/uploadImg/ABC.jpg" class="class_img" alt="">
             </div>
             <div class="class_navi" id="class_nav_div">
                     <a href="#sumary" id="summary_nav" class="navi_bar">요약</a>
@@ -45,6 +46,9 @@
                     </div>
                 </div>
             </div> -->
+            <div style="border-bottom: 1px solid #e1e2e3">
+            <h1><%= cv.getClassName() %></h1>
+            </div>
             <!-- 강사 소개 -->
             <div class="host_detail" id="host_detail">
                 <div class="host_detail_title"><h1>강사 소개</h1></div>
@@ -92,11 +96,11 @@
                         <h1 style="padding: 2%;">리뷰(Review)</h1>
                         <a class="btn_st" id="btn_write_review">리뷰쓰기</a>
                         <div class="review_box">
-                            <img src="../resources/images/roundstar.png">
-                            <img src="../resources/images/roundstar.png">
-                            <img src="../resources/images/roundstar.png">
-                            <img src="../resources/images/roundstar.png">
-                            <img src="../resources/images/roundstar.png"><%= cv.getAverageReview() %></div>
+                            <img src="/semi/resources/images/roundstar.png">
+                            <img src="/semi/resources/images/roundstar.png">
+                            <img src="/semi/resources/images/roundstar.png">
+                            <img src="/semi/resources/images/roundstar.png">
+                            <img src="/semi/resources/images/roundstar.png"><%= cv.getAverageReview() %></div>
 
                         <div class="review_list" id="bookmarkReview">
                             <ul>

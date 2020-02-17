@@ -75,8 +75,8 @@
     border-radius: 3px;
 }
 #pay_btn{
-        font-size: 30px;
-    }
+    font-size: 30px;
+}
 #pay_a{
     text-decoration: none;
     color: white;
@@ -89,7 +89,7 @@
     font-family: 'Noto Sans KR', sans-serif;
 }
 .side .class_price{
-    padding: 10px 20px;
+    padding: 20px 20px;
     
 }
 .side .price{
