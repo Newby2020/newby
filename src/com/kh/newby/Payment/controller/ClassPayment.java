@@ -1,6 +1,7 @@
 package com.kh.newby.Payment.controller;
 
 import java.io.IOException;
+import java.util.ArrayList;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -8,17 +9,20 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.kh.newby.Class.model.vo.ClassVo;
+import com.kh.newby.Payment.model.service.PaymentService2;
+
 /**
- * Servlet implementation class PaymentPageServlet
+ * Servlet implementation class ClassPayment
  */
-@WebServlet("/pay.do")
-public class PaymentPageServlet extends HttpServlet {
+@WebServlet("/classPay.do")
+public class ClassPayment extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public PaymentPageServlet() {
+    public ClassPayment() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -27,8 +31,16 @@ public class PaymentPageServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		response.getWriter().append("Served at: ").append(request.getContextPath());
+
+		
+		ArrayList<ClassVo> classInfoList = null;
+		
+		PaymentService2 ps2 = new PaymentService2();
+		
+		classInfoList = ps2.getClassInfoList();
+		
+
+		
 	}
 
 	/**

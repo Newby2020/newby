@@ -11,6 +11,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.kh.newby.Host.model.vo.Host;
 import com.kh.newby.Member.model.vo.Member;
+import com.kh.newby.Member.model.vo.Member2;
 import com.kh.newby.admin.service.AdminService2;
 
 /**
@@ -107,26 +108,26 @@ public class IndexServlet extends HttpServlet {
 		
 		newInquiryCount = as2.getNewInquiryCount();
 		
-		page = "views/admin_index.jsp";
+		page = "/views/admin_index.jsp";
 		request.setAttribute("newInquiryCount", newInquiryCount);
 		
 
 		// ==== 멤버 중 수강횟수 많은 순서대로 리스트 가져오기 ================================
-		ArrayList<Member> topUserList = null;
+		ArrayList<Member2> topUserList = null;
 		
 		topUserList = as2.getTopUserList();
 		
-		page = "views/admin_index.jsp";
+		page = "/views/admin_index.jsp";
 		request.setAttribute("topUserList", topUserList);
 		
 		
 		// ==== 호스트 중 평점 높은 순서대로 리스트 가져오기 ================================
-/*		ArrayList<Host> bestHostList = null;
+		ArrayList<Host> bestHostList = null;
 		
 		bestHostList = as2.getBestHostList();
 		
-		page = "view/admin_index.jsp";
-		request.setAttribute("bestHostList", bestHostList);*/
+		page = "/views/admin_index.jsp";
+		request.setAttribute("bestHostList", bestHostList);
 		
 		request.getRequestDispatcher(page).forward(request, response);
 	}
