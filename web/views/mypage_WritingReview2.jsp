@@ -1,5 +1,9 @@
+<%@page import="com.sun.org.apache.xalan.internal.xsltc.compiler.sym"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+    <% String cno = request.getParameter("cno");
+    	String psno = request.getParameter("psno");
+    	%>
 <!DOCTYPE html>
 <html lang="ko">
 <head>
@@ -63,11 +67,13 @@
 </head>
 
 <body>
-    <form action="">
+    <form action="/semi/rInsert.rv" method="get">
         <div style="margin: 30px; margin-left: auto; margin-right: auto; width: 250px;
                     height: 300px; text-align: center;">
     
             <h1 style=" margin-bottom: 8px;">후기 작성</h1>
+            <input type="hidden" name="cno" value="<%=cno %>" >
+            <input type="hidden" name="psno" value="<%=psno %>" >
                 <div class="rate">
                     <input type="radio" id="star5" name="rate" value="5" />
                     <label for="star5" title="text">5 stars</label>
