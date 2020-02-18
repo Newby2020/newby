@@ -7,7 +7,9 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
+import com.kh.newby.Member.model.vo.Member;
 import com.kh.newby.review.model.service.ReviewService3;
 import com.kh.newby.review.model.vo.Review3;
 
@@ -30,15 +32,22 @@ public class ReviewInsertServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		//리뷰 작성 및 작성여부 업데이트 Servlet
+		//리뷰 작성 및 작성여부 호스트 평점 업데이트 Servlet
 		Review3 rv = new Review3();
 		
-		rv.setcNo(request.getParameter("cno"));
-		rv.setmNo(request.getParameter("mno"));
+//		HttpSession session = request.getSession(false);
+//		Member m = (Member)session.getAttribute("member");
+		String cno = request.getParameter("cno");
+//		String mno = m.getM_no();
+//		
+		String mno = "M7";
+		
+		rv.setcNo(cno);
+		rv.setmNo(mno);
 		rv.setrPoint(Integer.parseInt(request.getParameter("rate")));
 		rv.setrContent(request.getParameter("contents"));
 		
-		String psNo = request.getParameter("psNo");
+		String psNo = request.getParameter("psno");
 		
 		ReviewService3 rs = new ReviewService3();
 		// 리뷰작성
@@ -49,8 +58,16 @@ public class ReviewInsertServlet extends HttpServlet {
 			//리뷰 작성여부 업데이트(ps테이블)
 			int revYN = rs.updateRevYN(psNo);
 			
-			if(revYN > 0 ) System.out.println("리뷰 등록여부 업데이트 완료");
-			else System.out.println("리뷰 등록여부 업데이트 실패");
+			if(revYN > 0 ) {
+				System.out.println("리뷰 등록여부 업데이트 완료");
+
+				// 호스트 평점 업데이트 
+				int updHpt = rs.updateHostPoint(cno);
+				if(updHpt > 0 ) System.out.println("호스트 평점 업데이트 완료");
+				else System.out.println("호스트 평점 업데이트 실패");
+			}else {
+				System.out.println("리뷰 등록여부 업데이트 실패");
+			}
 			
 			
 			response.sendRedirect("review.do");

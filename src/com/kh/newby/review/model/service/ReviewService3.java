@@ -49,6 +49,26 @@ public class ReviewService3 {
 	}
 
 
+	public int updateHostPoint(String cno) {
+		Connection conn = getConnection();
+
+		String hno = rDao.inCnoOutHno(conn, cno);
+		
+		float avgRpt = rDao.avgRevPt(conn,hno);
+		
+		
+		int updHpt = rDao.updateHostPoint(conn, hno, avgRpt);
+		
+		if(updHpt >=1) commit(conn);
+		else rollback(conn);
+
+		close(conn);
+
+		return updHpt;
+
+	}
+
+
 
 
 }

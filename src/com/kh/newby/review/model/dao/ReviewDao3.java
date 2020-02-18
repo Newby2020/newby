@@ -79,4 +79,83 @@ public class ReviewDao3 {
 		
 		return revYN;
 	}
+
+	public int updateHostPoint(Connection conn, String hno, float avgRpt) {
+		int updHpt = 0;
+		
+		PreparedStatement pstmt = null;
+
+		String sql = prop.getProperty("updateHostPoint");
+
+		try {
+			pstmt = conn.prepareStatement(sql);
+
+			pstmt.setDouble(1, avgRpt);
+			pstmt.setString(2, hno);
+
+			updHpt = pstmt.executeUpdate();
+
+		}catch(SQLException e) {
+			e.printStackTrace();
+		}finally {
+			close(pstmt);
+		}
+		
+		return updHpt;
+	}
+	
+	public String inCnoOutHno(Connection conn, String cno) {
+		String hno = null;
+		
+		PreparedStatement pstmt = null;
+		
+		ResultSet rset = null;
+		
+		String sql = prop.getProperty("inCnoOutHno");
+
+		try {
+			pstmt = conn.prepareStatement(sql);
+
+			pstmt.setString(1, cno);
+			
+			
+			rset = pstmt.executeQuery();
+			if(rset.next()) {
+				hno =  rset.getString(1);
+			}
+			
+			
+		}catch(SQLException e) {
+			e.printStackTrace();
+		}finally {
+			close(pstmt);
+		}
+		
+		return hno;
+	}
+
+	public float avgRevPt(Connection conn, String hno) {
+		float avgRpt = 0;
+		PreparedStatement pstmt = null;
+		ResultSet rset = null;
+
+		String sql = prop.getProperty("avgRevPt");
+		try {
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, hno);
+			rset = pstmt.executeQuery();
+			
+			if(rset.next()) {
+				avgRpt = rset.getFloat(1);
+			}
+
+
+		}catch(SQLException e) {
+			e.printStackTrace();
+		}finally {
+			close(pstmt);
+		}
+
+		return avgRpt;
+	}
 }
