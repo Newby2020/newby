@@ -328,7 +328,7 @@ public class AdminDao {
 		try {
 			pstmt = con.prepareStatement(sql);
 			
-			pstmt.setString(1, cno);
+			pstmt.setString(1, "C10");
 			
 			rset = pstmt.executeQuery();
 			
