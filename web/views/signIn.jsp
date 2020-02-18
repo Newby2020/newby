@@ -30,7 +30,7 @@ html {
 		<br>
 		<br>
 		<div id="signIn-panel">
-			<form id="joinForm" action='<!-- /semi/insert.me -->' class="joinForm" onsubmit="return validate();">
+			<form id="joinForm" action="/semi/insert.me" class="joinForm" onsubmit="return validate();">
 				<div class="guideSentence">
 					<label style="margin-bottom: 3px;"><b>회원가입</b></label> <br>
 					<hr style="margin-top: 10px;">
@@ -64,12 +64,10 @@ html {
 								name="user_name" value="" maxlength=100; placeholder="이름 입력">
 						</div>
 						<div class="required">
-							<input type="text" class="joinInfo" id="phone" name="phone"
-								value="" maxlength=100; placeholder="휴대폰 번호 입력"> <input
-								type="text" class="joinInfo" id="securePhone" name="securePhone"
-								maxlength=4 style="width: 60px;" placeholder="인증코드">
-							<span onclick="secureButton();" id="secureButton"
-								class="secureButton" onsubmit="return false" style="background-color: lightgray; font-size: small">인증</span>
+						<input type="text" class="joinInfo" id="phone" name="phone" value="" maxlength=100; placeholder="휴대폰 번호 입력"> 
+						<input type="text" class="joinInfo" id="securePhone" name="securePhone" maxlength=4 style="width: 60px;" placeholder="인증코드">
+						<span  id="secureButton" class="secureButton" style="background-color: lightgray; font-size: small">인증</span>
+								
 						</div>
 					</div>
 				</div>
@@ -109,6 +107,25 @@ html {
 	
 	
 	<script>
+	
+		$('#secureButton').click(function(){
+			$.ajax({
+				url: "/semi/certify.me" ,
+				type : "post",
+				data: {
+					user_Id : $('#user_Id').val()
+				},
+				success : function(data){
+					if(data=="성공"){
+						alert("메일 보내기 성공");
+					}
+				},
+				error : function(){
+					console.log("---Error---");
+				}
+			})
+		})
+		
 		/*아이디 중복 체크*/
 		$('#checkId').click(function() {
 			$.ajax({
@@ -160,6 +177,7 @@ html {
 
 			});
 		});
+		
 		
 		
 		function pwdCheck(){

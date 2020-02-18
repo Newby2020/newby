@@ -60,7 +60,7 @@ public class ClassApplyListServlet extends HttpServlet {
 		}
 		
 		list = as.selectClassApplyList(currentPage, limit);
-		System.out.println(list);
+//		System.out.println(list);
 		
 		String page = "";
 		

@@ -14501,7 +14501,7 @@ var widgetsSlider = $.widget( "ui.slider", $.ui.mouse, {
 		min: 0,
 		orientation: "horizontal",
 		range: false,
-		step: 1,
+		step: 1000,
 		value: 0,
 		values: null,
 
