@@ -35,13 +35,17 @@ public class NoticeInsertServlet extends HttpServlet {
 		// 제목
 		String ntitle = request.getParameter("title");
 		// 작성자
-		String nwriter = request.getParameter("writer");
+		String writer = request.getParameter("writer");
 		// 내용
-		String ncontent = request.getParameter("content");
+		String content = request.getParameter("content");
 		// 날짜
 		String date = request.getParameter("date");
 		
 		System.out.println(date);
+		System.out.println(ntitle);
+		System.out.println(writer);
+		System.out.println(content);
+		
 		Date writeDate = null;
 		
 		if(date != "" && date != null) {
@@ -61,8 +65,8 @@ public class NoticeInsertServlet extends HttpServlet {
 		
 		Notice n = new Notice();
 		n.setNtitle(ntitle);
-		n.setNwriter(nwriter);
-		n.setNcontent(ncontent);
+		n.setNwriter(writer);
+		n.setNcontent(content);
 		n.setNdate(writeDate);
 		
 		NoticeService ns = new NoticeService();
@@ -74,7 +78,7 @@ public class NoticeInsertServlet extends HttpServlet {
 			
 		} else {
 			request.setAttribute("msg", "공지사항 등록 오류");
-			request.getRequestDispatcher("views/common.errorPage.jsp").forward(request, response);
+			request.getRequestDispatcher("views/common/errorPage.jsp").forward(request, response);
 		}
 	}
 	

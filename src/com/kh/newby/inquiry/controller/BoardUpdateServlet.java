@@ -1,62 +1,51 @@
 package com.kh.newby.inquiry.controller;
 
 import java.io.IOException;
-import java.util.ArrayList;
-
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.kh.newby.inquiry.model.service.BoardCommentService;
 import com.kh.newby.inquiry.model.service.BoardService;
 import com.kh.newby.inquiry.model.vo.Board;
 
 /**
- * Servlet implementation class BoardSelectOneServlet
+ * Servlet implementation class BoardUpdateServlet
  */
-@WebServlet("/boardSelectOne.bo")
-public class BoardSelectOneServlet extends HttpServlet {
+@WebServlet("/boardUpdate.bo")
+public class BoardUpdateServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public BoardSelectOneServlet() {
+    public BoardUpdateServlet() {
         super();
         // TODO Auto-generated constructor stub
     }
-    
 
 	/**
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-	
+		String title = request.getParameter("title");
+		String content = request.getParameter("content");
 		String bno = request.getParameter("bno");
-		System.out.println(bno);
 		
-//		BoardService bs = new BoardService();
+		Board b = new Board();
+		b.setItitle(title);
+		b.setIcontent(content);
+		b.setIno(bno);
 		
-		// 게시글 보기
-		Board b = new BoardService().boardSelectOne(bno);
+		int result = new BoardService().boardUpdate(b);
 		
-		
-		// 댓글 불러오기
-		ArrayList<Board> clist = new BoardCommentService().selectList(bno);
-		
-		String page = "";
-		if(b != null) {
-			page="views/Customer_InquiryDetail.jsp";
-			request.setAttribute("board", b);
-			request.setAttribute("clist", clist);
+		if(result > 0) {
+			response.sendRedirect("boardSelectOne.no?bno="+bno);
 		} else {
-			page = "views/common/errorPage.jsp";
-			request.setAttribute("msg", "게시글 목록 조회 실패!");
+			request.setAttribute("msg", "문의 수정 실패");
+			request.getRequestDispatcher("views/common/errorPage.jsp").forward(request, response);
 		}
-		
-		request.getRequestDispatcher(page).forward(request, response);
 	}
 
 	/**
