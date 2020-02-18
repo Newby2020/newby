@@ -43,24 +43,24 @@
 			<!--contents-->
 			<div id="mn16s" align="center">
 
+				<% if(m != null && m.getM_name().equals("관리자")) { %>
 				
 				<!-- 제목란이니깐 해당 제목 작성해서 하면 돼-->
 				<br>
 				<h2>공지사항 등록</h2>
 				<hr id="hrSet53">
 				<br> <br>
-				<% if(m != null && m.getM_name().equals("관리자")) { %>
 				<div id="contentsDivSize29">
 					<!-- 여기다가 너가 작업한거 넣으면 돼-->
 					
-					<form id="updateForm" method="post">>
+					<form id="updateForm" method="post">
 					
 						<table class="tbDetail">
 							<tr>
 								<td class="tdDetail">제목</td>
-								<td class="tdDetail" colspan="5">
+								<td class="tdDetail" colspan="6">
 									<input type="text" size="50" name="title" 
-							       		value="<%= n.getNtitle()/* .replace("\"", "&#34;") */ %>">
+							       		value="<%= n.getNtitle() %>">
 									<input type="hidden" name="nno" value="<%= n.getNno() %>"></td>
 							</tr>
 							<tr>
@@ -73,27 +73,25 @@
 							</tr>
 							<tr>
 								<td class="tdDetail">내용</td>
-								<td class="tbSpan2" colspan="5"></td>
+								<td class="tbSpan2" colspan="6"></td>
 							</tr>
 							<tr>
-								<td colspan="4">
-									<textarea name="content" cols="60" rows="15" style="resize:none;"><%= n.getNcontent() %></textarea>
+								<td colspan="6">
+									<textarea name="content" cols="100" rows="30" style="resize:none;"><%= n.getNcontent() %></textarea>
 								</td>
 							</tr>
 						</table>
 						<br>
 						<div align="center">
-							<button onclick="complete();">수정</button>
-							<button onclick="deleteNotice()">삭제</button>
+							<button onclick="noticeUpdate();">수정</button>
+							<button onclick="noticeDelete()">삭제</button>
 						</div>
 						<script>
-							function complete(){
+							function noticeUpdate(){
 								$("#updateForm").attr("action","<%=request.getContextPath() %>/noticeUpdate.no");
-							
 							}
 						
-							function deleteNotice(){
-							
+							function noticeDelete(){
 								$("#updateForm").attr("action","<%=request.getContextPath() %>/noticeDelete.no");
 							}
 					

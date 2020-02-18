@@ -79,6 +79,7 @@
 }
 #pay_a{
     text-decoration: none;
+    margin-top: 20px;
     color: white;
     background: #ff005a;
     position: relative;
@@ -99,17 +100,15 @@
 #text_time{
     font-size: 20px;
 }
-#side_pay_option{
-    height: 150px;
-}
 #side_class_title{
     font-weight: bolder;
     font-size: larger;
     margin: 0px 0px 10px 0px;
 }
 #side_pay_option{
-    font-size: 14px;
-    padding: 13px 0;
+    font-size: 12px;
+    /* height: 150px; */
+    /* padding: 13px 0; */
     border-bottom: 1px solid #ddd;
 }
 .review_box img{

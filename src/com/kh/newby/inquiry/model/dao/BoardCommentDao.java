@@ -4,6 +4,7 @@ import java.io.FileReader;
 import java.io.IOException;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.Properties;
@@ -45,9 +46,34 @@ public class BoardCommentDao {
 	}
 
 	public ArrayList<Board> selectList(Connection con, String bno) {
+		ArrayList<Board> clist = null;
+		PreparedStatement pstmt = null;
+		ResultSet rset = null;
+		
+		String sql = prop.getProperty("selectList");
+		
+		try {
+			pstmt = con.prepareStatement(sql);
+			
+			pstmt.setString(1, bno);
+			
+			rset = pstmt.executeQuery();
+			
+			clist = new ArrayList<Board>();
+			
+			while(rset.next()) {
+				Board b = new Board();
+				b.setIcomment("Q_COMMENT");
+			}
+		} catch(SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(rset);
+			close(pstmt);
+		}
 		
 		
-		return null;
+		return clist;
 	}
 
 }

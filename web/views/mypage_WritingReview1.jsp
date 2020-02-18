@@ -40,7 +40,7 @@
 				<br>
 				<h2>후기 작성</h2>
                 <hr id="hrSet53">
-                <h4 align="center" style="color: gray; font-weight: normal;">후기는 클래스의 진행날짜로부터 3일까지만 작성하실 수 있습니다. </h4>
+                <h4 align="center" style="color: gray; font-weight: normal;">후기는 클래스의 진행날짜로부터 3일전까지만 작성하실 수 있습니다. </h4>
                 <br>
 				<div id="contentsDivSize29">
 					<div>
