@@ -94,9 +94,9 @@
 		  <div class="modal-content">
 		    <span class="close">&times;</span>
 		    <h2>클래스 정보</h2>
-	        <div align = "center" style="display : flex; width : 1000px; /* margin-left : auto; margin-right : auto; */ ">
-	        	<div>
-					<table>
+	        <div>
+	        	<div class="underModal_div">
+					<table class="underModal_table">
 						<tbody>
 							<tr>
 								<td class="tline1row">클래스명<br><small>(40자 이내)</small></td>
@@ -121,8 +121,8 @@
 						</tbody>
 					</table>
 				</div>
-				<div>
-					<table>
+				<div class="underModal_div2">
+					<table class="underModal_table">
 						<tbody>
 							<tr>
 								<td class="tline1row">1회당 수업시간</td>
