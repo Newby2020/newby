@@ -11,7 +11,7 @@ import java.util.Properties;
 
 import static com.kh.newby.common.JDBCTemplate.*;
 
-import com.kh.newby.Class.model.dao.ClassDao2;
+import com.kh.newby.classvo.model.dao.ClassDao2;
 import com.kh.newby.review.model.vo.Review2;
 
 public class ReviewDao2 {
@@ -47,8 +47,8 @@ public class ReviewDao2 {
 				r.setcName(rset.getString("CLASS_NAME"));
 				r.setcTime(rset.getInt("CLASS_TIME"));
 				r.setPsDate(rset.getString("PS_DATE"));
-				r.setPsStarttime(rset.getString("PS_STARTTIME"));
-				r.setPsEndtime(rset.getString("PS_ENDTIME"));
+				r.setPsStartTime(rset.getString("PS_STARTTIME"));
+				r.setPsEndTime(rset.getString("PS_ENDTIME"));
 				list.add(r);
 			}
 		} catch(SQLException e) {

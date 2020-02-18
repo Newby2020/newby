@@ -1,5 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8" import="com.kh.newby.Payment.model.vo.*, java.util.*,  java.text.DecimalFormat"%>
+    pageEncoding="UTF-8" import="com.kh.newby.pay.model.vo.*, java.util.*,  java.text.DecimalFormat"%>
     
 <%
 	DecimalFormat formatter = new DecimalFormat("###,###");

@@ -15,9 +15,21 @@ public class Review2 implements Serializable {
 	private String cName;
 	private int cTime;
 	private String psDate;
-	private String psStarttime;
-	private String psEndtime;
+	private String psStartTime;
+	private String psEndTime;
 	
+
+
+	public String getPsEndTime() {
+		return psEndTime;
+	}
+
+
+	public void setPsEndTime(String psEndTime) {
+		this.psEndTime = psEndTime;
+	}
+
+
 	public Review2() {
 	}
 
@@ -71,33 +83,21 @@ public class Review2 implements Serializable {
 		this.psDate = psDate;
 	}
 
-
-	public String getPsStarttime() {
-		return psStarttime;
+	public String getPsStartTime() {
+		return psStartTime;
 	}
-
-
-	public void setPsStarttime(String psStarttime) {
-		this.psStarttime = psStarttime;
-	}
-
-
-	public String getPsEndtime() {
-		return psEndtime;
-	}
-
-
-	public void setPsEndtime(String psEndtime) {
-		this.psEndtime = psEndtime;
+	
+	
+	public void setPsStartTime(String psStartTime) {
+		this.psStartTime = psStartTime;
 	}
 
 
 	@Override
 	public String toString() {
 		return "Review2 [rNo=" + rNo + ", cNo=" + cNo + ", cName=" + cName + ", cTime=" + cTime + ", psDate=" + psDate
-				+ ", psStarttime=" + psStarttime + ", psEndtime=" + psEndtime + "]";
+				+ ", psStartTime=" + psStartTime + ", psEndTime=" + psEndTime + "]";
 	}
-
 	
 
 	

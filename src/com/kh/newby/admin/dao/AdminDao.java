@@ -13,9 +13,9 @@ import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.Properties;
 
-import com.kh.newby.Class.model.vo.ClassVo;
 import com.kh.newby.Member.model.vo.Member;
 import com.kh.newby.claim.model.vo.Claim;
+import com.kh.newby.classvo.model.vo.ClassVo;
 
 public class AdminDao {
 	

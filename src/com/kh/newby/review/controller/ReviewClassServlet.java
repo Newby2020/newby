@@ -9,7 +9,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.kh.newby.Class.model.service.ClassService2;
+import com.kh.newby.classvo.model.service.ClassService2;
 import com.kh.newby.review.model.service.ReviewService2;
 import com.kh.newby.review.model.vo.Review2;
 

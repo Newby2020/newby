@@ -9,8 +9,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.kh.newby.Class.model.vo.ClassVo;
 import com.kh.newby.admin.service.AdminService;
+import com.kh.newby.classvo.model.vo.ClassVo;
 import com.kh.newby.common.PageInfo;
 
 /**

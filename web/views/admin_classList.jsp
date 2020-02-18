@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"
     import="java.util.*,
-   			com.kh.newby.Class.model.vo.*,
+   			com.kh.newby.classvo.model.vo.*,
    			com.kh.newby.common.PageInfo"%>
    			
     

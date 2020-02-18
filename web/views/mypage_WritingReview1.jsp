@@ -54,7 +54,7 @@
 							<tr align="center">             
 								<input name="cno" class="hv" type="hidden" value="<%=r.getcNo()%>">
 								<td><%=r.getcName()%></td>
-								<td><%=r.getPsDate() %><span id="divider">|</span><%=r.getPsStarttime() %>~<%=r.getPsEndtime() %>&nbsp;(<%=r.getcTime() %>시간)</td>
+								<td><%=r.getPsDate() %><span id="divider">|</span><%=r.getPsStartTime() %>~<%=r.getPsEndTime() %>&nbsp;(<%=r.getcTime() %>시간)</td>
 								<td>
 									<button class="writeBtn reviewBtn">작성</button>
 								</td>

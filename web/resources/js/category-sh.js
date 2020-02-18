@@ -68,8 +68,20 @@ $(function(){
    // 카테고리 선택 토글
 
    $(function(){ 
-       $(".main_sub_caca li:has(a)").on("click",function(){
+       $(".main_sub_caca0 li:has(a)").on("click",function(){
            $(this).toggleClass("high_light_4");
+       });
+   });
+   
+   $(function(){ 
+       $(".main_sub_caca1 li:has(a)").on("click",function(){
+           $(this).toggleClass("high_light_5");
+       });
+   });
+   
+   $(function(){ 
+       $(".main_sub_caca2 li:has(a)").on("click",function(){
+           $(this).toggleClass("high_light_6");
        });
    });
 
@@ -82,19 +94,13 @@ $(function(){
            },'mouseleave' : function(){
             $(this).removeAttr('style');  
         },'click' : function(){
-            $('#mbtn_sh').slideUp();
+            $('#mbtn_sh').slideUp(100);
             $('#pglk_sh').show(); 
         }
 
    });
    });
    
-   $(function(){
-	   $('content_a').on({
-		   'mouseenter':function(){
-			   $(this).css({'transform':'scale(1.1)','transition':'.3s'});
-		   },'mouseleave' : function(){
-			   $(this).css({'transform':'scale(1.0)','transition':'.3s'});
-		   }
-	   });
-   });
+
+   
+   
