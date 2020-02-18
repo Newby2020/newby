@@ -5,6 +5,10 @@
 <%  
 	//클래스 객체
 	ClassVo cv = (ClassVo)request.getAttribute("class");
+
+	//클래스 일정 리스트
+	ArrayList<ClassVo> csList = (ArrayList<ClassVo>)request.getAttribute("csList");
+	
 	//댓글 리스트
 	ArrayList<Review> rList = (ArrayList<Review>)request.getAttribute("rList");
 %>
@@ -180,10 +184,11 @@
         <div class="class_price">
             <div class="">
                 <div class="title" id="side_class_title"><%= cv.getClassType() %></div>
-
-                    <div id="side_pay_option"><%= cv.getClassDate() %><span style="float: center; margin-left: 20%;"><%= cv.getClassStartTime() %>:~<%= cv.getClassEndTime() %></span>
-                    <div style="float: right; margin-right: 5%;"><%= cv.getClassLocation() %></div>
+					<% for(int i=0; i<csList.size(); i++) { %>
+                    <div id="side_pay_option" style="padding:2%;"><%= csList.get(i).getClassDate() %> <span style="float: center; margin-left: 20%;"><%= csList.get(i).getClassStartTime() %>:~<%= csList.get(i).getClassEndTime() %></span>
+                    <div><%= cv.getClassLocation() %></div><!--  style="float: right; margin-right: 5%;" -->
                     </div>
+                    <% } %>
                     <div class="payment">
                         <a id="pay_a" href="" onclick="payPopup();"><span id="pay_btn">수업 신청하기</span></a>
                     </div>
