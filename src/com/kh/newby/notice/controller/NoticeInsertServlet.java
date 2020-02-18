@@ -78,7 +78,7 @@ public class NoticeInsertServlet extends HttpServlet {
 			
 		} else {
 			request.setAttribute("msg", "공지사항 등록 오류");
-			request.getRequestDispatcher("views/common.errorPage.jsp").forward(request, response);
+			request.getRequestDispatcher("views/common/errorPage.jsp").forward(request, response);
 		}
 	}
 	

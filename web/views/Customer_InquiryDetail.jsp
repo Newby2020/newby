@@ -50,7 +50,7 @@
 			<!--contents-->
 			<div id="mn16s" align="center">
 
-
+				<% if (b != null) { %>
 				<!-- 제목란이니깐 해당 제목 작성해서 하면 돼-->
 				<br>
 				<h2>문의 내용</h2>
@@ -93,9 +93,8 @@
 										<td><%=b.getIdate()%></td>
 										<td align="center"><input type="hidden" name="writer"
 											value="<%=m.getM_name()%>"> <input type="hidden"
-											name="refcno">
-											<textarea class="reply-content" cols="80" rows="3"
-												style="resize:none;"></textarea>
+											name="refcno"> <textarea class="reply-content"
+												cols="80" rows="3" style="resize: none;"></textarea>
 											<button type="button" class="insertBtn"
 												onclick="reComment(this);">댓글 달기</button></td>
 									</tr>
@@ -106,10 +105,27 @@
 							%>
 
 						</div>
+						<% if( b.getIwno().equals(m.getM_nick())) { %>
+						<div align="center">
+							<button onclick="noticeUpdate();">수정</button>
+							<button onclick="noticeDelete()">삭제</button>
+						</div>
+						<% } } %>
+						<script>
+							function noticeUpdate(){
+								$("#updateForm").attr("action","<%=request.getContextPath() %>/boardUpdate.no");
+							}
+						
+							function noticeDelete(){
+								$("#updateForm").attr("action","<%=request.getContextPath() %>/boardDelete.no");
+							}
+					
+        				
+    					</script>
 					</form>
 
 				</div>
-
+	
 			</div>
 
 		</div>
