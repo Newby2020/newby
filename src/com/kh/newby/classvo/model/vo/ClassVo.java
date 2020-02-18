@@ -18,19 +18,15 @@ public class ClassVo implements Serializable {
 	private String secondCategory;
 	private String thirdCategory;
 	private String classType;
+	private int classMaxnum;
 	private int classTime;
 	private int classPrice;
-	private int classMaxnum;
 	private String classImg;
 	private String classLocation;
 	private String classIntro;
 	private String classTarget;
 	private String classCurriculum;	
 	private Date classEnrollDate;
-	
-	private String classStatus;
-	private String rejectReason;
-	
 	private String classDate;
 	private String classStartTime;
 	private String classEndTime;
@@ -38,7 +34,8 @@ public class ClassVo implements Serializable {
 	private String hostIntro;
 	private double averageReview;
 	private String hostNo;
-
+	private String classStatus;
+	private String rejectReason;
 	private String caNo;
 	
 	// 기본 생성자
@@ -128,6 +125,15 @@ public class ClassVo implements Serializable {
 		this.classStatus = classStatus;
 		this.rejectReason = rejectReason;
 		this.caNo = caNo;
+	}
+	
+	// 클래스 일정 불러오기용 생성자 -재우
+	public ClassVo(String classNo, String classDate, String classStartTime, String classEndTime) {
+		super();
+		this.classNo = classNo;
+		this.classDate = classDate;
+		this.classStartTime = classStartTime;
+		this.classEndTime = classEndTime;
 	}
 	
 	// 관리자 페이지용 - 진영 
