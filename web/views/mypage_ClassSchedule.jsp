@@ -44,24 +44,20 @@
                     <div id="contentsDivSize29">
                         <div>
                             <table>
-                                <thead align="center">
-                                    <tr>
-                                      <th style="width: 300px">클래스명</th>
-                                      <th style="width: 200px">일정</th>
-                                      <th style="width: 60px">취소</th>
-                                    </tr>
-                                </thead>
-                                <tbody align="center">
-                                	<%for(ClassVo2 c : list) {%>
-                                    <tr>
-                                      <input class="hv" type="hidden" value="<%=c.getPayNo() %>">
-                                      <input class="hv2" type="hidden" value="<%=c.getClassName() %>">
-                                      <td class="td19"><%=c.getClassName() %></td>
-                                      <td class="td19"><%=c.getClassDate() %><span id="divider">|</span><%=c.getClassStartTime() %>~<%=c.getClassEndTime() %>&nbsp;(<%=c.getClassTime() %>시간)</td>
-                                      <td class="td19"><button class="delBtn cancelBtn1sd">취소</button></td>
-                                    </tr>
-                                    <%} %>
-                                </tbody>
+                                <tr align="center">
+                                  <th style="width: 300px">클래스명</th>
+                                  <th style="width: 200px">일정</th>
+                                  <th style="width: 60px">취소</th>
+                                </tr>
+                            	<%for(ClassVo2 c : list) {%>
+                                <tr align="center">
+                                  <input class="hv" type="hidden" value="<%=c.getPayNo() %>">
+                                  <input class="hv2" type="hidden" value="<%=c.getClassName() %>">
+                                  <td><%=c.getClassName() %></td>
+                                  <td><%=c.getClassDate() %><span id="divider">|</span><%=c.getClassStartTime() %>~<%=c.getClassEndTime() %>&nbsp;(<%=c.getClassTime() %>시간)</td>
+                                  <td><button class="delBtn cancelBtn1sd">취소</button></td>
+                                </tr>
+                                <%} %>
                             </table>
                           </div>
                     </div>
