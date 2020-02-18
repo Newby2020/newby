@@ -50,10 +50,10 @@
                                     <tr align="center">
                                       <input class="hv" type="hidden" value="<%= c.getClassNo() %>">
                                       <input class="hv2" type="hidden" value="<%= c.getClassName() %>">
-                                      <td class="td19"><%= c.getClassEnrollDate() %></td>
-                                      <td class="td19"><%= c.getClassName() %></td>
-                                      <td class="td19">
-                                         <button class="modiBtn modify1sd size142">수정</button>
+                                      <td><%= c.getClassEnrollDate() %></td>
+                                      <td><%= c.getClassName() %></td>
+                                      <td>
+                                         <button class="modiBtn size142">수정</button>
                                          <button class="delBtn size142">삭제</button>
                                      </td>
                                     </tr>

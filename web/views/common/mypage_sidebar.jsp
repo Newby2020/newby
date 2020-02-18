@@ -20,7 +20,7 @@
     <div class="dropdown-soxk">
       <a href="/semi/views/mypage_EnrollInClass.jsp">클래스 등록</a>
       <a href="/semi/cSelHno.do">클래스 관리</a>
-      <a href="mypage_AttendeeManager.jsp">수강생 관리</a>	<!-- x -->
+      <a href="/semi/attend.do">수강생 관리</a>	<!-- x -->
     </div>
 </div>
 </body>
