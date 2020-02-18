@@ -9,7 +9,7 @@
 <body>
 <div class="sidenavsk">
     <div id="sidebar-titleso67" align="center">마이페이지</div>
-    <a href="/semi/views/mypage_Profile.jsp">프로필</a>	<!-- x -->
+    <a href="/semi/profile.do">프로필</a>	<!-- x -->
     <a href="/semi/mMile.do">마일리지</a>
     <a href="/semi/cSche.do">수강예정 클래스</a>
     <a href="/semi/pay.do">결제 내역</a>
