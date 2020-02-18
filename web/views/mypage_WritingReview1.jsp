@@ -45,17 +45,19 @@
 					<div>
 						<table>
 							<tr align="center">
-								<th style="width: 150px">날짜</th>
 								<th style="width: 300px">클래스명</th>
-								<th style="width: 150px">후기</th>
+								<th style="width: 200px">일정</th>
+								<th style="width: 60px">후기</th>
 							</tr>
 							
 							<%for(Review2 r : list){ %>
-							<tr align="center">
-								<input name="rno" class="hv" type="hidden" value=<%= r.getRno() %>>
-								<td><%= r.getRdate() %></td>
-								<td><%= r.getCname() %></td>
-								<td><input type="button" class="reviewBtn" value="작성"></td>
+							<tr align="center">             
+								<input name="cno" class="hv" type="hidden" value="<%=r.getcNo()%>">
+								<td><%=r.getcName()%></td>
+								<td><%=r.getPsDate() %><span id="divider">|</span><%=r.getPsStartTime() %>~<%=r.getPsEndTime() %>&nbsp;(<%=r.getcTime() %>시간)</td>
+								<td>
+									<button class="writeBtn reviewBtn">작성</button>
+								</td>
 							</tr>
 							<%} %>
 						</table>

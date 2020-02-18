@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"
     import="java.util.*,
-   			com.kh.newby.Class.model.vo.*,
+   			com.kh.newby.classvo.model.vo.*,
    			com.kh.newby.common.PageInfo"%>
    			
     
@@ -41,7 +41,7 @@
         </div>
         <a href="/semi/index.ad">Dashboard</a>
         <a href="/semi/userList.ad">사용자</a>
-        <a href="admin_classApplyList.jsp">클래스 등록 신청</a>
+        <a href="/semi/classApplyList.ad">클래스 등록 신청</a>
         <a class="active" href="/semi/classList.ad">개설 클래스</a>
         <a href="/semi/claimList.ad">신고</a>
         <a href="admin_accountancy.jsp">정산</a>
@@ -76,11 +76,17 @@
                     <td><%= c.getSecondCategory() %></td>
                     <td><%= c.getThirdCategory() %></td>
                     <td><%= c.getClassTarget() %></td>
-                    <td></td>
+                    <td>
+                    	<button id="detailBtn">확인</button>
+                    </td>
                 </tr>
                 <% } %>
             </table>
         </div>
+        <script>
+        
+        </script>
+        
      	<%-- 페이지 처리 --%>
         <div class="pageArea" align="center">
         	<button onclick="location.href'<%= request.getContextPath() %>/classList.ad?currentPage = 1"><<</button>
