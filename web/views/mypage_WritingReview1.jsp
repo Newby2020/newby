@@ -53,7 +53,8 @@
 							
 							<%for(Review2 r : list){ %>
 							<tr align="center">             
-								<input name="cno" class="hv" type="hidden" value="<%=r.getcNo()%>">
+								<input name="cno" class="cno" type="hidden" value="<%=r.getcNo()%>">
+								<input name="psno" class="psno" type="hidden" value="<%=r.getPsNo()%>">
 								<td><%=r.getcName()%></td>
 								<td><%=r.getPsDate() %><span id="divider">|</span><%=r.getPsStartTime() %>~<%=r.getPsEndTime() %>&nbsp;(<%=r.getcTime() %>시간)</td>
 								<td>

@@ -39,7 +39,7 @@
 							<tr>
 								<td class="tline1">닉네임</td>
 								<td class="tline2">
-									<input class="input13" name="name" placeholder="입력" value="prius">&nbsp;&nbsp;&nbsp;&nbsp;
+									<input class="input13" name="name" placeholder="입력" value="ㅇㅁㄴㅇ">&nbsp;&nbsp;&nbsp;&nbsp;
 									<input class="modibtn1cw" type="button" value="수정하기">
 								</td>
 							</tr>
