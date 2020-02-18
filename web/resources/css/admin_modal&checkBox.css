@@ -111,3 +111,23 @@
   -ms-transform: rotate(45deg);
   transform: rotate(45deg);
 }
+
+/* 모달 div css 추가 */
+.underModal_div {
+	display: inline-block;
+	margin-left: 8%;
+	padding-bottom: 17px;
+	width: 40%;
+}
+
+.underModal_div2 {
+	display: inline-block;
+	margin-left: 4%;
+	width: 40%;
+}
+
+.tline1row {
+	font-weight: bold;
+	font-size: 15px;
+	margin-left: 14%;
+}

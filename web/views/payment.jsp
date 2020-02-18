@@ -1,6 +1,10 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8" import="java.util.*,
     							 com.kh.newby.classvo.model.vo.*"%>
+<%
+	ArrayList<ClassVo> classInfoList = (ArrayList<ClassVo>)request.getAttribute("classInfoList");
+%>    							 
+    							 
 <!DOCTYPE html>
 <html lang="ko">
 <head>
@@ -27,7 +31,7 @@
 			</div>
 		    <div class="classInfo">
 		        <div class="pictureClass"></div>
-		            <div class="classDetail"><br><br>[카테고리] 선택한 클래스명 
+		            <div class="classDetail"><br><br><%=classInfoList.get %>[카테고리] 선택한 클래스명 
 		            <br><br>클래스 선택 일정 
 		            <br><br>수량 x 2</div>
 		        <label class="priceClass"><br><br><br><br>W 10,000원</label>
