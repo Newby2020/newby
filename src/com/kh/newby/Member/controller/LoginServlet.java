@@ -63,7 +63,7 @@ public class LoginServlet extends HttpServlet {
 			
 			out.println(
 					"<html><script>"+
-					"alert("+e.getMessage()+"');"+
+					"alert('"+e.getMessage()+"');"+
 					"</script></html>"
 					);
 			

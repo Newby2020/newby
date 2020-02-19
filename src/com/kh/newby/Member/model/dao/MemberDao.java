@@ -159,6 +159,35 @@ public class MemberDao {
 		
 		return result;
 	}
+
+	public Member searchId(Connection con, String name, String phone) throws MemberException {
+		Member result = null;
+		PreparedStatement pstmt = null;
+		ResultSet rset = null;
+		
+		try {
+			String sql = prop.getProperty("searchId");
+			
+			pstmt = con.prepareStatement(sql);
+			pstmt.setString(1, name);
+			pstmt.setString(2, phone);
+			
+			rset = pstmt.executeQuery();
+			
+			result = new Member();
+			System.out.println(result);
+			
+			if(rset.next()) {
+				result.setM_id(rset.getString("MEM_ID"));
+			}
+		}catch(Exception e) {
+			throw new MemberException(e.getMessage());
+		}finally {
+			close(rset);
+			close(pstmt);
+		}
+		return result;
+	}
 	
 	
 	

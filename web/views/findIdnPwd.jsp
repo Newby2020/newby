@@ -47,7 +47,7 @@
             </div>
             
             <div class="newby-body-panel2">
-                <form id="findForm2" class="findForm">
+                <form action="/semi/findPwd.me" id="findForm2" class="findForm" onsubmit="return validate2();">
                     <div id="findPwdSentence">
                         <label style="margin-bottom: 3px;"><b>비밀번호 찾기</b></label>
                         <br>
@@ -70,7 +70,7 @@
                     	
                     	<br><br><br><br><br><br>
                     	<div align="center">
-	       					<button onclick="buttonFindPwd();" id="buttonFindPwd" class="buttonFind">비밀번호 찾기</button>
+	       					<input type="submit" id="buttonFindPwd" class="buttonFind" value="비밀번호 찾기">
 	       				</div>
 	       				<br><br>
 	        		</div>	

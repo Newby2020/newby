@@ -3,7 +3,7 @@
 
 <%
 	 Member m = (Member)session.getAttribute("Member");
-
+	
 %>
 <!DOCTYPE html>
 <html lang="ko">
