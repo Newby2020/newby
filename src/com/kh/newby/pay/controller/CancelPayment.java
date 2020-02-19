@@ -12,16 +12,16 @@ import com.kh.newby.classvo.model.vo.ClassVo3;
 import com.kh.newby.pay.model.service.PaymentService2;
 
 /**
- * Servlet implementation class ClassPayment
+ * Servlet implementation class CancelPayment
  */
-@WebServlet("/classPay.do")
-public class ClassPayment extends HttpServlet {
+@WebServlet("/cancelPay.do")
+public class CancelPayment extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public ClassPayment() {
+    public CancelPayment() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -30,26 +30,19 @@ public class ClassPayment extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		
-		//String cno = request.getParameter("cno");
-		String cno = "C1";
-		String[] scheduleList = request.getParameterValues("받았다 -");	// db에 정보를 넣을 필요가 없으므로 놔 두자
 
-		PaymentService2 ps2 = new PaymentService2();
+		String psno = request.getParameter("psno");
 		
-		ClassVo3 cv = ps2.getClassVo(cno);
+		PaymentService2 ps = new PaymentService2();
 		
-		System.out.println(cv);
+		ClassVo3 cvPsno = ps.getPsno(psno);
 		
 		String page = "";
 		
-		page = "/views/payment.jsp";
-		request.setAttribute("cv", cv);
-		request.setAttribute("scheduleList", scheduleList);
+		page = "/views/cancelOrder.jsp";
+		request.setAttribute("psno", psno);
 		
 		request.getRequestDispatcher(page).forward(request, response);
-		
-
 		
 	}
 

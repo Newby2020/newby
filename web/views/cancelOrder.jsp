@@ -1,5 +1,11 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+    pageEncoding="UTF-8" import="java.util.*,
+    							 com.kh.newby.classvo.model.vo.*,
+    							 com.kh.newby.pay.model.vo.*"%>
+<%
+ 	ClassVo3 cvPsno = (ClassVo3)request.getAttribute("cvPsno"); 
+	
+%>
 <!DOCTYPE html>
 <html lang="ko">
 <head>
@@ -22,19 +28,23 @@
 		        <hr>
 		    </div>
 		    <div class="classInfo">
-		        <div class="pictureClass"></div>
-		            <div class="classDetail"><br><br>[카테고리] 선택한 클래스명 
-		            <br><br>클래스 선택 일정 
-		            <br><br>수량 x 1</div>
-		        <div class="priceClass"><br><br><br><br>W 10,000원</div>
+		         <div class="pictureClass"></div>
+		            <div class="classDetail">
+		            <br><br>[ <%=cvPsno.getFirstCategory()%> > <%=cvPsno.getSecondCategory()%> > <%=cvPsno.getThirdCategory() %> ]  <%=cvPsno.getClassName() %>
+		            <br><br><%=cvPsno.getClassDate() %> (<%=cvPsno.getClassStartTime()%> - <%=cvPsno.getClassEndTime()%>)
+		          	</div>
+		        <div class="priceClass"><br><br><br><br>\ <%=cvPsno.getClassPrice() %>원</div>
 		    </div> 
 		    <hr>
 		    <br>
 		    <div class="reasonOfCancelWrap">
-		        <select class="reasonOfCancelSelect" selected="selected">
-		            <option class="reasonOfCancel" value>결제 취소 사유</option>
-		            <option class="reasonOfCancel" value>선택한 수업이 마음에 들지 않음</option>
+		        <select class="reasonOfCancelSelect" selected="selected" id="reasonOfCancel">
+		            <option class="reasonOfCancel" value="0">결제 취소 사유</option>
+		            <option class="reasonOfCancel" value="">선택한 수업이 마음에 들지 않음</option>
+		            <option class="reasonOfCancel" value="">수업 일정을 잘못 선택</option>
+		            <option class="reasonOfCancel" value="">바이러스와 같은 재해가 발생</option>
 		            <option class="reasonOfCancel" value="etc">기타</option>
+		            
 		        </select>
 		        <br><br><br>
 		        <div>
@@ -44,9 +54,11 @@
 		    <br><br><br>
 		    <hr>
 		    <div class="cancelOrderGuide">
-		        <label class="cancelOrderGuideLabel">구입 금액 : W       원 - 고객 부담 비용 : W      원&nbsp;&nbsp;</label><br>
+		        <label class="cancelOrderGuideLabel">마일리지 사용 금액 : \ <%=cvPsno.getPayMileage() %>원&nbsp;&nbsp;</label><br>
+		        <label class="cancelOrderGuideLabel">마일리지 적립 금액 : \ -<%=cvPsno.getPaySaveMileage() %>원&nbsp;&nbsp;</label><br>
+		        <label class="cancelOrderGuideLabel">구입 금액 : \ <%=cvPsno.getClassPrice() %>원&nbsp;&nbsp;</label><br>
 		        <hr style="width: 180px; float: right; margin-top: 5px; display: block;"><br>
-		        <label class="cancelOrderGuideLabel" style ="line-height: 0.5em;"><b>총 환불 금액 : W       원&nbsp;&nbsp;</b></label>
+		        <label class="cancelOrderGuideLabel" style ="line-height: 0.5em;"><b>총 환불 금액 : W <%=cvPsno.getClassPrice()-cvPsno.getPayMileage() %>원&nbsp;&nbsp;</b></label>
 		    </div>
 		
 		    <br><br><br><br><br><br><br>
@@ -58,7 +70,7 @@
 		
 		    <br><br>
 			<div align= "center">
-		    	<button onclick="cancelOrderBtn();" id="cancelOrderBtn" class="cancelOrderBtn">결제 취소</button>
+		    	<button id="cancelOrderBtn" class="cancelOrderBtn">결제 취소</button>
 	    	</div>
 	    </form>
     </div>
@@ -74,6 +86,16 @@
                     jQuery('.detailedReasonOfCancel').hide();
                 }
             });
+        
+        $('#cancelOrderBtn').click(function(){
+        	var count = $('#reasonOfCancel').val();
+        	
+        	if(count == 0) {
+        		alert('결제 취소 사유를 선택해 주세요');
+        	} else {
+        		alert('결제가 취소되었습니다.');
+        	}
+        });
     </script>
 </body>
 </html>

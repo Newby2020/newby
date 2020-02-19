@@ -31,7 +31,7 @@
 			</div>
 		    <div class="classInfo">
 		        <div class="pictureClass"></div>
-		            <div class="classDetail"><br><br><%=classInfoList.get %>[카테고리] 선택한 클래스명 
+		            <div class="classDetail"><br><br><%=  > 2차 > 3차 %>[카테고리] 선택한 클래스명 
 		            <br><br>클래스 선택 일정 
 		            <br><br>수량 x 2</div>
 		        <label class="priceClass"><br><br><br><br>W 10,000원</label>
