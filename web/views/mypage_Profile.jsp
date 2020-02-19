@@ -53,7 +53,7 @@
 								<td class="tline2">
 									<input id="mno" type="hidden" value="<%=mno %>">
 									<input id="exNick" type="hidden" value="<%=nick %>">
-									<input id="nick" name="nick" class="input13" placeholder="입력" value="<%=nick%>">&nbsp;&nbsp;&nbsp;&nbsp;
+									<input id="nick" name="nick" class="input13" placeholder="" value="<%=nick%>">&nbsp;&nbsp;&nbsp;&nbsp;
 									<input id="nickBtn" class="modibtn1cw" type="button" value="수정하기">
 								</td>
 							</tr>
@@ -121,9 +121,9 @@
 										<input id="exTel1" type="hidden" value="<%=t1 %>">
 										<input id="exTel2" type="hidden" value="<%=t2 %>">
 										<input id="exTel3" type="hidden" value="<%=t3 %>">
-										<input id="tel1" name="phone" maxlength="3" placeholder="입력" value="<%=t1%>">&nbsp;-&nbsp;
-										<input id="tel2" name="phone" maxlength="4" placeholder="입력" value="<%=t2%>">&nbsp;-&nbsp;
-										<input id="tel3" name="phone" maxlength="4" placeholder="입력" value="<%=t3%>">&nbsp;&nbsp;&nbsp;&nbsp;
+										<input id="tel1" name="phone" maxlength="3" placeholder="" value="<%=t1%>">&nbsp;-&nbsp;
+										<input id="tel2" name="phone" maxlength="4" placeholder="" value="<%=t2%>">&nbsp;-&nbsp;
+										<input id="tel3" name="phone" maxlength="4" placeholder="" value="<%=t3%>">&nbsp;&nbsp;&nbsp;&nbsp;
 										<input id="telBtn" class="modibtn1cw" type="button" value="수정하기">
 									</td>								
 								</div>

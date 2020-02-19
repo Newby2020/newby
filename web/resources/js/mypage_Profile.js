@@ -24,26 +24,56 @@ dp2.style.display = "block";
 $('#nickBtn').click(function(){
 	var exNick= $('#exNick');
 	var nick = $('#nick');
+	
 	if(confirm("닉네임을 수정하시겠습니까?")){
-		if(exNick.val()!=nick.val()){
-			$.ajax({
-				url :"/semi/modiNick.do",
-				type:"get",
-				data:{
-					nick : $('#nick').val(),
-					mno : $('#mno').val()
-				},
-				success: function(data){
-					nick.val(data);
-					alert("닉네임 수정이 완료되었습니다.");
-				}, error:function(){
-					alert("전송 실패!");
-				}
-			});
+		if(nick.val()!=""){
 			
+			if(exNick.val()!=nick.val()){
+				
+				var result = 0;
+				
+				$.ajax({
+					url : "/semi/checkNick.do",
+					type : "get",
+					data:{
+						nick : $('#nick').val(),
+					}, success(data){
+						result = data;
+						alert(result);
+						if(result==1){
+							alert("중복되는 닉네임입니다. 다시 입력해주세요.");
+							nick.select();
+						} else {
+							$.ajax({
+								url :"/semi/modiNick.do",
+								type:"get",
+								data:{
+									nick : $('#nick').val(),
+									mno : $('#mno').val()
+								},
+								success: function(data){
+									nick.val(data);
+									alert("닉네임 수정이 완료되었습니다.");
+								}, error:function(){
+									alert("전송 실패!");
+								}
+							});
+							
+						}
+					}, error(){
+						alert("중복검사 전송 실패 !")
+					}
+				});
+				
+				
+				
+			} else {
+				alert("기존 닉네임과 동일하여 수정할 수 없습니다.");
+				nick.select();
+			}
 		} else {
-			alert("기존 닉네임과 동일하여 수정할 수 없습니다.");
-			nick.select();
+			alert("닉네임을 입력해주세요.");
+			nick.focus();
 		}
 	}
 	
@@ -62,27 +92,33 @@ $('#telBtn').click(function(){
 //	alert(exTel);
 //	alert(tel);
 	if(confirm("휴대폰 번호를 수정하시겠습니까?")){
-		if(tel!=exTel){
-			$.ajax({
-				url :"/semi/modiPhone.do",
-				type:"get",
-				data:{
-					tel : tel,
-					mno : $('#mno').val()
-				},
-				success: function(data){
-					$('tel1').value(data.substr(1,3));
-					$('tel2').value(data.substr(4,4));
-					$('tel3').value(data.substr(8,4));
-					alert("휴대폰 번호 수정이 완료되었습니다.");
-				}, error:function(){
-					alert("전송 실패!");
-				}
-			});
+		if(tel != ""){
+			if(tel!=exTel){
+				$.ajax({
+					url :"/semi/modiPhone.do",
+					type:"get",
+					data:{
+						tel : tel,
+						mno : $('#mno').val()
+					},
+					success: function(data){
+						$('tel1').value(data.substr(1,3));
+						$('tel2').value(data.substr(4,4));
+						$('tel3').value(data.substr(8,4));
+						alert("휴대폰 번호 수정이 완료되었습니다.");
+					}, error:function(){
+						alert("전송 실패!");
+					}
+				});
+				
+			} else {
+				alert("기존 휴대폰 번호와 동일하여 수정할 수 없습니다.");
+				$('#tel1').select();
+			}
 			
 		} else {
-			alert("기존 휴대폰 번호와 동일하여 수정할 수 없습니다.");
-			$('#tel1').select();
+			alert("휴대폰 번호 입력해주세요.");
+			$('#tel1').focus();
 		}
 	}
 	

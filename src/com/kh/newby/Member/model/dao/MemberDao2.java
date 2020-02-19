@@ -121,6 +121,31 @@ public class MemberDao2 {
 		}
 		return newTel;
 	}
+
+	public int checkNick(Connection con, String nick) {
+		int result =0;
+		PreparedStatement pstmt = null;
+		String sql = prop.getProperty("checkNick");
+		ResultSet rset = null;
+		
+		try {
+			pstmt = con.prepareStatement(sql);
+			pstmt.setString(1, nick);
+			
+			rset = pstmt.executeQuery();
+			if(rset.next()) {
+				result = rset.getInt(1);
+				System.out.println("dao : "+result);
+			}
+		
+		} catch(SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(pstmt);
+		}
+		
+		return result;
+	}
 	
 	
 	
