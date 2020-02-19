@@ -31,7 +31,10 @@
     <link rel="stylesheet" href="/semi/resources/css/admin_table&searchBar.css">
 
     <!-- The Modal & CheckBox-->
-    <link rel="stylesheet" href="/semi/resources/css/admin_modal&checkBox.css">    
+    <link rel="stylesheet" href="/semi/resources/css/admin_modal&checkBox.css">  
+    
+    <!-- jQuery -->
+    <script src="/semi/resources/js/jquery-3.4.1.min.js"></script>  
 
 </head>
 
@@ -50,7 +53,6 @@
         <a href="admin_accountancy.jsp">정산</a>
 
     </div>
-
     <div class="content">
         <h2>개설 클래스 목록</h2>
         <div style="overflow-x:auto;">
@@ -80,109 +82,22 @@
                     <td><%= c.getThirdCategory() %></td>
                     <td><%= c.getClassTarget() %></td>
                     <td>
-                    	<button id="detailBtn">확인</button>
+                    	<button class="detailBtn">확인</button>
                     </td>
                 </tr>
                 <% } %>
             </table>
+            <script>
+            	
+          		 $('.detailBtn').click(function(){
+              	var no = $(this).parent().siblings(":eq(0)").text(); 
+              	
+              	location.href="<%=request.getContextPath()%>/classDetail.ad?cno=" + no;
+          		 });
+              </script>
         </div>
         
-        <!-- The Modal -->
-		<div id="classDetailModal" class="modal" >
-		
-		  <!-- Modal content -->
-		  <div class="modal-content">
-		    <span class="close">&times;</span>
-		    <h2>클래스 정보</h2>
-	        <div>
-	        	<div class="underModal_div">
-					<table class="underModal_table">
-						<tbody>
-							<tr>
-								<td class="tline1row">클래스명<br><small>(40자 이내)</small></td>
-								<td>데이터 가져오기</td>
-							</tr>
-							<tr>
-								<td></td>
-								<td>1차 / 2차 / 3차</td>
-							</tr>
-							<tr>
-								<td class="tline1row">카테고리</td>
-								<td>데이터 가져오기</td>
-							</tr>
-							<tr>
-								<td class="tline1row">클래스 형태</td>
-								<td>데이터 가져오기</td>
-							</tr>
-							<tr>
-								<td class="tline1row">인원수</td>
-								<td>데이터 가져오기</td>
-							</tr>
-						</tbody>
-					</table>
-				</div>
-				<div class="underModal_div2">
-					<table class="underModal_table">
-						<tbody>
-							<tr>
-								<td class="tline1row">1회당 수업시간</td>
-								<td>데이터 가져오기</td>
-							</tr>
-							<tr>
-								<td class="tline1row">1회당 가격</td>
-								<td>데이터 가져오기</td>
-							</tr>
-							<tr>
-								<td class="tline1row">이미지</td>
-								<td>데이터 가져오기</td>
-							</tr>
-							<tr>
-								<td class="tline1row">일정</td>
-							</tr>
-							<tr>
-								<td class="tline1row">장소</td>
-							</tr>
-							<tr>
-								<td class="tline1row tt121">수업 대상</td>
-							</tr>
-						</tbody>
-					</table>
-				</div>
-	        </div>
-    		<div style="display : block;">
-   				<h5 class="tline1row tt121">커리큘럼</h5>
-				<div>
-					<%-- <jsp:param value="<%=curri %>" name="intro"/> --%>
-				</div>
-				
-				<h5 class="tline1row tt121">수업 소개</h5>		
-				<div>
-					<%-- <jsp:param value="<%=intro %>" name="intro"/> --%>
-				</div>
-			</div>
-		  </div>
-		</div>
-		<script>
-			// Get the modal
-			var modal = document.getElementById("classDetailModal");
-			
-			// Get the button that opens the modal
-			var btn = document.getElementById("detailBtn");
-			
-			// Get the <span> element that closes the modal
-			var span = document.getElementsByClassName("close")[0];
-			
-			// When the user clicks the button, open the modal 
-			btn.onclick = function() {
-			  modal.style.display = "block";
-			}
-			
-			// When the user clicks on <span> (x), close the modal
-			span.onclick = function() {
-			  modal.style.display = "none";
-			}
-		</script>
-
+        <%-- <%@ include file ="admin_classDetailModal.jsp" %> --%>
         
      	<%-- 페이지 처리 --%>
         <div class="pageArea" align="center">

@@ -33,14 +33,19 @@ public class ClassDetailServlet extends HttpServlet {
 		String cno = request.getParameter("cno");
 		
 		ClassVo c = new AdminService().selectOne(cno);
+		System.out.println(c);
 		
 		System.out.println(c);
-//		String page = "";
-//		
-//		if(c != null) {
-//			
-//		}
+		String page = "";
 		
+		if(c != null) {
+			page = "views/admin_classDetail.jsp";
+			request.setAttribute("c", c);
+		}else {
+			page = "views/common/errorPage.jsp";
+			request.setAttribute("msg", "클래스 정보를 불러오는데 오류가 발생하였습니다.");
+		}
+		request.getRequestDispatcher(page).forward(request, response);
 	}
 
 	/**
