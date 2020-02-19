@@ -19,7 +19,7 @@
 .pictureClass{
     width: 200px;
     height: 150px;
-    border: 1px solid gray; 
+    border: none; 
 }
 .classInfo{
     display: inline-flex;
@@ -29,11 +29,12 @@
     width: 300px;
     height: 150px;
     border: none;
-    font-size: 12px;
-    text-align: center;
+    font-size: 12.2px;
+    text-align: left;
+    margin-left: 30px;
 }
 .priceClass{
-    width: 250px;
+    width: 220px;
     height: 150px;
     border: none;
     text-align: right; 
@@ -62,7 +63,8 @@
 .cancelOrderGuide{
     background-color: rgb(9, 129, 241);
     color: white;
-    height: 60px;
+    height: 133px;
+    padding-bottom: 7px;
 }
 .cancelOrderGuideLabel{
     float: right;

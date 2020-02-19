@@ -2,6 +2,8 @@ package com.kh.newby.pay.model.dao;
 
 import static com.kh.newby.common.JDBCTemplate.close;
 
+import java.io.FileReader;
+import java.io.IOException;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -12,10 +14,22 @@ import java.util.Properties;
 import com.kh.newby.classvo.model.vo.ClassVo3;
 
 public class PaymentDao2 {
-
+	
 	private Properties prop;
+	
+	public PaymentDao2() {
+		prop = new Properties();
+		String filePath = ClassVo3.class.getResource("/config/payment-query2.properties").getPath();
+		try {
+			prop.load(new FileReader(filePath));
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+	}
 
 	public ArrayList<ClassVo3> getClassInfoList(Connection con, String cno) {
+		
+		
 
 		ArrayList<ClassVo3> classInfoList = null;
 		ClassVo3 c = null;
@@ -104,9 +118,11 @@ public class PaymentDao2 {
 			cvPsno = new ClassVo3();
 			
 			if(rset.next()) {
+				cvPsno.setClassImg(rset.getString("CLASS_IMG"));
 				cvPsno.setFirstCategory(rset.getString("FIRST_CATEGORY"));
 				cvPsno.setSecondCategory(rset.getString("SECOND_CATEGORY"));
 				cvPsno.setThirdCategory(rset.getString("THIRD_CATEGORY"));
+				cvPsno.setClassName(rset.getString("CLASS_NAME"));
 				cvPsno.setClassDate(rset.getString("PS_DATE"));
 				cvPsno.setClassStartTime(rset.getString("PS_STARTTIME"));
 				cvPsno.setClassEndTime(rset.getString("PS_ENDTIME"));

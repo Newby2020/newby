@@ -31,16 +31,19 @@ public class CancelPayment extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
-		String psno = request.getParameter("psno");
+//		String psno = request.getParameter("psno");
+		String psno = "PS3";
+		
+		System.out.println("서블릿");
 		
 		PaymentService2 ps = new PaymentService2();
 		
 		ClassVo3 cvPsno = ps.getPsno(psno);
-		
+		System.out.println(cvPsno);
 		String page = "";
 		
 		page = "/views/cancelOrder.jsp";
-		request.setAttribute("psno", psno);
+		request.setAttribute("cvPsno", cvPsno);
 		
 		request.getRequestDispatcher(page).forward(request, response);
 		
