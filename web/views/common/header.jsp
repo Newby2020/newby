@@ -56,7 +56,7 @@
 	    </label>
 		<span class="divider1">|</span>
 		  <label id="myPage" class="top-nav">
-	        <a href="/semi/views/mypage_Profile.jsp">마이페이지</a>
+	        <a href="/semi/profile.do">마이페이지</a>
 	    </label>
 	    
 		<span class="divider1">|</span>
@@ -68,7 +68,7 @@
 		
 		<%}else{ %>
 		  <label id="myPage" class="top-nav">
-	        <a href="/semi/views/mypage_Profile.jsp">마이페이지</a>
+	        <a href="/semi/profile.do">마이페이지</a>
 	    </label>
 	    
 		<span class="divider1">|</span>
