@@ -43,7 +43,10 @@ public class ClassVo3 implements Serializable {
 	// 기본 생성자
 	public ClassVo3() {}
 	
-	// 결제 취소 시 필요
+	// 결제 시 필요
+	
+	
+	// 결제 및 결제 취소 시 필요
 	public ClassVo3(String className, String firstCategory, String secondCategory, String thirdCategory, int classPrice,
 			String classImg, String classDate, String classStartTime, String classEndTime, int payMileage,
 			int paySaveMileage) {
@@ -59,13 +62,6 @@ public class ClassVo3 implements Serializable {
 		this.classEndTime = classEndTime;
 		this.payMileage = payMileage;
 		this.paySaveMileage = paySaveMileage;
-	}
-
-	public ClassVo3(String classNo, String className, String classDate) {
-		super();
-		this.classNo = classNo;
-		this.className = className;
-		this.classDate = classDate;
 	}
 
 	public String getClassNo() {
@@ -305,5 +301,6 @@ public class ClassVo3 implements Serializable {
 				+ ", classStatus=" + classStatus + ", rejectReason=" + rejectReason + ", caNo=" + caNo + ", payMileage="
 				+ payMileage + ", paySaveMileage=" + paySaveMileage + "]";
 	}
+
 }
 	

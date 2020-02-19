@@ -27,51 +27,20 @@ public class PaymentDao2 {
 		}
 	}
 
-	public ArrayList<ClassVo3> getClassInfoList(Connection con, String cno) {
-		
-		
+	/**
+	 * 결제
+	 * @param con
+	 * @param cno
+	 * @return
+	 */
+	public ClassVo3 getCno(Connection con, String cno) {
 
-		ArrayList<ClassVo3> classInfoList = null;
-		ClassVo3 c = null;
-		PreparedStatement pstmt = null;
-		ResultSet rset = null;
-		
-		String sql = prop.getProperty("classInfoList");
-		
-		try {
-			classInfoList = new ArrayList<ClassVo3>();
-			pstmt = con.prepareStatement(sql);
-			
-			pstmt.setString(1, cno);
-			
-			rset = pstmt.executeQuery();
-			
-			while(rset.next()) {
-				c = new ClassVo3();
-				c.setFirstCategory(rset.getString("FIRST_CATEGORY"));
-				c.setSecondCategory(rset.getString("SECOND_CATEGORY"));
-				c.setThirdCategory(rset.getString("THIRD_CATEGORY"));
-				c.setClassName(rset.getString("CLASS_NAME"));
-				c.setClassPrice(rset.getInt("CLASS_PRICE"));
-			}
-			
-		} catch(SQLException e) {
-			e.printStackTrace();
-		} finally {
-			close(rset);
-			close(pstmt);
-		}
-		return classInfoList;
-	}
-
-	public ClassVo3 getClassVo(Connection con, String cno) {
-
-		ClassVo3 cv = null;
+		ClassVo3 cvCno = null;
 		
 		PreparedStatement pstmt = null;
 		ResultSet rset = null;
 		
-		String sql = prop.getProperty("ClassVo");
+		String sql = prop.getProperty("cno");
 		
 		try {
 			pstmt = con.prepareStatement(sql);
@@ -80,25 +49,36 @@ public class PaymentDao2 {
 			
 			rset = pstmt.executeQuery();
 			
-			cv = new ClassVo3();
+			cvCno = new ClassVo3();
 			
 			if(rset.next()) {
-				cv.setFirstCategory(rset.getString("FIRST_CATEGORY"));
-				cv.setSecondCategory(rset.getString("SECOND_CATEGORY"));
-				cv.setThirdCategory(rset.getString("THIRD_CATEGOTY"));
-				cv.setClassName(rset.getString("CLASS_NAME"));
-				cv.setClassPrice(rset.getInt("CLASS_PRICE"));
+				cvCno.setClassImg(rset.getString("CLASS_IMG"));
+				cvCno.setFirstCategory(rset.getString("FIRST_CATEGORY"));
+				cvCno.setSecondCategory(rset.getString("SECOND_CATEGORY"));
+				cvCno.setThirdCategory(rset.getString("THIRD_CATEGORY"));
+				cvCno.setClassName(rset.getString("CLASS_NAME"));
+				cvCno.setClassDate(rset.getString("PS_DATE"));
+				cvCno.setClassStartTime(rset.getString("PS_STARTTIME"));
+				cvCno.setClassEndTime(rset.getString("PS_ENDTIME"));
+				cvCno.setClassPrice(rset.getInt("CLASS_PRICE"));
+				cvCno.setPayMileage(rset.getInt("PAY_MILEAGE"));
+				cvCno.setPaySaveMileage(rset.getInt("PAY_SAVE_MILEAGE"));
 			}
-			
 		} catch(SQLException e) {
 			e.printStackTrace();
 		} finally {
 			close(rset);
 			close(pstmt);
 		}
-		return cv;
+		return cvCno;
 	}
 
+	/**
+	 * 결제 취소
+	 * @param con
+	 * @param psno
+	 * @return
+	 */
 	public ClassVo3 getPsno(Connection con, String psno) {
 		
 		ClassVo3 cvPsno = null;
@@ -138,5 +118,4 @@ public class PaymentDao2 {
 		}
 		return cvPsno;
 	}
-
 }

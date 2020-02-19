@@ -2,7 +2,7 @@
     pageEncoding="UTF-8" import="java.util.*,
     							 com.kh.newby.classvo.model.vo.*"%>
 <%
-	ArrayList<ClassVo> classInfoList = (ArrayList<ClassVo>)request.getAttribute("classInfoList");
+
 %>    							 
     							 
 <!DOCTYPE html>
@@ -74,7 +74,7 @@
 		    <br><br><br>
 		
 		    <div class="announcePay">
-		        <input type="checkbox" id="agree" name="agree">
+		        <input type="checkbox" id="agree" name="agree" onclick="checked();">
 		        <label>개인정보 제 3자 제공 동의, 결제 대행 서비스 이용 약관 등 모든 약관에 동의합니다.</label>
 		    </div>
 		
@@ -88,6 +88,18 @@
     
 
 	<script>
+	// 체크가 되었을 때
+	function checked() {
+		var agree = document.getElementById('agree');
+		var finalBtn = document.getElementById('finalButtonPay');
+		
+		if(agree.checked = true) {
+			finalBtn.disabled = false; 
+		} else {
+			finalBtn.disabled = true;
+		}
+	}
+	
 	// 결제 요청 - 결제 모듈 불러오기
 	function finalButtonPay() {
 	   

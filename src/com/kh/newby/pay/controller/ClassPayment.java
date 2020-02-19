@@ -33,22 +33,19 @@ public class ClassPayment extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
-		ArrayList<ClassVo> classInfoList = null;
 		//String cno = request.getParameter("cno");
 		String cno = "C1";
-		String[] scheduleList = request.getParameterValues("받았다 -");	// db에 정보를 넣을 필요가 없으므로 놔 두자
 
 		PaymentService2 ps2 = new PaymentService2();
 		
-		ClassVo3 cv = ps2.getClassVo(cno);
+		ClassVo3 cvCno = ps2.getCno(cno);
 		
-		System.out.println(cv);
+		System.out.println(cvCno);
 		
 		String page = "";
 		
 		page = "/views/payment.jsp";
-		request.setAttribute("cv", cv);
-		request.setAttribute("scheduleList", scheduleList);
+		request.setAttribute("cvCno", cvCno);
 		
 		request.getRequestDispatcher(page).forward(request, response);
 

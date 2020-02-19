@@ -32,14 +32,11 @@ public class CancelPayment extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
 //		String psno = request.getParameter("psno");
-		String psno = "PS3";
-		
-		System.out.println("서블릿");
+		String psno = "PS3";	// 나중에 위의 것으로 고쳐야 한다.
 		
 		PaymentService2 ps = new PaymentService2();
 		
 		ClassVo3 cvPsno = ps.getPsno(psno);
-		System.out.println(cvPsno);
 		String page = "";
 		
 		page = "/views/cancelOrder.jsp";

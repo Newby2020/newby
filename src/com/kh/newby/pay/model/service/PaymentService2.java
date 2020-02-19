@@ -13,14 +13,14 @@ public class PaymentService2 {
 
 	PaymentDao2 pDao = new PaymentDao2();
 
-	public ClassVo3 getClassVo(String cno) {
+	public ClassVo3 getCno(String cno) {
 		
 		Connection con = getConnection();
-		ClassVo3 cv = pDao.getClassVo(con, cno);
+		ClassVo3 cvCno = pDao.getCno(con, cno);
 		
 		close(con);
 		
-		return cv;
+		return cvCno;
 	}
 
 	public ClassVo3 getPsno(String psno) {
