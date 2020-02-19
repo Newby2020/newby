@@ -68,7 +68,7 @@ public class categoryDao {
 
 				cv.setClassNo(rset.getString("CLASS_NO"));
 				cv.setClassName(rset.getString("CLASS_NAME"));
-				cv.setFirstCategory(rset.getString("FIRST_CATEGORY"));
+				cv.setFirstCategory(rset.getString(4));
 				cv.setClassLocation(rset.getString("CLASS_LOCATION").split(",")[0]);
 				cv.setClassPrice(rset.getInt("CLASS_PRICE"));
 				cv.setClassImg(rset.getString("CLASS_IMG"));
