@@ -86,13 +86,15 @@
                     </td>
                 </tr>
                 <% } %>
-                <script>
-            		$('.detailBtn').click(function(){
-                	var no = $(this).parent().siblings(":eq(0)").text();
-                	
-                	location.href="<%=request.getContextPath()%>/classDetail.ad?cno="+no;
-                </script>
             </table>
+            <script>
+            	
+          		 $('.detailBtn').click(function(){
+              	var no = $(this).parent().siblings(":eq(0)").text(); 
+              	
+              	location.href="<%=request.getContextPath()%>/classDetail.ad?cno=" + no;
+          		 });
+              </script>
         </div>
         
         <%-- <%@ include file ="admin_classDetailModal.jsp" %> --%>

@@ -27,7 +27,7 @@
     <div class="wrap">
         <div class="main">
             <div class="class_img">
-                <img src="../semi/resources/uploadImg/ABC.jpg" class="class_img" alt="">
+                <img src="../semi/resources/uploadImg/<%= cv.getClassImg() %>" class="class_img" alt="">
             </div>
             <div class="class_navi" id="class_nav_div">
                     <a href="#sumary" id="summary_nav" class="navi_bar">요약</a>
@@ -96,86 +96,62 @@
                     </div>
                     <!-- 리뷰 -->
                 <div class="class_detail review" id="review">
-                    <div class="section01">
                         <h1 style="padding: 2%;">리뷰(Review)</h1>
-                        <a class="btn_st" id="btn_write_review">리뷰쓰기</a>
+                        <!-- <a class="btn_st" id="btn_write_review">리뷰쓰기</a> -->
                         <div class="review_box">
-                            <img src="/semi/resources/images/roundstar.png">
-                            <img src="/semi/resources/images/roundstar.png">
-                            <img src="/semi/resources/images/roundstar.png">
-                            <img src="/semi/resources/images/roundstar.png">
-                            <img src="/semi/resources/images/roundstar.png"><%= cv.getAverageReview() %></div>
-
+                            <div class="rate">
+			                    <label for="star1" title="text" class="star" id="star1">★</label> 
+			                    <label for="star1" title="text" class="star" id="star2">★</label> 
+			                    <label for="star1" title="text" class="star" id="star3">★</label> 
+			                    <label for="star1" title="text" class="star" id="star4">★</label> 
+			                    <label for="star1" title="text" class="star" id="star5">★</label> 
+			                    &nbsp; <span id="starNum"><%= cv.getAverageReview() %></span>
+                			</div> 
+            			</div>
+            			<script>
+            				var num = <%= cv.getAverageReview() %>;
+            					console.log(num);
+            				$(function(){
+	            				if(num == 1){
+	            				$('#star1').css("color","#ffc700");
+	            				}else if(num == 2){
+	            					$('#star1').css("color","#ffc700");
+	            					$('#star2').css("color","#ffc700");
+	            				}else if(num == 3){
+	            					$('#star1').css("color","#ffc700");
+	            					$('#star2').css("color","#ffc700");
+	            					$('#star3').css("color","#ffc700");
+	            				}else if(num == 4){
+	            					$('#star1').css("color","#ffc700");
+	            					$('#star2').css("color","#ffc700");
+	            					$('#star3').css("color","#ffc700");
+	            					$('#star4').css("color","#ffc700");
+	            				}else{
+	            					$('#star1').css("color","#ffc700");
+	            					$('#star2').css("color","#ffc700");
+	            					$('#star3').css("color","#ffc700");
+	            					$('#star4').css("color","#ffc700");
+	            					$('#star5').css("color","#ffc700");
+	            				}
+            				});
+            			</script>
                         <div class="review_list" id="bookmarkReview">
                             <ul>
                                 <div id="innerReviewDiv">
                                     <table id="replyTable">
+                                    <% for(int i=0; i<rList.size(); i++){ %>
                                         <tr>
-                                        	<td class="name">장병욱</td>
-                                            <td>직장생활을 하면서 주변에서는 펀드니 연금보험이니 뭐니 하는데 저는 아는 것이 하나도 없어 막막했습니다.
-                                                <br> 그런데 강의를 들으면서 자산관리에 대한 기본 개념과 금융상품들에 대해 정확히 이해할 수 있었습니다.
-                                                <br> 금융의 가장 기초적인 부분부터, 금융상품이 어떤 것이 있는지 기본 원리 장단점 등에 대해 쉽고 정확하게 친절하게 잘 설명해주셔서 완전 초보인 저도 잘이해할 수 있었습니다.
-                                                <br> 강의들어볼까 고민하시며 리뷰보시는 분이 있다면 진심 얼른 들으시길 강추합니다!!!!!
-                                                <br>
+                                        	<td class="name" style="width:100px; padding:2%;"><%= rList.get(i).getRwriter() %></td>
+                                            <td class="content" style="width:80%; padding:2%;"><%= rList.get(i).getRcontent() %>
+                                               <br><span class="date" style=color:gray;"><%= rList.get(i).getRdate() %></span>
                                             </td>
-                                            <td class="date">2020-01-06 01:14:37</td>
                                         </tr>
+                                    <%} %>
                                     </table>
                                 </div>
                             </ul>
                         </div>
-                        <script>
-                        	$.ajax({
-                        		url:"/<%= request.getContextPath() %>/selectOne.ci",
-                        		type: "get",
-                        		success:function(data){
-                        			$.each(data,function(index,value){
-                        				var $tr = $('<tr>');
-                        				var $userName = $('<td>').text(value.userName);
-                        				var $context = $('<td>').text(value.context);
-                        				var $date = $('<td>').text(value.date);
-                        				
-                        				$tr.append($userName);
-                        				$tr.append($context);
-                        				$tr.append($date);
-                        				
-                        				$('#replyTable').append($tr);
-                        			})
-                        		},error:function(data){
-                        			location
-                        		}
-                        	});
-
-                        	// 사용할 떄 script 태그 밖으로 이동시켜야함
-                            <%--  <div class="paging_num" id="innerPageDiv">
-                            <a class="on" href='<%= request.getContextPath() %>/replyList.rl?currentPage=1'"><<</a> 
-                            <% if(currentPage <= 1){ %>
-                            <a disalbed><</a>
-                            <% }else{ %>
-                            <a href='<%= request.getContextPath() %>/replyList.rl?currentPage=<%=currentPage -1 %>'"><</a>
-                            <% } %>
-                            
-                            <% for(int p = startPage; p<=endPage; p++){
-                            	if(p == currentPage){	
-                           	%>
-                            <a disabled><%= p %></a>
-                            <% }else{ %>
-                            <a href='<%= request.getContextPath() %>/replyList.rl?currentPage=<%= p %>'"><%= p %></a>
-                            <% } %>
-                            
-                            <% if(currentPage >= maxPage){ %>
-                            <a disalbed>></a>
-                            <% }else{ %>
-                            <a href="<%= request.getContextPath() %>/replyList.rl?currentPage + 1">></a>
-                            <% } %>
-                            <% } %> --%>
-                          <%--   <a href="<%= request.getContextPath() %>/replyList.rl?currengPage=<%= maxPage %>">>></a> --%>
-                        	
-                        	
-                        </script>
-                
-                        </div>
-                    </div>
+                      </div>
                 </div> <!-- /리뷰 -->
         </div>
     </div>
@@ -190,7 +166,7 @@
                     </div>
                     <% } %>
                     <div class="payment">
-                        <a id="pay_a" href="" onclick="payPopup();"><span id="pay_btn">수업 신청하기</span></a>
+                        <a id="pay_a" onclick="location.href='/semi/classPay.do?cno=<%= cv.getClassNo() %>'"><span id="pay_btn">수업 신청하기</span></a>
                     </div>
                     <div class="price">
                         <div id="text_time"><b>￦<%= cv.getClassPrice() %>원 / 회당</b></div>
@@ -198,7 +174,7 @@
             </div>
         </div>
     </div>
-    <!-- footer -->
+    <!-- footer -->  
     <%@ include file="../views/common/footer.jsp" %>
 </body>
 </html>
