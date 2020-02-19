@@ -12,7 +12,6 @@ import java.util.ArrayList;
 import java.util.Properties;
 
 import com.kh.newby.inquiry.model.vo.Board;
-import com.kh.newby.Member.model.vo.*;
 
 import static com.kh.newby.common.JDBCTemplate.*;
 
@@ -121,7 +120,7 @@ public class BoardDao {
 				
 				b.setIno(rset.getString("Q_NO"));
 				b.setItitle(rset.getString("Q_TITLE"));
-				b.setIwno(rset.getString("Q_WRITER_NO"));
+				b.setIwno(rset.getString("WRITER_NAME"));
 				b.setIdate(rset.getDate("Q_DATE"));
 				b.setIcontent(rset.getString("Q_CONTENT"));
 				b.setIcomment(rset.getString("Q_COMMENT"));
@@ -135,60 +134,6 @@ public class BoardDao {
 		}
 				
 		return b;
-	}
-
-	/**
-	 * 문의사항 추가용
-	 * @param con
-	 * @param b
-	 * @return
-	 */
-	public int boardInsert(Connection con, Board b) {
-		int result = 0;
-		PreparedStatement pstmt = null;
-		
-		String sql = prop.getProperty("boardInsert");
-		
-		try {
-			pstmt = con.prepareStatement(sql);
-			
-			pstmt.setString(1, b.getItitle());
-			pstmt.setString(2, b.getIwno());
-			pstmt.setDate(3, b.getIdate());
-			pstmt.setString(4, b.getIcontent());
-			pstmt.setString(5, b.getIcomment());
-			
-			result = pstmt.executeUpdate();
-		} catch(SQLException e) {
-			e.printStackTrace();
-		} finally {
-			close(pstmt);
-		}
-		
-		return result;
-	}
-
-	public int boardUpdate(Connection con, Board b) {
-		int result = 0;
-		PreparedStatement pstmt = null;
-		
-		String sql = prop.getProperty("boardUpdate");
-		
-		try {
-			pstmt = con.prepareStatement(sql);
-			
-			pstmt.setString(1, b.getItitle());
-			pstmt.setString(2, b.getIcontent());
-			pstmt.setString(3, b.getIno());
-			
-			result = pstmt.executeUpdate();
-		} catch(SQLException e) {
-			e.printStackTrace();
-		} finally {
-			close(pstmt);
-		}
-		
-		return result;
 	}
 
 	

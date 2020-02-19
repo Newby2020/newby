@@ -89,15 +89,5 @@ public class AdminService {
 		
 		return list;
 	}
-
-	public ClassVo selectOne(String cno) {
-		Connection con = getConnection();
-		
-		ClassVo c = aDao.selectOne(con, cno);
-		
-		close(con);
-		
-		return c;
-	}
 	
 }

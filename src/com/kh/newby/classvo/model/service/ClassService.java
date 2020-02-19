@@ -23,17 +23,6 @@ public class ClassService {
 		return cv;
 	}
 
-	public ArrayList<ClassVo> classScheduleList(String cno) {
-		Connection conn = getConnection();
-		ArrayList<ClassVo> csList = new ArrayList<ClassVo>();
-		
-		csList = cDao.classScheduleList(conn, cno);
-		
-		close(conn);
-		
-		return csList;
-	}
-
 
 
 }

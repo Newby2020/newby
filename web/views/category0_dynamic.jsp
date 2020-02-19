@@ -279,12 +279,12 @@
 
 				<div class="page_sh">
 					<button
-						onclick="location.href='<%= request.getContextPath() %>/selectList.ca?caType=ca0&currentPage=1'"><<</button>
+						onclick="location.href='<%= request.getContextPath() %>/selectList.ca?caType=ca0?currentPage=1'"><<</button>
 					<%  if(currentPage <= 1){  %>
 					<button disabled><</button>
 					<%  }else{ %>
 					<button
-						onclick="location.href='<%= request.getContextPath() %>/selectList.ca?caType=ca0&currentPage=<%=currentPage - 1 %>'"><</button>
+						onclick="location.href='<%= request.getContextPath() %>/selectList.ca?caType=ca0?currentPage=<%=currentPage - 1 %>'"><</button>
 					<%  } %>
 
 					<% for(int p = startPage; p <= endPage; p++){
@@ -293,7 +293,7 @@
 					<button disabled><%= p %></button>
 					<%      }else{ %>
 					<button
-						onclick="location.href='<%= request.getContextPath() %>/selectList.ca?caType=ca0&currentPage=<%= p %>'"><%= p %></button>
+						onclick="location.href='<%= request.getContextPath() %>/selectList.ca?caType=ca0?currentPage=<%= p %>'"><%= p %></button>
 					<%      } %>
 					<% } %>
 
@@ -301,10 +301,10 @@
 					<button disabled>></button>
 					<%  }else{ %>
 					<button
-						onclick="location.href='<%= request.getContextPath() %>/selectList.ca?caType=ca0&currentPage=<%=currentPage + 1 %>'">></button>
+						onclick="location.href='<%= request.getContextPath() %>/selectList.ca?caType=ca0?currentPage=<%=currentPage + 1 %>'">></button>
 					<%  } %>
 					<button
-						onclick="location.href='<%= request.getContextPath() %>/selectList.ca?caType=ca0&currentPage=<%= maxPage %>'">>></button>
+						onclick="location.href='<%= request.getContextPath() %>/selectList.ca?caType=ca0?currentPage=<%= maxPage %>'">>></button>
 				</div>
 
 			</div>

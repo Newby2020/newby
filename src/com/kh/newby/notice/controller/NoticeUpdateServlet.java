@@ -29,21 +29,17 @@ public class NoticeUpdateServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		String title = request.getParameter("title");
-		String content = request.getParameter("content");
+		String ntitle = request.getParameter("ntitle");
+		String ncontent = request.getParameter("ncontent");
 		String nno = request.getParameter("nno");
 		
-		System.out.println(title);
-		System.out.println(content);
-		System.out.println(nno);
-		
 		Notice n = new Notice();
-		n.setNtitle(title);
-		n.setNcontent(content);
+		n.setNtitle(ntitle);
+		n.setNcontent(ncontent);
 		n.setNno(nno);
 		
 		int result = new NoticeService().noticeUpdate(n);
-		
+//		System.out.println(result);
 		
 		if(result > 0) {
 			response.sendRedirect("noticeSelectOne.no?nno="+nno);

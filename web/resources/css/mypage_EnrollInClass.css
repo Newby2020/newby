@@ -1,14 +1,14 @@
 .tline1row{
     font-weight: bold;
     width: 150px;
-    font-size: 9pt;
+    font-size: 11pt;
     padding-top: 3px;
     margin: 0px;
     vertical-align: middle;
 }
 .tline2row{
     width: 600px;
-    font-size: 8pt
+    font-size: 9pt
 }
 #input1ske{
     width: 500px;
@@ -35,7 +35,6 @@
     border-bottom: 1px solid lightgray;
     font-size: 10pt;
 }
-
 .sl23{
     text-align-last: center;
     height: 25px;

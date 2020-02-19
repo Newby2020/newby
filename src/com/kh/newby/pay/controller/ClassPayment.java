@@ -10,6 +10,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.kh.newby.classvo.model.vo.ClassVo;
+import com.kh.newby.classvo.model.vo.ClassVo3;
 import com.kh.newby.pay.model.service.PaymentService2;
 
 /**
@@ -32,23 +33,22 @@ public class ClassPayment extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
-		ArrayList<ClassVo> classInfoList = null;
 		//String cno = request.getParameter("cno");
-		
 		String cno = "C1";
-		
+
 		PaymentService2 ps2 = new PaymentService2();
-		classInfoList = ps2.getClassInfoList(cno);
+		
+		ClassVo3 cvCno = ps2.getCno(cno);
+		
+		System.out.println(cvCno);
 		
 		String page = "";
 		
 		page = "/views/payment.jsp";
-
+		request.setAttribute("cvCno", cvCno);
 		
 		request.getRequestDispatcher(page).forward(request, response);
-		
 
-		
 	}
 
 	/**

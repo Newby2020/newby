@@ -1,8 +1,8 @@
-<%-- <%@ page language="java" contentType="text/html; charset=UTF-8"
+<%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8" import="java.util.*,
     							 com.kh.newby.classvo.model.vo.*"%>
 <%
-	ArrayList<ClassVo> classInfoList = (ArrayList<ClassVo>)request.getAttribute("classInfoList");
+
 %>    							 
     							 
 <!DOCTYPE html>
@@ -31,7 +31,7 @@
 			</div>
 		    <div class="classInfo">
 		        <div class="pictureClass"></div>
-		            <div class="classDetail"><br><br><%=classInfoList.get %>[카테고리] 선택한 클래스명 
+		            <div class="classDetail"><br><br><%= %>[카테고리] 선택한 클래스명 
 		            <br><br>클래스 선택 일정 
 		            <br><br>수량 x 2</div>
 		        <label class="priceClass"><br><br><br><br>W 10,000원</label>
@@ -74,7 +74,7 @@
 		    <br><br><br>
 		
 		    <div class="announcePay">
-		        <input type="checkbox" id="agree" name="agree">
+		        <input type="checkbox" id="agree" name="agree" onclick="checked();">
 		        <label>개인정보 제 3자 제공 동의, 결제 대행 서비스 이용 약관 등 모든 약관에 동의합니다.</label>
 		    </div>
 		
@@ -88,6 +88,18 @@
     
 
 	<script>
+	// 체크가 되었을 때
+	function checked() {
+		var agree = document.getElementById('agree');
+		var finalBtn = document.getElementById('finalButtonPay');
+		
+		if(agree.checked = true) {
+			finalBtn.disabled = false; 
+		} else {
+			finalBtn.disabled = true;
+		}
+	}
+	
 	// 결제 요청 - 결제 모듈 불러오기
 	function finalButtonPay() {
 	   
@@ -169,4 +181,4 @@
 	}
 	</script>
 </body>
-</html> --%>
+</html>

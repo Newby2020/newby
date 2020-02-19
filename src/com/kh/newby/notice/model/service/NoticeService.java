@@ -66,7 +66,7 @@ public class NoticeService {
 		
 		int result = nDao.noticeInsert(con,n);
 		
-		if(result > 0) commit(con);
+		if(result >= 1) commit(con);
 		else rollback(con);
 		
 		close(con);

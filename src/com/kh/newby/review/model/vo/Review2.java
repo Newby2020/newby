@@ -17,18 +17,7 @@ public class Review2 implements Serializable {
 	private String psDate;
 	private String psStartTime;
 	private String psEndTime;
-	private String psNo;
 	
-
-
-	public String getPsNo() {
-		return psNo;
-	}
-
-
-	public void setPsNo(String psNo) {
-		this.psNo = psNo;
-	}
 
 
 	public String getPsEndTime() {

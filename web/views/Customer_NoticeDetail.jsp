@@ -83,8 +83,7 @@
 						<div align="center">
 
 						<% if( m != null && m.getM_name().equals("관리자")) { %>
-							<input type="button" onclick="location.href='noticeUpdateView.no?nno=<%=n.getNno()%>'" value="수정하기">
-							
+							<button onclick="location.href='noticeUpdateView.no?nno=<%=n.getNno()%>'">수정하기</button>
 						<% } %>
 						</div>
 

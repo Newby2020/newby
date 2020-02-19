@@ -40,7 +40,7 @@
 				<br>
 				<h2>후기 작성</h2>
                 <hr id="hrSet53">
-                <h4 align="center" style="color: gray; font-weight: normal;">후기는 클래스의 진행날짜로부터 3일전까지만 작성하실 수 있습니다. </h4>
+                <h4 align="center" style="color: gray; font-weight: normal;">후기는 클래스의 진행날짜로부터 3일까지만 작성하실 수 있습니다. </h4>
                 <br>
 				<div id="contentsDivSize29">
 					<div>
@@ -53,8 +53,7 @@
 							
 							<%for(Review2 r : list){ %>
 							<tr align="center">             
-								<input name="cno" class="cno" type="hidden" value="<%=r.getcNo()%>">
-								<input name="psno" class="psno" type="hidden" value="<%=r.getPsNo()%>">
+								<input name="cno" class="hv" type="hidden" value="<%=r.getcNo()%>">
 								<td><%=r.getcName()%></td>
 								<td><%=r.getPsDate() %><span id="divider">|</span><%=r.getPsStartTime() %>~<%=r.getPsEndTime() %>&nbsp;(<%=r.getcTime() %>시간)</td>
 								<td>

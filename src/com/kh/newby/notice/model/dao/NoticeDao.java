@@ -172,12 +172,6 @@ public class NoticeDao {
 		return result;
 	}
 
-	/**
-	 * 공지사항 추가용
-	 * @param con
-	 * @param n
-	 * @return
-	 */
 	public int noticeInsert(Connection con, Notice n) {
 		int result = 0;
 		PreparedStatement pstmt = null;
@@ -202,12 +196,6 @@ public class NoticeDao {
 		return result;
 	}
 
-	/**
-	 * 공지사항 수정용
-	 * @param con
-	 * @param n
-	 * @return
-	 */
 	public int noticeUpdate(Connection con, Notice n) {
 		int result = 0;
 		PreparedStatement pstmt = null;
@@ -231,12 +219,6 @@ public class NoticeDao {
 		return result;
 	}
 
-	/**
-	 * 공지사항 삭제용
-	 * @param con
-	 * @param nno
-	 * @return
-	 */
 	public int noticeDelete(Connection con, String nno) {
 		int result = 0;
 		PreparedStatement pstmt = null;

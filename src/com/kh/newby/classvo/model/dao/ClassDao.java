@@ -5,9 +5,8 @@ import java.io.IOException;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.util.ArrayList;
 import java.util.Properties;
+
 import com.kh.newby.classvo.model.vo.ClassVo;
 
 import static com.kh.newby.common.JDBCTemplate.*;
@@ -73,41 +72,6 @@ public class ClassDao {
 		}
 		
 		return cv;
-	}
-
-	public ArrayList<ClassVo> classScheduleList(Connection conn, String cno) {
-		ArrayList<ClassVo> csList = null;
-		PreparedStatement pstmt = null;
-		ResultSet rset = null;
-		
-		try {
-			String sql = prop.getProperty("scheduleSelect");
-			pstmt = conn.prepareStatement(sql);
-			
-			pstmt.setString(1, cno);
-			
-			rset = pstmt.executeQuery();
-			
-			csList = new ArrayList<ClassVo>();
-			
-			while(rset.next()) {
-				ClassVo cv = new ClassVo();
-				
-				cv.setClassNo(cno);
-				cv.setClassDate(rset.getString("CS_CLASS_DATE"));
-				cv.setClassStartTime(rset.getString("CS_STARTTIME"));
-				cv.setClassEndTime(rset.getString("CS_ENDTIME"));
-				
-				csList.add(cv);
-			}
-		}catch(Exception e) {
-			e.printStackTrace();
-		}finally {
-			close(rset);
-			close(pstmt);
-		}
-		
-		return csList;
 	}
 
 }

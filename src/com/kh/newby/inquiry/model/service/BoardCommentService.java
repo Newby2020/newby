@@ -30,11 +30,11 @@ public class BoardCommentService {
 	public ArrayList<Board> selectList(String bno) {
 		Connection con = getConnection();
 
-		ArrayList<Board> clist = bcDao.selectList(con,bno);
+		ArrayList<Board> list = bcDao.selectList(con,bno);
 
 		close(con);
 
-		return clist;
+		return list;
 	}
 
 

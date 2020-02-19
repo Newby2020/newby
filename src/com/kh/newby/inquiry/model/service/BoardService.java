@@ -48,37 +48,6 @@ public class BoardService {
 		return b;
 	}
 
-	/**
-	 * 문의사항 등록용
-	 * @param b
-	 * @return
-	 */
-	public int boardInsert(Board b) {	
-		Connection con = getConnection();
-		
-		int result = bDao.boardInsert(con,b);
-		
-		if(result > 0) commit(con);
-		else rollback(con);
-		
-		close(con);
-		
-		return result;
-	}
-
-	public int boardUpdate(Board b) {
-		Connection con = getConnection();
-		
-		int result = bDao.boardUpdate(con,b);
-		
-		if(result > 0) commit(con);
-		else rollback(con);
-		
-		close(con);
-		
-		return result;
-	}
-
 
 	
 

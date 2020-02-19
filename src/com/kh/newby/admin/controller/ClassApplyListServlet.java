@@ -72,7 +72,7 @@ public class ClassApplyListServlet extends HttpServlet {
 			request.setAttribute("pi", pi);
 			
 		} else {
-			page = "views/common/errorPage";
+			page = "/views/common/errorPage";
 			request.setAttribute("msg", "클래스 등록 신청 목록을 불러오는데 실패하였습니다.");
 			
 		}

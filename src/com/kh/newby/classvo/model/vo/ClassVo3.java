@@ -4,12 +4,12 @@ import java.io.Serializable;
 import java.sql.Date;
 import java.util.Arrays;
 
-public class ClassVo implements Serializable {
+public class ClassVo3 implements Serializable {
 
 	/**
 	 * 
 	 */
-	private static final long serialVersionUID = -6188151450703153117L;
+	private static final long serialVersionUID = 8297952635101326350L;
 
 	private String classNo;
 	private String classHostNo;
@@ -37,94 +37,31 @@ public class ClassVo implements Serializable {
 	private String classStatus;
 	private String rejectReason;
 	private String caNo;
+	private int payMileage;
+	private int paySaveMileage;
 	
 	// 기본 생성자
-	public ClassVo() {}
-
-	// 클래스 등록용 생성자
-	public ClassVo(String className, String firstCategory, String secondCategory, String thirdCategory, String classType,
-			int classTime, int classMaxnum, int classPrice, String classImg, String classLocation, String classTarget,
-			String classCurriculum, String classIntro, String classDate, String classStartTime, String classEndTime, String hostNo) {
+	public ClassVo3() {}
+	
+	// 결제 시 필요
+	
+	
+	// 결제 및 결제 취소 시 필요
+	public ClassVo3(String className, String firstCategory, String secondCategory, String thirdCategory, int classPrice,
+			String classImg, String classDate, String classStartTime, String classEndTime, int payMileage,
+			int paySaveMileage) {
 		super();
 		this.className = className;
 		this.firstCategory = firstCategory;
 		this.secondCategory = secondCategory;
 		this.thirdCategory = thirdCategory;
-		this.classType = classType;
-		this.classMaxnum = classMaxnum;
-		this.classTime = classTime;
 		this.classPrice = classPrice;
 		this.classImg = classImg;
-		this.classLocation = classLocation;
-		this.classIntro = classIntro;
-		this.classTarget = classTarget;
-		this.classCurriculum = classCurriculum;
 		this.classDate = classDate;
 		this.classStartTime = classStartTime;
 		this.classEndTime = classEndTime;
-		this.hostNo = hostNo;
-	}
-	
-	// 클래스 상세 페이지 생성자(enrolldate 제외하고 모두)
-	public ClassVo(String classNo, String classHostNo, String className, String firstCategory, String secondCategory,
-			String thirdCategory, String classType, int classMaxnum, int classTime, int classPrice, String classImg,
-			String classLocation, String classIntro, String classTarget, String classCurriculum, String classDate,
-			String classStartTime, String classEndTime, String hostName, String hostIntro, double averageReview) {
-		super();
-		this.classNo = classNo;
-		this.classHostNo = classHostNo;
-		this.className = className;
-		this.firstCategory = firstCategory;
-		this.secondCategory = secondCategory;
-		this.thirdCategory = thirdCategory;
-		this.classType = classType;
-		this.classMaxnum = classMaxnum;
-		this.classTime = classTime;
-		this.classPrice = classPrice;
-		this.classImg = classImg;
-		this.classLocation = classLocation;
-		this.classIntro = classIntro;
-		this.classTarget = classTarget;
-		this.classCurriculum = classCurriculum;
-		this.classDate = classDate;
-		this.classStartTime = classStartTime;
-		this.classEndTime = classEndTime;
-		this.hostName = hostName;
-		this.hostIntro = hostIntro;
-		this.averageReview = averageReview;
-	}
-	
-	// 관리자용 클래스 관리 생성자
-	public ClassVo(String classNo, String className, String firstCategory, String classType, int classMaxnum,
-			int classPrice, String classLocation, Date classEnrollDate, String classStartTime, String classEndTime,
-			String hostName, String hostNo, String classStatus, String rejectReason) {
-		super();
-		this.classNo = classNo;
-		this.className = className;
-		this.firstCategory = firstCategory;
-		this.classType = classType;
-		this.classMaxnum = classMaxnum;
-		this.classPrice = classPrice;
-		this.classLocation = classLocation;
-		this.classEnrollDate = classEnrollDate;
-		this.classStartTime = classStartTime;
-		this.classEndTime = classEndTime;
-		this.hostName = hostName;
-		this.hostNo = hostNo;
-		this.classStatus = classStatus;
-		this.rejectReason = rejectReason;
-	}
-	// 관리자용 클래스 관리 생성자 종료
-	public ClassVo(String classNo, String classHostNo, String className, String classIntro, Date classEnrollDate, String classStatus, String rejectReason, String caNo) {
-		super();
-		this.classNo = classNo;
-		this.classHostNo = classHostNo;
-		this.className = className;
-		this.classIntro = classIntro;
-		this.classEnrollDate = classEnrollDate;
-		this.classStatus = classStatus;
-		this.rejectReason = rejectReason;
-		this.caNo = caNo;
+		this.payMileage = payMileage;
+		this.paySaveMileage = paySaveMileage;
 	}
 
 	public String getClassNo() {
@@ -310,8 +247,7 @@ public class ClassVo implements Serializable {
 	public void setHostNo(String hostNo) {
 		this.hostNo = hostNo;
 	}
-	
-	// 관리자용 클래스 생성 
+
 	public String getClassStatus() {
 		return classStatus;
 	}
@@ -327,7 +263,7 @@ public class ClassVo implements Serializable {
 	public void setRejectReason(String rejectReason) {
 		this.rejectReason = rejectReason;
 	}
-	
+
 	public String getCaNo() {
 		return caNo;
 	}
@@ -335,11 +271,26 @@ public class ClassVo implements Serializable {
 	public void setCaNo(String caNo) {
 		this.caNo = caNo;
 	}
-	// 관리자용 클래스 생성 종료
+
+	public int getPayMileage() {
+		return payMileage;
+	}
+
+	public void setPayMileage(int payMileage) {
+		this.payMileage = payMileage;
+	}
+
+	public int getPaySaveMileage() {
+		return paySaveMileage;
+	}
+
+	public void setPaySaveMileage(int paySaveMileage) {
+		this.paySaveMileage = paySaveMileage;
+	}
 
 	@Override
 	public String toString() {
-		return "ClassVo [classNo=" + classNo + ", classHostNo=" + classHostNo + ", className=" + className
+		return "ClassVo3 [classNo=" + classNo + ", classHostNo=" + classHostNo + ", className=" + className
 				+ ", firstCategory=" + firstCategory + ", secondCategory=" + secondCategory + ", thirdCategory="
 				+ thirdCategory + ", classType=" + classType + ", classMaxnum=" + classMaxnum + ", classTime="
 				+ classTime + ", classPrice=" + classPrice + ", classImg=" + classImg + ", classLocation="
@@ -347,7 +298,9 @@ public class ClassVo implements Serializable {
 				+ classCurriculum + ", classEnrollDate=" + classEnrollDate + ", classDate=" + classDate
 				+ ", classStartTime=" + classStartTime + ", classEndTime=" + classEndTime + ", hostName=" + hostName
 				+ ", hostIntro=" + hostIntro + ", averageReview=" + averageReview + ", hostNo=" + hostNo
-				+ ", classStatus=" + classStatus + ", rejectReason=" + rejectReason + "]";
+				+ ", classStatus=" + classStatus + ", rejectReason=" + rejectReason + ", caNo=" + caNo + ", payMileage="
+				+ payMileage + ", paySaveMileage=" + paySaveMileage + "]";
 	}
 
 }
+	

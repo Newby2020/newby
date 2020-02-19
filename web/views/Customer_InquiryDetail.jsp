@@ -3,10 +3,12 @@
 <%@ page
 	import="com.kh.newby.inquiry.model.vo.*, java.util.*, com.kh.newby.notice.model.vo.*"%>
 <%
-	Board b = (Board) request.getAttribute("board");
-	Notice n = (Notice) request.getAttribute("notice");
+	Board b = (Board)request.getAttribute("board");
+	Notice n = (Notice)request.getAttribute("notice");
 
-	ArrayList<Board> clist = (ArrayList<Board>) request.getAttribute("clist");
+	ArrayList<Board> list
+	= (ArrayList<Board>)request.getAttribute("list");
+	
 %>
 
 <!DOCTYPE html>
@@ -50,7 +52,7 @@
 			<!--contents-->
 			<div id="mn16s" align="center">
 
-				<% if (b != null) { %>
+
 				<!-- 제목란이니깐 해당 제목 작성해서 하면 돼-->
 				<br>
 				<h2>문의 내용</h2>
@@ -59,88 +61,78 @@
 
 				<div id="contentsDivSize29">
 					<!-- 여기다가 너가 작업한거 넣으면 돼-->
-
+					
 					<form>
 						<table class="tbDetail">
 							<tr>
 								<td class="tdDetail">제목</td>
-								<td class="tdDetail" colspan="5"><span class="spN2"><%=b.getItitle()%></span></td>
+								<td class="tdDetail" colspan="5"><span class="spN2"><%= b.getItitle() %></span></td>
 							</tr>
 							<tr>
 								<td class="tdDetail">작성자</td>
-								<td class="tdSpan"><span class="spN"><%=b.getIwno()%></span></td>
+								<td class="tdSpan"><span class="spN"><%= b.getIwno() %></span></td>
 								<td class="tdDetail">작성일</td>
-								<td class="tdSpan"><span class="spN"><%=b.getIdate()%></span></td>
+								<td class="tdSpan"><span class="spN"><%= b.getIdate() %></span></td>
 							<tr>
 								<td class="tdDetail">내용</td>
 								<td class="tbSpan2" colspan="5"></td>
 							</tr>
 
 							<tr>
-								<td class="tdContent" colspan="6"><span class="spN"><%=b.getIcontent()%></span></td>
+								<td class="tdContent" colspan="6"><span class="spN"><%= b.getIcontent() %></span></td>
 							</tr>
 						</table>
-						<div id="replySelectArea">
-							<!-- 게시글의 댓글들을 보여주는 부분  -->
-							<%
-								if (clist != null && m != null && m.getM_name().equals("관리자")) {
-							%>
-							<form action="boardComment.bo" method="post">
-								<table id="replySelectTable">
-									<tr>
-										<td rowspan="1"></td>
-										<td><%=m.getM_name()%></td>
-										<td><%=b.getIdate()%></td>
-										<td align="center"><input type="hidden" name="writer"
-											value="<%=m.getM_name()%>"> <input type="hidden"
-											name="refcno"> <textarea class="reply-content"
-												cols="80" rows="3" style="resize: none;"></textarea>
-											<button type="button" class="insertBtn"
-												onclick="reComment(this);">댓글 달기</button></td>
-									</tr>
-								</table>
-							</form>
-							<%
-								}
-							%>
+						<%-- <div align="center">
+							<div class="replyWriteArea">
+								<form action="/semi/boardComment.bo" method="post">
+									<input type="hidden" name="nwriter"
+										value="<%= n.getNwriter() %>" /> <input type="hidden"
+										name="ino" value="<%= b.getIno() %>" /> <input type="hidden"
+										name="refcno" value="0" /> <input type="hidden" name="clevel"
+										value="1" />
 
-						</div>
-						<% if( b.getIwno().equals(m.getM_nick())) { %>
-						<div align="center">
-							<button onclick="noticeUpdate();">수정</button>
-							<button onclick="noticeDelete()">삭제</button>
-						</div>
-						<% } } %>
-						<script>
-							function noticeUpdate(){
-								$("#updateForm").attr("action","<%=request.getContextPath() %>/boardUpdate.no");
-							}
-						
-							function noticeDelete(){
-								$("#updateForm").attr("action","<%=request.getContextPath() %>/boardDelete.no");
-							}
-					
-        				
-    					</script>
+									<table align="center">
+										<tr>
+											<td>댓글 작성</td>
+											<td><textArea rows="3" cols="80" id="replyContent"
+													name="replyContent"></textArea></td>
+											<td><button type="submit" id="addReply">댓글 등록</button></td>
+										</tr>
+									</table>
+								</form>
+							</div>
+							<div>
+								<!--  게시글 댓글 -->
+								<% if (list != null){ %>
+								<%  for(Board bo : list) { %>
+
+								<table id="replySelectTable"class="replyList">
+								<tr>
+								<td rowspan="2"> </td>
+								<td><%= bo.getIcomment()%></td>
+								</tr>
+								</table>
+								
+								<% } } else { %>
+								<p>댓글을 달아주세요</p>
+								<% } %>
+							</div>
+
+
+
+						</div> --%>
+
 					</form>
 
 				</div>
-	
+
 			</div>
 
 		</div>
 		<%@ include file="./common/footer.jsp"%>
 	</div>
 	<script>
-	function reComment(obj){
-		$(obj).siblings('.insertConfirm').css('display','inline');
 		
-		$(obj).css('display', 'none');
-		
-		$(obj).parents('table').append(htmlForm);
-		
-	}
-	
 	</script>
 </body>
 </html>
