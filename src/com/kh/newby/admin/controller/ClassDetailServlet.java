@@ -38,7 +38,7 @@ public class ClassDetailServlet extends HttpServlet {
 		String page = "";
 		
 		if(c != null) {
-			page = "views/admin_classDetailModal.jsp";
+			page = "views/admin_classDetail.jsp";
 			request.setAttribute("c", c);
 		}else {
 			page = "views/common/errorPage.jsp";
