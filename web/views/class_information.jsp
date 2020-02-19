@@ -6,7 +6,6 @@
 	//클래스 객체
 	ClassVo cv = (ClassVo)request.getAttribute("class");
 
-
 	//클래스 일정 리스트
 	ArrayList<ClassVo> csList = (ArrayList<ClassVo>)request.getAttribute("csList");
 	
@@ -28,7 +27,7 @@
     <div class="wrap">
         <div class="main">
             <div class="class_img">
-                <%-- <img src="../semi/resources/uploadImg/<%= cv.getClassImg() %>" class="class_img" alt=""> --%>
+                <img src="../semi/resources/uploadImg/<%= cv.getClassImg() %>" class="class_img" alt="">
             </div>
             <div class="class_navi" id="class_nav_div">
                     <a href="#sumary" id="summary_nav" class="navi_bar">요약</a>
@@ -167,7 +166,7 @@
                     </div>
                     <% } %>
                     <div class="payment">
-                        <a id="pay_a" href="" onclick="payPopup();"><span id="pay_btn">수업 신청하기</span></a>
+                        <a id="pay_a" onclick="location.href='/semi/classPay.do?cno=<%= cv.getClassNo() %>'"><span id="pay_btn">수업 신청하기</span></a>
                     </div>
                     <div class="price">
                         <div id="text_time"><b>￦<%= cv.getClassPrice() %>원 / 회당</b></div>
@@ -175,7 +174,7 @@
             </div>
         </div>
     </div>
-    <!-- footer -->
+    <!-- footer -->  
     <%@ include file="../views/common/footer.jsp" %>
 </body>
 </html>

@@ -33,7 +33,9 @@ public class ClassPayment extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
 		ArrayList<ClassVo> classInfoList = null;
-		String cno = request.getParameter("재우가 던져 주는 이름");
+		//String cno = request.getParameter("cno");
+		
+		String cno = "C1";
 		
 		PaymentService2 ps2 = new PaymentService2();
 		classInfoList = ps2.getClassInfoList(cno);

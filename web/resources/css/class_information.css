@@ -88,6 +88,7 @@
     border-radius: 2px;
     padding: 10px 10px 10px 10px;
     font-family: 'Noto Sans KR', sans-serif;
+    cursor: pointer;
 }
 .side .class_price{
     padding: 20px 20px;
