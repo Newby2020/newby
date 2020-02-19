@@ -33,6 +33,7 @@ public class ClassDetailServlet extends HttpServlet {
 		String cno = request.getParameter("cno");
 		
 		ClassVo c = new AdminService().selectOne(cno);
+		System.out.println(c);
 		
 		System.out.println(c);
 		String page = "";

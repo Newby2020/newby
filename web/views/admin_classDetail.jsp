@@ -2,6 +2,10 @@
 	pageEncoding="UTF-8"
 	import="com.kh.newby.classvo.model.vo.*, 
     		java.util.*"%>
+<%
+	/* ClassVo c = request */
+%>
+
 <!DOCTYPE html>
 <html>
 <head>
