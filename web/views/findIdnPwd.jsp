@@ -22,7 +22,7 @@
 		<%@ include file="./common/header.jsp" %>
 		<br><br>
             <div class="newby-body-panel2">
-                <form id="findForm1" class="findForm">
+                <form action="/semi/findId.me" id="findForm1" class="findForm" onsubmit="return validate();">
                     <div id="findIdSentence">
                         <label style="margin-bottom: 3px;"><b>아이디 찾기</b></label>
                         <br>
@@ -35,12 +35,11 @@
                     	</div>
                     	<div class="infoRequired">
               				<input type="text" class="memberFind" id="phone" name="phone" value="" maxlength=100; placeholder="휴대폰 번호 입력">
-              				<input type="text" class="memberFind" id="securePhone" name="securePhone" maxlength=4 style="width: 60px;" placeholder="인증코드">
-              				<button onclick="secureButtonFind();" id="secureButtonFind" class="secureButtonFind">인증</button>
+              				
           				</div>
                     	<br><br><br><br><br><br>
                     	<div id="blankFor" align="center">
-	       					<button onclick="buttonFindId();" id="buttonFindId" class="buttonFind">이메일 아이디 찾기</button>
+	       					<input type="submit" id="buttonFindId" class="buttonFind" value="이메일 아이디 찾기">
 	       				</div>
 	       				<br><br>
 	        		</div> 
@@ -61,12 +60,14 @@
                     	</div>
                     	<div class="infoRequired">
                         	<input type="text" id="memberFindEmail" class="memberFind" name="memberFindEmail" value="" placeholder="이메일 아이디 입력">
+                        	<span id="sendCode" name="sendCode">인증메일 보내기</span>
+                        	
                     	</div>
                     	<div class="infoRequired">
-              				<input type="text" class="memberFind" id="phone" name="phone" value="" maxlength=100; placeholder="휴대폰 번호 입력">
-              				<input type="text" class="memberFind" id="securePhone" name="securePhone" maxlength=4 style="width: 60px;" placeholder="인증코드">
-              				<button onclick="secureButtonFind();" id="secureButtonFind" class="secureButtonFind">인증</button>
+              				<input type="text" class="memberFind" id="phone" name="phone" value="" maxlength=100; placeholder="인증 번호 입력">	
+              					<span id="confirmCode" name="confirmCode">확인</span>
           				</div>
+                    	
                     	<br><br><br><br><br><br>
                     	<div align="center">
 	       					<button onclick="buttonFindPwd();" id="buttonFindPwd" class="buttonFind">비밀번호 찾기</button>
@@ -79,4 +80,21 @@
             <%@ include file="./common/footer.jsp" %> 
     </div>  
 	</body>
+	
+	<script>
+		function validate(){
+			
+			var name = document.getElementById("memberFindName");
+			var phone = document.getElementById("phone");
+			
+			if((name.value)=="" || (phone.value)==""){
+				alert("정보를 정확히 입력해주세요");
+				return false;
+			}
+			
+			
+		}
+	
+	
+	</script>
 </html>

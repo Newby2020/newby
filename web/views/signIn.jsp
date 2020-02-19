@@ -259,6 +259,7 @@ html {
 			if ((id.value) == ""){
                 alert("아이디를 입력하지 않았습니다.");
                 id.focus();
+                console.log("아이디체크");
                 return false;
             }
 			
@@ -323,12 +324,10 @@ html {
              }
 			 
 			//약관 체크
-			if(agree.checked == false){
+			if((agree.checked) == false){
 				alert("약관에 동의해주세요");
 				return false;
 			}
-			
-			
 			
 		}
 		</script>
