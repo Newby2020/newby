@@ -252,6 +252,51 @@ public class AdminDao {
 		return list;
 	}
 
+	public ClassVo selectOne(Connection con, String cno) {
+		ClassVo c = null;
+		
+		PreparedStatement pstmt = null;
+		ResultSet rset = null;
+		
+		String sql = prop.getProperty("selectOne");
+		
+		try {
+			pstmt = con.prepareStatement(sql);
+			
+			pstmt.setString(1, cno);
+			
+			rset = pstmt.executeQuery();
+			
+			if(rset.next()) {
+				c = new ClassVo(rset.getString("CLASS_NO"), 
+								rset.getString("CLASS_HOST_NO"),
+								rset.getString("CLASS_NAME"),
+								rset.getString("FIRST_CATEGORY"),
+								rset.getString("SECOND_CATEGORY"),
+								rset.getString("THIRD_CATEGORY"),
+								rset.getString("CLASS_TYPE"),
+								rset.getInt("CLASS_TIME"),
+								rset.getInt("CLASS_PRICE"),
+								rset.getInt("CLASS_MAXNUM"),
+								rset.getString("CLASS_IMG"),
+								rset.getString("CLASS_LOCATION"),
+								rset.getString("CLASS_INTRO"),
+								rset.getString("CLASS_TARGET"),
+								rset.getString("CLASS_CURRICULUM"),
+								rset.getDate("CLASS_ENROLLDATE"),
+								rset.getString("CLASS_STATUS"),
+								rset.getString("REJECT_REASON")
+								);
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(rset);
+			close(pstmt);
+		}
+		return c;
+	}
+//-------------------------- ClassApplyList -----------------------------//	
 	public int getClassApplyListCount(Connection con) {
 		int listCount = 0;
 		
@@ -317,49 +362,6 @@ public class AdminDao {
 		return list;
 	}
 
-	public ClassVo selectOne(Connection con, String cno) {
-		ClassVo c = null;
-		
-		PreparedStatement pstmt = null;
-		ResultSet rset = null;
-		
-		String sql = prop.getProperty("selectOne");
-		
-		try {
-			pstmt = con.prepareStatement(sql);
-			
-			pstmt.setString(1, "C10");
-			
-			rset = pstmt.executeQuery();
-			
-			if(rset.next()) {
-				c = new ClassVo(rset.getString("CLASS_NO"), 
-								rset.getString("CLASS_HOST_NO"),
-								rset.getString("CLASS_NAME"),
-								rset.getString("FIRST_CATEGORY"),
-								rset.getString("SECOND_CATEGORY"),
-								rset.getString("THIRD_CATEGORY"),
-								rset.getString("CLASS_TYPE"),
-								rset.getInt("CLASS_TIME"),
-								rset.getInt("CLASS_PRICE"),
-								rset.getInt("CLASS_MAXNUM"),
-								rset.getString("CLASS_IMG"),
-								rset.getString("CLASS_LOCATION"),
-								rset.getString("CLASS_INTRO"),
-								rset.getString("CLASS_TARGET"),
-								rset.getString("CLASS_CURRICULUM"),
-								rset.getDate("CLASS_ENROLLDATE"),
-								rset.getString("CLASS_STATUS"),
-								rset.getString("REJECT_REASON")
-								);
-			}
-		} catch (SQLException e) {
-			e.printStackTrace();
-		} finally {
-			close(rset);
-			close(pstmt);
-		}
-		return c;
-	}
+	
 	
 }

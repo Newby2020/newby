@@ -50,6 +50,21 @@ public class MemberService2 {
 		close(con);
 		return newTel;
 	}
+	public int checkNick(String nick) {
+		Connection con = getConnection();
+		
+		int result = new MemberDao2().checkNick(con, nick);
+		
+		if(result >0) {
+			commit(con);
+		} else {
+			rollback(con);
+		}
+		
+		close(con);
+		System.out.println("service : "+result);
+		return result;
+	}
 	
 
 	

@@ -1,28 +1,25 @@
-package com.kh.newby.pay.controller;
+package com.kh.newby.Member.controller;
 
 import java.io.IOException;
-import java.util.ArrayList;
-
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.kh.newby.classvo.model.vo.ClassVo;
-import com.kh.newby.pay.model.service.PaymentService2;
+import com.kh.newby.Member.model.service.MemberService2;
 
 /**
- * Servlet implementation class ClassPayment
+ * Servlet implementation class CheckNickServlet
  */
-@WebServlet("/classPay.do")
-public class ClassPayment extends HttpServlet {
+@WebServlet("/checkNick.do")
+public class CheckNickServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public ClassPayment() {
+    public CheckNickServlet() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -31,23 +28,13 @@ public class ClassPayment extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-
-		ArrayList<ClassVo> classInfoList = null;
-		//String cno = request.getParameter("cno");
-		
-		String cno = "C1";
-		
-		PaymentService2 ps2 = new PaymentService2();
-		classInfoList = ps2.getClassInfoList(cno);
-		
-		String page = "";
-		
-		page = "/views/payment.jsp";
-
-		
-		request.getRequestDispatcher(page).forward(request, response);
-		
-
+		request.setCharacterEncoding("UTF-8");
+		response.setCharacterEncoding("UTF-8");
+		String nick = request.getParameter("nick");
+		System.out.println(nick);
+		int result = new MemberService2().checkNick(nick);
+		System.out.println("control : "+result);
+		response.getWriter().print(result);
 		
 	}
 

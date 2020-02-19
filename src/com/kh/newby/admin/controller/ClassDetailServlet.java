@@ -33,12 +33,13 @@ public class ClassDetailServlet extends HttpServlet {
 		String cno = request.getParameter("cno");
 		
 		ClassVo c = new AdminService().selectOne(cno);
+		System.out.println(c);
 		
 		System.out.println(c);
 		String page = "";
 		
 		if(c != null) {
-			page = "views/admin_classDetailModal.jsp";
+			page = "views/admin_classDetail.jsp";
 			request.setAttribute("c", c);
 		}else {
 			page = "views/common/errorPage.jsp";
