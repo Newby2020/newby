@@ -49,7 +49,6 @@
 				<h2>공지사항 등록</h2>
 				<hr id="hrSet53">
 				<br> <br>
-				<% if(m != null && m.getM_name().equals("관리자")) { %>
 				<div id="contentsDivSize29">
 					<!-- 여기다가 너가 작업한거 넣으면 돼-->
 					
@@ -60,13 +59,13 @@
 								<td class="tdDetail">제목</td>
 								<td class="tdDetail" colspan="5">
 									<input type="text" size="50" name="title" 
-							       		value="<%= n.getNtitle()/* .replace("\"", "&#34;") */ %>">
+							       		value="<%= n.getNtitle() %>">
 									<input type="hidden" name="nno" value="<%= n.getNno() %>"></td>
 							</tr>
 							<tr>
 								<td class="tdDetail">작성자</td>
 								<td class="tdSpan">
-									<input type="text" value="<%= n.getNwriter() %>" name="writer" readonly>
+									<input type="text" value="관리자" name="writer" readonly>
 								
 								<td class="tdDetail">작성일</td>
 								<td class="tdSpan"><input type="date" name="date" value="<%= n.getNdate() %>"></td>
@@ -83,8 +82,8 @@
 						</table>
 						<br>
 						<div align="center">
-							<button onclick="complete();">수정</button>
-							<button onclick="deleteNotice()">삭제</button>
+							<button onclick="deleteNotice()">삭제하기</button>
+							<button onclick="complete();">완료하기</button>
 						</div>
 						<script>
 							function complete(){
@@ -93,7 +92,7 @@
 							}
 						
 							function deleteNotice(){
-							
+
 								$("#updateForm").attr("action","<%=request.getContextPath() %>/noticeDelete.no");
 							}
 					
@@ -103,10 +102,6 @@
 					</form>
 					
 				</div>
-				<% } else {
-					request.setAttribute("msg", "관계자 외에 접근이 불가능한 페이지입니다.");
-					request.getRequestDispatcher("/views/common/errorPage.jsp").forward(request, response);
-				} %>
 			</div>
 				
 		</div>

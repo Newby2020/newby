@@ -1,6 +1,7 @@
 package com.kh.newby.pay.controller;
 
 import java.io.IOException;
+import java.util.ArrayList;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -8,17 +9,20 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.kh.newby.pay.model.service.PaymentService;
+import com.kh.newby.pay.model.vo.Payment;
+
 /**
- * Servlet implementation class PaymentPageServlet
+ * Servlet implementation class MemberMileageServelt
  */
-@WebServlet("/pay.do")
-public class PaymentPageServlet extends HttpServlet {
+@WebServlet("/payList.do")
+public class PaymentListServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public PaymentPageServlet() {
+    public PaymentListServlet() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -27,8 +31,24 @@ public class PaymentPageServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		response.getWriter().append("Served at: ").append(request.getContextPath());
+		ArrayList<Payment> list = null;
+		
+//		HttpSession session = request.getSession(false);
+//		Member m = (Member)session.getAttribute("member");
+		
+		String mno = "M3"; //String mno = m.getM_no();						/////////////////////////////////수정해야됨////////////////////////////
+
+		list = new PaymentService().payList(mno);
+		String page = "";
+		
+		if(list != null) {
+			page = "views/mypage_Mileage.jsp";
+			request.setAttribute("list", list);
+		} else {
+			page = "views/common/errorPage.jsp";
+			request.setAttribute("msg", "마일리지 페이지 불러오기 실패!");
+		}
+		request.getRequestDispatcher(page).forward(request, response);
 	}
 
 	/**

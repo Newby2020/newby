@@ -3,10 +3,10 @@
 <%@ page
 	import="com.kh.newby.inquiry.model.vo.*, java.util.*, com.kh.newby.notice.model.vo.*"%>
 <%
-	Inquiry b = (Inquiry) request.getAttribute("inquiry");
+	Inquiry i = (Inquiry) request.getAttribute("inquiry");
 	Notice n = (Notice) request.getAttribute("notice");
 
-	ArrayList<Inquiry> clist = (ArrayList<Inquiry>) request.getAttribute("clist");
+	ArrayList<Inquiry> list = (ArrayList<Inquiry>) request.getAttribute("list");
 %>
 
 <!DOCTYPE html>
@@ -50,7 +50,7 @@
 			<!--contents-->
 			<div id="mn16s" align="center">
 
-				<% if( b.getIwno().equals(m.getM_nick())) { %>
+				<%-- <% if( b.getIwno().equals(m.getM_nick())) { %> --%>
 				<!-- 제목란이니깐 해당 제목 작성해서 하면 돼-->
 				<br>
 				<h2>문의 내용</h2>
@@ -64,21 +64,21 @@
 						<table class="tbDetail">
 							<tr>
 								<td class="tdDetail">제목</td>
-								<td class="tdDetail" colspan="5"><input type="text"name="title" value="<%= b.getItitle() %>">
+								<td class="tdDetail" colspan="5"><input type="text"name="title" value="<%= i.getItitle() %>">
 							       		</td>
 							</tr>
 							<tr>
 								<td class="tdDetail">작성자</td>
-								<td class="tdSpan"><span class="spN"><%=b.getIwno()%></span></td>
+								<td class="tdSpan"><span class="spN"><%=i.getIwno()%></span></td>
 								<td class="tdDetail">작성일</td>
-								<td class="tdSpan"><span class="spN"><%=b.getIdate()%></span></td>
+								<td class="tdSpan"><span class="spN"><%=i.getIdate()%></span></td>
 							<tr>
 								<td class="tdDetail">내용</td>
 								<td class="tbSpan2" colspan="5"></td>
 							</tr>
 
 							<tr>
-								<td class="tdContent" colspan="6"><textarea name="content" cols="100" rows="30" style="resize:none;"><%= b.getIcontent() %>
+								<td class="tdContent" colspan="6"><textarea name="content" cols="100" rows="30" style="resize:none;"><%= i.getIcontent() %>
 								</textarea></td>
 							</tr>
 						</table>
@@ -104,10 +104,10 @@
 					</form>
 
 				</div>
-					<% } else {
+					<%-- <% } else {
 					request.setAttribute("msg", "작성자 외에 접근이 불가능한 페이지입니다.");
 					request.getRequestDispatcher("/views/common/errorPage.jsp").forward(request, response);
-				} %>
+				} %> --%>
 			</div>
 
 		</div>

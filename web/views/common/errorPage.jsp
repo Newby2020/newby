@@ -11,39 +11,55 @@
 <head>
 <meta charset="UTF-8">
 <title>에러 페이지</title>
-<link rel="stylesheet" href="/semi/resources/css/joinModal.css">
-<link rel="stylesheet" href="/semi/resources/css/LoginModal.css">
-<link rel="stylesheet" href="/semi/resources/css/main-panel.css">
-<link rel="stylesheet" href="/semi/resources/css/mypage_h&j-frame.css">
-<link href="https://fonts.googleapis.com/css?family=Nanum+GothicNoto+Sans+KR&display=swap" rel="stylesheet">
 <script src="/semi/resources/js/jquery-3.4.1.min.js"></script>
 <style>
-.outer{
-		padding: 10px;
-		width:600px;
-		height:500px;
-		color:black;
-		margin-left:auto;
-		margin-right:auto;
-		margin-top:50px;
+
+	#errorBody{
+		margin: 0px;
 	}
+	
+	.outerError{
+	     margin: 0px;                                
+	}
+
+	.midError{
+		background-image: url(/semi/resources/images/errorPage.png);   
+		position: relative;
+        height: 100vh;
+        background-size: cover;
+ 
+	}
+	
+	.innerError{
+		position: absolute;
+		left: 23.5%;
+		font-size: 30px;                                                                
+        color: white;
+        text-align: center;
+	}
+	
+	.errorToHome{
+	    width: 300px;
+	    height: 40px;
+	    border: none;
+	    background-color: rgb(9, 129, 241);
+	    color: white;
+	    cursor : pointer;
+	    font-size: 15px;
+	    border-radius: 5px;
+}
 </style>
 </head>
-<body>
-	<div id="Allpanel" align="center">
-
-		<%@ include file="../common/header.jsp"%>
-		
-		<div id="newby-body-panel" class="contents-div123" align="left">
-		
-<div class="outer">
-		<h1>에러 페이지 입니다.</h1>
-		<h3>ERROR : <%= e.getMessage() %></h3>
-		<h4>에러가 발생했어요<br>
-		이상이 없을 시 운영자에게 연락하시기 바랍니다.</h4>
+<body id='errorBody'>
+	<div class="outerError">
+		<div class="midError">
+			<div class="innerError">
+			<br><br><br>
+				<label>죄송합니다. 문제가 발생했습니다( <%=e.getMessage() %> )</label>
+				<br><br>
+				<button class="errorToHome">홈페이지로 이동하기</button>
+			</div>	
+		</div>	
 	</div>
-</div>
-<%@ include file="../common/footer.jsp"%>
-</div>
 </body>
 </html>
