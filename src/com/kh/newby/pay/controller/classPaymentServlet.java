@@ -9,20 +9,22 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.kh.newby.Member.model.service.MemberService;
+import com.kh.newby.Member.model.vo.Member;
+import com.kh.newby.classvo.model.service.ClassService;
 import com.kh.newby.classvo.model.vo.ClassVo;
-import com.kh.newby.pay.model.service.PaymentService2;
 
 /**
- * Servlet implementation class ClassPayment
+ * Servlet implementation class classPaymentServlet
  */
-@WebServlet("/classPay.do")
-public class ClassPayment extends HttpServlet {
+@WebServlet("/classPay.cp")
+public class classPaymentServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public ClassPayment() {
+    public classPaymentServlet() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -31,24 +33,27 @@ public class ClassPayment extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-
-		ArrayList<ClassVo> classInfoList = null;
-		//String cno = request.getParameter("cno");
+		String cno = request.getParameter("cno");
+		ClassService sc = new ClassService();
 		
-		String cno = "C1";
+		// 결제를 위한 클래스 객체 가져오기
+		ClassVo cv = sc.classPay(cno);
 		
-		PaymentService2 ps2 = new PaymentService2();
-		classInfoList = ps2.getClassInfoList(cno);
+		// 결제를 위한 클래스 일정 불러오기
+		ArrayList<ClassVo> csList = sc.classPayScheduleList(cno);
+		
 		
 		String page = "";
-		
-		page = "/views/payment.jsp";
-
-		
+		if(cv != null) {
+			page = "views/class_register.jsp";
+			request.setAttribute("classVo", cv);
+			request.setAttribute("csList", csList);
+		}else {
+			page = "views/errorPage.jsp";
+			System.out.println("결제페이지 불러오기 실패");
+			request.setAttribute("msg", "결제페이지 불러오기 실패");
+		}
 		request.getRequestDispatcher(page).forward(request, response);
-		
-
-		
 	}
 
 	/**

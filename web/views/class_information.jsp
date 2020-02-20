@@ -166,7 +166,8 @@
                     </div>
                     <% } %>
                     <div class="payment">
-                        <a id="pay_a" onclick="location.href='/semi/classPay.do?cno=<%= cv.getClassNo() %>'"><span id="pay_btn">수업 신청하기</span></a>
+                        <%-- <a id="pay_a" onclick="location.href='/semi/classPay.do?cno=<%= cv.getClassNo() %>'"><span id="pay_btn">수업 신청하기</span></a> --%>
+                        <a id="pay_a" onclick="location.href='/semi/classPay.cp?cno=<%= cv.getClassNo()%>'"><span id="pay_btn">수업 신청하기</span></a>
                     </div>
                     <div class="price">
                         <div id="text_time"><b>￦<%= cv.getClassPrice() %>원 / 회당</b></div>
