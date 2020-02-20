@@ -15,4 +15,5 @@ encoding//src/config/payment-query.properties=UTF-8
 encoding//src/config/payment-query2.properties=UTF-8
 encoding//src/config/review-query2.properties=UTF-8
 encoding//web/views/class_information.jsp=UTF-8
+encoding//web/views/class_register.jsp=UTF-8
 encoding/<project>=UTF-8
