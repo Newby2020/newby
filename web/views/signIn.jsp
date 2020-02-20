@@ -1,5 +1,10 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%
+  String code = (String)request.getAttribute("AuthenticationKey");
+  
+
+%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -41,7 +46,13 @@ html {
 						<div class="required">
 							<input type="email" class="joinInfo" id="user_Id" name="user_Id"
 								value="" maxlength=100; placeholder="이메일 주소 입력"> <input
-								type="button" id="checkId" onsubmit="return false" value="중복 확인"></input>
+								type="button" id="checkId" onsubmit="return false" value="중복 확인">
+								<span id="secureButton" class="secureButton" style="background-color: rgb(9, 129, 241); font-size: 15px; color: white;">인증</span>
+						</div>
+						<div class="required">
+							<input type="text" class="joinInfo" id="code"
+								name="code"  maxlength=100; placeholder="인증코드 입력">
+							<input type="button" id="checkCode" onsubmit="return false" value="코드 확인">
 						</div>
 						<div class="required">
 							<input type="text" class="joinInfo" id="user_Nickname"
@@ -64,9 +75,9 @@ html {
 								name="user_name" value="" maxlength=100; placeholder="이름 입력">
 						</div>
 						<div class="required">
-						<input type="text" class="joinInfo" id="phone" name="phone" value="" maxlength=100; placeholder="휴대폰 번호 입력"> 
-						<input type="text" class="joinInfo" id="securePhone" name="securePhone" maxlength=4 style="width: 60px;" placeholder="인증코드">
-						<span  id="secureButton" class="secureButton" style="background-color: lightgray; font-size: small">인증</span>
+						<input type="text" class="joinInfo" id="phone" name="phone" value="" maxlength=100; placeholder="휴대폰 번호 입력(-제외)"> 
+						
+						
 								
 						</div>
 					</div>
@@ -107,7 +118,10 @@ html {
 	
 	
 	<script>
-	
+		
+		$('#secureButton').hide();
+		
+		
 		$('#secureButton').click(function(){
 			$.ajax({
 				url: "/semi/certify.me" ,
@@ -115,16 +129,37 @@ html {
 				data: {
 					user_Id : $('#user_Id').val()
 				},
-				success : function(data){
-					if(data=="성공"){
-						alert("메일 보내기 성공");
-					}
+				success : function(data){	
+						alert("인증 메일이 발송되었습니다");	
 				},
 				error : function(){
+					alert("메일 발송 중 오류가 발생했습니다");
 					console.log("---Error---");
 				}
 			})
 		})
+		
+		
+		$('#checkCode').click(function(){
+			$.ajax({
+				url: "/semi/check.co",
+				type: "post",
+				data: {
+					checkCode: $('#code').val()
+				},
+				success : function(data){
+					console.log(data);
+					if(data=="성공"){
+					alert("이메일 인증 완료");
+					}else{
+						alert("인증 코드 오류! 코드를 다시 확인해주세요");
+					}
+				},
+				error: function(){
+					console.log("--error--");
+				}
+			})
+		});
 		
 		/*아이디 중복 체크*/
 		$('#checkId').click(function() {
@@ -140,7 +175,8 @@ html {
 					if(data==""){
 						alert("아이디를 입력해주세요");
 					}else if (data == 'ok') {
-						alert("사용 가능한 아이디입니다.");
+						alert("사용 가능한 아이디입니다. 본인인증을 진행해주세요");
+						$('#secureButton').show();
 					}else {
 						alert("이미 사용중인 아이디입니다.");
 						$('#user_Id').select();
@@ -180,6 +216,8 @@ html {
 		
 		
 		
+		
+		
 		function pwdCheck(){
 			var pwd1 = $('#password').val();
 			var pwd2 = $('#confirm_password').val();
@@ -208,6 +246,7 @@ html {
 			//아이디-닉네임-비번-이름-휴대폰-약관체크
 			console.log("유효성체크 시작");
 			var id = document.getElementById("user_Id");
+			var code = document.getElementById("code");
 			var nick = document.getElementById("user_Nickname");
 			var pwd = document.getElementById("password");
 			var pwd2 = document.getElementById("confirm_password");
@@ -220,14 +259,22 @@ html {
 			if ((id.value) == ""){
                 alert("아이디를 입력하지 않았습니다.");
                 id.focus();
-                console.log("아이디체크");
                 return false;
             }
+			
+			
 			
 			//이메일 형식
 			if(!chk(/^[\w]{4,}@[\w]+(\.[\w]+){1,2}$/, id, "아이디(이메일) 형식에 어긋납니다.")){
            		 return false;
       	    }
+			
+			//코드 미입력 시 알림
+			 if ((code.value) == ""){
+	               alert("인증코드를 입력하지 않았습니다.");
+	               code.focus();
+	               return false;
+	           } 
 			
 			// 닉네임 미입력시 알림               
             if ((nick.value) == ""){
@@ -237,10 +284,9 @@ html {
            } 
 		
 		   //닉네임 유효성 검사 (한글,영어,숫자 2~8자리)
-		   if(!chk(/^.*(?=.{1,10})(?=.*[가-힣])(?=.*[0-9])(?=.*[a-zA-Z]).*$/,nick,"닉네임은 2~8자리로 입력해주세요")){
+		   if(!chk(/^[가-힣a-zA-Z]{2,9}$/,nick,"닉네임은 2~8자리로 입력해주세요")){
 			   return false;
 		   }
-
 			
 			
            // 비밀번호 미입력시 알림
@@ -262,6 +308,9 @@ html {
         	   return false;
            }
 
+        
+           
+			
 			 // 이름 미입력시 알림               
             if ((name.value) == ""){
                alert("이름을 입력하지 않았습니다.");
@@ -274,10 +323,12 @@ html {
              }
 			 
 			//약관 체크
-			if((agree.checked) == false){
+			if(agree.checked == false){
 				alert("약관에 동의해주세요");
 				return false;
 			}
+			
+			
 			
 		}
 		</script>
@@ -285,62 +336,7 @@ html {
 		
 		
 		
-		<script type="text/javascript">
-		//본인인증 api 스크립트
 		
-		function secureButton(){
-		//var IMP = window.IMP; // 생략해도 괜찮습니다.
-		IMP.init("imp77723554"); // "imp00000000" 대신 발급받은 "가맹점 식별코드"를 사용합니다.
-		
-		IMP.certification({ // param
-		    merchant_uid: "NEWBY_"
-		}, function (rsp) { // callback
-			if(rsp.success){
-				alert("성공");
-			}else{
-				alert("실패");
-			}
-		   /*  if (rsp.success) {
-		      //인증 성공 시
-		      console.log(rsp.imp_uid);
-		      console.log(rsp.merchant_uid);
-		      
-		      $.ajax({
-		    	  type : 'POST',
-		    	  url : '/certifications/confirm',
-	                dataType : 'json',
-	                data : {
-	                    imp_uid : rsp.imp_uid
-	                }
-		      }).done(function(){
-		    	  takeResponseAndHandle(rsp)
-		      }); */
-		      
-		  /*   } else {
-		      // 인증 실패 시 로직,
-		      var msg = '인증에 실패하였습니다';
-		      
-		      msg += '에러내용 : ' + rsp.error_msg;
-		      
-		      alert(msg);
-		    } */
-		  });
-		
-		 function takeResponseAndHandle(rsp) {
-		    if ( rsp.success ) {
-		        // 인증성공
-		        console.log(rsp.imp_uid);
-		        console.log(rsp.merchant_uid);
-		    } else {
-		         // 인증취소 또는 인증실패
-		        var msg = '인증에 실패하였습니다.';
-		        msg += '에러내용 : ' + rsp.error_msg;
-
-		        alert(msg);
-		    }
-		 }
-		}
-		</script>
 	
 </body>
 </html>
