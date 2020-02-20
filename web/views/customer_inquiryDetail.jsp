@@ -84,15 +84,23 @@
 						</table>
 						<div align="center">
 							<div class="replyWriteArea">
+							
 									<table align="center">
 										<tr>
-											<td>댓글 작성</td>
-											<td><textArea rows="3" cols="80" id="replyContent"
+											<td>댓글</td>
+											<td><textArea rows="3" cols="80" id="replyContent" style="resize: none;"
 													name="replyContent"></textArea></td>
+											<% if( m != null && m.getM_name().equals("관리자")) { %>
 											<td><button type="submit" id="addReply">댓글 등록</button></td>
+											<% } %>
 										</tr>
 									</table>
 								
+							</div>
+							<div align="center">
+								<% if( i.getIwno().equals(m.getM_nick()) || m != null && m.getM_name().equals("관리자")) { %>
+								<input type="button" onclick="location.href='inquiryUpdateView.io?ino=<%= i.getIno()%>'" value="수정하기">
+								<% } %>
 							</div>
 							
 						</div>

@@ -16,14 +16,14 @@ import com.kh.newby.inquiry.model.vo.Inquiry;
 @WebServlet("/inquiryUpdate.io")
 public class InquiryUpdateServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-       
-    /**
-     * @see HttpServlet#HttpServlet()
-     */
-    public InquiryUpdateServlet() {
-        super();
-        // TODO Auto-generated constructor stub
-    }
+
+	/**
+	 * @see HttpServlet#HttpServlet()
+	 */
+	public InquiryUpdateServlet() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
 
 	/**
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
@@ -32,20 +32,19 @@ public class InquiryUpdateServlet extends HttpServlet {
 		String title = request.getParameter("title");
 		String content = request.getParameter("content");
 		String ino = request.getParameter("ino");
-		
-		System.out.println(title);
-		System.out.println(content);
-		System.out.println(ino);
-		
+
 		Inquiry i = new Inquiry();
 		i.setItitle(title);
 		i.setIcontent(content);
 		i.setIno(ino);
-		
-		int result = new InquiryService().inquiryUpdate(i);
-		
+
+		InquiryService is = new InquiryService();
+
+		int result = is.inquiryInsert(i);
+
 		if(result > 0) {
 			response.sendRedirect("inquirySelectOne.io?ino="+ino);
+			System.out.println(result);
 		} else {
 			request.setAttribute("msg", "문의 수정 실패");
 			request.getRequestDispatcher("views/common/errorPage.jsp").forward(request, response);

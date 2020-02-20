@@ -46,7 +46,7 @@ public class InquiryCommentDao {
 	}
 
 	public ArrayList<Inquiry> selectList(Connection con, String ino) {
-		ArrayList<Inquiry> clist = null;
+		ArrayList<Inquiry> list = null;
 		PreparedStatement pstmt = null;
 		ResultSet rset = null;
 		
@@ -59,7 +59,7 @@ public class InquiryCommentDao {
 			
 			rset = pstmt.executeQuery();
 			
-			clist = new ArrayList<Inquiry>();
+			list = new ArrayList<Inquiry>();
 			
 			while(rset.next()) {
 				Inquiry b = new Inquiry();
@@ -73,7 +73,7 @@ public class InquiryCommentDao {
 		}
 		
 		
-		return clist;
+		return list;
 	}
 
 }

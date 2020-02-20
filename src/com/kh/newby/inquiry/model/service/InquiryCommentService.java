@@ -30,11 +30,11 @@ public class InquiryCommentService {
 	public ArrayList<Inquiry> selectList(String ino) {
 		Connection con = getConnection();
 
-		ArrayList<Inquiry> clist = bcDao.selectList(con,ino);
+		ArrayList<Inquiry> list = bcDao.selectList(con,ino);
 
 		close(con);
 
-		return clist;
+		return list;
 	}
 
 

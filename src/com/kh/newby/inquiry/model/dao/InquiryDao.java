@@ -125,6 +125,7 @@ public class InquiryDao {
 				i.setIdate(rset.getDate("Q_DATE"));
 				i.setIcontent(rset.getString("Q_CONTENT"));
 				i.setIcomment(rset.getString("Q_COMMENT"));
+				i.setIstatus(rset.getString("Q_STATUS"));
 			}
 			
 		} catch(SQLException e) {
