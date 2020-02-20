@@ -140,7 +140,7 @@
 					</div>
 				</div>
 				<br>
-				<form class="category_form" action="/semi/selectList.ca" method="get">
+				<form class="category_form" action="/semi/filterList.ca" method="get">
 					<input type="hidden" name="caType" value="<%=caType%>">
 					<div class="sub_ca"></div>
 					<div class="location">
