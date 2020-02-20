@@ -25,6 +25,7 @@
 <style>
 	#tableDiv tr td:first-child, h4{font-size : 20px; font-weight: bold;}
 	#tableDiv tr td:nth-child(2){padding-left : 40px;} 
+	#tableDiv {padding-bottom : 100px}
 	
 	.finalBtn24{
 	    background: rgb(9, 129, 241);
@@ -35,8 +36,17 @@
 	    border-radius: 15px; 
 	    font-size: 12pt;
 	    cursor: pointer;
-	    font-weight: bold;
+	    font-weight: bold;    
 	}
+	
+	.cont{
+		width : 70%;
+	}
+	
+	#rReason{
+		border : solid, black;
+	}
+	
 </style>
 
 
@@ -67,10 +77,10 @@
 			<br> <br>
 			<div id="tableDiv">
 				<% if(c.getClassStatus().equals("반려")){ %>
-					 <h4 style="color : #0981F1;">반려 사유</h4>
+					 <h4 style="color : #0981F1; margin-top:0px">반려 사유</h4>
 					 <div class="cont"><%= c.getRejectReason() %></div>
 					 
-					<br> <br> <br> <br> <br><br> <br> 
+					<br> <br> <br> <br>
 				<% } %>
 				<table>
 					<tbody>
@@ -138,18 +148,38 @@
 					<br> <br>
 					<h4 class="title">커리큘럼</h4>
 					<div class="cont"><%= c.getClassCurriculum() %></div>
-					<br> <br> <br>
+					<br> 
 					<h4 class="title">수업 소개</h4>
 					<div class="cont"><%= c.getClassIntro() %></div>
 				</div>
 				
+				
 				<% if(c.getClassStatus().equals("미결")){ %>
-					<br><br><br><br>  
-					<input type="button" class="finalBtn24" value="반려" onclick="location.href='<%= request.getContextPath()%>/reject.ad?cno=<%= c.getClassNo() %>'">	&nbsp;&nbsp;&nbsp;&nbsp; 
-					<input type="reset" class="finalBtn24"value="승인" onclick="location.href='<%= request.getContextPath()%>/approve.ad?cno=<%= c.getClassNo() %>'"> 
-					<br> <br> <br> <br> <br>
+					<h4 class="title">반려사유</h4>
+					
+					<textarea id="rReason" class="cont" style="display : block; resize:none; height : 100px"></textarea>
+					<br> <br> 
+					
+					<input type="button" class="finalBtn24" value="반려" onclick="reject()">	&nbsp;&nbsp;&nbsp;&nbsp; 
+					<input type="reset" class="finalBtn24"value="승인" onclick="approve()"> 
+					
 				<% } %>
 				
+				<script>
+					function reject(){
+						if( $('#rReason').val().length < 10 ){
+							alert("반려 사유를 10자 이상 작성해주세요");
+						}else if(confirm("반려하시겠습니까?")){
+							location.href="<%= request.getContextPath()%>/reject.ad?cno=<%= c.getClassNo() %>&rReason=<%= c.getRejectReason()%>";
+						}
+					}
+					
+					function approve(){
+						if(confirm("'<%= c.getClassName() %>' 클래스의 개설을 승인하시겠습니까?")){
+							location.href="<%= request.getContextPath()%>/approve.ad?cno=<%= c.getClassNo() %>";
+						} 
+					}
+				</script>
 			</div>
 		</div>
 	</div>
