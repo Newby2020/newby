@@ -126,6 +126,32 @@ public class ClassVo implements Serializable {
 		this.rejectReason = rejectReason;
 		this.caNo = caNo;
 	}
+	
+	// 관리자 페이지용 - 진영 
+		public ClassVo(String classNo, String classHostNo, String className, String firstCategory, String secondCategory,
+				String thirdCategory, String classType, int classTime, int classPrice, int classMaxnum, String classImg,
+				String classLocation, String classIntro, String classTarget, String classCurriculum, Date classEnrollDate,
+				String classStatus, String rejectReason) {
+			super();
+			this.classNo = classNo;
+			this.classHostNo = classHostNo;
+			this.className = className;
+			this.firstCategory = firstCategory;
+			this.secondCategory = secondCategory;
+			this.thirdCategory = thirdCategory;
+			this.classType = classType;
+			this.classTime = classTime;
+			this.classPrice = classPrice;
+			this.classMaxnum = classMaxnum;
+			this.classImg = classImg;
+			this.classLocation = classLocation;
+			this.classIntro = classIntro;
+			this.classTarget = classTarget;
+			this.classCurriculum = classCurriculum;
+			this.classEnrollDate = classEnrollDate;
+			this.classStatus = classStatus;
+			this.rejectReason = rejectReason;
+		}
 
 	public String getClassNo() {
 		return classNo;

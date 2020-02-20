@@ -25,8 +25,8 @@
     <!-- Reposive Sidebar -->
     <div class="sidebar">
         <div>
-            <a class="fa fa-home" href="../../MainPage/NewbyMainPage.jsp"></a>
-            <a class="index" href="admin_index.jsp">관리자페이지</a>
+            <a class="fa fa-home" href="index.jsp"></a>
+            <a class="index" href="/semi/index.ad">관리자페이지</a>
         </div>
         <a href="admin_index.jsp">Dashboard</a>
         <a href="/semi/userList.ad">사용자</a>

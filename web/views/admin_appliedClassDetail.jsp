@@ -4,7 +4,6 @@
     		java.util.*"%>
 <%
 	ClassVo c = (ClassVo)request.getAttribute("c"); 
-	
 %>
 
 <!DOCTYPE html>
@@ -26,6 +25,18 @@
 <style>
 	#tableDiv tr td:first-child, h4{font-size : 20px; font-weight: bold;}
 	#tableDiv tr td:nth-child(2){padding-left : 40px;} 
+	
+	.finalBtn24{
+	    background: rgb(9, 129, 241);
+	    color: white;
+	    border: none;
+	    height: 33px;
+	    width: 180px;
+	    border-radius: 15px; 
+	    font-size: 12pt;
+	    cursor: pointer;
+	    font-weight: bold;
+	}
 </style>
 
 
@@ -37,14 +48,13 @@
 	</script>
 	<!-- Reposive Sidebar -->
 	<div class="sidebar">
-	
         <div>
             <a class="fa fa-home" href="index.jsp"></a>
             <a class="index" href="/semi/index.ad">관리자페이지</a>
         </div>
 		<a href="/semi/index.ad">Dashboard</a> <a href="/semi/userList.ad">사용자</a>
-		<a href="/semi/classApplyList.ad">클래스 등록 신청</a> 
-		<a class="active" href="/semi/classList.ad">개설 클래스</a> <a href="/semi/claimList.ad">신고</a>
+		<a class="active" href="/semi/classApplyList.ad">클래스 등록 신청</a> 
+		<a href="/semi/classList.ad">개설 클래스</a> <a href="/semi/claimList.ad">신고</a>
 		<a href="admin_accountancy.jsp">정산</a>
 	</div>
 
@@ -56,6 +66,12 @@
 			<hr>
 			<br> <br>
 			<div id="tableDiv">
+				<% if(c.getClassStatus().equals("반려")){ %>
+					 <h4 style="color : #0981F1;">반려 사유</h4>
+					 <div class="cont"><%= c.getRejectReason() %></div>
+					 
+					<br> <br> <br> <br> <br><br> <br> 
+				<% } %>
 				<table>
 					<tbody>
 						<tr>
@@ -117,6 +133,7 @@
 							<td><%= c.getClassTarget() %></td>
 						</tr>
 				</table>
+				
 				<div>
 					<br> <br>
 					<h4 class="title">커리큘럼</h4>
@@ -125,6 +142,14 @@
 					<h4 class="title">수업 소개</h4>
 					<div class="cont"><%= c.getClassIntro() %></div>
 				</div>
+				
+				<% if(c.getClassStatus().equals("미결")){ %>
+					<br><br><br><br>  
+					<input type="button" class="finalBtn24" value="반려" onclick="location.href='<%= request.getContextPath()%>/reject.ad?cno=<%= c.getClassNo() %>'">	&nbsp;&nbsp;&nbsp;&nbsp; 
+					<input type="reset" class="finalBtn24"value="승인" onclick="location.href='<%= request.getContextPath()%>/approve.ad?cno=<%= c.getClassNo() %>'"> 
+					<br> <br> <br> <br> <br>
+				<% } %>
+				
 			</div>
 		</div>
 	</div>
