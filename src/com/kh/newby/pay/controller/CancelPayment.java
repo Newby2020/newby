@@ -42,6 +42,12 @@ public class CancelPayment extends HttpServlet {
 		page = "/views/cancelOrder.jsp";
 		request.setAttribute("cvPsno", cvPsno);
 		
+		/*if(cvPsno == null) {
+			usermileage = -;
+		} else {
+			usermileage = maintain;
+		}*/
+		
 		request.getRequestDispatcher(page).forward(request, response);
 		
 	}

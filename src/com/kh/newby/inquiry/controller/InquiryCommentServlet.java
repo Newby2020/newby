@@ -1,4 +1,4 @@
-package com.kh.newby.review.controller;
+package com.kh.newby.inquiry.controller;
 
 import java.io.IOException;
 import javax.servlet.ServletException;
@@ -7,19 +7,17 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.kh.newby.review.model.vo.*;
-
 /**
- * Servlet implementation class reviewInsertServlet
+ * Servlet implementation class BoardCommentServlet
  */
-@WebServlet("/rInsert.rv")
-public class reviewInsertServlet extends HttpServlet {
+@WebServlet("/inquiryComment.io")
+public class InquiryCommentServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public reviewInsertServlet() {	
+    public InquiryCommentServlet() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -28,13 +26,9 @@ public class reviewInsertServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-//		String 
-	
-	
-	
+		// TODO Auto-generated method stub
+		response.getWriter().append("Served at: ").append(request.getContextPath());
 	}
-	
-	
 
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)

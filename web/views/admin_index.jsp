@@ -83,13 +83,13 @@
 
         <!-- Notification Button -->
         <div class="notif">
-            <a href="admin_classApply.jsp" class="notification">
+            <a href="/semi/classApplyList.ad" class="notification">
                 <span>개설 신청</span>
                 <% if(approvalClassCount != 0) { %>
                 <span class="badge"><%=approvalClassCount %></span>
                 <% } %>
             </a>
-            <a href="admin_hostReport.jsp" class="notification">
+            <a href="/semi/claimList.ad" class="notification">
                 <span>호스트 신고</span>
                 <% if(notifiedHostCount != 0) { %>
                 <span class="badge"><%=notifiedHostCount %></span>
@@ -102,7 +102,7 @@
                 <% } %>
             </a>
             <!-- TODO 문의하기 탭으로 넘기기 -->
-            <a href="#" class="notification">
+            <a href="/semi/inquirySelectList.io" class="notification">
                 <span>문의</span>
                 <% if(newInquiryCount != 0) { %>
                 <span class="badge"><%=newInquiryCount %></span>
