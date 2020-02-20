@@ -1,12 +1,13 @@
                 /* profile */
-/* td */
-.ttxtt1{
-    font-size: 12pt;
-}
 /* 닉네임 수정란 */
-#nickname1sdkl{
+.input13{
     border: none;
-    font-size: 12pt;
+    font-size: 11pt;
+    width: 125px;
+    border-bottom: 1px solid darkgray;
+    padding-left: 2px;
+    padding-bottom: 1.5px;
+    text-align: center;
 }
   
 /* 1열 */
@@ -14,16 +15,21 @@
     width:130px;
     font-weight: bold;
     font-size: 11pt;
+ /*  border: 1px solid black; */ 
+    height: 30px;
 }
+
 /* 2열 */
 .tline2{
-    width: 350px;
+    width: 400px;
     font-size: 9pt;
+   /* border: 1px solid black;  */
 }
 
 /* 수정불가 폰트 */
 .modiX14{
     color: rgb(155,155,155);
+    font-size: 11pt;
 }
 
 
@@ -32,7 +38,7 @@
     background: rgb(9, 129, 241);
     color: white;
     border: none;
-    height: 23px;
+    height: 22px;
     width: 80px;
     border-radius: 15px;
     font-size: 9pt;
@@ -65,36 +71,29 @@
     cursor: pointer;
 }
 
-/* Email 2열 */
-#tline2Email{
-    vertical-align: bottom;
+/* 전화번호 */
+#tel1{
+	width: 37px;
+	border:none;
+	text-align: center;
+    font-size: 11pt;
+    border-bottom: 1px solid darkgray;
+    padding-bottom: 2px;
 }
-
-/* 이메일 아이디 입력란 */
-#userEmail1skw{
-    width: 90px;
-    height: 25px;
-    padding: 0px;
-    margin: 0px;
+#tel2{
+	width: 45px;
+	border:none;
+	text-align: center;
+    font-size: 11pt;
+    border-bottom: 1px solid darkgray;
+    padding-bottom: 2px;
 }
-
-/* 이메일 주소 입력란 */
-#emainAddr1sd{
-    width: 100px;
-    text-align: center;
-    height: 25px;
-    padding: 0px;
-    margin: 0px;
+#tel3{
+	width: 45px;
+	border:none;
+	text-align: center;
+    font-size: 11pt;
+    border-bottom: 1px solid darkgray;
+    padding-bottom: 2px;
 }
-
-/* 이메일 주소 선택 */
-#select1sdknw{
-    vertical-align: bottom;
-    height: 30px;
-    padding: 0px;
-    margin: 0px;
-}
-
-
-
 

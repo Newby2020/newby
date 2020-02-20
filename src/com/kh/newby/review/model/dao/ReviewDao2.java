@@ -21,7 +21,7 @@ public class ReviewDao2 {
 	   public ReviewDao2() {
 	      prop = new Properties();
 
-	      String filePath = ReviewDao2.class.getResource("/config/review-query2.properties").getPath();
+	      String filePath = ReviewDao2.class.getResource("/config/review-query3.properties").getPath();
 
 	      try {
 	         prop.load(new FileReader(filePath));
@@ -49,6 +49,7 @@ public class ReviewDao2 {
 				r.setPsDate(rset.getString("PS_DATE"));
 				r.setPsStartTime(rset.getString("PS_STARTTIME"));
 				r.setPsEndTime(rset.getString("PS_ENDTIME"));
+				r.setPsNo(rset.getString("PS_NO"));
 				list.add(r);
 			}
 		} catch(SQLException e) {
