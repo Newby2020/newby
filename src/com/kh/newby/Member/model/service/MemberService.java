@@ -76,6 +76,21 @@ public class MemberService {
 		return result;
 	}
 
+	public Member checkNameAndId(String name, String mail) throws MemberException {
+		con = getConnection();
+		
+		Member m = mDao.checkNameAndId(con, name, mail);
+		
+		close(con);
+		
+		if(m==null) {
+			throw new MemberException("회원 정보가 존재하지 않습니다.");
+		}
+		return m;
+	}
+
+
+
 	
 	
 	

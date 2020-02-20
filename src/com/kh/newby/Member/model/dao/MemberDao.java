@@ -188,6 +188,36 @@ public class MemberDao {
 		}
 		return result;
 	}
+
+	public Member checkNameAndId(Connection con, String name, String mail) throws MemberException {
+		Member m = null;
+		PreparedStatement pstmt = null;
+		ResultSet rset = null;
+		
+		try {
+			String sql = prop.getProperty("searchNameAndId");
+			
+			pstmt = con.prepareStatement(sql);
+			pstmt.setString(1, name);
+			pstmt.setString(2, mail);
+			
+			rset = pstmt.executeQuery();
+			
+			m=new Member();
+			
+			if(rset.next()) {
+				m.setM_id(mail);
+				m.setM_pwd(rset.getString("MEM_PWD"));
+			}
+		}catch(Exception e) {
+			throw new MemberException(e.getMessage());
+		}finally {
+			close(rset);
+			close(pstmt);
+		}
+		
+		return m;
+	}
 	
 	
 	
