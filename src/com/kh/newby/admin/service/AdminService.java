@@ -89,5 +89,29 @@ public class AdminService {
 		
 		return list;
 	}
+
+	public ClassVo selectOne(String cno) {
+		Connection con = getConnection();
+		
+		ClassVo c = aDao.selectOne(con, cno);
+		
+		close(con);
+		
+		return c;
+	}
+
+//-------------------------- Approve -----------------------------//	
+	public int setArrove(String cno) {
+		Connection con = getConnection();
+		
+		int result = aDao.setApprove(con, cno);
+		
+		if(result > 0) commit(con);
+		else rollback(con);
+		
+		close(con);
+		
+		return result ;
+	}
 	
 }
