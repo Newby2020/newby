@@ -60,19 +60,13 @@ public class LoginServlet extends HttpServlet {
 			// forword, sendredirect
 			response.sendRedirect("index.jsp");
 		} catch (MemberException e) {// 에러가 났을때
-			
-			out.println(
-					"<html><script>"+
-					"alert('"+e.getMessage()+"');"+
-					"</script></html>"
-					);
-			
-//			response.sendRedirect("/semi/index.jsp");
-//			request.setAttribute("msg", "아이디나 비밀번호를 잘못 입력하셨습니다");
-//			request.setAttribute("exception", e);
-			
-			response.sendRedirect("index.jsp");
-			
+			System.out.println("아이디 비번 틀림!!!");
+			out.println("<script language='javascript'>");
+			out.println("alert('아이디/비밀번호를 확인해주세요');");
+			out.println("location.href = '/semi/index.jsp';");
+			out.println("</script>"); 
+			out.close();
+
 		}
 		
 	

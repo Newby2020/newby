@@ -1,7 +1,6 @@
 
 //카테고리 상세메뉴 색상 선택
 $(function(){
-    $('#caBtn2').css('background','rgba(0, 129, 250, 0.33)');   
     $('.cate').on({
         'mouseenter':function(){
             $(this).css('background','rgba(0, 129, 250, 0.33)');
@@ -34,7 +33,7 @@ $(function(){
        range: true,
        min: 1000,
        max: 300000,
-       values: [ 5000 , 250000],
+       values: [ 1000 , 300000],
        slide: function( event, ui ) {
        $( "#amount" ).val( ui.values[ 0 ] + "원 - " + ui.values[ 1 ]+"원" );
        }
@@ -43,6 +42,8 @@ $(function(){
        "원 - " + $( "#slider-range" ).slider( "values", 1 )+"원" );
    } );
 
+	
+   
    //메인 클래스 마우스 온
    $(function(){
     $('.cate_tt_sh').on({
@@ -61,7 +62,6 @@ $(function(){
        $('.category_form').hide();
        $('#cate6check').on("click",function(){
            $('.category_form').slideToggle(100);
-           console.log("슬라이드 토글 확인");
        });
    });
 
@@ -85,22 +85,7 @@ $(function(){
        });
    });
 
-//하단 페이지 변경
-   $(function(){
-       $('#pglk_sh').hide();
-       $('#mbtn_sh').on({
-           'mouseenter':function(){
-            $('#mbtn_sh').css('background','lightgray');
-           },'mouseleave' : function(){
-            $(this).removeAttr('style');  
-        },'click' : function(){
-            $('#mbtn_sh').slideUp(100);
-            $('#pglk_sh').show(); 
-        }
 
-   });
-   });
-   
 
    
    

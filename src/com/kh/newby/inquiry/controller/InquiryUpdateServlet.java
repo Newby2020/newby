@@ -1,4 +1,4 @@
-package com.kh.newby.notice.controller;
+package com.kh.newby.inquiry.controller;
 
 import java.io.IOException;
 import javax.servlet.ServletException;
@@ -7,23 +7,23 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.kh.newby.notice.model.service.NoticeService;
-import com.kh.newby.notice.model.vo.Notice;
+import com.kh.newby.inquiry.model.service.InquiryService;
+import com.kh.newby.inquiry.model.vo.Inquiry;
 
 /**
- * Servlet implementation class NoticeUpdateServlet
+ * Servlet implementation class BoardUpdateServlet
  */
-@WebServlet("/noticeUpdate.no")
-public class NoticeUpdateServlet extends HttpServlet {
+@WebServlet("/inquiryUpdate.io")
+public class InquiryUpdateServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-       
-    /**
-     * @see HttpServlet#HttpServlet()
-     */
-    public NoticeUpdateServlet() {
-        super();
-        // TODO Auto-generated constructor stub
-    }
+
+	/**
+	 * @see HttpServlet#HttpServlet()
+	 */
+	public InquiryUpdateServlet() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
 
 	/**
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
@@ -31,22 +31,22 @@ public class NoticeUpdateServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String title = request.getParameter("title");
 		String content = request.getParameter("content");
-		String nno = request.getParameter("nno");
-		
-		Notice n = new Notice();
-		n.setNtitle(title);
-		n.setNcontent(content);
-		n.setNno(nno);
-		
-		
-		
-		int result = new NoticeService().noticeUpdate(n);
-//		System.out.println(result);
-		
+		String ino = request.getParameter("ino");
+
+		Inquiry i = new Inquiry();
+		i.setItitle(title);
+		i.setIcontent(content);
+		i.setIno(ino);
+
+		InquiryService is = new InquiryService();
+
+		int result = is.inquiryInsert(i);
+
 		if(result > 0) {
-			response.sendRedirect("noticeSelectOne.no?nno="+nno);
+			response.sendRedirect("inquirySelectOne.io?ino="+ino);
+			System.out.println(result);
 		} else {
-			request.setAttribute("msg", "공지사항 수정 실패");
+			request.setAttribute("msg", "문의 수정 실패");
 			request.getRequestDispatcher("views/common/errorPage.jsp").forward(request, response);
 		}
 	}

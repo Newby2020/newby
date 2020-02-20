@@ -1,4 +1,4 @@
-package com.kh.newby.notice.controller;
+package com.kh.newby.inquiry.controller;
 
 import java.io.IOException;
 import javax.servlet.ServletException;
@@ -7,20 +7,19 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.kh.newby.notice.model.service.NoticeService;
-import com.kh.newby.notice.model.vo.Notice;
+import com.kh.newby.inquiry.model.service.InquiryService;
 
 /**
- * Servlet implementation class NoticeUpdateViewServlet
+ * Servlet implementation class BoardDeleteServlet
  */
-@WebServlet("/noticeUpdateView.no")
-public class NoticeUpdateViewServlet extends HttpServlet {
+@WebServlet("/inquiryDelete.io")
+public class InquiryDeleteServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public NoticeUpdateViewServlet() {
+    public InquiryDeleteServlet() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -29,22 +28,20 @@ public class NoticeUpdateViewServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		String nno = request.getParameter("nno");
+		String ino = request.getParameter("ino");
 		
-		NoticeService ns = new NoticeService();
+		System.out.println(ino);
 		
-		Notice n = ns.noticeUpdateView(nno);
+		InquiryService is = new InquiryService();
 		
-		String page = "";
-		if(n != null) {
-			page = "views/customer_noticeUpdate.jsp";
-			request.setAttribute("notice", n);
-			
+		int result = is.inquiryDelete(ino);
+		
+		if(result > 0) {
+			response.sendRedirect("inquirySelectList.bo");
 		} else {
-			page = "views/common/errorPage.jsp";
-			request.setAttribute("msg", "수정 실패");
+			request.setAttribute("msg", "문의글 삭제 실패");
+			request.getRequestDispatcher("views/common/errorPage.jsp").forward(request, response);
 		}
-		request.getRequestDispatcher(page).forward(request, response);
 	}
 
 	/**
