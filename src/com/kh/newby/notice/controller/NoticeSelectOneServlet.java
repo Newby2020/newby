@@ -39,7 +39,7 @@ public class NoticeSelectOneServlet extends HttpServlet {
 		
 		String page = "";
 		if(n != null) {
-			page="views/Customer_NoticeDetail.jsp";
+			page="views/customer_noticeDetail.jsp";
 			request.setAttribute("notice", n);
 		} else {
 			page="views/common/errorPage.jsp";

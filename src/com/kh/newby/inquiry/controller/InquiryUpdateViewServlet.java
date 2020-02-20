@@ -1,26 +1,27 @@
-package com.kh.newby.notice.controller;
+package com.kh.newby.inquiry.controller;
 
 import java.io.IOException;
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.kh.newby.notice.model.service.NoticeService;
-import com.kh.newby.notice.model.vo.Notice;
+import com.kh.newby.inquiry.model.service.InquiryService;
+import com.kh.newby.inquiry.model.vo.Inquiry;
 
 /**
- * Servlet implementation class NoticeUpdateViewServlet
+ * Servlet implementation class BoardUpdateViewServlet
  */
-@WebServlet("/noticeUpdateView.no")
-public class NoticeUpdateViewServlet extends HttpServlet {
+@WebServlet("/inquiryUpdateView.io")
+public class InquiryUpdateViewServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public NoticeUpdateViewServlet() {
+    public InquiryUpdateViewServlet() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -29,20 +30,19 @@ public class NoticeUpdateViewServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		String nno = request.getParameter("nno");
+		String ino = request.getParameter("ino");
 		
-		NoticeService ns = new NoticeService();
+		InquiryService is = new InquiryService();
 		
-		Notice n = ns.noticeUpdateView(nno);
+		Inquiry i = is.inquiryUpdateView(ino);
 		
 		String page = "";
-		if(n != null) {
-			page = "views/customer_noticeUpdate.jsp";
-			request.setAttribute("notice", n);
-			
+		if(i != null) {
+			page = "views/customer_inquiryUpdate.jsp";
+			request.setAttribute("inquiry", i);
 		} else {
 			page = "views/common/errorPage.jsp";
-			request.setAttribute("msg", "수정 실패");
+			request.setAttribute("msg", "문의사항 수정 실패");
 		}
 		request.getRequestDispatcher(page).forward(request, response);
 	}

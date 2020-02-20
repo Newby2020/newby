@@ -1,49 +1,61 @@
-package com.kh.newby.notice.controller;
+package com.kh.newby.inquiry.controller;
 
 import java.io.IOException;
+import java.util.ArrayList;
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.kh.newby.notice.model.service.NoticeService;
-import com.kh.newby.notice.model.vo.Notice;
+import com.kh.newby.inquiry.model.service.InquiryCommentService;
+import com.kh.newby.inquiry.model.service.InquiryService;
+import com.kh.newby.inquiry.model.vo.Inquiry;
 
 /**
- * Servlet implementation class NoticeUpdateViewServlet
+ * Servlet implementation class BoardSelectOneServlet
  */
-@WebServlet("/noticeUpdateView.no")
-public class NoticeUpdateViewServlet extends HttpServlet {
+@WebServlet("/inquirySelectOne.io")
+public class InquirySelectOneServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public NoticeUpdateViewServlet() {
+    public InquirySelectOneServlet() {
         super();
         // TODO Auto-generated constructor stub
     }
+    
 
 	/**
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		String nno = request.getParameter("nno");
+	
+		String ino = request.getParameter("ino");
+		System.out.println(ino);
 		
-		NoticeService ns = new NoticeService();
+//		BoardService bs = new BoardService();
 		
-		Notice n = ns.noticeUpdateView(nno);
+		// 게시글 보기
+		Inquiry i = new InquiryService().inquirySelectOne(ino);
+		
+		
+		// 댓글 불러오기
+		ArrayList<Inquiry> clist = new InquiryCommentService().selectList(ino);
 		
 		String page = "";
-		if(n != null) {
-			page = "views/customer_noticeUpdate.jsp";
-			request.setAttribute("notice", n);
-			
+		if(i != null) {
+			page="views/customer_inquiryDetail.jsp";
+			request.setAttribute("inquiry", i);
+			request.setAttribute("clist", clist);
 		} else {
 			page = "views/common/errorPage.jsp";
-			request.setAttribute("msg", "수정 실패");
+			request.setAttribute("msg", "게시글 목록 조회 실패!");
 		}
+		
 		request.getRequestDispatcher(page).forward(request, response);
 	}
 

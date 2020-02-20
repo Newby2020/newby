@@ -226,7 +226,7 @@ public class NoticeDao {
 		String sql = prop.getProperty("noticeDelete");
 		
 		try {
-			pstmt = con.prepareCall(sql);
+			pstmt = con.prepareStatement(sql);
 			
 			pstmt.setString(1, nno);
 			

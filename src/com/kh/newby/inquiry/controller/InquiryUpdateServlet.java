@@ -1,4 +1,4 @@
-package com.kh.newby.notice.controller;
+package com.kh.newby.inquiry.controller;
 
 import java.io.IOException;
 import javax.servlet.ServletException;
@@ -7,20 +7,20 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.kh.newby.notice.model.service.NoticeService;
-import com.kh.newby.notice.model.vo.Notice;
+import com.kh.newby.inquiry.model.service.InquiryService;
+import com.kh.newby.inquiry.model.vo.Inquiry;
 
 /**
- * Servlet implementation class NoticeUpdateViewServlet
+ * Servlet implementation class BoardUpdateServlet
  */
-@WebServlet("/noticeUpdateView.no")
-public class NoticeUpdateViewServlet extends HttpServlet {
+@WebServlet("/inquiryUpdate.io")
+public class InquiryUpdateServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public NoticeUpdateViewServlet() {
+    public InquiryUpdateServlet() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -29,22 +29,27 @@ public class NoticeUpdateViewServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		String nno = request.getParameter("nno");
+		String title = request.getParameter("title");
+		String content = request.getParameter("content");
+		String ino = request.getParameter("ino");
 		
-		NoticeService ns = new NoticeService();
+		System.out.println(title);
+		System.out.println(content);
+		System.out.println(ino);
 		
-		Notice n = ns.noticeUpdateView(nno);
+		Inquiry i = new Inquiry();
+		i.setItitle(title);
+		i.setIcontent(content);
+		i.setIno(ino);
 		
-		String page = "";
-		if(n != null) {
-			page = "views/customer_noticeUpdate.jsp";
-			request.setAttribute("notice", n);
-			
+		int result = new InquiryService().inquiryUpdate(i);
+		
+		if(result > 0) {
+			response.sendRedirect("inquirySelectOne.io?ino="+ino);
 		} else {
-			page = "views/common/errorPage.jsp";
-			request.setAttribute("msg", "수정 실패");
+			request.setAttribute("msg", "문의 수정 실패");
+			request.getRequestDispatcher("views/common/errorPage.jsp").forward(request, response);
 		}
-		request.getRequestDispatcher(page).forward(request, response);
 	}
 
 	/**
