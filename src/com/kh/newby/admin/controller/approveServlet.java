@@ -34,10 +34,12 @@ public class approveServlet extends HttpServlet {
 		int result = new AdminService().setArrove(cno);
 		System.out.println(result);
 		
-		
-		
-		
-		
+		if(result > 0) {
+			response.sendRedirect("classApplyList.ad");
+		} else {
+			request.setAttribute("msg", "승인 실패!");
+			request.getRequestDispatcher("views/common/errorPage.jsp").forward(request, response);
+		}
 	}
 
 	/**
