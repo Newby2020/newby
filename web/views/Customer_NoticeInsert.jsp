@@ -34,22 +34,21 @@
 					문의 <i id="ci22">≡</i>
 				</button>
 				<div class="dropdown-soxk">
-					<a href="/semi/boardSelectList.bo?currentPage=1">문의 목록</a> <a
-						href="Customer_CreateInquiry.jsp">문의 작성</a>
+					<a href="/semi/inquirySelectList.io?currentPage=1">문의 목록</a> <a
+						href="customer_createInquiry.jsp">문의 작성</a>
 				</div>
-				<a href="Customer_Report.jsp">신고</a> <a href="Customer_Refund.jsp">이용약관</a>
+				<a href="customer_report.jsp">신고</a> <a href="customer_refund.jsp">이용약관</a>
 			</div>
 
 			<!--contents-->
 			<div id="mn16s" align="center">
 
-				<%-- <% if(m != null && m.getM_nick().equals("관리자")) { %> --%>
+				
 				<!-- 제목란이니깐 해당 제목 작성해서 하면 돼-->
 				<br>
 				<h2>공지사항 등록</h2>
 				<hr id="hrSet53">
 				<br> <br>
-				
 				<div id="contentsDivSize29">
 					<!-- 여기다가 너가 작업한거 넣으면 돼-->
 					
@@ -63,7 +62,7 @@
 							<tr>
 								<td class="tdDetail">작성자</td>
 								<td class="tdSpan">
-									<input type="text" value="<%-- <%= n.getNwriter() %> --%>관리자" name="writer" readonly>
+									<input type="text" value="관리자" name="writer" readonly>
 								
 								<td class="tdDetail">작성일</td>
 								<td class="tdSpan"><input type="date" name="date"></td>
@@ -74,13 +73,11 @@
 							</tr>
 							<tr>
 								<td colspan="4">
-									<textarea name="content" cols="60" rows="20" style="resize:none;"></textarea>
+									<textarea name="content" cols="60" rows="15" style="resize:none;"></textarea>
 								</td>
 							</tr>
 						</table>
-						
 						<br>
-						
 						<div align="center">
 							<button type="submit">등록하기</button>
 							<button type="reset">취소하기</button>
@@ -89,10 +86,6 @@
 					</form>
 					
 				</div>
-				<%-- <% } else {
-					request.setAttribute("msg", "관계자 외에 접근이 불가능한 페이지입니다.");
-					request.getRequestDispatcher("/views/common/errorPage.jsp").forward(request, response);
-				} %> --%>
 			</div>
 				
 		</div>
@@ -100,11 +93,9 @@
 		<%@ include file="./common/footer.jsp"%>
 	</div>
 
-	
-
-</body>
-
-	
+	<script>
+        
+    </script>
 
 </body>
 </html>

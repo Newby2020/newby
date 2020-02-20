@@ -34,16 +34,15 @@
 					문의 <i id="ci22">≡</i>
 				</button>
 				<div class="dropdown-soxk">
-					<a href="/semi/boardSelectList.bo?currentPage=1">문의 목록</a> <a
-						href="Customer_CreateInquiry.jsp">문의 작성</a>
+					<a href="/semi/inquirySelectList.io?currentPage=1">문의 목록</a> <a
+						href="customer_createInquiry.jsp">문의 작성</a>
 				</div>
-				<a href="Customer_Report.jsp">신고</a> <a href="Customer_Refund.jsp">이용약관</a>
+				<a href="customer_report.jsp">신고</a> <a href="customer_refund.jsp">이용약관</a>
 			</div>
 
 			<!--contents-->
 			<div id="mn16s" align="center">
 
-				<% if(m != null && m.getM_name().equals("관리자")) { %>
 				
 				<!-- 제목란이니깐 해당 제목 작성해서 하면 돼-->
 				<br>
@@ -53,12 +52,12 @@
 				<div id="contentsDivSize29">
 					<!-- 여기다가 너가 작업한거 넣으면 돼-->
 					
-					<form id="updateForm" method="post">
+					<form id="updateForm" method="post">>
 					
 						<table class="tbDetail">
 							<tr>
 								<td class="tdDetail">제목</td>
-								<td class="tdDetail" colspan="6">
+								<td class="tdDetail" colspan="5">
 									<input type="text" size="50" name="title" 
 							       		value="<%= n.getNtitle() %>">
 									<input type="hidden" name="nno" value="<%= n.getNno() %>"></td>
@@ -66,32 +65,34 @@
 							<tr>
 								<td class="tdDetail">작성자</td>
 								<td class="tdSpan">
-									<input type="text" value="<%= n.getNwriter() %>" name="writer" readonly>
+									<input type="text" value="관리자" name="writer" readonly>
 								
 								<td class="tdDetail">작성일</td>
 								<td class="tdSpan"><input type="date" name="date" value="<%= n.getNdate() %>"></td>
 							</tr>
 							<tr>
 								<td class="tdDetail">내용</td>
-								<td class="tbSpan2" colspan="6"></td>
+								<td class="tbSpan2" colspan="5"></td>
 							</tr>
 							<tr>
-								<td colspan="6">
-									<textarea name="content" cols="100" rows="30" style="resize:none;"><%= n.getNcontent() %></textarea>
+								<td colspan="4">
+									<textarea name="content" cols="60" rows="15" style="resize:none;"><%= n.getNcontent() %></textarea>
 								</td>
 							</tr>
 						</table>
 						<br>
 						<div align="center">
-							<button onclick="noticeUpdate();">수정</button>
-							<button onclick="noticeDelete()">삭제</button>
+							<button onclick="deleteNotice()">삭제하기</button>
+							<button onclick="complete();">완료하기</button>
 						</div>
 						<script>
-							function noticeUpdate(){
+							function complete(){
 								$("#updateForm").attr("action","<%=request.getContextPath() %>/noticeUpdate.no");
+							
 							}
 						
-							function noticeDelete(){
+							function deleteNotice(){
+
 								$("#updateForm").attr("action","<%=request.getContextPath() %>/noticeDelete.no");
 							}
 					
@@ -101,10 +102,6 @@
 					</form>
 					
 				</div>
-				<% } else {
-					request.setAttribute("msg", "관계자 외에 접근이 불가능한 페이지입니다.");
-					request.getRequestDispatcher("/views/common/errorPage.jsp").forward(request, response);
-				} %>
 			</div>
 				
 		</div>

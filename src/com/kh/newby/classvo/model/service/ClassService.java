@@ -23,6 +23,7 @@ public class ClassService {
 		return cv;
 	}
 
+<<<<<<< HEAD
 	public ArrayList<ClassVo> classScheduleList(String cno) {
 		Connection conn = getConnection();
 		ArrayList<ClassVo> csList = new ArrayList<ClassVo>();
@@ -56,6 +57,8 @@ public class ClassService {
 		return csList;
 	}
 
+=======
+>>>>>>> branch 'master' of https://github.com/Newby2020/newby.git
 
 
 }

@@ -43,7 +43,7 @@
     <!-- Reposive Sidebar -->
     <div class="sidebar">
         <div>
-            <a class="fa fa-home" href="../../MainPage/NewbyMainPage.jsp"></a>
+            <a class="fa fa-home" href="index.jsp"></a>
             <a class="index" href="/semi/index.ad">관리자페이지</a>
         </div>
         <a href="/semi/index.ad">Dashboard</a>

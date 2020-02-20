@@ -37,10 +37,10 @@
 					문의 <i id="ci22">≡</i>
 				</button>
 				<div class="dropdown-soxk">
-					<a href="/semi/boardSelectList.bo?currentPage=1">문의 목록</a> <a
-						href="views/Customer_CreateInquiry.jsp">문의 작성</a>
+					<a href="/semi/inquirySelectList.io?currentPage=1">문의 목록</a> <a
+						href="views/customer_createInquiry.jsp">문의 작성</a>
 				</div>
-				<a href="views/Customer_Report.jsp">신고</a> <a href="views/Customer_Refund.jsp">이용약관</a>
+				<a href="views/customer_report.jsp">신고</a> <a href="views/customer_refund.jsp">이용약관</a>
 			</div>
 
 			<!--contents-->
@@ -84,7 +84,6 @@
 
 						<% if( m != null && m.getM_name().equals("관리자")) { %>
 							<input type="button" onclick="location.href='noticeUpdateView.no?nno=<%=n.getNno()%>'" value="수정하기">
-							
 						<% } %>
 						</div>
 

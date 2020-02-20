@@ -30,19 +30,19 @@ public class NoticeSelectOneServlet extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String nno = request.getParameter("nno");
-//		System.out.println(nno);
+		System.out.println(nno);
 		
 		NoticeService ns = new NoticeService();
 		
 		// 게시글 보기
-		Notice n = new NoticeService().noticeSelectOne(nno);
+		Notice n = ns.noticeSelectOne(nno);
 		
 		String page = "";
 		if(n != null) {
-			page="views/Customer_NoticeDetail.jsp";
+			page="views/customer_noticeDetail.jsp";
 			request.setAttribute("notice", n);
 		} else {
-			page="views/common/errorPage.jsp";
+			page = "views/common/errorPage.jsp";
 			request.setAttribute("msg", "게시글 목록 조회 실패!");
 		}
 		

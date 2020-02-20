@@ -99,5 +99,32 @@ public class AdminService {
 		
 		return c;
 	}
+
+//-------------------------- Approve -----------------------------//	
+	public int setArrove(String cno) {
+		Connection con = getConnection();
+		
+		int result = aDao.setApprove(con, cno);
+		
+		if(result > 0) commit(con);
+		else rollback(con);
+		
+		close(con);
+		
+		return result ;
+	}
+
+	public int setReject(String cno, String rReason) {
+		Connection con = getConnection();
+		
+		int result = aDao.setReject(con, cno, rReason);
+		
+		if(result > 0) commit(con);
+		else rollback(con);
+				
+		close(con);
+		
+		return result ;
+	}
 	
 }

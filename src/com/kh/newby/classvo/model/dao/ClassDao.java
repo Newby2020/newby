@@ -7,8 +7,16 @@ import java.io.IOException;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+<<<<<<< HEAD
 import java.util.ArrayList;
+=======
+>>>>>>> branch 'master' of https://github.com/Newby2020/newby.git
 import java.util.Properties;
+<<<<<<< HEAD
+=======
+
+import com.kh.newby.classvo.model.vo.ClassVo;
+>>>>>>> branch 'master' of https://github.com/Newby2020/newby.git
 
 import com.kh.newby.classvo.model.vo.ClassVo;
 
@@ -74,6 +82,7 @@ public class ClassDao {
 		return cv;
 	}
 
+<<<<<<< HEAD
 	public ArrayList<ClassVo> classScheduleList(Connection conn, String cno) {
 		ArrayList<ClassVo> csList = null;
 		PreparedStatement pstmt = null;
@@ -169,4 +178,6 @@ public class ClassDao {
 		return csList;
 	}
 
+=======
+>>>>>>> branch 'master' of https://github.com/Newby2020/newby.git
 }

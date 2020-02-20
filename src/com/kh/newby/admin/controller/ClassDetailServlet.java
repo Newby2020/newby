@@ -35,7 +35,6 @@ public class ClassDetailServlet extends HttpServlet {
 		ClassVo c = new AdminService().selectOne(cno);
 		System.out.println(c);
 		
-		System.out.println(c);
 		String page = "";
 		
 		if(c != null) {

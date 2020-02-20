@@ -79,7 +79,6 @@
 }
 #pay_a{
     text-decoration: none;
-    margin-top: 20px;
     color: white;
     background: #ff005a;
     position: relative;
@@ -88,7 +87,6 @@
     border-radius: 2px;
     padding: 10px 10px 10px 10px;
     font-family: 'Noto Sans KR', sans-serif;
-    cursor: pointer;
 }
 .side .class_price{
     padding: 20px 20px;
@@ -101,15 +99,17 @@
 #text_time{
     font-size: 20px;
 }
+#side_pay_option{
+    height: 150px;
+}
 #side_class_title{
     font-weight: bolder;
     font-size: larger;
     margin: 0px 0px 10px 0px;
 }
 #side_pay_option{
-    font-size: 12px;
-    /* height: 150px; */
-    /* padding: 13px 0; */
+    font-size: 14px;
+    padding: 13px 0;
     border-bottom: 1px solid #ddd;
 }
 .review_box img{
@@ -185,11 +185,3 @@
 #review{
     border-bottom: #fff;
 }
-.star{
-	font-size:1.6em;
-	color: #ccc;
-}
-
-
-
-

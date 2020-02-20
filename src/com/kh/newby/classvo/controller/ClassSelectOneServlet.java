@@ -44,15 +44,11 @@ public class ClassSelectOneServlet extends HttpServlet {
 		// 댓글 불러오기
 		ArrayList<Review> rList = new ReviewService().selectList(cno);
 		
-		// 클래스 일정 불러오기
-		ArrayList<ClassVo> csList = sc.classScheduleList(cno);
-		
 		String page = "";
 		if(cv != null) {
 			page = "views/class_information.jsp";
 			request.setAttribute("class", cv);
 			request.setAttribute("rList", rList);
-			request.setAttribute("csList", csList);
 		}else {
 			page = "views/errorPage.jsp";
 			System.out.println("classSelectOne 서블릿 : 에러" );

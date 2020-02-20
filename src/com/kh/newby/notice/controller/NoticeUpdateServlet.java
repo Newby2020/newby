@@ -33,17 +33,15 @@ public class NoticeUpdateServlet extends HttpServlet {
 		String content = request.getParameter("content");
 		String nno = request.getParameter("nno");
 		
-		System.out.println(title);
-		System.out.println(content);
-		System.out.println(nno);
-		
 		Notice n = new Notice();
 		n.setNtitle(title);
 		n.setNcontent(content);
 		n.setNno(nno);
 		
-		int result = new NoticeService().noticeUpdate(n);
 		
+		
+		int result = new NoticeService().noticeUpdate(n);
+//		System.out.println(result);
 		
 		if(result > 0) {
 			response.sendRedirect("noticeSelectOne.no?nno="+nno);

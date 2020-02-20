@@ -42,8 +42,8 @@
     <!-- Reposive Sidebar -->
     <div class="sidebar">
         <div>
-            <a class="fa fa-home" href="../../MainPage/NewbyMainPage.jsp"></a>
-            <a class="index" href="admin_index.jsp">관리자페이지</a>
+            <a class="fa fa-home" href="index.jsp"></a>
+            <a class="index" href="/semi/index.ad">관리자페이지</a>
         </div>
         <a href="/semi/index.ad">Dashboard</a>
         <a href="/semi/userList.ad">사용자</a>
@@ -88,7 +88,6 @@
                 <% } %>
             </table>
             <script>
-            	
           		 $('.detailBtn').click(function(){
               	var no = $(this).parent().siblings(":eq(0)").text(); 
               	
@@ -96,8 +95,6 @@
           		 });
               </script>
         </div>
-        
-        <%-- <%@ include file ="admin_classDetailModal.jsp" %> --%>
         
      	<%-- 페이지 처리 --%>
         <div class="pageArea" align="center">
@@ -123,9 +120,6 @@
  			<% } %>
  			<button onclick="location.href='<%= request.getContextPath() %>/classList.ad?currentPage=<%= maxPage %>'">>></button>
         </div>
-    </div>
-    
-
-    
+    </div>  
 </body>
 </html>

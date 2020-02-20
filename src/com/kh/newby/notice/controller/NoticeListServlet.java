@@ -80,7 +80,7 @@ public class NoticeListServlet extends HttpServlet {
 		String page = "";
 		
 		if(list != null) {
-			page = "views/Customer_Notice.jsp";
+			page = "views/customer_notice.jsp";
 			request.setAttribute("list", list);
 			
 			PageInfo pi = new PageInfo(currentPage,listCount,limit,maxPage,startPage,endPage);

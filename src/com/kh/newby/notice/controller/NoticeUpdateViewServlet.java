@@ -37,7 +37,7 @@ public class NoticeUpdateViewServlet extends HttpServlet {
 		
 		String page = "";
 		if(n != null) {
-			page = "views/Customer_NoticeUpdate.jsp";
+			page = "views/customer_noticeUpdate.jsp";
 			request.setAttribute("notice", n);
 			
 		} else {

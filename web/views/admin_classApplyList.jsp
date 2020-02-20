@@ -39,7 +39,7 @@
     <!-- Reposive Sidebar -->
     <div class="sidebar">
         <div>
-            <a class="fa fa-home" href="../../MainPage/NewbyMainPage.jsp"></a>
+            <a class="fa fa-home" href="index.jsp"></a>
             <a class="index" href="/semi/index.ad">관리자페이지</a>
         </div>
         <a href="/semi/index.ad">Dashboard</a>
@@ -73,11 +73,18 @@
                     <td><%= c.getClassHostNo() %></td>
                     <td><%= c.getClassStatus() %></td>
                     <td>
-                        <!-- <button id="detailVeiwBtn" class="detailVeiwBtn">양식보기</button> <br> -->
+                        <button class="detailBtn">확인</button>
                     </td>
                 </tr>
                 <% } %>
             </table>
+            <script>
+          		 $('.detailBtn').click(function(){
+              	var no = $(this).parent().siblings(":eq(1)").text(); 
+              	
+              	location.href="<%=request.getContextPath()%>/appliedClassDetail.ad?cno=" + no;
+          		 });
+             </script>
         </div>
         <%-- 페이지 처리 --%>
         <div class="pageArea" align="center">
@@ -104,87 +111,5 @@
  			<button onclick="location.href='<%= request.getContextPath() %>/classList.ad?currentPage=<%= maxPage %>'">>></button>
         </div>
     </div>
-
-    <!-- The Modal for 양식 확인 -->
-    <div id="contentsOfAppliedClass" class="modal">
-        <!-- Modal content -->
-        <div class="modal-content">
-            <span id="close1" class="close">&times;</span>
-            <p>작성 양식 데이터 가져오기(호스트 마이페이지에서 가져옴)</p>
-        </div>
-    </div>
-
-    <!-- The Modal for 승인 -->
-    <div id="confirmModal" class="modal">
-        <!-- Modal content -->
-        <div class="modal-content">
-            <span id="close2" class="close">&times;</span>
-            <p>신청된 클래스를 승인하시겠습니까?</p>
-            <button type="button">승인</button>
-            <button type="button" onclick="$('#confirmModal').css('display','none')">취소</button>
-        </div>
-    </div>
-
-    <!-- The Modal for 승인 -->
-    <div id="rejectModal" class="modal">
-        <!-- Modal content -->
-        <div class="modal-content">
-            <span id="close3" class="close">&times;</span>
-            <p>신청된 클래스를 반려하시겠습니까?</p>
-            <button type="button">반려</button>
-            <button type="button" onclick="$('#rejectModal').css('display','none')">취소</button>
-        </div>
-    </div>
-
-
-    <script>
-        // ------------------ Modal--------------------------------
-        // Get the modal
-        var contents = document.getElementById("contentsOfAppliedClass");
-        var confirm = document.getElementById("confirmModal");
-        var reject = document.getElementById("rejectModal");
-
-        // Get the button that opens the modal
-        var detailVeiwBtn = document.getElementById("detailVeiwBtn");
-        var confirmBtn = document.getElementById("confirmBtn");
-        var rejectBtn = document.getElementById("rejectBtn");
-        // var btn = document.getElementsByClassName("detailVeiwBtn");
-
-        // Get the <span> element that closes the modal
-        // var close = document.getElementsByClassName("close")[0];
-        var close1 = document.getElementById("close1");
-        var close2 = document.getElementById("close2");
-        var close3 = document.getElementById("close3");
-
-
-
-        // When the user clicks the button, open the modal 
-        detailVeiwBtn.onclick = function () {
-            contents.style.display = "block";
-        }
-        confirmBtn.onclick = function () {
-            confirm.style.display = "block";
-        }
-        rejectBtn.onclick = function () {
-            reject.style.display = "block";
-        }
-
-        // When the user clicks on <span> (x), close the modal
-        close1.onclick = function () {
-            contents.style.display = "none";
-        }
-        close2.onclick = function () {
-            confirm.style.display = "none";
-        }
-        close3.onclick = function () {
-            reject.style.display = "none";
-        }
-
-        // TODO 이거 어케하나염
-
-        // ------------------ confirm() & reject()--------------------------------
-
-    </script>
 </body>
-
 </html>

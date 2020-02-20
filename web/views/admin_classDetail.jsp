@@ -3,7 +3,8 @@
 	import="com.kh.newby.classvo.model.vo.*, 
     		java.util.*"%>
 <%
-	/* ClassVo c = request */
+	ClassVo c = (ClassVo)request.getAttribute("c"); 
+	
 %>
 
 <!DOCTYPE html>
@@ -14,130 +15,116 @@
 <title>admin_클래스 정보</title>
 
 <!-- Load icon libarary -->
-<link rel="stylesheet"
-	href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
 <!-- Sidebar & Footer : Basic-->
 <link rel="stylesheet" href="/semi/resources/css/admin_basic.css">
 
-<!--  지훈이형 꺼 -->
-<link rel="stylesheet" href="/semi/resources/css/mypage_h&j-frame.css">
-<link rel="stylesheet" href="/semi/resources/css/mypage_EnrollInClass.css">
-
 <!-- jQuery -->
 <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+
 <style>
+	#tableDiv tr td:first-child, h4{font-size : 20px; font-weight: bold;}
+	#tableDiv tr td:nth-child(2){padding-left : 40px;} 
 </style>
+
+
 </head>
 <body>
+	<script>
+		console.log($('tr'));
+		console.log($('#tableDiv'));
+	</script>
 	<!-- Reposive Sidebar -->
 	<div class="sidebar">
-		<a class="fa fa-home" href="../../MainPage/NewbyMainPage.jsp"></a> 
-		<a class="index" href="/semi/index.ad">관리자페이지</a> 
+	
+        <div>
+            <a class="fa fa-home" href="index.jsp"></a>
+            <a class="index" href="/semi/index.ad">관리자페이지</a>
+        </div>
 		<a href="/semi/index.ad">Dashboard</a> <a href="/semi/userList.ad">사용자</a>
-		<a class="active" href="/semi/classApplyList.ad">클래스 등록 신청</a> 
-		<a href="/semi/classList.ad">개설 클래스</a> <a href="/semi/claimList.ad">신고</a>
+		<a href="/semi/classApplyList.ad">클래스 등록 신청</a> 
+		<a class="active" href="/semi/classList.ad">개설 클래스</a> <a href="/semi/claimList.ad">신고</a>
 		<a href="admin_accountancy.jsp">정산</a>
 	</div>
 
 	<!--contents-->
-	<div class="content" align="left" style="padding-left: 60px">
-		<div id="mn16s">
+	<div class="content" align="left" style="padding-left: 60px; padding-bottom : 300px">
+		<div>
 			<br>
 			<h2>클래스 정보</h2>
-			<hr id="hrSet53">
+			<hr>
 			<br> <br>
-			<div id="contentsDivSize29">
-				<!-- 클래스번호 전송 -->
-				<%-- <input type="hidden" name="cno" value="<%=cno%>"> --%>
+			<div id="tableDiv">
 				<table>
 					<tbody>
 						<tr>
-							<td class="tline1row">클래스명<br> <small>(40자 이내)</small></td>
-							<td class="tline2row" style="font-size: 11pt;">제목에서부터 호스트</td>
+							<td>클래스명</td>
+							<td><%= c.getClassName()%></td>
 						</tr>
+						<tr><td><br></td></tr><tr><td><br></td></tr>
 						<tr>
-							<td><br></td>
-						</tr>
-						<tr>
-							<td><br></td>
-						</tr>
-						<tr>
-							<td class="tline1row">카테고리</td>
+							<td>카테고리</td>
 							<td>
-								<div class="sl1 sl1" style="display: inline">신나는</div>
+								<div style="display: inline"><%= c.getFirstCategory()%></div>
 								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-								<div class="sl1 sl1" style="display: inline">액티비티</div>
+								<div style="display: inline"><%= c.getSecondCategory()%></div>
 								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-								<div class="sl1 sl1" style="display: inline">달리기</div>
+								<div style="display: inline"><%= c.getThirdCategory()%></div>
 							</td>
 						</tr>
 						<tr><td><br></td></tr><tr><td><br></td></tr>
 						<tr>
-							<td class="tline1row">클래스 형태</td>
-							<td>1:1</td>
+							<td>클래스 형태</td>
+							<td><%= c.getClassType()%></td>
 						</tr>
 						<tr><td><br></td></tr><tr><td><br></td></tr>
 						<tr>
-							<td class="tline1row">인원수</td>
-							<td>1명</td>
+							<td>인원수</td>
+							<td><%= c.getClassMaxnum()%> 명</td>
 						</tr>
 						<tr><td><br></td></tr><tr><td><br></td></tr>
 						<tr>
-							<td class="tline1row">1회당 수업시간</td>
-							<td>4 시간</td>
+							<td>1회당 수업시간</td>
+							<td><%= c.getClassTime() %> 시간</td>
 						</tr>
 						<tr><td><br></td></tr><tr><td><br></td></tr>
 						<tr>
-							<td class="tline1row">1회당 가격</td>
-							<td>25,000원</td>
+							<td>1회당 가격</td>
+							<td><%= c.getClassPrice() %> 원</td>
 						</tr>
 						<tr><td><br></td></tr><tr><td><br></td></tr>
 						<tr>
-							<td class="tline1row">이미지<br> <small>(2MB 이하)</small></td>
+							<td>이미지</td>
 							<td>
 								<div id="refresh1" style="display: flex;">
 									<img id="blah"
-										src="/semi/resources/uploadImg/<%-- <%=img %> --%>" alt="사진"
+										src="/semi/resources/uploadImg/<%= c.getClassImg() %>" alt="사진"
 										style="width: 120px; height: 120px; display: block; border-radius: 5px; border: 3px solid rgb(9, 129, 241);" />
 								</div>
 							</td>
 						</tr>
 						<tr><td><br></td></tr><tr><td><br></td></tr>
 						<tr>
-							<td class="tline1row">일정</td>
-							<td class="addSchedule23" style="display: flex;">
-								<div class='dataCl'>2020-20-20</div>&nbsp;&nbsp;&nbsp;
-								<div class='dataCl'>12: 20</div>
-							</td>
-						</tr>
-						<tr><td><br></td></tr><tr><td><br></td></tr>
-						<tr>
-							<td class="tline1row">장소</td>
+							<td>장소</td>
 							<td>
-								<div class='dataCl' style = "text-align-last : left">서울시 종로구</div>
-								<div class='dataCl' style = "text-align-last : left">정독도서관</div>
+								<div><%= c.getClassLocation() %></div>
 							</td>
 						</tr>
 						<tr><td><br></td></tr><tr><td><br></td></tr>
 						<tr>
-							<td class="tline1row tt121">수업 대상</td>
-							<td>20대 후반 사회 초년생</td>
+							<td>수업 대상</td>
+							<td><%= c.getClassTarget() %></td>
 						</tr>
 				</table>
-				<div id="divFi">
+				<div>
 					<br> <br>
-					<h5 class="tline1row tt121">커리큘럼</h5>
-					<div>커리큘럼커리큘럼커리큘럼커리큘럼커리큘럼커리큘럼커리큘럼
-						커리큘럼커리큘럼커리큘럼커리큘럼커리큘럼커리큘럼커리큘럼 커리큘럼커리큘럼커리큘럼커리큘럼커리큘럼커리큘럼커리큘럼</div>
+					<h4 class="title">커리큘럼</h4>
+					<div class="cont"><%= c.getClassCurriculum() %></div>
 					<br> <br> <br>
-					<h5 class="tline1row tt121">수업 소개</h5>
-					<div>수업소개수업소개수업소개수업소개수업소개수업소개수업소개
-						수업소개수업소개수업소개수업소개수업소개수업소개수업소개 수업소개수업소개수업소개수업소개수업소개수업소개수업소개</div>
+					<h4 class="title">수업 소개</h4>
+					<div class="cont"><%= c.getClassIntro() %></div>
 				</div>
-				<br> <input type="submit" class="finalBtn24" value="반려">
-				&nbsp;&nbsp;&nbsp;&nbsp; <input type="reset" class="finalBtn24"
-					value="승인"> <br> <br> <br> <br> <br>
 			</div>
 		</div>
 	</div>

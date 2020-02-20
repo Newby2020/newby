@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8" import="com.kh.newby.pay.model.vo.*, java.util.*,  java.text.DecimalFormat"%>
     
-<%
+<%-- <%
 	DecimalFormat formatter = new DecimalFormat("###,###");
 	ArrayList<Payment> list = (ArrayList<Payment>)request.getAttribute("list");
 	int mile = list.get(0).getMileage();
@@ -9,7 +9,7 @@
 		System.out.println(c.toString());
 	}
 	
-%>
+%> --%>
 <!DOCTYPE html>
 <html lang="ko">
 <head>
@@ -62,7 +62,7 @@ td{
                         <div>
                             <div align="center" id="miletitle1sdk" style="font-weight: normal;">나의 마일리지</div>
                             <div align="center">
-                              <input type="text" id="mileage1kc" value="<%= formatter.format(mile)%> 원">
+                              <input type="text" id="mileage1kc" value="<%-- <%= formatter.format(mile)%> --%> 원">
                             </div>
                           </div>
                           <br>
@@ -80,11 +80,11 @@ td{
                                 </tr>
                               </thead>
                               <tbody align="center">
-                              <%for(Payment c : list){ %>
+                              <%-- <%for(Payment c : list){ %> --%>
                                 <tr>
-                                  <td style="font-size:8pt;"><%=c.getpDate() %></td>
+                                  <%-- <td style="font-size:8pt;"><%=c.getpDate() %></td>
                                   <td style="font-size:8pt;"><%=c.getCName() %></td>
-                                  <td style="font-size:8pt;"></td>
+                                  <td style="font-size:8pt;"></td> --%>
                                   <%-- <td>
                                   	<%=c.getM_pMile() %>
                                   </td>
@@ -92,7 +92,8 @@ td{
                                   	<%=c.getM_pSaveMile() %>
                                   </td> --%>
                                 </tr>
-                                <% } %>
+                                
+                                <%-- <% } %> --%>
                               </tbody>
                             </table>
                             <br>

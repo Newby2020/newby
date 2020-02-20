@@ -61,6 +61,21 @@ public class MemberService {
 		return result;
 	}
 
+	public Member searchId(String name, String phone) throws MemberException {
+		
+		con = getConnection();
+		
+		Member result = mDao.searchId(con, name, phone);
+		close(con);
+		if(result==null) {
+			System.out.println("null일 때 서비스");
+			throw new MemberException("아이디가 존재하지 않습니다.");
+		}
+		
+
+		return result;
+	}
+
 	
 	
 	

@@ -15,14 +15,14 @@ import com.kh.newby.pay.model.vo.Payment;
 /**
  * Servlet implementation class MemberMileageServelt
  */
-@WebServlet("/mMile.do")
-public class MileageServelt extends HttpServlet {
+@WebServlet("/payList.do")
+public class PaymentListServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public MileageServelt() {
+    public PaymentListServlet() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -38,7 +38,7 @@ public class MileageServelt extends HttpServlet {
 		
 		String mno = "M3"; //String mno = m.getM_no();						/////////////////////////////////수정해야됨////////////////////////////
 
-		list = new PaymentService().MileageList(mno);
+		list = new PaymentService().payList(mno);
 		String page = "";
 		
 		if(list != null) {

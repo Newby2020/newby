@@ -3,10 +3,12 @@
 <%@ page
 	import="com.kh.newby.inquiry.model.vo.*, java.util.*, com.kh.newby.notice.model.vo.*"%>
 <%
-	Board b = (Board) request.getAttribute("board");
-	Notice n = (Notice) request.getAttribute("notice");
+	Inquiry i = (Inquiry)request.getAttribute("inquiry");
+	Notice n = (Notice)request.getAttribute("notice");
 
-	ArrayList<Board> clist = (ArrayList<Board>) request.getAttribute("clist");
+	ArrayList<Inquiry> list
+	= (ArrayList<Inquiry>)request.getAttribute("list");
+	
 %>
 
 <!DOCTYPE html>
@@ -40,11 +42,11 @@
 					문의 <i id="ci22">≡</i>
 				</button>
 				<div class="dropdown-soxk">
-					<a href="/semi/boardSelectList.bo?currentPage=1">문의 목록</a> <a
-						href="views/Customer_CreateInquiry.jsp">문의 작성</a>
+					<a href="/semi/inquirySelectList.io?currentPage=1">문의 목록</a> <a
+						href="views/customer_createInquiry.jsp">문의 작성</a>
 				</div>
-				<a href="views/Customer_Report.jsp">신고</a> <a
-					href="views/Customer_Refund.jsp">이용약관</a>
+				<a href="views/customer_report.jsp">신고</a> <a
+					href="views/customer_refund.jsp">이용약관</a>
 			</div>
 
 			<!--contents-->
@@ -59,53 +61,50 @@
 
 				<div id="contentsDivSize29">
 					<!-- 여기다가 너가 작업한거 넣으면 돼-->
-
+					
 					<form>
 						<table class="tbDetail">
 							<tr>
 								<td class="tdDetail">제목</td>
-								<td class="tdDetail" colspan="5"><span class="spN2"><%=b.getItitle()%></span></td>
+								<td class="tdDetail" colspan="5"><span class="spN2"><%= i.getItitle() %></span></td>
 							</tr>
 							<tr>
 								<td class="tdDetail">작성자</td>
-								<td class="tdSpan"><span class="spN"><%=b.getIwno()%></span></td>
+								<td class="tdSpan"><span class="spN"><%= i.getIwno() %></span></td>
 								<td class="tdDetail">작성일</td>
-								<td class="tdSpan"><span class="spN"><%=b.getIdate()%></span></td>
+								<td class="tdSpan"><span class="spN"><%= i.getIdate() %></span></td>
 							<tr>
 								<td class="tdDetail">내용</td>
 								<td class="tbSpan2" colspan="5"></td>
 							</tr>
 
 							<tr>
-								<td class="tdContent" colspan="6"><span class="spN"><%=b.getIcontent()%></span></td>
+								<td class="tdContent" colspan="6"><span class="spN"><%= i.getIcontent() %></span></td>
 							</tr>
 						</table>
-						<div id="replySelectArea">
-							<!-- 게시글의 댓글들을 보여주는 부분  -->
-							<%
-								if (clist != null && m != null && m.getM_name().equals("관리자")) {
-							%>
-							<form action="boardComment.bo" method="post">
-								<table id="replySelectTable">
-									<tr>
-										<td rowspan="1"></td>
-										<td><%=m.getM_name()%></td>
-										<td><%=b.getIdate()%></td>
-										<td align="center"><input type="hidden" name="writer"
-											value="<%=m.getM_name()%>"> <input type="hidden"
-											name="refcno">
-											<textarea class="reply-content" cols="80" rows="3"
-												style="resize:none;"></textarea>
-											<button type="button" class="insertBtn"
-												onclick="reComment(this);">댓글 달기</button></td>
-									</tr>
-								</table>
-							</form>
-							<%
-								}
-							%>
-
+						<div align="center">
+							<div class="replyWriteArea">
+							
+									<table align="center">
+										<tr>
+											<td>댓글</td>
+											<td><textArea rows="3" cols="80" id="replyContent" style="resize: none;"
+													name="replyContent"></textArea></td>
+											<% if( m != null && m.getM_name().equals("관리자")) { %>
+											<td><button type="submit" id="addReply">댓글 등록</button></td>
+											<% } %>
+										</tr>
+									</table>
+								
+							</div>
+							<div align="center">
+								<% if( i.getIwno().equals(m.getM_nick()) || m != null && m.getM_name().equals("관리자")) { %>
+								<input type="button" onclick="location.href='inquiryUpdateView.io?ino=<%= i.getIno()%>'" value="수정하기">
+								<% } %>
+							</div>
+							
 						</div>
+
 					</form>
 
 				</div>
@@ -116,15 +115,7 @@
 		<%@ include file="./common/footer.jsp"%>
 	</div>
 	<script>
-	function reComment(obj){
-		$(obj).siblings('.insertConfirm').css('display','inline');
 		
-		$(obj).css('display', 'none');
-		
-		$(obj).parents('table').append(htmlForm);
-		
-	}
-	
 	</script>
 </body>
 </html>
