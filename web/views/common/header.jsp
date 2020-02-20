@@ -3,10 +3,6 @@
 
 <%
 	 Member m = (Member)session.getAttribute("Member");
-<<<<<<< HEAD
-=======
-	
->>>>>>> branch 'master' of https://github.com/Newby2020/newby.git
 %>
 <!DOCTYPE html>
 <html lang="ko">
