@@ -75,12 +75,13 @@
     cursor : pointer;
 }
 
-#sendCode, #confirmCode{
+#sendCode, #confirmCode, #confirmpwd{
 	background-color: rgb(9, 129, 241);
 	 width: 80px;
             height: 25px;
             border: none;
             color: white;
             cursor : pointer;
+            
 }
 

@@ -55,8 +55,24 @@
         <div style="overflow-x:auto;">
             <!-- searchBar -->
             <div class="searchBar"> 
-                <input type="text" placeholder="Search..." >
-                <button><i class="fa fa-search"></i></button>
+                <input id="search" type="text" placeholder="Search..." >
+                <button id="searchBtn"><i class="fa fa-search"></i></button>
+                <script>
+                	$('#searchBtn').click(function(){
+                		$.ajax({
+                			url : "/semi/serchUser.ad",
+                			type: "get",
+                			data:{
+                				searchValue : $("#search").val()
+                			},
+                			success : function(data){
+                				/* alert("검색 성공!"); */
+                			}, error : function(){
+                				alert("검색 실패!");
+                			}
+                		});
+                	});
+                </script>                
             </div>
             <table>
                 <tr>

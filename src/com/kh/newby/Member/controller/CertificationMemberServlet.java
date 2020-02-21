@@ -41,7 +41,6 @@ public class CertificationMemberServlet extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		String email = request.getParameter("user_Id");
 
 		// mail server 설정
 		String host = "smtp.naver.com";
@@ -105,18 +104,11 @@ public class CertificationMemberServlet extends HttpServlet {
 			e.printStackTrace();// TODO: handle exception
 			System.out.println("오류발생");
 		}
-
+		
 		HttpSession saveKey = request.getSession();
 		saveKey.setAttribute("AuthenticationKey", AuthenticationKey);
 
-		// 패스워드 바꿀때 뭘 바꿀지 조건에 들어가는 id
-//        request.setAttribute("id", memberId);
-//        request.setAttribute("temp", temp);
 
-//        ServletContext context = getServletContext();
-//        RequestDispatcher dispatcher = 
-//                context.getRequestDispatcher("/views/singIn.jsp"); //넘길 페이지 주소
-//          dispatcher.forward(request, response);
 		new Gson().toJson("완료", response.getWriter());
 
 	}
