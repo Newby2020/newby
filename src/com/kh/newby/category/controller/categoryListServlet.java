@@ -93,12 +93,12 @@ public class categoryListServlet extends HttpServlet {
 		if(caList != null) {
 
 			switch (caType) {
-			case "ca0": page = "views/category0_dynamic.jsp"; break;
-			case "ca1": page = "views/category1_static.jsp"; break;
-			case "ca2": page = "views/category2_activity.jsp?caType=ca2"; break;
-			case "ca3": page = "views/category2_activity.jsp?caType=ca3"; break;
-			case "ca4": page = "views/category2_activity.jsp?caType=ca4"; break;
-			case "ca5": page = "views/category2_activity.jsp?caType=ca5"; break;
+			case "ca0": page = "views/category1st.jsp?caType=ca0"; break;
+			case "ca1": page = "views/category1st.jsp?caType=ca1"; break;
+			case "ca2": page = "views/category2nd.jsp?caType=ca2"; break;
+			case "ca3": page = "views/category2nd.jsp?caType=ca3"; break;
+			case "ca4": page = "views/category2nd.jsp?caType=ca4"; break;
+			case "ca5": page = "views/category2nd.jsp?caType=ca5"; break;
 			default: page = "views/common/errorPage.jsp"; break;
 			}
 //			switch (caType) {
