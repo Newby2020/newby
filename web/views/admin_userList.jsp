@@ -58,45 +58,15 @@
                 <input id="search" type="text" placeholder="Search..." >
                 <button id="searchBtn"><i class="fa fa-search"></i></button>
                 <script>
-                	/* $("#search").val().on("change", function(){
-                		$.ajax({
-                			url : "/semi/serchUser.ad",
-                			type: "get",
-                			data:{
-                				value : $("search").val()
-                			},
-                			success : function(data){
-                				alert("검색 성공!");
-                			}, error : function(){
-                				alert("검색 실패!");
-                			}
-                		});
-                	}); */
-                	
-                	 /* $('#search').change(function(){
-                		$.ajax({
-                			url : "/semi/serchUser.ad",
-                			type: "get",
-                			data:{
-                				value : $("search").val()
-                			},
-                			success : function(data){
-                				alert("검색 성공!");
-                			}, error : function(){
-                				alert("검색 실패!");
-                			}
-                		});
-                	});  */
-                	
                 	$('#searchBtn').click(function(){
                 		$.ajax({
                 			url : "/semi/serchUser.ad",
                 			type: "get",
                 			data:{
-                				value : $("search").val()
+                				searchValue : $("#search").val()
                 			},
                 			success : function(data){
-                				alert("검색 성공!");
+                				/* alert("검색 성공!"); */
                 			}, error : function(){
                 				alert("검색 실패!");
                 			}
