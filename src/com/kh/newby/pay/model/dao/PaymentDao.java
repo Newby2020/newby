@@ -8,6 +8,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.Properties;
 
@@ -29,26 +30,60 @@ public class PaymentDao {
 	      }
 	   }
 	   
-		public ArrayList<Payment> payList(Connection con, String mno) {
+	   
+		public int getListCount(Connection con, String mno) {
+			// 총 게시글 수
+			int listCount = 0;
+			PreparedStatement pstmt = null;
+			ResultSet rset = null;
+			
+			String sql = prop.getProperty("listCount");
+			
+			try {
+				
+				pstmt=con.prepareStatement(sql);
+				pstmt.setString(1, mno);
+				rset = pstmt.executeQuery();
+				
+				if(rset.next()) {
+					listCount = rset.getInt(1);
+				}
+				
+			} catch(SQLException e) {
+				e.printStackTrace();
+			} finally {
+				close(rset);
+				close(pstmt);
+			}
+			
+			return listCount;
+		}
+		
+		public ArrayList<Payment> payList(Connection con, int currentPage, int limit, String mno) {
 			ArrayList<Payment> list = new ArrayList<>();
 			Payment p = null;
-			int mile =0;
 			PreparedStatement pstmt = null;
 			ResultSet rset = null;
 			String sql = prop.getProperty("payList");
 			try {
 				pstmt = con.prepareStatement(sql);
+				int startRow = (currentPage-1)*limit +1;
+				int endRow = startRow + limit -1;
 				pstmt.setString(1, mno);
+				pstmt.setInt(2, endRow);
+				pstmt.setInt(3, startRow);
 				rset = pstmt.executeQuery();
+				
 				while(rset.next()) {
 					p = new Payment();
-					p.setMileage(mile);
-					p.setpDate(rset.getDate("PAY_DATE"));
-					p.setCName(rset.getString("CLASS_NAME"));
-					p.setPayMile(rset.getInt("PAY_MILEAGE"));
-					p.setSaveMile(rset.getInt("PAY_SAVE_MILEAGE"));
+					p.setpDate(rset.getString(2));
+					p.setcName(rset.getString(3));
+					p.setPayMile(rset.getInt(4));
+					p.setSaveMile(rset.getInt(5));
+					p.setTotalPrice(rset.getInt(6));
 					list.add(p);
 				}
+				
 			} catch(SQLException e) {
 				e.printStackTrace();
 			} finally {
@@ -57,4 +92,72 @@ public class PaymentDao {
 			}
 			return list;
 		}
+
+
+		public int getListCount1(Connection con, String mno) {
+			// 총 게시글 수
+			int listCount = 0;
+			PreparedStatement pstmt = null;
+			ResultSet rset = null;
+			
+			String sql = prop.getProperty("listCount1");
+			
+			try {
+				
+				pstmt=con.prepareStatement(sql);
+				pstmt.setString(1, mno);
+				rset = pstmt.executeQuery();
+				
+				if(rset.next()) {
+					listCount = rset.getInt(1);
+				}
+				
+			} catch(SQLException e) {
+				e.printStackTrace();
+			} finally {
+				close(rset);
+				close(pstmt);
+			}
+			
+			return listCount;
+		}
+
+
+		public ArrayList<Payment> cancelList(Connection con, int currentPage, int limit, String mno) {
+			ArrayList<Payment> list = new ArrayList<>();
+			Payment p = null;
+			PreparedStatement pstmt = null;
+			ResultSet rset = null;
+			String sql = prop.getProperty("cancelList");
+			try {
+				pstmt = con.prepareStatement(sql);
+				int startRow = (currentPage-1)*limit +1;
+				int endRow = startRow + limit -1;
+				pstmt.setString(1, mno);
+				pstmt.setInt(2, endRow);
+				pstmt.setInt(3, startRow);
+				rset = pstmt.executeQuery();
+				
+				while(rset.next()) {
+					p = new Payment();
+					p.setCancelDate(rset.getString("CANCELDATE"));
+					p.setcName(rset.getString("CLASS_NAME"));
+					p.setcDate(rset.getString("CS_CLASS_DATE"));
+					p.setcStartTime(rset.getString("CS_STARTTIME"));
+					p.setcEndTime(rset.getString("CS_ENDTIME"));
+					p.setcTime(rset.getString("CLASS_TIME"));
+					list.add(p);
+				}
+				
+			} catch(SQLException e) {
+				e.printStackTrace();
+			} finally {
+				close(rset);
+				close(pstmt);
+			}
+			return list;
+		}
+
+		
+
 }

@@ -31,6 +31,7 @@ public class CancelPayment extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
+		// ==== 결제 취소를 결제로부터 가져오기  ===============================
 //		String psno = request.getParameter("psno");
 		String psno = "PS3";	// 나중에 위의 것으로 고쳐야 한다.
 		
@@ -42,11 +43,13 @@ public class CancelPayment extends HttpServlet {
 		page = "/views/cancelOrder.jsp";
 		request.setAttribute("cvPsno", cvPsno);
 		
-		/*if(cvPsno == null) {
-			usermileage = -;
-		} else {
-			usermileage = maintain;
-		}*/
+		// ==== 취소 클래스 카운트  ========================================
+		int cancelCount = 0;
+		
+		cancelCount = ps.getCancelCount(psno);
+		
+		page = "/views/cancelOrder.jsp";
+		request.setAttribute("cancelCount", cancelCount);
 		
 		request.getRequestDispatcher(page).forward(request, response);
 		

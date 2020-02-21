@@ -1,29 +1,25 @@
 package com.kh.newby.Member.controller;
 
 import java.io.IOException;
-
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 
-import com.kh.newby.Member.model.service.MemberService2;
-import com.kh.newby.Member.model.vo.Member;
-import com.kh.newby.Member.model.vo.Member3;
+import com.google.gson.Gson;
 
 /**
- * Servlet implementation class ProfileService
+ * Servlet implementation class CheckCodeServlet
  */
-@WebServlet("/profile.do")
-public class ProfileService extends HttpServlet {
+@WebServlet("/check.co")
+public class CheckCodeServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-       
+
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public ProfileService() {
+    public CheckCodeServlet() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -32,24 +28,23 @@ public class ProfileService extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		HttpSession session = request.getSession();
-		Member m = (Member)session.getAttribute("Member");
-		
-		String mno = m.getM_no();
-		
-		Member3 m3 = new MemberService2().profile(mno);
-		
-		String page = "";
+		response.setContentType("application/json; charset=UTF-8");
+		String checkCode = request.getParameter("checkCode");
+		String originCode = (String)request.getSession().getAttribute("AuthenticationKey");
 
-		if(m != null) {
-			page = "views/mypage_Profile.jsp";
-			request.setAttribute("member3", m3);
-		} else {
-			page = "views/common/errorPage.jsp";
-			request.setAttribute("msg", "해당 유저가 결제한 클래스 목록 출력 실패!");
+		System.out.println(checkCode);
+		System.out.println(originCode);
+
+		String result = "";
+		if(!checkCode.equals(originCode)) {
+			result= "실패";
+
+
+		}else {
+			result= "성공";
 		}
-		request.getRequestDispatcher(page).forward(request, response);
-		
+
+		new Gson().toJson(result,response.getWriter());
 	}
 
 	/**

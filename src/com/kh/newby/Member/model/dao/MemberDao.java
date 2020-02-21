@@ -65,14 +65,14 @@ public class MemberDao {
 			}
 			
 		}catch(Exception e) {
-//			e.printStackTrace();
-			throw new MemberException(e.getMessage());
+			e.printStackTrace();
+//			throw new MemberException(e.getMessage());
 		
 		}finally {
 			close(rset);
 			close(pstmt);
 		}
-		
+		System.out.println("mDao="+result.getM_id());
 		return result;
 	}
 
@@ -186,6 +186,59 @@ public class MemberDao {
 			close(rset);
 			close(pstmt);
 		}
+		return result;
+	}
+
+	public Member checkNameAndId(Connection con, String name, String mail) throws MemberException {
+		Member m = null;
+		PreparedStatement pstmt = null;
+		ResultSet rset = null;
+		
+		try {
+			String sql = prop.getProperty("searchNameAndId");
+			
+			pstmt = con.prepareStatement(sql);
+			pstmt.setString(1, name);
+			pstmt.setString(2, mail);
+			
+			rset = pstmt.executeQuery();
+			
+			m=new Member();
+			
+			if(rset.next()) {
+				m.setM_id(mail);
+				m.setM_pwd(rset.getString("MEM_PWD"));
+			}
+		}catch(Exception e) {
+			throw new MemberException(e.getMessage());
+		}finally {
+			close(rset);
+			close(pstmt);
+		}
+		
+		return m;
+	}
+
+	public int changPwd(Connection con, String memberId, String pwd) {
+		int result = 0;
+		PreparedStatement pstmt = null;
+		
+		String sql = prop.getProperty("changePwd");
+		
+		try {
+		  pstmt=con.prepareStatement(sql);
+		  
+		  pstmt.setString(1, pwd);
+		  pstmt.setString(2, memberId);
+
+		  result=pstmt.executeUpdate();
+		  System.out.println(result);
+		}catch(SQLException e) {
+			e.getStackTrace();
+		}finally {
+			close(pstmt);
+		}
+		
 		return result;
 	}
 	

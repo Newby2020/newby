@@ -16,16 +16,16 @@ import com.kh.newby.pay.model.service.PaymentService;
 import com.kh.newby.pay.model.vo.Payment;
 
 /**
- * Servlet implementation class MemberMileageServelt
+ * Servlet implementation class CancelList
  */
-@WebServlet("/payList.do")
-public class PaymentListServlet extends HttpServlet {
+@WebServlet("/cancelList.do")
+public class CancelListServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public PaymentListServlet() {
+    public CancelListServlet() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -39,7 +39,6 @@ public class PaymentListServlet extends HttpServlet {
 		Member m = (Member)session.getAttribute("Member");
 		
 		String mno = m.getM_no();						/////////////////////////////////수정해야됨////////////////////////////
-		
 		// 페이징 처리/
 		// 앞페이지
 		int startPage;
@@ -67,7 +66,7 @@ public class PaymentListServlet extends HttpServlet {
 		}
 
 		// 페이징 처리하기
-		int listCount = new PaymentService().getListCount(mno);
+		int listCount = new PaymentService().getListCount1(mno);
 
 		maxPage = (int)((double)listCount/limit + 0.9);
 
@@ -83,11 +82,11 @@ public class PaymentListServlet extends HttpServlet {
 		}
 
 
-		list = new PaymentService().payList(currentPage,limit,mno);
+		list = new PaymentService().cancelList(currentPage,limit,mno);
 		String page = "";
 		
 		if(list != null) {
-			page = "views/mypage_PaymentList.jsp";
+			page = "views/mypage_CancelList.jsp";
 			request.setAttribute("list", list);
 			PageInfo pi = new PageInfo(currentPage,listCount,limit,maxPage,startPage,endPage);
 			request.setAttribute("pi", pi);

@@ -9,21 +9,20 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import com.kh.newby.Member.model.service.MemberService2;
-import com.kh.newby.Member.model.vo.Member;
-import com.kh.newby.Member.model.vo.Member3;
+import com.google.gson.Gson;
+import com.kh.newby.Member.model.service.MemberService;
 
 /**
- * Servlet implementation class ProfileService
+ * Servlet implementation class ChangePwdServlet
  */
-@WebServlet("/profile.do")
-public class ProfileService extends HttpServlet {
+@WebServlet("/chgPwd.me")
+public class ChangePwdServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public ProfileService() {
+    public ChangePwdServlet() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -33,22 +32,22 @@ public class ProfileService extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		HttpSession session = request.getSession();
-		Member m = (Member)session.getAttribute("Member");
 		
-		String mno = m.getM_no();
+		String pwd = request.getParameter("changedPwd");
+		String memberId = (String)session.getAttribute("userId");
 		
-		Member3 m3 = new MemberService2().profile(mno);
+		System.out.println(pwd+memberId);
 		
-		String page = "";
+		int result = 0;
+		
+		MemberService ms = new MemberService();
+		
+		result = ms.changePwd(memberId, pwd);
+			
 
-		if(m != null) {
-			page = "views/mypage_Profile.jsp";
-			request.setAttribute("member3", m3);
-		} else {
-			page = "views/common/errorPage.jsp";
-			request.setAttribute("msg", "해당 유저가 결제한 클래스 목록 출력 실패!");
-		}
-		request.getRequestDispatcher(page).forward(request, response);
+		new Gson().toJson(result, response.getWriter());
+		
+		
 		
 	}
 

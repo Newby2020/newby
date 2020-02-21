@@ -46,9 +46,9 @@ public class ReviewDao2 {
 				r.setcNo(rset.getString("CLASS_NO"));
 				r.setcName(rset.getString("CLASS_NAME"));
 				r.setcTime(rset.getInt("CLASS_TIME"));
-				r.setPsDate(rset.getString("PS_DATE"));
-				r.setPsStartTime(rset.getString("PS_STARTTIME"));
-				r.setPsEndTime(rset.getString("PS_ENDTIME"));
+				r.setPsDate(rset.getString("CS_CLASS_DATE"));
+				r.setPsStartTime(rset.getString("CS_STARTTIME"));
+				r.setPsEndTime(rset.getString("CS_ENDTIME"));
 				r.setPsNo(rset.getString("PS_NO"));
 				list.add(r);
 			}

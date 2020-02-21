@@ -38,6 +38,8 @@ public class ClassVo2 implements Serializable{
 
 	// 수강예정 클래스
 	private String payNo;
+	private String psNo;
+
 
 	public ClassVo2() {}
 
@@ -283,6 +285,13 @@ public class ClassVo2 implements Serializable{
 		this.payNo = payNo;
 	}
 
+	public String getPsNo() {
+		return psNo;
+	}
+	
+	public void setPsNo(String psNo) {
+		this.psNo = psNo;
+	}
 
 	// 클래스 등록 및 수정용
 	@Override
