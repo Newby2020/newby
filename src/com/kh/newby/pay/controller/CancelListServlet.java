@@ -10,8 +10,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import com.kh.newby.Member.model.vo.Member;
 import com.kh.newby.common.PageInfo;
+import com.kh.newby.member.model.vo.Member;
 import com.kh.newby.pay.model.service.PaymentService;
 import com.kh.newby.pay.model.vo.Payment;
 

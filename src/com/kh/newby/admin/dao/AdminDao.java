@@ -13,7 +13,7 @@ import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.Properties;
 
-import com.kh.newby.Member.model.vo.Member;
+import com.kh.newby.member.model.vo.Member;
 import com.kh.newby.claim.model.vo.Claim;
 import com.kh.newby.classvo.model.vo.ClassVo;
 

@@ -4,16 +4,15 @@ import java.io.IOException;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 
 import org.apache.tomcat.util.http.fileupload.servlet.ServletFileUpload;
 
-import com.kh.newby.Member.model.vo.Member;
 import com.kh.newby.classvo.model.service.ClassService2;
 import com.kh.newby.classvo.model.vo.ClassVo2;
 import com.oreilly.servlet.MultipartRequest;

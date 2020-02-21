@@ -1,8 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8" import="java.util.*, 
-    							 com.kh.newby.Member.model.vo.*, 
+    							 com.kh.newby.member.model.vo.*, 
     							 com.kh.newby.classvo.model.vo.*,
-    							 com.kh.newby.Host.model.vo.*"%>
+    							 com.kh.newby.host.model.vo.*"%>
 <% 
 	int userCount = (int)(request.getAttribute("userCount"));
 	int hostCount = (int)(request.getAttribute("hostCount"));

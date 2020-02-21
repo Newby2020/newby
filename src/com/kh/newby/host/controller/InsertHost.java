@@ -1,7 +1,6 @@
-package com.kh.newby.classvo.controller;
+package com.kh.newby.host.controller;
 
 import java.io.IOException;
-import java.util.ArrayList;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -10,21 +9,22 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import com.kh.newby.classvo.model.service.ClassService2;
-import com.kh.newby.classvo.model.vo.ClassVo2;
+import com.kh.newby.host.model.service.HostService;
+import com.kh.newby.host.model.vo.Host;
+import com.kh.newby.member.model.service.MemberService;
 import com.kh.newby.member.model.vo.Member;
 
 /**
- * Servlet implementation class ClassSelectHnoServlet
+ * Servlet implementation class InsertHost
  */
-@WebServlet("/cSelHno.do")
-public class ClassManagerServlet extends HttpServlet {
+@WebServlet("/insert.ho")
+public class InsertHost extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public ClassManagerServlet() {
+    public InsertHost() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -33,30 +33,37 @@ public class ClassManagerServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// 1. 게시판 페이징 처리하기
-		// 페이징 처리 : 
-		// 	대용량의 데이터를 한 번에 처리하지 않고
-		//	특정 개수만큼 끊어서 표현하는 기술
 		
-		ArrayList<ClassVo2> list = null;
-		
-		ClassService2 cs = new ClassService2();
+		String hostIntro=request.getParameter("hostIntro");
+		String bank=request.getParameter("bank");
+		String accountHolder=request.getParameter("accountHolder");
+		String accountNum=request.getParameter("accountNum");
 		
 		HttpSession session = request.getSession(false);
+
 		Member m = (Member)session.getAttribute("Member");
 		
-		String hno = m.getH_no();
+		String memberId= m.getM_id();
 		
-		list = cs.ClassManagerList(hno);
-		String page = "";
-		if(list != null) {
-			page = "views/mypage_ClassManager.jsp";
-			request.setAttribute("list", list);
-		} else {
-			page = "views/common/errorPage.jsp";
-			request.setAttribute("msg", "등록한 클래스 목록 출력 실패!");
+		Host h = new Host(bank,accountHolder, accountNum,hostIntro);
+		
+		
+		
+		System.out.println(h);
+		
+		HostService hs = new HostService();
+		
+		try {
+			
+			hs.insertHost(h,memberId);
+			
+			m = new MemberService().selectMember(m);
+			session.setAttribute("Member", m);
+			response.sendRedirect("index.jsp");
+		}catch(Exception e) {
+			e.printStackTrace();
 		}
-		request.getRequestDispatcher(page).forward(request, response);
+		
 	}
 
 	/**

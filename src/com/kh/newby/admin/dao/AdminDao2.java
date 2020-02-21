@@ -13,9 +13,9 @@ import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.Properties;
 
-import com.kh.newby.Host.model.vo.Host;
-import com.kh.newby.Member.model.vo.Member;
-import com.kh.newby.Member.model.vo.Member2;
+import com.kh.newby.host.model.vo.Host;
+import com.kh.newby.member.model.vo.Member;
+import com.kh.newby.member.model.vo.Member2;
 
 public class AdminDao2 {
 	

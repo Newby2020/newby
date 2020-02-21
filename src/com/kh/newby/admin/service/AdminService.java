@@ -3,7 +3,7 @@ package com.kh.newby.admin.service;
 import java.sql.Connection;
 import java.util.ArrayList;
 
-import com.kh.newby.Member.model.vo.Member;
+import com.kh.newby.member.model.vo.Member;
 import com.kh.newby.admin.dao.AdminDao;
 import com.kh.newby.claim.model.vo.Claim;
 import com.kh.newby.classvo.model.vo.ClassVo;

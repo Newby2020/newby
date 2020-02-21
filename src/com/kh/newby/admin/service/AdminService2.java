@@ -6,9 +6,9 @@ import static com.kh.newby.common.JDBCTemplate.getConnection;
 import java.sql.Connection;
 import java.util.ArrayList;
 
-import com.kh.newby.Host.model.vo.Host;
-import com.kh.newby.Member.model.vo.Member;
-import com.kh.newby.Member.model.vo.Member2;
+import com.kh.newby.host.model.vo.Host;
+import com.kh.newby.member.model.vo.Member;
+import com.kh.newby.member.model.vo.Member2;
 import com.kh.newby.admin.dao.AdminDao2;
 
 public class AdminService2 {

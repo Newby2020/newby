@@ -9,9 +9,9 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.kh.newby.Host.model.vo.Host;
-import com.kh.newby.Member.model.vo.Member;
-import com.kh.newby.Member.model.vo.Member2;
+import com.kh.newby.host.model.vo.Host;
+import com.kh.newby.member.model.vo.Member;
+import com.kh.newby.member.model.vo.Member2;
 import com.kh.newby.admin.service.AdminService2;
 
 /**

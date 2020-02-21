@@ -12,7 +12,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 
-import com.kh.newby.Member.model.vo.Member;
+import com.kh.newby.member.model.vo.Member;
 import com.kh.newby.admin.service.AdminService;
 import com.kh.newby.common.PageInfo;
 

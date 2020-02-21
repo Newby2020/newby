@@ -9,8 +9,6 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.kh.newby.Member.model.service.MemberService;
-import com.kh.newby.Member.model.vo.Member;
 import com.kh.newby.classvo.model.service.ClassService;
 import com.kh.newby.classvo.model.vo.ClassVo;
 

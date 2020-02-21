@@ -1,6 +1,6 @@
 <%@page %>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8" import="com.kh.newby.Member.model.vo.Member"%>
+    pageEncoding="UTF-8" import="com.kh.newby.member.model.vo.Member"%>
 <%
 	 Member s = (Member)session.getAttribute("Member");
 %>

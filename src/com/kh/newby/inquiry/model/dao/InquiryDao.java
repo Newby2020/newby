@@ -12,7 +12,7 @@ import java.util.ArrayList;
 import java.util.Properties;
 
 import com.kh.newby.inquiry.model.vo.Inquiry;
-import com.kh.newby.Member.model.vo.*;
+import com.kh.newby.member.model.vo.*;
 
 import static com.kh.newby.common.JDBCTemplate.*;
 

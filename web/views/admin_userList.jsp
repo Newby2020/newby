@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8" 
-    import="com.kh.newby.Member.model.vo.*, 
+    import="com.kh.newby.member.model.vo.*, 
     		java.util.*,
     		com.kh.newby.common.PageInfo"%>
 <% 

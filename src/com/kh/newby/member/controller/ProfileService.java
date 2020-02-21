@@ -1,7 +1,6 @@
-package com.kh.newby.classvo.controller;
+package com.kh.newby.member.controller;
 
 import java.io.IOException;
-import java.util.ArrayList;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -10,21 +9,21 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import com.kh.newby.classvo.model.service.ClassService2;
-import com.kh.newby.classvo.model.vo.ClassVo2;
+import com.kh.newby.member.model.service.MemberService2;
 import com.kh.newby.member.model.vo.Member;
+import com.kh.newby.member.model.vo.Member3;
 
 /**
- * Servlet implementation class ClassSelectHnoServlet
+ * Servlet implementation class ProfileService
  */
-@WebServlet("/cSelHno.do")
-public class ClassManagerServlet extends HttpServlet {
+@WebServlet("/profile.do")
+public class ProfileService extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public ClassManagerServlet() {
+    public ProfileService() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -33,30 +32,24 @@ public class ClassManagerServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// 1. 게시판 페이징 처리하기
-		// 페이징 처리 : 
-		// 	대용량의 데이터를 한 번에 처리하지 않고
-		//	특정 개수만큼 끊어서 표현하는 기술
-		
-		ArrayList<ClassVo2> list = null;
-		
-		ClassService2 cs = new ClassService2();
-		
-		HttpSession session = request.getSession(false);
+		HttpSession session = request.getSession();
 		Member m = (Member)session.getAttribute("Member");
 		
-		String hno = m.getH_no();
+		String mno = m.getM_no();
 		
-		list = cs.ClassManagerList(hno);
+		Member3 m3 = new MemberService2().profile(mno);
+		
 		String page = "";
-		if(list != null) {
-			page = "views/mypage_ClassManager.jsp";
-			request.setAttribute("list", list);
+
+		if(m != null) {
+			page = "views/mypage_Profile.jsp";
+			request.setAttribute("member3", m3);
 		} else {
 			page = "views/common/errorPage.jsp";
-			request.setAttribute("msg", "등록한 클래스 목록 출력 실패!");
+			request.setAttribute("msg", "해당 유저가 결제한 클래스 목록 출력 실패!");
 		}
 		request.getRequestDispatcher(page).forward(request, response);
+		
 	}
 
 	/**
