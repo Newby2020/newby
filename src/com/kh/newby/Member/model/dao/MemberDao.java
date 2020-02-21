@@ -218,6 +218,29 @@ public class MemberDao {
 		
 		return m;
 	}
+
+	public int changPwd(Connection con, String memberId, String pwd) {
+		int result = 0;
+		PreparedStatement pstmt = null;
+		
+		String sql = prop.getProperty("changePwd");
+		
+		try {
+		  pstmt=con.prepareStatement(sql);
+		  
+		  pstmt.setString(1, pwd);
+		  pstmt.setString(2, memberId);
+
+		  result=pstmt.executeUpdate();
+		  System.out.println(result);
+		}catch(SQLException e) {
+			e.getStackTrace();
+		}finally {
+			close(pstmt);
+		}
+		
+		return result;
+	}
 	
 	
 	

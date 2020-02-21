@@ -89,6 +89,23 @@ public class MemberService {
 		return m;
 	}
 
+	public int changePwd(String memberId, String pwd) {
+		con = getConnection();
+		
+		int result = mDao.changPwd(con, memberId, pwd);
+		
+		if(result>0) {
+			commit(con);
+		}else {
+			rollback(con);
+		}
+		
+		
+		close(con);
+		System.out.println(result);
+		return result;
+	}
+
 
 
 	
