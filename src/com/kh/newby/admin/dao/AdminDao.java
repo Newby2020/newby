@@ -137,6 +137,49 @@ public class AdminDao {
 		return listCount;
 	}	
 
+	public ArrayList<Member> searchUser(Connection con, int currentPage, int limit, String searchValue) {
+		ArrayList<Member> list = null;
+		
+		PreparedStatement pstmt = null;
+		ResultSet rset = null;
+		
+		String sql = prop.getProperty("serchUser");
+		
+		try {
+			pstmt = con.prepareStatement(sql);
+			
+			pstmt.setString(1,searchValue);
+			pstmt.setString(2,searchValue);
+			pstmt.setString(3,searchValue);
+			pstmt.setString(4,searchValue);
+			pstmt.setString(5,searchValue);
+			pstmt.setString(6,searchValue);
+			pstmt.setString(7,searchValue);
+			
+			rset = pstmt.executeQuery();
+			
+			while(rset.next()) {
+				Member m = new Member();
+				
+				m.setM_no(rset.getString("MEM_NO"));
+				m.setM_id(rset.getString("MEM_ID"));
+				m.setM_name(rset.getString("MEM_NAME"));
+				m.setM_phone(rset.getString("PHONE"));
+				m.setM_enrollDate(rset.getDate("ENROLLDATE"));
+				m.setM_mileage(rset.getInt("MILEAGE"));
+				m.setH_no(rset.getString("MEM_HOST_NO"));
+				
+				list.add(m);
+			}
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(pstmt);
+			close(rset);
+		}		
+		return list;
+	}
 
 //-------------------------- ClassApplyList -----------------------------//	
 	public int getClassApplyListCount(Connection con) {
@@ -439,6 +482,8 @@ public class AdminDao {
 		
 		return list;
 	}
+
+	
 
 
 }

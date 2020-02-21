@@ -220,10 +220,27 @@
 					</div>
 					
 					<script type="text/javascript">
-					   // 필터 선택자 
+					 // 필터 선택자 
+						var str;
+					    var leng = $(".high_light_4").length;
+					
 					   $(".main_sub_caca0").click(function(){
-						   $("#fCate").val($(".high_light_4").text());
-					   });
+						   
+						   for(var i=0; i<$(".high_light_4").length; i++){
+							   
+							   if(i != $(".high_light_4").length - 1){
+								   str += $(".high_light_4")[i].textContent;
+								   str += ',';
+							   }else{
+								   str += $(".high_light_4")[i].textContent;
+							   }
+						   }
+						   console.log(str);
+						$("#fCate").val(str);
+						str='';
+						console.log)
+					   });   
+						   
 					   $(".main_sub_caca1").click(function(){
 						   $("#fDay").val($(".high_light_5").text());
 					   });

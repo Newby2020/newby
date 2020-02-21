@@ -32,7 +32,7 @@ public class SearchUserServlet extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String searchValue = request.getParameter("searchValue");
-		System.out.println(searchValue);
+		System.out.println("검색 값 : " + searchValue);
 		
 		ArrayList<Member> list = null;
 		AdminService as = new AdminService();
@@ -51,10 +51,18 @@ public class SearchUserServlet extends HttpServlet {
 		}
 		
 		int listCount = as.getSearchedUserListCount(searchValue);
-		System.out.println(listCount);
+		System.out.println("검색된 행의 수 : " + listCount);
 		
-		response.getWriter().append("Served at: ").append(request.getContextPath());
+		maxPage = (int)((double)listCount / limit + 0.9);
+		startPage = ((int)((double)currentPage / limit + 0.9) -1) * limit + 1;
+		endPage = startPage + limit -1;
 		
+		if(endPage > maxPage) {
+			endPage = maxPage;
+		}
+		
+		list = as.searchUser(currentPage, limit, searchValue);
+		System.out.println("검색된 내용 : " + list);
 //		String page = "";
 //		
 //		if(list != null) {
@@ -65,6 +73,8 @@ public class SearchUserServlet extends HttpServlet {
 //			request.setAttribute("msg", "검색된 리스트 출력에 실패하였습니다.");
 //		}
 //		request.getRequestDispatcher(page).forward(request, response);
+		
+		response.getWriter().append("Served at: ").append(request.getContextPath());
 	}
 
 	/**

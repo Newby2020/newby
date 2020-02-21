@@ -25,11 +25,9 @@ public class AdminService {
 
 	public ArrayList<Member> selectUserList(int currentPage, int limit) {
 		Connection con = getConnection();
-		
 		ArrayList<Member> list = aDao.selectUserList(con, currentPage, limit);
 		
 		close(con);
-		
 		return list;
 	}
 	
@@ -40,6 +38,14 @@ public class AdminService {
 		close(con);
 		
 		return listCount;
+	}
+	
+	public ArrayList<Member> searchUser(int currentPage, int limit, String searchValue) {
+		Connection con = getConnection();
+		ArrayList<Member> list = aDao.searchUser(con, currentPage, limit, searchValue);
+		
+		close(con);
+		return list;
 	}
 
 //-------------------------- ClaimList -----------------------------//	
@@ -133,6 +139,8 @@ public class AdminService {
 		close(con);
 		return list;
 	}
+
+
 }
 
 
