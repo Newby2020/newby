@@ -142,6 +142,7 @@
 					<div class="location">
 						<div id="loca">수업장소</div>
 						<select id="selLoca" name="fLoca">
+							<option value="서울">선택</option>
 							<option value="강남">강남</option>
 							<option value="강동">강동</option>
 							<option value="강북">강북</option>

@@ -67,15 +67,6 @@ public class categoryFilterServlet extends HttpServlet {
 
 		// 페이징 처리
 		int listCount = cs.getFilteCount(ft);
-
-		// 총 250개
-		// 25개
-		// 만약 전체 게시글 수가 13개라면
-		// 페이지는 1, 2가 나와야 한다.
-		// ** 짜투리 게시글도 하나의 페이지로 처리해야 한다.
-		// 13 --> 1.3 + 0.9(무조건) --> 2.2에서 double 에서 int 형태로  변형하면 2
-
-
 		maxPage = (int)((double)listCount/limit +0.9);
 
 		// 시작 페이지와 마지막 페이지 계산
@@ -91,30 +82,22 @@ public class categoryFilterServlet extends HttpServlet {
 			endPage = maxPage;
 		}
 
-//		caList = cs.selectFiList(ft, currentPage, limit);
+		caList = cs.selectFilterList(ft, currentPage, limit);
 
 		String page = "";
 
 		if(caList != null) {
-//
-//			switch (ft.getc) {
-//			case "ca0": page = "views/category0_dynamic.jsp"; break;
-//			case "ca1": page = "views/category1_static.jsp"; break;
-//			case "ca2": page = "views/category2_activity.jsp?caType=ca2"; break;
-//			case "ca3": page = "views/category2_activity.jsp?caType=ca3"; break;
-//			case "ca4": page = "views/category2_activity.jsp?caType=ca4"; break;
-//			case "ca5": page = "views/category2_activity.jsp?caType=ca5"; break;
-//			default: page = "views/common/errorPage.jsp"; break;
-//			}
-//			switch (caType) {
-//			case "ca0": page = "views/category0_dynamic.jsp"; break;
-//			case "ca1": page = "views/category1_static.jsp"; break;
-//			case "ca2": page = "views/category2_activity.jsp"; break;
-//			case "ca3": page = "views/category3_cooking.jsp"; break;
-//			case "ca4": page = "views/category4_art.jsp"; break;
-//			case "ca5": page = "views/category5_study.jsp"; break;
-//			default: page = "views/common/errorPage.jsp"; break;
-//			}
+
+			switch (caType) {
+			case "ca0": page = "views/category1st.jsp?caType=ca0"; break;
+			case "ca1": page = "views/category1st.jsp?caType=ca1"; break;
+			case "ca2": page = "views/category2nd.jsp?caType=ca2"; break;
+			case "ca3": page = "views/category2nd.jsp?caType=ca3"; break;
+			case "ca4": page = "views/category2nd.jsp?caType=ca4"; break;
+			case "ca5": page = "views/category2nd.jsp?caType=ca5"; break;
+			default: page = "views/common/errorPage.jsp"; break;
+			}
+			
 			request.setAttribute("caList", caList);
 			
 			PageInfo pi = new PageInfo(currentPage, listCount, limit, maxPage, startPage, endPage);
@@ -125,6 +108,7 @@ public class categoryFilterServlet extends HttpServlet {
 			request.setAttribute("msg", "클래스 상세페이지 불러오기 실패");
 		}
 		request.getRequestDispatcher(page).forward(request, response);
+
 	
 		
 	}

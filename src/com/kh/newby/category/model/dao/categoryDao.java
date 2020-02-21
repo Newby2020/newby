@@ -17,6 +17,8 @@ import static com.kh.newby.common.JDBCTemplate.*;
 
 public class categoryDao {
 	private Properties prop;
+	
+	filterDao fDao = new filterDao();
 
 	public categoryDao() {
 		prop = new Properties();
@@ -132,12 +134,90 @@ public class categoryDao {
 
 	public int getfilterCount(filterVo ft, Connection con) {
 		
+		int fCount =0;
+		
+		Statement stmt = null;
+		ResultSet rset = null;
+		String sql = fDao.fListCounter(ft).toString();
 		
 		
 		
+		try {
+
+			stmt = con.createStatement();
+			rset = stmt.executeQuery(sql);
+
+			if(rset.next()) {
+				fCount = rset.getInt(1);
+			}
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally { 
+			close(con);
+			close(stmt);
+		}
+		
+		return fCount;
+
+		
+	}
+
+	public ArrayList<categoryVo> selectFilterList(filterVo ft, Connection con, int currentPage, int limit) {
+		ArrayList<categoryVo> caList = null;
+
+		PreparedStatement pstmt = null;
+		
+		ResultSet rset = null;
 		
 		
-		return 0;
+		String sql = fDao.fQueryMaker(ft).toString(); 
+
+		System.out.println(sql);
+		
+		try {
+
+			pstmt = con.prepareStatement(sql);
+			
+			int startRow = (currentPage-1)*limit + 1; //1
+			int endRow = startRow + limit -1; //10, 20
+			
+			
+			pstmt.setInt(1, endRow);
+			pstmt.setInt(2, startRow);
+			
+			rset = pstmt.executeQuery();
+			
+			
+			
+			caList = new ArrayList<categoryVo>();
+
+			while (rset.next()) {
+				categoryVo cv = new categoryVo();
+				//RNO, CNO, CNAME, LOCA, CP, CIMG, AVGR
+				cv.setClassNo(rset.getString("CNO"));
+				cv.setClassName(rset.getString("CNAME"));
+				cv.setClassLocation(rset.getString("LOCA").split(",")[0]);
+				cv.setClassPrice(rset.getInt("CP"));
+				cv.setClassImg(rset.getString("CIMG"));
+				cv.setAverageReview(rset.getDouble("AVGR"));
+				
+//				System.out.println(cv);
+				
+				caList.add(cv);
+
+			}
+
+
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(rset);
+			close(pstmt);
+		}
+
+		return caList;
+
 	}
 }
 

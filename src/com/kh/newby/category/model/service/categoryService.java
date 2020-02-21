@@ -36,12 +36,21 @@ public class categoryService {
 	}
 
 	public int getFilteCount(filterVo ft) {
-		
 		Connection con = getConnection();
 		int fCount = caDao.getfilterCount(ft, con);
 		close(con);
 		
 		return fCount;
+	}
+
+	public ArrayList<categoryVo> selectFilterList(filterVo ft, int currentPage, int limit) {
+		Connection con = getConnection();
+		ArrayList<categoryVo> caList = caDao.selectFilterList(ft, con, currentPage, limit);
+		
+		
+		
+		
+		return caList;
 	}
 
 }

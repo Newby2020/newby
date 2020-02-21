@@ -86,6 +86,7 @@ $(function(){
    });
    
    // 필터 선택자
+   
    $(function(){  
 	   var str;
 	   var leng = $(".high_light_4").length;
@@ -94,7 +95,7 @@ $(function(){
 		   
 		   for(var i=0; i<$(".high_light_4").length; i++){
 			   
-			   if(i != $(".high_light_4").length - 1){
+			   if(i != ($(".high_light_4").length - 1)){
 				   str += $(".high_light_4")[i].textContent;
 				   str += ',';
 			   }else{

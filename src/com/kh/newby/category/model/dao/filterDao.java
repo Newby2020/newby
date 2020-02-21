@@ -8,10 +8,12 @@ import com.kh.newby.category.model.vo.filterVo;
 public class filterDao {
 	
 	public static void main(String[] args) {
-		System.out.println();
+	
+		
+		System.out.println( );
 	}
 
-	public static StringBuilder fQueryMaker (filterVo ft) {
+	public StringBuilder fQueryMaker (filterVo ft) {
 
 		StringBuilder sql = new StringBuilder();
 
@@ -19,14 +21,14 @@ public class filterDao {
 		int hiPrice =Integer.parseInt(ft.getAmount().split(" - ")[1].split("원")[0]); 
 
 		
-		sql.append("SELECT CNO, CNAME, LOCA, CP, CIMG, AVGR\r\n" + 
+		sql.append("SELECT RNO, CNO, CNAME, LOCA, CP, CIMG, AVGR\r\n" + 
 				"FROM (SELECT ROWNUM RNO, CLASS_NO CNO, CLASS_NAME CNAME, FIRST_CATEGORY FC,\r\n" + 
 				"SECOND_CATEGORY SC,THIRD_CATEGORY TC, CLASS_PRICE CP, CLASS_IMG, AVERAGE_REVIEW, \r\n" + 
 				"CS_CLASS_DATE,TO_CHAR(TO_DATE(CS_CLASS_DATE,'YYYY-MM-DD'),'DY') SDAY, \r\n" + 
 				"CLASS_LOCATION LOCA, CLASS_TYPE CT, CLASS_IMG CIMG, AVERAGE_REVIEW AVGR\r\n" + 
 				" FROM CLASS C JOIN CLASS_SCHEDULE CS ON (CLASS_NO = CS_CLASS_NO)\r\n" + 
 				"JOIN HOST H ON (CLASS_HOST_NO = HOST_NO) \r\n" + 
-				"WHERE ROWNUM <= 100 AND CLASS_STATUS='승인' ) CA"
+				"WHERE ROWNUM <= ? AND CLASS_STATUS='승인' ) CA"
 				+ " WHERE CP BETWEEN "+loPrice+" AND "+hiPrice
 				+ " AND LOCA LIKE '%"+ft.getfLoca()+"%'");
 				
@@ -75,11 +77,11 @@ public class filterDao {
 			}
 
 		}
-
+		sql.append(" AND RNO>= ?");
 		return sql;
 	}
 
-	public static StringBuilder fListCounter (filterVo ft) {
+	public StringBuilder fListCounter (filterVo ft) {
 
 		StringBuilder sql = new StringBuilder();
 
@@ -141,7 +143,7 @@ public class filterDao {
 			}
 
 		}
-
+		
 		return sql;
 	}
 
