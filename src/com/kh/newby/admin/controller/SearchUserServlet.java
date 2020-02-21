@@ -32,7 +32,7 @@ public class SearchUserServlet extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String searchValue = request.getParameter("searchValue");
-		System.out.println(searchValue);
+		System.out.println("검색 값 : " + searchValue);
 		
 		ArrayList<Member> list = null;
 		AdminService as = new AdminService();
@@ -51,7 +51,7 @@ public class SearchUserServlet extends HttpServlet {
 		}
 		
 		int listCount = as.getSearchedUserListCount(searchValue);
-		System.out.println(listCount);
+		System.out.println("검색된 행의 수 : " + listCount);
 		
 		response.getWriter().append("Served at: ").append(request.getContextPath());
 		

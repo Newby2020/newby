@@ -72,7 +72,7 @@
                 			}
                 		});
                 	});
-                </script>                
+                </script>
             </div>
             <table>
                 <tr>
