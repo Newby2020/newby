@@ -66,7 +66,47 @@
                 				searchValue : $("#search").val()
                 			},
                 			success : function(data){
-                				/* alert("검색 성공!"); */
+                			console.log(data);
+                				// 리스트
+                				$('#listBody').children().remove();
+                				var list = data["list"];
+                				/* var $tr = $("<tr>"); */
+                				
+                				for(var i = 0; i < list.length; i++){
+                					var $tr = $("<tr>"); 
+                					
+                					var $td1 = $("<td>");
+                					var $td2 = $("<td>");
+                					var $td3 = $("<td>");
+                					var $td4 = $("<td>");
+                					var $td5 = $("<td>");
+                					var $td6 = $("<td>");
+                					var $td7 = $("<td>");
+                					
+                					$td1.text(list[i]["m_no"]);
+                					$td2.text(list[i]["m_name"]);
+                					$td3.text(list[i]["m_id"]);
+                					$td4.text(list[i]["m_phone"]);
+                					$td5.text(list[i]["m_enrollDate"]);
+                					$td6.text(list[i]["m_mileage"]);
+                					$td7.text(list[i]["m_no"]);
+                					
+                					$tr.append($td1);
+                					$tr.append($td2);
+                					$tr.append($td3);
+                					$tr.append($td4);
+                					$tr.append($td5);
+                					$tr.append($td6);
+                					$tr.append($td7);
+                					console.log($tr);
+                					$('#listBody').append($tr);
+                				}
+                				
+                				// pagingArea
+                				
+                				
+                				
+                				
                 			}, error : function(){
                 				alert("검색 실패!");
                 			}
@@ -84,6 +124,7 @@
                     <th>마일리지</th>
                     <th>호스트 번호</th>
                 </tr>
+                <tbody id="listBody">
                 <% for(Member m : list) {%>
                 <tr>
                     <td><%= m.getM_no() %></td>
@@ -95,6 +136,7 @@
                     <td><%= m.getH_no() %></td>
                 </tr>
                 <% } %>
+                </tbody>
             </table>
         </div>
      	<%-- 페이지 처리 --%>

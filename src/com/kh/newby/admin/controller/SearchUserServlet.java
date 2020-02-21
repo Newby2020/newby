@@ -2,6 +2,8 @@ package com.kh.newby.admin.controller;
 
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -9,8 +11,10 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.kh.newby.member.model.vo.Member;
+import com.google.gson.Gson;
 import com.kh.newby.admin.service.AdminService;
+import com.kh.newby.common.PageInfo;
+import com.kh.newby.member.model.vo.Member;
 
 /**
  * Servlet implementation class SearchUserServlet
@@ -31,6 +35,8 @@ public class SearchUserServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		response.setContentType("application/json; charset=UTF-8");
+		
 		String searchValue = request.getParameter("searchValue");
 		System.out.println("검색 값 : " + searchValue);
 		
@@ -63,18 +69,15 @@ public class SearchUserServlet extends HttpServlet {
 		
 		list = as.searchUser(currentPage, limit, searchValue);
 		System.out.println("검색된 내용 : " + list);
-//		String page = "";
-//		
-//		if(list != null) {
-//			page = "userList.ad";
-//			
-//		} else {
-//			page = "views/common/errorPage.jsp";
-//			request.setAttribute("msg", "검색된 리스트 출력에 실패하였습니다.");
-//		}
-//		request.getRequestDispatcher(page).forward(request, response);
 		
-		response.getWriter().append("Served at: ").append(request.getContextPath());
+		PageInfo pi = new PageInfo(currentPage, listCount, limit, maxPage, startPage, endPage);
+		
+		
+		Map searchUserMap = new HashMap();
+		searchUserMap.put("list", list);
+		searchUserMap.put("pi", pi);
+		
+		new Gson().toJson(searchUserMap, response.getWriter());
 	}
 
 	/**

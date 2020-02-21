@@ -158,6 +158,8 @@ public class AdminDao {
 			
 			rset = pstmt.executeQuery();
 			
+			list = new ArrayList<Member>();
+			
 			while(rset.next()) {
 				Member m = new Member();
 				
