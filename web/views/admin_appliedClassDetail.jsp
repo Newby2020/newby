@@ -166,11 +166,13 @@
 				<% } %>
 				
 				<script>
+					
+				
 					function reject(){
 						if( $('#rReason').val().length < 10 ){
 							alert("반려 사유를 10자 이상 작성해주세요");
 						}else if(confirm("반려하시겠습니까?")){
-							location.href="<%= request.getContextPath()%>/reject.ad?cno=<%= c.getClassNo() %>&rReason=<%= c.getRejectReason()%>";
+							location.href="<%= request.getContextPath()%>/reject.ad?cno=<%= c.getClassNo() %>&rReason="+ $('#rReason').val();
 						}
 					}
 					
