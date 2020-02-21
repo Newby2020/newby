@@ -32,5 +32,15 @@ public class PaymentService2 {
 		
 		return cvPsno;
 	}
+
+	public int getCancelCount(String psno) {
+
+		Connection con = getConnection();
+		int cancelCount = pDao.getCancelCount(con, psno);
+		
+		close(con);
+		
+		return cancelCount;
+	}
 	
 }

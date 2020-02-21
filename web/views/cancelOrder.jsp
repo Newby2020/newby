@@ -3,8 +3,8 @@
     							 com.kh.newby.classvo.model.vo.*,
     							 com.kh.newby.pay.model.vo.*"%>
 <%
- 	ClassVo3 cvPsno = (ClassVo3)request.getAttribute("cvPsno"); 
-	
+ 	ClassVo3 cvPsno = (ClassVo3)request.getAttribute("cvPsno");
+	int cancelClassCount = (int)(request.getAttribute("cancelCount"));
 %>
 <!DOCTYPE html>
 <html lang="ko">
@@ -55,7 +55,7 @@
 		    <br><br><br>
 		    <hr>
 		    <div class="cancelOrderGuide">
-		        <label class="cancelOrderGuideLabel" style="margin-top: 10px;">마일리지 사용 금액 : \ <%=cvPsno.getPayMileage() %>원&nbsp;&nbsp;</label>
+		        <label class="cancelOrderGuideLabel" style="margin-top: 10px;">마일리지 사용 금액 : \ <%=(cvPsno.getPayMileage() / cancelClassCount) %>원&nbsp;&nbsp;</label>
 		        <span style="line-height: 2.4em;"><br></span>
 		        <label class="cancelOrderGuideLabel">마일리지 적립 금액 : \ -<%=cvPsno.getPaySaveMileage() %>원&nbsp;&nbsp;</label>
 		        <span style="line-height: 1.8em;"><br></span>
