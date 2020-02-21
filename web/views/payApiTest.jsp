@@ -1,5 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%
+	
+%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -17,7 +20,7 @@
 		    pg : 'inicis', // version 1.1.0부터 지원.
 		    pay_method : 'card',
 		    merchant_uid : 'merchant_' + new Date().getTime(),
-		    name : '주문명:결제테스트',
+		    name : <%= cv.getClassName%>,
 		    amount : 14000,
 		    buyer_email : 'iamport@siot.do',
 		    buyer_name : '구매자이름',

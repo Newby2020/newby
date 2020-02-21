@@ -81,6 +81,10 @@
     	font-weight: bold;
     	text-align: right;
     }
+    #nextBtn{
+    	cursor:pointer;
+    	
+    }
 </style>
 </head>
 <body>
@@ -102,11 +106,14 @@
             <%} %>
 	    </div>
 	    <form>
+	    <input type="hidden" name="">
+	    <input type="hidden" name="">
+	    <input type="hidden" name="">
     	<div class="payment_process" align="left">
     		<table>
     			<tr>
     				<td><label>사용 가능한 마일리지</label></td>
-    				<td><input type="text" id="gray_text_box" value="<%= m.getM_mileage() %>" disabled>원</td>
+    				<td><input type="text" id="gray_text_box" value="<%-- <%= m.getM_mileage() %> --%>" disabled>원</td>
    				</tr>
    				<tr>
     				<td><label>사용 할 마일리지</label></td>
@@ -158,8 +165,11 @@
 						});					        
 				    	});
 	        });
-	        //라디오 버튼 체크 갯수 확인
-	        /* var checkedCount = $("input:radio[name='cl_date']:checked").length; */
+	        //다음 페이지 넘어가기
+	        function nextPage(){
+	        	/* location.href="/semi/classPayComplete.cp" */
+	        	window.open("/semi/views/payApiTest.jsp");
+	        }
 	    </script>
     </div>
     <!--  footer -->
