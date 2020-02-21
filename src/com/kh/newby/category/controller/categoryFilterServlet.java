@@ -35,15 +35,18 @@ public class categoryFilterServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 //		caType=ca2&fLoca=anywhere&amount=103000원+-+300000원&fCate=스포츠&fDay=화목&fType=5
 //		caType=ca0&fLoca=anywhere&amount=112000원+-+300000원&fCate=&fDay=화목&fType=7
-		
+	
 		String fLoca = request.getParameter("fLoca");
-		String fCate = request.getParameter("fCate");
+		String fCate = (request.getParameter("fCate")).replace("undefined", "");
 		String fType = request.getParameter("fType");
 		String  fDay = request.getParameter("fDay");
 		String amount = request.getParameter("amount");
 		String keword = request.getParameter("keword");
+		String caType = request.getParameter("caType");
 		
-		filterVo ft = new filterVo(fLoca, fCate, fType, fDay, amount, keword);
+		filterVo ft = new filterVo(fLoca, fCate, fType, fDay, amount, keword, caType);
+		
+		System.out.println(ft);
 		
 		ArrayList<categoryVo> caList = new ArrayList<categoryVo>();
 

@@ -84,6 +84,39 @@ $(function(){
            $(this).toggleClass("high_light_6");
        });
    });
+   
+   // 필터 선택자
+   $(function(){  
+	   var str;
+	   var leng = $(".high_light_4").length;
+	   
+	   $(".main_sub_caca0").click(function(){
+		   
+		   for(var i=0; i<$(".high_light_4").length; i++){
+			   
+			   if(i != $(".high_light_4").length - 1){
+				   str += $(".high_light_4")[i].textContent;
+				   str += ',';
+			   }else{
+				   str += $(".high_light_4")[i].textContent;
+			   }
+		   }
+		   console.log(str);
+		   $("#fCate").val(str);
+		   str='';
+		   console.log(str);
+	   });   
+	   
+	   $(".main_sub_caca1").click(function(){
+		   $("#fDay").val($(".high_light_5").text());
+	   });
+	   $(".main_sub_caca2").click(function(){
+		   $("#fType").val($(".high_light_6").text().length);
+	   });
+	   
+   });
+
+
 
 
 

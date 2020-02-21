@@ -8,12 +8,14 @@ public class filterVo {
 	private String fDay;
 	private String amount;
 	private String keword;
+	private String caType;
 	
 	public filterVo() {
 		super();
 	}
 
-	public filterVo(String fLoca, String fCate, String fType, String fDay, String amount, String keword) {
+	public filterVo(String fLoca, String fCate, String fType, String fDay, String amount, String keword,
+			String caType) {
 		super();
 		this.fLoca = fLoca;
 		this.fCate = fCate;
@@ -21,6 +23,7 @@ public class filterVo {
 		this.fDay = fDay;
 		this.amount = amount;
 		this.keword = keword;
+		this.caType = caType;
 	}
 
 	public String getfLoca() {
@@ -71,11 +74,20 @@ public class filterVo {
 		this.keword = keword;
 	}
 
+	public String getCaType() {
+		return caType;
+	}
+
+	public void setCaType(String caType) {
+		this.caType = caType;
+	}
+
 	@Override
 	public String toString() {
-		return "Filter [fLoca=" + fLoca + ", fCate=" + fCate + ", fType=" + fType + ", fDay=" + fDay + ", amount="
-				+ amount + ", keword=" + keword + "]";
+		return "filterVo [fLoca=" + fLoca + ", fCate=" + fCate + ", fType=" + fType + ", fDay=" + fDay + ", amount="
+				+ amount + ", keword=" + keword + ", caType=" + caType + "]";
 	}
+
 	
 	
 	

@@ -10,9 +10,6 @@
 	int maxPage = pi.getMaxPage();
 	int startPage = pi.getStartPage();
 	int endPage = pi.getEndPage();
-	
-
-	System.out.println(caList);
 %>
 
 <!DOCTYPE html>
@@ -139,23 +136,43 @@
 					</div>
 				</div>
 				<br>
-				<form class="category_form" action="/semi/selectList.ca" method="get">
+				<form class="category_form" action="/semi/filterList.ca" method="get">
 					<input type="hidden" name="caType" value="<%=caType%>">
 					<div class="sub_ca"></div>
 					<div class="location">
 						<div id="loca">수업장소</div>
 						<select id="selLoca" name="fLoca">
-							<option value="anywhere">서울</option>
-							<option value="sNorth">강북</option>
-							<option value="sEast">강동</option>
-							<option value="sSouth">강남</option>
-							<option value="sWest">강서</option>
+							<option value="강남">강남</option>
+							<option value="강동">강동</option>
+							<option value="강북">강북</option>
+							<option value="강서">강서</option>
+							<option value="관악">관악</option>
+							<option value="광진">광진</option>
+							<option value="구로">구로</option>
+							<option value="금천">금천</option>
+							<option value="노원">노원</option>
+							<option value="도봉">도봉</option>
+							<option value="동대문">동대문</option>
+							<option value="동작">동작</option>
+							<option value="마포">마포</option>
+							<option value="서대문">서대문</option>
+							<option value="서초">서초</option>
+							<option value="성동">성동</option>
+							<option value="성북">성북</option>
+							<option value="송파">송파</option>
+							<option value="양천">양천</option>
+							<option value="영등포">영등포</option>
+							<option value="용산">용산</option>
+							<option value="은평">은평</option>
+							<option value="종로">종로</option>
+							<option value="중구">중구</option>
+							<option value="중랑">중랑</option>
 						</select>
 					</div>
 
 					<div class="cate_btn">
 
-  						<div class="cate" id="caBtn1" onclick="shmenuView1(0)">분류</div>
+  						<!-- <div class="cate" id="caBtn1" onclick="shmenuView1(0)">분류</div> -->
 						<div class="cate" id="caBtn2" onclick="shmenuView1(1)">언제</div>
 						<div class="cate" id="caBtn3" onclick="shmenuView1(2)">수업방식</div>
 						<div class="cate" id="caBtn4" onclick="shmenuView1(3)">금액</div>
@@ -217,24 +234,11 @@
 								</div>
 							</div>
 						</div>
-					</div>
-					
-					<script type="text/javascript">
-					   // 필터 선택자 
-					   $(".main_sub_caca").click(function(){
-						   $("#fCate").val($(".high_light_4").text());
-					   });
-					   $(".main_sub_caca1").click(function(){
-						   $("#fDay").val($(".high_light_5").text());
-					   });
-					   $(".main_sub_caca2").click(function(){
-						   $("#fType").val($(".high_light_6").text().length);
-					   });
-					</script>
-				
+					</div>						
 					<input type="hidden" id="fCate" name="fCate">
 					<input type="hidden" id="fDay" name="fDay">
 					<input type="hidden" id="fType" name="fType">
+					
 					<button id="cateFilter">필터 결과 보기</button>
 				</form>
 			</div>
@@ -294,7 +298,7 @@
 					<br>
 				</div>
 
-						</div>
+			</div>
 			<script>
 			//하단 페이지 변경
 			<%if(currentPage>1){ %>
@@ -311,7 +315,7 @@
 			           },'mouseleave' : function(){
 			            $(this).removeAttr('style');  
 			        },'click' : function(){
-			            $('#mbtn_sh').hide();
+			            $('#mbtn_sh').slideUp(100);
 			            $('#pglk_sh').show(); 
 				        }
 				   });
@@ -362,3 +366,4 @@
 
 </body>
 </html>
+
