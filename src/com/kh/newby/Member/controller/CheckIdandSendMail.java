@@ -2,29 +2,31 @@ package com.kh.newby.Member.controller;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.HashMap;
+import java.util.Map;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 
+import com.google.gson.Gson;
 import com.kh.newby.Member.model.exception.MemberException;
 import com.kh.newby.Member.model.service.MemberService;
 import com.kh.newby.Member.model.vo.Member;
 
 /**
- * Servlet implementation class LoginServlet
+ * Servlet implementation class CheckIdandSendMail
  */
-@WebServlet("/login.me")
-public class LoginServlet extends HttpServlet {
+@WebServlet("/checkmail.me")
+public class CheckIdandSendMail extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public LoginServlet() {
+    public CheckIdandSendMail() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -33,44 +35,42 @@ public class LoginServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		response.setContentType("application/json; charset=UTF-8");
+		System.out.println("서블릿 호출");
+		String name = request.getParameter("memberFindName");
+		String mail = request.getParameter("memberFindEmail");
 		
-		response.setContentType("text/html; charset=UTF-8");
-		String userId = request.getParameter("mainLoginId"); 
-		String userPwd = request.getParameter("mainLoginPassword"); 
+		System.out.println(name);
+		System.out.println(mail);
 		
-		System.out.println(userId);
-		System.out.println(userPwd);
-		
-		Member m = new Member(userId,userPwd);
+		Member m = null;
 		
 		MemberService ms = new MemberService();
 		
-		
 		PrintWriter out = response.getWriter();
 		
-		try {// 로그인 성공했을 때
-			m = ms.selectMember(m);
+		try {
+			m = ms.checkNameAndId(name,mail);
 			
 			if(m.getM_id() != null) {
-			System.out.println("회원 로그인 성공!");
-			
-			HttpSession session = request.getSession();
-			
-			session.setAttribute("Member", m);
+				Map fulling = new HashMap();
+				
+				fulling.put("mem", m);
+				fulling.put("1","성공");
+				
+				new Gson().toJson(fulling, response.getWriter());
+								
+			}else {
+				System.out.println("정보 없음!!!!!");
+				
 			}
-			// forword, sendredirect
-			response.sendRedirect("index.jsp");
-		} catch (Exception e) {// 에러가 났을때
-			System.out.println("아이디 비번 틀림!!!");
-			out.println("<script language='javascript'>");
-			out.println("alert('아이디/비밀번호를 확인해주세요');");
-			out.println("location.href = '/semi/index.jsp';");
-			out.println("</script>"); 
-			out.close();
-
+			
+			
+		}catch(MemberException e) {
+			e.getStackTrace();
 		}
 		
-	
+		
 	}
 
 	/**

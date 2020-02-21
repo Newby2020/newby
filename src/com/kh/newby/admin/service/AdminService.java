@@ -32,6 +32,15 @@ public class AdminService {
 		
 		return list;
 	}
+	
+	public int getSearchedUserListCount(String searchValue) {
+		Connection con = getConnection();
+		int listCount = aDao.getSearchedUserListCount(con, searchValue);
+		
+		close(con);
+		
+		return listCount;
+	}
 
 //-------------------------- ClaimList -----------------------------//	
 	public int getClaimListCount() {
@@ -50,25 +59,6 @@ public class AdminService {
 		close(con);
 		return list;
 	}
-
-//-------------------------- ClassList -----------------------------//	
-	public int getClassListCount() {
-		Connection con = getConnection();
-		int listCount = aDao.getClassListCount(con);
-		
-		close(con);		
-		return listCount;
-	}
-
-	public ArrayList<ClassVo> selectClassList(int currentPage, int limit) {
-		Connection con = getConnection();
-		
-		ArrayList<ClassVo> list = aDao.selectClassList(con, currentPage, limit);
-		
-		close(con);
-		return list;
-	}
-
 	
 //-------------------------- ClassApplyList -----------------------------//	
 	public int getClassApplyListCount() {
@@ -99,8 +89,7 @@ public class AdminService {
 		
 		return c;
 	}
-
-//-------------------------- Approve -----------------------------//	
+	
 	public int setArrove(String cno) {
 		Connection con = getConnection();
 		
@@ -125,6 +114,32 @@ public class AdminService {
 		close(con);
 		
 		return result ;
+	}	
+
+//-------------------------- ClassList -----------------------------//	
+	public int getClassListCount() {
+		Connection con = getConnection();
+		int listCount = aDao.getClassListCount(con);
+		
+		close(con);		
+		return listCount;
 	}
-	
+
+	public ArrayList<ClassVo> selectClassList(int currentPage, int limit) {
+		Connection con = getConnection();
+		
+		ArrayList<ClassVo> list = aDao.selectClassList(con, currentPage, limit);
+		
+		close(con);
+		return list;
+	}
 }
+
+
+
+
+
+
+
+
+

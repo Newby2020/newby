@@ -104,25 +104,57 @@ public class AdminDao {
 		
 		return list;
 	}
-
 	
-//-------------------------- ClaimList -----------------------------//
-	
-	public int getClaimListCount(Connection con) {
+	public int getSearchedUserListCount(Connection con, String searchValue) {
 		int listCount = 0;
+		PreparedStatement pstmt = null;
+		ResultSet rset = null;
+		
+		String sql = prop.getProperty("serchedUserListCount");
+		
+		try {
+			pstmt = con.prepareStatement(sql);
+			
+			pstmt.setString(1,searchValue);
+			pstmt.setString(2,searchValue);
+			pstmt.setString(3,searchValue);
+			pstmt.setString(4,searchValue);
+			pstmt.setString(5,searchValue);
+			pstmt.setString(6,searchValue);
+			pstmt.setString(7,searchValue);
+			
+			rset = pstmt.executeQuery();
+			
+			if(rset.next()) {
+				listCount = rset.getInt(1);
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(rset);
+			close(pstmt);
+		}
+		return listCount;
+	}	
+
+
+//-------------------------- ClassApplyList -----------------------------//	
+	public int getClassApplyListCount(Connection con) {
+		int listCount = 0;
+		
 		Statement stmt = null;
 		ResultSet rset = null;
 		
-		String sql = prop.getProperty("claimListCount");
+		String sql = prop.getProperty("classApplyListCount");
 		
 		try {
 			stmt = con.createStatement();
+			
 			rset = stmt.executeQuery(sql);
 			
 			if(rset.next()) {
 				listCount = rset.getInt(1);
 			}
-			
 		} catch (SQLException e) {
 			e.printStackTrace();
 		} finally {
@@ -132,56 +164,90 @@ public class AdminDao {
 		return listCount;
 	}
 
-	public ArrayList<Claim> selectClaimList(Connection con, int currentPage, int limit) {
-		ArrayList<Claim> list = null;
-		
+	public ArrayList<ClassVo> selectClassApplyList(Connection con, int currentPage, int limit) {
+		ArrayList<ClassVo> list = null;
+		 
 		PreparedStatement pstmt = null;
 		ResultSet rset = null;
 		
-		String sql = prop.getProperty("selectClaimList");
-		
+		String sql = prop.getProperty("selectClassApplyList");
+		 
 		try {
 			pstmt = con.prepareStatement(sql);
 			
 			int startRow = (currentPage - 1) * limit + 1;
-			int endRow = startRow + limit - 1;
-			
-//			System.out.println(startRow);
-//			System.out.println(endRow);
+			int endRow = startRow + limit -1;				
 			
 			pstmt.setInt(1, endRow);
 			pstmt.setInt(2, startRow);
 			
 			rset = pstmt.executeQuery();
 			
-			list = new ArrayList<Claim>();
+			list = new ArrayList<ClassVo>();
 			
 			while(rset.next()) {
-				Claim c = new Claim();
-				
-				c.setCmDate(rset.getDate("CLAIM_DATE"));
-				c.setCmNo(rset.getString("CLAIM_NO"));
-				c.setCmWriterNo(rset.getString("CLAIM_WRITER_NO"));
-				c.setCmTitle(rset.getString("CLAIM_TITLE"));
-				c.setStatus(rset.getString("CLAIM_STATUS"));				
-				c.setHandledDate(rset.getDate("HANDLED_DATE"));
-				c.setSuspensionPeriod(rset.getInt("SUSPENSION_PERIOD"));
-				c.setSuspensionStartDate(rset.getDate("SUSPENSION_START_DATE"));
-				c.setSuspensionEndDate(rset.getDate("SUSPENSION_END_DATE"));
+				ClassVo c = new ClassVo();
+								
+				c.setClassEnrollDate(rset.getDate("CLASS_ENROLLDATE"));
+				c.setClassNo(rset.getString("CLASS_NO"));
+				c.setClassHostNo(rset.getString("CLASS_HOST_NO"));
+				c.setClassStatus(rset.getString("CLASS_STATUS"));
 				
 				list.add(c);
 			}
-			
 		} catch (SQLException e) {
 			e.printStackTrace();
 		} finally {
 			close(rset);
 			close(pstmt);
-		}
-		
-		
+		}		 
 		return list;
 	}
+
+	public int setApprove(Connection con, String cno) {
+		int result = 0;
+		
+		PreparedStatement pstmt = null;
+		
+		String sql = prop.getProperty("setApprove");
+		
+		try {
+			pstmt = con.prepareStatement(sql);
+			
+			pstmt.setString(1, cno);
+			
+			result = pstmt.executeUpdate();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(pstmt);
+		}
+		
+		return result;
+	}
+
+	public int setReject(Connection con, String cno, String rReason) {
+		int result = 0;
+		
+		PreparedStatement pstmt = null;
+		
+		String sql = prop.getProperty("setReject");
+		
+		try {
+			pstmt = con.prepareStatement(sql);
+			
+			pstmt.setString(1, rReason);
+			pstmt.setString(2, cno);
+			
+			result = pstmt.executeUpdate();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(pstmt);
+		}
+		return result;
+	}	
+
 
 //-------------------------- ClassList -----------------------------//	
 	public int getClassListCount(Connection con) {
@@ -295,24 +361,25 @@ public class AdminDao {
 			close(pstmt);
 		}
 		return c;
-	}
-//-------------------------- ClassApplyList -----------------------------//	
-	public int getClassApplyListCount(Connection con) {
+	}	
+
+//-------------------------- ClaimList -----------------------------//
+	
+	public int getClaimListCount(Connection con) {
 		int listCount = 0;
-		
 		Statement stmt = null;
 		ResultSet rset = null;
 		
-		String sql = prop.getProperty("classApplyListCount");
+		String sql = prop.getProperty("claimListCount");
 		
 		try {
 			stmt = con.createStatement();
-			
 			rset = stmt.executeQuery(sql);
 			
 			if(rset.next()) {
 				listCount = rset.getInt(1);
 			}
+			
 		} catch (SQLException e) {
 			e.printStackTrace();
 		} finally {
@@ -322,87 +389,56 @@ public class AdminDao {
 		return listCount;
 	}
 
-	public ArrayList<ClassVo> selectClassApplyList(Connection con, int currentPage, int limit) {
-		ArrayList<ClassVo> list = null;
-		 
+	public ArrayList<Claim> selectClaimList(Connection con, int currentPage, int limit) {
+		ArrayList<Claim> list = null;
+		
 		PreparedStatement pstmt = null;
 		ResultSet rset = null;
 		
-		String sql = prop.getProperty("selectClassApplyList");
-		 
+		String sql = prop.getProperty("selectClaimList");
+		
 		try {
 			pstmt = con.prepareStatement(sql);
 			
 			int startRow = (currentPage - 1) * limit + 1;
-			int endRow = startRow + limit -1;				
+			int endRow = startRow + limit - 1;
+			
+//			System.out.println(startRow);
+//			System.out.println(endRow);
 			
 			pstmt.setInt(1, endRow);
 			pstmt.setInt(2, startRow);
 			
 			rset = pstmt.executeQuery();
 			
-			list = new ArrayList<ClassVo>();
+			list = new ArrayList<Claim>();
 			
 			while(rset.next()) {
-				ClassVo c = new ClassVo();
-								
-				c.setClassEnrollDate(rset.getDate("CLASS_ENROLLDATE"));
-				c.setClassNo(rset.getString("CLASS_NO"));
-				c.setClassHostNo(rset.getString("CLASS_HOST_NO"));
-				c.setClassStatus(rset.getString("CLASS_STATUS"));
+				Claim c = new Claim();
+				
+				c.setCmDate(rset.getDate("CLAIM_DATE"));
+				c.setCmNo(rset.getString("CLAIM_NO"));
+				c.setCmWriterNo(rset.getString("CLAIM_WRITER_NO"));
+				c.setCmTitle(rset.getString("CLAIM_TITLE"));
+				c.setStatus(rset.getString("CLAIM_STATUS"));				
+				c.setHandledDate(rset.getDate("HANDLED_DATE"));
+				c.setSuspensionPeriod(rset.getInt("SUSPENSION_PERIOD"));
+				c.setSuspensionStartDate(rset.getDate("SUSPENSION_START_DATE"));
+				c.setSuspensionEndDate(rset.getDate("SUSPENSION_END_DATE"));
 				
 				list.add(c);
 			}
+			
 		} catch (SQLException e) {
 			e.printStackTrace();
 		} finally {
 			close(rset);
 			close(pstmt);
-		}		 
+		}
+		
+		
 		return list;
 	}
 
-	public int setApprove(Connection con, String cno) {
-		int result = 0;
-		
-		PreparedStatement pstmt = null;
-		
-		String sql = prop.getProperty("setApprove");
-		
-		try {
-			pstmt = con.prepareStatement(sql);
-			
-			pstmt.setString(1, cno);
-			
-			result = pstmt.executeUpdate();
-		} catch (SQLException e) {
-			e.printStackTrace();
-		} finally {
-			close(pstmt);
-		}
-		
-		return result;
-	}
 
-	public int setReject(Connection con, String cno, String rReason) {
-		int result = 0;
-		
-		PreparedStatement pstmt = null;
-		
-		String sql = prop.getProperty("setReject");
-		
-		try {
-			pstmt = con.prepareStatement(sql);
-			
-			pstmt.setString(1, rReason);
-			pstmt.setString(2, cno);
-			
-			result = pstmt.executeUpdate();
-		} catch (SQLException e) {
-			e.printStackTrace();
-		} finally {
-			close(pstmt);
-		}
-		return result;
-	}	
 }
