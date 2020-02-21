@@ -11,6 +11,8 @@ import java.util.ArrayList;
 import java.util.Properties;
 
 import com.kh.newby.category.model.vo.categoryVo;
+import com.kh.newby.category.model.vo.filterVo;
+
 import static com.kh.newby.common.JDBCTemplate.*;
 
 public class categoryDao {
@@ -126,6 +128,16 @@ public class categoryDao {
 		}
 		
 		return listCount;
+	}
+
+	public int getfilterCount(filterVo ft, Connection con) {
+		
+		
+		
+		
+		
+		
+		return 0;
 	}
 }
 
