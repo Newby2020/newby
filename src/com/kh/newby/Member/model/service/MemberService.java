@@ -18,10 +18,10 @@ public class MemberService {
 		Member result = mDao.selectMember(con,m);
 		
 		close(con);
-		
-		if(result == null) {
-			throw new MemberException("회원 아이디나 비밀번호가 올바르지 않습니다.");
-		}
+//		if(result == null) {
+//			throw new MemberException("회원 아이디나 비밀번호가 올바르지 않습니다.");
+//		}
+		System.out.println("mService"+result);
 		
 		return result;
 	}

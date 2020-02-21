@@ -65,14 +65,14 @@ public class MemberDao {
 			}
 			
 		}catch(Exception e) {
-//			e.printStackTrace();
-			throw new MemberException(e.getMessage());
+			e.printStackTrace();
+//			throw new MemberException(e.getMessage());
 		
 		}finally {
 			close(rset);
 			close(pstmt);
 		}
-		
+		System.out.println("mDao="+result.getM_id());
 		return result;
 	}
 

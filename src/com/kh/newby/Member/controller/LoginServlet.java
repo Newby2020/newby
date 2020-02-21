@@ -51,15 +51,16 @@ public class LoginServlet extends HttpServlet {
 		try {// 로그인 성공했을 때
 			m = ms.selectMember(m);
 			
+			if(m.getM_id() != null) {
 			System.out.println("회원 로그인 성공!");
 			
 			HttpSession session = request.getSession();
 			
 			session.setAttribute("Member", m);
-			
+			}
 			// forword, sendredirect
 			response.sendRedirect("index.jsp");
-		} catch (MemberException e) {// 에러가 났을때
+		} catch (Exception e) {// 에러가 났을때
 			System.out.println("아이디 비번 틀림!!!");
 			out.println("<script language='javascript'>");
 			out.println("alert('아이디/비밀번호를 확인해주세요');");

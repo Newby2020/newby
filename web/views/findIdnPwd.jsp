@@ -69,8 +69,10 @@
                     	
                     	<br><br><br><br><br><br>
                     	<div align="center">
-	       					<input type="submit" id="buttonFindPwd" class="buttonFind" value="비밀번호 찾기">
+	       					<input type="password" id="newpwd" class="newpwd" placeholder="변경할 비밀번호 입력"><br>
+	       					<input type="password" id="newpwd2" class="newpwd" placeholder="비밀번호 확인">
 	       				</div>
+	       					<span id="confirmpwd" class="newpwd">변경하기</span>
 	       				<br><br>
 	        		</div>	
                     <br><br>
