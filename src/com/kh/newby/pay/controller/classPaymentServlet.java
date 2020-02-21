@@ -35,14 +35,13 @@ public class classPaymentServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String cno = request.getParameter("cno");
 		ClassService sc = new ClassService();
-		
 		// 결제를 위한 클래스 객체 가져오기
 		ClassVo cv = sc.classPay(cno);
-		
 		// 결제를 위한 클래스 일정 불러오기
 		ArrayList<ClassVo> csList = sc.classPayScheduleList(cno);
-		
-		
+		System.out.println("클래스 paymentservlet : " + cv.getClassPrice());
+		System.out.println("클래스 paymentservlet : " + csList.get(0).getClassStartTime());
+		System.out.println(csList.toString());
 		String page = "";
 		if(cv != null) {
 			page = "views/class_register.jsp";

@@ -55,6 +55,7 @@
                 <br>
                 <br>
                 <br>
+                <br>
 				<div style="margin-left: 170px;">
 					<form>
 						<table align="center">
@@ -145,7 +146,7 @@
 				</div>
 			</div>
 		</div>
-
+		<br><br><br><br><br>
 		<script type="text/javascript"
 			src="/semi/resources/js/mypage_Profile.js"></script>
 		<br>

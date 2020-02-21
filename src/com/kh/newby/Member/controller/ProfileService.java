@@ -32,17 +32,18 @@ public class ProfileService extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-//		HttpSession session = request.getSession();
-//		Member3 m = (Member3)session.getAttribute("member");
-		String mno = "M7";
+		HttpSession session = request.getSession();
+		Member m = (Member)session.getAttribute("Member");
 		
-		Member3 m = new MemberService2().profile(mno);
+		String mno = m.getM_no();
+		
+		Member3 m3 = new MemberService2().profile(mno);
 		
 		String page = "";
 
 		if(m != null) {
 			page = "views/mypage_Profile.jsp";
-			request.setAttribute("member3", m);
+			request.setAttribute("member3", m3);
 		} else {
 			page = "views/common/errorPage.jsp";
 			request.setAttribute("msg", "해당 유저가 결제한 클래스 목록 출력 실패!");
