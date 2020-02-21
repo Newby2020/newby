@@ -106,8 +106,8 @@ html {
 </body>
 
 <script>
-	/* $('.newpwd').hide(); */
-	
+	 $('.newpwd').hide();
+	 $('#saveInfo').hide();
 
 		$('#confirmpwd').click(function() {
 		console.log("비밀번호 변경하기");
@@ -162,6 +162,7 @@ html {
 					console.log(data["mem"]["m_id"]);
 					
 					alert("인증메일이 발송되었습니다.");
+							
 					$.ajax({
 						url : "/semi/certify.me",
 						type : "post",
@@ -199,6 +200,7 @@ html {
 				console.log(data);
 				if(data=="성공"){
 				alert("이메일 인증 완료");
+				 $('.newpwd').show();
 				}else{
 					alert("인증 코드 오류! 코드를 다시 확인해주세요");
 				}
