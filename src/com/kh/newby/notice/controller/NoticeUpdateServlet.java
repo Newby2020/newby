@@ -29,14 +29,16 @@ public class NoticeUpdateServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		String ntitle = request.getParameter("ntitle");
-		String ncontent = request.getParameter("ncontent");
+		String title = request.getParameter("title");
+		String content = request.getParameter("content");
 		String nno = request.getParameter("nno");
 		
 		Notice n = new Notice();
-		n.setNtitle(ntitle);
-		n.setNcontent(ncontent);
+		n.setNtitle(title);
+		n.setNcontent(content);
 		n.setNno(nno);
+		
+		
 		
 		int result = new NoticeService().noticeUpdate(n);
 //		System.out.println(result);

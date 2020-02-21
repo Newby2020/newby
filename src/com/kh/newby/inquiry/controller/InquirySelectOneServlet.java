@@ -37,20 +37,20 @@ public class InquirySelectOneServlet extends HttpServlet {
 		String ino = request.getParameter("ino");
 		System.out.println(ino);
 		
-//		BoardService bs = new BoardService();
+		InquiryService is = new InquiryService();
 		
 		// 게시글 보기
-		Inquiry i = new InquiryService().inquirySelectOne(ino);
+		Inquiry i = is.inquirySelectOne(ino);
 		
 		
 		// 댓글 불러오기
-		ArrayList<Inquiry> clist = new InquiryCommentService().selectList(ino);
+		ArrayList<Inquiry> list = new InquiryCommentService().selectList(ino);
 		
 		String page = "";
 		if(i != null) {
 			page="views/customer_inquiryDetail.jsp";
 			request.setAttribute("inquiry", i);
-			request.setAttribute("clist", clist);
+			request.setAttribute("list", list);
 		} else {
 			page = "views/common/errorPage.jsp";
 			request.setAttribute("msg", "게시글 목록 조회 실패!");

@@ -51,7 +51,6 @@
 .rate > label:hover ~ input:checked ~ label {
     color: #c59b08;
 }
-
 .btn{
   background: rgb(9, 129, 241);
   color: white;

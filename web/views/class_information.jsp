@@ -185,7 +185,12 @@
                     <div style="float: right; margin-right: 5%;"><%= cv.getClassLocation() %></div>
                     </div>
                     <div class="payment">
+<<<<<<< HEAD
+                        <%-- <a id="pay_a" onclick="location.href='/semi/classPay.do?cno=<%= cv.getClassNo() %>'"><span id="pay_btn">수업 신청하기</span></a> --%>
+                        <a id="pay_a" onclick="location.href='/semi/classPay.cp?cno=<%= cv.getClassNo()%>'"><span id="pay_btn">수업 신청하기</span></a>
+=======
                         <a id="pay_a" href="" onclick="payPopup();"><span id="pay_btn">수업 신청하기</span></a>
+>>>>>>> branch 'master' of https://github.com/Newby2020/newby.git
                     </div>
                     <div class="price">
                         <div id="text_time"><b>￦<%= cv.getClassPrice() %>원 / 회당</b></div>

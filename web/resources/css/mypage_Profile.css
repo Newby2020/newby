@@ -1,4 +1,21 @@
                 /* profile */
+/*현재 마일리지 제목*/
+#miletitle1sdk{
+    font-size: 14pt;
+    font-weight: bold;
+}
+
+/*현재 마일리지 입력란*/
+#mileage1kc{
+    height: 40px;
+    width: 300px; 
+    text-align: center;
+    font-size: 13pt;
+    border-radius: 15px;
+    margin-top: 10px;
+    border: 2px solid rgb(9, 129, 241);
+}
+
 /* 닉네임 수정란 */
 .input13{
     border: none;
@@ -96,4 +113,10 @@
     border-bottom: 1px solid darkgray;
     padding-bottom: 2px;
 }
+
+
+
+
+
+
 

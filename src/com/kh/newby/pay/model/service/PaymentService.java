@@ -14,12 +14,12 @@ import com.kh.newby.pay.model.vo.Payment;
 
 public class PaymentService {
 	
-	public ArrayList<Payment> MileageList(String mno) {
+	public ArrayList<Payment> payList(String mno) {
 		ArrayList<Payment> list = null;
 
 		Connection con = getConnection();
 
-		list = new PaymentDao().MileageList(con, mno);
+		list = new PaymentDao().payList(con, mno);
 
 		if (list != null) {
 			commit(con);

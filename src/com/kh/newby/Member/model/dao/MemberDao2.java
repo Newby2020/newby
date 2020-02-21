@@ -49,6 +49,7 @@ public class MemberDao2 {
 			m.setTel1(rset.getString("TEL1"));
 			m.setTel2(rset.getString("TEL2"));
 			m.setTel3(rset.getString("TEL3"));
+			m.setMileage(rset.getInt("MILEAGE"));
 			System.out.println(m.toString());
 			}
 		} catch(SQLException e) {

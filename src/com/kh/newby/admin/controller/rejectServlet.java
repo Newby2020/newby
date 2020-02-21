@@ -11,16 +11,16 @@ import javax.servlet.http.HttpServletResponse;
 import com.kh.newby.admin.service.AdminService;
 
 /**
- * Servlet implementation class approveServlet
+ * Servlet implementation class rejectServlet
  */
-@WebServlet("/approve.ad")
-public class approveServlet extends HttpServlet {
+@WebServlet("/reject.ad")
+public class rejectServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public approveServlet() {
+    public rejectServlet() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -30,14 +30,16 @@ public class approveServlet extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String cno = request.getParameter("cno");
+		String rReason = request.getParameter("rReason");
 		
-		int result = new AdminService().setArrove(cno);
+		int result = new AdminService().setReject(cno, rReason);
 		System.out.println(result);
+		
 		
 		if(result > 0) {
 			response.sendRedirect("classApplyList.ad");
 		} else {
-			request.setAttribute("msg", "승인 실패!");
+			request.setAttribute("msg", "반려 처리하는데 실패하였습니다.");
 			request.getRequestDispatcher("views/common/errorPage.jsp").forward(request, response);
 		}
 	}

@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8" import="com.kh.newby.Member.model.vo.*, java.util.*"%>
+	pageEncoding="UTF-8" import="com.kh.newby.Member.model.vo.*, java.util.*,java.text.DecimalFormat"%>
 <%
+	DecimalFormat formatter = new DecimalFormat("###,###");
 	Member3 m3 = (Member3)request.getAttribute("member3");
 	String mno = m3.getM_no();
 	String nick = m3.getM_nick();
@@ -10,7 +11,7 @@
 	String t1 = m3.getTel1();
 	String t2 = m3.getTel2();
 	String t3 = m3.getTel3();
-	System.out.println(pwd);
+	int mileage = m3.getMileage();
 %>
 <!DOCTYPE html>
 <html lang="ko">
@@ -44,8 +45,17 @@
 				<br>
 				<h2>프로필</h2>
 				<hr id="hrSet53">
-				<br><br><br>
-				<div style="margin-left: 160px;">
+				<br><br>
+				<div>
+					<div align="center" id="miletitle1sdk" style="font-weight: normal;">나의 마일리지</div>
+					<div align="center">
+					  <input type="text" id="mileage1kc" value="<%= formatter.format(mileage)%> 원">
+					</div>
+                </div>
+                <br>
+                <br>
+                <br>
+				<div style="margin-left: 170px;">
 					<form>
 						<table align="center">
 							<tr>

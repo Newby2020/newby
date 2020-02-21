@@ -17,8 +17,10 @@ public class Member3 implements Serializable{
 	private String tel1;
 	private String tel2;
 	private String tel3;
+	private int mileage;
 	
 	
+
 	public Member3() {
 		
 	}
@@ -87,11 +89,20 @@ public class Member3 implements Serializable{
 		this.tel3 = tel3;
 	}
 
+	public int getMileage() {
+		return mileage;
+	}
+	
+	public void setMileage(int mileage) {
+		this.mileage = mileage;
+	}
+
 	@Override
 	public String toString() {
-		return "Member2 [m_no=" + m_no + ", m_id=" + m_id + ", m_nick=" + m_nick + ", m_pwd=" + m_pwd + ", m_name="
-				+ m_name + ", tel1=" + tel1 + ", tel2=" + tel2 + ", tel3=" + tel3 + "]";
+		return "Member3 [m_no=" + m_no + ", m_id=" + m_id + ", m_nick=" + m_nick + ", m_pwd=" + m_pwd + ", m_name="
+				+ m_name + ", tel1=" + tel1 + ", tel2=" + tel2 + ", tel3=" + tel3 + ", mileage=" + mileage + "]";
 	}
+
 
 
 }

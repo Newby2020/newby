@@ -3,12 +3,17 @@
 	import="java.util.*, com.kh.newby.category.model.vo.*, com.kh.newby.common.*"%>
 <% 
 	ArrayList<categoryVo> caList = (ArrayList<categoryVo>)request.getAttribute("caList"); 
+	String caType = request.getParameter("caType");
 	PageInfo pi = (PageInfo)request.getAttribute("pi");
 	int listCount = pi.getListCount();
 	int currentPage = pi.getCurrentPage();
 	int maxPage = pi.getMaxPage();
 	int startPage = pi.getStartPage();
 	int endPage = pi.getEndPage();
+	
+	
+	System.out.println(currentPage);
+	System.out.println(caList);
 %>
 
 <!DOCTYPE html>
@@ -50,8 +55,8 @@
 						<ul id="shcaul1">
 							<li class="cate_tt_sh" id="title0"><a
 								href="/semi/selectList.ca?caType=ca0">
-									<div id="cate0" style="font-weight: 600;">
-										<div class="tt_circle" id="ttc0"></div>
+									<div id="cate0">
+										<div class="tt_circle" id="ttc0"<%if(!caType.equals("ca0")){ %>style="visibility: hidden;"<%} %>></div>
 										신나는
 									</div>
 							</a></li>
@@ -61,7 +66,7 @@
 							<li class="cate_tt_sh" id="title1"><a
 								href="/semi/selectList.ca?caType=ca1">
 									<div id="cate1">
-										<div class="tt_circle" id="ttc1" style="visibility: hidden;"></div>
+										<div class="tt_circle" id="ttc1" <%if(!caType.equals("ca1")){ %>style="visibility: hidden;"<%} %>></div>
 										차분한
 									</div>
 							</a></li>
@@ -76,7 +81,7 @@
 							<li class="cate_tt_sh" id="title2"><a
 								href="/semi/selectList.ca?caType=ca2">
 									<div id="cate2">
-										<div class="tt_circle" id="ttc2" style="visibility: hidden;"></div>
+										<div class="tt_circle" id="ttc2" <%if(!caType.equals("ca2")){ %>style="visibility: hidden;"<%} %>></div>
 										액티비티
 									</div>
 							</a></li>
@@ -86,7 +91,7 @@
 							<li class="cate_tt_sh" id="title3"><a
 								href="/semi/selectList.ca?caType=ca3">
 									<div id="cate3">
-										<div class="tt_circle" id="ttc3" style="visibility: hidden;"></div>
+										<div class="tt_circle" id="ttc3" <%if(!caType.equals("ca3")){ %>style="visibility: hidden;"<%} %>></div>
 										쿠킹
 									</div>
 							</a></li>
@@ -96,7 +101,7 @@
 							<li class="cate_tt_sh" id="title4"><a
 								href="/semi/selectList.ca?caType=ca4">
 									<div id="cate4">
-										<div class="tt_circle" id="ttc4" style="visibility: hidden;"></div>
+										<div class="tt_circle" id="ttc4" <%if(!caType.equals("ca4")){ %>style="visibility: hidden;"<%} %>></div>
 										예술
 									</div>
 							</a></li>
@@ -106,7 +111,7 @@
 							<li class="cate_tt_sh" id="title5"><a
 								href="/semi/selectList.ca?caType=ca5">
 									<div id="cate5">
-										<div class="tt_circle" id="ttc5" style="visibility: hidden;"></div>
+										<div class="tt_circle" id="ttc5" <%if(!caType.equals("ca5")){ %>style="visibility: hidden;"<%} %>></div>
 										교육
 									</div>
 							</a></li>
@@ -114,6 +119,19 @@
 									<div id="cate5w"></div>
 							</a></li>
 						</ul>
+						<script type="text/javascript">
+						<%
+						switch (caType) {
+						case "ca0":%>$("#cate0").css('font-weight','600');<% break;
+						case "ca1":%>$("#cate1").css('font-weight','600');<% break;
+						case "ca2":%>$("#cate2").css('font-weight','600');<% break;
+						case "ca3":%>$("#cate3").css('font-weight','600');<% break;
+						case "ca4":%>$("#cate4").css('font-weight','600');<% break;
+						case "ca5":%>$("#cate5").css('font-weight','600');<% break;
+
+						}
+						%>
+						</script>
 						<li class="cate_tt_sh2"><a> </a></li>
 						<!-- check박스 옵션 -->
 						<div id="cate6check">
@@ -122,11 +140,12 @@
 					</div>
 				</div>
 				<br>
-				<form class="category_form">
+				<form class="category_form" action="/semi/filterList.ca" method="get">
+					<input type="hidden" name="caType" value="<%=caType%>">
 					<div class="sub_ca"></div>
 					<div class="location">
 						<div id="loca">수업장소</div>
-						<select id="selLoca">
+						<select id="selLoca" name="fLoca">
 							<option value="anywhere">서울</option>
 							<option value="sNorth">강북</option>
 							<option value="sEast">강동</option>
@@ -134,49 +153,40 @@
 							<option value="sWest">강서</option>
 						</select>
 					</div>
-					<div class="con_sort">
-						<label for="">정렬 </label> <select name="" id="cl_sort_select"
-							style="color: #818181;">
-							<option value="">인기순</option>
-							<option value="">별점순</option>
-							<option value="">가격 높은순</option>
-							<option value="">가격 낮은순</option>
-						</select>
-					</div>
+
 					<div class="cate_btn">
 
-						<!-- <div class="cate" id="caBtn1" onclick="shmenuView1(0)" style="background: rgba(0, 129, 250, 0.137);" >분류</div> -->
-						<div class="cate" id="caBtn2" onclick="shmenuView1(1)"
-							style="background: rgba(0, 129, 250, 0.137);">언제</div>
+  						<!-- <div class="cate" id="caBtn1" onclick="shmenuView1(0)">분류</div> -->
+						<div class="cate" id="caBtn2" onclick="shmenuView1(1)">언제</div>
 						<div class="cate" id="caBtn3" onclick="shmenuView1(2)">수업방식</div>
 						<div class="cate" id="caBtn4" onclick="shmenuView1(3)">금액</div>
 
 						<div class="cate_sub">
 							<!-- 카테고리 세부분류 -->
-							<!-- <div class="catesub_list cates" id="sub0" style="display:none">
+						<div class="catesub_list cates" id="sub0" <%if(caType.equals("ca0")||caType.equals("ca1")){ %>style="display:none"<%} %>>
                                     <div class="main_sub_caca0">
-                                        <div class="act_group_sh" style="display: none;">
+                                        <div class="act_group_sh" <%if(!caType.equals("ca2")){ %>style="display:none"<%} %>>
                                             <li><a>스포츠</a></li>
                                             <li><a>아웃도어</a></li>
                                         </div>
-                                        <div class="cook_group_sh" style="display: none;">
+                                        <div class="cook_group_sh" <%if(!caType.equals("ca3")){ %>style="display:none"<%} %>>
                                             <li><a>쿠킹</a></li>
                                             <li><a>베이킹</a></li>
                                         </div>
-                                        <div class="art_group_sh" style="display: none;">
+                                        <div class="art_group_sh" <%if(!caType.equals("ca4")){ %>style="display:none"<%} %>>
                                             <li><a>미술</a></li>
                                             <li><a>음악</a></li>
                                             <li><a>사진</a></li>
                                             <li><a>공예</a></li>
                                         </div>
-                                        <div class="std_group_sh">
+                                        <div class="std_group_sh" <%if(!caType.equals("ca5")){ %>style="display:none"<%} %>>
                                             <li><a>어학</a></li>
                                             <li><a>IT</a></li>
                                             <li><a>실무</a></li>
                                         </div>
                                     </div>
-                                </div> -->
-							<div class="catesub_list cates" id="sub1">
+                                </div>
+							<div class="catesub_list cates" id="sub1" style="display:none">
 								<div class="main_sub_caca1">
 									<li><a>월</a></li>
 									<li><a>화</a></li>
@@ -197,7 +207,7 @@
 								<div class="cate_price">
 									<div class="slide">
 										<p>
-											<label for="amount">가격 : </label> <input type="text"
+											<label for="amount">가격 : </label> <input name="amount" type="text"
 												id="amount" readonly
 												style="border: 0; color: #0981F1; font-size: 18px; font-weight: bold;">
 											<br> <br>
@@ -206,14 +216,39 @@
 										<div id="slider-range"></div>
 									</div>
 								</div>
-
 							</div>
 						</div>
 					</div>
-					<button id="cateGetval" return false; >필터 결과 보기</button>
+					
+					<script type="text/javascript">
+					   // 필터 선택자 
+					   $(".main_sub_caca").click(function(){
+						   $("#fCate").val($(".high_light_4").text());
+					   });
+					   $(".main_sub_caca1").click(function(){
+						   $("#fDay").val($(".high_light_5").text());
+					   });
+					   $(".main_sub_caca2").click(function(){
+						   $("#fType").val($(".high_light_6").text().length);
+					   });
+					</script>
+				
+					<input type="hidden" id="fCate" name="fCate">
+					<input type="hidden" id="fDay" name="fDay">
+					<input type="hidden" id="fType" name="fType">
+					<button id="cateFilter">필터 결과 보기</button>
 				</form>
 			</div>
 			<!-- sort select -->
+			<div class="con_sort">
+				<label for="">정렬 </label> <select name="" id="cl_sort_select"
+					style="color: #818181;">
+					<option value="">인기순</option>
+					<option value="">별점순</option>
+					<option value="">가격 높은순</option>
+					<option value="">가격 낮은순</option>
+				</select>
+			</div>
 			<div class="CCCC">
 				<div class="con-wrap">
 
@@ -224,7 +259,7 @@
 							class="content_a" id="con_<%=i %>" href="#">
 							<div class="con_a_abs">
 								<div class="content_a_back" id="bg_<%=i %>"
-									style=" background-image: url('<%= caList.get(i).getClassImg() %>')"></div>
+									style=" background-image: url('../semi/resources/uploadImg/<%= caList.get(i).getClassImg() %>')"></div>
 							</div>
 							<div class="cont_a_profile">
 								<div class="cont_a_p_title">
@@ -261,7 +296,30 @@
 				</div>
 
 			</div>
-			<div class="moreBtnSh" id="mbtn_sh">
+			<script>
+			//하단 페이지 변경
+			<%if(currentPage>1){ %>
+			 $(function(){
+			       $('#pglk_sh').show(); 
+			       $('#mbtn_sh').hide();
+			 });
+			<%}else{%>
+			   $(function(){
+			       $('#pglk_sh').hide();
+			       $('#mbtn_sh').on({
+			           'mouseenter':function(){
+			            $('#mbtn_sh').css('background','lightgray');
+			           },'mouseleave' : function(){
+			            $(this).removeAttr('style');  
+			        },'click' : function(){
+			            $('#mbtn_sh').slideUp(100);
+			            $('#pglk_sh').show(); 
+				        }
+				   });
+				   });
+			<%}%>
+			</script>
+			<div class="moreBtnSh" id="mbtn_sh" >
 				<%=listCount %>개의 신나는 액티비티 전체보기
 			</div>
 			<br>
@@ -270,12 +328,12 @@
 
 				<div class="page_sh">
 					<button
-						onclick="location.href='<%= request.getContextPath() %>/selectList.ca?caType=ca0?currentPage=1'"><<</button>
+						onclick="location.href='<%= request.getContextPath() %>/selectList.ca?caType=<%=caType %>&currentPage=1'"><<</button>
 					<%  if(currentPage <= 1){  %>
 					<button disabled><</button>
 					<%  }else{ %>
 					<button
-						onclick="location.href='<%= request.getContextPath() %>/selectList.ca?caType=ca0?currentPage=<%=currentPage - 1 %>'"><</button>
+						onclick="location.href='<%= request.getContextPath() %>/selectList.ca?caType=<%=caType %>&currentPage=<%=currentPage - 1 %>'"><</button>
 					<%  } %>
 
 					<% for(int p = startPage; p <= endPage; p++){
@@ -284,7 +342,7 @@
 					<button disabled><%= p %></button>
 					<%      }else{ %>
 					<button
-						onclick="location.href='<%= request.getContextPath() %>/selectList.ca?caType=ca0?currentPage=<%= p %>'"><%= p %></button>
+						onclick="location.href='<%= request.getContextPath() %>/selectList.ca?caType=<%=caType %>&currentPage=<%= p %>'"><%= p %></button>
 					<%      } %>
 					<% } %>
 
@@ -292,10 +350,10 @@
 					<button disabled>></button>
 					<%  }else{ %>
 					<button
-						onclick="location.href='<%= request.getContextPath() %>/selectList.ca?caType=ca0?currentPage=<%=currentPage + 1 %>'">></button>
+						onclick="location.href='<%= request.getContextPath() %>/selectList.ca?caType=<%=caType %>&currentPage=<%=currentPage + 1 %>'">></button>
 					<%  } %>
 					<button
-						onclick="location.href='<%= request.getContextPath() %>/selectList.ca?caType=ca0?currentPage=<%= maxPage %>'">>></button>
+						onclick="location.href='<%= request.getContextPath() %>/selectList.ca?caType=<%=caType %>&currentPage=<%= maxPage %>'">>></button>
 				</div>
 
 			</div>

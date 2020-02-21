@@ -11,7 +11,6 @@ import java.util.ArrayList;
 import java.util.Properties;
 
 import com.kh.newby.notice.model.vo.Notice;
-import com.sun.corba.se.spi.orbutil.fsm.Guard.Result;
 
 import static com.kh.newby.common.JDBCTemplate.*;
 
@@ -109,6 +108,12 @@ public class NoticeDao {
 		return listCount;
 	}
 
+	/**
+	 * 공지사항 상세 보기
+	 * @param con
+	 * @param nno
+	 * @return
+	 */
 	public Notice noticeSelectOne(Connection con, String nno) {
 		Notice n = null;
 		PreparedStatement pstmt = null;

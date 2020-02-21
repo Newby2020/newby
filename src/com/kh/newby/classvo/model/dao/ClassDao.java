@@ -1,15 +1,16 @@
 package com.kh.newby.classvo.model.dao;
 
+import static com.kh.newby.common.JDBCTemplate.close;
+
 import java.io.FileReader;
 import java.io.IOException;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.util.ArrayList;
 import java.util.Properties;
 
 import com.kh.newby.classvo.model.vo.ClassVo;
-
-import static com.kh.newby.common.JDBCTemplate.*;
 
 public class ClassDao {
 	
@@ -62,7 +63,6 @@ public class ClassDao {
 				cv.setHostName(rset.getString("MEM_NAME"));
 				cv.setHostIntro(rset.getString("HOST_INTRO"));
 				cv.setAverageReview(rset.getDouble("AVERAGE_REVIEW"));
-			}else {
 			}
 		}catch(Exception e) {
 			e.printStackTrace();
@@ -72,6 +72,101 @@ public class ClassDao {
 		}
 		
 		return cv;
+	}
+
+	public ArrayList<ClassVo> classScheduleList(Connection conn, String cno) {
+		ArrayList<ClassVo> csList = null;
+		PreparedStatement pstmt = null;
+		ResultSet rset = null;
+		
+		try {
+			String sql = prop.getProperty("scheduleSelect");
+			pstmt = conn.prepareStatement(sql);
+			
+			pstmt.setString(1, cno);
+			
+			rset = pstmt.executeQuery();
+			
+			csList = new ArrayList<ClassVo>();
+			
+			while(rset.next()) {
+				ClassVo cv = new ClassVo();
+				
+				cv.setClassNo(cno);
+				cv.setClassDate(rset.getString("CS_CLASS_DATE"));
+				cv.setClassStartTime(rset.getString("CS_STARTTIME"));
+				cv.setClassEndTime(rset.getString("CS_ENDTIME"));
+				
+				csList.add(cv);
+			}
+		}catch(Exception e) {
+			e.printStackTrace();
+		}finally {
+			close(rset);
+			close(pstmt);
+		}
+		
+		return csList;
+	}
+
+	public ClassVo classPay(Connection conn, String cno) {
+		ClassVo cv = null;
+		PreparedStatement pstmt = null;
+		ResultSet rset = null;
+		String sql = prop.getProperty("classPay");
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, cno);
+			rset = pstmt.executeQuery();
+			if(rset.next()) {
+				cv = new ClassVo();
+				cv.setClassNo(cno);
+				cv.setClassName(rset.getString("CLASS_NAME"));
+				cv.setClassType(rset.getString("CLASS_TYPE"));
+			}
+		}catch(Exception e) {
+			e.printStackTrace();
+		}finally {
+			close(rset);
+			close(pstmt);
+		}
+		return cv;
+	}
+
+	public ArrayList<ClassVo> classPayScheduleList(Connection conn, String cno) {
+		ArrayList<ClassVo> csList = null;
+		PreparedStatement pstmt = null;
+		ResultSet rset = null;
+		
+		try {
+			String sql = prop.getProperty("classPayScheduleList");
+			
+			pstmt = conn.prepareStatement(sql);
+			
+			pstmt.setString(1, cno);
+			
+			rset = pstmt.executeQuery();
+
+			csList = new ArrayList<ClassVo>();
+			
+			while(rset.next()) {
+				ClassVo cv = new ClassVo();
+				cv.setClassNo(cno);
+				cv.setClassDate(rset.getString("CS_CLASS_DATE"));
+				cv.setClassStartTime(rset.getString("CS_STARTTIME"));
+				cv.setClassEndTime(rset.getString("CS_ENDTIME"));
+				
+				csList.add(cv);
+			}
+		}catch(Exception e) {
+			e.printStackTrace();
+		}finally {
+			close(rset);
+			close(pstmt);
+		}
+		
+		return csList;
 	}
 
 }

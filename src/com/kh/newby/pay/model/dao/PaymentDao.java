@@ -29,25 +29,15 @@ public class PaymentDao {
 	      }
 	   }
 	   
-		public ArrayList<Payment> MileageList(Connection con, String mno) {
+		public ArrayList<Payment> payList(Connection con, String mno) {
 			ArrayList<Payment> list = new ArrayList<>();
 			Payment p = null;
 			int mile =0;
 			PreparedStatement pstmt = null;
 			ResultSet rset = null;
-			String sql1 = prop.getProperty("mMileage");
-			String sql2 = prop.getProperty("mileageList");
+			String sql = prop.getProperty("payList");
 			try {
-				
-				pstmt = con.prepareStatement(sql1);
-				pstmt.setString(1, mno);
-				rset = pstmt.executeQuery();
-				
-				if(rset.next()) {
-					mile=rset.getInt("MILEAGE");
-				}
-
-				pstmt = con.prepareStatement(sql2);
+				pstmt = con.prepareStatement(sql);
 				pstmt.setString(1, mno);
 				rset = pstmt.executeQuery();
 				while(rset.next()) {

@@ -2,7 +2,7 @@
 	pageEncoding="UTF-8"
 	import="com.kh.newby.inquiry.model.vo.*, java.util.*, com.kh.newby.common.PageInfo"%>
 <% 
-	ArrayList<Board> list = (ArrayList<Board>)request.getAttribute("list"); 
+	ArrayList<Inquiry> list = (ArrayList<Inquiry>)request.getAttribute("list"); 
 	PageInfo pi = (PageInfo)request.getAttribute("pi");
 	int listCount = pi.getListCount();
 	int currentPage = pi.getCurrentPage();
@@ -42,10 +42,10 @@
 					문의 <i id="ci22">≡</i> 
 				</button>
 				<div class="dropdown-soxk">
-					<a href="/semi/boardSelectList.bo?currentPage=1">문의 목록</a> <a
-						href="views/Customer_CreateInquiry.jsp">문의 작성</a>
+					<a href="/semi/inquirySelectList.io?currentPage=1">문의 목록</a> <a
+						href="views/customer_createInquiry.jsp">문의 작성</a>
 				</div>
-				<a href="views/Customer_Report.jsp">신고</a> <a href="views/Customer_Refund.jsp">이용약관</a>
+				<a href="views/customer_report.jsp">신고</a> <a href="views/customer_refund.jsp">이용약관</a>
 			</div>
 
 			<!--contents-->
@@ -70,13 +70,13 @@
 							<th colspan="1" class="tab1">작성일</th>
 						</tr>
 						<%
-						for(Board b : list){
+						for(Inquiry i : list){
 						%>
 						<tr>
-							<td colspan="1" width="100px" class="tb2" id=<%= b.getIno() %>><%= b.getIno() %></td>
-							<td colspan="6" width="300px" class="tb3" id=<%= b.getIno() %>><%= b.getItitle() %></td>
-							<td colspan="1" width="150px" class="tb2" id=<%= b.getIno() %>><%= b.getIwno() %></td>
-							<td colspan="1" width="150px" class="tb2" id=<%= b.getIno() %>><%= b.getIdate() %></td>
+							<td colspan="1" width="100px" class="tb2" id=<%= i.getIno() %>><%= i.getIno() %></td>
+							<td colspan="6" width="300px" class="tb3" id=<%= i.getIno() %>><%= i.getItitle() %></td>
+							<td colspan="1" width="150px" class="tb2" id=<%= i.getIno() %>><%= i.getIwno() %></td>
+							<td colspan="1" width="150px" class="tb2" id=<%= i.getIno() %>><%= i.getIdate() %></td>
 						</tr>
 						<%
 							}
@@ -86,25 +86,25 @@
 
 					<div>
 						<div style="display: inline-block">
-							<button onclick="location.href='<%=request.getContextPath()%>/boardSelectList.bo?currentPage=1'"><<</button>
+							<button onclick="location.href='<%=request.getContextPath()%>/inquirySelectList.io?currentPage=1'"><<</button>
 							<%	if (currentPage <= 1) { %>
 							<button disabled><</button>
 							<% } else { %>
-							<button onclick="location.href='<%=request.getContextPath()%>/boardSelectList.bo?currentPage=<%=currentPage - 1%>'"><</button>
+							<button onclick="location.href='<%=request.getContextPath()%>/inquirySelectList.io?currentPage=<%=currentPage - 1%>'"><</button>
 							<% } %>
 
 							<% for (int p = startPage; p <= endPage; p++) { if (p == currentPage) { %>
 							<button disabled><%=p%></button>
 							<% } else { %>
-							<button onclick="location.href='<%=request.getContextPath()%>/boardSelectList.bo?currentPage=<%=p%>'"><%=p%></button>
+							<button onclick="location.href='<%=request.getContextPath()%>/inquirySelectList.io?currentPage=<%=p%>'"><%=p%></button>
 							<% } %>
 							<% } %>
 							<% if (currentPage >= maxPage) { %>
 							<button disabled>></button>
 							<% } else { %>
-							<button onclick="location.href='<%=request.getContextPath()%>/boardSelectList.bo?currentPage=<%=currentPage + 1%>'">></button>
+							<button onclick="location.href='<%=request.getContextPath()%>/inquirySelectList.io?currentPage=<%=currentPage + 1%>'">></button>
 							<% } %>
-							<button onclick="location.href='<%=request.getContextPath()%>/boardSelectList.bo?currentPage=<%=maxPage%>'">>></button>
+							<button onclick="location.href='<%=request.getContextPath()%>/inquirySelectList.io?currentPage=<%=maxPage%>'">>></button>
 
 						</div>
 					</div>
@@ -122,9 +122,9 @@
 		}).mouseout(function(){
 			$(this).parent();
 		}).click(function(e){
-			var bno = e.target.id;
+			var ino = e.target.id;
 			console.log(e.target.id);
-			location.href="<%=request.getContextPath()%>/boardSelectOne.bo?bno=" + bno;
+			location.href="<%=request.getContextPath()%>/inquirySelectOne.io?ino=" + ino;
 		});
 	});
 		var dropdown = document.getElementsByClassName("dropdown-btnqo");

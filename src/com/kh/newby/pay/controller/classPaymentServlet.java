@@ -9,20 +9,22 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.kh.newby.pay.model.service.PaymentService;
-import com.kh.newby.pay.model.vo.Payment;
+import com.kh.newby.Member.model.service.MemberService;
+import com.kh.newby.Member.model.vo.Member;
+import com.kh.newby.classvo.model.service.ClassService;
+import com.kh.newby.classvo.model.vo.ClassVo;
 
 /**
- * Servlet implementation class MemberMileageServelt
+ * Servlet implementation class classPaymentServlet
  */
-@WebServlet("/mMile.do")
-public class MileageServelt extends HttpServlet {
+@WebServlet("/classPay.cp")
+public class classPaymentServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public MileageServelt() {
+    public classPaymentServlet() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -31,22 +33,25 @@ public class MileageServelt extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		ArrayList<Payment> list = null;
+		String cno = request.getParameter("cno");
+		ClassService sc = new ClassService();
 		
-//		HttpSession session = request.getSession(false);
-//		Member m = (Member)session.getAttribute("member");
+		// 결제를 위한 클래스 객체 가져오기
+		ClassVo cv = sc.classPay(cno);
 		
-		String mno = "M3"; //String mno = m.getM_no();						/////////////////////////////////수정해야됨////////////////////////////
-
-		list = new PaymentService().MileageList(mno);
+		// 결제를 위한 클래스 일정 불러오기
+		ArrayList<ClassVo> csList = sc.classPayScheduleList(cno);
+		
+		
 		String page = "";
-		
-		if(list != null) {
-			page = "views/mypage_Mileage.jsp";
-			request.setAttribute("list", list);
-		} else {
-			page = "views/common/errorPage.jsp";
-			request.setAttribute("msg", "마일리지 페이지 불러오기 실패!");
+		if(cv != null) {
+			page = "views/class_register.jsp";
+			request.setAttribute("classVo", cv);
+			request.setAttribute("csList", csList);
+		}else {
+			page = "views/errorPage.jsp";
+			System.out.println("결제페이지 불러오기 실패");
+			request.setAttribute("msg", "결제페이지 불러오기 실패");
 		}
 		request.getRequestDispatcher(page).forward(request, response);
 	}
