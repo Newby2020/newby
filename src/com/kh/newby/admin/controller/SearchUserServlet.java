@@ -55,7 +55,14 @@ public class SearchUserServlet extends HttpServlet {
 		
 		maxPage = (int)((double)listCount / limit + 0.9);
 		startPage = ((int)((double)currentPage / limit + 0.9) -1) * limit + 1;
+		endPage = startPage + limit -1;
 		
+		if(endPage > maxPage) {
+			endPage = maxPage;
+		}
+		
+		list = as.searchUser(currentPage, limit, searchValue);
+		System.out.println("검색된 내용 : " + list);
 //		String page = "";
 //		
 //		if(list != null) {
