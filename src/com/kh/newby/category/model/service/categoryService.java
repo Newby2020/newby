@@ -4,6 +4,7 @@ import java.sql.Connection;
 import java.util.ArrayList;
 
 import com.kh.newby.category.model.dao.categoryDao;
+import com.kh.newby.category.model.vo.filterVo;
 import com.kh.newby.category.model.vo.categoryVo;
 import static com.kh.newby.common.JDBCTemplate.*;
 
@@ -32,6 +33,15 @@ public class categoryService {
 		return listCount;
 		
 		
+	}
+
+	public int getFilteCount(filterVo ft) {
+		
+		Connection con = getConnection();
+		int fCount = caDao.getfilterCount(ft, con);
+		close(con);
+		
+		return fCount;
 	}
 
 }
