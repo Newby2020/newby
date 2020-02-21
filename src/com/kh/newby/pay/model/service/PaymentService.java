@@ -14,12 +14,46 @@ import com.kh.newby.pay.model.vo.Payment;
 
 public class PaymentService {
 	
-	public ArrayList<Payment> payList(String mno) {
+	public ArrayList<Payment> payList(int currentPage, int limit, String mno) {
 		ArrayList<Payment> list = null;
 
 		Connection con = getConnection();
 
-		list = new PaymentDao().payList(con, mno);
+		list = new PaymentDao().payList(con, currentPage, limit, mno);
+
+		if (list != null) {
+			commit(con);
+		} else {
+			rollback(con);
+		}
+		close(con);
+		return list;
+	}
+
+	public int getListCount(String mno) {
+		Connection con = getConnection();
+		int listCount = new PaymentDao().getListCount(con, mno);
+
+		close(con);
+
+		return listCount;
+	}
+
+	public int getListCount1(String mno) {
+		Connection con = getConnection();
+		int listCount = new PaymentDao().getListCount1(con, mno);
+
+		close(con);
+
+		return listCount;
+	}
+
+	public ArrayList<Payment> cancelList(int currentPage, int limit, String mno) {
+		ArrayList<Payment> list = null;
+
+		Connection con = getConnection();
+
+		list = new PaymentDao().cancelList(con, currentPage, limit, mno);
 
 		if (list != null) {
 			commit(con);

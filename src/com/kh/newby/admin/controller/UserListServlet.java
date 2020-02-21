@@ -36,7 +36,7 @@ public class UserListServlet extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
-		response.setContentType("application/json; charset=UTF-8");
+//		response.setContentType("application/json; charset=UTF-8");
 		
 		
 		// 1. 페이징 처리하기

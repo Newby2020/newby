@@ -130,7 +130,7 @@ public class ClassDao2 {
          return result;
       }
 
-	public ArrayList<ClassVo2> ClassScheduleList(Connection con, String mno) {
+	public ArrayList<ClassVo2> ClassScheduleList(Connection con, int currentPage, int limit, String mno) {
 		ArrayList<ClassVo2> list = new ArrayList<>();
 		ClassVo2 c = null;
 		PreparedStatement pstmt = null;
@@ -138,15 +138,20 @@ public class ClassDao2 {
 		String sql = prop.getProperty("classSchedule");
 		try {
 			pstmt = con.prepareStatement(sql);
+			int startRow = (currentPage-1)*limit +1;
+			int endRow = startRow + limit -1;
 			pstmt.setString(1, mno);
+			pstmt.setInt(2, endRow);
+			pstmt.setInt(3, startRow);
 			rset = pstmt.executeQuery();
 			while(rset.next()) {
 				c = new ClassVo2();
 				c.setPayNo(rset.getString("PAY_NO"));
+				c.setPsNo(rset.getString("PS_NO"));
 				c.setClassName(rset.getString("CLASS_NAME"));
-				c.setClassDate(rset.getString("PS_DATE"));
-				c.setClassStartTime(rset.getString("PS_STARTTIME"));
-				c.setClassEndTime(rset.getString("PS_ENDTIME"));
+				c.setClassDate(rset.getString("CS_CLASS_DATE"));
+				c.setClassStartTime(rset.getString("CS_STARTTIME"));
+				c.setClassEndTime(rset.getString("CS_ENDTIME"));
 				c.setClassTime(rset.getInt("CLASS_TIME"));
 				list.add(c);
 			}
@@ -272,6 +277,34 @@ public class ClassDao2 {
 		}
 			
 		return result2;
+	}
+
+	public int getListCount(Connection con, String mno) {
+		// 총 게시글 수
+		int listCount = 0;
+		PreparedStatement pstmt = null;
+		ResultSet rset = null;
+		
+		String sql = prop.getProperty("listCount");
+		
+		try {
+			
+			pstmt=con.prepareStatement(sql);
+			pstmt.setString(1, mno);
+			rset = pstmt.executeQuery();
+			
+			if(rset.next()) {
+				listCount = rset.getInt(1);
+			}
+			
+		} catch(SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(rset);
+			close(pstmt);
+		}
+		
+		return listCount;
 	}
 
 }

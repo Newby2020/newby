@@ -118,4 +118,33 @@ public class PaymentDao2 {
 		}
 		return cvPsno;
 	}
+
+	public int getCancelCount(Connection con, String psno) {
+
+		int cancelCount = 0;
+		
+		PreparedStatement pstmt = null;
+		ResultSet rset = null;
+		
+		String sql = prop.getProperty("cancelClassCount");
+		
+		try {
+			pstmt = con.prepareStatement(sql);
+			
+			pstmt.setInt(1, cancelCount);
+			
+			rset = pstmt.executeQuery();
+			
+			if(rset.next()) {
+				cancelCount = rset.getInt(1);
+			}
+			
+		} catch(SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(rset);
+			close(pstmt);
+		}
+		return cancelCount;
+	}
 }

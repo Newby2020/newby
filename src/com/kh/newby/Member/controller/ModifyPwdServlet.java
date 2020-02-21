@@ -33,11 +33,7 @@ public class ModifyPwdServlet extends HttpServlet {
 		String mno = request.getParameter("mno");
 		
 		int result = new MemberService2().modiPwd(pwd,mno);
-		
-		if(result > 0) {
-			
-		}
-		
+
 		
 	}
 
