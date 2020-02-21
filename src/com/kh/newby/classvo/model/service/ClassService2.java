@@ -11,6 +11,7 @@ import java.util.ArrayList;
 import com.kh.newby.classvo.model.dao.ClassDao2;
 import com.kh.newby.classvo.model.vo.ClassVo;
 import com.kh.newby.classvo.model.vo.ClassVo2;
+import com.kh.newby.pay.model.dao.PaymentDao;
 
 public class ClassService2 {
 
@@ -61,12 +62,12 @@ public class ClassService2 {
 		return result;
 	}
 
-	public ArrayList<ClassVo2> ClassScheduleList(String mno) {
+	public ArrayList<ClassVo2> ClassScheduleList(int currentPage, int limit, String mno) {
 		ArrayList<ClassVo2> list = null;
 
 		Connection con = getConnection();
 
-		list = new ClassDao2().ClassScheduleList(con, mno);
+		list = new ClassDao2().ClassScheduleList(con, currentPage, limit, mno);
 
 		if (list != null) {
 			commit(con);
@@ -109,5 +110,14 @@ public class ClassService2 {
 		}
 		close(con);
 		return result;
+	}
+
+	public int getListCount(String mno) {
+		Connection con = getConnection();
+		int listCount = new ClassDao2().getListCount(con, mno);
+
+		close(con);
+
+		return listCount;
 	}
 }
