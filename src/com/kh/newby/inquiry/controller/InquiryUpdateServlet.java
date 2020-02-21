@@ -38,9 +38,7 @@ public class InquiryUpdateServlet extends HttpServlet {
 		i.setIcontent(content);
 		i.setIno(ino);
 
-		InquiryService is = new InquiryService();
-
-		int result = is.inquiryInsert(i);
+		int result = new InquiryService().inquiryUpdate(i);
 
 		if(result > 0) {
 			response.sendRedirect("inquirySelectOne.io?ino="+ino);
@@ -48,6 +46,7 @@ public class InquiryUpdateServlet extends HttpServlet {
 		} else {
 			request.setAttribute("msg", "문의 수정 실패");
 			request.getRequestDispatcher("views/common/errorPage.jsp").forward(request, response);
+//			System.out.println("오류발생");
 		}
 	}
 

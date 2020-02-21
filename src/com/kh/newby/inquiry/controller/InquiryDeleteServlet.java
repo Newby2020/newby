@@ -37,7 +37,7 @@ public class InquiryDeleteServlet extends HttpServlet {
 		int result = is.inquiryDelete(ino);
 		
 		if(result > 0) {
-			response.sendRedirect("inquirySelectList.bo");
+			response.sendRedirect("inquirySelectList.io");
 		} else {
 			request.setAttribute("msg", "문의글 삭제 실패");
 			request.getRequestDispatcher("views/common/errorPage.jsp").forward(request, response);

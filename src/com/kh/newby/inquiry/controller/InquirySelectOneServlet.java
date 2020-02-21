@@ -37,14 +37,13 @@ public class InquirySelectOneServlet extends HttpServlet {
 		String ino = request.getParameter("ino");
 		System.out.println(ino);
 		
-		InquiryService is = new InquiryService();
 		
 		// 게시글 보기
-		Inquiry i = is.inquirySelectOne(ino);
+		Inquiry i = new InquiryService().inquirySelectOne(ino);
 		
 		
 		// 댓글 불러오기
-		ArrayList<Inquiry> list = new InquiryCommentService().selectList(ino);
+		ArrayList<Inquiry> list = new InquiryCommentService().inquirySelectComList(ino);
 		
 		String page = "";
 		if(i != null) {

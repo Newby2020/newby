@@ -50,7 +50,7 @@
 			<!--contents-->
 			<div id="mn16s" align="center">
 
-				<%-- <% if( i.getIwno().equals(m.getM_nick())) { %> --%>
+
 				<!-- 제목란이니깐 해당 제목 작성해서 하면 돼-->
 				<br>
 				<h2>문의 내용</h2>
@@ -60,12 +60,11 @@
 				<div id="contentsDivSize29">
 					<!-- 여기다가 너가 작업한거 넣으면 돼-->
 
-					<form id="updateForm" method="post">
+					<form>
 						<table class="tbDetail">
 							<tr>
 								<td class="tdDetail">제목</td>
-								<td class="tdDetail" colspan="5"><input type="text"name="title" value="<%= i.getItitle() %>">
-							       		</td>
+								<td class="tdDetail" colspan="5"><span class="spN2"><%=i.getItitle()%></span></td>
 							</tr>
 							<tr>
 								<td class="tdDetail">작성자</td>
@@ -78,43 +77,84 @@
 							</tr>
 
 							<tr>
-								<td class="tdContent" colspan="6"><textarea name="content" cols="100" rows="30" style="resize:none;"><%= i.getIcontent() %>
-								</textarea></td>
+								<td class="tdContent" colspan="6"><span class="spN"><%=i.getIcontent()%></span></td>
 							</tr>
 						</table>
-						<div id="replySelectArea">
-							
-						</div>
 						<div align="center">
-							<button onclick="deleteInquiry()">삭제하기</button>
-							<button onclick="complete()">완료하기</button>
+							<div class="replyWriteArea">
+
+								<table align="center">
+									<tr>
+										<td>관리자</td>
+										<td><input type="date" name="date"
+											value="<%=i.getIcdate()%>" readonly></td>
+										<%
+											if (i.getIcomment() != null) {
+										%>
+										<td><textArea rows="3" cols="80" id="replyContent"
+												style="resize: none;" name="replyContent"><%=i.getIcomment()%></textArea></td>
+												
+										<%
+											} else {
+										%>
+										<td><textArea rows="3" cols="80" id="replyContent"
+												style="resize: none;" name="replyContent"></textArea></td>
+										<%
+											}
+										%>
+										<%
+											if (m != null && m.getM_name().equals("관리자") ) {
+										%>
+										
+										<td>
+											<button type="submit" class="insertBtn"
+												onclick="reComment(this);">댓글 달기</button>
+										</td>
+
+										<%
+											}
+										%>
+									</tr>
+								</table>
+
+							</div>
+							<div align="center">
+								<%
+									if (i.getIwno().equals(m.getM_nick()) || m != null && m.getM_name().equals("관리자")) {
+								%>
+								<input type="button"
+									onclick="location.href='inquiryUpdateView.io?ino=<%=i.getIno()%>'"
+									value="수정하기">
+								<%
+									}
+								%>
+							</div>
+
 						</div>
-				
-						<script>
-							function complete(){
-								$("#updateForm").attr("action","<%=request.getContextPath() %>/inquiryUpdate.io");
-							}
-						
-							function deleteInquiry(){
-								$("#updateForm").attr("action","<%=request.getContextPath() %>/inquiryDelete.io");
-							}
-					
-    					</script>
+
 					</form>
 
 				</div>
-					<%-- <% } else {
-					request.setAttribute("msg", "작성자 외에 접근이 불가능한 페이지입니다.");
-					request.getRequestDispatcher("/views/common/errorPage.jsp").forward(request, response);
-				} %> --%>
+
 			</div>
 
 		</div>
 		<%@ include file="./common/footer.jsp"%>
 	</div>
 	<script>
-	
-	
+		function complete() {
+
+			$("#addReply").css('display', 'none');
+		}
+		function reComment(obj) {
+			$("#replyContent").prop('readonly', true);
+			// 클릭한 버튼 숨기기
+			$(obj).css('display', 'none');
+
+			$(obj).parents('table').append(htmlForm);
+
+		}
+		
 	</script>
 </body>
 </html>

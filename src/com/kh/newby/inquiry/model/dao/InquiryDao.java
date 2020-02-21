@@ -12,7 +12,6 @@ import java.util.ArrayList;
 import java.util.Properties;
 
 import com.kh.newby.inquiry.model.vo.Inquiry;
-import com.kh.newby.member.model.vo.*;
 
 import static com.kh.newby.common.JDBCTemplate.*;
 
@@ -125,7 +124,10 @@ public class InquiryDao {
 				i.setIdate(rset.getDate("Q_DATE"));
 				i.setIcontent(rset.getString("Q_CONTENT"));
 				i.setIcomment(rset.getString("Q_COMMENT"));
+				i.setIcdate(rset.getDate("Q_COMMENT_DATE"));
 				i.setIstatus(rset.getString("Q_STATUS"));
+				
+				
 			}
 			
 		} catch(SQLException e) {
@@ -158,6 +160,8 @@ public class InquiryDao {
 			pstmt.setDate(3, i.getIdate());
 			pstmt.setString(4, i.getIcontent());
 			pstmt.setString(5, i.getIcomment());
+			pstmt.setDate(6, i.getIcdate());
+			
 			
 			result = pstmt.executeUpdate();
 		} catch(SQLException e) {
@@ -212,6 +216,8 @@ public class InquiryDao {
 		
 		return result;
 	}
+
+	
 
 	
 

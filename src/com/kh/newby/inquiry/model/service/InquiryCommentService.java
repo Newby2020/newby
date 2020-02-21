@@ -10,12 +10,12 @@ import static com.kh.newby.common.JDBCTemplate.*;
 
 public class InquiryCommentService {
 
-	private InquiryCommentDao bcDao = new InquiryCommentDao();
+	private InquiryCommentDao icDao = new InquiryCommentDao();
 
 	public int insertComment(Inquiry ico) {
 		Connection con = getConnection();
 
-		int result = bcDao.insertComment(con,ico);
+		int result = icDao.insertComment(con,ico);
 
 		if(result > 0) commit(con);
 
@@ -27,14 +27,28 @@ public class InquiryCommentService {
 	}
 
 
-	public ArrayList<Inquiry> selectList(String ino) {
+	public ArrayList<Inquiry> inquirySelectComList(String ino) {
 		Connection con = getConnection();
 
-		ArrayList<Inquiry> list = bcDao.selectList(con,ino);
+		ArrayList<Inquiry> list = icDao.inquirySelectComList(con,ino);
 
 		close(con);
 
 		return list;
+	}
+
+
+	public int inquiryComment(Inquiry i) {
+		Connection con = getConnection();
+
+		int result = icDao.inquiryComment(con, i);
+
+		if(result > 0) commit(con);
+		else rollback(con);
+
+		close(con);
+
+		return result;
 	}
 
 

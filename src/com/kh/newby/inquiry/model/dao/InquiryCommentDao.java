@@ -45,12 +45,12 @@ public class InquiryCommentDao {
 		return result;
 	}
 
-	public ArrayList<Inquiry> selectList(Connection con, String ino) {
+	public ArrayList<Inquiry> inquirySelectComList(Connection con, String ino) {
 		ArrayList<Inquiry> list = null;
 		PreparedStatement pstmt = null;
 		ResultSet rset = null;
 		
-		String sql = prop.getProperty("selectList");
+		String sql = prop.getProperty("inquirySelectList");
 		
 		try {
 			pstmt = con.prepareStatement(sql);
@@ -62,8 +62,11 @@ public class InquiryCommentDao {
 			list = new ArrayList<Inquiry>();
 			
 			while(rset.next()) {
-				Inquiry b = new Inquiry();
-				b.setIcomment("Q_COMMENT");
+				Inquiry i = new Inquiry();
+				i.setIcomment(rset.getString("Q_COMMENT"));
+				i.setIcdate(rset.getDate("Q_COMMENT_DATE"));
+				
+				list.add(i);
 			}
 		} catch(SQLException e) {
 			e.printStackTrace();
@@ -72,8 +75,30 @@ public class InquiryCommentDao {
 			close(pstmt);
 		}
 		
-		
 		return list;
 	}
 
+	public int inquiryComment(Connection con, Inquiry i) {
+		int result = 0;
+		PreparedStatement pstmt = null;
+				
+		String sql = prop.getProperty("inquiryComment");
+		
+		try {
+			pstmt = con.prepareStatement(sql);
+			
+			pstmt.setString(1, i.getIcomment());
+			pstmt.setDate(2, i.getIcdate());
+			pstmt.setString(3, i.getIno());
+			
+			result = pstmt.executeUpdate();
+			
+		} catch(SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(pstmt);
+		}
+		
+		return result;
+	}
 }

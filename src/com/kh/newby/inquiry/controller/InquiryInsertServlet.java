@@ -33,7 +33,7 @@ public class InquiryInsertServlet extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// 제목 
-		String ititle = request.getParameter("title");
+		String title = request.getParameter("title");
 		// 작성자
 		String writer = request.getParameter("writer");
 		// 내용
@@ -41,7 +41,7 @@ public class InquiryInsertServlet extends HttpServlet {
 		// 날짜
 		String date = request.getParameter("date");
 
-		System.out.println(ititle);
+		System.out.println(title);
 		System.out.println(writer);
 		System.out.println(content);
 		System.out.println(date);
@@ -64,7 +64,7 @@ public class InquiryInsertServlet extends HttpServlet {
 		}
 		
 		Inquiry i = new Inquiry();
-		i.setItitle(ititle);
+		i.setItitle(title);
 		i.setIwno(writer);
 		i.setIcontent(content);
 		i.setIdate(writeDate);

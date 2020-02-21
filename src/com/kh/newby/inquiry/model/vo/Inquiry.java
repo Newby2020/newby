@@ -17,12 +17,13 @@ public class Inquiry implements Serializable{
 	private String icontent;
 	private String icomment;
 	private String istatus;
+	private Date icdate;
 	
 	public Inquiry() {
 	
 	}
 
-	public Inquiry(String ino, String ititle, String iwno, Date idate, String icontent, String icomment, String istatus) {
+	public Inquiry(String ino, String ititle, String iwno, Date idate, String icontent, String icomment, String istatus, Date icdate) {
 		super();
 		this.ino = ino;
 		this.ititle = ititle;
@@ -31,9 +32,18 @@ public class Inquiry implements Serializable{
 		this.icontent = icontent;
 		this.icomment = icomment;
 		this.istatus = istatus;
+		this.icdate = icdate;
 	}
 	
 	
+
+	public Date getIcdate() {
+		return icdate;
+	}
+
+	public void setIcdate(Date icdate) {
+		this.icdate = icdate;
+	}
 
 	public String getIstatus() {
 		return istatus;
@@ -94,7 +104,7 @@ public class Inquiry implements Serializable{
 	@Override
 	public String toString() {
 		return "Board [ino=" + ino + ", ititle=" + ititle + ", iwno=" + iwno + ", idate=" + idate + ", icontent="
-				+ icontent + ", icomment=" + icomment + ", istatus" + istatus + "]";
+				+ icontent + ", icomment=" + icomment + ", istatus" + istatus + "icdate" + icdate + "]";
 	}
 	
 	
