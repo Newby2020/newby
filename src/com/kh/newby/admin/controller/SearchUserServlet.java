@@ -53,7 +53,8 @@ public class SearchUserServlet extends HttpServlet {
 		int listCount = as.getSearchedUserListCount(searchValue);
 		System.out.println("검색된 행의 수 : " + listCount);
 		
-		response.getWriter().append("Served at: ").append(request.getContextPath());
+		maxPage = (int)((double)listCount / limit + 0.9);
+		startPage = ((int)((double)currentPage / limit + 0.9) -1) * limit + 1;
 		
 //		String page = "";
 //		
@@ -65,6 +66,8 @@ public class SearchUserServlet extends HttpServlet {
 //			request.setAttribute("msg", "검색된 리스트 출력에 실패하였습니다.");
 //		}
 //		request.getRequestDispatcher(page).forward(request, response);
+		
+		response.getWriter().append("Served at: ").append(request.getContextPath());
 	}
 
 	/**
