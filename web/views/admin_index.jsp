@@ -40,7 +40,7 @@
     <!-- Reposive Sidebar -->
     <div class="sidebar">
         <div>
-            <a class="fa fa-home" href="#"></a>
+            <a class="fa fa-home" href="/semi/index.jsp"></a>
             <a class="index" href="/semi/index.ad">관리자페이지</a>
         </div>
         <a class="active" href="/semi/index.ad">Dashboard</a>
@@ -95,7 +95,7 @@
                 <span class="badge"><%=notifiedHostCount %></span>
                 <% } %>
             </a>
-            <a href="admin_accountancy.jsp" class="notification">
+            <a href="#" class="notification">
                 <span>환불</span>
                 <% if(refundMoneyCount != 0) { %>
                 <span class="badge"><%=refundMoneyCount %></span>
