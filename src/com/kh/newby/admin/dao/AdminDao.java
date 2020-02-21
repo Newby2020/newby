@@ -148,8 +148,6 @@ public class AdminDao {
 		try {
 			pstmt = con.prepareStatement(sql);
 			
-			
-			
 			pstmt.setString(1,searchValue);
 			pstmt.setString(2,searchValue);
 			pstmt.setString(3,searchValue);
