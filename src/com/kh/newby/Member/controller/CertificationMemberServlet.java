@@ -107,6 +107,7 @@ public class CertificationMemberServlet extends HttpServlet {
 		
 		HttpSession saveKey = request.getSession();
 		saveKey.setAttribute("AuthenticationKey", AuthenticationKey);
+		saveKey.setAttribute("userId", to_email);
 
 
 		new Gson().toJson("완료", response.getWriter());
