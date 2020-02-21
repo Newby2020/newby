@@ -12,7 +12,7 @@ import java.util.ArrayList;
 
 public class InquiryService {
 
-	private InquiryDao bDao = new InquiryDao();
+	private InquiryDao iDao = new InquiryDao();
 
 	/**
 	 * 총 게시글 수
@@ -20,7 +20,7 @@ public class InquiryService {
 	 */
 	public int getListCount() {
 		Connection con = getConnection();
-		int listCount = bDao.getListCount(con);
+		int listCount = iDao.getListCount(con);
 
 		close(con);
 
@@ -31,7 +31,7 @@ public class InquiryService {
 	public ArrayList<Inquiry> inquirySelectList(int currentPage, int limit) {
 		Connection con = getConnection();
 
-		ArrayList<Inquiry> list = bDao.inquirySelectList(con,currentPage,limit);
+		ArrayList<Inquiry> list = iDao.inquirySelectList(con,currentPage,limit);
 
 		close(con);
 
@@ -41,7 +41,7 @@ public class InquiryService {
 	public Inquiry inquirySelectOne(String ino) {
 		Connection con = getConnection();
 		
-		Inquiry i = bDao.inquirySelectOne(con, ino);
+		Inquiry i = iDao.inquirySelectOne(con, ino);
 		
 		close(con);
 		
@@ -56,7 +56,7 @@ public class InquiryService {
 	public int inquiryInsert(Inquiry i) {	
 		Connection con = getConnection();
 		
-		int result = bDao.inquiryInsert(con,i);
+		int result = iDao.inquiryInsert(con,i);
 		
 		if(result > 0) commit(con);
 		else rollback(con);
@@ -74,7 +74,7 @@ public class InquiryService {
 	public int inquiryUpdate(Inquiry i) {
 		Connection con = getConnection();
 		
-		int result = bDao.inquiryUpdate(con,i);
+		int result = iDao.inquiryUpdate(con,i);
 		
 		if(result > 0) commit(con);
 		else rollback(con);
@@ -92,7 +92,7 @@ public class InquiryService {
 	public int inquiryDelete(String ino) {
 		Connection con = getConnection();
 		
-		int result = bDao.inquiryDelete(con,ino);
+		int result = iDao.inquiryDelete(con,ino);
 		
 		if(result > 0) commit(con);
 		else rollback(con);
@@ -110,12 +110,14 @@ public class InquiryService {
 	public Inquiry inquiryUpdateView(String ino) {
 		Connection con = getConnection();
 		
-		Inquiry i= bDao.inquirySelectOne(con, ino);
+		Inquiry i= iDao.inquirySelectOne(con, ino);
 		
 		close(con);
 		
 		return i;
 	}
+
+	
 
 
 	
