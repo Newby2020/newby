@@ -70,7 +70,7 @@ public class ClassDao {
 			close(rset);
 			close(pstmt);
 		}
-		
+
 		return cv;
 	}
 
@@ -124,6 +124,7 @@ public class ClassDao {
 				cv.setClassNo(cno);
 				cv.setClassName(rset.getString("CLASS_NAME"));
 				cv.setClassType(rset.getString("CLASS_TYPE"));
+				cv.setClassPrice(rset.getInt("CLASS_PRICE"));
 			}
 		}catch(Exception e) {
 			e.printStackTrace();
