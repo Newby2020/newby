@@ -142,7 +142,7 @@
 					<div class="location">
 						<div id="loca">수업장소</div>
 						<select id="selLoca" name="fLoca">
-							<option value="서울">선택</option>
+							<option value="">선택</option>
 							<option value="강남">강남</option>
 							<option value="강동">강동</option>
 							<option value="강북">강북</option>
@@ -170,7 +170,16 @@
 							<option value="중랑">중랑</option>
 						</select>
 					</div>
-
+					<!-- sort select -->
+					<div class="con_sort">
+						<label for="">정렬 </label> <select name="fSort" id="cl_sort_select"
+							style="color: #818181;">
+							<option value="">인기순</option>
+							<option value="">별점순</option>
+							<option value="">가격 높은순</option>
+							<option value="">가격 낮은순</option>
+						</select>
+					</div>
 					<div class="cate_btn">
 
   						<!-- <div class="cate" id="caBtn1" onclick="shmenuView1(0)">분류</div> -->
@@ -203,7 +212,7 @@
                                         </div>
                                     </div>
                                 </div>
-							<div class="catesub_list cates" id="sub1" style="display:none">
+							<div class="catesub_list cates" id="sub1" <%if(caType.equals("ca0")||caType.equals("ca1")){ %>style="display:block"<%} %>>
 								<div class="main_sub_caca1">
 									<li><a>월</a></li>
 									<li><a>화</a></li>
@@ -221,7 +230,7 @@
 								</div>
 							</div>
 							<div class="catesub_list cates" id="sub3" style="display: none">
-								<div class="cate_price">
+								<div class="cate_price" style="heigh">
 									<div class="slide">
 										<p>
 											<label for="amount">가격 : </label> <input name="amount" type="text"
@@ -240,18 +249,8 @@
 					<input type="hidden" id="fDay" name="fDay">
 					<input type="hidden" id="fType" name="fType">
 					
-					<button id="cateFilter">필터 결과 보기</button>
+					<button id="cateFilter">선택 적용 하기</button>
 				</form>
-			</div>
-			<!-- sort select -->
-			<div class="con_sort">
-				<label for="">정렬 </label> <select name="" id="cl_sort_select"
-					style="color: #818181;">
-					<option value="">인기순</option>
-					<option value="">별점순</option>
-					<option value="">가격 높은순</option>
-					<option value="">가격 낮은순</option>
-				</select>
 			</div>
 			<div class="CCCC">
 				<div class="con-wrap">
@@ -302,6 +301,12 @@
 			</div>
 			<script>
 			//하단 페이지 변경
+			<%if(listCount==0){ %>
+			 $(function(){
+			       $('#pglk_sh').hide(); 
+			       $('#mbtn_sh').hide();
+			 });
+			<%}%>
 			<%if(currentPage>1){ %>
 			 $(function(){
 			       $('#pglk_sh').show(); 
@@ -324,7 +329,7 @@
 			<%}%>
 			</script>
 			<div class="moreBtnSh" id="mbtn_sh" >
-				<%=listCount %>개의 신나는 액티비티 전체보기
+				<%=listCount %>개의 클래스 전체보기
 			</div>
 			<br>
 			<!--페이징 처리  -->

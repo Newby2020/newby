@@ -70,21 +70,22 @@ public class categoryVo implements Serializable{
 	}
 	
 	
-	// 카테고리 1차 생성자
+	// 카테고리 생성자
 	
-	public categoryVo(String classNo, String className, String firstCategory, int classPrice, String classImg,
+	public categoryVo(String classNo, String className, String firstCategory, String secondCategory, String thirdCategory, int classPrice, String classImg,
 			String classLocation, double averageReview) {
 		super();
 		this.classNo = classNo;
 		this.className = className;
 		this.firstCategory = firstCategory;
+		this.secondCategory = secondCategory;
+		this.thirdCategory = thirdCategory;
 		this.classPrice = classPrice;
 		this.classImg = classImg;
 		this.classLocation = classLocation;
 		this.averageReview = averageReview;
 	}
 	
-	// 카테고리 2차 생성자
 
 	public String getClassNo() {
 		return classNo;
@@ -264,7 +265,7 @@ public class categoryVo implements Serializable{
 
 	@Override
 	public String toString() {
-		return "categoryVo [classNo=" + classNo + ", classHostNo=" + classHostNo + ", className=" + className
+		return "categoryVo [classNo=" + classNo + ", className=" + className
 				+ ", firstCategory=" + firstCategory + ", secondCategory=" + secondCategory + ", thirdCategory="
 				+ thirdCategory + ", classType=" + classType + ", classTime=" + classTime + ", classPrice=" + classPrice
 				+ ", classMaxnum=" + classMaxnum + ", classImg=" + classImg + ", classLocation=" + classLocation

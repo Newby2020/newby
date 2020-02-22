@@ -93,6 +93,19 @@ margin-left: auto;
     padding-right: auto;
     text-align: right;
 }
+#cateFilter{
+
+    text-align: center;
+    background: rgba(246, 246, 246, 0.1) ;
+    border: lightgray solid 1px;
+    border-radius: 3px;
+    font-size: 15px;
+    height: 30px;
+    width: 150px;
+    margin-right: auto;
+    margin-left: auto;
+    line-height: 28px;
+}
 
 
 
@@ -158,19 +171,22 @@ margin-left: auto;
     display: flex;
     justify-content: center;
     justify-items: center;
-    margin-bottom   : 70px;
+    height: 100px;
+    margin-bottom: 30px;
 }
 .cate_sub{
     position: relative;
     margin-top: 20px;
-    margin-bottom: 70px;
+    margin-bottom: 30px;
 }
 
 .CCCC{
     display: flex;
     flex-direction: row;
+    
     /* justify-content: center; */
 }
+
 
 .con_wrap{
 
@@ -210,6 +226,21 @@ margin-left: auto;
     flex-direction: row;
     align-items: center;
 }
+
+@media ( max-width : 905px ) {
+	.container_a{
+	text-align: left;
+    margin-top: 20px;
+    justify-items: center;
+    justify-content: center;
+    justify-self: center;
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+    align-items: center;
+}
+}
+
 .content_a{
     box-sizing: border-box;
     /* flex-basis: 290px; */
@@ -367,6 +398,7 @@ margin: 0;
 .high_light_4{ border: 1px solid #0981F1;}
 .high_light_5{ border: 1px solid #0981F1;}
 .high_light_6{ border: 1px solid #0981F1;}
+.high_light_7{ border: 1px solid #0981F1;}
 
 .moreBtnSh{
     text-align: center;
