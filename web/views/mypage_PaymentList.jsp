@@ -61,8 +61,21 @@
                                 <tr align="center">
                                   <td><%=p.getpDate() %></td>
                                   <td><%=p.getcName() %></td>
-                                  <td>-<%= form.format(p.getPayMile()) %></td>
+                                  
+                                  <%if(p.getPayMile()!=0){ %>
+                                  	<td>-<%= form.format(p.getPayMile()) %></td>
+                                  <%} else {%>
+                                  	<td><%= form.format(p.getPayMile()) %></td>
+                                  <%} %>
+                                  
+                                  
+                                  <%if(p.getSaveMile()!=0){ %>
                                   <td>+<%=form.format(p.getSaveMile()) %></td>
+                                  <%} else { %>
+                                  <td><%=form.format(p.getSaveMile()) %></td>
+                                  <%} %>
+                                  
+                                  
                                   <td><%=form.format(p.getTotalPrice()-p.getPayMile()) %></td>
                                 </tr>
                                 <%} %>
