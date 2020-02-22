@@ -65,7 +65,7 @@
 	                    }
 	                }); 
 	                
-                	$("#searchBtn").click(function(){
+	                $("#searchBtn").click(function(){
                 		$.ajax({
                 			url  : "/semi/searchAppliedClass.ad",
                 			type : "get",

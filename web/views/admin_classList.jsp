@@ -70,7 +70,7 @@
                 
                 	$('#searchBtn').click(function(){
                 		$.ajax({
-                			url : "/semi/serchUser.ad",
+                			url : "/semi/searchClass.ad",
                 			type: "get",
                 			data:{
                 				searchValue : $("#search").val()
@@ -81,6 +81,7 @@
                 				$('#listBody').children().remove();
                 				
                 				var list = data["list"];
+                				console.log(list);
                 				
                 				for(var i = 0; i < list.length; i++){
                 					var $tr = $("<tr>"); 
@@ -94,13 +95,13 @@
                 					var $td7 = $("<td>");
                 					var $td8 = $("<td>");
                 					
-                					$td1.text(list[i]["m_no"]);
-                					$td2.text(list[i]["m_name"]);
-                					$td3.text(list[i]["m_id"]);
-                					$td4.text(list[i]["m_phone"]);
-                					$td5.text(list[i]["m_enrollDate"]);
-                					$td6.text(list[i]["m_mileage"]);
-                					$td7.text(list[i]["m_no"]);
+                					$td1.text(list[i]["classNo"]);
+                					$td2.text(list[i]["classHostNo"]);
+                					$td3.text(list[i]["classType"]);
+                					$td4.text(list[i]["firstCategory"]);
+                					$td5.text(list[i]["secondCategory"]);
+                					$td6.text(list[i]["thirdCategory"]);
+                					$td7.text(list[i]["classTarget"]);
                 					$td8.text(list[i]["m_no"]);
                 					
                 					$tr.append($td1);

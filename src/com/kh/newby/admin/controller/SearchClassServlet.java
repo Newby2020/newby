@@ -19,7 +19,7 @@ import com.kh.newby.common.PageInfo;
 /**
  * Servlet implementation class SearchAppliedClassServlet
  */
-@WebServlet("/searchAppliedClass.ad")
+@WebServlet("/searchClass.ad")
 public class SearchClassServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
@@ -35,7 +35,7 @@ public class SearchClassServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-//		response.setContentType("application/json; charset=UTF-8");
+		response.setContentType("application/json; charset=UTF-8");
 		
 		String searchValue = request.getParameter("searchValue");
 		System.out.println("검색 값 : " + searchValue);
