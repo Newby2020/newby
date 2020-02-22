@@ -56,7 +56,10 @@
             <!-- searchBar -->
             <div class="searchBar">
                 <input type="text" placeholder="Search...">
-                <button><i class="fa fa-search"></i></button>
+                <button id="searchBtn"><i class="fa fa-search"></i></button>
+                <script>
+                	/* $('#searchBtn').clc */
+                </script>
             </div>
             <table>
                 <tr>

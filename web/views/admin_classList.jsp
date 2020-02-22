@@ -109,7 +109,7 @@
  					if(p == currentPage){ %>
  						<button disabled><%= p %></button>
 			<% 		} else{ %>
-						<button onclick="location.href='<%= request.getContextPath() %>/classList.ad?currentPage=<%= p %>'"<%= p %>></button>
+						<button onclick="location.href='<%= request.getContextPath() %>/classList.ad?currentPage=<%= p %>'"><%= p %></button>
 			<% 		} %>
  			<% } %>
  			
