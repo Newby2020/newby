@@ -40,21 +40,23 @@ public class InquirySelectOneServlet extends HttpServlet {
 		
 		// 게시글 보기
 		Inquiry i = new InquiryService().inquirySelectOne(ino);
+		System.out.println("게시글 보기" + i);
 		
 		
 		// 댓글 불러오기
-		ArrayList<Inquiry> list = new InquiryCommentService().inquirySelectComList(ino);
+//		ArrayList<Inquiry> list = new InquiryCommentService().inquirySelectComList(ino);
+//		System.out.println("list -> " + list);
 		
 		String page = "";
 		if(i != null) {
 			page="views/customer_inquiryDetail.jsp";
 			request.setAttribute("inquiry", i);
-			request.setAttribute("list", list);
-		} else {
+//			request.setAttribute("list", list);
+		} /*else {
 			page = "views/common/errorPage.jsp";
 			request.setAttribute("msg", "게시글 목록 조회 실패!");
 		}
-		
+		*/
 		request.getRequestDispatcher(page).forward(request, response);
 	}
 

@@ -31,10 +31,11 @@ public class InquiryUpdateViewServlet extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String ino = request.getParameter("ino");
-		
+		System.out.println("ino  " + ino);
 		InquiryService is = new InquiryService();
 		
 		Inquiry i = is.inquiryUpdateView(ino);
+		System.out.println(i);
 		
 		String page = "";
 		if(i != null) {

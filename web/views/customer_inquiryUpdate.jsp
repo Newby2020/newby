@@ -69,9 +69,9 @@
 							</tr>
 							<tr>
 								<td class="tdDetail">작성자</td>
-								<td class="tdSpan"><span class="spN"><%=i.getIwno()%></span></td>
+								<td class="tdSpan"><input type="text" name="wno" value="<%=i.getIwno()%>" readonly></td>
 								<td class="tdDetail">작성일</td>
-								<td class="tdSpan"><span class="spN"><%=i.getIdate()%></span></td>
+								<td class="tdSpan"><input type="date" name="date" value="<%= i.getIdate() %>"></td>
 							<tr>
 								<td class="tdDetail">내용</td>
 								<td class="tbSpan2" colspan="5"></td>
@@ -89,7 +89,7 @@
 							<button onclick="deleteInquiry()">삭제하기</button>
 							<button onclick="complete()">완료하기</button>
 						</div>
-				
+						<input type="hidden" name="ino" value="<%= i.getIno() %>"/>
 						<script>
 							function complete(){
 								$("#updateForm").attr("action","<%=request.getContextPath() %>/inquiryUpdate.io");
@@ -113,7 +113,7 @@
 		<%@ include file="./common/footer.jsp"%>
 	</div>
 	<script>
-	
+	console.log(i);
 	
 	</script>
 </body>

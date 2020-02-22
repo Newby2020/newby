@@ -92,7 +92,7 @@
 											if (i.getIcomment() != null) {
 										%>
 										<td><textArea rows="3" cols="80" id="replyContent"
-												style="resize: none;" name="replyContent"><%=i.getIcomment()%></textArea></td>
+												style="resize: none;" name="replycontent"><%=i.getIcomment()%></textArea></td>
 												
 										<%
 											} else {
@@ -104,15 +104,26 @@
 										%>
 										<%
 											if (m != null && m.getM_name().equals("관리자") ) {
+												if(i.getIcomment() != null){
 										%>
-										
 										<td>
 											<button type="submit" class="insertBtn"
+												onclick="change(this);">수정하기</button>
+										</td>
+										<td>
+											<button type="reset" class="insertBtn"
+												onclick="change(this);">삭제하기</button>
+										</td>
+										<%
+												}else{
+										%>
+										<td>
+											<button type="submit" class="insertBtn" id="replybtn"
 												onclick="reComment(this);">댓글 달기</button>
 										</td>
 
 										<%
-											}
+											} }
 										%>
 									</tr>
 								</table>
@@ -146,14 +157,41 @@
 
 			$("#addReply").css('display', 'none');
 		}
-		function reComment(obj) {
+		/* function reComment(obj) {
 			$("#replyContent").prop('readonly', true);
 			// 클릭한 버튼 숨기기
 			$(obj).css('display', 'none');
 
 			$(obj).parents('table').append(htmlForm);
 
-		}
+		} */
+		/* $(document).ready(function(){
+			$("#insertCom").clck(function(){
+				var replytext=$("#")
+			})
+		}) */
+		
+		$("#replybtn").click(function(){
+	    	if($("#replycontent").val().trim() === ""){
+	    		alert("댓글을 입력하세요.");
+	    		$("#replycontent").val("").focus();
+	    	}else{
+	    		$.ajax({
+	    			url: "views/customer_inquiryDetail.jsp"
+	                type: "POST",
+	                data: {
+	                    no : $("#no").val(),
+	                    id : $("#id").val(),
+	                    reply_content : $("#replycontent").val()
+	                },
+	                success: function () {
+	                	alert("댓글 등록 완료");
+	                	$("#replycontent").val("");
+	                	getReply();
+	                },
+	    		})
+	    	}
+	    })
 		
 	</script>
 </body>
