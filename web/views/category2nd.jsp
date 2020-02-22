@@ -170,16 +170,6 @@
 							<option value="중랑">중랑</option>
 						</select>
 					</div>
-					<!-- sort select -->
-					<div class="con_sort">
-						<label for="">정렬 </label> <select name="fSort" id="cl_sort_select"
-							style="color: #818181;">
-							<option value="">인기순</option>
-							<option value="">별점순</option>
-							<option value="">가격 높은순</option>
-							<option value="">가격 낮은순</option>
-						</select>
-					</div>
 					<div class="cate_btn">
 
   						<div class="cate" id="caBtn1" onclick="shmenuView1(0)">분류</div>
@@ -246,11 +236,10 @@
 							</div>
 							<div class="catesub_list cates" id="sub4" style="display: none">
 								<div class="main_sub_caca3">
-									<li><a>1 : 1</a></li>
-									<li><a>그룹</a></li>
-									<li><a>그룹</a></li>
-									<li><a>그룹</a></li>
-									<li><a>그룹</a></li>
+									<input type="radio" class="fSortRa" id="fSort1" name="fSort" value="CN"><label for="fSort1">클래스 이름 순</label>
+									<input type="radio" class="fSortRa" id="fSort2" name="fSort" value="RP"><label for="fSort2">별점 순</label>
+									<input type="radio" class="fSortRa" id="fSort3" name="fSort" value="CPA"><label for="fSort3">가격 낮은 순</label>
+									<input type="radio" class="fSortRa" id="fSort4" name="fSort" value="CPD"><label for="fSort4">가격 높은 순</label>
 								</div>
 							</div>
 						</div>
@@ -258,9 +247,13 @@
 					<input type="hidden" id="fCate" name="fCate">
 					<input type="hidden" id="fDay" name="fDay">
 					<input type="hidden" id="fType" name="fType">
+					<input type="hidden" id="fSort" name="fSort">
 					
 					<button id="cateFilter">선택 적용 하기</button>
 				</form>
+			</div>
+			<div class="listCsh"<%if(listCount==0){ %>style="text-align: center"<%} %>>
+				<label name="liCsh" style="color: black;"><%if(listCount==0){ %>클래스가 존재하지 않습니다.<%}else{%><%=listCount%>개의 클래스가 있습니다.<%} %></label>
 			</div>
 			<div class="CCCC">
 				<div class="con-wrap">
@@ -311,7 +304,7 @@
 			
 			<script>
 			//하단 페이지 변경
-			<%if(listCount==0){ %>
+			<%if(listCount<7){ %>
 			 $(function(){
 			       $('#pglk_sh').hide(); 
 			       $('#mbtn_sh').hide();
@@ -374,7 +367,6 @@
 					<button
 						onclick="location.href='<%= request.getContextPath() %>/selectList.ca?caType=<%=caType %>&currentPage=<%= maxPage %>'">>></button>
 				</div>
-
 			</div>
 		</div>
 		<%@ include file="./common/footer.jsp"%>
