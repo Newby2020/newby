@@ -630,6 +630,92 @@ public class AdminDao {
 		return list;
 	}
 
+	
+	public int getClaimListCount(Connection con, String searchValue) {
+		int listCount = 0;
+		PreparedStatement pstmt = null;
+		ResultSet rset = null;
+		
+		String sql = prop.getProperty("serchedClaimListCount");
+		
+		try {
+			pstmt = con.prepareStatement(sql);
+			
+			pstmt.setString(1,searchValue);
+			pstmt.setString(2,searchValue);
+			pstmt.setString(3,searchValue);
+			pstmt.setString(4,searchValue);
+			pstmt.setString(5,searchValue);
+			pstmt.setString(6,searchValue);
+			pstmt.setString(7,searchValue);
+			pstmt.setString(8,searchValue);
+			pstmt.setString(9,searchValue);
+			
+			rset = pstmt.executeQuery();
+			
+			if(rset.next()) {
+				listCount = rset.getInt(1);
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(rset);
+			close(pstmt);
+		}
+		return listCount;
+	}
+
+	public ArrayList<Claim> searchClaim(Connection con, int currentPage, int limit, String searchValue) {
+		ArrayList<Claim> list = null;
+		
+		PreparedStatement pstmt = null;
+		ResultSet rset = null;
+		
+		String sql = prop.getProperty("serchClaim");
+		
+		try {
+			pstmt = con.prepareStatement(sql);
+			
+			pstmt.setString(1,searchValue);
+			pstmt.setString(2,searchValue);
+			pstmt.setString(3,searchValue);
+			pstmt.setString(4,searchValue);
+			pstmt.setString(5,searchValue);
+			pstmt.setString(6,searchValue);
+			pstmt.setString(7,searchValue);
+			pstmt.setString(8,searchValue);
+			pstmt.setString(9,searchValue);
+			
+			
+			rset = pstmt.executeQuery();
+			
+			list = new ArrayList<Claim>();
+			
+			while(rset.next()) {
+				Claim c = new Claim();
+				
+				c.setCmDate(rset.getDate("CLAIM_DATE"));
+				c.setCmNo(rset.getString("CLAIM_NO"));
+				c.setCmWriterNo(rset.getString("CLAIM_WRITER_NO"));
+				c.setCmTitle(rset.getString("CLAIM_TITLE"));
+				c.setStatus(rset.getString("CLAIM_STATUS"));
+				c.setSuspensionPeriod(rset.getInt("SUSPENSION_PERIOD"));
+				c.setHandledDate(rset.getDate("HANDLED_DATE"));
+				c.setSuspensionStartDate(rset.getDate("SUSPENSION_START_DATE"));
+				c.setSuspensionEndDate(rset.getDate("SUSPENSION_END_DATE"));
+				
+				list.add(c);
+			}
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(pstmt);
+			close(rset);
+		}		
+		return list;
+	}
+
 
 
 

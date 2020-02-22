@@ -172,6 +172,24 @@ public class AdminService {
 		return list;
 	}
 
+	
+	public int getClaimListCount(String searchValue) {
+		Connection con = getConnection();
+		int listCount = aDao.getClaimListCount(con, searchValue);
+		
+		close(con);
+		
+		return listCount;
+	}
+
+	public ArrayList<Claim> searchClaim(int currentPage, int limit, String searchValue) {
+		Connection con = getConnection();
+		ArrayList<Claim> list = aDao.searchClaim(con, currentPage, limit, searchValue);
+		
+		close(con);
+		return list;
+	}
+
 
 
 
