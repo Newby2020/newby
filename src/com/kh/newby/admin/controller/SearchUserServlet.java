@@ -73,11 +73,11 @@ public class SearchUserServlet extends HttpServlet {
 		PageInfo pi = new PageInfo(currentPage, listCount, limit, maxPage, startPage, endPage);
 		
 		
-		Map searchUserMap = new HashMap();
-		searchUserMap.put("list", list);
-		searchUserMap.put("pi", pi);
+		Map searchMap = new HashMap();
+		searchMap.put("list", list);
+		searchMap.put("pi", pi);
 		
-		new Gson().toJson(searchUserMap, response.getWriter());
+		new Gson().toJson(searchMap, response.getWriter());
 	}
 
 	/**

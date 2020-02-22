@@ -107,64 +107,10 @@
                 					$tr.append($td7);
                 					console.log($tr);
                 					$('#listBody').append($tr);
+                					
+                					//페이지 에리어
+                					$('.pagingArea').empty();
                 				}
-                				
-                				// pagingArea
-                				$('.pagingArea').empty();
-                				
-                				var pi = data["pi"];
-                				
-                				var currentPage = pi["currentPage"];
-                				var listCount = pi["listCount"];
-                				var limit = pi.limit;
-                				var maxPage = pi.maxPage;
-                				var startPage = pi.startPage;
-                				var endPage = pi["endPage"];
-                				/* console.log("currentPage : " + currentPage);
-                				console.log("listCount : " + listCount);
-                				console.log("limit : " + limit);
-                				console.log("maxPage : " + maxPage);
-                				console.log("startPage : " + startPage); 
-                				console.log("endPage : " + endPage);  */
-                				
-                				var $ttfBtn = $('<button onclick="/semi/classList.ad?currentPage=1">').text('<<');
-                				var $backwardBtn = $("<button>").text('<');
-                				var $pBtn = $("<button>").text('p');
-                				var $forwardBtn = $("<button>").text('>');
-                				var $tteBtn = $("<button>").text('>>');
-                				var $tteBtn = $("<button onclick='tte()'>").text('>>');
-                				/* console.log("버튼 1 : "+ $ttfBtn.text());
-                				console.log("버튼 2 : "+ $backwardBtn.text());
-                				console.log("버튼 3 : "+ $pBtn.text());
-                				console.log("버튼 4 : "+ $forwardBtn.text());
-                				console.log("버튼 5 : "+ $tteBtn.text()); */
-                			
-                				
-                				var ttfUrl = "/semi/classList.ad?currentPage=1";
-                				var backwardUrl = "/semi/classList.ad?currentPage=" + (currentPage - 1);
-                				var pUrl = "/semi/classList.ad?currentPage=";
-                				var forwardUrl = "/semi/classList.ad?currentPage=" + (currentPage + 1);
-                				var tteUrl = "/semi/classList.ad?currentPage=" + maxPage;                				
-                				console.log(ttfUrl); 
-                				console.log(backwardUrl);
-                				
-                				console.log(forwardUrl);
-                				console.log(tteUrl);
-                				
-                				
-                				/* $tteBtn.attr('href',ttfUrl);
-                				$tteBtn.attr('href',backwardUrl);
-                				
-                				$tteBtn.attr('href',forwardUrl);
-                				$tteBtn.attr('href',tteUrl); */
-                				
-                				
-                				$('.pagingArea').append($ttfBtn);
-                				$('.pagingArea').append($backwardBtn);
-                				$('.pagingArea').append($pBtn);
-                				$('.pagingArea').append($forwardBtn);
-                				$('.pagingArea').append($tteBtn);                 				
-
                 			}, error : function(){
                 				alert("검색 실패!");
                 			}

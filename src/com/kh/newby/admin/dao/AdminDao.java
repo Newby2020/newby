@@ -293,7 +293,74 @@ public class AdminDao {
 		return result;
 	}	
 
+	public int getSearchedAppliedClassListCount(Connection con, String searchValue) {
+		int listCount = 0;
+		PreparedStatement pstmt = null;
+		ResultSet rset = null;
+		
+		String sql = prop.getProperty("serchedApplyListCount");
+		
+		try {
+			pstmt = con.prepareStatement(sql);
+			
+			pstmt.setString(1,searchValue);
+			pstmt.setString(2,searchValue);
+			pstmt.setString(3,searchValue);
+			pstmt.setString(4,searchValue);
+			
+			rset = pstmt.executeQuery();
+			
+			if(rset.next()) {
+				listCount = rset.getInt(1);
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(rset);
+			close(pstmt);
+		}
+		return listCount;
+	}
 
+	public ArrayList<ClassVo> searchAppliedClass(Connection con, int currentPage, int limit, String searchValue) {
+		ArrayList<ClassVo> list = null;
+		
+		PreparedStatement pstmt = null;
+		ResultSet rset = null;
+		
+		String sql = prop.getProperty("serchAppliedClass");
+		
+		try {
+			pstmt = con.prepareStatement(sql);
+			
+			pstmt.setString(1,searchValue);
+			pstmt.setString(2,searchValue);
+			pstmt.setString(3,searchValue);
+			pstmt.setString(4,searchValue);
+			
+			rset = pstmt.executeQuery();
+			
+			list = new ArrayList<ClassVo>();
+			
+			while(rset.next()) {
+				ClassVo c = new ClassVo();
+				
+				c.setClassEnrollDate(rset.getDate("CLASS_ENROLLDATE"));
+				c.setClassNo(rset.getString("CLASS_NO"));
+				c.setClassHostNo(rset.getString("CLASS_HOST_NO"));
+				c.setClassStatus(rset.getString("CLASS_STATUS"));
+				
+				list.add(c);
+			}
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(pstmt);
+			close(rset);
+		}		
+		return list;
+	}
 //-------------------------- ClassList -----------------------------//	
 	public int getClassListCount(Connection con) {
 		int listCount = 0;
@@ -485,7 +552,6 @@ public class AdminDao {
 		return list;
 	}
 
-	
 
 
 }
