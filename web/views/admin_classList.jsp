@@ -58,8 +58,71 @@
         <div style="overflow-x:auto;">
             <!-- searchBar -->
             <div class="searchBar">
-                <input type="text" placeholder="Search...">
-                <button><i class="fa fa-search"></i></button>
+                <input id="search" type="text" placeholder="Search..." >
+                <button id="searchBtn"><i class="fa fa-search"></i></button>
+                <script>
+	                $('#search').keypress(function(event){
+	                    var keycode = (event.keyCode ? event.keyCode : event.which);
+	                    if(keycode == '13'){
+	                    	$('#searchBtn').trigger("click");
+	                    }
+	                }); 
+                
+                	$('#searchBtn').click(function(){
+                		$.ajax({
+                			url : "/semi/serchUser.ad",
+                			type: "get",
+                			data:{
+                				searchValue : $("#search").val()
+                			},
+                			success : function(data){
+                			console.log(data);
+                				// 리스트
+                				$('#listBody').children().remove();
+                				
+                				var list = data["list"];
+                				
+                				for(var i = 0; i < list.length; i++){
+                					var $tr = $("<tr>"); 
+                					
+                					var $td1 = $("<td>");
+                					var $td2 = $("<td>");
+                					var $td3 = $("<td>");
+                					var $td4 = $("<td>");
+                					var $td5 = $("<td>");
+                					var $td6 = $("<td>");
+                					var $td7 = $("<td>");
+                					var $td8 = $("<td>");
+                					
+                					$td1.text(list[i]["m_no"]);
+                					$td2.text(list[i]["m_name"]);
+                					$td3.text(list[i]["m_id"]);
+                					$td4.text(list[i]["m_phone"]);
+                					$td5.text(list[i]["m_enrollDate"]);
+                					$td6.text(list[i]["m_mileage"]);
+                					$td7.text(list[i]["m_no"]);
+                					$td8.text(list[i]["m_no"]);
+                					
+                					$tr.append($td1);
+                					$tr.append($td2);
+                					$tr.append($td3);
+                					$tr.append($td4);
+                					$tr.append($td5);
+                					$tr.append($td6);
+                					$tr.append($td7);
+                					$tr.append($td8);
+                					console.log($tr);
+                					$('#listBody').append($tr);
+                					
+                					//페이지 에리어
+                					$('.pagingArea').empty();
+                				}
+                			}, error : function(){
+                				alert("검색 실패!");
+                			}
+                		});
+                	});
+                </script>
             </div>
             <table>
                 <tr>
@@ -72,6 +135,7 @@
                     <th>타겟</th>
                     <th>상세정보</th>
                 </tr>
+                <tbody id="listBody">
                	<% for(ClassVo c : list) {%>
                 <tr>
                     <td><%= c.getClassNo() %></td>
@@ -86,6 +150,7 @@
                     </td>
                 </tr>
                 <% } %>
+                </tbody>
             </table>
             <script>
           		 $('.detailBtn').click(function(){

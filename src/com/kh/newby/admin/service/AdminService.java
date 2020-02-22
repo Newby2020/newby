@@ -138,6 +138,22 @@ public class AdminService {
 		return list;
 	}
 
+	public int getSearchedClassListCount(String searchValue) {
+		Connection con = getConnection();
+		int listCount = aDao.getSearchedClassListCount(con, searchValue);
+		
+		close(con);
+		
+		return listCount;
+	}
+
+	public ArrayList<ClassVo> searchClass(int currentPage, int limit, String searchValue) {
+		Connection con = getConnection();
+		ArrayList<ClassVo> list = aDao.searchClass(con, currentPage, limit, searchValue);
+		
+		close(con);
+		return list;
+	}
 //-------------------------- ClaimList -----------------------------//	
 	public int getClaimListCount() {
 		Connection con = getConnection();
@@ -155,6 +171,10 @@ public class AdminService {
 		close(con);
 		return list;
 	}
+
+
+
+
 
 
 		

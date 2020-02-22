@@ -475,6 +475,84 @@ public class AdminDao {
 		return c;
 	}	
 
+	public int getSearchedClassListCount(Connection con, String searchValue) {
+		int listCount = 0;
+		PreparedStatement pstmt = null;
+		ResultSet rset = null;
+		
+		String sql = prop.getProperty("serchedClassListCount");
+		
+		try {
+			pstmt = con.prepareStatement(sql);
+			
+			pstmt.setString(1,searchValue);
+			pstmt.setString(2,searchValue);
+			pstmt.setString(3,searchValue);
+			pstmt.setString(4,searchValue);
+			pstmt.setString(5,searchValue);
+			pstmt.setString(6,searchValue);
+			pstmt.setString(7,searchValue);
+			
+			rset = pstmt.executeQuery();
+			
+			if(rset.next()) {
+				listCount = rset.getInt(1);
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(rset);
+			close(pstmt);
+		}
+		return listCount;
+	}
+
+	public ArrayList<ClassVo> searchClass(Connection con, int currentPage, int limit, String searchValue) {
+		ArrayList<ClassVo> list = null;
+		
+		PreparedStatement pstmt = null;
+		ResultSet rset = null;
+		
+		String sql = prop.getProperty("serchClass");
+		
+		try {
+			pstmt = con.prepareStatement(sql);
+			
+			pstmt.setString(1,searchValue);
+			pstmt.setString(2,searchValue);
+			pstmt.setString(3,searchValue);
+			pstmt.setString(4,searchValue);
+			pstmt.setString(5,searchValue);
+			pstmt.setString(6,searchValue);
+			pstmt.setString(7,searchValue);
+			
+			
+			rset = pstmt.executeQuery();
+			
+			list = new ArrayList<ClassVo>();
+			
+			while(rset.next()) {
+				ClassVo c = new ClassVo();
+				
+				c.setClassNo(rset.getString("CLASS_NO"));
+				c.setClassHostNo(rset.getString("CLASS_HOST_NO"));
+				c.setClassType(rset.getString("CLASS_TYPE"));
+				c.setFirstCategory(rset.getString("FIRST_CATEGORY"));
+				c.setSecondCategory(rset.getString("SECOND_CATEGORY"));
+				c.setThirdCategory(rset.getString("THIRD_CATEGORY"));
+				c.setClassTarget(rset.getString("CLASS_TARGET"));
+				
+				list.add(c);
+			}
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(pstmt);
+			close(rset);
+		}		
+		return list;
+	}	
 //-------------------------- ClaimList -----------------------------//
 	
 	public int getClaimListCount(Connection con) {
@@ -551,6 +629,10 @@ public class AdminDao {
 		
 		return list;
 	}
+
+
+
+
 
 
 
