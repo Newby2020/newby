@@ -1,0 +1,50 @@
+table{
+	width:80%;
+	border-collapse: collapse;
+}
+
+
+th{
+	border-bottom : 1px solid darkgray;
+	padding:10px;
+	font-size: 9pt;
+}
+
+td{
+	border-bottom : 1px solid #ebeef3;
+	padding:5px;
+	font-size: 8pt;
+}
+
+#divider{
+	margin: 5px 4px 0 9px;
+    width: 1px;
+    height: 11px;
+    color : #ebeef3;
+}
+
+.paging {
+	font-size: 8pt;
+	border: 1px solid #ebeef3;
+	background: white;
+	color: rgb(9, 129, 241);
+	margin: 0px;
+	border-radius: 3px;
+	cursor: pointer;
+	font-family: 'Oxygen';
+	font-style: normal;
+	font-weight: 400;
+	src: local('Oxygen'), local('Oxygen-Regular'),
+		url(https://fonts.gstatic.com/s/oxygen/v5/LC4u_jU27qpsdszDEgeU_3-_kf6ByYO6CLYdB4HQE-Y.woff2)
+		format('woff2');
+	unicode-range: U+30-39;
+	vertical-align: middle;
+	padding-bottom: 3px;
+}
+
+.paging:hover {
+	background: rgb(9, 129, 241);;
+	color: white;
+}
+
+

@@ -116,7 +116,7 @@
 										<p>
 											<span class="pwd1ds">비밀번호 재확인</span>&nbsp;&nbsp;
 											<input id="newPwd2" name="newPwd2" class="pwd1ds" type="password">&nbsp;&nbsp;
-											<input align="right" id="pwdBtn" class="modibtn1cw" type="button" value="수정하기">
+											<input id="pwdBtn" class="modibtn1cw" type="button" value="수정하기">
 										</p>
 									</div>
 								</td>
