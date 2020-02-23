@@ -78,7 +78,7 @@
                 			},
                 			success : function(data){
                 			console.log(data);
-                				// 리스트
+                				//	 리스트
                 				$('#listBody').children().remove();
                 				
                 				var list = data["list"];

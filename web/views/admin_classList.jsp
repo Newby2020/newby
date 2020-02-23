@@ -115,8 +115,10 @@
                 					console.log($tr);
                 					$('#listBody').append($tr);
                 					
-                					//페이지 에리어
-                					$('.pagingArea').empty();
+                					// pagingArea
+                    				$('.pagingArea').empty();
+                    				
+                    				
                 				}
                 			}, error : function(){
                 				alert("검색 실패!");

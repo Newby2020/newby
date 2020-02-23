@@ -77,7 +77,8 @@
                 				// 리스트
                 				$('#listBody').children().remove();
                 				
-                				var list = data["list"];
+                				/* var list = data["list"]; */
+                				var list = data.list;
                 				console.log(list)
                 				var pi = data["pi"];
                 				console.log(pi)
