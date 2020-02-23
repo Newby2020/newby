@@ -9,7 +9,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>SignIn</title>
+<title>새로운 취미를 찾아서 NEWBY</title>
 <link rel="stylesheet" href="/semi/resources/css/joinModal.css">
 <link rel="stylesheet" href="/semi/resources/css/LoginModal.css">
 <link rel="stylesheet" href="/semi/resources/css/main-panel.css">
@@ -305,11 +305,12 @@ html {
            
            //비밀번호 영어,숫자 포함 6~20자
            if(!chk(/^.*(?=.{6,20})(?=.*[0-9])(?=.*[a-zA-Z]).*$/,pwd,"비밀번호는 영문,숫자 포함 6~20자리로 입력해주세요")){
+        	   
         	   return false;
            }
 
-        
-           
+          /*  .*(?=.{6,20})(?=.*[0-9])(?=.*[a-zA-Z]).*
+            */
 			
 			 // 이름 미입력시 알림               
             if ((name.value) == ""){

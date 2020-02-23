@@ -33,11 +33,6 @@ public class ClassManagerServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// 1. 게시판 페이징 처리하기
-		// 페이징 처리 : 
-		// 	대용량의 데이터를 한 번에 처리하지 않고
-		//	특정 개수만큼 끊어서 표현하는 기술
-		
 		ArrayList<ClassVo2> list = null;
 		
 		ClassService2 cs = new ClassService2();
@@ -53,7 +48,7 @@ public class ClassManagerServlet extends HttpServlet {
 			page = "views/mypage_ClassManager.jsp";
 			request.setAttribute("list", list);
 		} else {
-			page = "views/common/errorPage.jsp";
+			page = "/semi/views/common/errorPage.jsp";
 			request.setAttribute("msg", "등록한 클래스 목록 출력 실패!");
 		}
 		request.getRequestDispatcher(page).forward(request, response);

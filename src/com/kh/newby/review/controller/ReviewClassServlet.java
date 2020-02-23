@@ -8,8 +8,9 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
-import com.kh.newby.classvo.model.service.ClassService2;
+import com.kh.newby.member.model.vo.Member;
 import com.kh.newby.review.model.service.ReviewService2;
 import com.kh.newby.review.model.vo.Review2;
 
@@ -36,13 +37,11 @@ public class ReviewClassServlet extends HttpServlet {
 		
 		ReviewService2 rs = new ReviewService2();
 		
-//		HttpSession session = request.getSession(false);
-//		Member m = (Member)session.getAttribute("member");
+		HttpSession session = request.getSession(false);
+		Member m = (Member)session.getAttribute("Member");
 		
-		String mno = "M7"; //String hno = m.getM_no();						/////////////////////////////////수정해야됨////////////////////////////
-		
+		String mno = m.getM_no();
 		list = rs.ReviewList(mno);
-		
 		String page = "";
 
 		if(list != null) {

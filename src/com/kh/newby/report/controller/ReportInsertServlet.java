@@ -1,4 +1,4 @@
-package com.kh.newby.inquiry.controller;
+package com.kh.newby.report.controller;
 
 import java.io.IOException;
 import java.sql.Date;
@@ -10,20 +10,20 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.kh.newby.inquiry.model.service.InquiryCommentService;
-import com.kh.newby.inquiry.model.vo.Inquiry;
+import com.kh.newby.claim.model.vo.Claim;
+import com.kh.newby.report.model.service.ReportService;
 
 /**
- * Servlet implementation class InquiryUpdateComServlet
+ * Servlet implementation class ReportInsertServlet
  */
-@WebServlet("/updateCom.io")
-public class InquiryUpdateComServlet extends HttpServlet {
+@WebServlet("/reportInsert.ro")
+public class ReportInsertServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public InquiryUpdateComServlet() {
+    public ReportInsertServlet() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -32,45 +32,56 @@ public class InquiryUpdateComServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		String comment = request.getParameter("comment");
-		String date = request.getParameter("date");
-		String ino = request.getParameter("ino");
+//		String cno = request.getParameter("cno");
 		
+		String title = request.getParameter("title");
+		
+		String ctitle = request.getParameter("ctitle");
+		
+		String writer = request.getParameter("writer");
+		
+		String content = request.getParameter("content");
+		
+		String date = request.getParameter("date");
 		
 		Date writeDate = null;
-
+		
+		
+		
 		if(date != "" && date != null) {
 			String[] dateArr = date.split("-");
 			int[] intArr = new int[dateArr.length];
-
+			
 			for(int i=0; i<dateArr.length; i++) {
 				intArr[i] = Integer.parseInt(dateArr[i]);
 			}
-
+			
 			writeDate = new Date(new GregorianCalendar(
-					intArr[0],intArr[1]-1,intArr[2]
+						intArr[0],intArr[1]-1,intArr[2]
 					).getTimeInMillis());
 		} else {
 			writeDate = new Date(new GregorianCalendar().getTimeInMillis());
 		}
-		Inquiry i = new Inquiry();
-		i.setIcomment(comment);
-		i.setIcdate(writeDate);
-		i.setIno(ino);
 		
-		System.out.println("수정할 com : " + i.getIcomment());
-		System.out.println("수정할 com : " + comment);
-		System.out.println("수정된 날짜 : " + writeDate);
-		System.out.println("수정할 ino : " + ino);
-		int result = new InquiryCommentService().updateCom(i);
+		Claim c = new Claim();
+//		c.setCmNo(cno);
+		c.setCmClassNo(ctitle);
+		c.setCmWriterNo(writer);
+		c.setCmTitle(title);
+		c.setCmContent(content);
+		c.setCmDate(writeDate);
+		
+		ReportService sc = new ReportService();
+		
+		int result = sc.reportInsert(c);
 		
 		if(result > 0) {
-			response.sendRedirect("inquirySelectOne.io?ino="+ino);
-			
-		}else {
-			request.setAttribute("msg", "문의 수정 실패");
-			request.getRequestDispatcher("views/common/errorPage.jsp").forward(request, response);
-//			System.out.println("오류발생");
+			response.sendRedirect("claimList.ad");
+			System.out.println(title);
+			System.out.println(ctitle);
+			System.out.println(writer);
+			System.out.println(content);
+			System.out.println(date);
 		}
 	}
 

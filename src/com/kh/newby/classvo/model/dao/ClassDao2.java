@@ -242,6 +242,8 @@ public class ClassDao2 {
             	System.out.println("클래스 수정 완료");
             }
             
+            pstmt.close();
+            
             pstmt = con.prepareStatement(sql2);
             pstmt.setString(1, c.getClassNo());
             result2 = pstmt.executeUpdate();

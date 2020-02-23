@@ -48,7 +48,7 @@
         <a href="/semi/classApplyList.ad">클래스 등록 신청</a>
 		<a href="/semi/classList.ad">개설 클래스</a>
         <a href="/semi/claimList.ad">신고</a>
-        <a href="/semi/paymentList.ad">정산</a>
+        <!-- <a href="/semi/paymentList.ad">정산</a> -->
     </div> 
 
     <div class="content">

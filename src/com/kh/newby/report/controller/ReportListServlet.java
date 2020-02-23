@@ -8,9 +8,11 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import com.kh.newby.claim.model.vo.Claim;
 import com.kh.newby.common.PageInfo;
+import com.kh.newby.member.model.vo.Member;
 import com.kh.newby.report.model.service.ReportService;
 
 /**
@@ -35,6 +37,12 @@ public class ReportListServlet extends HttpServlet {
 		ArrayList<Claim> list = null;
 
 		ReportService rs = new ReportService();
+		
+//		HttpSession session = request.getSession();
+//		Member m = (Member)session.getAttribute("member");
+		
+//		System.out.println(m.getM_name());
+		// --> 관리자,일반사용자
 		
 		// 페이징 하기
 		// 첫번째 페이지
@@ -74,6 +82,9 @@ public class ReportListServlet extends HttpServlet {
 			endPage = maxPage;
 		}
 
+		// --> 
+		/*if(m.getM_name().equals("관리지")) {
+		}*/
 		list = rs.reportSelectList(currentPage,limit);
 		
 		String page = "";

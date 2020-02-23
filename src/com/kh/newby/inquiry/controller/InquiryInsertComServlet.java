@@ -32,6 +32,7 @@ public class InquiryInsertComServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		String ino = request.getParameter("ino");
 		String comment = request.getParameter("comment");
 		String date = request.getParameter("date");
 		
@@ -53,8 +54,13 @@ public class InquiryInsertComServlet extends HttpServlet {
 		}
 		
 		Inquiry i = new Inquiry();
+		i.setIno(ino);
 		i.setIcomment(comment);
 		i.setIcdate(writeDate);
+		
+		System.out.println(ino);
+		System.out.println(comment);
+		System.out.println(writeDate);
 		
 		InquiryCommentService ics = new InquiryCommentService();
 		
@@ -62,6 +68,7 @@ public class InquiryInsertComServlet extends HttpServlet {
 		
 		if(result > 0) {
 			response.sendRedirect("inquirySelectList.io");
+			
 		} 
 	}
 

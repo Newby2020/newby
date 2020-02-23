@@ -29,6 +29,19 @@ public class ReportService {
 		
 		return list;
 	}
+
+	public int reportInsert(Claim c) {
+		Connection con = getConnection();
+		
+		int result = rDao.reportInsert(con,c);
+		
+		if(result > 0) commit(con);
+		else rollback(con);
+		
+		close(con);
+		
+		return result;
+	}
 	
 	
 }
