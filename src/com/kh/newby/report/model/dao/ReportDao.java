@@ -62,6 +62,8 @@ public class ReportDao {
 		PreparedStatement pstmt = null;
 		ResultSet rset = null;
 				
+		// 관리자 일떄, 일반사용자일때
+		
 		String sql = prop.getProperty("reportSelectList");
 		
 		try {
@@ -101,6 +103,32 @@ public class ReportDao {
 		}
 		
 		return list;
+	}
+
+	public int reportInsert(Connection con, Claim c) {
+		int result = 0;
+		PreparedStatement pstmt = null;
+		
+		String sql = prop.getProperty("reportInsert");
+		
+		try {
+			pstmt = con.prepareStatement(sql);
+			
+//			pstmt.setString(1, c.getCmNo());
+			pstmt.setString(1, c.getCmClassNo());
+			pstmt.setString(2, c.getCmWriterNo());
+			pstmt.setString(3, c.getCmTitle());
+			pstmt.setString(4, c.getCmContent());
+			pstmt.setDate(5, c.getCmDate());
+			
+			result = pstmt.executeUpdate();
+		} catch(SQLException e) {
+			
+		}finally {
+			close(pstmt);
+		}
+		
+		return result;
 	}
 
 }
