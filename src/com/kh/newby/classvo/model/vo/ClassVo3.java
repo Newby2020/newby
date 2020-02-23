@@ -40,8 +40,6 @@ public class ClassVo3 implements Serializable {
 	private int payMileage;
 	private int paySaveMileage;
 	private int cancelClassCount;
-	private String mNo;
-	private String csNo;
 	
 	// 기본 생성자
 	public ClassVo3() {}
@@ -66,15 +64,6 @@ public class ClassVo3 implements Serializable {
 		this.payMileage = payMileage;
 		this.paySaveMileage = paySaveMileage;
 		this.cancelClassCount = cancelClassCount;
-	}
-	// 결제완료시 디비로 보내줘야될 생성자 - 재우
-	public ClassVo3(String classNo, int payMileage, int paySaveMileage, String mNo, String csNo) {
-		super();
-		this.classNo = classNo;
-		this.payMileage = payMileage;
-		this.paySaveMileage = paySaveMileage;
-		this.mNo = mNo;
-		this.csNo = csNo;
 	}
 
 	public String getClassNo() {
@@ -308,22 +297,6 @@ public class ClassVo3 implements Serializable {
 
 	public void setCancelClassCount(int cancelClassCount) {
 		this.cancelClassCount = cancelClassCount;
-	}
-
-	public String getmNo() {
-		return mNo;
-	}
-
-	public void setmNo(String mNo) {
-		this.mNo = mNo;
-	}
-
-	public String getCsNo() {
-		return csNo;
-	}
-
-	public void setCsNo(String csNo) {
-		this.csNo = csNo;
 	}
 
 	@Override

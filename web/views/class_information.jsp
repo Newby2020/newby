@@ -18,7 +18,7 @@
 <meta charset="UTF-8">
 <link rel="stylesheet" href="/semi/resources/css/class_information.css" type="text/css">
 <!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css"> -->
-<title>새로운 취미를 찾아서 NEWBY</title>
+<title>클래스 상세 페이지</title>
 </head>
 <body>
 	<!--  header  -->

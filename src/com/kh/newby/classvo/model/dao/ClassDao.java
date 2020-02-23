@@ -11,7 +11,6 @@ import java.util.ArrayList;
 import java.util.Properties;
 
 import com.kh.newby.classvo.model.vo.ClassVo;
-import com.kh.newby.classvo.model.vo.ClassVo3;
 
 public class ClassDao {
 	
@@ -155,7 +154,6 @@ public class ClassDao {
 			while(rset.next()) {
 				ClassVo cv = new ClassVo();
 				cv.setClassNo(cno);
-				cv.setCsNo(rset.getString("CS_NO"));
 				cv.setClassDate(rset.getString("CS_CLASS_DATE"));
 				cv.setClassStartTime(rset.getString("CS_STARTTIME"));
 				cv.setClassEndTime(rset.getString("CS_ENDTIME"));
@@ -170,33 +168,6 @@ public class ClassDao {
 		}
 		
 		return csList;
-	}
-
-	public int insertClassPay(Connection conn, String cno, String mno, int millage, double saveMillage,
-			String csNo) {
-		
-		int result = 0;
-		PreparedStatement pstmt = null;
-		
-		String sql = prop.getProperty("insertClassPay");
-		
-		try {
-			pstmt = conn.prepareStatement(sql);
-			pstmt.setString(1, mno);
-			pstmt.setString(2, cno);
-			pstmt.setInt(3, millage);
-			pstmt.setDouble(4, saveMillage);
-			pstmt.setString(5, csNo);
-			
-			result = pstmt.executeUpdate();
-			
-		}catch(Exception e) {
-			e.printStackTrace();
-		}finally {
-			close(pstmt);
-		}
-		
-		return result;
 	}
 
 }

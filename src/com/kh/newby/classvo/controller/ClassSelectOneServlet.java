@@ -54,7 +54,7 @@ public class ClassSelectOneServlet extends HttpServlet {
 			request.setAttribute("rList", rList);
 			request.setAttribute("csList", csList);
 		}else {
-			page = "views/common/errorPage.jsp";
+			page = "views/errorPage.jsp";
 			System.out.println("classSelectOne 서블릿 : 에러" );
 			request.setAttribute("msg", "클래스 상세페이지 불러오기 실패");
 		}

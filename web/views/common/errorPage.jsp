@@ -34,6 +34,11 @@
  
 	}
 	.innerError{
+<<<<<<< HEAD
+		position: absolute;
+		left: 36%;
+=======
+>>>>>>> branch 'master' of https://github.com/Newby2020/newby.git
 		font-size: 30px;                                                                
         color: white;
         text-align: center;
@@ -59,8 +64,7 @@
 		<div class="midError">
 			<div class="innerError">
 			<br><br><br>
-				<label>죄송합니다. 문제가 발생했습니다( <%= msg %> )</label><br>
-				<label>관리자에게 문의하세요</label>
+				<label>죄송합니다. 문제가 발생했습니다( <%= msg %> )</label>
 				<br><br>
 				<button class="errorToHome" onclick="errorToHome();">홈페이지로 이동하기</button>
 			</div>	

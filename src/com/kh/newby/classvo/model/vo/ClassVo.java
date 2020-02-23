@@ -37,7 +37,6 @@ public class ClassVo implements Serializable {
 	private String classStatus;
 	private String rejectReason;
 	private String caNo;
-	private String csNo;
 	
 	// 기본 생성자
 	public ClassVo() {}
@@ -135,7 +134,6 @@ public class ClassVo implements Serializable {
 		this.classDate = classDate;
 		this.classStartTime = classStartTime;
 		this.classEndTime = classEndTime;
-		this.csNo = csNo;
 	}
 	
 	// 관리자 페이지용 - 진영 
@@ -373,14 +371,6 @@ public class ClassVo implements Serializable {
 		this.caNo = caNo;
 	}
 	// 관리자용 클래스 생성 종료
-
-	public String getCsNo() {
-		return csNo;
-	}
-
-	public void setCsNo(String csNo) {
-		this.csNo = csNo;
-	}
 
 	@Override
 	public String toString() {

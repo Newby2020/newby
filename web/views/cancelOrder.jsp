@@ -27,7 +27,7 @@
 		        <label><b>&nbsp;&nbsp;&nbsp;결제 취소</b></label>
 		        <hr>
 		    </div>
-		    <div class="classInfo">
+<%-- 		    <div class="classInfo">
 		         <div class="pictureClass"><img class="pictureClass" src="<%=cvPsno.getClassImg() %>"></div>
 		            <div class="classDetail">
 		            <br><br>[ <%=cvPsno.getFirstCategory()%> > <%=cvPsno.getSecondCategory()%> > <%=cvPsno.getThirdCategory() %> ]  
@@ -35,7 +35,7 @@
 		            <br><br><%=cvPsno.getClassDate() %> (<%=cvPsno.getClassStartTime()%> - <%=cvPsno.getClassEndTime()%>)
 		          	</div>
 		        <div class="priceClass"><br><br><br><br>\ <%=cvPsno.getClassPrice() %>원</div>
-		    </div> 
+		    </div> --%> 
 		    <hr>
 		    <br>
 		    <div class="reasonOfCancelWrap">
@@ -54,7 +54,7 @@
 		    </div>
 		    <br><br><br>
 		    <hr>
-		    <div class="cancelOrderGuide">
+		    <!-- <div class="cancelOrderGuide">
 		        <label class="cancelOrderGuideLabel" style="margin-top: 10px;">마일리지 사용 금액 : \ <%=(cvPsno.getPayMileage() / cancelClassCount) %>원&nbsp;&nbsp;</label>
 		        <span style="line-height: 2.4em;"><br></span>
 		        <label class="cancelOrderGuideLabel">마일리지 적립 금액 : \ -<%=cvPsno.getPaySaveMileage() %>원&nbsp;&nbsp;</label>
@@ -62,7 +62,7 @@
 		        <label class="cancelOrderGuideLabel">구입 금액 : \ <%=cvPsno.getClassPrice() %>원&nbsp;&nbsp;</label><br>
 		        <hr style="width: 180px; float: right; margin-top: 10px; display: block;"><br>
 		        <label class="cancelOrderGuideLabel" style ="line-height: 1.6em;"><b>총 환불 금액 : \ <%=cvPsno.getClassPrice()-cvPsno.getPayMileage() %>원&nbsp;&nbsp;</b></label>
-		    </div>
+		    </div> -->
 		
 		    <br><br><br><br><br><br><br>
 		
