@@ -47,7 +47,7 @@
         <a href="/semi/classApplyList.ad">클래스 등록 신청</a>
 		<a href="/semi/classList.ad">개설 클래스</a>
         <a href="/semi/claimList.ad">신고</a>
-        <a href="/semi/paymentList.ad">정산</a>
+        <!-- <a href="/semi/paymentList.ad">정산</a> -->
     </div>
 
     <div class="content">
@@ -64,16 +64,20 @@
 	                    	$('#searchBtn').trigger("click");
 	                    }
 	                }); 
-                
+                   
                 	$('#searchBtn').click(function(){
-                		$.ajax({
+                		search(1);
+                	});
+                	
+    				function search(item){
+    					$.ajax({
                 			url : "/semi/serchUser.ad",
                 			type: "get",
                 			data:{
-                				searchValue : $("#search").val()
+                				searchValue : $("#search").val(),
+                				currentPage : item
                 			},
                 			success : function(data){
-                			console.log(data);
                 				// 리스트
                 				$('#listBody').children().remove();
                 				
@@ -105,69 +109,60 @@
                 					$tr.append($td5);
                 					$tr.append($td6);
                 					$tr.append($td7);
-                					console.log($tr);
+                					
                 					$('#listBody').append($tr);
-                					
-                					//페이지 에리어
-                					$('.pagingArea').empty();
-                					
-									var pi = data["pi"];
-                    				
-                    				var currentPage = pi["currentPage"];
-                    				var listCount = pi["listCount"];
-                    				var limit = pi.limit;
-                    				var maxPage = pi.maxPage;
-                    				var startPage = pi.startPage;
-                    				var endPage = pi["endPage"];
-                    				/* console.log("currentPage : " + currentPage);
-                    				console.log("listCount : " + listCount);
-                    				console.log("limit : " + limit);
-                    				console.log("maxPage : " + maxPage);
-                    				console.log("startPage : " + startPage); 
-                    				console.log("endPage : " + endPage);  */
-                    				
-                    				var $ttfBtn = $('<button onclick="/semi/classList.ad?currentPage=1">').text('<<');
-                    				var $backwardBtn = $("<button>").text('<');
-                    				var $pBtn = $("<button>").text('p');
-                    				var $forwardBtn = $("<button>").text('>');
-                    				var $tteBtn = $("<button>").text('>>');
-                    				var $tteBtn = $("<button onclick='tte()'>").text('>>');
-                    			
-                    				
-                    				var ttfUrl = "/semi/classList.ad?currentPage=1";
-                    				var backwardUrl = "/semi/classList.ad?currentPage=" + (currentPage - 1);
-                    				var pUrl = "/semi/classList.ad?currentPage=";
-                    				var forwardUrl = "/semi/classList.ad?currentPage=" + (currentPage + 1);
-                    				var tteUrl = "/semi/classList.ad?currentPage=" + maxPage;                				
-                    				console.log(ttfUrl); 
-                    				console.log(backwardUrl);
-                    				
-                    				console.log(forwardUrl);
-                    				console.log(tteUrl);
-                    				
-                    				
-                    				/* $tteBtn.attr('href',ttfUrl);
-                    				$tteBtn.attr('href',backwardUrl);
-                    				
-                    				$tteBtn.attr('href',forwardUrl);
-                    				$tteBtn.attr('href',tteUrl); */
-                    				
-                    				function tte(){
-                    					location.href=tteUrl;
-                    				}
-                    				
-                    				
-                    				$('.pagingArea').append($ttfBtn);
-                    				$('.pagingArea').append($backwardBtn);
-                    				$('.pagingArea').append($pBtn);
-                    				$('.pagingArea').append($forwardBtn);
-                    				$('.pagingArea').append($tteBtn);
                 				}
+                				
+                				//페이징 처리
+            					$('.pagingArea').empty();
+            					
+								var pi = data["pi"];
+                				var currentPage = pi["currentPage"];
+                				var listCount = pi["listCount"];
+                				var limit = pi.limit;
+                				var maxPage = pi.maxPage;
+                				var startPage = pi.startPage;
+                				var endPage = pi["endPage"];
+                				
+                				// 버튼 생성 및 삽입
+                				// '<<'
+                				var $ttfBtn = $("<button onclick='tte("+ 1 +");'>").text('<<');
+                				$('.pagingArea').append($ttfBtn);
+                				
+                				// '<'
+                				var $backwardBtn = $("<button onclick='tte("+(currentPage -1) +");'>").text('<'); 
+                				$('.pagingArea').append($backwardBtn);
+                				if(currentPage <= 1){
+                					$backwardBtn.attr("disabled","true");
+                				}
+                				
+                				// 'p'
+                				for(var p = startPage; p <= endPage; p++){
+                					if(p == currentPage){
+                						var $pBtn = $("<button disabled>").text(p);
+                					}else{
+                						var $pBtn = $("<button onclick='tte("+p+");'>").text(p);
+                					}
+                					$('.pagingArea').append($pBtn);
+                				}
+                				
+                				// '>'
+                				var $forwardBtn = $("<button onclick='tte("+(currentPage + 1) +");'>").text('>');
+                				$('.pagingArea').append($forwardBtn);
+                				if(currentPage == maxPage){
+                					$forwardBtn.attr("disabled","true");
+                				}
+                				
+                				// '>>'
+                				var $tteBtn = $("<button onclick='tte("+maxPage+");'>").text('>>');
+                				
+                				$('.pagingArea').append($tteBtn);
+                				
                 			}, error : function(){
                 				alert("검색 실패!");
                 			}
                 		});
-                	});
+    				}  
                 </script>
             </div>
             <table>

@@ -34,8 +34,8 @@ public class DeleteClassServlet extends HttpServlet {
 		int result = cs.deleteClass(cno);
 		
 		if(result > 0) {
-			response.sendRedirect("/semi/cSelHno.do");
-////			request.getRequestDispatcher("/selectList.no").forward(request, response);
+			System.out.println("클래스 삭제가 완료되었습니다.");
+			response.sendRedirect("/semi/CompleteDelete.do");
 		} else {
 			request.setAttribute("msg", "공지사항 수정 실패 !!");
 			request.getRequestDispatcher("/semi/views/common/errorPage.jsp").forward(request, response);

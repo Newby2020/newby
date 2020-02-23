@@ -49,7 +49,7 @@
 							id="magnifyingGlass"> <span id="searchDivider">|</span> <input
 							type="text"  id="searchArea"
 							placeholder="  참가하고 싶은 클래스를 검색해 보세요">
-						<button id="searchClass" onclick="searchBar();">클래스 찾기</button>
+						<button id="searchClass" onclick="searchBar();" style="cursor:pointer;">클래스 찾기</button>
 					</div>
 				</div>
 			</div>
@@ -182,8 +182,12 @@
 	 	
 	 	
 		$("#searchClass").click(function(){
+		   if($('#searchArea').val() ==""){
+			   alert('검색어를 입력해 주세요');
+		   }else{
 		   var keyword = $("#searchArea").val();
 		    location.href="/semi/searchList.ca?keyword="+keyword;
+		   }
 		});
 	 
 	 </script>

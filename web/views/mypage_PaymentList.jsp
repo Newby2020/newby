@@ -16,7 +16,7 @@
 <html lang="ko">
 <head>
     <meta charset="UTF-8">
-    <title>PaymentList</title>
+    <title>새로운 취미를 찾아서 NEWBY</title>
     <link rel="stylesheet" href="/semi/resources/css/joinModal.css">
     <link rel="stylesheet" href="/semi/resources/css/LoginModal.css">
     <link rel="stylesheet" href="/semi/resources/css/main-panel.css">

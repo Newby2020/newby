@@ -37,8 +37,9 @@
 					문의 <i id="ci22">≡</i>
 				</button>
 				<div class="dropdown-soxk">
-					<a href="/semi/inquirySelectList.io?currentPage=1">문의 목록</a> <a
-						href="customer_createInquiry.jsp">문의 작성</a>
+					<a href="/semi/inquirySelectList.io?currentPage=1">문의 목록</a> 
+					
+					<a ref="customer_createInquiry.jsp">문의 작성</a>
 				</div>
 				<a href="/semi/reportSelectList.ro">신고</a> <a href="customer_refund.jsp">이용약관</a>
 			</div>
@@ -55,7 +56,13 @@
 
 				<div id="contentsDivSize29">
 					<!-- 여기다가 너가 작업한거 넣으면 돼-->
+					
+					
+					<% if(m != null && m.getM_name().equals("관리자")){ %>
+						회원만 이용 가능합니다.<br><br><br>
+						<button onclick="location.href='../index.jsp'">메인페이지로</button>
 
+					<% } else {%>
 					<form action="<%= request.getContextPath() %>/inquiryInsert.io"
 						method="post">
 							<h5>
@@ -82,6 +89,7 @@
 						</div>
 
 					</form>
+					<% } %>
 
 				</div>
 

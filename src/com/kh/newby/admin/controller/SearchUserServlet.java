@@ -52,7 +52,7 @@ public class SearchUserServlet extends HttpServlet {
 		currentPage = 1;
 		limit = 10;
 		
-		if(request.getParameter("currentPage")!= null) {
+		if(request.getParameter("currentPage") != null) {
 			currentPage = Integer.parseInt(request.getParameter("currentPage"));
 		}
 		

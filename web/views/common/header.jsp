@@ -12,9 +12,16 @@
     <link rel="stylesheet" href="/semi/resources/css/signIn.css">
     <link rel="stylesheet" href="/semi/resources/css/LoginModal.css">
     <link rel="stylesheet" href="/semi/resources/css/header.css">
+    <link href="https://fonts.googleapis.com/css?family=Nanum+GothicNoto+Sans+KR&display=swap" rel="stylesheet">
+    
     <script src="/semi/resources/js/mainPage.js"></script>
     <script src="/semi/resources/js/jquery-3.4.1.min.js"></script>
     
+    <style>
+        *{
+            font-family: 'Noto Sans KR', sans-serif;  
+         }
+     </style>
 </head>
 <body>
 	<div class="newby-header" id="newby-header-var" style="margin-left: auto; margin-right: auto;">
