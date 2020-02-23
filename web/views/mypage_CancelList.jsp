@@ -15,12 +15,12 @@
 <html lang="ko">
 <head>
     <meta charset="UTF-8">
-    <title>PaymentList</title>
+    <title>CancelList</title>
     <link rel="stylesheet" href="/semi/resources/css/joinModal.css">
     <link rel="stylesheet" href="/semi/resources/css/LoginModal.css">
     <link rel="stylesheet" href="/semi/resources/css/main-panel.css">
     <link rel="stylesheet" href="/semi/resources/css/mypage_h&j-frame.css">
-    <link rel="stylesheet" href="/semi/resources/css/mypage_ClassSchedule.css">
+    <link rel="stylesheet" href="/semi/resources/css/mypage_cancelList.css">
     <link href="https://fonts.googleapis.com/css?family=Nanum+GothicNoto+Sans+KR&display=swap" rel="stylesheet">
     <script src="/semi/resources/jquery/jquery-3.4.1.min.js"></script>
     <script src="../MainPage/js/mainPage.js"></script>
@@ -49,10 +49,12 @@
                         <div>
                             <table>
                                 <tr align="center">
-                                  <th style="width: 100px">취소 날짜</th>
-                                  <th style="width: 400px">클래스명</th>
-                                  <th style="width: 200px;">일정<th>
-                                </tr>
+                                  <th style="width: 150px;">취소 날짜</th>
+                                  <th style="width: 300px;">클래스명</th>
+                                  <th style="width: 200px;">일정</th>
+                                  
+                                  </tr>
+                                
                                 <%for(Payment p : list){ %>
                                 <tr align="center">
                                   <td><%=p.getCancelDate() %></td>
@@ -60,6 +62,7 @@
                                   <td><%=p.getcDate() %><span id="divider">|</span><%=p.getcStartTime() %>~<%=p.getcEndTime() %>&nbsp;(<%=p.getcTime() %>시간)</td>
                                 </tr>
                                 <%} %>
+                                
                             </table>
                             <br>
 							<div>

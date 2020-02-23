@@ -23,6 +23,7 @@ for (i = 0; i < dropdown.length; i++) {
 	   }
 	}
 
+	
 // 카테고리 선택시 세부카테고리 다름 적용
 var sl1 = document.getElementById('sl1');
 var sl2 = document.getElementById('sl2');
@@ -55,6 +56,7 @@ function selectCategory2(){
     }
 }
 
+
 // 인원수 readonly 유무체크
 function oneNOneCheck(){
 	$('#MaxNum').val(1);
@@ -64,6 +66,42 @@ function oneNOneCheck(){
 function groupCheck(){
 	$('#MaxNum').prop("readonly", false).css("backgroundColor","white").select();
 }
+
+
+// 가격 세자리 수마다 자동 표시
+function markPer3digit(obj) {
+    
+    // 콤마( , )의 경우도 문자로 인식되기때문에 콤마를 따로 제거한다.
+    var deleteComma = obj.value.replace(/\,/g, "");
+
+    // 콤마( , )를 제외하고 문자가 입력되었는지를 확인한다.
+    if(isFinite(deleteComma) == false) {
+        alert("문자는 입력하실 수 없습니다.");
+        obj.value = "";
+        return false;
+    }
+   
+    // 기존에 들어가있던 콤마( , )를 제거한 이 후의 입력값에 다시 콤마( , )를 삽입한다.
+    obj.value = inputNumberWithComma(inputNumberRemoveComma(obj.value));
+}
+
+
+// 천단위 이상의 숫자에 콤마( , )를 삽입하는 함수
+function inputNumberWithComma(str) {
+
+    str = String(str);
+    return str.replace(/(\d)(?=(?:\d{3})+(?!\d))/g, "$1,");
+}
+
+
+// 콤마( , )가 들어간 값에 콤마를 제거하는 함수
+function inputNumberRemoveComma(str) {
+
+    str = String(str);
+    return str.replace(/[^\d]+/g, "");
+}
+
+
 
 // 파일 업로드 시 프리뷰
 function readURL(input) {
@@ -87,6 +125,7 @@ function readURL(input) {
 	img2.style.display="block";
 }
 
+
 // 새로고침
 function reload1(){
 	var img1 = document.getElementById('img1');
@@ -103,6 +142,7 @@ function addSchedule(){
     var div = document.getElementById('div11');
     div.innerHTML += "<br><input name='cdate' type='date' class='dataCl'>&nbsp;&nbsp;&nbsp;<input name='stime' type='time' class='dataCl'>&nbsp;&nbsp;";
 }
+
 
 // 일정 항목 추가 및 삭제
 $(function(){
@@ -143,7 +183,6 @@ function SearchAddr() {
     }).open();
 }
 
-   
 
 //수강대상글 글자수 제한
 function limitText(limitField, limitCount, limitNum) {
@@ -153,6 +192,7 @@ function limitText(limitField, limitCount, limitNum) {
        limitCount.value = limitField.value.length;
    }
 }
+
 
 // 취소 버튼 확인
 function cancelBtn(){

@@ -10,21 +10,20 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.kh.newby.category.model.service.categoryService;
-import com.kh.newby.category.model.vo.filterVo;
 import com.kh.newby.category.model.vo.categoryVo;
 import com.kh.newby.common.PageInfo;
 
 /**
- * Servlet implementation class categoryFilterServlet
+ * Servlet implementation class categorySearchServlet
  */
-@WebServlet("/filterList.ca")
-public class categoryFilterServlet extends HttpServlet {
+@WebServlet("/searchList.ca")
+public class categorySearchServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public categoryFilterServlet() {
+    public categorySearchServlet() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -34,18 +33,8 @@ public class categoryFilterServlet extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
-		
-	//카테고리 필터 서블릿
-		String fLoca = request.getParameter("fLoca");
-		String fCate = (request.getParameter("fCate")).replace("undefined", "");
-		String fType = request.getParameter("fType");
-		String  fDay = request.getParameter("fDay");
-		String amount = request.getParameter("amount");
-		String caType = request.getParameter("caType");
-		
-		filterVo ft = new filterVo(fLoca, fCate, fType, fDay, amount, caType);
-		
-		System.out.println(ft);
+		//카테고리 검색 서블릿
+		String keyword = request.getParameter("keyword");
 		
 		ArrayList<categoryVo> caList = new ArrayList<categoryVo>();
 
@@ -65,14 +54,11 @@ public class categoryFilterServlet extends HttpServlet {
 		}
 
 		// 페이징 처리
-		int listCount = cs.getFilterCount(ft);
+		int listCount = cs.getSearchCount(keyword);
 		maxPage = (int)((double)listCount/limit +0.9);
 
 		// 시작 페이지와 마지막 페이지 계산
 		startPage = ((int)((double)currentPage / limit +0.9)-1) *limit + 1;
-
-		// 1 page = 1 ~ 1
-		// 2 page = 11 ~ 20
 
 		endPage = startPage + limit -1;
 
@@ -81,21 +67,13 @@ public class categoryFilterServlet extends HttpServlet {
 			endPage = maxPage;
 		}
 
-		caList = cs.selectFilterList(ft, currentPage, limit);
+		caList = cs.selectSearchList(keyword, currentPage, limit);
 
 		String page = "";
 
 		if(caList != null) {
 
-			switch (caType) {
-			case "ca0": page = "views/category1st.jsp?caType=ca0"; break;
-			case "ca1": page = "views/category1st.jsp?caType=ca1"; break;
-			case "ca2": page = "views/category2nd.jsp?caType=ca2"; break;
-			case "ca3": page = "views/category2nd.jsp?caType=ca3"; break;
-			case "ca4": page = "views/category2nd.jsp?caType=ca4"; break;
-			case "ca5": page = "views/category2nd.jsp?caType=ca5"; break;
-			default: page = "views/common/errorPage.jsp"; break;
-			}
+			page = "views/category1st.jsp?caType=ca0"; 
 			
 			request.setAttribute("caList", caList);
 			
@@ -107,7 +85,7 @@ public class categoryFilterServlet extends HttpServlet {
 			request.setAttribute("msg", "클래스 상세페이지 불러오기 실패");
 		}
 		request.getRequestDispatcher(page).forward(request, response);
-
+		
 	}
 
 	/**

@@ -3,7 +3,6 @@
     
 <%
    ArrayList<ClassVo2> list = (ArrayList<ClassVo2>)request.getAttribute("list");
-   System.out.println(list);
 %>
 <!DOCTYPE html>
 <html lang="ko">
