@@ -47,7 +47,7 @@
         <a class="active" href="/semi/classApplyList.ad">클래스 등록 신청</a>
 		<a href="/semi/classList.ad">개설 클래스</a> 
         <a href="/semi/claimList.ad">신고</a>
-        <a href="admin_accountancy.jsp">정산</a>
+        <!-- <a href="admin_accountancy.jsp">정산</a> -->
     </div>
 
     <div class="content">
@@ -55,8 +55,68 @@
         <div style="overflow-x:auto;">
             <!-- searchBar -->
             <div class="searchBar">
-                <input type="text" placeholder="Search...">
-                <button><i class="fa fa-search"></i></button>
+                <input id="search" type="text" placeholder="Search...">
+                <button id="searchBtn"><i class="fa fa-search"></i></button>
+                <script>
+	                $('#search').keypress(function(event){
+	                    var keycode = (event.keyCode ? event.keyCode : event.which);
+	                    if(keycode == '13'){
+	                    	$('#searchBtn').trigger("click");
+	                    }
+	                }); 
+	                
+	                $("#searchBtn").click(function(){
+                		$.ajax({
+                			url  : "/semi/searchAppliedClass.ad",
+                			type : "get",
+                			data : {
+                				searchValue : $('#search').val()
+                			},
+                			success : function(data){
+                				/* console.log(data); */
+                				// 리스트
+                				$('#listBody').children().remove();
+                				
+                				/* var list = data["list"]; */
+                				var list = data.list;
+                				console.log(list)
+                				var pi = data["pi"];
+                				console.log(pi)
+                				
+                				for(var i = 0; i < list.length ; i++){
+                					var $tr = $("<tr>"); 
+                					
+                					var $td1 = $("<td>");
+                					var $td2 = $("<td>");
+                					var $td3 = $("<td>");
+                					var $td4 = $("<td>");
+                					var $td5 = $("<td>");
+                					
+                					$td1.text(list[i]["classEnrollDate"]);
+                					$td2.text(list[i]["classNo"]);
+                					$td3.text(list[i]["hostNo"]);
+                					$td4.text(list[i]["classStatus"]);
+                					/* $td5.text(list[i]["m_enrollDate"]); */
+                					
+                					$tr.append($td1);
+                					$tr.append($td2);
+                					$tr.append($td3);
+                					$tr.append($td4);
+                					/* $tr.append($td5); */
+
+                					console.log($tr);
+                					$('#listBody').append($tr);
+                					
+                					//페이지 에리어
+                					$('.pagingArea').empty();
+                				}
+                			}, error : function(){
+                				alert("검색 실패!");
+                			}
+                		
+                		})
+                	})
+                </script>
             </div>
             <table>
                 <tr>
@@ -66,6 +126,7 @@
                     <th>상태</th>
                     <th>상세정보</th>
                 </tr>
+                <tbody id="listBody">
                 <% for(ClassVo c : list){ %>               
                 <tr>
                     <td><%= c.getClassEnrollDate() %></td>
@@ -77,6 +138,7 @@
                     </td>
                 </tr>
                 <% } %>
+                </tbody>
             </table>
             <script>
           		 $('.detailBtn').click(function(){

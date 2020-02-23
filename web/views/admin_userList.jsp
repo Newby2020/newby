@@ -47,7 +47,7 @@
         <a href="/semi/classApplyList.ad">클래스 등록 신청</a>
 		<a href="/semi/classList.ad">개설 클래스</a>
         <a href="/semi/claimList.ad">신고</a>
-        <a href="/semi/paymentList.ad">정산</a>
+        <!-- <a href="/semi/paymentList.ad">정산</a> -->
     </div>
 
     <div class="content">
@@ -58,20 +58,111 @@
                 <input id="search" type="text" placeholder="Search..." >
                 <button id="searchBtn"><i class="fa fa-search"></i></button>
                 <script>
+	                $('#search').keypress(function(event){
+	                    var keycode = (event.keyCode ? event.keyCode : event.which);
+	                    if(keycode == '13'){
+	                    	$('#searchBtn').trigger("click");
+	                    }
+	                }); 
+                   
                 	$('#searchBtn').click(function(){
-                		$.ajax({
+                		search(1);
+                	});
+                	
+    				function search(item){
+    					$.ajax({
                 			url : "/semi/serchUser.ad",
                 			type: "get",
                 			data:{
-                				searchValue : $("#search").val()
+                				searchValue : $("#search").val(),
+                				currentPage : item
                 			},
                 			success : function(data){
-                				/* alert("검색 성공!"); */
+                				// 리스트
+                				$('#listBody').children().remove();
+                				
+                				var list = data["list"];
+                				
+                				for(var i = 0; i < list.length; i++){
+                					var $tr = $("<tr>"); 
+                					
+                					var $td1 = $("<td>");
+                					var $td2 = $("<td>");
+                					var $td3 = $("<td>");
+                					var $td4 = $("<td>");
+                					var $td5 = $("<td>");
+                					var $td6 = $("<td>");
+                					var $td7 = $("<td>");
+                					
+                					$td1.text(list[i]["m_no"]);
+                					$td2.text(list[i]["m_name"]);
+                					$td3.text(list[i]["m_id"]);
+                					$td4.text(list[i]["m_phone"]);
+                					$td5.text(list[i]["m_enrollDate"]);
+                					$td6.text(list[i]["m_mileage"]);
+                					$td7.text(list[i]["m_no"]);
+                					
+                					$tr.append($td1);
+                					$tr.append($td2);
+                					$tr.append($td3);
+                					$tr.append($td4);
+                					$tr.append($td5);
+                					$tr.append($td6);
+                					$tr.append($td7);
+                					
+                					$('#listBody').append($tr);
+                				}
+                				
+                				//페이징 처리
+            					$('.pagingArea').empty();
+            					
+								var pi = data["pi"];
+                				var currentPage = pi["currentPage"];
+                				var listCount = pi["listCount"];
+                				var limit = pi.limit;
+                				var maxPage = pi.maxPage;
+                				var startPage = pi.startPage;
+                				var endPage = pi["endPage"];
+                				
+                				// 버튼 생성 및 삽입
+                				// '<<'
+                				var $ttfBtn = $("<button onclick='tte("+ 1 +");'>").text('<<');
+                				$('.pagingArea').append($ttfBtn);
+                				
+                				// '<'
+                				var $backwardBtn = $("<button onclick='tte("+(currentPage -1) +");'>").text('<'); 
+                				$('.pagingArea').append($backwardBtn);
+                				if(currentPage <= 1){
+                					$backwardBtn.attr("disabled","true");
+                				}
+                				
+                				// 'p'
+                				for(var p = startPage; p <= endPage; p++){
+                					if(p == currentPage){
+                						var $pBtn = $("<button disabled>").text(p);
+                					}else{
+                						var $pBtn = $("<button onclick='tte("+p+");'>").text(p);
+                					}
+                					$('.pagingArea').append($pBtn);
+                				}
+                				
+                				// '>'
+                				var $forwardBtn = $("<button onclick='tte("+(currentPage + 1) +");'>").text('>');
+                				$('.pagingArea').append($forwardBtn);
+                				if(currentPage == maxPage){
+                					$forwardBtn.attr("disabled","true");
+                				}
+                				
+                				// '>>'
+                				var $tteBtn = $("<button onclick='tte("+maxPage+");'>").text('>>');
+                				
+                				$('.pagingArea').append($tteBtn);
+                				
                 			}, error : function(){
                 				alert("검색 실패!");
                 			}
                 		});
-                	});
+    				}  
                 </script>
             </div>
             <table>
@@ -84,6 +175,7 @@
                     <th>마일리지</th>
                     <th>호스트 번호</th>
                 </tr>
+                <tbody id="listBody">
                 <% for(Member m : list) {%>
                 <tr>
                     <td><%= m.getM_no() %></td>
@@ -95,6 +187,7 @@
                     <td><%= m.getH_no() %></td>
                 </tr>
                 <% } %>
+                </tbody>
             </table>
         </div>
      	<%-- 페이지 처리 --%>

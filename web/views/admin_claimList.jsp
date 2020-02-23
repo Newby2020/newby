@@ -51,7 +51,7 @@
         <a href="/semi/classApplyList.ad">클래스 등록 신청</a>
 		<a href="/semi/classList.ad">개설 클래스</a>
         <a class="active"  href="/semi/claimList.ad">신고</a>
-        <a href="/semi/paymentList.ad">정산</a>
+        <!-- <a href="/semi/paymentList.ad">정산</a> -->
     </div>
     <div class="content">
         <h2>신고 리스트</h2>
@@ -59,8 +59,75 @@
         <div style="overflow-x:auto;">
             <!-- searchBar -->
             <div class="searchBar">
-                <input type="text" placeholder="Search...">
-                <button><i class="fa fa-search"></i></button>
+                <input id="search" type="text" placeholder="Search..." >
+                <button id="searchBtn"><i class="fa fa-search"></i></button>
+                <script>
+	                $('#search').keypress(function(event){
+	                    var keycode = (event.keyCode ? event.keyCode : event.which);
+	                    if(keycode == '13'){
+	                    	$('#searchBtn').trigger("click");
+	                    }
+	                }); 
+                
+                	$('#searchBtn').click(function(){
+                		$.ajax({
+                			url : "/semi/serchClaim.ad",
+                			type: "get",
+                			data:{
+                				searchValue : $("#search").val()
+                			},
+                			success : function(data){
+                			console.log(data);
+                				//	 리스트
+                				$('#listBody').children().remove();
+                				
+                				var list = data["list"];
+                				console.log("list : "+ list);
+                				
+                				for(var i = 0; i < list.length; i++){
+                					var $tr = $("<tr>"); 
+                					
+                					var $td1 = $("<td>");
+                					var $td2 = $("<td>");
+                					var $td3 = $("<td>");
+                					var $td4 = $("<td>");
+                					var $td5 = $("<td>");
+                					var $td6 = $("<td>");
+                					var $td7 = $("<td>");
+                					var $td8 = $("<td>");
+                					var $td9 = $("<td>");
+                					
+                					$td1.text(list[i]["cmDate"]);
+                					$td2.text(list[i]["cmNo"]);
+                					$td3.text(list[i]["cmWriterNo"]);
+                					$td4.text(list[i]["cmTitle"]);
+                					$td5.text(list[i]["status"]);
+                					$td6.text(list[i]["handledDate"]);
+                					$td7.text(list[i]["suspensionPeriod"]);
+                					$td8.text(list[i]["suspensionStartDate"]);
+                					$td9.text(list[i]["suspensionEndDate"]);
+                					
+                					$tr.append($td1);
+                					$tr.append($td2);
+                					$tr.append($td3);
+                					$tr.append($td4);
+                					$tr.append($td5);
+                					$tr.append($td6);
+                					$tr.append($td7);
+                					$tr.append($td8);
+                					$tr.append($td9);
+                					/* console.log($tr); */
+                					$('#listBody').append($tr);
+                					
+                					//페이지 에리어
+                					$('.pagingArea').empty();
+                				}
+                			}, error : function(){
+                				alert("검색 실패!");
+                			}
+                		});
+                	});
+                </script>
             </div>
             <table>
                 <tr>
@@ -74,6 +141,7 @@
                     <th>정지 시작일</th>
                     <th>정지 만료일</th>
                 </tr>
+                <tbody id="listBody">
                 <% for(Claim c : list) {%>
                 <tr>
                     <td><%= c.getCmDate() %></td>
@@ -117,6 +185,7 @@
                     </td>
                 </tr>
                 <% } %>
+                </tbody>
             </table>
         </div>
          <%-- 페이지 처리 --%>

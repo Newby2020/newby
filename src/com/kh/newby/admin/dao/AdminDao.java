@@ -148,6 +148,12 @@ public class AdminDao {
 		try {
 			pstmt = con.prepareStatement(sql);
 			
+			int startRow = (currentPage - 1) * limit + 1;
+			int endRow = startRow + limit - 1;
+			System.out.println(startRow);
+			System.out.println(endRow);
+		
+			
 			pstmt.setString(1,searchValue);
 			pstmt.setString(2,searchValue);
 			pstmt.setString(3,searchValue);
@@ -155,8 +161,12 @@ public class AdminDao {
 			pstmt.setString(5,searchValue);
 			pstmt.setString(6,searchValue);
 			pstmt.setString(7,searchValue);
+			pstmt.setInt(8,endRow);
+			pstmt.setInt(9,startRow);
 			
 			rset = pstmt.executeQuery();
+			
+			list = new ArrayList<Member>();
 			
 			while(rset.next()) {
 				Member m = new Member();
@@ -291,7 +301,74 @@ public class AdminDao {
 		return result;
 	}	
 
+	public int getSearchedAppliedClassListCount(Connection con, String searchValue) {
+		int listCount = 0;
+		PreparedStatement pstmt = null;
+		ResultSet rset = null;
+		
+		String sql = prop.getProperty("serchedApplyListCount");
+		
+		try {
+			pstmt = con.prepareStatement(sql);
+			
+			pstmt.setString(1,searchValue);
+			pstmt.setString(2,searchValue);
+			pstmt.setString(3,searchValue);
+			pstmt.setString(4,searchValue);
+			
+			rset = pstmt.executeQuery();
+			
+			if(rset.next()) {
+				listCount = rset.getInt(1);
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(rset);
+			close(pstmt);
+		}
+		return listCount;
+	}
 
+	public ArrayList<ClassVo> searchAppliedClass(Connection con, int currentPage, int limit, String searchValue) {
+		ArrayList<ClassVo> list = null;
+		
+		PreparedStatement pstmt = null;
+		ResultSet rset = null;
+		
+		String sql = prop.getProperty("serchAppliedClass");
+		
+		try {
+			pstmt = con.prepareStatement(sql);
+			
+			pstmt.setString(1,searchValue);
+			pstmt.setString(2,searchValue);
+			pstmt.setString(3,searchValue);
+			pstmt.setString(4,searchValue);
+			
+			rset = pstmt.executeQuery();
+			
+			list = new ArrayList<ClassVo>();
+			
+			while(rset.next()) {
+				ClassVo c = new ClassVo();
+				
+				c.setClassEnrollDate(rset.getDate("CLASS_ENROLLDATE"));
+				c.setClassNo(rset.getString("CLASS_NO"));
+				c.setClassHostNo(rset.getString("CLASS_HOST_NO"));
+				c.setClassStatus(rset.getString("CLASS_STATUS"));
+				
+				list.add(c);
+			}
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(pstmt);
+			close(rset);
+		}		
+		return list;
+	}
 //-------------------------- ClassList -----------------------------//	
 	public int getClassListCount(Connection con) {
 		int listCount = 0;
@@ -406,6 +483,84 @@ public class AdminDao {
 		return c;
 	}	
 
+	public int getSearchedClassListCount(Connection con, String searchValue) {
+		int listCount = 0;
+		PreparedStatement pstmt = null;
+		ResultSet rset = null;
+		
+		String sql = prop.getProperty("serchedClassListCount");
+		
+		try {
+			pstmt = con.prepareStatement(sql);
+			
+			pstmt.setString(1,searchValue);
+			pstmt.setString(2,searchValue);
+			pstmt.setString(3,searchValue);
+			pstmt.setString(4,searchValue);
+			pstmt.setString(5,searchValue);
+			pstmt.setString(6,searchValue);
+			pstmt.setString(7,searchValue);
+			
+			rset = pstmt.executeQuery();
+			
+			if(rset.next()) {
+				listCount = rset.getInt(1);
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(rset);
+			close(pstmt);
+		}
+		return listCount;
+	}
+
+	public ArrayList<ClassVo> searchClass(Connection con, int currentPage, int limit, String searchValue) {
+		ArrayList<ClassVo> list = null;
+		
+		PreparedStatement pstmt = null;
+		ResultSet rset = null;
+		
+		String sql = prop.getProperty("serchClass");
+		
+		try {
+			pstmt = con.prepareStatement(sql);
+			
+			pstmt.setString(1,searchValue);
+			pstmt.setString(2,searchValue);
+			pstmt.setString(3,searchValue);
+			pstmt.setString(4,searchValue);
+			pstmt.setString(5,searchValue);
+			pstmt.setString(6,searchValue);
+			pstmt.setString(7,searchValue);
+			
+			
+			rset = pstmt.executeQuery();
+			
+			list = new ArrayList<ClassVo>();
+			
+			while(rset.next()) {
+				ClassVo c = new ClassVo();
+				
+				c.setClassNo(rset.getString("CLASS_NO"));
+				c.setClassHostNo(rset.getString("CLASS_HOST_NO"));
+				c.setClassType(rset.getString("CLASS_TYPE"));
+				c.setFirstCategory(rset.getString("FIRST_CATEGORY"));
+				c.setSecondCategory(rset.getString("SECOND_CATEGORY"));
+				c.setThirdCategory(rset.getString("THIRD_CATEGORY"));
+				c.setClassTarget(rset.getString("CLASS_TARGET"));
+				
+				list.add(c);
+			}
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(pstmt);
+			close(rset);
+		}		
+		return list;
+	}	
 //-------------------------- ClaimList -----------------------------//
 	
 	public int getClaimListCount(Connection con) {
@@ -484,6 +639,95 @@ public class AdminDao {
 	}
 
 	
+	public int getClaimListCount(Connection con, String searchValue) {
+		int listCount = 0;
+		PreparedStatement pstmt = null;
+		ResultSet rset = null;
+		
+		String sql = prop.getProperty("serchedClaimListCount");
+		
+		try {
+			pstmt = con.prepareStatement(sql);
+			
+			pstmt.setString(1,searchValue);
+			pstmt.setString(2,searchValue);
+			pstmt.setString(3,searchValue);
+			pstmt.setString(4,searchValue);
+			pstmt.setString(5,searchValue);
+			pstmt.setString(6,searchValue);
+			pstmt.setString(7,searchValue);
+			pstmt.setString(8,searchValue);
+			pstmt.setString(9,searchValue);
+			
+			rset = pstmt.executeQuery();
+			
+			if(rset.next()) {
+				listCount = rset.getInt(1);
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(rset);
+			close(pstmt);
+		}
+		return listCount;
+	}
+
+	public ArrayList<Claim> searchClaim(Connection con, int currentPage, int limit, String searchValue) {
+		ArrayList<Claim> list = null;
+		
+		PreparedStatement pstmt = null;
+		ResultSet rset = null;
+		
+		String sql = prop.getProperty("serchClaim");
+		
+		try {
+			pstmt = con.prepareStatement(sql);		
+			
+			pstmt.setString(1,searchValue);
+			pstmt.setString(2,searchValue);
+			pstmt.setString(3,searchValue);
+			pstmt.setString(4,searchValue);
+			pstmt.setString(5,searchValue);
+			pstmt.setString(6,searchValue);
+			pstmt.setString(7,searchValue);
+			pstmt.setString(8,searchValue);
+			pstmt.setString(9,searchValue);
+			
+			
+			rset = pstmt.executeQuery();
+			
+			list = new ArrayList<Claim>();
+			
+			while(rset.next()) {
+				Claim c = new Claim();
+				
+				c.setCmDate(rset.getDate("CLAIM_DATE"));
+				c.setCmNo(rset.getString("CLAIM_NO"));
+				c.setCmWriterNo(rset.getString("CLAIM_WRITER_NO"));
+				c.setCmTitle(rset.getString("CLAIM_TITLE"));
+				c.setStatus(rset.getString("CLAIM_STATUS"));
+				c.setSuspensionPeriod(rset.getInt("SUSPENSION_PERIOD"));
+				c.setHandledDate(rset.getDate("HANDLED_DATE"));
+				c.setSuspensionStartDate(rset.getDate("SUSPENSION_START_DATE"));
+				c.setSuspensionEndDate(rset.getDate("SUSPENSION_END_DATE"));
+				
+				list.add(c);
+			}
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(pstmt);
+			close(rset);
+		}		
+		return list;
+	}
+
+
+
+
+
 
 
 }

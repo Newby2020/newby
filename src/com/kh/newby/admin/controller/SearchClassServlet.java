@@ -13,20 +13,20 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.google.gson.Gson;
 import com.kh.newby.admin.service.AdminService;
+import com.kh.newby.classvo.model.vo.ClassVo;
 import com.kh.newby.common.PageInfo;
-import com.kh.newby.member.model.vo.Member;
 
 /**
- * Servlet implementation class SearchUserServlet
+ * Servlet implementation class SearchAppliedClassServlet
  */
-@WebServlet("/serchUser.ad")
-public class SearchUserServlet extends HttpServlet {
+@WebServlet("/searchClass.ad")
+public class SearchClassServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public SearchUserServlet() {
+    public SearchClassServlet() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -40,23 +40,23 @@ public class SearchUserServlet extends HttpServlet {
 		String searchValue = request.getParameter("searchValue");
 		System.out.println("검색 값 : " + searchValue);
 		
-		ArrayList<Member> list = null;
+		ArrayList<ClassVo> list = null;
 		AdminService as = new AdminService();
-		
 		int startPage;
 		int endPage;
 		int maxPage;
 		int currentPage;
 		int limit;
+		int listCount;
 		
 		currentPage = 1;
 		limit = 10;
 		
-		if(request.getParameter("currentPage") != null) {
+		if(request.getParameter("currentPage")!= null) {
 			currentPage = Integer.parseInt(request.getParameter("currentPage"));
 		}
 		
-		int listCount = as.getSearchedUserListCount(searchValue);
+		listCount = as.getSearchedClassListCount(searchValue);
 		System.out.println("검색된 행의 수 : " + listCount);
 		
 		maxPage = (int)((double)listCount / limit + 0.9);
@@ -67,7 +67,7 @@ public class SearchUserServlet extends HttpServlet {
 			endPage = maxPage;
 		}
 		
-		list = as.searchUser(currentPage, limit, searchValue);
+		list = as.searchClass(currentPage, limit, searchValue);
 		System.out.println("검색된 내용 : " + list);
 		
 		PageInfo pi = new PageInfo(currentPage, listCount, limit, maxPage, startPage, endPage);
@@ -78,6 +78,7 @@ public class SearchUserServlet extends HttpServlet {
 		searchMap.put("pi", pi);
 		
 		new Gson().toJson(searchMap, response.getWriter());
+		
 	}
 
 	/**

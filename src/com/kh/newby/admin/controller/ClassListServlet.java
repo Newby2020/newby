@@ -73,7 +73,6 @@ public class ClassListServlet extends HttpServlet {
 			page = "views/admin_classList.jsp";
 			request.setAttribute("list", list);
 			
-			
 			PageInfo pi = new PageInfo(currentPage, listCount, limit, maxPage, startPage, endPage);
 			request.setAttribute("pi", pi);
 		}else {

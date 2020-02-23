@@ -122,9 +122,6 @@ $(function(){
 		   $("#fType").val($(".high_light_6").text().length);
 	   });
 	   
-	   $(".main_sub_caca3").click(function(){
-		   $("#fSort").val($(".high_light_6").text().length);
-	   });
 	   
    });
 
@@ -140,5 +137,6 @@ $(function(){
        });
    });
    
+
    
    

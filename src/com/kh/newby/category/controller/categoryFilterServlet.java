@@ -42,8 +42,9 @@ public class categoryFilterServlet extends HttpServlet {
 		String  fDay = request.getParameter("fDay");
 		String amount = request.getParameter("amount");
 		String caType = request.getParameter("caType");
+		String fSort = request.getParameter("fSort");
 		
-		filterVo ft = new filterVo(fLoca, fCate, fType, fDay, amount, caType);
+		filterVo ft = new filterVo(fLoca, fCate, fType, fDay, amount, caType, fSort);
 		
 		System.out.println(ft);
 		

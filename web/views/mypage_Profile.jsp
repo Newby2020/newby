@@ -17,7 +17,7 @@
 <html lang="ko">
 <head>
 <meta charset="UTF-8">
-<title>Profile</title>
+<title>새로운 취미를 찾아서 NEWBY</title>
 <link rel="stylesheet" href="/semi/resources/css/joinModal.css">
 <link rel="stylesheet" href="/semi/resources/css/LoginModal.css">
 <link rel="stylesheet" href="/semi/resources/css/main-panel.css">
@@ -64,8 +64,9 @@
 								<td class="tline2">
 									<input id="mno" type="hidden" value="<%=mno %>">
 									<input id="exNick" type="hidden" value="<%=nick %>">
-									<input id="nick" name="nick" class="input13" placeholder="" value="<%=nick%>">&nbsp;&nbsp;&nbsp;&nbsp;
-									<input id="nickBtn" class="modibtn1cw" type="button" value="수정하기">
+									<input id="nick" name="nick" class="input13" placeholder="" value="<%=nick%>" maxlength="8">&nbsp;&nbsp;&nbsp;&nbsp;
+									<input id="nickBtn" class="modibtn1cw" type="button" value="수정하기">&nbsp;
+									<small>특수문자 제외한 2~8자리</small>
 								</td>
 							</tr>
 							<tr>
@@ -138,7 +139,7 @@
 										<input id="tel2" name="phone" maxlength="4" placeholder="" value="<%=t2%>">&nbsp;-&nbsp;
 										<input id="tel3" name="phone" maxlength="4" placeholder="" value="<%=t3%>">&nbsp;&nbsp;&nbsp;&nbsp;
 										<input id="telBtn" class="modibtn1cw" type="button" value="수정하기">
-									</td>								
+									</td>
 								</div>
 							</tr>
 						</table>

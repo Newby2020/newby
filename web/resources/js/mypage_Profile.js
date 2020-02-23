@@ -27,11 +27,8 @@ $('#nickBtn').click(function(){
 	
 	if(confirm("닉네임을 수정하시겠습니까?")){
 		if(nick.val()!=""){
-			
 			if(exNick.val()!=nick.val()){
-				
 				var result = 0;
-				
 				$.ajax({
 					url : "/semi/checkNick.do",
 					type : "get",
@@ -39,7 +36,6 @@ $('#nickBtn').click(function(){
 						nick : $('#nick').val(),
 					}, success(data){
 						result = data;
-						alert(result);
 						if(result==1){
 							alert("중복되는 닉네임입니다. 다시 입력해주세요.");
 							nick.select();
@@ -64,9 +60,6 @@ $('#nickBtn').click(function(){
 						alert("중복검사 전송 실패 !")
 					}
 				});
-				
-				
-				
 			} else {
 				alert("기존 닉네임과 동일하여 수정할 수 없습니다.");
 				nick.select();
@@ -85,8 +78,7 @@ $('#pwdBtn').click(function(){
 	var exPwd2 = $('#exPwd2');
 	var Pwd1 = $('#newPwd1');
 	var Pwd2 = $('#newPwd2');
-	var regular = /^.*(?=.{6,20})(?=.*[0-9])(?=.*[a-zA-Z]).*$/;
-
+//	var regular = /^.*(?=.{6,20})(?=.*[0-9])(?=.*[a-zA-Z]).*$/;
 	
 	function chk(re, ele){
         if(re.test(ele.value)){ 
@@ -94,18 +86,15 @@ $('#pwdBtn').click(function(){
         } else {
         	return false;
         }
-        
     }
 	
 	//비밀번호 영어,숫자 포함 6~20자
-	
-	
 		if(exPwd2.val()!=""){
 			if(Pwd1.val()!=""){
 				if(Pwd2.val()!=""){
 					if(exPwd1.val() == exPwd2.val()){
 						if(Pwd1.val() == Pwd2.val()){
-							if(chk(regular,chk)){
+//							if(chk(regular,chk)){
 								// 작업 들어가야할부분
 								$.ajax({
 									url:"/semi/modiPwd.do",
@@ -120,9 +109,9 @@ $('#pwdBtn').click(function(){
 										alert("비밀번호 수정 전송 실패!");
 									}
 								});
-							} else {
-								alert("비밀번호는 영문,숫자 포함 6~20자리로 입력해주세요.");
-							}
+//							} else {
+//								alert("비밀번호는 영문,숫자 포함 6~20자리로 입력해주세요.");
+//							}
 						} else {			
 							alert("새로운 비밀번호와 비밀번호 확인이 불일치합니다. 다시 입력해주세요.");
 							Pwd1.select();
@@ -144,11 +133,6 @@ $('#pwdBtn').click(function(){
 			alert("기존의 비밀번호가 입력되지 않으셨습니다. 입력해주세요.");
 			exPwd2.focus();
 		}
-
-	
-	
-	
-	
 });
 
 
@@ -166,27 +150,37 @@ $('#telBtn').click(function(){
 	var exTel2=$('#exTel2').val();
 	var exTel3=$('#exTel3').val();
 	var exTel= exTel1+exTel2+exTel3;
-// alert(exTel);
-// alert(tel);
 	if(confirm("휴대폰 번호를 수정하시겠습니까?")){
 		if(tel != ""){
 			if(tel!=exTel){
-				$.ajax({
-					url :"/semi/modiPhone.do",
-					type:"get",
-					data:{
-						tel : tel,
-						mno : $('#mno').val()
-					},
-					success: function(data){
-						$('tel1').value(data.substr(1,3));
-						$('tel2').value(data.substr(4,4));
-						$('tel3').value(data.substr(8,4));
-						alert("휴대폰 번호 수정이 완료되었습니다.");
-					}, error:function(){
-						alert("전송 실패!");
+				if(tel1.length>2){
+					if(tel2.length>3){
+						if(tel3.length>3){
+							$.ajax({
+								url :"/semi/modiPhone.do",
+								type:"get",
+								data:{
+									tel : tel,
+									mno : $('#mno').val()
+								},
+								success: function(data){
+									alert("휴대폰 번호 수정이 완료되었습니다.");
+								}, error:function(){
+									alert("전송 실패!");
+								}
+							});
+						} else {
+							alert("세번째 자리수는 네자리수여야 합니다. 다시 입력해주세요.");
+							$('#tel3').select();
+						}
+					} else {
+						alert("두번째 자리수는 네자리수여야 합니다. 다시 입력해주세요.");
+						$('#tel2').select();
 					}
-				});
+				} else {
+					alert("첫번째 자리수는 세자리수여야 합니다. 다시 입력해주세요.");
+					$('#tel1').select();
+				}
 				
 			} else {
 				alert("기존 휴대폰 번호와 동일하여 수정할 수 없습니다.");
