@@ -148,6 +148,12 @@ public class AdminDao {
 		try {
 			pstmt = con.prepareStatement(sql);
 			
+			int startRow = (currentPage - 1) * limit + 1;
+			int endRow = startRow + limit - 1;
+			System.out.println(startRow);
+			System.out.println(endRow);
+		
+			
 			pstmt.setString(1,searchValue);
 			pstmt.setString(2,searchValue);
 			pstmt.setString(3,searchValue);
@@ -155,6 +161,8 @@ public class AdminDao {
 			pstmt.setString(5,searchValue);
 			pstmt.setString(6,searchValue);
 			pstmt.setString(7,searchValue);
+			pstmt.setInt(8,endRow);
+			pstmt.setInt(9,startRow);
 			
 			rset = pstmt.executeQuery();
 			
@@ -674,7 +682,7 @@ public class AdminDao {
 		String sql = prop.getProperty("serchClaim");
 		
 		try {
-			pstmt = con.prepareStatement(sql);
+			pstmt = con.prepareStatement(sql);		
 			
 			pstmt.setString(1,searchValue);
 			pstmt.setString(2,searchValue);
