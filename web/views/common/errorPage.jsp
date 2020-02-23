@@ -49,6 +49,9 @@
 	    font-size: 15px;
 	    border-radius: 5px;
 }
+.errorToHome{
+	cursor:pointer;
+}
 </style>
 </head>
 <body id='errorBody'>
@@ -56,11 +59,17 @@
 		<div class="midError">
 			<div class="innerError">
 			<br><br><br>
-				<label>죄송합니다. 문제가 발생했습니다( <%-- <%=e.getMessage() %> --%> )</label>
+				<label>죄송합니다. 문제가 발생했습니다( <%= msg %> )</label><br>
+				<label>관리자에게 문의하세요</label>
 				<br><br>
-				<button class="errorToHome">홈페이지로 이동하기</button>
+				<button class="errorToHome" onclick="errorToHome();">홈페이지로 이동하기</button>
 			</div>	
 		</div>	
 	</div>
+	<script>
+		function errorToHome(){
+			location.href="/semi/index.jsp";
+		}
+	</script>
 </body>
 </html>

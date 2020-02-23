@@ -1,7 +1,6 @@
 package com.kh.newby.pay.controller;
 
 import java.io.IOException;
-import java.util.ArrayList;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -10,19 +9,19 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.kh.newby.classvo.model.service.ClassService;
-import com.kh.newby.classvo.model.vo.ClassVo;
+import com.kh.newby.classvo.model.vo.ClassVo3;
 
 /**
- * Servlet implementation class classPaymentServlet
+ * Servlet implementation class classPaySuccessServlet
  */
-@WebServlet("/classPay.cp")
-public class classPaymentServlet extends HttpServlet {
+@WebServlet("/paySuccess.cp")
+public class classPaySuccessServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public classPaymentServlet() {
+    public classPaySuccessServlet() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -32,22 +31,35 @@ public class classPaymentServlet extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String cno = request.getParameter("cno");
-		ClassService sc = new ClassService();
-		// 결제를 위한 클래스 객체 가져오기
-		ClassVo cv = sc.classPay(cno);
-		// 결제를 위한 클래스 일정 불러오기
-		ArrayList<ClassVo> csList = sc.classPayScheduleList(cno);
+		String mno = request.getParameter("mno");
+		int millage = Integer.parseInt(request.getParameter("millage"));
+		double saveMillage = Double.parseDouble(request.getParameter("saveMillage"));
+		String csNo = request.getParameter("csNo");
+		
+		// 받은 값 디비에 저장하기
+		int result = new ClassService().insertClassPay(cno, mno, millage, saveMillage, csNo);
+		
 		String page = "";
-		if(cv != null) {
-			page = "views/class_register.jsp";
-			request.setAttribute("classVo", cv);
-			request.setAttribute("csList", csList);
+		if(result > 0) {
+			page = "views/paySuccess.jsp";
+			request.setAttribute("cno", cno);
+			request.setAttribute("mno", mno);
+			request.setAttribute("millage", millage);
+			request.setAttribute("saveMillage", saveMillage);
+			request.setAttribute("csNo", csNo);
 		}else {
-			page = "views/errorPage.jsp";
-			System.out.println("결제페이지 불러오기 실패");
-			request.setAttribute("msg", "결제페이지 불러오기 실패");
+			page = "views/common/errorPage.jsp";
+			request.setAttribute("msg", "결제 완료 실패");
 		}
+		
 		request.getRequestDispatcher(page).forward(request, response);
+		
+		/*System.out.println(millage);
+		System.out.println(saveMillage);
+		System.out.println(mno);
+		System.out.println(cno);
+		System.out.println(csNo);*/
+		
 	}
 
 	/**

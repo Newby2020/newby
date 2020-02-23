@@ -69,9 +69,9 @@ public class categoryDao {
 			rset = pstmt.executeQuery();
 			
 			caList = new ArrayList<categoryVo>();
-
+			System.out.println("33333333333333333");
 			while (rset.next()) {
-				
+				System.out.println("4444444444444444");
 				categoryVo cv = new categoryVo();
 				
 				cv.setClassNo(rset.getString("CLASS_NO"));

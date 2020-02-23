@@ -7,6 +7,7 @@ import java.util.ArrayList;
 
 import com.kh.newby.classvo.model.dao.ClassDao;
 import com.kh.newby.classvo.model.vo.ClassVo;
+import com.kh.newby.classvo.model.vo.ClassVo3;
 
 public class ClassService {
 	
@@ -54,5 +55,19 @@ public class ClassService {
 		close(conn);
 		
 		return csList;
+	}
+
+	public int insertClassPay(String cno, String mno, int millage, double saveMillage, String csNo) {
+		Connection conn = getConnection();
+		int result = 0;
+		
+		result = cDao.insertClassPay(conn, cno, mno, millage, saveMillage, csNo);
+		
+		if(result >0) commit(conn);
+		else rollback(conn);
+		
+		close(conn);
+		
+		return result;
 	}
 }
