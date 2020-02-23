@@ -148,7 +148,7 @@ function addSchedule(){
 $(function(){
 	$(document).on('click','#ss',function(){
 		$('#div11')
-		.append('<div><input name="cdate" type="date" class="dataCl">&nbsp;&nbsp;<input name="stime" type="time" class="dataCl">&nbsp;&nbsp;<img id="delImg" class="item1" src="/semi/resources/images/deleteImg.png" alt="xIcon"></div>');
+		.append('<div><input name="cdate" type="date" class="dataCl">&nbsp;&nbsp;<input name="stime" type="time" class="dataCl">&nbsp;&nbsp;<img id="delImg" class="item1" src="/semi/resources/images/deleteImg.png" alt="xIcon"></div>');       
 	});
 	
 	$(document).on('click','.item1',function(){
