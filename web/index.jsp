@@ -9,11 +9,18 @@
 <link rel="stylesheet" href="/semi/resources/css/main-category.css">
 <link rel="stylesheet" href="/semi/resources/css/main-panel.css">
 <link rel="stylesheet" href="/semi/resources/css/footer.css">
+<link href="https://fonts.googleapis.com/css?family=Nanum+GothicNoto+Sans+KR&display=swap" rel="stylesheet">
 
 <script src="/semi/resources/js/indexPage-category.js"></script>
 <script src="/semi/resources/js/mainIndex.js"></script>
-
 <script src="/semi/resources/js/jquery-3.4.1.min.js"></script>
+
+	 <style>
+        *{
+            font-family: 'Noto Sans KR', sans-serif;  
+         }
+     </style>
+
 </head>
 <body>
 	<div id="Allpanel" align="center">
@@ -40,9 +47,9 @@
 					<div id="under_main_search">
 						<img src="/semi/resources/images/magnifyingGlass.png"
 							id="magnifyingGlass"> <span id="searchDivider">|</span> <input
-							type="text" onclick="searchBar();" id="searchArea"
+							type="text"  id="searchArea"
 							placeholder="  참가하고 싶은 클래스를 검색해 보세요">
-						<button id="searchClass">클래스 찾기</button>
+						<button id="searchClass" onclick="searchBar();">클래스 찾기</button>
 					</div>
 				</div>
 			</div>
@@ -174,11 +181,10 @@
 	<script>
 	 	
 	 	
-	 	function searchBar(){
-  		 var keyword = $("#searchArea").val();
-   		 location.href="/semi/searchList.ca?keyword=+keyword
-			});
-	 
+		$("#searchClass").click(function(){
+		   var keyword = $("#searchArea").val();
+		    location.href="/semi/searchList.ca?keyword="+keyword;
+		});
 	 
 	 </script>
 </body>
