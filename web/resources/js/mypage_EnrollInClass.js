@@ -193,10 +193,35 @@ function limitText(limitField, limitCount, limitNum) {
    }
 }
 
+// 등록 버튼 확인
+function enrollBtn(){
+	if(confirm("클래스 등록하시겠습니까?")){
+		location.href="/semi/cSelHno.do";
+	} else {
+		return false;
+	}
+}
 
-// 취소 버튼 확인
+// 취소 버튼 확인(등록)
 function cancelBtn(){
 	if(confirm("정말로 클래스 등록을 취소하시겠습니까?")){
 		location.href="/semi/cSelHno.do";
 	}
 }
+
+// 수정 버튼 확인
+function updateBtn(){
+	if(confirm("클래스 수정하시겠습니까?")){
+		location.href="/semi/cSelHno.do";
+	} else {
+		return false;
+	}
+}
+
+// 취소 버튼 확인 (수정)
+function cancelBtn1(){
+	if(confirm("정말로 클래스 수정을 취소하시겠습니까?")){
+		location.href="/semi/cSelHno.do";
+	}
+}
+

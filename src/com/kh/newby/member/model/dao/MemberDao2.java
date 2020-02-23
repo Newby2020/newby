@@ -50,7 +50,6 @@ public class MemberDao2 {
 			m.setTel2(rset.getString("TEL2"));
 			m.setTel3(rset.getString("TEL3"));
 			m.setMileage(rset.getInt("MILEAGE"));
-			System.out.println(m.toString());
 			}
 		} catch(SQLException e) {
 			e.printStackTrace();
@@ -74,7 +73,8 @@ public class MemberDao2 {
 			pstmt.setString(1, nick);
 			pstmt.setString(2, mno);
 			result=pstmt.executeUpdate();
-			System.out.println(result);
+			
+			pstmt.close();
 			
 			pstmt = con.prepareStatement(sql2);
 			pstmt.setString(1, mno);
@@ -83,7 +83,6 @@ public class MemberDao2 {
 			if(rset.next()) {
 				newNick = rset.getString("MEM_NICK");
 			}
-			System.out.println(newNick);
 		}catch(SQLException e){
 			e.printStackTrace();
 		} finally {
@@ -105,7 +104,8 @@ public class MemberDao2 {
 			pstmt.setString(1, tel);
 			pstmt.setString(2, mno);
 			result=pstmt.executeUpdate();
-			System.out.println(result);
+			
+			pstmt.close();
 			
 			pstmt = con.prepareStatement(sql2);
 			pstmt.setString(1, mno);
@@ -114,7 +114,6 @@ public class MemberDao2 {
 			if(rset.next()) {
 				newTel = rset.getString("PHONE");
 			}
-			System.out.println(newTel);
 		}catch(SQLException e){
 			e.printStackTrace();
 		} finally {
@@ -136,7 +135,6 @@ public class MemberDao2 {
 			rset = pstmt.executeQuery();
 			if(rset.next()) {
 				result = rset.getInt(1);
-				System.out.println("dao : "+result);
 			}
 		
 		} catch(SQLException e) {
@@ -158,7 +156,6 @@ public class MemberDao2 {
 			pstmt.setString(1, pwd);
 			pstmt.setString(2, mno);
 			result=pstmt.executeUpdate();
-			System.out.println(result);
 			
 		}catch(SQLException e){
 			e.printStackTrace();

@@ -20,8 +20,6 @@ public class ClassService2 {
 
 		Connection con = getConnection();
 
-		System.out.println("service");
-
 		int result = new ClassDao2().insertClass(con, c);
 		if (result > 0) {
 			commit(con);
@@ -115,7 +113,13 @@ public class ClassService2 {
 	public int getListCount(String mno) {
 		Connection con = getConnection();
 		int listCount = new ClassDao2().getListCount(con, mno);
-
+		
+		if(listCount > 0) {
+			commit(con);
+		} else {
+			rollback(con);
+		}
+		
 		close(con);
 
 		return listCount;

@@ -4,7 +4,7 @@
 <html lang="ko">
 <head>
     <meta charset="UTF-8">
-    <title>EnrollInClass</title>
+    <title>새로운 취미를 찾아서 NEWBY</title>
     <link rel="stylesheet" href="/semi/resources/css/joinModal.css">
     <link rel="stylesheet" href="/semi/resources/css/LoginModal.css">
     <link rel="stylesheet" href="/semi/resources/css/main-panel.css">
@@ -90,39 +90,8 @@
                                     </tr>
                                     <tr><td><br></td></tr><tr><td><br></td></tr>
                                     <tr>
-                                        <td class="tline1row">1회당 가격</td>
-                                        <td style="font-size: 9pt"><input id="price" name="price" type="text" onkeyup="markPer3digit(this);" required>&nbsp;원</td>
-                                        <script>
-											function inputPrice(obj) {
-											    
-											    // 콤마( , )의 경우도 문자로 인식되기때문에 콤마를 따로 제거한다.
-											    var deleteComma = obj.value.replace(/\,/g, "");
-											
-											    // 콤마( , )를 제외하고 문자가 입력되었는지를 확인한다.
-											    if(isFinite(deleteComma) == false) {
-											        alert("문자는 입력하실 수 없습니다.");
-											        obj.value = "";
-											        return false;
-											    }
-											   
-											    // 기존에 들어가있던 콤마( , )를 제거한 이 후의 입력값에 다시 콤마( , )를 삽입한다.
-											    obj.value = inputNumberWithComma(inputNumberRemoveComma(obj.value));
-											}
-											
-											// 천단위 이상의 숫자에 콤마( , )를 삽입하는 함수
-											function inputNumberWithComma(str) {
-											
-											    str = String(str);
-											    return str.replace(/(\d)(?=(?:\d{3})+(?!\d))/g, "$1,");
-											}
-											
-											// 콤마( , )가 들어간 값에 콤마를 제거하는 함수
-											function inputNumberRemoveComma(str) {
-											
-											    str = String(str);
-											    return str.replace(/[^\d]+/g, "");
-											}
-                                        </script>
+                                        <td class="tline1row">1회당 가격<br><small>(최대 백만단위)</small></td>
+                                        <td style="font-size: 9pt"><input id="price" name="price" type="text" onkeyup="markPer3digit(this);" maxlength="8" required>&nbsp;원</td>
                                     </tr>
                                     <tr><td><br></td></tr><tr><td><br></td></tr> 
                                     <tr>
@@ -183,7 +152,7 @@
 	                            <%@ include file="common/mypage_EnrollInClassTextarea2.jsp" %>
                             </div>
                             <br>
-                            <input type="submit" class="finalBtn24" value="등록">
+                            <input type="submit" class="finalBtn24" value="등록" onclick="return enrollBtn();">
                             &nbsp;&nbsp;&nbsp;&nbsp;
                             <input type="reset" class="finalBtn24" value="취소" onclick="return cancelBtn();">
                             <br><br><br><br><br><br><br><br><br><br>

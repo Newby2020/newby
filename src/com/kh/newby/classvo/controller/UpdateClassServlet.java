@@ -10,11 +10,13 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import org.apache.tomcat.util.http.fileupload.servlet.ServletFileUpload;
 
 import com.kh.newby.classvo.model.service.ClassService2;
 import com.kh.newby.classvo.model.vo.ClassVo2;
+import com.kh.newby.member.model.vo.Member;
 import com.oreilly.servlet.MultipartRequest;
 import com.oreilly.servlet.multipart.DefaultFileRenamePolicy;
 
@@ -37,10 +39,7 @@ public class UpdateClassServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		String cno = request.getParameter("cno");
-		System.out.println(cno);
-
-
+		
 		int maxSize = 1024 * 1024 * 20;
 		
 
@@ -64,7 +63,8 @@ public class UpdateClassServlet extends HttpServlet {
 													//기존의 파일과 구분하기 위해 새로운 파일명 뒤에
 													//숫자를 붙이는 규칙
 										);
-		
+		String cno = mrequest.getParameter("cno");
+
 
 		String[] cDate = mrequest.getParameterValues("classDate");
 		String[] sTime = mrequest.getParameterValues("startTime");
@@ -79,7 +79,18 @@ public class UpdateClassServlet extends HttpServlet {
 		String cType = mrequest.getParameter("classType");
 		int MaxNum = Integer.parseInt(mrequest.getParameter("MaxNum"));
 		int cTime = Integer.parseInt(mrequest.getParameter("classTime"));
-		int price = Integer.parseInt(mrequest.getParameter("price"));
+		int price = 0;
+		if(mrequest.getParameter("price").length()<4) {
+			price = Integer.parseInt(mrequest.getParameter("price"));
+		} else if(mrequest.getParameter("price").length()==5) {
+			price = Integer.parseInt((String)mrequest.getParameter("price").substring(0, 1)+(String)mrequest.getParameter("price").substring(2));			
+		} else if(mrequest.getParameter("price").length()==6) {
+			price = Integer.parseInt((String)mrequest.getParameter("price").substring(0, 2)+(String)mrequest.getParameter("price").substring(3));			
+		} else if(mrequest.getParameter("price").length()==7) {
+			price = Integer.parseInt((String)mrequest.getParameter("price").substring(0, 3)+(String)mrequest.getParameter("price").substring(4));			
+		} else {
+			price = Integer.parseInt((String)mrequest.getParameter("price").substring(0, 1)+(String)mrequest.getParameter("price").substring(2,5)+(String)mrequest.getParameter("price").substring(6));			
+		}
 		String addr1 = "";
 		String obj = mrequest.getParameter("object");
 		String curri = mrequest.getParameter("editor1");
@@ -128,11 +139,9 @@ public class UpdateClassServlet extends HttpServlet {
 		}
 		
 //		// 세션에 추가된 멤버객체의 정보 담기
-//		HttpSession session = request.getSession(false);
-//		Member m = (Member)session.getAttribute("member");
-//		
-//		String hNo = m.getH_no();										/////////// 나중에 이걸로 바꿔줘야해
-		String hNo = "H1";
+		HttpSession session = request.getSession(false);
+		Member m = (Member)session.getAttribute("Member");		
+		String hNo = m.getH_no();
 		ClassVo2 c = new ClassVo2(cno, cName, category1, category2, category3, cType, cTime,
 				MaxNum, price, img, addr1, obj, curri, intro, cdate, stime, etime, hNo);
 		
@@ -160,11 +169,11 @@ public class UpdateClassServlet extends HttpServlet {
 		int result = new ClassService2().updateClass(c);
 		
 		if(result > 0 ) {
-			System.out.println("클래스가 등록되었습니다.");
-			response.sendRedirect("/semi/cSelHno.do");
+			System.out.println("클래스 수정이 완료되었습니다.");
+			response.sendRedirect("/semi/completeUpdate.do");
 		} else {
 			request.setAttribute("msg", "클래스 등록 실패하였습니다.");
-			request.getRequestDispatcher("views/common/errorPage.jsp").forward(request, response);
+			request.getRequestDispatcher("/semi/views/common/errorPage.jsp").forward(request, response);
 		}
 	}
 

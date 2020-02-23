@@ -303,27 +303,5 @@ public class ClassVo2 implements Serializable{
 				+ ", classCurriculum=" + classCurriculum + ", classDate=" + classDate + ", classStartTime="
 				+ classStartTime + ", classEndTime=" + classEndTime + "]";
 	}
-	
-	
-	
 
-//	@Override
-//	public String toString() {
-//		return "ClassVo2 [className=" + className + ", classDate=" + classDate + ", classStartTime=" + classStartTime
-//				+ ", classEndTime=" + classEndTime + ", payNo=" + payNo + "]";
-//	}
-
-//	@Override
-//	public String toString() {
-//		return "ClassVo2 [className=" + className + ", m_mile=" + m_mile + ", m_pMile=" + m_pMile + ", m_pSaveMile="
-//				+ m_pSaveMile + ", payDate=" + payDate + "]";
-//	}
-
-	
-
-	
-	
-	
-	
-	
 }
