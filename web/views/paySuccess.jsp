@@ -33,6 +33,7 @@
         background-size: cover;
  
 	}
+	
 	.innerError{
 		font-size: 30px;                                                                
         color: white;
@@ -56,7 +57,9 @@
 		<div class="midError">
 			<div class="innerError">
 			<br><br><br>
-				<label>죄송합니다. 문제가 발생했습니다( <%-- <%=e.getMessage() %> --%> )</label>
+				<label>결제가 완료되었습니다.( <%-- <%=e.getMessage() %> --%> )</label>
+				<br>
+				<label>NEWBY를 이용해 주셔서 감사합니다.</label>
 				<br><br>
 				<button class="errorToHome">홈페이지로 이동하기</button>
 			</div>	
