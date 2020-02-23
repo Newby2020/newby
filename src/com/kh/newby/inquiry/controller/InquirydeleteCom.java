@@ -1,27 +1,25 @@
 package com.kh.newby.inquiry.controller;
 
 import java.io.IOException;
-
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.kh.newby.inquiry.model.service.InquiryService;
-import com.kh.newby.inquiry.model.vo.Inquiry;
+import com.kh.newby.inquiry.model.service.InquiryCommentService;
 
 /**
- * Servlet implementation class BoardUpdateViewServlet
+ * Servlet implementation class InquirydeleteCom
  */
-@WebServlet("/inquiryUpdateView.io")
-public class InquiryUpdateViewServlet extends HttpServlet {
+@WebServlet("/deleteCom.io")
+public class InquirydeleteCom extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public InquiryUpdateViewServlet() {
+    public InquirydeleteCom() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -31,21 +29,15 @@ public class InquiryUpdateViewServlet extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String ino = request.getParameter("ino");
-		System.out.println("ino  " + ino);
-		InquiryService is = new InquiryService();
+		System.out.println(ino);
 		
-		Inquiry i = is.inquiryUpdateView(ino);
-		System.out.println(i);
+		InquiryCommentService ics = new InquiryCommentService();
 		
-		String page = "";
-		if(i != null) {
-			page = "views/customer_inquiryUpdate.jsp";
-			request.setAttribute("inquiry", i);
-		} else {
-			page = "views/common/errorPage.jsp";
-			request.setAttribute("msg", "문의사항 수정 실패");
+		int result = ics.deleteCom(ino);
+		
+		if(result > 0) {
+			response.sendRedirect("inquirySelectList.io?ino="+ino);
 		}
-		request.getRequestDispatcher(page).forward(request, response);
 	}
 
 	/**

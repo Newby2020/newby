@@ -1,27 +1,26 @@
 package com.kh.newby.inquiry.controller;
 
 import java.io.IOException;
-
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.kh.newby.inquiry.model.service.InquiryService;
+import com.kh.newby.inquiry.model.service.InquiryCommentService;
 import com.kh.newby.inquiry.model.vo.Inquiry;
 
 /**
- * Servlet implementation class BoardUpdateViewServlet
+ * Servlet implementation class InquiryUpdateComServlet
  */
-@WebServlet("/inquiryUpdateView.io")
-public class InquiryUpdateViewServlet extends HttpServlet {
+@WebServlet("/updateCom.io")
+public class InquiryUpdateComServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public InquiryUpdateViewServlet() {
+    public InquiryUpdateComServlet() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -30,22 +29,19 @@ public class InquiryUpdateViewServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		String comment = request.getParameter("comment");
 		String ino = request.getParameter("ino");
-		System.out.println("ino  " + ino);
-		InquiryService is = new InquiryService();
 		
-		Inquiry i = is.inquiryUpdateView(ino);
-		System.out.println(i);
+		Inquiry i = new Inquiry();
+		i.setItitle(comment);
+		i.setIno(ino);
 		
-		String page = "";
-		if(i != null) {
-			page = "views/customer_inquiryUpdate.jsp";
-			request.setAttribute("inquiry", i);
-		} else {
-			page = "views/common/errorPage.jsp";
-			request.setAttribute("msg", "문의사항 수정 실패");
+		int result = new InquiryCommentService().updateCom(i);
+		
+		if(result > 0) {
+			response.sendRedirect("inquirySelectOne.io?ino="+ino);
+			System.out.println(result);
 		}
-		request.getRequestDispatcher(page).forward(request, response);
 	}
 
 	/**

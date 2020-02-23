@@ -2,6 +2,7 @@
     pageEncoding="UTF-8" import="com.kh.newby.classvo.model.vo.*, java.util.*,  java.text.DecimalFormat"%>
     
 <%
+	DecimalFormat form = new DecimalFormat("###,###");
 	String cno = request.getParameter("cno");
 	ArrayList<ClassVo2> list = (ArrayList<ClassVo2>)request.getAttribute("list");
 	String cname = list.get(0).getClassName();
@@ -155,9 +156,9 @@
                                     <tr><td><br></td></tr><tr><td><br></td></tr>
                                     <tr>
                                         <td class="tline1row">1회당 가격</td>
-                                        <td style="font-size: 9pt"><input id="price" name="price" type="text" value="<%=cprice %>" required>&nbsp;원</td>
+                                        <td style="font-size: 9pt"><input id="price" name="price" type="text" value="<%=form.format(cprice) %>" onkeyup="markPer3digit(this);" required>&nbsp;원</td>
                                     </tr>
-                                    <tr><td><br></td></tr><tr><td><br></td></tr>
+                                    <tr><td><br></td></tr>
                                     <tr>
                                         <td class="tline1row">이미지<br><small>(2MB 이하)</small></td>
                                         <td>
@@ -174,7 +175,7 @@
                                             </div>
                                         </td>
                                     </tr>
-                                    <tr><td><br></td></tr><tr><td><br></td></tr> 
+                                    <tr><td><br></td></tr>
                                     <tr>
                                         <td class="tline1row">일정</td>
                                         <td class="addSchedule23" style="display: flex;">
@@ -237,7 +238,7 @@
                             <br>
                             <input type="submit" class="finalBtn24" value="수정">
                             &nbsp;&nbsp;&nbsp;&nbsp;
-                            <input type="reset" class="finalBtn24" value="취소">
+                            <input type="reset" class="finalBtn24" value="취소" onclick="return cancelBtn();">
                             <br><br><br><br><br>
                         </form>
                     </div>

@@ -1,7 +1,8 @@
 package com.kh.newby.inquiry.controller;
 
 import java.io.IOException;
-import java.util.ArrayList;
+import java.sql.Date;
+import java.util.GregorianCalendar;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -10,54 +11,58 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.kh.newby.inquiry.model.service.InquiryCommentService;
-import com.kh.newby.inquiry.model.service.InquiryService;
 import com.kh.newby.inquiry.model.vo.Inquiry;
 
 /**
- * Servlet implementation class BoardSelectOneServlet
+ * Servlet implementation class InquiryInsertComServlet
  */
-@WebServlet("/inquirySelectOne.io")
-public class InquirySelectOneServlet extends HttpServlet {
+@WebServlet("/insertCom.io")
+public class InquiryInsertComServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public InquirySelectOneServlet() {
+    public InquiryInsertComServlet() {
         super();
         // TODO Auto-generated constructor stub
     }
-    
 
 	/**
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-	
-		String ino = request.getParameter("ino");
-		System.out.println(ino);
+		String comment = request.getParameter("comment");
+		String date = request.getParameter("date");
 		
-		
-		// 게시글 보기
-		Inquiry i = new InquiryService().inquirySelectOne(ino);
-		System.out.println("게시글 보기" + i);
-		
-		
-		// 댓글 불러오기
-//		ArrayList<Inquiry> list = new InquiryCommentService().inquirySelectComList(ino);
-//		System.out.println("list -> " + list);
-		
-		String page = "";
-		if(i != null) {
-			page="views/customer_inquiryDetail.jsp";
-			request.setAttribute("inquiry", i);
-//			request.setAttribute("list", list);
-		} /*else {
-			page = "views/common/errorPage.jsp";
-			request.setAttribute("msg", "게시글 목록 조회 실패!");
+		Date writeDate = null;
+
+		if(date != "" && date != null) {
+			String[] dateArr = date.split("-");
+			int[] intArr = new int[dateArr.length];
+
+			for(int i=0; i<dateArr.length; i++) {
+				intArr[i] = Integer.parseInt(dateArr[i]);
+			}
+
+			writeDate = new Date(new GregorianCalendar(
+					intArr[0],intArr[1]-1,intArr[2]
+					).getTimeInMillis());
+		} else {
+			writeDate = new Date(new GregorianCalendar().getTimeInMillis());
 		}
-		*/
-		request.getRequestDispatcher(page).forward(request, response);
+		
+		Inquiry i = new Inquiry();
+		i.setIcomment(comment);
+		i.setIcdate(writeDate);
+		
+		InquiryCommentService ics = new InquiryCommentService();
+		
+		int result = ics.insertCom(i);
+		
+		if(result > 0) {
+			response.sendRedirect("inquirySelectList.io");
+		} 
 	}
 
 	/**

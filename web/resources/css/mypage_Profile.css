@@ -60,6 +60,8 @@
     border-radius: 15px;
     font-size: 9pt;
     cursor: pointer;
+    vertical-align: middle;
+    
 }
 
 /* pwd 나열 버튼 */

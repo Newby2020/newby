@@ -7,30 +7,25 @@ import com.kh.newby.category.model.vo.filterVo;
 
 public class filterDao {
 	
-	public static void main(String[] args) {
-		System.out.println();
-	}
-
-	public static StringBuilder fQueryMaker (filterVo ft) {
+	public StringBuilder fQueryMaker (filterVo ft) {
 
 		StringBuilder sql = new StringBuilder();
 
 		int loPrice =Integer.parseInt(ft.getAmount().split(" - ")[0].split("원")[0]); 
 		int hiPrice =Integer.parseInt(ft.getAmount().split(" - ")[1].split("원")[0]); 
-
 		
-		sql.append("SELECT CNO, CNAME, LOCA, CP, CIMG, AVGR\r\n" + 
+		sql.append("SELECT DISTINCT CNO, CNAME, LOCA, CP, CIMG, AVGR, FC, SC, TC\r\n" + 
 				"FROM (SELECT ROWNUM RNO, CLASS_NO CNO, CLASS_NAME CNAME, FIRST_CATEGORY FC,\r\n" + 
 				"SECOND_CATEGORY SC,THIRD_CATEGORY TC, CLASS_PRICE CP, CLASS_IMG, AVERAGE_REVIEW, \r\n" + 
 				"CS_CLASS_DATE,TO_CHAR(TO_DATE(CS_CLASS_DATE,'YYYY-MM-DD'),'DY') SDAY, \r\n" + 
 				"CLASS_LOCATION LOCA, CLASS_TYPE CT, CLASS_IMG CIMG, AVERAGE_REVIEW AVGR\r\n" + 
 				" FROM CLASS C JOIN CLASS_SCHEDULE CS ON (CLASS_NO = CS_CLASS_NO)\r\n" + 
 				"JOIN HOST H ON (CLASS_HOST_NO = HOST_NO) \r\n" + 
-				"WHERE ROWNUM <= 100 AND CLASS_STATUS='승인' ) CA"
-				+ " WHERE CP BETWEEN "+loPrice+" AND "+hiPrice
+				"WHERE ROWNUM <= ? AND CLASS_STATUS='승인' ) CA\r\n"
+				+ " WHERE RNO>= ? AND CP BETWEEN "+loPrice+" AND "+hiPrice
 				+ " AND LOCA LIKE '%"+ft.getfLoca()+"%'");
-				
-
+		
+		// 수업 방식 필터링
 		switch (ft.getfType()) {
 		case "2": sql.append(" AND CT = '그룹'"); break;
 		case "5": sql.append(" AND CT = '1:1'"); break;
@@ -47,46 +42,62 @@ public class filterDao {
 			for (int i = 0; i < ft.getfDay().length(); i++) {
 				if(i != ft.getfDay().length() - 1) {
 					sql.append("SDAY ='" +ft.getfDay().charAt(i)+"' OR ");
-
 				} else {
 					sql.append("SDAY ='" +ft.getfDay().charAt(i)+"')");
-
 				}
 			}
-
 		}
 
 		// 3차 카테고리 필터링
-
-		if(!ft.getfDay().isEmpty()) {
+		if(!ft.getfCate().isEmpty()) {
 			String [] caFilter = ft.getfCate().split(",");
 
 			sql.append(" AND (");
 
-
 			for (int i = 0; i < caFilter.length; i++) {
 				if(i != caFilter.length - 1) {
 					sql.append("TC ='" +caFilter[i]+"' OR ");
-
 				} else {
 					sql.append("TC ='" +caFilter[i]+"')");
-
 				}
 			}
-
 		}
-
+		
+		// 1차 카테고리 선택
+		switch (ft.getCaType()) {
+		case "ca0": sql.append(" AND FC='신나는' "); break;
+		case "ca1": sql.append(" AND FC='차분한' "); break;
+		case "ca2": sql.append(" AND SC='액티비티' "); break;
+		case "ca3": sql.append(" AND SC='쿠킹' "); break;
+		case "ca4": sql.append(" AND SC='예술' "); break;
+		case "ca5": sql.append(" AND SC='교육' "); break;
+		default:break;
+		}
+		
+		
+		//정렬 방식 선택
+		if (ft.getfSort()!= null) {
+			
+			switch (ft.getfSort()) {
+			case "CN":sql.append("ORDER BY CNAME");break;
+			case "RP":sql.append("ORDER BY AVGR DESC");break;
+			case "CPA":sql.append("ORDER BY CP");break;
+			case "CPD":sql.append("ORDER BY CP DESC");break;
+			default: break;
+			}
+		}
+		
 		return sql;
 	}
-
-	public static StringBuilder fListCounter (filterVo ft) {
+	
+	public StringBuilder fListCounter (filterVo ft) {
 
 		StringBuilder sql = new StringBuilder();
 
 		int loPrice =Integer.parseInt(ft.getAmount().split(" - ")[0].split("원")[0]); 
 		int hiPrice =Integer.parseInt(ft.getAmount().split(" - ")[1].split("원")[0]); 
 
-		sql.append("SELECT COUNT(*)\r\n" + 
+		sql.append("SELECT COUNT(DISTINCT CNO)\r\n" + 
 				"FROM (SELECT ROWNUM RNO, CLASS_NO CNO, CLASS_NAME CNAME, FIRST_CATEGORY FC, SECOND_CATEGORY SC," +
 				"THIRD_CATEGORY TC, CLASS_PRICE CP, CLASS_IMG, AVERAGE_REVIEW, "+ 
 				"CS_CLASS_DATE,TO_CHAR(TO_DATE(CS_CLASS_DATE,'YYYY-MM-DD'),'DY') SDAY, CLASS_LOCATION LOCA,\r\n"
@@ -97,11 +108,12 @@ public class filterDao {
 				+ " WHERE CP BETWEEN "+loPrice+" AND "+hiPrice
 				+ " AND LOCA LIKE '%"+ft.getfLoca()+"%'");
 
+		// 수업 방식 필터링
 		switch (ft.getfType()) {
 		case "2": sql.append(" AND CT = '그룹'"); break;
 		case "5": sql.append(" AND CT = '1:1'"); break;
 		case "7": sql.append(" AND (CT = '1:1' OR CT = '그룹')"); break;
-		default:break;
+		default: break;
 		}
 
 		//요일 필터링
@@ -113,37 +125,45 @@ public class filterDao {
 			for (int i = 0; i < ft.getfDay().length(); i++) {
 				if(i != ft.getfDay().length() - 1) {
 					sql.append("SDAY ='" +ft.getfDay().charAt(i)+"' OR ");
-
 				} else {
 					sql.append("SDAY ='" +ft.getfDay().charAt(i)+"')");
-
 				}
 			}
-
 		}
 
 		// 3차 카테고리 필터링
-
-		if(!ft.getfDay().isEmpty()) {
+		if(!ft.getfCate().isEmpty()) {
 			String [] caFilter = ft.getfCate().split(",");
 
 			sql.append(" AND (");
 
-
 			for (int i = 0; i < caFilter.length; i++) {
 				if(i != caFilter.length - 1) {
 					sql.append("TC ='" +caFilter[i]+"' OR ");
-
 				} else {
 					sql.append("TC ='" +caFilter[i]+"')");
-
 				}
 			}
-
 		}
-
+				
+		// 1차 카테고리 선택
+		switch (ft.getCaType()) {
+		case "ca0": sql.append(" AND FC='신나는' "); break;
+		case "ca1": sql.append(" AND FC='차분한' "); break;
+		case "ca2": sql.append(" AND SC='액티비티' "); break;
+		case "ca3": sql.append(" AND SC='쿠킹' "); break;
+		case "ca4": sql.append(" AND SC='예술' "); break;
+		case "ca5": sql.append(" AND SC='교육' "); break;
+		default: break;
+		}
+		
+		// 정렬방식 선택
+		
+		
+		
+		
+		
 		return sql;
 	}
-
-
+	
 }

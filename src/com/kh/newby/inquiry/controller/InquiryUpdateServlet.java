@@ -33,6 +33,10 @@ public class InquiryUpdateServlet extends HttpServlet {
 		String content = request.getParameter("content");
 		String ino = request.getParameter("ino");
 
+		System.out.println(title);
+		System.out.println(content);
+		System.out.println(ino);
+		
 		Inquiry i = new Inquiry();
 		i.setItitle(title);
 		i.setIcontent(content);
