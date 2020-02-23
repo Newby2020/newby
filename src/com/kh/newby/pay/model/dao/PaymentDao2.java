@@ -1,6 +1,6 @@
 package com.kh.newby.pay.model.dao;
 
-import static com.kh.newby.common.JDBCTemplate.close;
+import static com.kh.newby.common.JDBCTemplate.*;
 
 import java.io.FileReader;
 import java.io.IOException;
@@ -79,45 +79,45 @@ public class PaymentDao2 {
 	 * @param psno
 	 * @return
 	 */
-	public ClassVo3 getPsno(Connection con, String psno) {
-		
-		ClassVo3 cvPsno = null;
-		
-		PreparedStatement pstmt = null;
-		ResultSet rset = null;
-		
-		String sql = prop.getProperty("psno");
-		
-		try {
-			pstmt = con.prepareStatement(sql);
-			
-			pstmt.setString(1, psno);
-			
-			rset = pstmt.executeQuery();
-			
-			cvPsno = new ClassVo3();
-			
-			if(rset.next()) {
-				cvPsno.setClassImg(rset.getString("CLASS_IMG"));
-				cvPsno.setFirstCategory(rset.getString("FIRST_CATEGORY"));
-				cvPsno.setSecondCategory(rset.getString("SECOND_CATEGORY"));
-				cvPsno.setThirdCategory(rset.getString("THIRD_CATEGORY"));
-				cvPsno.setClassName(rset.getString("CLASS_NAME"));
-				cvPsno.setClassDate(rset.getString("PS_DATE"));
-				cvPsno.setClassStartTime(rset.getString("PS_STARTTIME"));
-				cvPsno.setClassEndTime(rset.getString("PS_ENDTIME"));
-				cvPsno.setClassPrice(rset.getInt("CLASS_PRICE"));
-				cvPsno.setPayMileage(rset.getInt("PAY_MILEAGE"));
-				cvPsno.setPaySaveMileage(rset.getInt("PAY_SAVE_MILEAGE"));
-			}
-		} catch(SQLException e) {
-			e.printStackTrace();
-		} finally {
-			close(rset);
-			close(pstmt);
-		}
-		return cvPsno;
-	}
+//	public ClassVo3 getPsno(Connection con, String psno) {
+//		
+//		ClassVo3 cvPsno = null;
+//		
+//		PreparedStatement pstmt = null;
+//		ResultSet rset = null;
+//		
+//		String sql = prop.getProperty("psno");
+//		
+//		try {
+//			pstmt = con.prepareStatement(sql);
+//			
+//			pstmt.setString(1, psno);
+//			
+//			rset = pstmt.executeQuery();
+//			
+//			cvPsno = new ClassVo3();
+//			
+//			if(rset.next()) {
+//				cvPsno.setClassImg(rset.getString("CLASS_IMG"));
+//				cvPsno.setFirstCategory(rset.getString("FIRST_CATEGORY"));
+//				cvPsno.setSecondCategory(rset.getString("SECOND_CATEGORY"));
+//				cvPsno.setThirdCategory(rset.getString("THIRD_CATEGORY"));
+//				cvPsno.setClassName(rset.getString("CLASS_NAME"));
+//				cvPsno.setClassDate(rset.getString("PS_DATE"));
+//				cvPsno.setClassStartTime(rset.getString("PS_STARTTIME"));
+//				cvPsno.setClassEndTime(rset.getString("PS_ENDTIME"));
+//				cvPsno.setClassPrice(rset.getInt("CLASS_PRICE"));
+//				cvPsno.setPayMileage(rset.getInt("PAY_MILEAGE"));
+//				cvPsno.setPaySaveMileage(rset.getInt("PAY_SAVE_MILEAGE"));
+//			}
+//		} catch(SQLException e) {
+//			e.printStackTrace();
+//		} finally {
+//			close(rset);
+//			close(pstmt);
+//		}
+//		return cvPsno;
+//	}
 
 	public int getCancelCount(Connection con, String psno) {
 
@@ -146,5 +146,29 @@ public class PaymentDao2 {
 			close(pstmt);
 		}
 		return cancelCount;
+	}
+
+	public int getPsno(Connection con, ClassVo3 cvPsno) {
+
+		int result = 0;
+		
+		PreparedStatement pstmt = null;
+		
+		String sql = prop.getProperty("psno");
+		
+		try { 
+			pstmt = con.prepareStatement(sql);
+			System.out.println(cvPsno.getClassNo());
+			pstmt.setString(1, cvPsno.getClassNo());
+			System.out.println("dao");
+			result = pstmt.executeUpdate();
+			
+		} catch(SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(pstmt);
+		}
+ 		
+		return result;
 	}
 }

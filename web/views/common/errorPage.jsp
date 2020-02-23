@@ -32,7 +32,7 @@
 	
 	.innerError{
 		position: absolute;
-		left: 23.5%;
+		left: 36%;
 		font-size: 30px;                                                                
         color: white;
         text-align: center;
@@ -55,7 +55,7 @@
 		<div class="midError">
 			<div class="innerError">
 			<br><br><br>
-				<label>죄송합니다. 문제가 발생했습니다( <%=e.getMessage() %> )</label>
+				<label>죄송합니다. 문제가 발생했습니다( <getMessage() %> )</label>
 				<br><br>
 				<button class="errorToHome">홈페이지로 이동하기</button>
 			</div>	

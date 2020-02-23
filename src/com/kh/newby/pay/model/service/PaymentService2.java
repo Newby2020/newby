@@ -1,7 +1,6 @@
 package com.kh.newby.pay.model.service;
 
-import static com.kh.newby.common.JDBCTemplate.close;
-import static com.kh.newby.common.JDBCTemplate.getConnection;
+import static com.kh.newby.common.JDBCTemplate.*;
 
 import java.sql.Connection;
 import java.util.ArrayList;
@@ -23,15 +22,15 @@ public class PaymentService2 {
 		return cvCno;
 	}
 
-	public ClassVo3 getPsno(String psno) {
-		
-		Connection con = getConnection();
-		ClassVo3 cvPsno = pDao.getPsno(con, psno);
-		
-		close(con);
-		
-		return cvPsno;
-	}
+//	public ClassVo3 getPsno(String psno) {
+//		
+//		Connection con = getConnection();
+//		ClassVo3 cvPsno = pDao.getPsno(con, psno);
+//		
+//		close(con);
+//		
+//		return cvPsno;
+//	}
 
 	public int getCancelCount(String psno) {
 
@@ -41,6 +40,17 @@ public class PaymentService2 {
 		close(con);
 		
 		return cancelCount;
+	}
+
+	public int getPsno(ClassVo3 cvPsno) {
+		
+		Connection con = getConnection();
+		int result = pDao.getPsno(con, cvPsno);
+		System.out.println("서비스");
+		
+		if(result > 0) commit(con);
+		else rollback(con);
+		return result;
 	}
 	
 }
