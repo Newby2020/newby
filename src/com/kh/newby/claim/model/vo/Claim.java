@@ -11,6 +11,7 @@ public class Claim implements Serializable{
 	private static final long serialVersionUID = -4405732486995767570L;
 	
 	private Date cmDate;	
+	private String cmClassNo;
 	private String cmNo;
 	private String cmWriterNo;
 	private String cmTitle;
@@ -25,6 +26,20 @@ public class Claim implements Serializable{
 		super();
 		// TODO Auto-generated constructor stub
 	}
+	
+	
+
+	public String getCmClassNo() {
+		return cmClassNo;
+	}
+
+
+
+	public void setCmClassNo(String cmClassNo) {
+		this.cmClassNo = cmClassNo;
+	}
+
+
 
 	public Date getCmDate() {
 		return cmDate;
@@ -106,5 +121,25 @@ public class Claim implements Serializable{
 	public void setSuspensionEndDate(Date suspensionEndDate) {
 		this.suspensionEndDate = suspensionEndDate;
 	}
+
+
+
+	public Claim(Date cmDate, String cmClassNo, String cmNo, String cmWriterNo, String cmTitle, String cmContent,
+			Date handledDate, String status, int suspensionPeriod, Date suspensionStartDate, Date suspensionEndDate) {
+		super();
+		this.cmDate = cmDate;
+		this.cmClassNo = cmClassNo;
+		this.cmNo = cmNo;
+		this.cmWriterNo = cmWriterNo;
+		this.cmTitle = cmTitle;
+		this.cmContent = cmContent;
+		this.handledDate = handledDate;
+		this.status = status;
+		this.suspensionPeriod = suspensionPeriod;
+		this.suspensionStartDate = suspensionStartDate;
+		this.suspensionEndDate = suspensionEndDate;
+	}
+	
+	
 	
 }
