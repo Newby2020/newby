@@ -45,7 +45,7 @@ public class UpdateClassServlet extends HttpServlet {
 
 		if(!ServletFileUpload.isMultipartContent(request)) {
 			request.setAttribute("msg", "multipart를 통한 전송이 아닙니다.");
-			request.getRequestDispatcher("/semi/views/common/errorPage.jsp").forward(request, response);
+			request.getRequestDispatcher("views/common/errorPage.jsp").forward(request, response);
 		}
 
 		String root = request.getServletContext().getRealPath("/");

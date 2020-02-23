@@ -40,7 +40,7 @@ public class ModifyClassServlet extends HttpServlet {
 			page = "views/mypage_ModifyClass.jsp";
 			request.setAttribute("list", list);
 		} else {
-			page = "/semi/views/common/errorPage.jsp";
+			page = "views/common/errorPage.jsp";
 			request.setAttribute("msg", "해당 클래스에 대한 수정 정보 불러오기 실패!");
 		}
 		request.getRequestDispatcher(page).forward(request, response);

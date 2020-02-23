@@ -192,7 +192,7 @@ public class InsertClassServlet extends HttpServlet {
 					response.sendRedirect("/semi/completeEnroll.do");
 				} else {
 					request.setAttribute("msg", "클래스 등록 실패하였습니다.");
-					request.getRequestDispatcher("/semi/views/common/errorPage.jsp").forward(request, response);
+					request.getRequestDispatcher("views/common/errorPage.jsp").forward(request, response);
 				}
 	}
 
