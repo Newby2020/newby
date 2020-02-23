@@ -66,8 +66,8 @@ public class UpdateClassServlet extends HttpServlet {
 		String cno = mrequest.getParameter("cno");
 
 
-		String[] cDate = mrequest.getParameterValues("classDate");
-		String[] sTime = mrequest.getParameterValues("startTime");
+		String[] cDate = mrequest.getParameterValues("cdate");
+		String[] sTime = mrequest.getParameterValues("stime");
 		String[] addr = mrequest.getParameterValues("addr");
 		
 		

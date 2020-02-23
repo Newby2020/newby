@@ -78,8 +78,14 @@ public class InsertClassServlet extends HttpServlet {
 				
 				// -- 파일 업로드 실시
 				// 5-1 기본 전송값 처리하기
-				String[] cDate = mrequest.getParameterValues("classDate");
-				String[] sTime = mrequest.getParameterValues("startTime");
+				String[] cDate = mrequest.getParameterValues("cdate");
+				for(String cd : cDate) {
+					System.out.println(cd);
+				}
+				String[] sTime = mrequest.getParameterValues("stime");
+				for(String st : sTime) {
+					System.out.println(st);
+				}
 				String[] addr = mrequest.getParameterValues("addr");
 				
 				// 속성값 삽입

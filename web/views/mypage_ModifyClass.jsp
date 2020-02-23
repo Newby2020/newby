@@ -183,14 +183,14 @@
                                         <td class="addSchedule23" style="display: flex;">
                                        	    <div id="div11">
                                        	    	<div>
-                                       	    		<input name='classDate' type='date' class='dataCl' value="<%=cdate %>" required>&nbsp;
-											        <input name='startTime' type='time' class='dataCl' value="<%=cstartime %>" required>&nbsp;&nbsp;
+                                       	    		<input name='cdate' type='date' class='dataCl' value="<%=cdate %>" required>&nbsp;
+											        <input name='stime' type='time' class='dataCl' value="<%=cstartime %>" required>&nbsp;&nbsp;
                                        	    	</div>
                                        	    	<%for(ClassVo2 c : list){ %>
 	                                       	    	<%if(c != list.get(0)){ %>
 	                                       	    	<div>
-												        <input name='classDate' type='date' class='dataCl' value="<%=c.getClassDate() %>" required>&nbsp;
-												        <input name='startTime' type='time' class='dataCl' value="<%=c.getClassStartTime() %>" required>&nbsp;
+												        <input name='cdate' type='date' class='dataCl' value="<%=c.getClassDate() %>" required>&nbsp;
+												        <input name='stime' type='time' class='dataCl' value="<%=c.getClassStartTime() %>" required>&nbsp;
 												        <img id="delImg" class="item1" src="/semi/resources/images/deleteImg.png" alt="xIcon" style="margin-bottom: 2px;"><br>                                       	    	
 	                                       	    	</div>
 	                                       	    	<%} %>

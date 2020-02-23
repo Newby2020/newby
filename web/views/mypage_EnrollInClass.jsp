@@ -113,8 +113,8 @@
                                         <td class="tline1row">일정</td>
                                         <td class="addSchedule23">
                                        	    <div id="div11">
-										        <input name='classDate' type='date' class='dataCl' required>&nbsp;&nbsp;
-										        <input name='startTime' type='time' class='dataCl' required>&nbsp;
+										        <input name='cdate' type='date' class='dataCl' required>&nbsp;&nbsp;
+										        <input name='stime' type='time' class='dataCl' required>&nbsp;
 										        <input id="ss" type='button' class='btn24' value='추가' style="width: 50px;">
 										    </div>
                                         </td>
