@@ -66,10 +66,10 @@
 	                }); 
                    
                 	$('#searchBtn').click(function(){
-                		tte(1);
+                		search(1);
                 	});
                 	
-    				function tte(item){
+    				function search(item){
     					$.ajax({
                 			url : "/semi/serchUser.ad",
                 			type: "get",
@@ -162,8 +162,6 @@
                 				alert("검색 실패!");
                 			}
                 		});
-                
-    					
     				}  
                 </script>
             </div>
