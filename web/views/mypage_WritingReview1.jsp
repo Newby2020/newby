@@ -3,15 +3,12 @@
 	
 <%
 	ArrayList<Review2> list = (ArrayList<Review2>)request.getAttribute("list");
-	for(Review2 r : list){
-	System.out.println(r.toString());		
-	}
 %>
 <!DOCTYPE html>
 <html lang="ko">
 <head>
 <meta charset="UTF-8">
-<title>Review</title>
+<title>새로운 취미를 찾아서 NEWBY</title>
 <link rel="stylesheet" href="/semi/resources/css/joinModal.css">
 <link rel="stylesheet" href="/semi/resources/css/LoginModal.css">
 <link rel="stylesheet" href="/semi/resources/css/main-panel.css">

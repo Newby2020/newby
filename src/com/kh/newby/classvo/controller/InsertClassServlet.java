@@ -10,11 +10,13 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import org.apache.tomcat.util.http.fileupload.servlet.ServletFileUpload;
 
 import com.kh.newby.classvo.model.service.ClassService2;
 import com.kh.newby.classvo.model.vo.ClassVo2;
+import com.kh.newby.member.model.vo.Member;
 import com.oreilly.servlet.MultipartRequest;
 import com.oreilly.servlet.multipart.DefaultFileRenamePolicy;
 
@@ -60,7 +62,6 @@ public class InsertClassServlet extends HttpServlet {
 				
 				// 게시판의 첨부파일을 저장할 폴더 이름 지정하기
 				String savePath = root + "resources/uploadImg";
-//				System.out.println(savePath);
 				// 4. 실제 담아온 파일 기타 정보들을 활용하여
 				//	  MultipartRequest 객체 생성하기
 				//	  request --> MultipartRequest
@@ -89,7 +90,18 @@ public class InsertClassServlet extends HttpServlet {
 				String cType = mrequest.getParameter("classType");
 				int MaxNum = Integer.parseInt(mrequest.getParameter("MaxNum"));
 				int cTime = Integer.parseInt(mrequest.getParameter("classTime"));
-				int price = Integer.parseInt(mrequest.getParameter("price"));
+				int price = 0;
+				if(mrequest.getParameter("price").length()<4) {
+					price = Integer.parseInt(mrequest.getParameter("price"));
+				} else if(mrequest.getParameter("price").length()==5) {
+					price = Integer.parseInt((String)mrequest.getParameter("price").substring(0, 1)+(String)mrequest.getParameter("price").substring(2));			
+				} else if(mrequest.getParameter("price").length()==6) {
+					price = Integer.parseInt((String)mrequest.getParameter("price").substring(0, 2)+(String)mrequest.getParameter("price").substring(3));			
+				} else if(mrequest.getParameter("price").length()==7) {
+					price = Integer.parseInt((String)mrequest.getParameter("price").substring(0, 3)+(String)mrequest.getParameter("price").substring(4));			
+				} else {
+					price = Integer.parseInt((String)mrequest.getParameter("price").substring(0, 1)+(String)mrequest.getParameter("price").substring(2,5)+(String)mrequest.getParameter("price").substring(6));			
+				}
 				String addr1 = "";
 				String obj = mrequest.getParameter("object");
 				String curri = mrequest.getParameter("editor1");
@@ -138,11 +150,11 @@ public class InsertClassServlet extends HttpServlet {
 				}
 				
 				// 세션에 추가된 멤버객체의 정보 담기
-//				HttpSession session = request.getSession(false);
-//				Member m = (Member)session.getAttribute("member");
+				HttpSession session = request.getSession(false);
+				Member m = (Member)session.getAttribute("Member");
 				
-//				String hNo = m.getH_no();										/////////// 나중에 이걸로 바꿔줘야해
-				String hNo = "H2";
+				String hNo = m.getH_no();
+				
 				ClassVo2 c = new ClassVo2(cName, category1, category2, category3, cType, cTime,
 						MaxNum, price, img, addr1, obj, curri, intro, cdate, stime, etime, hNo);
 				
@@ -167,18 +179,14 @@ public class InsertClassServlet extends HttpServlet {
 //				System.out.println("----------------------");
 				//--------------------------------------------
 				
-				System.out.println("controll");
-				int result = new ClassService2().insertClass(c);		// DB 연결
-				
-				//////////////////////////////////////////////////////////////////////////////
-				System.out.println(result);
-//				메인화면으로 이동해야함
+				int result = new ClassService2().insertClass(c);
+			
 				if(result > 0 ) {
 					System.out.println("클래스가 등록되었습니다.");
-					response.sendRedirect("/semi/views/mypage_Profile.jsp");
+					response.sendRedirect("/semi/completeEnroll.do");
 				} else {
 					request.setAttribute("msg", "클래스 등록 실패하였습니다.");
-					request.getRequestDispatcher("views/common/errorPage.jsp").forward(request, response);
+					request.getRequestDispatcher("/semi/views/common/errorPage.jsp").forward(request, response);
 				}
 	}
 

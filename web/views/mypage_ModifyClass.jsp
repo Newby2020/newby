@@ -41,7 +41,7 @@
 <html lang="ko">
 <head>
     <meta charset="UTF-8">
-    <title>ModifyClass</title>
+    <title>새로운 취미를 찾아서 NEWBY</title>
     <link rel="stylesheet" href="/semi/resources/css/joinModal.css">
     <link rel="stylesheet" href="/semi/resources/css/LoginModal.css">
     <link rel="stylesheet" href="/semi/resources/css/main-panel.css">
@@ -73,15 +73,17 @@
                     <br>
                     <br>
                     <div id="contentsDivSize29">
-                        <form action="<%= request.getContextPath() %>/cUpdate.do?cno=<%=cno %>" method="post" enctype="multipart/form-data">
+                        <form action="<%= request.getContextPath() %>/cUpdate.do" method="post" enctype="multipart/form-data">
                         
                         	<!-- 클래스번호 전송 -->
-                        	<%-- <input type="hidden" name="cno" value="<%=cno%>"> --%>
                             <table>
                                 <tbody>
                                     <tr>
-                                       <td class="tline1row">클래스명<br><small>(40자 이내)</small></td>
-                                       <td  class="tline2row">
+                                       <td class="tline1row">
+                                       	클래스명<br><small>(40자 이내)</small>
+			                        	<input id="cno" type="hidden" name="cno" value="<%=cno%>">
+                                       </td>
+                                       <td class="tline2row">
           									<input id="input1ske" name="className" type="text" style="font-size: 9pt;"
           										onKeyDown="limitText(this.form.className,this.form.countdown,40);" 
           										onKeyUp="limitText(this.form.className,this.form.countdown,40);" maxlength="40"
@@ -155,8 +157,8 @@
                                     </tr>
                                     <tr><td><br></td></tr><tr><td><br></td></tr>
                                     <tr>
-                                        <td class="tline1row">1회당 가격</td>
-                                        <td style="font-size: 9pt"><input id="price" name="price" type="text" value="<%=form.format(cprice) %>" onkeyup="markPer3digit(this);" required>&nbsp;원</td>
+                                        <td class="tline1row">1회당 가격<br><small>(최대 백만단위)</small></td>
+                                        <td style="font-size: 9pt"><input id="price" name="price" type="text" value="<%=form.format(cprice) %>" maxlength="8" onkeyup="markPer3digit(this);" required>&nbsp;원</td>
                                     </tr>
                                     <tr><td><br></td></tr>
                                     <tr>
@@ -236,9 +238,9 @@
 	                            </jsp:include>
                             </div>
                             <br>
-                            <input type="submit" class="finalBtn24" value="수정">
+                            <input type="submit" class="finalBtn24" value="수정" onclick="return updateBtn();" >
                             &nbsp;&nbsp;&nbsp;&nbsp;
-                            <input type="reset" class="finalBtn24" value="취소" onclick="return cancelBtn();">
+                            <input type="reset" class="finalBtn24" value="취소" onclick="return cancelBtn1();">
                             <br><br><br><br><br>
                         </form>
                     </div>

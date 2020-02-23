@@ -21,7 +21,6 @@ $(".delBtn").click(function(){
 	var cname = $(this).closest("tr").find('.hv2').val();
 	var delYN= confirm(cname+"를 정말 취소하시겠습니까?");
 	if(delYN){
-		alert();
-			location.href="/semi//cancelPay.do?pno="+pno+"&psno="+psno;//////////////////// 정후형꺼 넣으면 됨(pno 넣어서)
+			location.href="/semi/cancelPay.do?pno="+pno+"&psno="+psno;
 	}
 });

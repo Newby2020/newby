@@ -16,8 +16,6 @@ for (i = 0; i < dropdown.length; i++) {
 $(".reviewBtn").click(function(){
 	var cno = $(this).closest("tr").find('.cno').val();
 	var psno = $(this).closest("tr").find('.psno').val();
-//	alert("cno : "+cno);
-//	alert("psno : "+psno);
 	var popupX = (document.body.offsetWidth / 2) - (200 / 2);
   	var popupY= (document.body.offsetHeight / 2) - (300 / 2);
 
