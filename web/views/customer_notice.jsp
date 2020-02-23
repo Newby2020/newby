@@ -3,11 +3,11 @@
 	import="com.kh.newby.notice.model.vo.*, java.util.*, com.kh.newby.common.PageInfo"%>
 <% ArrayList<Notice> list = (ArrayList<Notice>)request.getAttribute("list"); 
 	PageInfo pi = (PageInfo)request.getAttribute("pi");
-	int listCount = pi.getListCount();
-	int currentPage = pi.getCurrentPage();
-	int maxPage = pi.getMaxPage();
 	int startPage = pi.getStartPage();
 	int endPage = pi.getEndPage();
+	int maxPage = pi.getMaxPage();
+	int currentPage = pi.getCurrentPage();
+	int listCount = pi.getListCount();
 	%>
 <!DOCTYPE html>
 <html>
@@ -44,7 +44,7 @@
 					<a href="/semi/inquirySelectList.io?currentPage=1">문의 목록</a> <a
 						href="views/customer_createInquiry.jsp">문의 작성</a>
 				</div>
-				<a href="views/customer_report.jsp">신고</a> <a href="views/customer_refund.jsp">이용약관</a>
+				<a href="/semi/reportSelectList.ro">신고</a> <a href="views/customer_refund.jsp">이용약관</a>
 			</div>
 
 			<!--contents-->
