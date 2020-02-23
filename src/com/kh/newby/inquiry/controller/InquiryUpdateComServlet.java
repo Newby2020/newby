@@ -1,6 +1,9 @@
 package com.kh.newby.inquiry.controller;
 
 import java.io.IOException;
+import java.sql.Date;
+import java.util.GregorianCalendar;
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -30,17 +33,44 @@ public class InquiryUpdateComServlet extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String comment = request.getParameter("comment");
+		String date = request.getParameter("date");
 		String ino = request.getParameter("ino");
 		
+		
+		Date writeDate = null;
+
+		if(date != "" && date != null) {
+			String[] dateArr = date.split("-");
+			int[] intArr = new int[dateArr.length];
+
+			for(int i=0; i<dateArr.length; i++) {
+				intArr[i] = Integer.parseInt(dateArr[i]);
+			}
+
+			writeDate = new Date(new GregorianCalendar(
+					intArr[0],intArr[1]-1,intArr[2]
+					).getTimeInMillis());
+		} else {
+			writeDate = new Date(new GregorianCalendar().getTimeInMillis());
+		}
 		Inquiry i = new Inquiry();
-		i.setItitle(comment);
+		i.setIcomment(comment);
+		i.setIcdate(writeDate);
 		i.setIno(ino);
 		
+		System.out.println("수정할 com : " + i.getIcomment());
+		System.out.println("수정할 com : " + comment);
+		System.out.println("수정된 날짜 : " + writeDate);
+		System.out.println("수정할 ino : " + ino);
 		int result = new InquiryCommentService().updateCom(i);
 		
 		if(result > 0) {
 			response.sendRedirect("inquirySelectOne.io?ino="+ino);
-			System.out.println(result);
+			
+		}else {
+			request.setAttribute("msg", "문의 수정 실패");
+			request.getRequestDispatcher("views/common/errorPage.jsp").forward(request, response);
+//			System.out.println("오류발생");
 		}
 	}
 

@@ -122,6 +122,7 @@ public class InquiryCommentDao {
 			
 			pstmt.setString(1, i.getIcomment());
 			pstmt.setDate(2, i.getIcdate());
+			pstmt.setString(3, i.getIno());
 			
 			result = pstmt.executeUpdate();
 		} catch(SQLException e) {
@@ -143,9 +144,13 @@ public class InquiryCommentDao {
 		
 		try {
 			pstmt = con.prepareStatement(sql);
-			
+			System.out.println("------dao");
+			System.out.println(i.getIcomment());
+			System.out.println(i.getIcdate());
+			System.out.println(i.getIno());
 			pstmt.setString(1, i.getIcomment());
-			pstmt.setString(2, i.getIno());
+			pstmt.setDate(2, i.getIcdate());
+			pstmt.setString(3, i.getIno());
 			
 			result = pstmt.executeUpdate();
 		} catch(SQLException e) {
@@ -178,6 +183,46 @@ public class InquiryCommentDao {
 		}
 		
 		return result;
+	}
+
+
+
+	public Inquiry inquirySelectOne(Connection con, String ino) {
+		Inquiry i = null;
+		PreparedStatement pstmt = null;
+		ResultSet rset = null;
+		
+		String sql = prop.getProperty("inquirySelectOne");
+		
+		try {
+			pstmt = con.prepareStatement(sql);
+			
+			pstmt.setString(1, ino);
+			
+			rset = pstmt.executeQuery();
+			
+			if(rset.next()) {
+				i = new Inquiry();
+				
+				i.setIno(rset.getString("Q_NO"));
+				i.setItitle(rset.getString("Q_TITLE"));
+				i.setIwno(rset.getString("Q_WRITER_NO"));
+				i.setIdate(rset.getDate("Q_DATE"));
+				i.setIcontent(rset.getString("Q_CONTENT"));
+				i.setIcomment(rset.getString("Q_COMMENT"));
+				i.setIcdate(rset.getDate("Q_COMMENT_DATE"));
+				
+				
+			}
+			
+		} catch(SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(rset);
+			close(pstmt);
+		}
+				
+		return i;
 	}
 
 

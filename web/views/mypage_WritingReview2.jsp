@@ -1,8 +1,9 @@
-<%@page import="com.sun.org.apache.xalan.internal.xsltc.compiler.sym"%>
+<%@page import="com.sun.org.apache.xalan.internal.xsltc.compiler.sym, com.kh.newby.member.model.vo.Member"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
     <% String cno = request.getParameter("cno");
     	String psno = request.getParameter("psno");
+    	Member Mem = (Member)session.getAttribute("Member");
     	%>
 <!DOCTYPE html>
 <html lang="ko">
@@ -73,6 +74,7 @@
             <h1 style=" margin-bottom: 8px;">후기 작성</h1>
             <input type="hidden" name="cno" value="<%=cno %>" >
             <input type="hidden" name="psno" value="<%=psno %>" >
+            <input type="hidden" name="mno" value="<%=Mem.getM_no() %>" >
                 <div class="rate">
                     <input type="radio" id="star5" name="rate" value="5" />
                     <label for="star5" title="text">5 stars</label>

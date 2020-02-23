@@ -3,7 +3,7 @@
 	import="com.kh.newby.claim.model.vo.*, java.util.*, com.kh.newby.common.PageInfo"%>
 <%
 	ArrayList<Claim> list = (ArrayList<Claim>) request.getAttribute("list");
-	Claim n = (Claim) request.getAttribute("claim");
+	
 	PageInfo pi = (PageInfo) request.getAttribute("pi");
 	int currentPage = pi.getCurrentPage();
 	int startPage = pi.getStartPage();
@@ -25,23 +25,65 @@
 	rel="stylesheet">
 <script src="/semi/resources/js/jquery-3.4.1.min.js"></script>
 <!-- Load icon libarary -->
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<link rel="stylesheet"
+	href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
-    <!-- Sidebar & Footer : Basic-->
-    <link rel="stylesheet" href="/semi/resources/css/admin_basic.css">
+<!-- Sidebar & Footer : Basic-->
+<link rel="stylesheet" href="/semi/resources/css/admin_basic.css">
 
-    <!-- Table & SearchBar-->
-    <link rel="stylesheet" href="/semi/resources/css/admin_table&searchBar.css">
+<!-- Table & SearchBar-->
+<link rel="stylesheet"
+	href="/semi/resources/css/admin_table&searchBar.css">
 
-    <!-- The Modal & CheckBox-->
-    <link rel="stylesheet" href="/semi/resources/css/admin_modal&checkBox.css">
+<!-- The Modal & CheckBox-->
+<link rel="stylesheet"
+	href="/semi/resources/css/admin_modal&checkBox.css">
 
-    <!-- jQuery -->
-    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+<!-- jQuery -->
+<script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
 
-    <!-- TODO 왜 파일 분리해서 불러오면 실행이 안되는가.... -->
-    <!-- Modal js -->
-    <script src="../resources/js/admin_hostReport_modal.js"></script>
+<!-- TODO 왜 파일 분리해서 불러오면 실행이 안되는가.... -->
+<!-- Modal js -->
+<script src="../resources/js/admin_hostReport_modal.js"></script>
+
+<style>
+ /* The Modal (background) */
+        .modal {
+            display: none; /* Hidden by default */
+            position: fixed; /* Stay in place */
+            z-index: 1; /* Sit on top */
+            left: 0;
+            top: 0;
+            width: 100%; /* Full width */
+            height: 100%; /* Full height */
+            overflow: auto; /* Enable scroll if needed */
+            background-color: rgb(0,0,0); /* Fallback color */
+            background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+        }
+    
+        /* Modal Content/Box */
+        .modal-content {
+            background-color: #fefefe;
+            margin: 15% auto; /* 15% from the top and centered */
+            padding: 20px;
+            border: 1px solid #888;
+            width: 50%; /* Could be more or less, depending on screen size */                          
+        }
+        /* The Close Button */
+        .close {
+            color: #aaa;
+            float: right;
+            font-size: 28px;
+            font-weight: bold;
+        }
+        .close:hover,
+        .close:focus {
+            color: black;
+            text-decoration: none;
+            cursor: pointer;
+        }
+
+</style>
 </head>
 <body>
 	<div id="Allpanel" align="center">
@@ -60,7 +102,7 @@
 				</button>
 				<div class="dropdown-soxk">
 					<a href="/semi/inquirySelectList.io?currentPage=1">문의 목록</a> <a
-						href="customer_createInquiry.jsp">문의 작성</a>
+						href="views/customer_createInquiry.jsp">문의 작성</a>
 				</div>
 				<a href="/semi/reportSelectList.ro">신고</a> <a
 					href="views/customer_refund.jsp">이용약관</a>
@@ -112,8 +154,7 @@
 										if (c.getSuspensionPeriod() != 100000) { %> <%
 											if (c.getSuspensionPeriod() == 0) { %> <%='-'%> <%
 											} else { %> <%=c.getSuspensionPeriod()%> <%	}
-										%> <%} else { %> <%="무기한"%> 
-										<%	} %>
+										%> <%} else { %> <%="무기한"%> <%	} %>
 								</td>
 								<td>
 									<%
@@ -135,6 +176,7 @@
 								}
 							%>
 						</table>
+						
 
 						<div class="pagingArea" align="center">
 							<button
@@ -229,6 +271,7 @@
 							<%
 								} else {
 							%>
+							<% Claim c = (Claim) request.getAttribute("claim"); %>
 							<h5>
 								신고할 클래스 <input type="text" id="input1">
 							</h5>
@@ -238,15 +281,44 @@
 
 								</div>
 							</div>
-							<button class="btn1" id="claim" onclick="btn1();">찾기</button>
+							<button class="btn1" id="myBtn" onclick="btn1();">찾기</button>
+							<div id="myModal" class="modal">
+								<!-- Modal content -->
+								<div class="modal-content">
+									<span class="close">&times;</span>                                                               
+        							<p>Some text in the Modal..</p>
+								</div>
+
+							</div>
+							
 							<script>
-								$("#claim").click(function(){
-									var popUrl = "pop_url";
-									var popOption = "width=650px, height=550px resizable=no, location=no, top=300px, left=300px;"
-							        
-							        window.open(popUrl,"타이틀들어갈제목 ",popOption);    
-							    
-								});
+							// Get the modal
+					        var modal = document.getElementById('myModal');
+					 
+					        // Get the button that opens the modal
+					        var btn = document.getElementById("myBtn");
+					 
+					        // Get the <span> element that closes the modal
+					        var span = document.getElementsByClassName("close")[0];                                          
+					 
+					        // When the user clicks on the button, open the modal 
+					        btn.onclick = function() {
+					            modal.style.display = "block";
+					        }
+					 
+					        // When the user clicks on <span> (x), close the modal
+					        span.onclick = function() {
+					            modal.style.display = "none";
+					        }
+					 
+					        // When the user clicks anywhere outside of the modal, close it
+					        window.onclick = function(event) {
+					            if (event.target == modal) {
+					                modal.style.display = "none";
+					            }
+					        }
+
+
 							
 							</script>
 							<br>
@@ -267,7 +339,7 @@
 								<input class="join2" type="submit" value="보내기"> <input
 									class="join1" type="reset" value="취소">
 							</div>
-								<%@ include file="./common/footer.jsp"%>
+							<%@ include file="./common/footer.jsp"%>
 							<%
 								}
 							%>
@@ -279,7 +351,7 @@
 			</div>
 		</div>
 		<% if (m.getM_name().equals("관리자")) { %>
-			<%@ include file="./common/footer.jsp"%>
+		<%@ include file="./common/footer.jsp"%>
 		<% } %>
 		<script>
 		$(function(){

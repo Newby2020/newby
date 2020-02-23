@@ -50,7 +50,6 @@
 			<!--contents-->
 			<div id="mn16s" align="center">
 
-				<%-- <% if( i.getIwno().equals(m.getM_nick())) { %> --%>
 				<!-- 제목란이니깐 해당 제목 작성해서 하면 돼-->
 				<br>
 				<h2>문의 내용</h2>
@@ -60,6 +59,7 @@
 				<div id="contentsDivSize29">
 					<!-- 여기다가 너가 작업한거 넣으면 돼-->
 
+				<% if( i.getIwno().equals(m.getM_nick())) { %>
 					<form id="updateForm" method="post">
 						<table class="tbDetail">
 							<tr>
@@ -82,6 +82,13 @@
 								</textarea></td>
 							</tr>
 						</table>
+						<div align="center">
+							<div class="replyWriteArea">
+
+								
+
+							</div>
+						</div>
 						<div id="replySelectArea">
 							
 						</div>
@@ -101,6 +108,103 @@
 					
     					</script>
 					</form>
+					<% } else{ %>
+					<form id="updateForm" method="post">
+						<table class="tbDetail">
+							<tr>
+								<td class="tdDetail">제목</td>
+								<td class="tdDetail" colspan="5"><input type="text"name="title" value="<%= i.getItitle() %>" readonly>
+							       		</td>
+							</tr>
+							<tr>
+								<td class="tdDetail">작성자</td>
+								<td class="tdSpan"><input type="text" name="wno" value="<%=i.getIwno()%>" readonly></td>
+								<td class="tdDetail">작성일</td>
+								<td class="tdSpan"><input type="date" name="date" value="<%= i.getIdate() %>" readonly></td>
+							<tr>
+								<td class="tdDetail">내용</td>
+								<td class="tbSpan2" colspan="5"></td>
+							</tr>
+
+							<tr>
+								<td class="tdContent" colspan="6"><textarea name="content" cols="100" rows="30" style="resize:none;" readonly><%= i.getIcontent() %>
+								</textarea></td>
+							</tr>
+						</table>
+						<div align="center">
+							<div class="replyWriteArea">
+
+								
+
+							</div>
+						</div>
+						<div id="replySelectArea">
+							
+						</div>
+						
+						<input type="hidden" name="ino" value="<%= i.getIno() %>"/>
+						
+					
+					<table align="center">
+									<tr>
+										<td>답변</td>
+										<td><input type="date" name="date"
+											value="<%=i.getIcdate()%>" readonly></td>
+										<%
+											if (i.getIcomment() != null) {
+										%>
+											
+										<td><textArea rows="3" cols="80" id="replyContent" 
+												style="resize: none;" name="comment"><%=i.getIcomment()%></textArea></td>
+
+										<%
+											} else {
+										%>
+										<td><textArea rows="3" cols="80" id="replyContent"
+												style="resize: none;" name="comment"></textArea></td>
+										<%
+											}
+										%>
+										<%
+											if (m != null && m.getM_name().equals("관리자") ) {
+												if(i.getIcomment() != null){
+										%>
+
+										<td>
+											<button onclick="updateCom()">수정완료</button>
+											<button onclick="deleteCom()">삭제하기</button>
+										</td>
+										
+										<script>
+											function updateCom(){
+												$("#updateForm").attr("action","<%=request.getContextPath() %>/updateCom.io");
+											}
+											function deleteCom(){
+												$("#updateForm").attr("action","<%=request.getContextPath() %>/deleteCom.io");
+											}
+					
+    									</script>
+										<%
+											}else{
+										%>
+										<td>
+											<button type="submit" class="insertBtn" id="replybtn" name="comment"
+												onclick="reComment();">답변 하기</button>
+										</td>
+										
+										<script>
+											function reComment(){
+												$("#updateForm").attr("action","<%=request.getContextPath() %>/insertCom.io");
+											}
+    									</script>
+
+										<%
+											} }
+										%>
+									</tr>
+								</table>
+								</form>
+					<% } %>
 
 				</div>
 					<%-- <% } else {

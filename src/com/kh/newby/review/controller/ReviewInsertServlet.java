@@ -8,6 +8,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.kh.newby.member.model.vo.Member;
 import com.kh.newby.review.model.service.ReviewService3;
 import com.kh.newby.review.model.vo.Review3;
 
@@ -33,12 +34,10 @@ public class ReviewInsertServlet extends HttpServlet {
 		//리뷰 작성 및 작성여부 호스트 평점 업데이트 Servlet
 		Review3 rv = new Review3();
 		
-//		HttpSession session = request.getSession(false);
-//		Member m = (Member)session.getAttribute("member");
 		String cno = request.getParameter("cno");
-//		String mno = m.getM_no();
+		String mno = request.getParameter("mno");
 //		
-		String mno = "M7";
+//		String mno = "M7";
 		
 		rv.setcNo(cno);
 		rv.setmNo(mno);
@@ -67,8 +66,7 @@ public class ReviewInsertServlet extends HttpServlet {
 				System.out.println("리뷰 등록여부 업데이트 실패");
 			}
 			
-			
-			response.sendRedirect("review.do");
+			response.sendRedirect("/semi/completeWritingReview.do");
 		}else {
 			request.setAttribute("msg", "리뷰 등록 실패!");
 			request.getRequestDispatcher("views/common/errorPage.jsp").forward(request, response);

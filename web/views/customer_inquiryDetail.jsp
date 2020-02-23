@@ -60,7 +60,7 @@
 				<div id="contentsDivSize29">
 					<!-- 여기다가 너가 작업한거 넣으면 돼-->
 
-					<form form id="updateForm" method="post">
+					<form id="updateForm" method="post">
 						<table class="tbDetail">
 							<tr>
 								<td class="tdDetail">제목</td>
@@ -92,13 +92,13 @@
 											if (i.getIcomment() != null) {
 										%>
 										<td><textArea rows="3" cols="80" id="replyContent" readonly
-												style="resize: none;" name="replycontent"><%=i.getIcomment()%></textArea></td>
+												style="resize: none;" name="comment"><%=i.getIcomment()%></textArea></td>
 
 										<%
 											} else {
 										%>
 										<td><textArea rows="3" cols="80" id="replyContent"
-												style="resize: none;" name="replyContent"></textArea></td>
+												style="resize: none;" name="comment"></textArea></td>
 										<%
 											}
 										%>
@@ -107,28 +107,44 @@
 												if(i.getIcomment() != null){
 										%>
 										<td>
-											<button type="submit" class="insertBtn"
-												onclick="updateCom();">수정하기</button>
+											<input type="button"
+												onclick="location.href='updateViewCom.io?ino=<%=i.getIno()%>'"
+												value="댓글 수정">
 										</td>
 										<td>
-											<button type="reset" class="insertBtn" onclick="deleteCom();">삭제하기</button>
+											<%-- <button type="reset" class="insertBtn" onclick="cmDeleteOpen(${comment.cno})">삭제</button> --%>
 										</td>
 										
-										<script>
+										<%-- <script>
 											function updateCom(){
 												$("#updateForm").attr("action","<%=request.getContextPath() %>/updateCom.io");
 											}
 						
-											function deleteCom(){
-												$("#updateForm").attr("action","<%=request.getContextPath() %>/deleteCom.io");
+											function cmDeleteOpen(){
+												var msg = confirm("댓글을 삭제합니다.");
+												if(msg == true){
+													deleteCmt(cno);
+												}else{
+													return false;
+												}
 											}
+											function deleteCmt(cno){
+												var param = "cno" + cno;
+												
+												httpRequest = getXMLHttpRequest();
+									            httpRequest.onreadystatechange = checkFunc;
+									            httpRequest.open("POST", "deleteCom.io", true);    
+									            httpRequest.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded;charset=EUC-KR'); 
+									            httpRequest.send(param);
+											}
+
 					
-    									</script>
+    									</script> --%>
 										<%
 												}else{
 										%>
 										<td>
-											<button type="submit" class="insertBtn" id="replybtn"
+											<button type="submit" class="insertBtn" id="replybtn" name="comment"
 												onclick="reComment();">답변 하기</button>
 										</td>
 										
@@ -138,7 +154,7 @@
 											}
 						
 											
-					
+										
     									</script>
 
 										<%
@@ -150,15 +166,26 @@
 							</div>
 							<div align="center">
 								<%
-									if (i.getIwno().equals(m.getM_nick()) || m != null && m.getM_name().equals("관리자")) {
+									if (i.getIwno().equals(m.getM_nick())) {
 								%>
-								<input type="button"
-									onclick="location.href='inquiryUpdateView.io?ino=<%=i.getIno()%>'"
-									value="수정하기">
+								<input type="button" onclick="location.href='updateViewCom.io?ino=<%=i.getIno()%>'" value="수정하기">
+									<%@ include file="./common/footer.jsp"%>
 								<%
 									}
 								%>
-							</div>
+								
+								<% if(m != null && m.getM_name().equals("관리자") ) { %>
+									</div><div align="center">
+										<button onclick="deleteInquiry()">삭제하기</button>
+									</div>
+								
+								
+								<script>
+									function deleteInquiry(){
+										$("#updateForm").attr("action","<%=request.getContextPath() %>/inquiryDelete.io");
+									}
+    							</script>
+    						<% } %>
 
 						</div>
 						<input type="hidden" name="ino" value="<%= i.getIno() %>"/>
@@ -169,7 +196,9 @@
 			</div>
 
 		</div>
-		<%@ include file="./common/footer.jsp"%>
+		<% if(m != null && m.getM_name().equals("관리자") ) { %>
+			<%@ include file="./common/footer.jsp"%>
+			<% } %>
 	</div>
 	<script>
 		function complete() {
@@ -196,7 +225,7 @@
 	    		$("#replycontent").val("").focus();
 	    	}else{
 	    		$.ajax({
-	    			url: "views/customer_inquiryDetail.jsp"
+	    			url: "customer_inquiryDetail.jsp"
 	                type: "POST",
 	                data: {
 	                    no : $("#no").val(),
@@ -210,7 +239,7 @@
 	                },
 	    		})
 	    	}
-	    }) */
+	    })  */
 		
 	</script>
 </body>
