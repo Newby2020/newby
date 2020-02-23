@@ -40,6 +40,7 @@ public class InquiryUpdateViewComServlet extends HttpServlet {
 			page = "views/customer_inquiryUpdate.jsp";
 			request.setAttribute("inquiry", i);
 		} 
+		request.getRequestDispatcher(page).forward(request, response);
 	}
 
 	/**
