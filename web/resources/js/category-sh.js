@@ -32,8 +32,8 @@ $(function(){
    $( "#slider-range" ).slider({
        range: true,
        min: 1000,
-       max: 300000,
-       values: [ 1000 , 300000],
+       max: 1000000,
+       values: [ 1000 , 1000000],
        slide: function( event, ui ) {
        $( "#amount" ).val( ui.values[ 0 ] + "원 - " + ui.values[ 1 ]+"원" );
        }
@@ -85,6 +85,13 @@ $(function(){
        });
    });
    
+   $(function(){ 
+       $(".main_sub_caca3 li:has(a)").on("click",function(){
+    	   $(".main_sub_caca3 li:has(a)").removeClass("high_light_7");
+    	   $(this).toggleClass("high_light_7");
+       });
+   });
+   
    // 필터 선택자
    
    $(function(){  
@@ -115,11 +122,21 @@ $(function(){
 		   $("#fType").val($(".high_light_6").text().length);
 	   });
 	   
+	   
    });
 
-
-
-
+   
+   // 필터 버튼 색상 변경
+   $(function(){
+       $('#cateFilter').on({
+           'mouseenter':function(){
+            $(this).css({"background":"#0981f1","color":"white", "border":"white solid 1px"});
+           },'mouseleave' : function(){
+            $(this).removeAttr('style');  
+           }
+       });
+   });
+   
 
    
    

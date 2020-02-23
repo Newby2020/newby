@@ -48,24 +48,6 @@ public class AdminService {
 		return list;
 	}
 
-//-------------------------- ClaimList -----------------------------//	
-	public int getClaimListCount() {
-		Connection con = getConnection();
-		int listCount = aDao.getClaimListCount(con);
-		
-		close(con);
-		return listCount;
-	}
-
-	public ArrayList<Claim> selectClaimList(int currentPage, int limit) {
-		Connection con = getConnection();
-		
-		ArrayList<Claim> list = aDao.selectClaimList(con, currentPage, limit);
-		
-		close(con);
-		return list;
-	}
-	
 //-------------------------- ClassApplyList -----------------------------//	
 	public int getClassApplyListCount() {
 		Connection con = getConnection();
@@ -122,6 +104,22 @@ public class AdminService {
 		return result ;
 	}	
 
+	public int getSearchedAppliedClassListCount(String searchValue) {
+		Connection con = getConnection();
+		int listCount = aDao.getSearchedAppliedClassListCount(con, searchValue);
+		
+		close(con);
+		
+		return listCount;
+	}
+	
+	public ArrayList<ClassVo> searchAppliedClass(int currentPage, int limit, String searchValue) {
+		Connection con = getConnection();
+		ArrayList<ClassVo> list = aDao.searchAppliedClass(con, currentPage, limit, searchValue);
+		
+		close(con);
+		return list;
+	}
 //-------------------------- ClassList -----------------------------//	
 	public int getClassListCount() {
 		Connection con = getConnection();
@@ -139,6 +137,66 @@ public class AdminService {
 		close(con);
 		return list;
 	}
+
+	public int getSearchedClassListCount(String searchValue) {
+		Connection con = getConnection();
+		int listCount = aDao.getSearchedClassListCount(con, searchValue);
+		
+		close(con);
+		
+		return listCount;
+	}
+
+	public ArrayList<ClassVo> searchClass(int currentPage, int limit, String searchValue) {
+		Connection con = getConnection();
+		ArrayList<ClassVo> list = aDao.searchClass(con, currentPage, limit, searchValue);
+		
+		close(con);
+		return list;
+	}
+//-------------------------- ClaimList -----------------------------//	
+	public int getClaimListCount() {
+		Connection con = getConnection();
+		int listCount = aDao.getClaimListCount(con);
+		
+		close(con);
+		return listCount;
+	}
+
+	public ArrayList<Claim> selectClaimList(int currentPage, int limit) {
+		Connection con = getConnection();
+		
+		ArrayList<Claim> list = aDao.selectClaimList(con, currentPage, limit);
+		
+		close(con);
+		return list;
+	}
+
+	
+	public int getClaimListCount(String searchValue) {
+		Connection con = getConnection();
+		int listCount = aDao.getClaimListCount(con, searchValue);
+		
+		close(con);
+		
+		return listCount;
+	}
+
+	public ArrayList<Claim> searchClaim(int currentPage, int limit, String searchValue) {
+		Connection con = getConnection();
+		ArrayList<Claim> list = aDao.searchClaim(con, currentPage, limit, searchValue);
+		
+		close(con);
+		return list;
+	}
+
+
+
+
+
+
+		
+
 
 
 }

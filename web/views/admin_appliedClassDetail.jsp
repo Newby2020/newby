@@ -65,7 +65,7 @@
 		<a href="/semi/index.ad">Dashboard</a> <a href="/semi/userList.ad">사용자</a>
 		<a class="active" href="/semi/classApplyList.ad">클래스 등록 신청</a> 
 		<a href="/semi/classList.ad">개설 클래스</a> <a href="/semi/claimList.ad">신고</a>
-		<a href="admin_accountancy.jsp">정산</a>
+		<!-- <a href="admin_accountancy.jsp">정산</a> -->
 	</div>
 
 	<!--contents-->
@@ -166,11 +166,13 @@
 				<% } %>
 				
 				<script>
+					
+				
 					function reject(){
 						if( $('#rReason').val().length < 10 ){
 							alert("반려 사유를 10자 이상 작성해주세요");
 						}else if(confirm("반려하시겠습니까?")){
-							location.href="<%= request.getContextPath()%>/reject.ad?cno=<%= c.getClassNo() %>&rReason=<%= c.getRejectReason()%>";
+							location.href="<%= request.getContextPath()%>/reject.ad?cno=<%= c.getClassNo() %>&rReason="+ $('#rReason').val();
 						}
 					}
 					

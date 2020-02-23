@@ -1,4 +1,4 @@
-package com.kh.newby.admin.controller;
+package com.kh.newby.report.controller;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -9,78 +9,87 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.kh.newby.admin.service.AdminService;
-import com.kh.newby.classvo.model.vo.ClassVo;
+import com.kh.newby.claim.model.vo.Claim;
 import com.kh.newby.common.PageInfo;
+import com.kh.newby.report.model.service.ReportService;
 
 /**
- * Servlet implementation class ClassApply
+ * Servlet implementation class ReportListServlet
  */
-@WebServlet("/classList.ad")
-public class ClassListServlet extends HttpServlet {
+@WebServlet("/reportSelectList.ro")
+public class ReportListServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-       
-    /**
-     * @see HttpServlet#HttpServlet()
-     */
-    public ClassListServlet() {
-        super();
-        // TODO Auto-generated constructor stub
-    }
+
+	/**
+	 * @see HttpServlet#HttpServlet()
+	 */
+	public ReportListServlet() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
 
 	/**
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// 1. 페이징 처리하기
-		int listCount = 0;
-		ArrayList<ClassVo> list = null;
+		ArrayList<Claim> list = null;
+
+		ReportService rs = new ReportService();
 		
-		AdminService as = new AdminService();
-		
+		// 페이징 하기
+		// 첫번째 페이지
 		int startPage;
+
+		// 마지막 페이지
 		int endPage;
+
+		// 전체 페이지 중 마지막 페이지
 		int maxPage;
+
+		// 사용자가 위치한 현재 페이지
 		int currentPage;
+
+		// 총 페이지 수
 		int limit;
-		
+
+		// 처음 접속시 페이지 
 		currentPage = 1;
+
+		// 글 갯수 제한
 		limit = 10;
-		
+
 		if(request.getParameter("currentPage") != null) {
 			currentPage = Integer.parseInt(request.getParameter("currentPage"));
 		}
-		
-		listCount = as.getClassListCount();
-//		System.out.println("총 클래스 수  : " + listCount);
-		
-		maxPage = (int)((double)listCount / limit + 0.9);
-		startPage = ((int)((double)currentPage / limit + 0.9) -1) * limit + 1;
-		
+
+		int listCount = rs.getListCount();
+
+		maxPage = (int)((double)listCount/limit + 0.9);
+
+		startPage = ((int)((double)currentPage / limit + 0.9) -1) * limit +1;
+
 		endPage = startPage + limit -1;
-		
+
 		if(endPage > maxPage) {
 			endPage = maxPage;
 		}
-		
-		list = as.selectClassList(currentPage, limit);
-		
-//		System.out.println(list);
+
+		list = rs.reportSelectList(currentPage,limit);
 		
 		String page = "";
-		
+		System.out.println(list);
 		if(list != null) {
-			page = "views/admin_classList.jsp";
+			page = "views/customer_report.jsp";
 			request.setAttribute("list", list);
 			
-			PageInfo pi = new PageInfo(currentPage, listCount, limit, maxPage, startPage, endPage);
+			PageInfo pi = new PageInfo(currentPage,listCount,limit,maxPage,startPage,endPage);
+			System.out.println(list);
+			
 			request.setAttribute("pi", pi);
-		}else {
-			page = "views/common/errorPage";
-			request.setAttribute("msg", "개설된 클래스 목록을 불러오는데 실패하였습니다.");
 		}
 		
 		request.getRequestDispatcher(page).forward(request, response);
+		
 	}
 
 	/**

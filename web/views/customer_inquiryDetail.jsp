@@ -43,7 +43,7 @@
 					<a href="/semi/inquirySelectList.io?currentPage=1">문의 목록</a> <a
 						href="views/customer_createInquiry.jsp">문의 작성</a>
 				</div>
-				<a href="views/customer_report.jsp">신고</a> <a
+				<a href="/semi/reportSelectList.ro">신고</a> <a
 					href="views/customer_refund.jsp">이용약관</a>
 			</div>
 
@@ -60,7 +60,7 @@
 				<div id="contentsDivSize29">
 					<!-- 여기다가 너가 작업한거 넣으면 돼-->
 
-					<form>
+					<form form id="updateForm" method="post">
 						<table class="tbDetail">
 							<tr>
 								<td class="tdDetail">제목</td>
@@ -85,15 +85,15 @@
 
 								<table align="center">
 									<tr>
-										<td>관리자</td>
+										<td>답변</td>
 										<td><input type="date" name="date"
 											value="<%=i.getIcdate()%>" readonly></td>
 										<%
 											if (i.getIcomment() != null) {
 										%>
-										<td><textArea rows="3" cols="80" id="replyContent"
+										<td><textArea rows="3" cols="80" id="replyContent" readonly
 												style="resize: none;" name="replycontent"><%=i.getIcomment()%></textArea></td>
-												
+
 										<%
 											} else {
 										%>
@@ -108,19 +108,38 @@
 										%>
 										<td>
 											<button type="submit" class="insertBtn"
-												onclick="change(this);">수정하기</button>
+												onclick="updateCom();">수정하기</button>
 										</td>
 										<td>
-											<button type="reset" class="insertBtn"
-												onclick="change(this);">삭제하기</button>
+											<button type="reset" class="insertBtn" onclick="deleteCom();">삭제하기</button>
 										</td>
+										
+										<script>
+											function updateCom(){
+												$("#updateForm").attr("action","<%=request.getContextPath() %>/updateCom.io");
+											}
+						
+											function deleteCom(){
+												$("#updateForm").attr("action","<%=request.getContextPath() %>/deleteCom.io");
+											}
+					
+    									</script>
 										<%
 												}else{
 										%>
 										<td>
 											<button type="submit" class="insertBtn" id="replybtn"
-												onclick="reComment(this);">댓글 달기</button>
+												onclick="reComment();">답변 하기</button>
 										</td>
+										
+										<script>
+											function reComment(){
+												$("#updateForm").attr("action","<%=request.getContextPath() %>/insertCom.io");
+											}
+						
+											
+					
+    									</script>
 
 										<%
 											} }
@@ -142,7 +161,7 @@
 							</div>
 
 						</div>
-
+						<input type="hidden" name="ino" value="<%= i.getIno() %>"/>
 					</form>
 
 				</div>
@@ -171,7 +190,7 @@
 			})
 		}) */
 		
-		$("#replybtn").click(function(){
+		/* $("#replybtn").click(function(){
 	    	if($("#replycontent").val().trim() === ""){
 	    		alert("댓글을 입력하세요.");
 	    		$("#replycontent").val("").focus();
@@ -191,7 +210,7 @@
 	                },
 	    		})
 	    	}
-	    })
+	    }) */
 		
 	</script>
 </body>

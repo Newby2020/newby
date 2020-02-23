@@ -29,21 +29,7 @@ public class InquiryCommentDao {
 		}
 	}
 	
-	public int insertComment(Connection con, Inquiry bco) {
-		int result = 0;
-		
-		PreparedStatement pstmt = null;
-		
-		String sql = prop.getProperty("insertComment");
-		
-		/*try {
-			
-		} catch(SQLException e) {
-			pstmt.setNull(, );
-		}*/
-		
-		return result;
-	}
+	
 
 	public ArrayList<Inquiry> inquirySelectComList(Connection con, String ino) {
 		ArrayList<Inquiry> list = null;
@@ -101,4 +87,98 @@ public class InquiryCommentDao {
 		
 		return result;
 	}
+
+	public int deleteComment(Connection con, String ino) {
+		int result = 0;
+		PreparedStatement pstmt = null;
+		
+		String sql = prop.getProperty("deleteComment");
+		
+		try {
+			pstmt = con.prepareStatement(sql);
+			
+			pstmt.setString(1, ino);
+			
+			result = pstmt.executeUpdate();
+		} catch(SQLException e) {
+			e.printStackTrace();			                  
+		} finally {
+			close(pstmt);
+		}
+		
+		return result;
+	}
+
+
+
+	public int insertCom(Connection con, Inquiry i) {
+		int result = 0;
+		PreparedStatement pstmt = null;
+		
+		String sql = prop.getProperty("insertCom");
+		
+		try {
+			pstmt = con.prepareStatement(sql);
+			
+			pstmt.setString(1, i.getIcomment());
+			pstmt.setDate(2, i.getIcdate());
+			
+			result = pstmt.executeUpdate();
+		} catch(SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(pstmt);
+		}
+		
+		return result;
+	}
+
+
+
+	public int updateCom(Connection con, Inquiry i) {
+		int result = 0;
+		PreparedStatement pstmt = null;
+		
+		String sql = prop.getProperty("updateCom");
+		
+		try {
+			pstmt = con.prepareStatement(sql);
+			
+			pstmt.setString(1, i.getIcomment());
+			pstmt.setString(2, i.getIno());
+			
+			result = pstmt.executeUpdate();
+		} catch(SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(pstmt);
+		}
+		
+		return result;
+	}
+
+
+
+	public int deleteCom(Connection con, String ino) {
+		int result = 0;
+		PreparedStatement pstmt = null;
+		
+		String sql = prop.getProperty("deleteCom");
+		
+		try {
+			pstmt = con.prepareStatement(sql);
+			
+			pstmt.setString(1, ino);
+			
+			result = pstmt.executeUpdate();
+		} catch(SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(pstmt);
+		}
+		
+		return result;
+	}
+
+
 }

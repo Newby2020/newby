@@ -50,7 +50,7 @@
         <a href="/semi/classApplyList.ad">클래스 등록 신청</a>
         <a class="active" href="/semi/classList.ad">개설 클래스</a>
         <a href="/semi/claimList.ad">신고</a>
-        <a href="admin_accountancy.jsp">정산</a>
+        <!-- <a href="admin_accountancy.jsp">정산</a> -->
 
     </div>
     <div class="content">
@@ -58,8 +58,74 @@
         <div style="overflow-x:auto;">
             <!-- searchBar -->
             <div class="searchBar">
-                <input type="text" placeholder="Search...">
-                <button><i class="fa fa-search"></i></button>
+                <input id="search" type="text" placeholder="Search..." >
+                <button id="searchBtn"><i class="fa fa-search"></i></button>
+                <script>
+	                $('#search').keypress(function(event){
+	                    var keycode = (event.keyCode ? event.keyCode : event.which);
+	                    if(keycode == '13'){
+	                    	$('#searchBtn').trigger("click");
+	                    }
+	                }); 
+                
+                	$('#searchBtn').click(function(){
+                		$.ajax({
+                			url : "/semi/searchClass.ad",
+                			type: "get",
+                			data:{
+                				searchValue : $("#search").val()
+                			},
+                			success : function(data){
+                			console.log(data);
+                				// 리스트
+                				$('#listBody').children().remove();
+                				
+                				var list = data["list"];
+                				console.log(list);
+                				
+                				for(var i = 0; i < list.length; i++){
+                					var $tr = $("<tr>"); 
+                					
+                					var $td1 = $("<td>");
+                					var $td2 = $("<td>");
+                					var $td3 = $("<td>");
+                					var $td4 = $("<td>");
+                					var $td5 = $("<td>");
+                					var $td6 = $("<td>");
+                					var $td7 = $("<td>");
+                					var $td8 = $("<td>");
+                					
+                					$td1.text(list[i]["classNo"]);
+                					$td2.text(list[i]["classHostNo"]);
+                					$td3.text(list[i]["classType"]);
+                					$td4.text(list[i]["firstCategory"]);
+                					$td5.text(list[i]["secondCategory"]);
+                					$td6.text(list[i]["thirdCategory"]);
+                					$td7.text(list[i]["classTarget"]);
+                					$td8.text(list[i]["m_no"]);
+                					
+                					$tr.append($td1);
+                					$tr.append($td2);
+                					$tr.append($td3);
+                					$tr.append($td4);
+                					$tr.append($td5);
+                					$tr.append($td6);
+                					$tr.append($td7);
+                					$tr.append($td8);
+                					console.log($tr);
+                					$('#listBody').append($tr);
+                					
+                					// pagingArea
+                    				$('.pagingArea').empty();
+                    				
+                    				
+                				}
+                			}, error : function(){
+                				alert("검색 실패!");
+                			}
+                		});
+                	});
+                </script>
             </div>
             <table>
                 <tr>
@@ -72,6 +138,7 @@
                     <th>타겟</th>
                     <th>상세정보</th>
                 </tr>
+                <tbody id="listBody">
                	<% for(ClassVo c : list) {%>
                 <tr>
                     <td><%= c.getClassNo() %></td>
@@ -86,6 +153,7 @@
                     </td>
                 </tr>
                 <% } %>
+                </tbody>
             </table>
             <script>
           		 $('.detailBtn').click(function(){
@@ -109,7 +177,7 @@
  					if(p == currentPage){ %>
  						<button disabled><%= p %></button>
 			<% 		} else{ %>
-						<button onclick="location.href='<%= request.getContextPath() %>/classList.ad?currentPage=<%= p %>'"<%= p %>></button>
+						<button onclick="location.href='<%= request.getContextPath() %>/classList.ad?currentPage=<%= p %>'"><%= p %></button>
 			<% 		} %>
  			<% } %>
  			
