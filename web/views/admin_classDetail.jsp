@@ -26,6 +26,7 @@
 <style>
 	#tableDiv tr td:first-child, h4{font-size : 20px; font-weight: bold;}
 	#tableDiv tr td:nth-child(2){padding-left : 40px;} 
+	#tableDiv {padding-bottom : 100px}
 </style>
 
 
