@@ -58,7 +58,10 @@ public class LoginServlet extends HttpServlet {
 			session.setAttribute("Member", m);
 			}
 			// forword, sendredirect
-			response.sendRedirect("index.jsp");
+//			response.sendRedirect("index.jsp");
+			//test용 임시
+			response.sendRedirect("/semi/selectOne.ci?cno=C7");
+//			request.getRequestDispatcher("selectOne.ci?cno='C6'").forward(request, response);
 		} catch (Exception e) {// 에러가 났을때
 			System.out.println("아이디 비번 틀림!!!");
 			out.println("<script language='javascript'>");

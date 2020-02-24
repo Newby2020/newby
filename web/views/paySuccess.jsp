@@ -1,8 +1,12 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8" isErrorPage="true"%>
 <%
-	String msg = (String) request.getAttribute("msg");
-	Exception e = (Exception) request.getAttribute("exception");
+	String msg = (String)request.getAttribute("msg");
+	String cno = (String)request.getAttribute("cno");
+	String mno = (String)request.getAttribute("mno");
+	int millage = (int)request.getAttribute("millage");
+	double saveMillage = (double)request.getAttribute("saveMillage");
+	String csNo = (String)request.getAttribute("csNo");
 	// 일반적으로 jsp에 사용되는 exception 내장 객체는 jspException 클래스를 활용한다.
 	// 따라서 사용자 정의 예외를 구현할 때에는 Exception 객체를 직접 선언하여 사용하여야 한다.
 %>
@@ -57,8 +61,8 @@
 		<div class="midError">
 			<div class="innerError">
 			<br><br><br>
-				<label>죄송합니다. 문제가 발생했습니다( <%= msg %> )</label><br>
-				<label>관리자에게 문의하세요</label>
+				<label>결제가 완료되었습니다.</label><br>
+				<label>NEWBY를 이용해 주셔서 감사합니다.</label>
 				<br><br>
 				<button class="errorToHome" onclick="errorToHome();">홈페이지로 이동하기</button>
 			</div>	

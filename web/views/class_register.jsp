@@ -45,6 +45,8 @@
         font-size: 16px;
         border-radius: 6px;
         text-align: center;
+        cursor:pointer;
+		display:block;
         /*background: #ff005a;*/
     }
 	.cl_example{
@@ -81,10 +83,6 @@
     	font-weight: bold;
     	text-align: right;
     }
-    #nextBtn{
-    	cursor:pointer;
-    	
-    }
 </style>
 </head>
 <body>
@@ -94,7 +92,9 @@
 	<div class="wrap">
         <div class="cl_register"><h3>수업신청</h3></div>
 	    <div class="class_title">
-	        [<%= cv.getClassType() %>] <%= cv.getClassName() %>
+	    	<form id="submit">
+	        <span>[<%= cv.getClassType() %>]</span> <span name="className"><%= cv.getClassName() %></span>
+	        <input type="hidden" name="classNo" value="<%= cv.getClassNo() %>">
 	    </div>
 	    <div class="class_list">
 	        <div class="cl_example"><!-- <img src="../semi/resources/images/schedule.jpg"> -->원하시는 수업일정을 선택해주세요.</div>
@@ -105,27 +105,23 @@
 	        </li>
             <%} %>
 	    </div>
-	    <form>
-	    <input type="hidden" name="">
-	    <input type="hidden" name="">
-	    <input type="hidden" name="">
     	<div class="payment_process" align="left">
     		<table>
     			<tr>
     				<td><label>사용 가능한 마일리지</label></td>
-    				<td><input type="text" id="gray_text_box" value="<%-- <%= m.getM_mileage() %> --%>" disabled>원</td>
+    				<td><input type="text" id="gray_text_box" value="<%= m.getM_mileage() %>" disabled>원</td>
    				</tr>
    				<tr>
     				<td><label>사용 할 마일리지</label></td>
-    				<td><input type="text" id="use_millage">원</td>
+    				<td><input type="text" id="use_millage" name="use_millage">원</td>
    				</tr>
    				<tr>
     				<td><label>총 결제 금액</label></td>
-    				<td><span id="total_pay"></span>원</td>
+    				<td><span id="total_pay" name="finalPay"></span>원</td>
     			</tr>
     		</table>
     	</div>
-    	</form>
+    		</form>
 	    <div id="nextBtn" onclick="nextPage()">날짜를 선택해 주세요</div>
 	    <script>
 	        /* $('#cl_date_id').click(function(){
@@ -135,8 +131,12 @@
 	        		count++;
 	        	}
 	        }); */
+	        var finalPay = 0;
+	        var millage = 0;
+	        var classPrice = 0;
+	        var totalPrice = 0;
+	    	var count = 0;
 	        $(function(){
-		    	var count = 0;
 		    	//checkbox 클릭시
 		    	$('input:checkbox').on('click',function(){
 		    		//버튼 색상 변경
@@ -153,22 +153,25 @@
 		        		}
 	        		});
 	        		//클래스 가격 받아오기
-		        var classPrice = <%= cv.getClassPrice()%>;
+		       		classPrice = <%= cv.getClassPrice()%>;
 		        	//클래스 가격에서 선택된 개수에 따라서 가격 변경
-		        var totalPrice = (classPrice * count);
+	        		totalPrice = (classPrice * count);
+		        	finalPay = (totalPrice - millage);
+		        	console.log(finalPay);
 		        	//최종 가격 
 		        	$('#total_pay').html(totalPrice);
 		        		//마일리지 입력 시 최종가격에서 뺴주기
 						$('#use_millage').keyup(function(){
-					        var millage = $('#use_millage').val();
-					        $('#total_pay').html(totalPrice - millage);
+					        millage = $('#use_millage').val();
+					        $('#total_pay').html(finalPay);
 						});					        
 				    	});
 	        });
+	       
 	        //다음 페이지 넘어가기
 	        function nextPage(){
-	        	/* location.href="/semi/classPayComplete.cp" */
-	        	window.open("/semi/views/payApiTest.jsp");
+	        	location.href="/semi/finalPay.cp?className=<%= cv.getClassName() %>&finalPay="+finalPay+"&classNo=<%= cv.getClassNo() %>&millage="+millage+"&csNo=<%= csList.get(0).getCsNo() %>";
+	        	/* $('#submit').attr('action','/semi/finalPay.cp'); */
 	        }
 	    </script>
     </div>
