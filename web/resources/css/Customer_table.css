@@ -32,20 +32,20 @@
 			
 			}
 			
-.tdSpan {border:1px solid black;
+.tdSpan {border: 1px solid rgb(9, 129, 241);
 		 
 		  }
 
 
-.tdDetail{border:1px solid black;
+.tdDetail{border: 1px solid rgb(9, 129, 241);
 		  
-		  ;
+		  
 		  }
-.tbSpan2{border:1px solid black;
+.tbSpan2{border: 1px solid rgb(9, 129, 241);
 		
 		}
 
-.tdContent{border:1px solid black;
+.tdContent{border: 1px solid rgb(9, 129, 241);
 			width:800px;
 			height:500px;
 			}

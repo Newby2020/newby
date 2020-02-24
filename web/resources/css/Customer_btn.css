@@ -7,9 +7,28 @@
     cursor : pointer;
 }
 
+.join3{
+	width: auto;
+    height: 30px;
+    background-color: rgb(9, 129, 241);
+    color: white;
+    cursor : pointer;
+}
+
+.PaBtn{
+    width: 25px;
+    height: 25px;
+    background-color: rgb(9, 129, 241);
+    color: white;
+    cursor : pointer;
+    border: none;
+}
+
 .btn1{
     width: 80px;
     height: 35px;
     background-color: rgb(9, 129, 241);
     color: white;
 }
+.textAr{border: 1px solid rgb(9, 129, 241);
+		width:800px;}

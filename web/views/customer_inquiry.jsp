@@ -20,6 +20,7 @@
 <link rel="stylesheet" href="/semi/resources/css/main-panel.css">
 <link rel="stylesheet" href="/semi/resources/css/mypage_h&j-frame.css">
 <link rel="stylesheet" href="/semi/resources/css/Customer_table.css">
+<link rel="stylesheet" href="/semi/resources/css/Customer_btn.css">
 <link
 	href="https://fonts.googleapis.com/css?family=Nanum+GothicNoto+Sans+KR&display=swap"
 	rel="stylesheet">
@@ -86,25 +87,25 @@
 
 					<div>
 						<div style="display: inline-block">
-							<button onclick="location.href='<%=request.getContextPath()%>/inquirySelectList.io?currentPage=1'"><<</button>
+							<button class="PaBtn" onclick="location.href='<%=request.getContextPath()%>/inquirySelectList.io?currentPage=1'"><<</button>
 							<%	if (currentPage <= 1) { %>
-							<button disabled><</button>
+							<button class="PaBtn" disabled><</button>
 							<% } else { %>
-							<button onclick="location.href='<%=request.getContextPath()%>/inquirySelectList.io?currentPage=<%=currentPage - 1%>'"><</button>
+							<button class="PaBtn" onclick="location.href='<%=request.getContextPath()%>/inquirySelectList.io?currentPage=<%=currentPage - 1%>'"><</button>
 							<% } %>
 
 							<% for (int p = startPage; p <= endPage; p++) { if (p == currentPage) { %>
-							<button disabled><%=p%></button>
+							<button class="PaBtn" disabled><%=p%></button>
 							<% } else { %>
-							<button onclick="location.href='<%=request.getContextPath()%>/inquirySelectList.io?currentPage=<%=p%>'"><%=p%></button>
+							<button class="PaBtn" onclick="location.href='<%=request.getContextPath()%>/inquirySelectList.io?currentPage=<%=p%>'"><%=p%></button>
 							<% } %>
 							<% } %>
 							<% if (currentPage >= maxPage) { %>
-							<button disabled>></button>
+							<button class="PaBtn" disabled>></button>
 							<% } else { %>
-							<button onclick="location.href='<%=request.getContextPath()%>/inquirySelectList.io?currentPage=<%=currentPage + 1%>'">></button>
+							<button class="PaBtn" onclick="location.href='<%=request.getContextPath()%>/inquirySelectList.io?currentPage=<%=currentPage + 1%>'">></button>
 							<% } %>
-							<button onclick="location.href='<%=request.getContextPath()%>/inquirySelectList.io?currentPage=<%=maxPage%>'">>></button>
+							<button class="PaBtn" onclick="location.href='<%=request.getContextPath()%>/inquirySelectList.io?currentPage=<%=maxPage%>'">>></button>
 
 						</div>
 					</div>

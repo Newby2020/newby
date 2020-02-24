@@ -19,6 +19,7 @@
 <link rel="stylesheet" href="/semi/resources/css/main-panel.css">
 <link rel="stylesheet" href="/semi/resources/css/mypage_h&j-frame.css">
 <link rel="stylesheet" href="/semi/resources/css/Customer_table.css">
+<link rel="stylesheet" href="/semi/resources/css/Customer_btn.css">
 <link
 	href="https://fonts.googleapis.com/css?family=Nanum+GothicNoto+Sans+KR&display=swap"
 	rel="stylesheet">
@@ -107,54 +108,21 @@
 												if(i.getIcomment() != null){
 										%>
 										<td>
-											<input type="button"
+											<input type="button" class="join3"
 												onclick="location.href='updateViewCom.io?ino=<%=i.getIno()%>'"
 												value="댓글 수정">
-										</td>
-										<td>
-											<%-- <button type="reset" class="insertBtn" onclick="cmDeleteOpen(${comment.cno})">삭제</button> --%>
-										</td>
-										
-										<%-- <script>
-											function updateCom(){
-												$("#updateForm").attr("action","<%=request.getContextPath() %>/updateCom.io");
-											}
-						
-											function cmDeleteOpen(){
-												var msg = confirm("댓글을 삭제합니다.");
-												if(msg == true){
-													deleteCmt(cno);
-												}else{
-													return false;
-												}
-											}
-											function deleteCmt(cno){
-												var param = "cno" + cno;
-												
-												httpRequest = getXMLHttpRequest();
-									            httpRequest.onreadystatechange = checkFunc;
-									            httpRequest.open("POST", "deleteCom.io", true);    
-									            httpRequest.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded;charset=EUC-KR'); 
-									            httpRequest.send(param);
-											}
-
-					
-    									</script> --%>
+										</td>				
 										<%
 												}else{
 										%>
 										<td>
-											<button type="submit" class="insertBtn" id="replybtn" name="comment"
+											<button type="submit" class="join1" id="replybtn" name="comment"
 												onclick="reComment();">답변 하기</button>
-										</td>
-										
+										</td>									
 										<script>
 											function reComment(){
 												$("#updateForm").attr("action","<%=request.getContextPath() %>/insertCom.io");
-											}
-						
-											
-										
+											}									
     									</script>
 
 										<%
@@ -168,7 +136,7 @@
 								<%
 									if (i.getIwno().equals(m.getM_nick())) {
 								%>
-								<input type="button" onclick="location.href='updateViewCom.io?ino=<%=i.getIno()%>'" value="수정하기">
+								<input type="button" class="join1" onclick="location.href='updateViewCom.io?ino=<%=i.getIno()%>'" value="수정하기">
 									<%@ include file="./common/footer.jsp"%>
 								<%
 									}
@@ -176,7 +144,7 @@
 								
 								<% if(m != null && m.getM_name().equals("관리자") ) { %>
 									</div><div align="center">
-										<button onclick="deleteInquiry()">삭제하기</button>
+										<button class="join1" onclick="deleteInquiry()">삭제하기</button>
 									</div>
 								
 								
@@ -205,42 +173,6 @@
 
 			$("#addReply").css('display', 'none');
 		}
-		/* function reComment(obj) {
-			$("#replyContent").prop('readonly', true);
-			// 클릭한 버튼 숨기기
-			$(obj).css('display', 'none');
-
-			$(obj).parents('table').append(htmlForm);
-
-		} */
-		/* $(document).ready(function(){
-			$("#insertCom").clck(function(){
-				var replytext=$("#")
-			})
-		}) */
-		
-		/* $("#replybtn").click(function(){
-	    	if($("#replycontent").val().trim() === ""){
-	    		alert("댓글을 입력하세요.");
-	    		$("#replycontent").val("").focus();
-	    	}else{
-	    		$.ajax({
-	    			url: "customer_inquiryDetail.jsp"
-	                type: "POST",
-	                data: {
-	                    no : $("#no").val(),
-	                    id : $("#id").val(),
-	                    reply_content : $("#replycontent").val()
-	                },
-	                success: function () {
-	                	alert("댓글 등록 완료");
-	                	$("#replycontent").val("");
-	                	getReply();
-	                },
-	    		})
-	    	}
-	    })  */
-		
 	</script>
 </body>
 </html>

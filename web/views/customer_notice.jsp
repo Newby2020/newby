@@ -19,6 +19,7 @@
 <link rel="stylesheet" href="/semi/resources/css/main-panel.css">
 <link rel="stylesheet" href="/semi/resources/css/mypage_h&j-frame.css">
 <link rel="stylesheet" href="/semi/resources/css/Customer_table.css">
+<link rel="stylesheet" href="/semi/resources/css/Customer_btn.css">
 <link
 	href="https://fonts.googleapis.com/css?family=Nanum+GothicNoto+Sans+KR&display=swap"
 	rel="stylesheet">
@@ -85,27 +86,27 @@
 
 					<div>
 						<div style="display: inline-block">
-							<button onclick="location.href='<%=request.getContextPath()%>/noticeSelectList.no?currentPage=1'"><<</button>
+							<button class="PaBtn" onclick="location.href='<%=request.getContextPath()%>/noticeSelectList.no?currentPage=1'"><<</button>
 							<%	if (currentPage <= 1) { %>
-							<button disabled><</button>
+							<button class="PaBtn" disabled><</button>
 							<% } else { %>
-							<button onclick="location.href='<%=request.getContextPath()%>/noticeSelectList.no?currentPage=<%=currentPage - 1%>'"><</button>
+							<button class="PaBtn" onclick="location.href='<%=request.getContextPath()%>/noticeSelectList.no?currentPage=<%=currentPage - 1%>'"><</button>
 							<% } %>
 
 							<% for (int p = startPage; p <= endPage; p++) { if (p == currentPage) { %>
-							<button disabled><%=p%></button>
+							<button class="PaBtn" disabled><%=p%></button>
 							<% } else { %>
-							<button onclick="location.href='<%=request.getContextPath()%>/noticeSelectList.no?currentPage=<%=p%>'"><%=p%></button>
+							<button class="PaBtn" onclick="location.href='<%=request.getContextPath()%>/noticeSelectList.no?currentPage=<%=p%>'"><%=p%></button>
 							<% } %>
 							<% } %>
 							<% if (currentPage >= maxPage) { %>
-							<button disabled>></button>
+							<button class="PaBtn" disabled>></button>
 							<% } else { %>
-							<button onclick="location.href='<%=request.getContextPath()%>/noticeSelectList.no?currentPage=<%=currentPage + 1%>'">></button>
+							<button class="PaBtn" onclick="location.href='<%=request.getContextPath()%>/noticeSelectList.no?currentPage=<%=currentPage + 1%>'">></button>
 							<% } %>
-							<button onclick="location.href='<%=request.getContextPath()%>/noticeSelectList.no?currentPage=<%=maxPage%>'">>></button>
+							<button class="PaBtn" onclick="location.href='<%=request.getContextPath()%>/noticeSelectList.no?currentPage=<%=maxPage%>'">>></button>
 							<% if(m != null && m.getM_name().equals("관리자")){ %>
-							<button onclick="location.href='/semi/views/customer_noticeInsert.jsp'">작성하기</button>
+							<button class="join3" onclick="location.href='/semi/views/customer_noticeInsert.jsp'">작성하기</button>
 							<% } %>
 						</div>
 					</div>
