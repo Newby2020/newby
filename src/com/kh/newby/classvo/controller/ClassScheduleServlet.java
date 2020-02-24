@@ -95,7 +95,7 @@ public class ClassScheduleServlet extends HttpServlet {
 			PageInfo pi = new PageInfo(currentPage,listCount,limit,maxPage,startPage,endPage);
 			request.setAttribute("pi", pi);
 		} else {
-			page = "/semi/views/common/errorPage.jsp";
+			page = "views/common/errorPage.jsp";
 			request.setAttribute("msg", "해당 유저가 결제한 클래스 목록 출력 실패!");
 		}
 		request.getRequestDispatcher(page).forward(request, response);

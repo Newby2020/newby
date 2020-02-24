@@ -38,7 +38,7 @@ public class DeleteClassServlet extends HttpServlet {
 			response.sendRedirect("/semi/CompleteDelete.do");
 		} else {
 			request.setAttribute("msg", "공지사항 수정 실패 !!");
-			request.getRequestDispatcher("/semi/views/common/errorPage.jsp").forward(request, response);
+			request.getRequestDispatcher("views/common/errorPage.jsp").forward(request, response);
 		}
 		
 		

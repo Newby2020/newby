@@ -29,7 +29,7 @@ public class InquirydeleteCom extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String ino = request.getParameter("ino");
-		System.out.println(ino);
+		System.out.println("댓글 번호" + ino);
 		
 		InquiryCommentService ics = new InquiryCommentService();
 		

@@ -48,7 +48,7 @@ public class ClassManagerServlet extends HttpServlet {
 			page = "views/mypage_ClassManager.jsp";
 			request.setAttribute("list", list);
 		} else {
-			page = "/semi/views/common/errorPage.jsp";
+			page = "views/common/errorPage.jsp";
 			request.setAttribute("msg", "등록한 클래스 목록 출력 실패!");
 		}
 		request.getRequestDispatcher(page).forward(request, response);

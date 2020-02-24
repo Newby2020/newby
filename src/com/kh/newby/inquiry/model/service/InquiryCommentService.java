@@ -72,7 +72,7 @@ public class InquiryCommentService {
 	public Inquiry updateViewCom(String ino) {
 		Connection con = getConnection();
 		
-		Inquiry i = iDao.inquirySelectOne(con, ino);
+		Inquiry i = icDao.inquirySelectOne(con, ino);
 		
 		close(con);
 		

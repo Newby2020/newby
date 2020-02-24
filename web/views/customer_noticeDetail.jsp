@@ -16,6 +16,7 @@
 <link rel="stylesheet" href="/semi/resources/css/main-panel.css">
 <link rel="stylesheet" href="/semi/resources/css/mypage_h&j-frame.css">
 <link rel="stylesheet" href="/semi/resources/css/Customer_table.css">
+<link rel="stylesheet" href="/semi/resources/css/Customer_btn.css">
 <link
 	href="https://fonts.googleapis.com/css?family=Nanum+GothicNoto+Sans+KR&display=swap"
 	rel="stylesheet">
@@ -83,7 +84,7 @@
 						<div align="center">
 
 						<% if( m != null && m.getM_name().equals("관리자")) { %>
-							<input type="button" onclick="location.href='noticeUpdateView.no?nno=<%=n.getNno()%>'" value="수정하기">
+							<input type="button" class="join1" onclick="location.href='noticeUpdateView.no?nno=<%=n.getNno()%>'" value="수정하기">
 						<% } %>
 						</div>
 

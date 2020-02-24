@@ -32,24 +32,37 @@ public class CancelPayment extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
 		// ==== 결제 취소를 결제로부터 가져오기  ===============================
-//		String psno = request.getParameter("psno");
-		String psno = "PS3";	// 나중에 위의 것으로 고쳐야 한다.
+		String psno = request.getParameter("psno");
+		//String psno = "PS3";	// 나중에 위의 것으로 고쳐야 한다.
 		
 		PaymentService2 ps = new PaymentService2();
+
+//		ClassVo3 cvPsno = ps.getPsno(psno);
+		ClassVo3 cvPsno = new ClassVo3();
+		cvPsno.setClassNo(psno);
+		System.out.println(cvPsno);
+		int result = 0;
 		
-		ClassVo3 cvPsno = ps.getPsno(psno);
+		result = ps.getPsno(cvPsno);
+		
 		String page = "";
+		System.out.println("서블릿");
+		System.out.println(result);
+		if(result > 0) {
+			page = "completeDeleteSchedule.do";
+		} else {
+			page = "/views/common/errorPage.jsp";
+			request.setAttribute("msg", "결제 취소 실패");
+		}
 		
-		page = "/views/cancelOrder.jsp";
-		request.setAttribute("cvPsno", cvPsno);
 		
 		// ==== 취소 클래스 카운트  ========================================
-		int cancelCount = 0;
+		/*int cancelCount = 0;
 		
 		cancelCount = ps.getCancelCount(psno);
 		
 		page = "/views/cancelOrder.jsp";
-		request.setAttribute("cancelCount", cancelCount);
+		request.setAttribute("cancelCount", cancelCount);*/
 		
 		request.getRequestDispatcher(page).forward(request, response);
 		

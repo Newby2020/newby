@@ -2,6 +2,7 @@
 /* header */
 #newby-header-var{
     background-color: white;
+    max-width:1080px;
     width: 70%;
     height: 60px;
     margin-left: auto;
@@ -57,3 +58,7 @@
 	color : white;
 	cursor: pointer;
 }
+
+
+
+

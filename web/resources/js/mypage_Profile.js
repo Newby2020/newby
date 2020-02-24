@@ -78,10 +78,10 @@ $('#pwdBtn').click(function(){
 	var exPwd2 = $('#exPwd2');
 	var Pwd1 = $('#newPwd1');
 	var Pwd2 = $('#newPwd2');
-//	var regular = /^.*(?=.{6,20})(?=.*[0-9])(?=.*[a-zA-Z]).*$/;
+	var regular = /^.*(?=.{6,20})(?=.*[0-9])(?=.*[a-zA-Z]).*$/;
 	
 	function chk(re, ele){
-        if(re.test(ele.value)){ 
+        if(re.test(ele.val())){ 
         	return true;
         } else {
         	return false;
@@ -94,8 +94,7 @@ $('#pwdBtn').click(function(){
 				if(Pwd2.val()!=""){
 					if(exPwd1.val() == exPwd2.val()){
 						if(Pwd1.val() == Pwd2.val()){
-//							if(chk(regular,chk)){
-								// 작업 들어가야할부분
+							if(chk(regular,Pwd1)){
 								$.ajax({
 									url:"/semi/modiPwd.do",
 									type:"get",
@@ -109,9 +108,9 @@ $('#pwdBtn').click(function(){
 										alert("비밀번호 수정 전송 실패!");
 									}
 								});
-//							} else {
-//								alert("비밀번호는 영문,숫자 포함 6~20자리로 입력해주세요.");
-//							}
+							} else {
+								alert("비밀번호는 영문,숫자 포함 6~20자리로 입력해주세요.");
+							}
 						} else {			
 							alert("새로운 비밀번호와 비밀번호 확인이 불일치합니다. 다시 입력해주세요.");
 							Pwd1.select();

@@ -12,6 +12,7 @@
 <link rel="stylesheet" href="/semi/resources/css/LoginModal.css">
 <link rel="stylesheet" href="/semi/resources/css/main-panel.css">
 <link rel="stylesheet" href="/semi/resources/css/mypage_h&j-frame.css">
+<link rel="stylesheet" href="/semi/resources/css/Customer_table.css">
 <link rel="stylesheet" href="/semi/resources/css/Customer_btn.css">
 <link href="https://fonts.googleapis.com/css?family=Nanum+GothicNoto+Sans+KR&display=swap" rel="stylesheet">
 <script src="/semi/resources/js/jquery-3.4.1.min.js"></script>
@@ -76,14 +77,14 @@
 							</tr>
 							<tr>
 								<td colspan="4">
-									<textarea name="content" cols="60" rows="15" style="resize:none;"><%= n.getNcontent() %></textarea>
+									<textarea class="textAr" name="content" cols="60" rows="15" style="resize:none;"><%= n.getNcontent() %></textarea>
 								</td>
 							</tr>
 						</table>
 						<br>
-						<div align="center">
-							<button onclick="deleteNotice()">삭제하기</button>
-							<button onclick="complete()">완료하기</button>
+						<div align="center" >
+							<button class="join1" onclick="deleteNotice()">삭제하기</button>
+							<button class="join2"  onclick="complete()">완료하기</button>
 						</div>
 						<script>
 							function complete(){

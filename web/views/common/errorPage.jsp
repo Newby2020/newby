@@ -10,9 +10,13 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>에러 페이지</title>
+<title>새로운 취미를 찾아서 NEWBY</title>
+<link href="https://fonts.googleapis.com/css?family=Noto+Sans+KR&display=swap" rel="stylesheet">
 <script src="/semi/resources/js/jquery-3.4.1.min.js"></script>
 <style>
+	* {
+		font-family: 'Noto Sans KR', sans-serif;
+	}
 
 	#errorBody{
 		margin: 0px;
@@ -29,10 +33,12 @@
         background-size: cover;
  
 	}
-	
 	.innerError{
+<<<<<<< HEAD
 		position: absolute;
-		left: 23.5%;
+		left: 36%;
+=======
+>>>>>>> branch 'master' of https://github.com/Newby2020/newby.git
 		font-size: 30px;                                                                
         color: white;
         text-align: center;
@@ -48,6 +54,9 @@
 	    font-size: 15px;
 	    border-radius: 5px;
 }
+.errorToHome{
+	cursor:pointer;
+}
 </style>
 </head>
 <body id='errorBody'>
@@ -55,11 +64,16 @@
 		<div class="midError">
 			<div class="innerError">
 			<br><br><br>
-				<label>죄송합니다. 문제가 발생했습니다( <%=e.getMessage() %> )</label>
+				<label>죄송합니다. 문제가 발생했습니다( <%= msg %> )</label>
 				<br><br>
-				<button class="errorToHome">홈페이지로 이동하기</button>
+				<button class="errorToHome" onclick="errorToHome();">홈페이지로 이동하기</button>
 			</div>	
 		</div>	
 	</div>
+	<script>
+		function errorToHome(){
+			location.href="/semi/index.jsp";
+		}
+	</script>
 </body>
 </html>

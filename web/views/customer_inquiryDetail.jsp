@@ -19,6 +19,7 @@
 <link rel="stylesheet" href="/semi/resources/css/main-panel.css">
 <link rel="stylesheet" href="/semi/resources/css/mypage_h&j-frame.css">
 <link rel="stylesheet" href="/semi/resources/css/Customer_table.css">
+<link rel="stylesheet" href="/semi/resources/css/Customer_btn.css">
 <link
 	href="https://fonts.googleapis.com/css?family=Nanum+GothicNoto+Sans+KR&display=swap"
 	rel="stylesheet">
@@ -60,7 +61,7 @@
 				<div id="contentsDivSize29">
 					<!-- 여기다가 너가 작업한거 넣으면 돼-->
 
-					<form form id="updateForm" method="post">
+					<form id="updateForm" method="post">
 						<table class="tbDetail">
 							<tr>
 								<td class="tdDetail">제목</td>
@@ -92,13 +93,13 @@
 											if (i.getIcomment() != null) {
 										%>
 										<td><textArea rows="3" cols="80" id="replyContent" readonly
-												style="resize: none;" name="replycontent"><%=i.getIcomment()%></textArea></td>
+												style="resize: none;" name="comment"><%=i.getIcomment()%></textArea></td>
 
 										<%
 											} else {
 										%>
 										<td><textArea rows="3" cols="80" id="replyContent"
-												style="resize: none;" name="replyContent"></textArea></td>
+												style="resize: none;" name="comment"></textArea></td>
 										<%
 											}
 										%>
@@ -107,38 +108,21 @@
 												if(i.getIcomment() != null){
 										%>
 										<td>
-											<button type="submit" class="insertBtn"
-												onclick="updateCom();">수정하기</button>
-										</td>
-										<td>
-											<button type="reset" class="insertBtn" onclick="deleteCom();">삭제하기</button>
-										</td>
-										
-										<script>
-											function updateCom(){
-												$("#updateForm").attr("action","<%=request.getContextPath() %>/updateCom.io");
-											}
-						
-											function deleteCom(){
-												$("#updateForm").attr("action","<%=request.getContextPath() %>/deleteCom.io");
-											}
-					
-    									</script>
+											<input type="button" class="join3"
+												onclick="location.href='updateViewCom.io?ino=<%=i.getIno()%>'"
+												value="댓글 수정">
+										</td>				
 										<%
 												}else{
 										%>
 										<td>
-											<button type="submit" class="insertBtn" id="replybtn"
+											<button type="submit" class="join1" id="replybtn" name="comment"
 												onclick="reComment();">답변 하기</button>
-										</td>
-										
+										</td>									
 										<script>
 											function reComment(){
 												$("#updateForm").attr("action","<%=request.getContextPath() %>/insertCom.io");
-											}
-						
-											
-					
+											}									
     									</script>
 
 										<%
@@ -150,15 +134,26 @@
 							</div>
 							<div align="center">
 								<%
-									if (i.getIwno().equals(m.getM_nick()) || m != null && m.getM_name().equals("관리자")) {
+									if (i.getIwno().equals(m.getM_nick())) {
 								%>
-								<input type="button"
-									onclick="location.href='inquiryUpdateView.io?ino=<%=i.getIno()%>'"
-									value="수정하기">
+								<input type="button" class="join1" onclick="location.href='updateViewCom.io?ino=<%=i.getIno()%>'" value="수정하기">
+									<%@ include file="./common/footer.jsp"%>
 								<%
 									}
 								%>
-							</div>
+								
+								<% if(m != null && m.getM_name().equals("관리자") ) { %>
+									</div><div align="center">
+										<button class="join1" onclick="deleteInquiry()">삭제하기</button>
+									</div>
+								
+								
+								<script>
+									function deleteInquiry(){
+										$("#updateForm").attr("action","<%=request.getContextPath() %>/inquiryDelete.io");
+									}
+    							</script>
+    						<% } %>
 
 						</div>
 						<input type="hidden" name="ino" value="<%= i.getIno() %>"/>
@@ -169,49 +164,15 @@
 			</div>
 
 		</div>
-		<%@ include file="./common/footer.jsp"%>
+		<% if(m != null && m.getM_name().equals("관리자") ) { %>
+			<%@ include file="./common/footer.jsp"%>
+			<% } %>
 	</div>
 	<script>
 		function complete() {
 
 			$("#addReply").css('display', 'none');
 		}
-		/* function reComment(obj) {
-			$("#replyContent").prop('readonly', true);
-			// 클릭한 버튼 숨기기
-			$(obj).css('display', 'none');
-
-			$(obj).parents('table').append(htmlForm);
-
-		} */
-		/* $(document).ready(function(){
-			$("#insertCom").clck(function(){
-				var replytext=$("#")
-			})
-		}) */
-		
-		/* $("#replybtn").click(function(){
-	    	if($("#replycontent").val().trim() === ""){
-	    		alert("댓글을 입력하세요.");
-	    		$("#replycontent").val("").focus();
-	    	}else{
-	    		$.ajax({
-	    			url: "views/customer_inquiryDetail.jsp"
-	                type: "POST",
-	                data: {
-	                    no : $("#no").val(),
-	                    id : $("#id").val(),
-	                    reply_content : $("#replycontent").val()
-	                },
-	                success: function () {
-	                	alert("댓글 등록 완료");
-	                	$("#replycontent").val("");
-	                	getReply();
-	                },
-	    		})
-	    	}
-	    }) */
-		
 	</script>
 </body>
 </html>
