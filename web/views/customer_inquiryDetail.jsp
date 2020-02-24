@@ -69,36 +69,32 @@
 							</tr>
 							<tr>
 								<td class="tdDetail">작성자</td>
-								<td class="tdSpan"><span class="spN"><%=i.getIwno()%></span></td>
+								<td class="tdSpan"><span class="spN2"><%=i.getIwno()%></span></td>
 								<td class="tdDetail">작성일</td>
-								<td class="tdSpan"><span class="spN"><%=i.getIdate()%></span></td>
+								<td class="tdSpan"><span class="spN2"><%=i.getIdate()%></span></td>
 							<tr>
 								<td class="tdDetail">내용</td>
 								<td class="tbSpan2" colspan="5"></td>
 							</tr>
 
 							<tr>
-								<td class="tdContent" colspan="6"><span class="spN"><%=i.getIcontent()%></span></td>
+								<td class="tdContent" colspan="6"><span class="spN2"><%=i.getIcontent()%></span></td>
 							</tr>
-						</table>
-						<div align="center">
-							<div class="replyWriteArea">
-
-								<table align="center">
+						
 									<tr>
-										<td>답변</td>
-										<td><input type="date" name="date"
+										<td class="tdDetail">답변</td>
+										<td class="tdTime"><input class="spN2" type="date" name="date"
 											value="<%=i.getIcdate()%>" readonly></td>
 										<%
 											if (i.getIcomment() != null) {
 										%>
-										<td><textArea rows="3" cols="80" id="replyContent" readonly
+										<td  class="tdDetail"><textArea class="spN2" rows="3" cols="80" id="replyContent" readonly
 												style="resize: none;" name="comment"><%=i.getIcomment()%></textArea></td>
 
 										<%
 											} else {
 										%>
-										<td><textArea rows="3" cols="80" id="replyContent"
+										<td  class="tdDetail"><textArea class="spN2" rows="3" cols="80" id="replyContent"
 												style="resize: none;" name="comment"></textArea></td>
 										<%
 											}
@@ -141,13 +137,10 @@
 								<%
 									}
 								%>
-								
 								<% if(m != null && m.getM_name().equals("관리자") ) { %>
 									</div><div align="center">
 										<button class="join1" onclick="deleteInquiry()">삭제하기</button>
-									</div>
-								
-								
+									</div>	
 								<script>
 									function deleteInquiry(){
 										$("#updateForm").attr("action","<%=request.getContextPath() %>/inquiryDelete.io");
@@ -161,10 +154,8 @@
 
 				</div>
 
-			</div>
 
-		</div>
-		<% if(m != null && m.getM_name().equals("관리자") ) { %>
+			<% if(m != null && m.getM_name().equals("관리자") ) { %>
 			<%@ include file="./common/footer.jsp"%>
 			<% } %>
 	</div>

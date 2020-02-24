@@ -15,6 +15,7 @@
 <link rel="stylesheet" href="/semi/resources/css/LoginModal.css">
 <link rel="stylesheet" href="/semi/resources/css/main-panel.css">
 <link rel="stylesheet" href="/semi/resources/css/mypage_h&j-frame.css">
+<link rel="stylesheet" href="/semi/resources/css/Customer_table.css">
 <link rel="stylesheet" href="/semi/resources/css/Customer_btn.css">
 <link
 	href="https://fonts.googleapis.com/css?family=Nanum+GothicNoto+Sans+KR&display=swap"
@@ -65,24 +66,32 @@
 					<% } else {%>
 					<form action="<%= request.getContextPath() %>/inquiryInsert.io"
 						method="post">
-							<h5>
-								문의제목 <input type="text" name="title">
-							</h5>
-						<table>
+							
+							
+						<table class="tbDetail">
+							<tr>
+								<td class="tdDetail">제목</td>
+								<td class="tdDetail" colspan="5"><input class="spN2" type="text" size="50" name="title"></td>
+							</tr>
 							<tr>
 								<td class="tdDetail">작성자</td>
-								<td class="tdSpan"><input type="text" value="<%= m.getM_nick() %>" readonly
-									name="writer">
+								<td class="tdSpan">
+								<input class="spN2" type="text" value="<%= m.getM_nick() %>" name="writer" readonly>
+								
 								<td class="tdDetail">작성일</td>
-								<td class="tdSpan"><input type="date" name="date"></td>
+								<td class="tdSpan"><input class="spN2" type="date" name="date"></td>
 							</tr>
-
+							<tr>
+								<td class="tdDetail">내용</td>
+								<td class="tbSpan2" colspan="5"></td>
+							</tr>
+							<tr>
+								<td colspan="6">
+									<textarea class="tdContent" name="content" cols="100" rows="30" style="resize:none;"></textarea>
+								</td>
+							</tr>
 						</table>
-						<h5>
-							문의 내용 <br> <br>
-							<textarea rows="20" cols="80" name="content"
-								style="resize: none; font-size: 15pt;"></textarea>
-						</h5>
+						
 						<div align="center">
 							<button class="join1" type="submit">등록하기</button>
 							<button class="join1" type="reset">취소하기</button>

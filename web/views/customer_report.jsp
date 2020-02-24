@@ -14,32 +14,13 @@
 <link rel="stylesheet" href="/semi/resources/css/LoginModal.css">
 <link rel="stylesheet" href="/semi/resources/css/main-panel.css">
 <link rel="stylesheet" href="/semi/resources/css/mypage_h&j-frame.css">
+<link rel="stylesheet" href="/semi/resources/css/Customer_table.css">
 <link rel="stylesheet" href="/semi/resources/css/Customer_btn.css">
 <link
 	href="https://fonts.googleapis.com/css?family=Nanum+GothicNoto+Sans+KR&display=swap"
 	rel="stylesheet">
 <script src="/semi/resources/js/jquery-3.4.1.min.js"></script>
-<!-- Load icon libarary -->
-<link rel="stylesheet"
-	href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
-<!-- Sidebar & Footer : Basic-->
-<link rel="stylesheet" href="/semi/resources/css/admin_basic.css">
-
-<!-- Table & SearchBar-->
-<link rel="stylesheet"
-	href="/semi/resources/css/admin_table&searchBar.css">
-
-<!-- The Modal & CheckBox-->
-<link rel="stylesheet"
-	href="/semi/resources/css/admin_modal&checkBox.css">
-
-<!-- jQuery -->
-<script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
-
-<!-- TODO 왜 파일 분리해서 불러오면 실행이 안되는가.... -->
-<!-- Modal js -->
-<script src="../resources/js/admin_hostReport_modal.js"></script>
 
 <style>
 </style>
@@ -84,79 +65,38 @@
 						회원만 이용 가능합니다.<br>
 						<br>
 						<br>
-						<button onclick="location.href='../index.jsp'">메인페이지로</button> 
+						<button onclick="location.href='./index.jsp'">메인페이지로</button> 
 
 						<% } else {%>
 						<form action="<%= request.getContextPath() %>/reportInsert.ro"method="post">
-							
-							<h5>
-								신고할 클래스 <input type="text" id="input1" name="ctitle">
-								<button class="btn1" id="myBtn" onclick="btn1();">찾기</button>
-							</h5>
-							<div id="claim" class="modal">
-								<div class="modal-content">
-									<span id="close1" class="close"></span> <input type="button">
-									
-								</div>
-							</div>
-							<div id="myModal" class="modal">
-								<!-- Modal content -->
-								<div class="modal-content">
-									<span class="close">&times;</span>
-									
-								</div>
-							</div>
-							<script>
-							// Get the modal
-					        var modal = document.getElementById('myModal');
-					 
-					        // Get the button that opens the modal
-					        var btn = document.getElementById("myBtn");
-					 
-					        // Get the <span> element that closes the modal
-					        var span = document.getElementsByClassName("close")[0];                                          
-					 
-					        // When the user clicks on the button, open the modal 
-					        btn.onclick = function() {
-					            modal.style.display = "block";
-					        }
-					 
-					        // When the user clicks on <span> (x), close the modal
-					        span.onclick = function() {
-					            modal.style.display = "none";
-					        }
-					 
-					        // When the user clicks anywhere outside of the modal, close it
-					        window.onclick = function(event) {
-					            if (event.target == modal) {
-					                modal.style.display = "none";
-					            }
-					        }
-
-
-							
-							</script>
-							<br>
-							<h5>
-								작성자
-								<input type="text" value="<%= m.getM_nick() %>" readonly
-									name="writer">
-							</h5>
-
-							<h5>
-								신고이유 <input type="text" id="claimEu" size="50" name="title">
-							</h5>
-							
-							<h5>
-								신고날짜 <input type="date" id="date" size="50" name="date">
-							</h5>
-
-
-							<h5>
-								신고 내용 <br> <br>
-								<textarea rows="20" cols="80" name="content"
-									style="resize: none; font-size: 15pt;"></textarea>
-							</h5>
+							<table class="tbDetail">
+							<tr>
+								<td class="tdDetail">신고할 클래스 </td><td class="tdDetail"></td>
+								<td><button class="btn1" id="myBtn" onclick="btn1();">찾기</button></td>
+							</tr>
+							<tr>
+								<td class="tdDetail">작성자</td>
+								<td class="tdSpan">
+								<input class="spN2" type="text" value="<%= m.getM_nick() %>" readonly name="writer"></td>
+							<tr>	
+								<td class="tdDetail">신고이유</td>
+								<td class="tdSpan"><input class="spN2" type="text" id="claimEu" name="title"></td>
+							</tr>
+							<tr>
+								<td class="tdDetail">작성일</td>
+								<td class="tdSpan"><input class="spN2" type="date" id="date" name="date"></td>
+							</tr>
+							<tr>
+								<td class="tdDetail">신고 내용 </td>
+								<td class="tbSpan2" colspan="5"></td>
+								<td>
+							</tr>
+							<tr>
+								<td colspan="6">
+									<textarea class="tdContent" name="content" cols="100" rows="30" style="resize:none;"></textarea>
+								</td>
+							</tr>
+							</table>
 
 							<div>
 								<button class="join2" type="submit">등록하기</button>

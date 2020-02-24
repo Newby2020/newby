@@ -59,25 +59,25 @@
 							<tr>
 								<td class="tdDetail">제목</td>
 								<td class="tdDetail" colspan="5">
-									<input type="text" size="50" name="title" 
+									<input class="spN2" type="text" size="50" name="title" 
 							       		value="<%= n.getNtitle() %>">
-									<input type="hidden" name="nno" value="<%= n.getNno() %>"></td>
+									<input class="spN2" type="hidden" name="nno" value="<%= n.getNno() %>"></td>
 							</tr>
 							<tr>
 								<td class="tdDetail">작성자</td>
 								<td class="tdSpan">
-									<input type="text" value="관리자" name="writer" readonly>
+									<input class="spN2" type="text" value="관리자" name="writer" readonly>
 								
 								<td class="tdDetail">작성일</td>
-								<td class="tdSpan"><input type="date" name="date" value="<%= n.getNdate() %>"></td>
+								<td class="tdSpan"><input class="spN2" type="date" name="date" value="<%= n.getNdate() %>"></td>
 							</tr>
 							<tr>
 								<td class="tdDetail">내용</td>
 								<td class="tbSpan2" colspan="5"></td>
 							</tr>
 							<tr>
-								<td colspan="4">
-									<textarea class="textAr" name="content" cols="60" rows="15" style="resize:none;"><%= n.getNcontent() %></textarea>
+								<td class="tdDetail" colspan="4">
+									<textarea class="spN2" name="content" cols="130" rows="30" style="resize:none;"><%= n.getNcontent() %></textarea>
 								</td>
 							</tr>
 						</table>

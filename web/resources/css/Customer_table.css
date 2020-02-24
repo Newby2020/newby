@@ -33,12 +33,10 @@
 			}
 			
 .tdSpan {border: 1px solid rgb(9, 129, 241);
-		 
 		  }
 
 
 .tdDetail{border: 1px solid rgb(9, 129, 241);
-		  
 		  
 		  }
 .tbSpan2{border: 1px solid rgb(9, 129, 241);
@@ -49,6 +47,15 @@
 			width:800px;
 			height:500px;
 			}
+.textAr{border: 1px solid rgb(9, 129, 241);
+		width:800px;}
 	
+.spN2{border:none;}
 
+.tdTime{border: 1px solid rgb(9, 129, 241);
+		width:10px;}
+		
+.spN3{border:none;
+	  width:800px;}
+	
      

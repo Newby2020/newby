@@ -13,6 +13,7 @@
 <link rel="stylesheet" href="/semi/resources/css/LoginModal.css">
 <link rel="stylesheet" href="/semi/resources/css/main-panel.css">
 <link rel="stylesheet" href="/semi/resources/css/mypage_h&j-frame.css">
+<link rel="stylesheet" href="/semi/resources/css/Customer_table.css">
 <link rel="stylesheet" href="/semi/resources/css/Customer_btn.css">
 <link href="https://fonts.googleapis.com/css?family=Nanum+GothicNoto+Sans+KR&display=swap" rel="stylesheet">
 <script src="/semi/resources/js/jquery-3.4.1.min.js"></script>
@@ -58,23 +59,23 @@
 						<table class="tbDetail">
 							<tr>
 								<td class="tdDetail">제목</td>
-								<td class="tdDetail" colspan="5"><input type="text" size="50" name="title"></td>
+								<td class="tdDetail" colspan="5"><input class="spN2" type="text" size="50" name="title"></td>
 							</tr>
 							<tr>
 								<td class="tdDetail">작성자</td>
 								<td class="tdSpan">
-									<input type="text" value="관리자" name="writer" readonly>
+									<input class="spN2" type="text" value="관리자" name="writer" readonly>
 								
 								<td class="tdDetail">작성일</td>
-								<td class="tdSpan"><input type="date" name="date"></td>
+								<td class="tdSpan"><input class="spN2" type="date" name="date"></td>
 							</tr>
 							<tr>
 								<td class="tdDetail">내용</td>
 								<td class="tbSpan2" colspan="5"></td>
 							</tr>
 							<tr>
-								<td colspan="4">
-									<textarea name="content" cols="60" rows="15" style="resize:none;"></textarea>
+								<td colspan="6">
+									<textarea class="tdContent" name="content" cols="100" rows="30" style="resize:none;"></textarea>
 								</td>
 							</tr>
 						</table>

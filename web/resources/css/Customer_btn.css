@@ -16,7 +16,7 @@
 }
 
 .PaBtn{
-    width: 25px;
+    width: auto;
     height: 25px;
     background-color: rgb(9, 129, 241);
     color: white;
@@ -30,5 +30,3 @@
     background-color: rgb(9, 129, 241);
     color: white;
 }
-.textAr{border: 1px solid rgb(9, 129, 241);
-		width:800px;}
