@@ -126,11 +126,11 @@
                 				
                 				// 버튼 생성 및 삽입
                 				// '<<'
-                				var $ttfBtn = $("<button onclick='tte("+ 1 +");'>").text('<<');
+                				var $ttfBtn = $("<button onclick='search("+ 1 +");'>").text('<<');
                 				$('.pagingArea').append($ttfBtn);
                 				
                 				// '<'
-                				var $backwardBtn = $("<button onclick='tte("+(currentPage -1) +");'>").text('<'); 
+                				var $backwardBtn = $("<button onclick='search("+(currentPage -1) +");'>").text('<'); 
                 				$('.pagingArea').append($backwardBtn);
                 				if(currentPage <= 1){
                 					$backwardBtn.attr("disabled","true");
@@ -141,20 +141,20 @@
                 					if(p == currentPage){
                 						var $pBtn = $("<button disabled>").text(p);
                 					}else{
-                						var $pBtn = $("<button onclick='tte("+p+");'>").text(p);
+                						var $pBtn = $("<button onclick='search("+p+");'>").text(p);
                 					}
                 					$('.pagingArea').append($pBtn);
                 				}
                 				
                 				// '>'
-                				var $forwardBtn = $("<button onclick='tte("+(currentPage + 1) +");'>").text('>');
+                				var $forwardBtn = $("<button onclick='search("+(currentPage + 1) +");'>").text('>');
                 				$('.pagingArea').append($forwardBtn);
                 				if(currentPage == maxPage){
                 					$forwardBtn.attr("disabled","true");
                 				}
                 				
                 				// '>>'
-                				var $tteBtn = $("<button onclick='tte("+maxPage+");'>").text('>>');
+                				var $tteBtn = $("<button onclick='search("+maxPage+");'>").text('>>');
                 				
                 				$('.pagingArea').append($tteBtn);
                 				
