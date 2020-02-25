@@ -31,6 +31,11 @@ public class InquiryDao {
 		}
 	}
 
+	/**
+	 * 문의사항 정렬
+	 * @param con
+	 * @return
+	 */
 	public int getListCount(Connection con) {
 		// 총 게시글 수
 		int listCount = 0;
@@ -58,6 +63,13 @@ public class InquiryDao {
 		return listCount;
 	}
 
+	/**
+	 * 문의사항 조회용
+	 * @param con
+	 * @param currentPage
+	 * @param limit
+	 * @return
+	 */
 	public ArrayList<Inquiry> inquirySelectList(Connection con, int currentPage, int limit) {
 		ArrayList<Inquiry> list = null;
 		PreparedStatement pstmt = null;
@@ -101,6 +113,12 @@ public class InquiryDao {
 	}
 
 
+	/**
+	 * 문의사항 상세보기
+	 * @param con
+	 * @param ino
+	 * @return
+	 */
 	public Inquiry inquirySelectOne(Connection con, String ino) {
 		Inquiry i = null;
 		PreparedStatement pstmt = null;
@@ -172,6 +190,12 @@ public class InquiryDao {
 		return result;
 	}
 
+	/**
+	 * 문의사항 수정용
+	 * @param con
+	 * @param i
+	 * @return
+	 */
 	public int inquiryUpdate(Connection con, Inquiry i) {
 		int result = 0;
 		PreparedStatement pstmt = null;
@@ -195,6 +219,12 @@ public class InquiryDao {
 		return result;
 	}
 
+	/**
+	 * 문의사항 삭제용
+	 * @param con
+	 * @param ino
+	 * @return
+	 */
 	public int inquiryDelete(Connection con, String ino) {
 		int result = 0;
 		PreparedStatement pstmt = null;

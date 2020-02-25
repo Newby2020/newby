@@ -58,12 +58,13 @@
 				<div id="contentsDivSize29">
 					<!-- 여기다가 너가 작업한거 넣으면 돼-->
 					
-					
+					<!-- 관리자는 이용할 수 없는 페이지라 관리자가 이용할시 뒤로가기 버튼이 생김 -->
 					<% if(m != null && m.getM_name().equals("관리자")){ %>
 						회원만 이용 가능합니다.<br><br><br>
 						<button onclick="location.href='../index.jsp'">메인페이지로</button>
 
 					<% } else {%>
+					<!-- 사용자가 로그인시 생성되는 페이지 내용 -->
 					<form action="<%= request.getContextPath() %>/inquiryInsert.io"
 						method="post">
 							

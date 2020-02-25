@@ -28,6 +28,12 @@ public class InquiryService {
 		
 	}
 
+	/**
+	 * 게시글 정렬
+	 * @param currentPage
+	 * @param limit
+	 * @return
+	 */
 	public ArrayList<Inquiry> inquirySelectList(int currentPage, int limit) {
 		Connection con = getConnection();
 

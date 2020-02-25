@@ -62,7 +62,7 @@
 					<!-- 여기다가 너가 작업한거 넣으면 돼-->
 
 
-
+					<!-- 페이징 처리 -->
 					<table class="tbNo" id="listArea">
 						<tr>
 							<th colspan="1" class="tab1">번호</th>
@@ -83,7 +83,8 @@
 					</table>
 					
 					<br>
-
+					
+					<!-- 게시판 아래 페이지 이동 버튼  -->
 					<div>
 						<div style="display: inline-block">
 							<button class="PaBtn" onclick="location.href='<%=request.getContextPath()%>/noticeSelectList.no?currentPage=1'"><<</button>

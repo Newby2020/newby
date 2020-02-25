@@ -80,28 +80,31 @@
 							<tr>
 								<td class="tdContent" colspan="6"><span class="spN2"><%=i.getIcontent()%></span></td>
 							</tr>
-						
+									
+									<!-- 댓글 관련 -->
 									<tr>
 										<td class="tdDetail">답변</td>
 										<td class="tdTime"><input class="spN2" type="date" name="date"
 											value="<%=i.getIcdate()%>" readonly></td>
 										<%
-											if (i.getIcomment() != null) {
+											if (i.getIcomment() != null) { // 댓글의 내용이 있을 경우 댓글 내용이 textarea에 생성된다
 										%>
 										<td  class="tdDetail"><textArea class="spN2" rows="3" cols="80" id="replyContent" readonly
 												style="resize: none;" name="comment"><%=i.getIcomment()%></textArea></td>
 
 										<%
-											} else {
+											} else { // 댓글의 내용이 없을 경우 textarea에 공백이 나타남
 										%>
 										<td  class="tdDetail"><textArea class="spN2" rows="3" cols="80" id="replyContent"
 												style="resize: none;" name="comment"></textArea></td>
 										<%
 											}
 										%>
+										
+										 <!-- 관리자계정으로 들어왔을 경우  -->
 										<%
-											if (m != null && m.getM_name().equals("관리자") ) {
-												if(i.getIcomment() != null){
+											if (m != null && m.getM_name().equals("관리자") ) { 
+												if(i.getIcomment() != null){ // 댓글의 내용이 있을경우 댓글 수정 버튼이 생성됨
 										%>
 										<td>
 											<input type="button" class="join3"
@@ -109,7 +112,7 @@
 												value="댓글 수정">
 										</td>				
 										<%
-												}else{
+												}else{ // 댓글의 내용이 없을 경우 답변하기 버튼이 생성된
 										%>
 										<td>
 											<button type="submit" class="join1" id="replybtn" name="comment"
@@ -129,15 +132,20 @@
 
 							</div>
 							<div align="center">
+							<!-- 문의글 내용 -->
+							<!-- 사용자가계정으로  들어왔을 경우 -->
 								<%
-									if (i.getIwno().equals(m.getM_nick())) {
+									if (i.getIwno().equals(m.getM_nick())) {  // 글쓴이와 사용자가 일치할때 글 수정 버튼이 생성된
 								%>
 								<input type="button" class="join1" onclick="location.href='updateViewCom.io?ino=<%=i.getIno()%>'" value="수정하기">
 									<%@ include file="./common/footer.jsp"%>
 								<%
 									}
 								%>
-								<% if(m != null && m.getM_name().equals("관리자") ) { %>
+								<!-- 관리자계정으로 들어왔을 경우 -->
+								<% if(m != null && m.getM_name().equals("관리자") ) { %>  
+								
+								<!-- 문의글 삭제 버튼이 생김 -->
 									</div><div align="center">
 										<button class="join1" onclick="deleteInquiry()">삭제하기</button>
 									</div>	

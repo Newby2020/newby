@@ -28,6 +28,7 @@ public class InquiryDeleteServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		// 게시글 번호
 		String ino = request.getParameter("ino");
 		
 		System.out.println(ino);

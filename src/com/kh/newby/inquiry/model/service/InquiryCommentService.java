@@ -27,6 +27,11 @@ public class InquiryCommentService {
 	}
 
 
+	/**
+	 * 댓글 상세 보기
+	 * @param i
+	 * @return
+	 */
 	public int inquiryComment(Inquiry i) {
 		Connection con = getConnection();
 
@@ -41,6 +46,11 @@ public class InquiryCommentService {
 	}
 
 
+	/**
+	 * 댓글 추가용
+	 * @param i
+	 * @return
+	 */
 	public int insertCom(Inquiry i) {
 		Connection con = getConnection();
 		
@@ -55,6 +65,11 @@ public class InquiryCommentService {
 	}
 
 
+	/**
+	 * 댓글 수정
+	 * @param i
+	 * @return
+	 */
 	public int updateCom(Inquiry i) {
 		Connection con = getConnection();
 		
@@ -80,6 +95,11 @@ public class InquiryCommentService {
 	}
 
 
+	/**
+	 * 댓글 삭제
+	 * @param ino
+	 * @return
+	 */
 	public int deleteCom(String ino) {
 		Connection con = getConnection();
 		

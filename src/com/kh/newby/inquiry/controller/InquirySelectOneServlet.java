@@ -33,7 +33,7 @@ public class InquirySelectOneServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-	
+		// 게시글 번호 
 		String ino = request.getParameter("ino");
 		System.out.println(ino);
 		
@@ -41,11 +41,6 @@ public class InquirySelectOneServlet extends HttpServlet {
 		// 게시글 보기
 		Inquiry i = new InquiryService().inquirySelectOne(ino);
 		System.out.println("게시글 보기" + i);
-		
-		
-		// 댓글 불러오기
-//		ArrayList<Inquiry> list = new InquiryCommentService().inquirySelectComList(ino);
-//		System.out.println("list -> " + list);
 		
 		String page = "";
 		if(i != null) {
