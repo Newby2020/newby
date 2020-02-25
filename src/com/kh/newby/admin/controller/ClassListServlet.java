@@ -76,7 +76,7 @@ public class ClassListServlet extends HttpServlet {
 			PageInfo pi = new PageInfo(currentPage, listCount, limit, maxPage, startPage, endPage);
 			request.setAttribute("pi", pi);
 		}else {
-			page = "views/common/errorPage";
+			page = "views/common/errorPage.jsp";
 			request.setAttribute("msg", "개설된 클래스 목록을 불러오는데 실패하였습니다.");
 		}
 		

@@ -62,6 +62,7 @@
 	                    var keycode = (event.keyCode ? event.keyCode : event.which);
 	                    if(keycode == '13'){
 	                    	$('#searchBtn').trigger("click");
+	                    	/* search(1); */
 	                    }
 	                }); 
 	                
@@ -69,29 +70,101 @@
 	                	search();
 	                });
 	                
-	                function search(){
+	                function search(currentPage){
 	                	$.ajax({
 	                		url  : "/semi/searchAppliedClass.ad",
 	                		type : "get",
 	                		data : {
 	                			searchValue : $("#search").val(),
-	                			/* currentPage : cp */
+	                			currentPage : currentPage 
 	                		}, success : function(data){
-	                			console.log(data); 
+	                			// 리스트
+	                			$('#listBody').children().remove();
 	                			
 	                			var list = data["list"];
-	                			console.log(list);
+	                			
+	                			for(var i = 0; i < list.length; i++){
+	                				var $tr = $("<tr>");
+	                				
+	                				var $td1 = $("<td>");
+	            					var $td2 = $("<td>");
+	            					var $td3 = $("<td>");
+	            					var $td4 = $("<td>");
+	            					var $td5 = $("<td>");
+	            					
+	            					var $detailBtn = $("<button class='detailBtn'>").text("확인");
+		                			
+	                				$td1.text(list[i]["classEnrollDateStr"]);
+	                				$td2.text(list[i]["classNo"]);
+	                				$td3.text(list[i]["classHostNo"]);
+	                				$td4.text(list[i]["classStatus"]);
+	                				$td5.append($detailBtn);
+	                				
+	                				$tr.append($td1);
+	                				$tr.append($td2);
+	                				$tr.append($td3);
+	                				$tr.append($td4);
+	                				$tr.append($td5);
+	                				
+	                				$('#listBody').append($tr);
+	                			}
+	                			
+                				//페이징 처리
+            					$('.pagingArea').empty();
+            					
+								var pi = data["pi"];
+                				var currentPage = pi["currentPage"];
+                				var listCount = pi["listCount"];
+                				var limit = pi.limit;
+                				var maxPage = pi.maxPage;
+                				var startPage = pi.startPage;
+                				var endPage = pi["endPage"];
+                				
+                				// 버튼 생성 및 삽입
+                				// '<<'
+                				var $ttfBtn = $("<button onclick='search("+ 1 +");'>").text('<<');
+                				
+                				$('.pagingArea').append($ttfBtn);
+                				$('.pagingArea').append('&nbsp;');
+                				
+                				// '<'
+                				var $backwardBtn = $("<button onclick='search("+(currentPage -1) +");'>").text('<'); 
+                				$('.pagingArea').append($backwardBtn);
+                				$('.pagingArea').append('&nbsp;');
+                				if(currentPage <= 1){
+                					$backwardBtn.attr("disabled","true");
+                				}
+                				
+                				// 'p'
+                				for(var p = startPage; p <= endPage; p++){
+                					if(p == currentPage){
+                						var $pBtn = $("<button disabled>").text(p);
+                					}else{
+                						var $pBtn = $("<button onclick='search("+p+");'>").text(p);
+                					}
+                					$('.pagingArea').append($pBtn);
+                					$('.pagingArea').append('&nbsp;');
+                				}
+                				
+                				// '>'
+                				var $forwardBtn = $("<button onclick='search("+(currentPage + 1) +");'>").text('>');
+                				$('.pagingArea').append($forwardBtn);
+                				$('.pagingArea').append('&nbsp;');
+                				if(currentPage == maxPage){
+                					$forwardBtn.attr("disabled","true");
+                				}
+                				
+                				// '>>'
+                				var $tteBtn = $("<button onclick='search("+maxPage+");'>").text('>>');
+                				
+                				$('.pagingArea').append($tteBtn);
+                				
 	                		}, error : function(){
 	                			alert("검색 실패!");
 	                		}
 	                	});
 	                }
 	                
-                		
-                		
-                		
-                		
-                	
                 	function detailView(){
 	                	var no = $(this).parent().siblings(":eq(1)").text(); 
 	                	location.href="<%=request.getContextPath()%>/appliedClassDetail.ad?cno=" + no;
@@ -121,15 +194,21 @@
                 </tbody>
             </table>
             <script>
-          		 $('.detailBtn').click(function(){
-              	var no = $(this).parent().siblings(":eq(1)").text(); 
-              	
-              	location.href="<%=request.getContextPath()%>/appliedClassDetail.ad?cno=" + no;
-          		 });
+	            $(function(){
+	            	$("#listBody").mouseenter(function(){
+	            		$('.detailBtn').click(function(){
+	                      	var no = $(this).parent().siblings(":eq(1)").text(); 
+	                      	
+	                      	location.href="<%=request.getContextPath()%>/appliedClassDetail.ad?cno=" + no;
+	                  		 });
+	            	})
+	            })
+	            
+	            
              </script>
         </div>
         <%-- 페이지 처리 --%>
-        <div class="pageArea" align="center">
+        <div class="pagingArea" align="center">
         	<button onclick="location.href'<%= request.getContextPath() %>/classList.ad?currentPage = 1"><<</button>
 			<% if(currentPage <= 1) {%>
 					<button disabled><</button>

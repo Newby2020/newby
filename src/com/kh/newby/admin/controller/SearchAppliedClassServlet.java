@@ -35,7 +35,7 @@ public class SearchAppliedClassServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-//		response.setContentType("application/json; charset=UTF-8");
+		response.setContentType("application/json; charset=UTF-8");
 		
 		String searchValue = request.getParameter("searchValue");
 		System.out.println("검색 값 : " + searchValue);
@@ -75,7 +75,7 @@ public class SearchAppliedClassServlet extends HttpServlet {
 		
 		Map searchMap = new HashMap();
 		searchMap.put("list", list);
-//		searchMap.put("pi", pi);
+		searchMap.put("pi", pi);
 		
 		new Gson().toJson(searchMap, response.getWriter());
 		

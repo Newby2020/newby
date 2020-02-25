@@ -78,9 +78,10 @@
                 				currentPage : item
                 			},
                 			success : function(data){
+                				/* console.log(data); */
                 				// 리스트
                 				$('#listBody').children().remove();
-                				
+                				                				
                 				var list = data["list"];
                 				
                 				for(var i = 0; i < list.length; i++){
@@ -128,10 +129,12 @@
                 				// '<<'
                 				var $ttfBtn = $("<button onclick='search("+ 1 +");'>").text('<<');
                 				$('.pagingArea').append($ttfBtn);
+                				$('.pagingArea').append(' ');
                 				
                 				// '<'
                 				var $backwardBtn = $("<button onclick='search("+(currentPage -1) +");'>").text('<'); 
                 				$('.pagingArea').append($backwardBtn);
+                				$('.pagingArea').append(' ');
                 				if(currentPage <= 1){
                 					$backwardBtn.attr("disabled","true");
                 				}
@@ -144,11 +147,13 @@
                 						var $pBtn = $("<button onclick='search("+p+");'>").text(p);
                 					}
                 					$('.pagingArea').append($pBtn);
+                					$('.pagingArea').append(' ');
                 				}
                 				
                 				// '>'
                 				var $forwardBtn = $("<button onclick='search("+(currentPage + 1) +");'>").text('>');
                 				$('.pagingArea').append($forwardBtn);
+                				$('.pagingArea').append(' ');
                 				if(currentPage == maxPage){
                 					$forwardBtn.attr("disabled","true");
                 				}
@@ -176,17 +181,17 @@
                     <th>호스트 번호</th>
                 </tr>
                 <tbody id="listBody">
-                <% for(Member m : list) {%>
-                <tr>
-                    <td><%= m.getM_no() %></td>
-                    <td><%= m.getM_name() %></td>
-                    <td><%= m.getM_id() %></td>
-                    <td><%= m.getM_phone() %></td>
-                    <td><%= m.getM_enrollDateStr() %></td>
-                    <td><%= m.getM_mileage() %></td>
-                    <td><%= m.getH_no() %></td>
-                </tr>
-                <% } %>
+	                <% for(Member m : list) {%>
+	                <tr>
+	                    <td><%= m.getM_no() %></td>
+	                    <td><%= m.getM_name() %></td>
+	                    <td><%= m.getM_id() %></td>
+	                    <td><%= m.getM_phone() %></td>
+	                    <td><%= m.getM_enrollDateStr() %></td>
+	                    <td><%= m.getM_mileage() %></td>
+	                    <td><%= m.getH_no() %></td>
+	                </tr>
+	                <% } %>
                 </tbody>
             </table>
         </div>

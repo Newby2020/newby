@@ -51,7 +51,6 @@
         <a class="active" href="/semi/classList.ad">개설 클래스</a>
         <a href="/semi/claimList.ad">신고</a>
         <!-- <a href="admin_accountancy.jsp">정산</a> -->
-
     </div>
     <div class="content">
         <h2>개설 클래스 목록</h2>
@@ -64,29 +63,77 @@
 	                $('#search').keypress(function(event){
 	                    var keycode = (event.keyCode ? event.keyCode : event.which);
 	                    if(keycode == '13'){
-	                    	$('#searchBtn').trigger("click");
+	                    	search(1);
 	                    }
 	                }); 
 	                
-                	$('#searchBtn').click(function(){
-                		search(1);
-                	});
-                	
-                	function search(){
-                		$.ajax({
-                			url  : "/semi/searchClass.ad",
-                			type : "get",
-                			data : {
-                				searchValue : $("#search").val()
-                			},
-                			success : function(data){
-                				console.log(data);
-                			},
-                			error : function(){
-                				alert("검색 실패!");
-                			}
-                		})
-                	}
+	                function search(currentPage) {
+	                	$.ajax({
+	                		url  : "/semi/searchClass.ad",
+	                		type : "get",
+	                		data : {
+	                			searchValue : $('#search').val(),
+	                			currentPage : currentPage
+	                		}, 
+	                		success : function(result){
+	                			// 리스트 
+	                			$('#listBody').children().remove();
+	                			
+	                			var list = result["list"];
+	                			
+	                			console.log(list);
+	                			
+	                			for(var i = 0; i < list.length ; i++){
+	                				var $tr = $('<tr>');
+	                				
+	                				var $td1 = $('<td>');
+	                				var $td2 = $('<td>');
+	                				var $td3 = $('<td>');
+	                				var $td4 = $('<td>');
+	                				var $td5 = $('<td>');
+	                				var $td6 = $('<td>');
+	                				var $td7 = $('<td>');
+	                				
+	                				var $detailBtn = $('<button class="detailBtn">').text('확인'); 
+	                				
+	                				$td1.text(list[i]["classNo"]);
+	                				$td2.text(list[i]["classHostNo"]);
+	                				$td3.text(list[i]["classType"]);
+	                				$td4.text(list[i]["firstCategory"]);
+	                				$td5.text(list[i]["secondCategory"]);
+	                				$td6.text(list[i]["thirdCategory"]);
+	                				$td7.append($detailBtn);
+
+	                				$tr.append($td1);
+	                				$tr.append($td2);
+	                				$tr.append($td3);
+	                				$tr.append($td4);
+	                				$tr.append($td5);
+	                				$tr.append($td6);
+	                				$tr.append($td7);
+	                				
+	                				$('#listBody').append($tr);
+	                			}
+	                			
+	                			// 페이징 에리어
+	                			$('.pagingArea').empty();
+	                			
+	                			$ttfBtn = $('<button onclick>').text('<<');
+	                			
+	                			
+	                			
+	                			
+	                			
+	                			
+	                			
+	                		}, error : function(){
+	                			alert('검색 실패!');
+	                		}
+	                	})
+	                }
+	                
+	                
+	                
                 </script>
             </div>
             <table>
@@ -97,7 +144,6 @@
                     <th>1차</th>
                     <th>2차</th>
                     <th>3차</th>
-                    <!-- <th>타겟</th> -->
                     <th>상세정보</th>
                 </tr>
                 <tbody id="listBody">
@@ -109,7 +155,6 @@
                     <td><%= c.getFirstCategory() %></td>
                     <td><%= c.getSecondCategory() %></td>
                     <td><%= c.getThirdCategory() %></td>
-                    <%-- <td><%= c.getClassTarget() %></td> --%>
                     <td>
                     	<button class="detailBtn">확인</button>
                     </td>
@@ -118,16 +163,18 @@
                 </tbody>
             </table>
             <script>
-          		 $('.detailBtn').click(function(){
-              	var no = $(this).parent().siblings(":eq(0)").text(); 
-              	
-              	location.href="<%=request.getContextPath()%>/classDetail.ad?cno=" + no;
-          		 });
+            	$('#listBody').mouseenter(function(){
+            		$('.detailBtn').click(function(){
+                      	var no = $(this).parent().siblings(":eq(0)").text(); 
+                      	
+                      	location.href="<%=request.getContextPath()%>/classDetail.ad?cno=" + no;
+               		 });
+            	})
               </script>
         </div>
         
      	<%-- 페이지 처리 --%>
-        <div class="pageArea" align="center">
+        <div class="pagingArea" align="center">
         	<button onclick="location.href'<%= request.getContextPath() %>/classList.ad?currentPage = 1"><<</button>
 			<% if(currentPage <= 1) {%>
 					<button disabled><</button>
