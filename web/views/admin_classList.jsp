@@ -60,6 +60,34 @@
             <div class="searchBar">
                 <input id="search" type="text" placeholder="Search..." >
                 <button id="searchBtn"><i class="fa fa-search"></i></button>
+                <script>
+	                $('#search').keypress(function(event){
+	                    var keycode = (event.keyCode ? event.keyCode : event.which);
+	                    if(keycode == '13'){
+	                    	$('#searchBtn').trigger("click");
+	                    }
+	                }); 
+	                
+                	$('#searchBtn').click(function(){
+                		search(1);
+                	});
+                	
+                	function search(){
+                		$.ajax({
+                			url  : "/semi/searchClass.ad",
+                			type : "get",
+                			data : {
+                				searchValue : $("#search").val()
+                			},
+                			success : function(data){
+                				console.log(data);
+                			},
+                			error : function(){
+                				alert("검색 실패!");
+                			}
+                		})
+                	}
+                </script>
             </div>
             <table>
                 <tr>

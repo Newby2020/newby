@@ -74,7 +74,7 @@ public class UserListServlet extends HttpServlet {
 		}
 		
 		list = as.selectUserList(currentPage, limit);
-//		System.out.println(list);
+		System.out.println("유저 리스트 : " + list);
 		
 		String page = "";
 		

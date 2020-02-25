@@ -66,56 +66,36 @@
 	                }); 
 	                
 	                $("#searchBtn").click(function(){
-                		$.ajax({
-                			url  : "/semi/searchAppliedClass.ad",
-                			type : "get",
-                			data : {
-                				searchValue : $('#search').val()
-                			},
-                			success : function(data){
-                				/* console.log(data); */
-                				// 리스트
-                				$('#listBody').children().remove();
-                				
-                				/* var list = data["list"]; */
-                				var list = data.list;
-                				console.log(list)
-                				var pi = data["pi"];
-                				console.log(pi)
-                				
-                				for(var i = 0; i < list.length ; i++){
-                					var $tr = $("<tr>"); 
-                					
-                					var $td1 = $("<td>");
-                					var $td2 = $("<td>");
-                					var $td3 = $("<td>");
-                					var $td4 = $("<td>");
-                					var $td5 = $("<td>");
-                					
-                					$td1.text(list[i]["classEnrollDate"]);
-                					$td2.text(list[i]["classNo"]);
-                					$td3.text(list[i]["hostNo"]);
-                					$td4.text(list[i]["classStatus"]);
-                					/* $td5.text(list[i]["m_enrollDate"]); */
-                					
-                					$tr.append($td1);
-                					$tr.append($td2);
-                					$tr.append($td3);
-                					$tr.append($td4);
-                					/* $tr.append($td5); */
-
-                					console.log($tr);
-                					$('#listBody').append($tr);
-                					
-                					//페이지 에리어
-                					$('.pagingArea').empty();
-                				}
-                			}, error : function(){
-                				alert("검색 실패!");
-                			}
+	                	search();
+	                });
+	                
+	                function search(){
+	                	$.ajax({
+	                		url  : "/semi/searchAppliedClass.ad",
+	                		type : "get",
+	                		data : {
+	                			searchValue : $("#search").val(),
+	                			/* currentPage : cp */
+	                		}, success : function(data){
+	                			console.log(data); 
+	                			
+	                			var list = data["list"];
+	                			console.log(list);
+	                		}, error : function(){
+	                			alert("검색 실패!");
+	                		}
+	                	});
+	                }
+	                
                 		
-                		})
-                	})
+                		
+                		
+                		
+                	
+                	function detailView(){
+	                	var no = $(this).parent().siblings(":eq(1)").text(); 
+	                	location.href="<%=request.getContextPath()%>/appliedClassDetail.ad?cno=" + no;
+	                }
                 </script>
             </div>
             <table>
@@ -129,7 +109,7 @@
                 <tbody id="listBody">
                 <% for(ClassVo c : list){ %>               
                 <tr>
-                    <td><%= c.getClassEnrollDate() %></td>
+                    <td><%= c.getClassEnrollDateStr() %></td>
                     <td><%= c.getClassNo() %></td>
                     <td><%= c.getClassHostNo() %></td>
                     <td><%= c.getClassStatus() %></td>

@@ -18,6 +18,7 @@ public class Member implements Serializable{
 	private String m_name;
 	private String m_phone;
 	private Date m_enrollDate;
+	private String m_enrollDateStr;
 	private int m_mileage;
 	private String h_no;
 	
@@ -122,6 +123,14 @@ public class Member implements Serializable{
 
 	public void setM_enrollDate(Date m_enrollDate) {
 		this.m_enrollDate = m_enrollDate;
+	}
+	
+	public String getM_enrollDateStr() {
+		return m_enrollDateStr;
+	}
+
+	public void setM_enrollDateStr(String m_enrollDateStr) {
+		this.m_enrollDateStr = m_enrollDateStr;
 	}
 
 	public int getM_mileage() {

@@ -44,3 +44,9 @@ table button{
   cursor: pointer;
 }
   
+.paingArea button{
+  display: inline-block;
+  font-size: 15px;
+  border-radius: 5px;
+  cursor: pointer;
+}  

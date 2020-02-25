@@ -88,7 +88,7 @@ public class AdminDao {
 				m.setM_id(rset.getString("MEM_ID"));
 				m.setM_name(rset.getString("MEM_NAME"));
 				m.setM_phone(rset.getString("PHONE"));
-				m.setM_enrollDate(rset.getDate("ENROLLDATE"));
+				m.setM_enrollDateStr(rset.getString("ENROLLDATE"));
 				m.setM_mileage(rset.getInt("MILEAGE"));
 				m.setH_no(rset.getString("MEM_HOST_NO"));
 				
@@ -175,7 +175,7 @@ public class AdminDao {
 				m.setM_id(rset.getString("MEM_ID"));
 				m.setM_name(rset.getString("MEM_NAME"));
 				m.setM_phone(rset.getString("PHONE"));
-				m.setM_enrollDate(rset.getDate("ENROLLDATE"));
+				m.setM_enrollDateStr(rset.getString("ENROLLDATE"));
 				m.setM_mileage(rset.getInt("MILEAGE"));
 				m.setH_no(rset.getString("MEM_HOST_NO"));
 				
@@ -241,7 +241,7 @@ public class AdminDao {
 			while(rset.next()) {
 				ClassVo c = new ClassVo();
 								
-				c.setClassEnrollDate(rset.getDate("CLASS_ENROLLDATE"));
+				c.setClassEnrollDateStr(rset.getString("CLASS_ENROLLDATE"));
 				c.setClassNo(rset.getString("CLASS_NO"));
 				c.setClassHostNo(rset.getString("CLASS_HOST_NO"));
 				c.setClassStatus(rset.getString("CLASS_STATUS"));
@@ -256,7 +256,7 @@ public class AdminDao {
 		}		 
 		return list;
 	}
-
+	
 	public int setApprove(Connection con, String cno) {
 		int result = 0;
 		
@@ -341,10 +341,15 @@ public class AdminDao {
 		try {
 			pstmt = con.prepareStatement(sql);
 			
+			int startRow = (currentPage - 1) * limit + 1;
+			int endRow = startRow + limit -1;							
+			
 			pstmt.setString(1,searchValue);
 			pstmt.setString(2,searchValue);
 			pstmt.setString(3,searchValue);
 			pstmt.setString(4,searchValue);
+			pstmt.setInt(5, endRow);
+			pstmt.setInt(6, startRow);
 			
 			rset = pstmt.executeQuery();
 			
@@ -353,7 +358,7 @@ public class AdminDao {
 			while(rset.next()) {
 				ClassVo c = new ClassVo();
 				
-				c.setClassEnrollDate(rset.getDate("CLASS_ENROLLDATE"));
+				c.setClassEnrollDateStr(rset.getString("CLASS_ENROLLDATE"));
 				c.setClassNo(rset.getString("CLASS_NO"));
 				c.setClassHostNo(rset.getString("CLASS_HOST_NO"));
 				c.setClassStatus(rset.getString("CLASS_STATUS"));

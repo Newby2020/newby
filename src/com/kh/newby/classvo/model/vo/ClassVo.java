@@ -27,6 +27,7 @@ public class ClassVo implements Serializable {
 	private String classTarget;
 	private String classCurriculum;	
 	private Date classEnrollDate;
+	private String classEnrollDateStr;
 	private String classDate;
 	private String classStartTime;
 	private String classEndTime;
@@ -291,6 +292,14 @@ public class ClassVo implements Serializable {
 	public void setClassEnrollDate(Date classEnrollDate) {
 		this.classEnrollDate = classEnrollDate;
 	}
+	
+	public String getClassEnrollDateStr() {
+		return classEnrollDateStr;
+	}
+
+	public void setClassEnrollDateStr(String classEnrollDateStr) {
+		this.classEnrollDateStr = classEnrollDateStr;
+	}
 
 	public String getClassDate() {
 		return classDate;
@@ -394,5 +403,4 @@ public class ClassVo implements Serializable {
 				+ ", hostIntro=" + hostIntro + ", averageReview=" + averageReview + ", hostNo=" + hostNo
 				+ ", classStatus=" + classStatus + ", rejectReason=" + rejectReason + "]";
 	}
-
 }

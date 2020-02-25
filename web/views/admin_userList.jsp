@@ -98,9 +98,9 @@
                 					$td2.text(list[i]["m_name"]);
                 					$td3.text(list[i]["m_id"]);
                 					$td4.text(list[i]["m_phone"]);
-                					$td5.text(list[i]["m_enrollDate"]);
+                					$td5.text(list[i]["m_enrollDateStr"]);
                 					$td6.text(list[i]["m_mileage"]);
-                					$td7.text(list[i]["m_no"]);
+                					$td7.text(list[i]["h_no"]);
                 					
                 					$tr.append($td1);
                 					$tr.append($td2);
@@ -182,7 +182,7 @@
                     <td><%= m.getM_name() %></td>
                     <td><%= m.getM_id() %></td>
                     <td><%= m.getM_phone() %></td>
-                    <td><%= m.getM_enrollDate() %></td>
+                    <td><%= m.getM_enrollDateStr() %></td>
                     <td><%= m.getM_mileage() %></td>
                     <td><%= m.getH_no() %></td>
                 </tr>

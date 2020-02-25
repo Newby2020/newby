@@ -75,9 +75,11 @@ public class SearchAppliedClassServlet extends HttpServlet {
 		
 		Map searchMap = new HashMap();
 		searchMap.put("list", list);
-		searchMap.put("pi", pi);
+//		searchMap.put("pi", pi);
 		
 		new Gson().toJson(searchMap, response.getWriter());
+		
+		
 		
 	}
 
