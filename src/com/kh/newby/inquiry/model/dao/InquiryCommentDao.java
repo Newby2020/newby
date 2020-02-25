@@ -31,6 +31,12 @@ public class InquiryCommentDao {
 	
 	
 
+	/**
+	 * 댓글 조회
+	 * @param con
+	 * @param ino
+	 * @return
+	 */
 	public ArrayList<Inquiry> inquirySelectComList(Connection con, String ino) {
 		ArrayList<Inquiry> list = null;
 		PreparedStatement pstmt = null;
@@ -64,6 +70,12 @@ public class InquiryCommentDao {
 		return list;
 	}
 
+	/**
+	 * 댓글 상세 보기
+	 * @param con
+	 * @param i
+	 * @return
+	 */
 	public int inquiryComment(Connection con, Inquiry i) {
 		int result = 0;
 		PreparedStatement pstmt = null;
@@ -88,6 +100,12 @@ public class InquiryCommentDao {
 		return result;
 	}
 
+	/**
+	 * 댓글 삭제
+	 * @param con
+	 * @param ino
+	 * @return
+	 */
 	public int deleteComment(Connection con, String ino) {
 		int result = 0;
 		PreparedStatement pstmt = null;
@@ -111,6 +129,12 @@ public class InquiryCommentDao {
 
 
 
+	/**
+	 * 댓글 추가
+	 * @param con
+	 * @param i
+	 * @return
+	 */
 	public int insertCom(Connection con, Inquiry i) {
 		int result = 0;
 		PreparedStatement pstmt = null;
@@ -136,6 +160,12 @@ public class InquiryCommentDao {
 
 
 
+	/**
+	 * 댓글 수정
+	 * @param con
+	 * @param i
+	 * @return
+	 */
 	public int updateCom(Connection con, Inquiry i) {
 		int result = 0;
 		PreparedStatement pstmt = null;
@@ -164,6 +194,12 @@ public class InquiryCommentDao {
 
 
 
+	/**
+	 * 댓글 삭제
+	 * @param con
+	 * @param ino
+	 * @return
+	 */
 	public int deleteCom(Connection con, String ino) {
 		int result = 0;
 		PreparedStatement pstmt = null;
@@ -187,6 +223,12 @@ public class InquiryCommentDao {
 
 
 
+	/**
+	 * 댓글 상세 보기
+	 * @param con
+	 * @param ino
+	 * @return
+	 */
 	public Inquiry inquirySelectOne(Connection con, String ino) {
 		Inquiry i = null;
 		PreparedStatement pstmt = null;

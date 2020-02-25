@@ -71,7 +71,7 @@
 							<th colspan="1" class="tab1">작성일</th>
 						</tr>
 						<%
-						for(Inquiry i : list){
+						for(Inquiry i : list){// 페이징 처리
 						%>
 						<tr>
 							<td colspan="1" width="100px" class="tb2" id=<%= i.getIno() %>><%= i.getIno() %></td>
@@ -84,7 +84,7 @@
 						%>
 					</table>
 					<br>
-
+					<!-- 게시판 아래 게시판  이동 버튼 -->
 					<div>
 						<div style="display: inline-block">
 							<button class="PaBtn" onclick="location.href='<%=request.getContextPath()%>/inquirySelectList.io?currentPage=1'"><<</button>

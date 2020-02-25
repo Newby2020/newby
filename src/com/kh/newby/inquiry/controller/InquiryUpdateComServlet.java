@@ -32,13 +32,16 @@ public class InquiryUpdateComServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		// 댓글 내용
 		String comment = request.getParameter("comment");
+		// 댓글 등록 날짜
 		String date = request.getParameter("date");
+		// 글 번호
 		String ino = request.getParameter("ino");
 		
 		
 		Date writeDate = null;
-
+		// 날짜 처리
 		if(date != "" && date != null) {
 			String[] dateArr = date.split("-");
 			int[] intArr = new int[dateArr.length];

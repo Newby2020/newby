@@ -83,6 +83,8 @@
 						<br>
 						<div align="center">
 
+						<!-- 관리자계정으로 들어올때 -->
+						<!-- 게시글 수정하기 버튼이 생성됨 -->
 						<% if( m != null && m.getM_name().equals("관리자")) { %>
 							<input type="button" class="join1" onclick="location.href='noticeUpdateView.no?nno=<%=n.getNno()%>'" value="수정하기">
 						<% } %>

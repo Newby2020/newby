@@ -59,7 +59,8 @@
 
 				<div id="contentsDivSize29">
 					<!-- 여기다가 너가 작업한거 넣으면 돼-->
-
+				<!-- 문의글 수정 내용 -->
+				<!-- 글쓴이와 사용자계정이 같을 경우 -->
 				<% if( i.getIwno().equals(m.getM_nick())) { %>
 					<form id="updateForm" method="post">
 						<table class="tbDetail">
@@ -101,6 +102,8 @@
 							}
     					</script>
 					</form>
+					
+					<!-- 글쓴이와 사용자계정이 다를 경우 -->
 					<% } else{ %>
 					<form id="updateForm" method="post">
 						<table class="tbDetail">
@@ -128,11 +131,18 @@
 										<td class="tdDetail">답변</td>
 										<td class="tdTime"><input class="spN2" type="date" name="date"
 											value="<%=i.getIcdate()%>" readonly></td>
+											
+										<!--  답변 내용 관련 -->
+										<!--  댓글의 내용이 있을경우 -->
+										<!--  댓글의 내용이 보임 -->
 										<%
 											if (i.getIcomment() != null) {
 										%>
 										<td class="tdDetail"><textArea class="spN2" rows="3" cols="70" id="replyContent" 
 												style="resize: none;" name="comment"><%=i.getIcomment()%></textArea></td>
+												
+										<!--  댓글의 내용이 없을 경우 -->
+										<!--  댓글창에 아무것도 생성되지 않음 -->
 										<%
 											} else {
 										%>
@@ -141,6 +151,9 @@
 										<%
 											}
 										%>
+										<!-- 관리자계정으로 들어올 경우 -->
+										<!-- 댓글에 내용이 없을 경우  -->
+										<!-- 수정완료 삭제하기 버튼이 생성됨 -->
 										<%
 											if (m != null && m.getM_name().equals("관리자") ) {
 												if(i.getIcomment() != null){
@@ -157,6 +170,7 @@
 												$("#updateForm").attr("action","<%=request.getContextPath() %>/deleteCom.io");
 											}
     									</script>
+    									<!-- 댓글에 내용이 있을 경우 답변하기 버튼이 생성됨 -->
 										<%
 											}else{
 										%>
