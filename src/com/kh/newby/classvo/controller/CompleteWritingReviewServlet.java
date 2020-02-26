@@ -35,7 +35,7 @@ public class CompleteWritingReviewServlet extends HttpServlet {
 		out.println("<body>");
 		out.println("<script>");
 		out.println("alert('해당 클래스의 후기 작성이 완료되었습니다.')");
-		out.println("window.location.href='/semi/review.do'");
+		out.println("window.close();");
 		out.println("</script>");
 		out.println("</body>");
 		out.println("</html>");	}
