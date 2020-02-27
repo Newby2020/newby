@@ -92,9 +92,15 @@
             <div style="margin-top: 3px;">
                 <button class="btn">등록</button>
                 &nbsp;&nbsp;
-                <button class="btn">닫기</button>
+                <input class="btn" type="button" value="닫기" onclick="closeReview();">
             </div>
         </div>
     </form>
+    <script>
+    	function closeReview(){
+    		window.close();
+    	}
+    </script>
+    
 </body>
 </html>

@@ -18,6 +18,7 @@ public class Review2 implements Serializable {
 	private String psStartTime;
 	private String psEndTime;
 	private String psNo;
+	private String psDatePlus10;
 	
 
 
@@ -104,15 +105,13 @@ public class Review2 implements Serializable {
 	}
 
 
-	@Override
-	public String toString() {
-		return "Review2 [rNo=" + rNo + ", cNo=" + cNo + ", cName=" + cName + ", cTime=" + cTime + ", psDate=" + psDate
-				+ ", psStartTime=" + psStartTime + ", psEndTime=" + psEndTime + "]";
+	public String getPsDatePlus10() {
+		return psDatePlus10;
 	}
-	
 
-	
 
-	
+	public void setPsDatePlus10(String psDatePlus10) {
+		this.psDatePlus10 = psDatePlus10;
+	}
 
 }

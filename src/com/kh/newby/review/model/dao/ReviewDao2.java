@@ -29,7 +29,7 @@ public class ReviewDao2 {
 	         e.printStackTrace();
 	      }
 	   }
-	public ArrayList<Review2> ReviewList(Connection con, String mno) {
+	public ArrayList<Review2> ReviewList(Connection con, int currentPage, int limit, String mno) {
 		ArrayList<Review2> list = new ArrayList<>();
 		Review2 r = null;
 		PreparedStatement pstmt = null;
@@ -38,7 +38,11 @@ public class ReviewDao2 {
 		
 		try {
 			pstmt = con.prepareStatement(sql);
+			int startRow = (currentPage-1)*limit +1;
+			int endRow = startRow + limit -1;
 			pstmt.setString(1, mno);
+			pstmt.setInt(2, endRow);
+			pstmt.setInt(3, startRow);
 			rset = pstmt.executeQuery();
 			
 			while(rset.next()) {
@@ -50,6 +54,7 @@ public class ReviewDao2 {
 				r.setPsStartTime(rset.getString("CS_STARTTIME"));
 				r.setPsEndTime(rset.getString("CS_ENDTIME"));
 				r.setPsNo(rset.getString("PS_NO"));
+				r.setPsDatePlus10(rset.getString("psDatePlus"));
 				list.add(r);
 			}
 		} catch(SQLException e) {
@@ -59,6 +64,33 @@ public class ReviewDao2 {
 			close(pstmt);
 		}
 		return list;
+	}
+	public int getListCount(Connection con, String mno) {
+		// 총 게시글 수
+		int listCount = 0;
+		PreparedStatement pstmt = null;
+		ResultSet rset = null;
+		
+		String sql = prop.getProperty("listCount");
+		
+		try {
+			
+			pstmt=con.prepareStatement(sql);
+			pstmt.setString(1, mno);
+			rset = pstmt.executeQuery();
+			
+			if(rset.next()) {
+				listCount = rset.getInt(1);
+			}
+			
+		} catch(SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(rset);
+			close(pstmt);
+		}
+		
+		return listCount;
 	}
 
 }
