@@ -22,13 +22,34 @@ public class Claim implements Serializable{
 	private Date suspensionStartDate;
 	private Date suspensionEndDate;
 	
+	private String cmDateStr;	
+	private String handledDateStr;
+	private String suspensionPeriodStr;
+	private String suspensionStartDateStr;
+	private String suspensionEndDateStr;
+	
+
 	public Claim() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
 	
+	public Claim(Date cmDate, String cmClassNo, String cmNo, String cmWriterNo, String cmTitle, String cmContent,
+			Date handledDate, String status, int suspensionPeriod, Date suspensionStartDate, Date suspensionEndDate) {
+		super();
+		this.cmDate = cmDate;
+		this.cmClassNo = cmClassNo;
+		this.cmNo = cmNo;
+		this.cmWriterNo = cmWriterNo;
+		this.cmTitle = cmTitle;
+		this.cmContent = cmContent;
+		this.handledDate = handledDate;
+		this.status = status;
+		this.suspensionPeriod = suspensionPeriod;
+		this.suspensionStartDate = suspensionStartDate;
+		this.suspensionEndDate = suspensionEndDate;
+	}
 	
-
 	public String getCmClassNo() {
 		return cmClassNo;
 	}
@@ -121,24 +142,68 @@ public class Claim implements Serializable{
 	public void setSuspensionEndDate(Date suspensionEndDate) {
 		this.suspensionEndDate = suspensionEndDate;
 	}
-
-
-
-	public Claim(Date cmDate, String cmClassNo, String cmNo, String cmWriterNo, String cmTitle, String cmContent,
-			Date handledDate, String status, int suspensionPeriod, Date suspensionStartDate, Date suspensionEndDate) {
-		super();
-		this.cmDate = cmDate;
-		this.cmClassNo = cmClassNo;
-		this.cmNo = cmNo;
-		this.cmWriterNo = cmWriterNo;
-		this.cmTitle = cmTitle;
-		this.cmContent = cmContent;
-		this.handledDate = handledDate;
-		this.status = status;
-		this.suspensionPeriod = suspensionPeriod;
-		this.suspensionStartDate = suspensionStartDate;
-		this.suspensionEndDate = suspensionEndDate;
+	
+	public String getCmDateStr() {
+		return cmDateStr;
 	}
+
+
+
+	public void setCmDateStr(String cmDateStr) {
+		this.cmDateStr = cmDateStr;
+	}
+
+
+
+	public String getHandledDateStr() {
+		return handledDateStr;
+	}
+
+
+
+	public void setHandledDateStr(String handledDateStr) {
+		this.handledDateStr = handledDateStr;
+	}
+
+
+
+	public String getSuspensionPeriodStr() {
+		return suspensionPeriodStr;
+	}
+
+
+
+	public void setSuspensionPeriodStr(String suspensionPeriodStr) {
+		this.suspensionPeriodStr = suspensionPeriodStr;
+	}
+
+
+
+	public String getSuspensionStartDateStr() {
+		return suspensionStartDateStr;
+	}
+
+
+
+	public void setSuspensionStartDateStr(String suspensionStartDateStr) {
+		this.suspensionStartDateStr = suspensionStartDateStr;
+	}
+
+
+
+	public String getSuspensionEndDateStr() {
+		return suspensionEndDateStr;
+	}
+
+
+
+	public void setSuspensionEndDateStr(String suspensionEndDateStr) {
+		this.suspensionEndDateStr = suspensionEndDateStr;
+	}
+
+
+
+
 	
 	
 	

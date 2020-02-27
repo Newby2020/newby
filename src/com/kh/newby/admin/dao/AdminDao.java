@@ -504,7 +504,6 @@ public class AdminDao {
 			pstmt.setString(4,searchValue);
 			pstmt.setString(5,searchValue);
 			pstmt.setString(6,searchValue);
-			pstmt.setString(7,searchValue);
 			
 			rset = pstmt.executeQuery();
 			
@@ -537,7 +536,6 @@ public class AdminDao {
 			pstmt.setString(4,searchValue);
 			pstmt.setString(5,searchValue);
 			pstmt.setString(6,searchValue);
-			pstmt.setString(7,searchValue);
 			
 			
 			rset = pstmt.executeQuery();
@@ -553,7 +551,6 @@ public class AdminDao {
 				c.setFirstCategory(rset.getString("FIRST_CATEGORY"));
 				c.setSecondCategory(rset.getString("SECOND_CATEGORY"));
 				c.setThirdCategory(rset.getString("THIRD_CATEGORY"));
-				c.setClassTarget(rset.getString("CLASS_TARGET"));
 				
 				list.add(c);
 			}
@@ -619,15 +616,15 @@ public class AdminDao {
 			while(rset.next()) {
 				Claim c = new Claim();
 				
-				c.setCmDate(rset.getDate("CLAIM_DATE"));
+				c.setCmDateStr(rset.getString("CLAIM_DATE"));
 				c.setCmNo(rset.getString("CLAIM_NO"));
 				c.setCmWriterNo(rset.getString("CLAIM_WRITER_NO"));
 				c.setCmTitle(rset.getString("CLAIM_TITLE"));
 				c.setStatus(rset.getString("CLAIM_STATUS"));				
-				c.setHandledDate(rset.getDate("HANDLED_DATE"));
-				c.setSuspensionPeriod(rset.getInt("SUSPENSION_PERIOD"));
-				c.setSuspensionStartDate(rset.getDate("SUSPENSION_START_DATE"));
-				c.setSuspensionEndDate(rset.getDate("SUSPENSION_END_DATE"));
+				c.setHandledDateStr(rset.getString("HANDLED_DATE"));
+				c.setSuspensionPeriodStr(rset.getString("SUSPENSION_PERIOD"));
+				c.setSuspensionStartDateStr(rset.getString("SUSPENSION_START_DATE"));
+				c.setSuspensionEndDateStr(rset.getString("SUSPENSION_END_DATE"));
 				
 				list.add(c);
 			}
@@ -707,15 +704,15 @@ public class AdminDao {
 			while(rset.next()) {
 				Claim c = new Claim();
 				
-				c.setCmDate(rset.getDate("CLAIM_DATE"));
+				c.setCmDateStr(rset.getString("CLAIM_DATE"));
 				c.setCmNo(rset.getString("CLAIM_NO"));
 				c.setCmWriterNo(rset.getString("CLAIM_WRITER_NO"));
 				c.setCmTitle(rset.getString("CLAIM_TITLE"));
-				c.setStatus(rset.getString("CLAIM_STATUS"));
-				c.setSuspensionPeriod(rset.getInt("SUSPENSION_PERIOD"));
-				c.setHandledDate(rset.getDate("HANDLED_DATE"));
-				c.setSuspensionStartDate(rset.getDate("SUSPENSION_START_DATE"));
-				c.setSuspensionEndDate(rset.getDate("SUSPENSION_END_DATE"));
+				c.setStatus(rset.getString("CLAIM_STATUS"));				
+				c.setHandledDateStr(rset.getString("HANDLED_DATE"));
+				c.setSuspensionPeriodStr(rset.getString("SUSPENSION_PERIOD"));
+				c.setSuspensionStartDateStr(rset.getString("SUSPENSION_START_DATE"));
+				c.setSuspensionEndDateStr(rset.getString("SUSPENSION_END_DATE"));
 				
 				list.add(c);
 			}

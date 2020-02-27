@@ -67,7 +67,7 @@
 	                }); 
 	                
 	                $("#searchBtn").click(function(){
-	                	search();
+	                	search(1);
 	                });
 	                
 	                function search(currentPage){
@@ -122,7 +122,7 @@
                 				
                 				// 버튼 생성 및 삽입
                 				// '<<'
-                				var $ttfBtn = $("<button onclick='search("+ 1 +");'>").text('<<');
+                				var $ttfBtn = $("<button onclick='search(1);'>").text('<<');
                 				
                 				$('.pagingArea').append($ttfBtn);
                 				$('.pagingArea').append('&nbsp;');
@@ -156,18 +156,12 @@
                 				
                 				// '>>'
                 				var $tteBtn = $("<button onclick='search("+maxPage+");'>").text('>>');
-                				
                 				$('.pagingArea').append($tteBtn);
                 				
 	                		}, error : function(){
 	                			alert("검색 실패!");
 	                		}
 	                	});
-	                }
-	                
-                	function detailView(){
-	                	var no = $(this).parent().siblings(":eq(1)").text(); 
-	                	location.href="<%=request.getContextPath()%>/appliedClassDetail.ad?cno=" + no;
 	                }
                 </script>
             </div>

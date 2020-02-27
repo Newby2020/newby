@@ -67,6 +67,10 @@
 	                    }
 	                }); 
 	                
+	                $('#searchBtn').click(function(){
+	                	search(1);
+	                })
+	                
 	                function search(currentPage) {
 	                	$.ajax({
 	                		url  : "/semi/searchClass.ad",
@@ -118,22 +122,51 @@
 	                			// 페이징 에리어
 	                			$('.pagingArea').empty();
 	                			
-	                			$ttfBtn = $('<button onclick>').text('<<');
+	                			var pi = result["pi"];
+	                			var cp = pi["currentPage"];
+	                			var startPage = pi.startPage;
+                				var endPage = pi["endPage"];
+                				var maxPage = pi.maxPage;
+	                				                		
+	                			// 버튼 생성 및 삽입
+                				// '<<'
+	                			var $ttfBtn = $("<button onclick='search(1);'>").text('<<');
+	                			$('.pagingArea').append($ttfBtn);
+	                			$('.pagingArea').append(' ');
 	                			
+	                			// '<'
+	                			var $backwardBtn = $("<button onclick='search("+ (cp - 1) +")'>").text("<");
+	                			$('.pagingArea').append($backwardBtn);
+	                			$('.pagingArea').append(' ');
+	                			if(currentPage <= 1){
+	                				$backwardBtn.attr("disabled", "true");
+	                			}
 	                			
+	                			// 'p'
+	                			for(var p = startPage ; p <= endPage ; p++){
+	                				var $pBtn = $('<button onclick="search('+ p +')">').text(p)
+	                				$('.pagingArea').append($pBtn);
+	                				$('.pagingArea').append(' ');
+	                				if(p == cp){
+	                					$pBtn.attr("disabled", "true");
+	                				}
+	                			}
 	                			
+	                			// '>'
+	                			var $forwardBtn = $('<button onclick="search('+ (cp + 1)+')">').text('>');
+	                			$('.pagingArea').append($forwardBtn);
+	                			if(cp == maxPage){
+	                				$forwardBtn.attr("disabled","true");
+	                			}
 	                			
-	                			
-	                			
-	                			
+	                			// '>>'
+	                			var $tteBtn = $('<button onclick="search(' + maxPage + ')">').text(">>");
+	                			$('.pagingArea').append($tteBtn);
 	                		}, error : function(){
 	                			alert('검색 실패!');
 	                		}
 	                	})
 	                }
-	                
-	                
-	                
                 </script>
             </div>
             <table>

@@ -37,7 +37,7 @@
 
     <!-- TODO 왜 파일 분리해서 불러오면 실행이 안되는가.... -->
     <!-- Modal js -->
-    <script src="../resources/js/admin_hostReport_modal.js"></script>
+    <!-- <script src="../resources/js/admin_hostReport_modal.js"></script> -->
 </head>
 <body>
     <!-- Reposive Sidebar -->
@@ -65,68 +65,133 @@
 	                $('#search').keypress(function(event){
 	                    var keycode = (event.keyCode ? event.keyCode : event.which);
 	                    if(keycode == '13'){
-	                    	$('#searchBtn').trigger("click");
+	                    	search(1);
 	                    }
 	                }); 
-                
-                	$('#searchBtn').click(function(){
-                		$.ajax({
-                			url : "/semi/serchClaim.ad",
-                			type: "get",
-                			data:{
-                				searchValue : $("#search").val()
-                			},
-                			success : function(data){
-                			console.log(data);
-                				//	 리스트
-                				$('#listBody').children().remove();
-                				
-                				var list = data["list"];
-                				console.log("list : "+ list);
-                				
-                				for(var i = 0; i < list.length; i++){
-                					var $tr = $("<tr>"); 
-                					
-                					var $td1 = $("<td>");
-                					var $td2 = $("<td>");
-                					var $td3 = $("<td>");
-                					var $td4 = $("<td>");
-                					var $td5 = $("<td>");
-                					var $td6 = $("<td>");
-                					var $td7 = $("<td>");
-                					var $td8 = $("<td>");
-                					var $td9 = $("<td>");
-                					
-                					$td1.text(list[i]["cmDate"]);
-                					$td2.text(list[i]["cmNo"]);
-                					$td3.text(list[i]["cmWriterNo"]);
-                					$td4.text(list[i]["cmTitle"]);
-                					$td5.text(list[i]["status"]);
-                					$td6.text(list[i]["handledDate"]);
-                					$td7.text(list[i]["suspensionPeriod"]);
-                					$td8.text(list[i]["suspensionStartDate"]);
-                					$td9.text(list[i]["suspensionEndDate"]);
-                					
-                					$tr.append($td1);
-                					$tr.append($td2);
-                					$tr.append($td3);
-                					$tr.append($td4);
-                					$tr.append($td5);
-                					$tr.append($td6);
-                					$tr.append($td7);
-                					$tr.append($td8);
-                					$tr.append($td9);
-                					/* console.log($tr); */
-                					$('#listBody').append($tr);
-                					
-                					//페이지 에리어
-                					$('.pagingArea').empty();
-                				}
-                			}, error : function(){
-                				alert("검색 실패!");
-                			}
-                		});
-                	});
+	                
+	                $('#searchBtn').click(function(){
+	                	search(1);
+	                });
+	                
+	                function search(currentPage){
+	                	$.ajax({
+	                		url  : "/semi/serchClaim.ad",
+	                		type : "get",
+	                		data : {
+	                			searchValue : $('#search').val(),
+	                			currentPage : currentPage
+ 	                		}, 
+ 	                		success : function(result) {
+ 	                			// 리스트 
+ 	                			$('#listBody').children().remove();
+ 	                			
+ 	                			var list = result["list"];
+ 	                			
+ 	                			console.log(list);
+ 	                			
+ 	                		
+ 	                			for(var i = 0 ; i < list.length ; i++){
+ 	                				var $tr = $('<tr>');
+ 	                				
+ 	                				var $td1 = $('<td>');
+ 	                				var $td2 = $('<td>');
+ 	                				var $td3 = $('<td>');
+ 	                				var $td4 = $('<td>');
+ 	                				var $td5 = $('<td>');
+ 	                				var $td6 = $('<td>');
+ 	                				var $td7 = $('<td>');
+ 	                				var $td8 = $('<td>');
+ 	                				var $td9 = $('<td>');
+ 	                				
+ 	                				$td1.append(list[i]['cmDateStr']);
+ 	                				$td2.append(list[i]['cmNo']);
+ 	                				$td3.append(list[i]['cmWriterNo']);
+ 	                				$td4.append(list[i]['cmTitle']);
+ 	                				$td5.append(list[i]['status']);
+ 	                				$td6.append(list[i]['handledDateStr']);
+ 	                				$td7.append(list[i]['suspensionPeriodStr']);
+ 	                				$td8.append(list[i]['suspensionStartDateStr']);
+ 	                				$td9.append(list[i]['suspensionEndDateStr']);
+ 	                				
+ 	                				$tr.append($td1);
+ 	                				$tr.append($td2);
+ 	                				$tr.append($td3);
+ 	                				$tr.append($td4);
+ 	                				$tr.append($td5);
+ 	                				$tr.append($td6);
+ 	                				$tr.append($td7);
+ 	                				$tr.append($td8);
+ 	                				$tr.append($td9);
+ 	                				
+ 	                				$('#listBody').append($tr);
+
+ 	                				
+ 	                			}
+
+ 	                			// 페이징 에리어 
+ 	                			$('.pagingArea').empty();
+ 	                			
+ 	                			var pi = result["pi"];
+ 	                			var cp = pi["currentPage"];
+ 	                			var startPage = pi["startPage"];
+ 	                			var maxPage = pi["maxPage"];
+ 	                			
+ 	                			
+ 	                			console.log(maxPage);
+ 	                			console.log(startPage);
+ 	                			
+ 	                			// 버튼 생성 및 삽입
+                				// '<<'
+ 	                			var $ttfBtn = $('<button onclick="search(1)">').text('<<');
+ 	                			$('.pagingArea').append($ttfBtn);
+ 	                			$('.pagingArea').append(' ');
+ 	                			if(cp == 1){
+ 	                				$ttfBtn.attr("disabled","true");
+ 	                			}
+ 	                			
+ 	                			// '<'
+ 	                			var $backwordBtn = $('<button onclick="search('+ (cp - 1) +')">').text('<');
+ 	                			$('.pagingArea').append($backwordBtn);
+ 	                			$('.pagingArea').append(' ');
+ 	                			if(cp <= 1){
+ 	                				$backwordBtn.attr("disabled","true");
+ 	                			}
+ 	                			
+ 	                			// 'p'
+ 	                			for(var p = startPage ; p <= maxPage ; p++){
+ 	                				var $pBtn = $('<button onclick="search('+ p +')">').text(p);
+ 	                				$('.pagingArea').append($pBtn);
+ 	                				$('.pagingArea').append(' ');
+ 	                				if(p == cp){
+ 	                					$pBtn.attr("disabled","true");
+ 	                				}
+ 	                			}
+ 	                			
+ 	                			// '>'
+ 	                			var $forwardBtn = $('<button onclick="search('+ (cp + 1) +')">').text('>');
+ 	                			$('.pagingArea').append($forwardBtn);
+ 	                			$('.pagingArea').append(' ');
+ 	                			if(cp == maxPage){
+ 	                				$forwardBtn.attr("disabled","true");
+ 	                			}
+ 	                			
+ 	                			// '>'
+ 	                			var $tteBtn = $('<button onclick="search('+ maxPage +')">').text('>>');
+ 	                			$('.pagingArea').append($tteBtn);
+ 	                			if(cp == maxPage){
+ 	                				$tteBtn.attr("disabled","true");
+ 	                			}
+ 	                			
+ 	                			
+ 	                			
+ 	                			
+ 	                		},
+ 	                		error : function() {
+ 	                			alert("검색 실패!");
+ 	                		}
+	                		
+	                	})
+	                } 
                 </script>
             </div>
             <table>
@@ -144,45 +209,15 @@
                 <tbody id="listBody">
                 <% for(Claim c : list) {%>
                 <tr>
-                    <td><%= c.getCmDate() %></td>
+                    <td><%= c.getCmDateStr() %></td>
                     <td><%= c.getCmNo() %></td>
                     <td><%= c.getCmWriterNo() %></td>
                     <td><%= c.getCmTitle() %></td>
                     <td><%= c.getStatus() %></td>
-                    <td>
-                    <% if(c.getHandledDate() != null){ %>
-                    		<%= c.getHandledDate() %>
-                    <% }else { %>
-                    		<%= '-' %>
-                    <% } %>
-                    </td>
-                    <td>
-                    <% if(c.getSuspensionPeriod() != 100000) { %>
-                    		<% if(c.getSuspensionPeriod() == 0) {%>
-                    				<%= '-' %>
-                    		<% } else { %>
-									<%= c.getSuspensionPeriod() %>
-                    		<% } %>
-
-
-                    <% } else { %>
-                    		<%= "무기한" %>
-                    <% } %>
-                    </td>
-                    <td>
-                    <% if(c.getSuspensionStartDate() != null) { %>
-                    		<%= c.getSuspensionStartDate() %>
-                    <% }else {%>
-                    		<%= '-' %>
-                    <% } %>
-                    </td>
-                    <td>
-                    <% if(c.getSuspensionEndDate() != null) {%>
-                    		<%= c.getSuspensionEndDate() %>
-                    <% }else { %>
-                    		<%= '-' %>
-                    <% } %>
-                    </td>
+                    <td><%= c.getHandledDateStr() %></td>
+                    <td><%= c.getSuspensionPeriodStr() %></td>
+                    <td><%= c.getSuspensionStartDateStr() %></td>
+                    <td><%= c.getSuspensionEndDateStr() %></td>
                 </tr>
                 <% } %>
                 </tbody>
