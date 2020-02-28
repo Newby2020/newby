@@ -4,7 +4,7 @@
 	border-right:none;
     font-size: 20px;
     text-align: center;
-    
+    padding: 20px 0;
 }
 
 .tb2{border:1px solid #ebeef3;
@@ -13,6 +13,7 @@
     font-size: 15px;
     text-align: center;
     width:180px;
+    padding: 20px 0;
     }
 
 .tb3{border:1px solid #ebeef3;
@@ -33,6 +34,7 @@
 			}
 			
 .tdSpan {border: 1px solid rgb(9, 129, 241);
+		
 		  }
 
 

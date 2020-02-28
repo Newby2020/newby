@@ -44,7 +44,7 @@
 					<a href="/semi/inquirySelectList.io?currentPage=1">문의 목록</a> <a
 						href="views/customer_createInquiry.jsp">문의 작성</a>
 				</div>
-				<a href="/semi/reportSelectList.ro">신고</a> <a
+				<a href="views/customer_report.jsp">신고</a> <a
 					href="views/customer_refund.jsp">이용약관</a>
 			</div>
 
@@ -106,7 +106,8 @@
 											if (m != null && m.getM_name().equals("관리자") ) { 
 												if(i.getIcomment() != null){ // 댓글의 내용이 있을경우 댓글 수정 버튼이 생성됨
 										%>
-										<td>
+										
+										<td> 
 											<input type="button" class="join3"
 												onclick="location.href='updateViewCom.io?ino=<%=i.getIno()%>'"
 												value="댓글 수정">
@@ -115,7 +116,7 @@
 												}else{ // 댓글의 내용이 없을 경우 답변하기 버튼이 생성된
 										%>
 										<td>
-											<button type="submit" class="join1" id="replybtn" name="comment"
+											<button type="submit" class="join3" id="replybtn" name="comment"
 												onclick="reComment();">답변 하기</button>
 										</td>									
 										<script>
@@ -130,13 +131,13 @@
 									</tr>
 								</table>
 
-							</div>
+							
 							<div align="center">
 							<!-- 문의글 내용 -->
 							<!-- 사용자가계정으로  들어왔을 경우 -->
 								<%
 									if (i.getIwno().equals(m.getM_nick())) {  // 글쓴이와 사용자가 일치할때 글 수정 버튼이 생성된
-								%>
+								%><br>
 								<input type="button" class="join1" onclick="location.href='updateViewCom.io?ino=<%=i.getIno()%>'" value="수정하기">
 									<%@ include file="./common/footer.jsp"%>
 								<%
@@ -155,6 +156,7 @@
 									}
     							</script>
     						<% } %>
+    						</div>
 
 						</div>
 						<input type="hidden" name="ino" value="<%= i.getIno() %>"/>

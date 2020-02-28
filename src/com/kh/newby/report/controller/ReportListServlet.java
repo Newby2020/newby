@@ -79,7 +79,7 @@ public class ReportListServlet extends HttpServlet {
 		String page = "";
 		System.out.println(list);
 		if(list != null) {
-			page = "views/customer_report.jsp";
+			page = "views/customer_report2.jsp";
 			request.setAttribute("list", list);
 			
 			PageInfo pi = new PageInfo(currentPage,listCount,limit,maxPage,startPage,endPage);
