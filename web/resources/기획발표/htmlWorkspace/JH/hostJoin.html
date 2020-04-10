@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <title>호스트 신청</title>
+    <link rel="stylesheet" href="./css/joinModal.css">
+    <link rel="stylesheet" href="./css/LoginModal.css">
+    <link rel="stylesheet" href="./css/main-atag.css">
+    <link rel="stylesheet" href="./css/main-footer.css">
+    <link rel="stylesheet" href="./css/main-headervar.css">
+    <link rel="stylesheet" href="./css/main-panel.css">
+    <link rel="stylesheet" href="./css/main-navibar.css">
+    <link href="https://fonts.googleapis.com/css?family=Nanum+GothicNoto+Sans+KR&display=swap" rel="stylesheet">
+    
+    <link rel="stylesheet" href="./css/hostJoin.css">
+    <style>
+        html{
+            font-family: 'Noto Sans KR', sans-serif;
+            
+        }
+        
+      
+
+
+    </style>
+</head>
+<body>
+    <div id="Allpanel">
+        <center>
+            <div class="newby-header" id="newby-header-var">
+                <img src="../로고이미지.png" alt="로고"  height="60px" id="newby-logo" onclick="newbyMain();">
+                
+                
+                <label id="login" class="top-nav">
+                    <a>로그인 |</a>
+                </label>
+                <label id="signIn" class="top-nav">
+                    <a>회원가입 |</a>
+                </label>
+                <label id="toHost" class="top-nav">
+                    <a href="Host_SignIn.html">호스트신청 |</a>
+                </label>
+                <label id="customer" class="top-nav">
+                    <a href="Inquiry.html">고객센터 |</a>
+                </label>
+                <label id="myPage" class="top-nav">
+                    <a href="./MyPage/AccountPage.html">마이페이지 |</a>
+                </label>
+                <label id="AdminPage" class="top-nav">
+                    <a href="./newbyAdmin/admin.html">관리자페이지 |</a>
+                </label>
+            
+                
+            </div>
+        </center>
+        <center>
+            <!-- 작업하는 컨텐츠 -->
+            <div id="newby-body-panel">
+                <form id="joinForm" class="joinForm">
+                    <div class="guideHostSentence">
+                        <label><b>호스트 가입</b></label style="margin-bottom: 3px;">
+                        <br>
+                        <hr style="margin-top: 10px;">
+                        <br>
+                    </div> 
+                    <center><div class="hostRequired">
+                        <select class="hostJoinInfo" name="hostClassCategory" id="hostClassCategory" style="height: 30px;">
+                            <option value="카테고리">클래스 카테고리</option>
+                        </select>
+                    </div>
+                    <br>
+                    <div class="hostRequired">
+                        <input type="textarea" class="hostJoinInfoReason" id="hostClassReason" name="hostClassReason" value="" placeholder="   클래스 개설하려는 이유를 자세히 적어주세요">
+                    </div>
+                    <br><br><br><br>
+                    <div class="hostRequired">
+                        <input type="text" class="hostJoinInfo" id="hostClassPlace" name="hostClassPlace" value="" placeholder="예상 수업장소 입력">
+                    </div>
+                    <div class="hostRequired">
+                        <input type="text" class="hostJoinInfo" id="hostClassPrice" name="hostClassPrice" value="" placeholder="예상 비용 입력">
+                    </div>
+                    <div class="hostRequired">
+                        <input type="text" class="hostJoinInfo" id="hostBankName" name="hostBankName" value="" placeholder="은행명 입력">
+                    </div> 
+                    <div class="hostRequired">
+                        <input type="text" class="hostJoinInfo" id="hostAccountName" name="hostAccountName" value="" placeholder="예금주명 입력">
+                    </div>
+                    <div class="hostRequired">
+                        <input type="text" class="hostJoinInfo" id="hostBankNumber" name="hostBankNumber" value=""placeholder="계좌번호 입력">
+                    </div></center>
+                    <br><br>
+                    <div class="announce">
+                        <center><input type="checkbox" id="agree" name="agree">
+                        <label>이용약관, 개인정보 처리방침, 위치기반 서비스 이용약관에 동의합니다.</label></center>
+                    </div>
+                    <br><br>
+                
+                    <center><button onclick="buttonJoin();" id="buttonJoin" class="buttonJoin">가입하기</button></center> 
+                    </form>
+            </div>
+        </center>
+        <center>
+            <div id="newby-footer">
+                <p id="newby-copyright">Copyright &copy; Your Website 2020</p>
+              </div>
+        </center>
+    </div>
+
+    <script>
+        function newbyMain(){
+            location.href = "../MainPage/NewbyMainPage.html";
+        }
+    </script>
+</body>
+</html>

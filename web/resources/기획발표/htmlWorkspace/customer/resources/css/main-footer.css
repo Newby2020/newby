@@ -1,0 +1,12 @@
+#newby-footer{
+    background-color: lightgray;
+    width: 100%;
+    min-height: 100px;
+    height: auto;
+    display: table;
+}
+
+#newby-copyright{
+    display: table-cell;
+    vertical-align: middle;
+}

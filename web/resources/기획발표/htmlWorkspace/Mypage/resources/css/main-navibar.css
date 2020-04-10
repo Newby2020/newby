@@ -1,0 +1,26 @@
+#newby-logo{
+    margin-top: 4px;
+    margin-left: 10px;
+    margin-right: 40px
+}
+
+.top-nav{
+    margin-left: 20px;
+    vertical-align: middle;
+    margin-bottom: 10px;
+    display: table-cell;
+    
+}
+
+.newby-header{
+    display: table;
+
+}
+
+ 
+.top-nav a:link { color: darkgrey; text-decoration: none;}
+.top-nav a:visited { color: darkgrey; text-decoration: none;}
+.top-nav a:hover { color: darkgrey; background-color: white;}
+.top-nav{
+      color: darkgrey;
+ }

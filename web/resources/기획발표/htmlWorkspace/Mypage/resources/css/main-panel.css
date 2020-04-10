@@ -1,0 +1,35 @@
+html{
+    overflow-x: hidden;
+}
+
+body{
+    margin: 0px;
+    padding: 0px;
+}
+
+#Allpanel{
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    width: 100%;
+    height: auto;
+    overflow-x: hidden;
+    overflow-y: hidden;
+}
+
+#newby-header-var{
+    background-color: white;
+    width: 70%;
+    height: 60px;
+}      
+#newby-body-panel{
+    width: 70%;
+    min-height: 700px;
+    height: auto;
+    padding-left: 1px;
+    
+}        
+#newby-footer{
+    width: 70%;
+    height: 60px;
+}

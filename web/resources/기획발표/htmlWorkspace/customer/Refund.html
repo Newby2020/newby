@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <title>Refund</title>
+    <link rel="stylesheet" href="./resources/css/joinModal.css">
+    <link rel="stylesheet" href="./resources/css/LoginModal.css">
+    <link rel="stylesheet" href="./resources/css/main-atag.css">
+    <link rel="stylesheet" href="./resources/css/main-footer.css">
+    <link rel="stylesheet" href="./resources/css/main-headervar.css">
+    <link rel="stylesheet" href="./resources/css/main-navibar.css">
+    <link rel="stylesheet" href="./resources/css/main-panel.css">
+    <link rel="stylesheet" href="./resources/css/h&j-frame.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+    <link href="https://fonts.googleapis.com/css?family=Nanum+Gothic|Noto+Sans+KR&display=swap" rel="stylesheet">
+    <script src="./jquery/jquery-3.4.1.min.js"></script>
+    <script src="../MainPage/js/mainPage.js"></script>
+</head>
+
+<body>
+    <div id="Allpanel">
+        <center>
+            <div class="newby-header" id="newby-header-var">
+                <img src="./resources/images/Logo(120x50px).png" alt="로고" height="50px" id="newby-logo" onclick="newbyMain();">
+                  <label id="login" class="top-nav">
+                      <a>로그인 |</a>
+                  </label>
+                  <label id="signIn" class="top-nav">
+                      <a>회원가입 |</a>
+                  </label>
+                  <label id="toHost" class="top-nav">
+                      <a href="hostJoin.html">호스트신청 |</a>
+                  </label>
+                  <label id="customer" class="top-nav">
+                      <a href="Notice.html">고객센터 |</a>
+                  </label>
+                  <label id="myPage" class="top-nav">
+                      <a href="Profile.html">마이페이지 |</a>
+                  </label>
+                  <label id="AdminPage" class="top-nav">
+                      <a href="./newbyAdmin/admin.html">관리자페이지 |</a>
+                  </label>
+              </div>
+        </center>
+        <center>
+            <!-- 작업하는 컨텐츠 -->
+            <div id="newby-body-panel" class="contents-div123" align="left">
+
+                <!--left sidebar-->
+                <div class="sidenavsk">
+                    <div id="sidebar-titleso67" align="center">고객센터</div>
+                    <a href="Notice.html">공지사항</a>
+                    <button class="dropdown-btnqo">문의
+                      <i id="ci22">≡</i>
+                    </button>
+                    <div class="dropdown-soxk">
+                      <a href="Inquiry.html">문의 목록</a>
+                      <a href="CreateInquiry.html">문의 작성</a>
+                    </div>
+                      <a href="Report.html">신고</a>
+                    <a href="Refund.html">환불정책</a>
+                </div>
+
+                <!--contents-->
+                <div id="mn16s" align="center">
+
+                    <br>
+                    <h2>환불 정책</h2>      <!-- 제목란이니깐 해당 제목 작성해서 하면 돼-->
+                    <br>
+                    <hr id="hrSet53">
+                    <br>
+                    <br>
+
+                    <div id="contentsDivSize29">       <!-- 여기다가 너가 작업한거 넣으면 돼-->
+                         
+                        <form>
+                            <h4>환불 정책
+                            </h4>
+                            </td>
+                            <hr>
+                
+                            <ul style="margin-left: 100px;">
+                               <li> 첫 클래스를 시작하기 24시간 이전에 취소요청을 하는 경우에는 결제대금이 100% 환불됩니다. </li> <br>
+                               <li> 단, 호스트에게 먼저 취소,환불 의사를 유선,SMS등의 수단으로 통보한 후에 환불 접수가 가능합니다.</li> <br> <br>
+                
+                               <li>만일 첫 수업시작까지 24시간 이내에 취소 의사를 밝히거나 첫 수업 진행 후 환불을 요청하더라도 첫 수업료로 결제한 1시간의 금액은 환불 받을 수 없으며,</li> <br>
+                               <li>시범강의비 명목으로 호스트에게 귀속됩니다. 마찬가지로 전체 결제를 진행한 경우에는 등록된 커리큘럼의 1시간 수업료가 차감된 금액이 환불 됩니다.</li> <br>
+                
+                
+                            </ul>
+                
+                        </form>
+                        
+                    </div>
+              
+            </div>
+        </center>
+        <center>
+            <div id="newby-footer">
+                <p id="newby-copyright">Copyright &copy; Your Website 2020</p>
+              </div>
+        </center>
+    </div>
+
+    <script>
+        var dropdown = document.getElementsByClassName("dropdown-btnqo");
+        var i;
+  
+        for (i = 0; i < dropdown.length; i++) {
+            dropdown[i].addEventListener("click", function() {
+            this.classList.toggle("activeCl");
+            var dropdownContent = this.nextElementSibling;
+            if (dropdownContent.style.display === "block") {
+            dropdownContent.style.display = "none";
+            } else {
+            dropdownContent.style.display = "block";
+            }
+            });
+        }
+
+        function btn1(){
+            var width = screen.width;
+            var height = screen.height;
+
+            child = window.open(herf="Find.html","찾아보기","location=no,resizeable=no,width=500, height=300");
+        }
+    </script>
+</body>
+</html>

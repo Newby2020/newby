@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <title>결제 취소</title>
+</head>
+<body>
+    <button onclick="cancelPaying();">결제 취소</button>
+    <script>
+        function cancelPaying() {
+            // window.open();
+            // window.open('팝업주소','팝업이름','팝업설정(값)');
+            // https://www.w3schools.com/jsref/met_win_open.asp << 참고
+
+            /*
+                width=      : 팝업창 가로길이
+                height=     : 팝업창 세로길이
+                toolbar=    : no > 단축도구창(툴바) 표시안함
+                menubar=    : no > 메뉴창(메뉴바) 표시안함
+                location=   : no > 주소창 표시안함
+                scrollbars= : no > 스크롤바 표시안함
+                status=     : no > 아래 상태바 창 표시안함
+            */
+
+            /* 해당 파일 경로 수정 필요*/
+            // window.open('file://  ( 해당 부분 파일 경로 )  /CancelOrder.html','cancelOrder','location=no,resizeable=no,innerWidth=960,innerHeight=800');
+        
+            window.open('file://C:/Users/itoma/Desktop/IT/SemiProject/CancelOrder.html','cancelOrder','location=no,resizeable=no,innerWidth=960,innerHeight=800');
+        }
+    </script>
+</body>
+</html>

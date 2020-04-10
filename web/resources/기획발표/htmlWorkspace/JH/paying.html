@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <title>결제</title>
+    <link rel="stylesheet" type="text/css" href="./css/Paying.css">
+    <link href="https://fonts.googleapis.com/css?family=Nanum+GothicNoto+Sans+KR&display=swap" rel="stylesheet">
+    <style>
+        *{
+            font-family: 'Noto Sans KR', sans-serif;  
+        }
+    </style>
+</head>
+<body>
+    <form id=joinForm>
+    <div class="guideText">
+        <label><b>결제</b></label>
+        <hr>
+	</div>
+    <div class="classInfo">
+        <div class="pictureClass"></div>
+            <div class="classDetail"><br><br>[카테고리] 선택한 클래스명 
+            <br><br>클래스 선택 일정 
+            <br><br>수량 x 1</div>
+        <label class="priceClass"><br><br><br><br>W 10,000원</label>
+    </div> 
+    <hr>
+    <div class="priceClass2">
+	    <label>상품 금액</label>
+	    <label id="priceClassAndMileage">W 10,000원&nbsp;</label>
+	</div>
+    <hr>
+    <div class="mileage">
+        <label>마일리지</label>
+        <label id="priceClassAndMileage">W 10,000원&nbsp;</label>
+    </div>
+    <hr>
+    <div class="mileageGuide">
+	    <label>* 마일리지는 최대 클래스 금액의 20%까지 결제 가능합니다.</label><br>
+	    <label>* 결제하신 금액의 1%는 마일리지로 적립됩니다.</label>
+    </div>
+    <hr>
+    <div class="priceGuide">
+        <label class="priceGuideLabel"><b>할인 금액 : W       원&nbsp;&nbsp;</b></label><br>
+        <hr style="width: 180px; float: right; margin-top: 5px; display: block;"><br>
+	    <label class="priceGuideLabel" style ="line-height: 0.5em;"><b>결제 금액 : W       원&nbsp;&nbsp;</b></label>
+    </div>
+
+    <br><br><br><br><br>
+
+
+    <div id="guideText">
+	    <label><b>결제 수단</b></label>
+    </div>
+    <hr>
+
+    <button onclick="buttonCard();" id="buttonCard" class="buttonPay">신용카드</button> 
+    <button onclick="buttonTransfer();" id="buttonTransfer" class="buttonPay">계좌이체</button> 
+    <button onclick="buttonAccount();" id="buttonAccount" class="buttonPay">무통장입금</button> 
+    <button onclick="buttonMobile();" id="buttonMobile" class="buttonPay">모바일 결제</button> 
+      
+    <br><br><br>
+
+    <div class="announcePay">
+        <input type="checkbox" id="agree" name="agree">
+        <label>개인정보 제 3자 제공 동의, 결제 대행 서비스 이용 약관 등 모든 약관에 동의합니다.</label>
+    </div>
+
+    <br><br>
+
+    <center><button onclick="finalButtonPay();" id="finalButtonPay" class="finalButtonPay">W 10,000원 결제하기</button></center> 
+            
+    <script>
+        document.get
+    </script>
+    </form>
+</body>
+</html>

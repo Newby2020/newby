@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
+        <link rel="stylesheet" type="text/css" href="css/head.css"> 
+        <title>Find</title>
+        <style>
+            table{margin: auto;}
+    
+            .tab1{border: 1px solid lightgray;
+                font-size: 20px;
+                text-align: center;
+            }
+
+            .tb2{border: 1px solid lightgray;
+                 font-size: 15px;
+                 text-align: center;}
+
+            .tb3{border: 1px solid lightgray;
+                 font-size: 15px;
+                 text-align: center;}
+
+            .div1{border: 1px solid lightgrey;}
+
+            .join1,  .join2{
+                width: 10%;
+                height: 30px;
+                background-color: rgb(9, 129, 241);
+                color: white;
+                cursor : pointer;
+            }
+
+            .btn1{float: center;}
+
+        </style>
+    </head>
+
+    <body>
+        <form>
+                <table>
+                    <tr>
+                        <th colspan="1" class="tab1">날짜</th>
+                        <th colspan="1" class="tab1">클래스명</th>
+                        <th colspan="1" class="tab1">금액</th>
+                        <th colspan="1" class="tab1">상태</th>
+                        <th colspan="1" class="tab1">선택</th>
+                    </tr>
+                    <tr>
+                        <td colspan="1" width = "100px" class="tb2">2020-01-17</td>
+                        <td colspan="1" width = "100px" class="tb3">자바공부</td>
+                        <td colspan="1" width = "100px" class="tb3">5000</td>
+                        <td colspan="1" width = "100px" class="tb3">완료</td>
+                        <td colspan="1" width = "100px" class="tb3"><input type="radio"></td>
+                    </tr>
+                </table>
+                <div style="text-align: center;">
+                    <input class="join2" type="submit" value="선택">
+                    <input class="join1" type="reset" value="취소">
+                </div>
+        </form>
+    </body>
+</html>
